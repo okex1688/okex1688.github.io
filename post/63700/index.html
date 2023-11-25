@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          a16z：Lasso&#43;Jolt如何实现更高效的SNARK系统？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="关于Lasso、Jolt和SNARK的技术问题解答" />
+
+  <meta name="keywords" content="Hugo, theme, jane" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="https://okex1688.github.io/post/63700/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="a16z：Lasso&#43;Jolt如何实现更高效的SNARK系统？" />
+<meta property="og:description" content="关于Lasso、Jolt和SNARK的技术问题解答" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okex1688.github.io/post/63700/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-11-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-22T00:00:00+00:00" />
+
+<meta itemprop="name" content="a16z：Lasso&#43;Jolt如何实现更高效的SNARK系统？">
+<meta itemprop="description" content="关于Lasso、Jolt和SNARK的技术问题解答"><meta itemprop="datePublished" content="2023-11-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-11-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7697">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="a16z：Lasso&#43;Jolt如何实现更高效的SNARK系统？"/>
+<meta name="twitter:description" content="关于Lasso、Jolt和SNARK的技术问题解答"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">a16z：Lasso&#43;Jolt如何实现更高效的SNARK系统？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      <a href="/about">
+        <span class="post-meta-author-name">
+          佚名
+        </span>
+      </a>
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2023-11-22">
+      2023-11-22
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7697 字 -
+        预计阅读 16 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="https://okex1688.github.io/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+    <tr>
+    <th style="text-align:left">推荐平台</th>
+    <th style="text-align:left">链接</th>
+    <th style="text-align:left">注册教程</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+    <td style="text-align:left"><span style="white-space:nowrap"><a href="https://www.okbtc.cn/binance?ref=qkdaquan">注册链接</a></span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/binance?ref=qkdaquan">自用机场推荐，翻墙VPN，秒开4K，解锁ChatGPT、奈飞流媒体</a></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=qkdaquan">注册链接</a></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=qkdaquan">美国虚拟信用卡，可订阅ChatGPT Plus会员</a></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=qkdaquan">注册链接</a></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a></td>
+    </tr>
+    </tbody>
+    </table>
+<p>原文标题：《A technical FAQ on Lasso, Jolt, and recent advancements in SNARK design》</p>
+<p>原文作者：<a href="https://a16zcrypto.com/team/justin-thaler">Justin Thaler</a></p>
+<p>原文编译：Luccy，BlockBeats</p>
+<p><em>编者按： 11 月 20 日，Ulvetanna 的 Ben Diamond 和 Jim Posen（DP）发布了一篇论文，改进了基于求和检查的多项式 IOPs 和结合更快的证明者、更大证明的承诺方案 Ligero/Brakedown，并将其与基于 sum-check 的 SNARKs（如 Lasso）集成在一起。a16z 的研究合伙人 Justin Thaler 对该技术进行了深入解析后，各研究员对文章内容提出疑问。</em></p>
+<p>相关阅读：《a16z：Lasso+Jolt，快速承诺的崭新前景》</p>
+<p><em>这篇 FAQ 整合了 13 个问题，回答包括 Jolt Prover 性能、DP 选择 Keccak 和 Grøstl 哈希函数的原因，以及对基于哈希的承诺方案安全性等多方面问题。此外，该篇回答中还涵盖了 Lasso 和 Jolt 的基础关系、使用 Reed-Solomon 码的性能优势、Ligero/Brakedown 相对于 FRI 的优势，以及 DP 承诺 GF[ 2 ] 元素经济性的解释。</em></p>
+<p><em>讨论焦点包括整个计算的布尔电路实现、特征二字段的优势，以及通过递归组合 SNARK 证明和结合 DP 承诺方案与基于 elliptic-curve 的 SNARK 的技术和成本问题。最后，文章还提出了使用 DP 的承诺方案的 SNARK 是否可以与折叠方案（如 Nova）结合使用的问题。这些问题的深入研究有望促进该领域的技术创新和进一步改进。</em></p>
+<p><strong>Q1：相对于 RISC-V 程序的本机执行，一旦 Jolt 被重新实现以使用 DP 的承诺，您认为 Jolt prover 的速度会有多快？</strong></p>
+<p><strong>A：</strong> 这里提供一个粗糙且推测性的估计。Jolt prover 预计每个 RISC-V CPU 的步骤将承诺约 800 位的数据，使用 32 位数据类型和乘法扩展。需要注意两点：首先，某些 RISC-V 指令通过多个伪指令处理。例如，除法指令通过让 prover 提供商和余数，并通过乘法、加法和不等式检查对两者进行验证。其次，在我们解析 GF[ 2128 ] 的查找表分解后，这个数字估计可能会略有调整。</p>
+<p>使用 DP 的承诺方案，并假设递归不会成为瓶颈，在 T 步计算中，主要的承诺成本如下。</p>
+<p>首先，对总共约 200 T 字节的数据应用加法 FFT。更确切地说，Ligero/Brakedown 证明者执行 O(√T) 个大小为 O(√T) 的独立 FFT（这涉及的总工作量较少，且能更好地并行化，而不是执行长度为 O(T) 的单个 FFT）。其次，使用标准哈希函数如 Keccak 或 SHA 2 对大约 200 T 字节进行哈希。</p>
+<p>经验上，DP 发现 FFT 和哈希在证明者时间中大致相等。</p>
+<p>使用 Keccak 哈希，每字节约需要 70 个 RISC-V 周期的估算表明，这些操作将比仅运行未经证明的 RISC-V 程序慢约 30, 000 倍。换句话说，为了证明 Jolt 证明者正确运行了一个 RISC-V 程序Ψ，证明者本身（在 RISC-V 中实现）将需要至少比Ψ本身多 20, 000 倍的周期。</p>
+<p>这些承诺成本足够「快」，表明证明者的瓶颈可能在于其在总检查协议中执行的有限域操作，即使考虑到小特征域的优化。因此，粗略估计，我猜测 Jolt 证明者（在 RISC-V 中实现）将比仅运行 RISC-V 程序慢约 50, 000 倍。</p>
+<p>整个计算有点儿荒谬：当 Jolt 部署时，证明者本身不太可能由 RISC-V 实现。但这确实给出了如何估算 zkVM 证明者开销的大致思路。</p>
+<p>尽管 50, 000 倍的减速看起来很大，但比我大约 18 个月前乐观估计的 100 万倍开销要快 20 倍。这种改善的主要原因是由 Lasso 和 Jolt 解锁的承诺数据较小（以及每个承诺值的较小大小）。其余的原因归功于更好的承诺方案（例如，改进了使用快速哈希函数和在基于哈希的 SNARKs 中利用承诺值的小规模的能力）。</p>
+<p><strong>Q2：DP 提供了 Keccak 和 Grøstl 的快速 SNARKs。为什么选择这些哈希函数？还有哪些哈希函数适合这些技术？BlockBeats 注：Grøstl 是一个加密哈希函数</strong></p>
+<p><strong>A：</strong> Keccak/SHA 3 是一个明显的选择，因为它是 NIST 标准、以太坊预编译和 Type-1 zkEVM 的关键瓶颈。SHA 3 是官方的 NIST 标准，Keccak 是以太坊预编译，它们在与 SNARK 成本无关。</p>
+<p>DP 考虑了 Grøstl，因为它应该导致更快的证明者，同时保持 Keccak 的许多优点。特别是，Grøstl 经受了强大的密码分析审查，尽管最终未被选中，但因为它进入了 NIST 的 SHA-3 竞赛的最后一轮，并且使用了 AES S-box。由于 AES 加速指令 AES-NI，Grøstl 在英特尔芯片上甚至比 Keccak 运行得更快。</p>
+<p>DP 的证明者对于 Grøstl 应该比对于 Keccak 更快，因为 Grøstl 基本上是在 GF[ 28 ] 上本地定义的，这意味着 DP 的证明者可以对比 Keccak 更少的域元素进行承诺。（有关这如何使证明者受益的详细信息，详情请参考 Q 9 。）总的来说，Grøstl 应该比 Keccak 更适合（递归）SNARKs，因为它在证明者和芯片上都更快。</p>
+<p>DP 的 SNARKs 与 Keccak 和 Grøstl 无关。这些技术应该适用于许多其他哈希函数。例如，DP 认为 SHA 2 也应该和 Keccak 一样好，但尚未详细研究过。</p>
+<p><strong>Q3：我以为 Lasso/Jolt 是针对 elliptic-curve 基础的承诺方案？</strong></p>
+<p><strong>A：</strong> 不，Lasso 和 Jolt 并不专门针对基于 curve 的承诺方案。但在几个月前的情况下，与之前的工作相比，它们的优势在与 基于 curve 的承诺结合使用时最为明显。这是因为当证明者不得不对随机域元素进行承诺时，基于 curve 的承诺支付了特别高的代价，因此 Lasso/Jolt 的新颖能力避免这一情况在这些承诺被使用时具有最引人注目的性能影响。</p>
+<p>简而言之，虽然以前没有人设计过使用 基于 curve 承诺的 SNARKs 以利用被承诺的小值，但在一定程度上，已经有了在小字段上工作的基于哈希的承诺利用了这一点。</p>
+<p>但是，即使使用基于哈希的承诺，Lasso 和 Jolt 在两个方面都比之前的工作有所改进。首先，DP 表明，与先前已知的方式相比，基于哈希的承诺可以更强大地受益于只有小域元素被承诺。例如，而今天的承诺方案对于承诺 1 位值和 32 位值产生相同的证明者成本，使用 DP 的方案，对于承诺 1 位值几乎便宜了 32 倍。其次，Lasso 和 Jolt 不仅确保证明者只承诺小域元素，而且还确保证明者承诺的域元素比非基于求和检查的 SNARKs 更少。事实上，在 Jolt 中，我们仔细计算了所有承诺域元素的总位复杂度，并确认它远远小于现有 zkVMs 中所做的工作。</p>
+<p>几个月前 Lasso/Jolt 发布时，另一个技术上的麻烦使我们突出了 基于 curve 的承诺：唯一一个具有对数多项式证明大小的基于哈希的承诺方案，FRI，是针对单变量多项式的，而 Lasso/Jolt 使用的是多线性多项式。已知的几种转换将 FRI 调整为适用于多线性多项式的承诺方案，但这些转换在证明者时间、证明大小或两者方面增加了我们认为非常不可取的开销。BaseFold 现在允许具有对数多项式证明大小的「直接」多线性承诺，尽管由此产生的证明速度比 Brakedown 的慢，而且证明比 FRI 的大。</p>
+<p>与 FRI 不同，Ligero/Brakedown 承诺方案直接应用于多线性多项式，并且具有非常快速的证明者。但以前，应用递归以降低其证明大小很难，因为验证者执行大量哈希操作，使得递归昂贵。通过为哈希提供更快的 SNARKs，DP 的工作将大大降低这种递归的成本。</p>
+<p><strong>Q4：你不是说 基于 curve 的承诺方案比哈希基础的方案更快（当只承诺小值时，如 Lasso/Jolt）吗？这不是与你对 DP 的 SNARKs 的认可相矛盾吗？</strong></p>
+<p><strong>A：</strong> 首先，正如我之前所说，有一些重要的 SNARK 应用场景，哈希基础的 SNARKs 明显不是性能最佳的选择，因为在 elliptic-curve 群的基础域上工作是有意义的。在使用这些域时，基于 curve 的承诺更快。证明关于 elliptic-curve 密码系统的任何陈述（包括关于 ECDSA 数字签名授权区块链交易的知识）都属于这一类别。</p>
+<p>其次，即使在合理使用小特征域的应用中，基于哈希的方案与基于 curve 的方案的性能比较也很复杂。例如，它在很大程度上取决于基于哈希的方案中使用的哈希函数有多快。今天，许多（但不是所有）项目使用较慢的哈希函数，如 Poseidon，以实现递归。使用这样的哈希函数，基于哈希的方案在承诺小值时（如 Lasso/Jolt）明显比基于 curve 的方案慢。即使使用快速的哈希函数，它们是否更快并不明确（正如我之前的评论所述）。</p>
+<p>但是，DP 通过加速基于哈希的承诺，使其在使用特征为 2 的域时更为高效，并允许证明者更好地利用承诺值的小规模，与现有的基于哈希的方案（如 FRI）相比。因此，我目前的期望是，在特征为 2 的域上，Ligero/Brakedown 将是前进的方式，除非证明与其他有限域上的本地定义。</p>
+<p>总之，直到今天，人们普遍认为基于哈希的承诺方案比基于 curve 的方案更快的主要原因是，像 Plonk 这样的流行 SNARKs 要求证明者承诺随机的域元素，而不是小的域元素，而在这种情况下，基于 curve 的承诺方案非常慢。Lasso 和 Jolt 表明，证明者无需承诺随机的域元素。在这种情况下，比较至少更为细致。直到今天，基于 curve 的方案实际上更快，但有了 DP 的改进，情况相反了（除了在本地定义在大域上的情况）。</p>
+<p><strong>Q 5 ：你不是说基于哈希的承诺方案的安全性较低吗？</strong></p>
+<p><strong>A：</strong> 像 FRI 或 Ligero/Brakedown 这样的基于哈希的承诺方案本身并没有不安全的地方。但是，项目普遍优先考虑性能而不是安全性，通过在已知攻击接近可行的配置上部署 FRI，并假设对 FRI 的这些已知攻击恰好是最优的。</p>
+<p>Ligero/Brakedown 承诺方案的一个好处是，关于 FRI 的主要猜想，即在约翰逊界之外的邻近参数下的猜想安全性并不相关，因此 SNARK 设计者没有借此猜想基于安全性的诱因。</p>
+<p>同样，我长期以来一直对表面上「SNARK 友好」的哈希函数（如 Poseidon）在 SNARK 部署中的使用感到担忧。与标准哈希函数如 Keccak 相比，这些哈希函数的安全性（即使是那些存在时间最长的）受到的审查远远不够。</p>
+<p>在上述两种情况中，我认为项目一直在为掩盖当今 SNARK 性能缺陷而危及安全性。消除这些做法的最简单方法就是简单地开发性能更好的 SNARKs。</p>
+<p>相关地，我认为目前手工设计「SNARK 友好」虚拟机（VMs）和实现这些 VMs 的约束系统的做法是一个重大的安全问题（以及对开发者资源的巨大消耗），因为设计约束系统和从高级语言开发新编译器到自定义 VMs 的汇编代码具有易出错的特性。我希望 Jolt 通过展示标准指令集确实同样友好于 SNARK，从而使这种做法过时，并消除手工设计实现这些指令集的约束系统的任何需要或激励。</p>
+<p>消除具有负面安全影响的做法的方法是提出更高性能的 SNARKs，使该做法变得无关紧要。</p>
+<p><strong>Q 6 ：DP 在他们实现的多项式承诺方案中使用了 Reed-Solomon 码，但 Brakedown 可以使用任何码。探索其他码以寻求可能的性能优势是否值得？</strong></p>
+<p><strong>A：</strong> 是的。</p>
+<p><strong>Q 7 ：Ligero/Brakedown 在哪些方面对证明者更有利，而不同于 FRI？</strong></p>
+<p><strong>A：</strong> DP 显著提高的在承诺非常小的值时的证明者时间是 Ligero/Brakedown 独有的，至少目前是如此。此外： DP 不仅在承诺小值时改进了证明者时间，还改进了证明者空间。这是一个主要瓶颈，特别是对于基于哈希的 SNARKs。例如，Polygon 的 zkEVM 证明者今天需要 250 多 GB，以证明一个处理大约 1000 万 gas 的交易批处理的电路。</p>
+<p>在使用纠错码方面，Ligero/Brakedown 具有更大的灵活性。实际上，通过在 Ligero/Brakedown 内部使用串联码，可以简单地获得 DP 在承诺小值方面的许多改进。</p>
+<p>当使用 Reed-Solomon 码时，Ligero/Brakedown 的证明者执行许多小 FFT 而不是一个大 FFT。这在 FFT 运行时间上节省了一倍，更适合并行化。</p>
+<p>在技术层面上，FRI 还需要同时进行 FFT 和 IFFT（从技术层面上看，这是因为 FRI 实际上需要在许多点上评估承诺的多项式）。Ligero/Brakedown 的证明者可以跳过 IFFT（在技术层面上，跳过 IFFT 源于 Ligero/Brakedown 在选择纠错码方面的卓越灵活性）。如果使用「Reed-Solomon 膨胀因子」为 2 （这是优化证明者时间的膨胀因子），这可以在证明者时间上再节省 33 ％。</p>
+<p>Ligero/Brakedown 的评估证明不需要证明者执行额外的 Merkle 哈希。但 FRI 需要，尽管 FRI 的大多数调用会分期偿还在许多承诺的多项式上的评估证明的成本。</p>
+<p><strong>Q 8 ：你能概述一下 DP 如何确保承诺 GF[ 2 ] 元素比承诺 GF[ 2 ^ 2 ] 元素更便宜，而后者比承诺 GF[ 2 ^ 4 ] 元素更便宜，依此类推吗？</strong></p>
+<p><strong>A：</strong> 证明者用 DP 的承诺方案承诺一堆值所需的时间大致仅取决于指定这些值所需的总位数，其中 b 位用于指定在 0 和 2b 之间的值。DP 的 SNARKs 中的其他证明者成本确实会随着用于编码这些位的场元素数量的增加而增加（有关详细信息，请参见下面的＃ 9）。以下是 DP 如何实现这一点。</p>
+<p>Brakedown 的多项式承诺方案使用任何所需的纠错码对要承诺的值的子向量进行编码。假设要承诺的一堆值在 GF[ 2 ] 中，但我们希望编码本身在更大的域 GF[ 2 ^ 16 ] 上运行。有很多技术原因我们希望这样做，事实上，如果我们想将某些编码应用于长度最多为 216 的向量，这是必要的。</p>
+<p>为了实现这一点，我们可以简单地使用码串联，这涉及将所有 GF[ 2 ] 值分成大小为 16 的块，并将每个 16 个 GF[ 2 ] 值的块「打包」到单个 GF[ 2 ^ 16 ] 场元素中。这将减少要承诺的场元素数量的 16 倍。然后，我们可以应用在域 GF[ 2 ^ 16 ] 上运行的任何纠错码，这称为「外码」。然后，得到的码字的每个符号可以「解包」为十六个 GF[ 2 ] 元素，并使用在 GF[ 2 ] 上定义的「内码」对结果进行编码。</p>
+<p>有效地说，串联方法通过 16 倍降低了承诺向量的长度（以场元素数量为度量），但需要证明者执行打包和解包操作，以及对外部码字的每个（解包的）符号应用内码。</p>
+<p>这种简单的方法，即使用串联码应用 Brakedown，已经实现了 DP 工作的许多好处。但是 DP 采用了一种不同的方法，导致证明者的速度更快（代价是证明略大）。例如，DP 的实际方法避免了对外部码字的每个解包符号应用内码的成本。</p>
+<p><strong>Q 9 ：由于 DP 的承诺方案使得承诺 { 0, 1 } 中的值非常便宜，为什么不让证明者只承诺在计算中出现的所有值的位分解呢？也就是说，为什么不使用布尔电路实现整个计算，并让 SNARK 为电路中的每个输入位和门分配一个「完整」的场元素呢？</strong></p>
+<p><strong>A：</strong> 在他们针对 Keccak 的 SNARK 中，DP 确实让证明者只承诺 { 0, 1 } 中的值，但这在一般情况下不一定是个好主意。</p>
+<p>的确，DP 的承诺时间大致与所有承诺值的位复杂度之和成正比，而与这些值分布在多少场元素上无关（这就是为什么在 Keccak 的 SNARK 中只对一位值进行承诺是个合理的主意）。</p>
+<p>然而，这并不意味着所有的成本都与承诺的场元素数量无关。特别是，承诺方案的评估证明的大小与承诺场元素的数量（的平方根）成正比。</p>
+<p>另一个与承诺的场元素数量成正比的成本是在 DP 的 SNARK 中的求和检查协议的一些应用中需要求和的项的数量。粗略地说，承诺 x 倍的场元素意味着求和检查证明需要求和 x 倍多的项。有一些优化可用于减轻这种开销，但这种减轻并不完美。也就是说，与将这些值打包成单个 x 位场元素后再进行承诺相比，求和检查证明很可能仍然较慢，即使是 x 个一位值。</p>
+<p>DP 通过提供基于求和检查的协议，将许多一位值在这些值被承诺后打包成单个场元素，以减轻承诺许多一位值的后一成本。这使得他们在术语上避免了为许多承诺的值支付太多的求和检查证明时间的代价，同时仍然能够享受它们的好处（特别是一旦进行了位分解的承诺，通过求和检查证明时，某些操作如按位与在被证明时不会产生任何额外的承诺成本）。</p>
+<p><strong>Q1 0 ：DP 利用特征为二的字段的具体优势是什么？</strong></p>
+<p><strong>A：</strong> 有很多，这里举例一部分。</p>
+<p>DP 大量利用了塔场构造。在特征为二的场的背景下，这指的是构建 GF[ 22 ] 作为 GF[ 2 ] 的二次扩展，然后构建 GF[ 24 ] 作为 GF[ 4 ] 的二次扩展，然后构建 GF[ 28 ] 作为 GF[ 24 ] 的二次扩展，依此类推。特别是对于特征为二的场，已知存在非常高效的塔构造。</p>
+<p>求和检查协议计算多变量多项式 g 的∑x∈ 0, 1 ^n g(x)。布尔超立方体 { 0, 1 }n（及其子立方体）的大小是 2 的幂次方，因此子场与子立方体很好地对齐。DP 利用这一点，使得将许多小场元素打包到一个更大的扩展场的单个元素中变得容易。</p>
+<p>DP 目前在 Ligero/Brakedown 多项式承诺方案中使用 Reed-Solomon 编码。高效的 Reed-Solomon 编码需要加法 FFT，在特征为二的场中非常有效，但在其他场中则效果不佳。然而，使用其他编码可以完全避免对 FFT 的需求。</p>
+<p>特征为二的场在实际硬件中得到很好的处理。现实世界的计算机基于 2 的幂次方大小的数据类型。您可以在寄存器、缓存行等中完美地容纳最大的信息，无需填充。Intel 甚至在芯片中内置了用于在 GF[ 28 ] 中执行特别快速的算术的原始指令（Galois Field New Instructions [GFNI]）。当使用塔构造时，这可以用来实现非常快速的 GF[ 2 k] 算术，即使对于 k &gt; 8 也是如此。</p>
+<p><strong>Q1 1 ：难道通过使用 DP 的承诺方案递归地将 SNARK 证明与自身组合，就没有 SNARK 证明会变得小的限制吗？</strong></p>
+<p><strong>A：</strong> 是的，使用 Ligero/Brakedown 承诺的 SNARK 的「递归阈值」相对较高。递归阈值指的是证明的大小，即通过递归地将基于 Brakedown/Ligero 的 SNARK 应用于验证器，无法再产生更短的证明。我预计递归阈值在几 MB 的数量级上。</p>
+<p>如果希望获得更小的证明，我认为可以通过与其他更小证明的 SNARK 进行组合来实现，详情参考 Q1 2 。如果这个假设最终被证明是错误的，不应视为 Binius 的失败，而应视为对当今流行的 SNARK 的可扩展性的指责。如果它们不能在合理的时间内证明几 MB 的数据已被哈希，我们怎么能说它们具有可扩展性呢？</p>
+<p>无论如何，除了降低证明大小之外，快速递归组合还有其他重要原因。最重要的是，它是控制证明空间需求的关键工具。由于（非递归）SNARK 对于证明者来说占用空间很大，人们会将大型计算分解成小块，分别证明每个块，并使用递归证明将这些块「链接」在一起。DP 对于标准哈希函数（如 Keccak）的快速 SNARK 使得这种递归证明能够迅速完成，即使证明的大小有些大。</p>
+<p><strong>Q1 2 ：假设您想结合 DP 的承诺方案与基于 elliptic-curve 的 SNARK（例如 Plonk 或 Groth 16）以降低验证者在链上发布证明前的成本。这难道不需要证明涉及「非本地」字段算术吗？因为 DP 的验证器操作在 GF[ 2 ^ 128 ] 上，而基于 curve 的 SNARK 使用大型素数阶字段。</strong></p>
+<p><strong>A：</strong> 是的，这是一个潜在的挑战，但我相信能够找到解决办法。</p>
+<p>有一种可能性是首先与使用基于哈希的多项式承诺方案的 SNARK 进行组合，该方案具有更短的证明（可能是 FRI，转换为多线性多项式承诺方案，或者 BaseFold），然后再与基于 curve 的 SNARK 进行组合。请注意，FRI 可以在特征为二的字段上本地运行，事实上，在原始的 FRI 论文中就考虑过这种情况。目前流行的 SNARK 对使用这些字段的限制来自于非基于求和检查的多项式 IOPs 的使用，与 FRI 本身不同。</p>
+<p>这并不能消除非本地字段算术的问题，但可以在很大程度上缓解，因为对于足够大的多项式，FRI 验证器执行的总操作较少，尤其是比 Ligero/Brakedown 验证器执行的字段操作较少。</p>
+<p><strong>Q1 3 ：使用 DP 的承诺方案的 SNARK 是否可以与 Nova 等折叠方案结合使用？</strong></p>
+<p><strong>A：</strong> 这将遇到与 Q1 2 相同的问题，即折叠方案使用 elliptic-curve，通常定义在大型素数阶字段上，而 DP 的承诺方案使用大小为 2 的幂的字段。</p>
+<p>我预计在折叠方案方面会取得显著的进展，并且它们将在未来的 SNARK 设计中发挥重要作用。然而，可能情况是它们与基于哈希的 SNARK 在非常小特征的字段上并不很好地结合。</p>
+<p>目前而言，应当在涉及本地定义在大字段上的语句，或者在 prover 空间至关重要的情况下使用基于 elliptic-curve 的承诺和折叠方案（像 Nova 这样的折叠方案在 prover 空间方面远远优于其他 SNARK，大致因为它们可以将大型计算分解成比其他 SNARK 小得多的部分）。而在其他情况下，应该使用基于哈希的方案，尤其是在小特征字段上使用。</p>
+<p>同样，未来折叠方案的进一步发展可能导致它们超越基于哈希的方案。实际上，Nova 在某些基准测试中已经比当前一代基于哈希的 SNARK 更快（尽管有很多声称当前基于哈希的 SNARK 比基于 curve 的更快的说法）。</p>
+<p><a href="https://a16zcrypto.com/posts/article/a-technical-faq-on-lasso-jolt-and-recent-advancements-in-snark-design/">原文链接</a></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">注册教程</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=qkdaquan">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.techxiaofei.com/post/vpn/chuanyunjian/">自用机场推荐，翻墙VPN，秒开4K，解锁ChatGPT、奈飞流媒体</a></td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=qkdaquan">美国虚拟信用卡，可订阅ChatGPT
+                    Plus会员</a></td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/63650/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">95后女歌手对话苹果CEO：AI的影响、不断演变的科技</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/63619/">
+                <span class="next-text nav-default">a16z合伙人：100%致力于加密领域，已为该领域筹集近75亿美元资金</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        jayz
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.9b62a90c8b961b45885ef8584891a1319d0f62c31b073d9610a88e41ea87bc31.js" integrity="sha256-m2KpDIuWG0WIXvhYSJGhMZ0PYsMbBz2WEKiOQeqHvDE=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

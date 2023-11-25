@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          浅论Restone：它不是Plasma 而是Optimium变体 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文通过一些简单的推理来为读者解释Plasma的原理及其为何对智能合约及DeFi不友好，以及Redstone到底是什么东西。" />
+<meta name="keywords" content="Plasma, Vitalik Buterin" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="https://okex1688.github.io/post/63506/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="浅论Restone：它不是Plasma 而是Optimium变体" />
+<meta property="og:description" content="本文通过一些简单的推理来为读者解释Plasma的原理及其为何对智能合约及DeFi不友好，以及Redstone到底是什么东西。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okex1688.github.io/post/63506/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-11-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-20T00:00:00+00:00" />
+
+<meta itemprop="name" content="浅论Restone：它不是Plasma 而是Optimium变体">
+<meta itemprop="description" content="本文通过一些简单的推理来为读者解释Plasma的原理及其为何对智能合约及DeFi不友好，以及Redstone到底是什么东西。"><meta itemprop="datePublished" content="2023-11-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-11-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5746">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="浅论Restone：它不是Plasma 而是Optimium变体"/>
+<meta name="twitter:description" content="本文通过一些简单的推理来为读者解释Plasma的原理及其为何对智能合约及DeFi不友好，以及Redstone到底是什么东西。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">浅论Restone：它不是Plasma 而是Optimium变体</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      <a href="/about">
+        <span class="post-meta-author-name">
+          佚名
+        </span>
+      </a>
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2023-11-20">
+      2023-11-20
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5746 字 -
+        预计阅读 12 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="https://okex1688.github.io/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+    <tr>
+    <th style="text-align:left">推荐平台</th>
+    <th style="text-align:left">链接</th>
+    <th style="text-align:left">注册教程</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+    <td style="text-align:left"><span style="white-space:nowrap"><a href="https://www.okbtc.cn/binance?ref=qkdaquan">注册链接</a></span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/binance?ref=qkdaquan">自用机场推荐，翻墙VPN，秒开4K，解锁ChatGPT、奈飞流媒体</a></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=qkdaquan">注册链接</a></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=qkdaquan">美国虚拟信用卡，可订阅ChatGPT Plus会员</a></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=qkdaquan">注册链接</a></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a></td>
+    </tr>
+    </tbody>
+    </table>
+<p><strong><em>作者：Faust，极客web3</em></strong></p>
+<p>近期，<strong>一个叫Redstone的项目成为了热点。</strong> 这个由Lattice团队推出的链游专项Layer2设施，于11月15日正式发布，目前已上线测试网。有趣的是，Lattice团队称**“Redstone是受到Plasma启发的Alt-DA链”** 。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1119/29_ue4zmya6az.png" alt="浅论Restone：它不是Plasma 而是Optimium变体"></p>
+<p>就在Redstone发布的前一天，<strong>Vitalik刚刚发表了文章“Exit games for EVM validiums: the return of Plasma”，文中简单回顾了本已消失在以太坊生态的技术方案“Plasma”，</strong> 并指出可以引入有效性证明（与ZK Proof混淆），来解决Plasma的问题。</p>
+<p>对此，有不少朋友认为，Vitalik发表这篇文章，是为了给Redstone站台，甚至在极客Web3社群内也有人说，Vitalik搞不好投资了Redstone。再加上此前传的沸沸扬扬的“以太坊Layer2定义之争”，一时间人们普遍认为，接下来会引发“Plasma的复兴”，而Celestia等以太坊生态外的DA方案可能因此被抑制，<strong>因为Plasma没有对DA的严格要求。</strong></p>
+<p>但据本文作者考证，<strong>Redstone并不符合Plasma方案的大致框架，其自称“受到Plasma启发”反而有蹭Vitalik文章热点的可能性，</strong> 而不是Vitalik真要为Redstone站台。此外，Redstone的DA挑战方案与Layer2项目Metis在2022年4月推出的方案颇有相似之处，只不过两者在更新Stateroot——发布DA数据这两个步骤上的先后次序不同。</p>
+<p>所以，真实的情况是，<strong>大家可能对Redstone产生了“过度解读”。</strong> 下文中将通过一些简单的推理来为读者解释<strong>Plasma的原理及其为何对智能合约及Defi不友好，以及Redstone到底是什么东西。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2023/1119/29_r0hnhozuzz.png" alt="浅论Restone：它不是Plasma 而是Optimium变体"></p>
+<h2 id="plasma遇到了数据扣留攻击就要紧急提款-">**<strong>Plasma：遇到了数据扣留攻击就要紧急提款</strong> **</h2>
+<p>Plasma的历史可以追溯到2017年以太坊IC0热潮时期，彼时以太坊用户的交易需求呈爆炸式增长，而TPS低下的ETH不堪重负。在这样的关头，Plasma最早的理论版本发布了，文中提出了一种二层扩容方案，可以处理“世界上几乎所有的金融场景”。</p>
+<p>简单来说，<strong>Plasma是一种只把Layer2的区块头/Merkle Root发布到Layer1上的扩容方案，区块头/Merkle Root之外的那部分数据（DA数据）只在链下发布。</strong> 如果Plasma的排序器/Operator在L1上发布的Merkle Root关联了一笔无效交易（数字签名错误等场景），相关用户可以提交欺诈证明，证明排序器提交的Root关联着一笔无效交易。</p>
+<p>但问题在于，要发布欺诈证明必须保证DA数据不被扣留，但Plasma对DA层没有严格要求，不能保证用户或L2节点可以接收到数据。如果排序器在某个时间点发动<strong>数据扣留攻击（也被称作数据可用性问题），</strong> <strong>只发布新的区块头/Merkle root，却不发布对应的区块体，</strong> 让人无法验证区块头/root是否有效，用户就只能默认排序器“无药可救”，通过名为“Exit Game”的紧急退出机制，把资产从Layer2撤到Layer1上。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1119/29_vqr4c6hgbp.png" alt="浅论Restone：它不是Plasma 而是Optimium变体"></p>
+<p>这一步操作需要用户提交Merkle Proof，证明自己在L2上的确有相应数额的资产，我们可以将此称为**“资产证明”** 。有意思的地方在于，Plasma的Exit Game和ZK Rollup的逃生舱模式并不一样，ZK Rollup用户必须提交对应最近一个有效Stateroot的Merkle Proof，而Plasma用户却可以提交很久前的Merkle Root对应的Proof。</p>
+<p>为什么设计成这样？只是因为，ZK Rollup提交的Stateroot，会被Layer1上的合约立刻投入判断（判断有效性证明是否有效）。如果这个刚提交不久的Stateroot是有效并合法的，那么用户就应当提交对应合法Stateroot的Merkle Proof来充当资产证明。</p>
+<p>但Plasma的排序器提交的Merkle Root，Layer1合约无法判断是否有效，只能让L2节点主动发起挑战来排除无效Root，所以会有挑战机制，<strong>这使得Plasma和Zk Rollup的运作原理迥然不同。</strong></p>
+<p>假设排序器刚发布了一个无效的Merkle Root 101，同时发动数据扣留攻击，让L2节点无法证明101号root是无效的，此时用户可以提交对应100号root或更早以前root的merkle Proof，把自己的资产提走。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1119/29_4rnh20e77j.png" alt="浅论Restone：它不是Plasma 而是Optimium变体"></p>
+<p>当然这里有个问题需要解决，就是某个用户可能提交对应30号root或更早期root的资产证明，请求把资产撤到Layer1，但这个人在30号root发布后，资产状况可能有变化。换句话说，<strong>他提交的是过时的资产证明，这就是典型的双花攻击/双重支付。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2023/1119/29_tslufqkdu9.png" alt="浅论Restone：它不是Plasma 而是Optimium变体"></p>
+<p>对此，Plasma允许任何人针对上述情况提交欺诈证明，指出某个发起提款声明的用户提交的“资产证明”是过时的。通过引入这种“任何人都可以挑战别人的提款声明”，Plasma不需要像ZK Rollup那样处理紧急提款请求。</p>
+<p><strong>但还是有一种可能，</strong> 就是排序器先把其他人的资产划转到自己的L2账户下，然后再发动数据扣留攻击，让外人无法对自己的作弊行为发起挑战。之后，排序器自己的账户发起紧急提款，提交“资产证明”宣称自己的确在L2上拥有这些资产。</p>
+<p>显然，这种时候因为缺失了一段历史记录，人们无法直接证明排序器的资产来源有问题。那么这种情况下该怎么办？Plasma的早期版本比如Plasma MVP考虑到了这点，他们提出了**“提款优先级”** 。如果一个人提交的资产证明对应的root更早，它的提款请求就会被优先处理。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1119/29_s1skgpnh65.png" alt="浅论Restone：它不是Plasma 而是Optimium变体"></p>
+<p>假如排序器是在提交第101号root时进行上面说的作弊行为并发起提款，那么用户可以提交对应99号或更早root的资产证明来紧急提款。显然，排序器只要无法篡改已经发布到Layer1上的历史记录，用户就有办法逃出生天。</p>
+<p><strong>但Plasma还是有一个致命bug</strong> ：只要排序器发动数据扣留，人们就要靠紧急提款（又称Exit Game）来保证资产安全，如果短时间内大量用户集体提款，Layer1很容易处理不过来；</p>
+<p><strong>更严重的是，像Defi合约上记录的资产，该由谁来提取到Layer1？</strong> 假设有人往DEX的LP池子充了100个ETH，之后Plasma的排序器故障或作恶了，人们需要紧急提款，这时候用户的100个ETH都还为DEX合约所控制，请问这个时候这些资产该由谁提到Layer1上？</p>
+<p>最好的办法其实是先让用户从DEX池子里赎回自己的资产，再由用户自己去把钱提到L1上，但问题是Plasma排序器已经故障/作恶了，用户没法执行赎回资产的操作。可如果我们允许DEX合约的owner去把合约控制的资产提到L1，显然会赋予合约owner以资产所有权，他可以随时把这些资产提到L1上并跑路，这岂不是太可怕了？</p>
+<p>所以到最后，<strong>该怎么处置这些由Defi合约所支</strong> <strong>配的“公共财产”，是一个巨大的雷。</strong> 如果走社会共识，在Layer1上重建一个映射了Layer2上defi合约的镜像合约，似乎也可以，但这会引入相当巨大的麻烦，增加机会成本，由哪些人来投票决定镜像合约的处置方式，也会是个大问题。这其实涉及到公权力分配的难题，此前响马曾在访谈**《高性能公链难出新事，智能合约涉及权力分配》** 中谈到过这点。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1119/29_t4iytmbzm7.png" alt="浅论Restone：它不是Plasma 而是Optimium变体"></p>
+<p>当然，Vitalik在最近的文章“Exit games for EVM validiums: the return of Plasma”中也指出了这一点，<strong>并强调这是Plasma对智能合约不友好的因素之一。</strong> 过往的知名Plasma变体如Plasma MVP和Plasma Cash等，采用了UTXO或类似的模型来替代以太坊的账户地址模型，并且不支持智能合约，这样可以避免上面谈及的“资产所有权分配”问题，每个UTXO的所有权固然归属于用户自己，但UTXO本身也有诸多缺陷，且对智能合约不友好。所以Plasma方案最适合简单的支付或订单簿式交易所。</p>
+<p>到后来，<strong>随着ZK Rollup的走红，Plasma本身也退出了历史舞台，</strong> 因为Rollup不存在Plasma的数据扣留问题。假如ZK Rollup的排序器发动数据扣留攻击，只往ETH链上提交Stateroot但没有DA数据，这样的root会判定为无效，直接被L1上的Verifier合约拒绝。所以，ZK Rollup的合法Stateroot对应的DA数据，在ETH链上必定可查。这样就<strong>不存在“只发布区块头或merkle root，却不发布对应的区块体”，也就是可以解决数据可用性问题/数据扣留攻击。</strong></p>
+<p>同时，Rollup的过往DA数据在以太坊上可查，任何人都可以通过ETH链上的历史记录来启动Layer2节点，这将去中心化乃至无需许可的排序器方案难度大幅降低。相比之下，Plasma对DA没有严格要求，实现去中心化排序器的难度也更大（<strong>要实现可替换的去中心化排序器，首先要保证所有的L2节点都认可相同的block，这就对DA实现方式提出了要求</strong> ）。</p>
+<p>此外，如果ZK Rollup的排序器尝试把无效交易包含进Layer2区块，也无法成功，这是由有效性证明的原理来保障的。</p>
+<p>归根结底，<strong>ZK Rollup排序器的作恶空间与Plasma相比要狭小许多</strong> ——它最多能让Stateroot的更新停滞，在UX层面相当于停机，或者拒绝某些用户的请求，俗称交易审查。同时，<strong>Rollup方案中如果排序器故障了，其他节点要替代它也会更容易。</strong> 理想状态下的Rollup，可以将Plasma中Exit game模式的触发概率降至0（ZK Rollup中叫逃生舱）。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1119/29_7flos392n9.png" alt="浅论Restone：它不是Plasma 而是Optimium变体"></p>
+<p><strong>（L2BEAT上的Proposer Failure一栏，展示了各个L2方案如何应对排序器故障问题，Self Propose往往指其他节点可以替代当前处于停机状态的排序器）</strong></p>
+<p>时至今日，以太坊生态内几乎没有团队还在坚持Plasma路线了，几乎所有的Plasma项目都胎死腹中。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1119/29_acvvb0v83k.png" alt="浅论Restone：它不是Plasma 而是Optimium变体"></p>
+<p><strong>（Vitalik解释为何ZK Rollup比Plasma更优越，其中有提到无需许可的排序器运行和DA问题）</strong></p>
+<h2 id="redstone是个啥它不是plasma而是optimium的变体-">**<strong>Redstone是个啥：它不是Plasma，而是Optimium的变体</strong> **</h2>
+<p>上文我们简单阐述了Plasma以及其被Rollup替代的简要因素，而至于Redstone，想必大家也看到了它和Plasma的不同：<strong>Redstone可以解决数据扣留攻击问题，</strong> 比如它不会立刻发布新的stateroot，而是先在ETH链下发布原始的DA数据，然后把DA数据的datahash作为一个关联的凭证commitment，发布到ETH链上，称自己在链下已发布这段datahash所对应的完整数据。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1119/29_a4e1b95h5m.png" alt="浅论Restone：它不是Plasma 而是Optimium变体"></p>
+<p><strong>（Redstone官方对自己的防止数据扣留攻击方案的解释）</strong></p>
+<p>任何人都可以发起挑战，称Redstone的排序器没有在链下发布这段datahash对应的原始数据。此时，<strong>排序器需要在链上发布datahash对应的数据，以应对质疑者的挑战。</strong> 如果排序器被挑战后，没有及时在ETH链上发布数据，则它之前发布的datahash/commitment会被视为无效。</p>
+<p>如果排序器及时响应了挑战者的请求，那么挑战者就可以及时获取到datahash对应的原始DA数据。<strong>最终，所有L2节点基本都可以获取到所需的DA数据，以解决数据扣留攻击问题。</strong> 当然，挑战者本身需要先支付一笔费用，这笔费用约等于排序器在ETH链上发布原始DA数据的成本，这个举措是为了防止恶意挑战者无成本的挑战排序器，致使后者蒙受损失。</p>
+<p>最后，<strong>当针对datahash的挑战期结束后，排序器将发布对应的stateroot，</strong> 也就是执行datahash对应的DA数据中 包含的交易序列后，得到的root。此时L2节点可以使用欺诈证明系统来挑战那些无效的root。如果此前某个datahash在被挑战后，排序器没有及时发布对应的原始DA数据，则排序器即便后面发布了这个datahash对应的stateroot，也会被默认为无效。</p>
+<p>由于<strong>Redstone是先发布DA数据，之后才发布对应的有效Stateroot，直接解决了数据扣留攻击问题</strong> （排序器只发布root而不发布DA数据）。</p>
+<p>显然这种模式和普通的Optimium（不用以太坊实现DA的OP Rollup，比如Arbitrum Nova）不同，<strong>Optimium一般依赖于链下DAC委员会确保数据可用性，</strong> DAC每隔一段时间向链上提交一个多签txn，Layer1上的Rollup合约收到多签txn后，会默认排序器已在链下发布最新一批的DA数据。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1119/29_hhbb0yebj2.png" alt="浅论Restone：它不是Plasma 而是Optimium变体"></p>
+<p><strong>（图源：L2beat）</strong></p>
+<p>而像Metis和Arbitrum Nova等是同时提交Stateroot和datahash，如果有人认为排序器扣留了DA数据，便会尝试发起挑战，排序器会把datahash对应的DA数据发到链上。</p>
+<p>所以，<strong>Redstone和Metis的关键区别在这一步：</strong> 前者是先发布datahash，等DA挑战期结束，才发布stateroot；Metis却是同时发布stateroot和datahash，如果有人发起挑战，则把DA数据上链。<strong>显然Redstone的方案更安全些</strong> ，因为Metis的方案下，如果排序器一直不响应挑战者对DA数据的请求，则数据扣留攻击问题无法快速解决，只能依靠紧急提款和社会共识，或是让其他节点接替当前的排序器；</p>
+<p><img src="https://img.bibiqing.com/news/2023/1119/29_o39qcmtr1e.png" alt="浅论Restone：它不是Plasma 而是Optimium变体"></p>
+<p>但换做Redstone，如果排序器搞数据扣留，则其发布的stateroot直接被认作无效，所以stateroot和DA数据是绑定关系，<strong>这使得Redstone可以获得和Rollup较接近的DA保证，本质上是比Arbitrum Nova和Metis更优越的Optimium变体</strong> 。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">注册教程</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=qkdaquan">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.techxiaofei.com/post/vpn/chuanyunjian/">自用机场推荐，翻墙VPN，秒开4K，解锁ChatGPT、奈飞流媒体</a></td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=qkdaquan">美国虚拟信用卡，可订阅ChatGPT
+                    Plus会员</a></td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/63598/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">彭博社：Galaxy Digital已讨论着手配置比特币</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/63508/">
+                <span class="next-text nav-default">去中心化储备稳定币概述：历史演变与模型分析</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#plasma遇到了数据扣留攻击就要紧急提款-">**<strong>Plasma：遇到了数据扣留攻击就要紧急提款</strong> **</a></li>
+    <li><a href="#redstone是个啥它不是plasma而是optimium的变体-">**<strong>Redstone是个啥：它不是Plasma，而是Optimium的变体</strong> **</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        jayz
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.9b62a90c8b961b45885ef8584891a1319d0f62c31b073d9610a88e41ea87bc31.js" integrity="sha256-m2KpDIuWG0WIXvhYSJGhMZ0PYsMbBz2WEKiOQeqHvDE=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

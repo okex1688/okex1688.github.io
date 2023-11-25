@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在以太坊的Rollup扩容方案中，排序器（Sequencer）是核心组件，负责交易排序和区块创建。随着Layer2的增长及生态繁荣，其盈利模式和中心化问题成为焦点，特别是排序器的去中心化和利润分配方式。" />
+
+  <meta name="keywords" content="Hugo, theme, jane" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="https://okex1688.github.io/post/63465/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览" />
+<meta property="og:description" content="在以太坊的Rollup扩容方案中，排序器（Sequencer）是核心组件，负责交易排序和区块创建。随着Layer2的增长及生态繁荣，其盈利模式和中心化问题成为焦点，特别是排序器的去中心化和利润分配方式。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okex1688.github.io/post/63465/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-11-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-18T00:00:00+00:00" />
+
+<meta itemprop="name" content="Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览">
+<meta itemprop="description" content="在以太坊的Rollup扩容方案中，排序器（Sequencer）是核心组件，负责交易排序和区块创建。随着Layer2的增长及生态繁荣，其盈利模式和中心化问题成为焦点，特别是排序器的去中心化和利润分配方式。"><meta itemprop="datePublished" content="2023-11-18T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-11-18T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7152">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览"/>
+<meta name="twitter:description" content="在以太坊的Rollup扩容方案中，排序器（Sequencer）是核心组件，负责交易排序和区块创建。随着Layer2的增长及生态繁荣，其盈利模式和中心化问题成为焦点，特别是排序器的去中心化和利润分配方式。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      <a href="/about">
+        <span class="post-meta-author-name">
+          佚名
+        </span>
+      </a>
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2023-11-18">
+      2023-11-18
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7152 字 -
+        预计阅读 15 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="https://okex1688.github.io/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+    <tr>
+    <th style="text-align:left">推荐平台</th>
+    <th style="text-align:left">链接</th>
+    <th style="text-align:left">注册教程</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+    <td style="text-align:left"><span style="white-space:nowrap"><a href="https://www.okbtc.cn/binance?ref=qkdaquan">注册链接</a></span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/binance?ref=qkdaquan">自用机场推荐，翻墙VPN，秒开4K，解锁ChatGPT、奈飞流媒体</a></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=qkdaquan">注册链接</a></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=qkdaquan">美国虚拟信用卡，可订阅ChatGPT Plus会员</a></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=qkdaquan">注册链接</a></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a></td>
+    </tr>
+    </tbody>
+    </table>
+<p>原文作者：YBB Capital Researcher  Ac_Core</p>
+<p><img src="https://img.bibiqing.com/news/2023/1118/5_52s9st0a57.jpg" alt="Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览"></p>
+<h2 id="前言">前言</h2>
+<p>排序器（Sequencer）是目前以太坊扩容方案 Rollup 中的重要组件，它用于对交易进行排序并进行区块创建、交易接受、交易排序、交易执行和交易数据提交等相关操作。随着以太坊网络 Layer 2 数量的增多及其生态的繁荣，Layer 2 自身的盈利方式和中心化问题也逐渐受到大家的关注，如在 Rollup 中较为重要的排序器组件能否实现去中心化和排序器利润是怎么分配的。本文只做分析参考，不为项目宣发。</p>
+<h2 id="简述rollup经济学">简述 Rollup 经济学</h2>
+<h3 id="rollup的角色">Rollup 的角色：</h3>
+<p>据以太坊基金会研究科学家@barnabemonnot 的解释说明，我们可在 Rollup 系统中分出三个主要角色：用户、Rollup 运营商和基础层。他们运行的主要流程大致为：当用户在 L2 上进行交易，Rollup 运营商充当着用户和基础层之间的接口角色，并最终将数据发布到基础层，如下所示：</p>
+<ol>
+<li>
+<p>用户：在 Layer 2 网络上发送他们的交易，并将他们在 Layer 2 上的资产部署在 Rollup 上进行合约交互，并将支付费用流向 Rollup 运营商；</p>
+</li>
+<li>
+<p>Rollup 运营商：代表处理 L2 网络上的交易所需的所有基础设施，其中也包含很多其他角色，比如：发布交易批次的排序器（ Sequencers）、发布声明的执行者（Executors）、报告欺诈证明的挑战者（Challengers）以及计算有效性证明的验证者（Validator），其中最为重要的即为排序器；</p>
+</li>
+<li>
+<p>基础层：也可以理解为完整节点，其目的是保护 Rollup 的数据协议，用来处理和验证所有交易，确保 Rollup 状态正确并确保每笔交易的有效性，如发现错误交易并将其删除。</p>
+</li>
+</ol>
+<p><img src="https://img.bibiqing.com/news/2023/1118/5_stnmht9hee.png" alt="Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览"></p>
+<p><em>图源：@barnabemonnot</em></p>
+<h3 id="rollup的成本">Rollup 的成本：</h3>
+<p><strong>Layer 2 营运商成本</strong> ：为维护一个交易池、序列批处理、计算状态根/状态差异/有效性证明等涉及到批量交易处理的排序、交易验证、区块生成等问题而产生的费用。且由于 Rollup 运营商现在是中心化的，所以产生的成本由协议本身或合作方承担，同时过程中的“交易压缩”需要在基础层上进行结算。</p>
+<p><strong>Layer 1 数据可用性成本</strong> ：DA 是 Rollup 等效于以太坊安全性的保证，Rollup 为了在以太坊上发布数据，当运营商聚合了大量的交易集时，运营商就需要将交易集以「CallData」的形式释出到基础层，其中贡献给以太坊 L1 的 DA 成本占 Rollup 总成本的绝大多数，且当时的数据市场价格由 EIP-1559 进行管理。</p>
+<p><strong>Layer 2 的拥堵验证成本</strong> ：这是一个饱受争议的影响成本，当 Rollup 总区块空间的供应无法满足现有市场需求时，就必须对稀缺资源进行分配，它也直观的反映了 Gas 价格与网络流量的动态平衡。</p>
+<h3 id="rollup的收入">Rollup 的收入：</h3>
+<p>话题来到 Rollup 的收入，其收入主要有两个来源：交易价值（Transaction Value）及发行（Issuance）。</p>
+<p><strong>交易价值</strong></p>
+<p>Rollup 的本质是对以太坊进行扩容，提速和降低 Layer 1 压力，Rollup 中是否会获得 MEV 相关的收益问题，其实答案是否定的。因为 Rollup 自身是依靠排序器，依靠 Gas 支出高低进行交易排序，因它没有区块的概念所以本身不存在 Mempool，但现今像 OP Mainnet 的私有 Mempool 却带来了 MEV 问题，因此 Rollup 本身在没有 “私有化 Mempool” 的前提下不会获得 MEV 利润，从本质来讲 Rollup 最大的利润来源于交易 Gas 之间的价格差。</p>
+<p><strong>发行</strong></p>
+<p>第二个收入来源是发行。在基础层，以网络原生加密资产的区块生产者的新铸造代币形式获得收入。一定程度上抵消了区块生产者的基础设施成本，一旦利润产生就会吸引来更多的区块生产者。我们在假设 Rollup 在能够铸造自己的 Token 的情况下，Rollup 可能会通过发行新代币来支付运营费用（但实际这里的模型会较为模糊，且有多种方式将收入来源用于 Rollup 成本)。</p>
+<p>关于成本和收入平衡相关的问题，我们就不做展开叙述，上述仅做简述，坎昆升级在一定程度上也会影响 Rollup 盈收情况，其核心 EIP-4844 （又被称为 Proto-DankSharding）如用一段话概括，便是缓解以太坊 Layer 1 的高昂 DA 成本问题，出现了“blob”的临时外部存储，可将 Layer 2 交易的数据内容移动到一个新的临时“blob”中存储。但它并没有真正的把 Layer 2 交易数据存储到 Layer 1 中，其好处在于 Layer 2 会有更低的存储成本和更快的速度，但目前 Layer 2 的数据黑盒所带来的不确定影响仍值得探究。</p>
+<h3 id="简述rollup工作原理">简述 Rollup 工作原理：</h3>
+<ol>
+<li>
+<p>汇总：卷积节点收集多个事务并创建一个压缩摘要即卷积块，其中包含事务验证和状态更新所需的基本信息；</p>
+</li>
+<li>
+<p>验证：Rollup 区块会被提交到主区块链，由验证器节点验证区块内交易的有效性，并确保它们符合预定义的规则。</p>
+</li>
+</ol>
+<p>总的来讲区块一旦得到验证，Rollup 的状态就会在链上更新并反映交易的结果。以此通过 Rollup 来减少 Layer 1 上的计算负荷和数据存储需求，从而显著提高可扩展性。其中的有效做法是将计算和状态存储都转移到链外，但将部分数据保留在链上。</p>
+<h2 id="什么是排序器">什么是排序器</h2>
+<p>排序器是 Rollup 设计选择上的核心组件，如同字面意思，它负责对接受的交易对，其支付的 Gas 价格进行排序，将交易打包捆绑到区块中并提取费用，以此来提升交易的有序性和整个系统的处理效率。但现实是目前以太坊上所有的 Rollup 都以相互孤立且中心化的方式来运行，且均由各自的 Rollup 团队进行管理，这带来的直观影响是 Rollup 提供商们通过维护自身中心化的排序器来让整个网络达到更便宜和快捷的目的，但这同时也在独食着 Rollup 的利润。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1118/5_9oeni1m5si.png" alt="Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览"></p>
+<p><em>图源：Binance Research</em></p>
+<p>如同上文中 Rollup 的成本和收入部分，其主要的利润来自于对用户的 Gas 差价的收入进行排序，而支出主要在于 Layer 2 对于 Layer 1 的数据可用性成本，以及中心化运营商的运营支出，所以排序器主要从用户侧收取交易费用，并向以太坊支付 DA 费用，简单理解：</p>
+<p><strong>排序器收入 = 用户交易 Gas 差价收入 –  L2 向 L1 数据支出 – 排序器运营支出</strong></p>
+<h3 id="op-rollups-与-zk-rollups-的不同排序方案">Op Rollups 与 Zk Rollups 的不同排序方案</h3>
+<p>Op Rollups 是将大量链外交易捆绑在一起，形成较大的批次然后再发布到基础层。这一过程有利于将固定费用分配给每批中的众多交易，从而降低用户的费用。在分批处理交易的同时，还采用了上述多种压缩技术，以尽量减少发布到基础层的数据。两者不同的是 Zk Rollups 利用密码学来证明链外交易的有效性，Op Rollups 依赖于一种检测欺诈活动的机制来识别交易计算不准确的情况。</p>
+<p>提交批量 Rollup 后会出现一个挑战时间段，在此期间任何人都可以通过生成欺诈证明来质疑卷积交易的结果。在欺诈证明成功后 Rollup 协议会重新执行交易，并相应调整卷积的状态。此外，欺诈证明成功会导致排序者的赌注被削减，因为排序者将错误执行的交易包含在一个区块中。在这一过程中，如排序者将错误执行的交易纳入区块欺诈证明，成功后会导致排序者的利益受损。挑战期结束后，如果滚动批次仍未被验证（即所有交易均正确执行），则会被确认为有效并纳入基础层。在实现过程中的排序器问题上，OP 是采用多链但单一的共享排序器。</p>
+<p>ZK Rollups 将交易汇总成批次，在链外进行处理，从而减少了需要上传到区块链的数据量。其排序器将代表整批事务所需的更改合并为单个，而不是单独传输每个事务，这一过程为了验证状态变化是否正确，它们会生成有效性证明。所以 Zk Rollups 是依赖零知识的有效证明而不是欺诈证明，排序器从 L2 收集交易数据，并负责向 L1 提交（根据具体架构，也可能负责发布）零知识证明。如果定序者有恶意行为，他们的赌注会被削减，这就促使他们发布有效的区块（或批次证明）。证明者（或排序者，如果合并为一个角色）凭借生成交易执行的不可伪造证明，来证明这些新状态和执行是正确的。</p>
+<p>随后，排序器将这些证明连同交易数据或至少是状态差异提交给以太坊主网上的验证器合约。从技术上讲，排序者和证明者的职责可以合二为一。但是由于证明生成和交易排序都需要高度专业化的技能才能充分完成，因此将这些职责拆分开来可以防止在卷积设计中出现不必要的集中化。</p>
+<p>在许多情况下，排序器在进行零知识证明的同时，只向 L1 提交 L2 状态的变化，并以可验证哈希的形式将这些数据提供给以太坊主网上的验证器智能合约。由于 Zk Rollups 只需提供有效性证明即可完成交易，因此从 Zk Rollups 转出或转入基础层的资金不会产生任何延迟。一旦 Zk Rollups 合同确认了有效性证明，退出交易就会执行。</p>
+<h2 id="排序器的中心化与去中心化">排序器的中心化与去中心化</h2>
+<p>目前 L2 中排序器都是中心化的，但去中心化排序器在未来也尤为重要，从意识形态的角度来看，在存在信任假设的前提下，单一的中心化排序器并不可取。不过排序器并非必不可缺，它只是 Rullup 在设计上的选择，因目前暂未有全新方案替且如今 Rollup 均采用中心化的排序方式来解决交易排序问题，当下 Rollup 的实际进展由下图L2 BEAT 官方数据所示。</p>
+<ul>
+<li>中心化排序器</li>
+</ul>
+<p>优点：可以极大的提升交易确认速度和降低交易成本，友好用户交易体验；</p>
+<p>缺点：其最主要的缺陷来自于单点宕机风险和垄断，单点宕机问题不用做过多阐述，如今 Rollup 宕机事件频发已不是什么新鲜事，而垄断带来的风险也不言而喻，中心化排序器毋庸置疑获得了交易的排序权，以此可轻松实现自身利益的最大化，其次也会带来抗审查的相对薄弱风险。</p>
+<ul>
+<li>去中心化排序器</li>
+</ul>
+<p>优点：是否使用去中心化的排序器似乎已成为衡量 Rollup 能否真正去中心化的重要标准，其优点不言而喻，可以极强的增加去中心化程度，防止运营商作恶，以此极大程度上确保了用户的资产安全，以及可有效防止 Rollup 出现种种宕机现象;</p>
+<p>缺点：提升去中心化和安全的代价是降低交易速度或增加交易成本，从而导致在一定程度上弱化用户的交互体验。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1118/5_wa9n3rte2o.png" alt="Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览"></p>
+<p><img src="https://img.bibiqing.com/news/2023/1118/5_6or5ta2fos.png" alt="Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览"></p>
+<p><em>图源：L2 BEAT</em></p>
+<h2 id="第二层的不同类型">第二层的不同类型</h2>
+<p>Vitalik 在近文《Different types of layer 2 s》中提到第二层项目的异构化趋势在未来会越来越明显，并且这一趋势会一直持续下去，比如传统上以 Arbitrum、Optimism 和 Scroll 为代表的公链，和近期以 Kakarot 和 Taiko 为代表的 EVM 生态系统的发展，其主要原因有以下几点：</p>
+<ul>
+<li>
+<p>一些目前是独立第 1 层的项目正在寻求向以太坊生态系统靠拢，这些项目可能希望逐步过渡并有可能成为第 2 层。但因为技术还没准备好，所以暂时把所有东西都放在一个 Rollup 上；</p>
+</li>
+<li>
+<p>一些中心化项目希望为其用户提供更多安全保证，并正在探索基于区块链的途径。在许多情况下，这些项目会在上一个时代探索 &ldquo;许可资产链（Permissioned Consortium chains）&quot;。实际上，它们可能只需要 &ldquo;中途之家 &ldquo;级别的去中心化。此外，这些项目的吞吐量往往很高，因此至少在短期内，它们甚至不适合滚动发展；</p>
+</li>
+<li>
+<p>弱金融类应用如游戏或社交类应用，他们也希望实现去中心化。就社交媒体而言，现实中需要对应用程序的不同部分区别对待：用户名注册和账户恢复等罕见且高价值的活动应采用滚动方式，而帖子和投票等频繁且低价值的活动只需要较低的安全性。因链故障导致的帖子消失风险是可以承受的。而因链失效导致的账户丢失风险就比较难以承受。</p>
+</li>
+</ul>
+<p>尽管目前以太坊 Layer 1 中的应用程序和用户在短期内只需支付较小的 Rollup 费用，不过本章节我们想和大家强调的点是用户是否能够顺利的将资产安全地从 Layer 2 回撤至 Layer 1 ，即 Rollup 的“强制提款”和 “逃生舱” 功能，见 Faust 解释的相关扩展链接【 1 】。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1118/5_k2nb6qrlwn.png" alt="Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览"></p>
+<p><em>图源：Different types of layer2s</em></p>
+<p>假如你有一笔资产，它位于 Layer 1 上，但需要先存入 Layer 2 ，后才可转入至其他钱包地址，我们能在多大程度上保证你能将这笔资产取回至 Layer 1 ？为此不妨随着我们一起用一张简单的图表来将此厘清：</p>
+<p><em><img src="https://img.bibiqing.com/news/2023/1118/8g6z42ffb9dovue" alt="Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览"></em></p>
+<p><em>数据来源：Different types of layer2s</em></p>
+<p>值得一提的是，这是一个简化模式，有很多中间选项。例如：</p>
+<ul>
+<li>
+<p> 介于 Rollup 和 Validium 之间：在 Validium 中，任何人都可以进行链上支付，以支付交易费用，此时运营商将被迫向链上提供一些数据，否则就会损失押金。</p>
+</li>
+<li>
+<p>在 Plasma 和 Validium 之间：Plasma 系统【 2 】提供类似于卷积的安全保证和链外数据可用性，但它只支持有限数量的应用。一个系统可以提供完整的 EVM，并为不使用这些更复杂应用的用户提供 Plasma 级保证，为使用这些应用的用户提供 Validium 级保证。</p>
+</li>
+</ul>
+<p>这些中间选项可以看作是介于卷积和有效值之间的一个频谱。但是，是什么促使应用程序选择光谱上的某一点，而不是更左或更右的某一点呢？这里有两个主要因素：</p>
+<ol>
+<li>
+<p>以太坊原生数据可用性的成本，随着技术的改进会逐渐降低。以太坊在下一个硬分叉 Dencun 【 3 】里引入了 EIP-4844 ，提供每秒约 32 KB 的链上数据可用性。在接下来的几年内，随着完整的&quot;链上数据分片 &ldquo;【 4 】的推出，这一数据可用性预计将分阶段提高，最终达到每秒约 1.3 MB 的数据可用性。与此同时，数据压缩技术的改进【 5 】将使我们能够用相同数量的数据做更多的事情；</p>
+</li>
+<li>
+<p>应用程序自身的需求：高昂的费用与应用程序出错相比，用户需要承担多少损失？金融应用程序会因应用程序故障而遭受更大的损失；游戏和社交媒体涉及每个用户的大量活动，且活动价值相对较低。因此对它们来说，不同的安全权衡是有意义的。</p>
+</li>
+</ol>
+<p>去中心化排序器，一种是 Rollup  项目方自己做，另一种是借助第三方实现。借助第三方实现去中心化排序器，其实也可以称之为排序即服务（ Sequencing-as-a-Service）。Espresso、 SUAVE、Astria、Radius 等项目都专注于去中心化排序器方案，它们的实现路径各不相同。</p>
+<h2 id="去中心化排序器解决方案">去中心化排序器解决方案</h2>
+<p>1）Espresso：由五个主要组件组成： 1.基于 HotStuff 的共享机制【 6 】其过程需要经三分之二多数通过后才能确定且不可逆转； 2. 其 DA 层提供两种不同的数据检索路径。第一种路径乐观而快速，第二种路径更可靠，但备份速度较慢，专为对抗条件设计；3.Rollup REST API：滚动程序使用此 API 与 Espresso Sequencer 无缝集成；4.排序器合约：排序器合约是一种验证 HotShot 共识的智能合约，它可以充当轻客户端，管理交易订单检查点以及负责监督 HotShot 协议的股权表；5.网络层： 该层用于促进参与 DA 层和 HotShot 共识的节点之间的通信。总体如下图所示，当用户的交易被发送到 Rollup 时，它会使用 ZK 或乐观方案进行交易验证。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1118/5_hnyr97tc9g.png" alt="Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览"></p>
+<p><em>图源：The tech: Sequencers （Espresso 排序流程概览 ）</em></p>
+<p>2）SUAVE 是一个独立的网络层与其他区块网络可以共享内存池，它自身无法与以太坊或其他公链的智能合约相通用，而是将内存池和区块生成的部分从现有公链中单独分离，以此支持更多的 Layer 1 或者 Layer 2 网络，并成为 Rollup 链的共享排序器。所以它在跨链 MEV 和不同 Rollup 之间的交易排序也存在一定优势， 不过其带来的风险也同跨链桥所面对的那样。</p>
+<p>3）Astria 是建立一个共享排序器网络层以此避免中心化排序器的劣势，它依靠基于 Tendermint 的领导者轮换（Tendermint-based leader rotation）机制来解决交易排序的可扩展性和中心化单点故障的宕机风险，与此同时 Astira 的排序器架构设计用于聚合来自多个 Rollup 的交易，而不是为单一区块生成不同的状态根，形成的交易会按顺序排列成有“内聚力”的区块，然后统一发布到 Layer 1 的 DA 层，以此有效地将交易排序与执行分离开，也正因采用了这种解耦方式，使得 Astria 能够容纳各种具有不同状态转换功能的 Rollup。</p>
+<p>4）Radius 与其他方案的实现机制均不同的是它通过启用加密 Mempool 和让多个排序器同时运行来确保 Rollup 交易被无需信任地排序，通过这种方式来消除 MEV 带来的相关风险。它采用可验证延迟加密机制（PVDE）【 7 】来实现 Mempool 的加密，采用零知识证明加密方式来确保交易的无信任排序和防止中心化排序器相关风险。不过用零知识证明来提升安全性的代价是，虽然有 MEV 保护但对用户来说可能会出现交易延迟等问题。Radius 的交易流程如下：</p>
+<ol>
+<li>
+<p>用户向排序层发送事务</p>
+</li>
+<li>
+<p>排序层对事务进行排序并生成一个区块</p>
+</li>
+<li>
+<p>组成的区块随后提交给 Rollup 相关程序</p>
+</li>
+<li>
+<p>Rollup 按照排序层提供的顺序执行交易</p>
+</li>
+<li>
+<p>Rollup 将已执行的交易提交给结算层 DA 来进行最终确认</p>
+</li>
+</ol>
+<p><img src="https://img.bibiqing.com/news/2023/1118/5_mkzj72vltp.png" alt="Rollup摇钱树：排序器的蛋糕分配及去中心化解决方案一览"></p>
+<p><em>图源：The tech: Sequencers （Radius 交易流程概况 ）</em></p>
+<p>5）Madara 是 Layer 2 网络 StarkNet 中使用的排序器，它是一种较为灵活的排序方式，既可以中心化运行也可以去中心化运行，以此对不同的应用程序进行定制，目前 Madara 是 StarkNet 的现成排序器解决方案，与之相关的研究和开发工作仍在进行中。</p>
+<h2 id="展望">展望</h2>
+<p>区块链排序器的发展前景将是一段振奋人心的变革之旅，随着区块链生态系统的发展，排序器将经历重大变革，从中心化设计转向更为分散、高效和适应性更强的解决方案。排序技术的进步对于以太坊生态提高交易效率、可扩展性和安全性可谓是至关重要。</p>
+<p>去中心化是加密货币的哲学基础，共享排序网络通过经济机制解决价值累积和收入分配问题，最后关于排序器日益成熟的模块化构建模块和开发框架生态系统在未来必将成为行业强大的催化剂。</p>
+<p>解释文献：</p>
+<p>【 1 】<a href="https://mp.weixin.qq.com/s/OEL4_-uocBy8WSU4jAeVgQ">https://mp.weixin.qq.com/s/OEL4_-uocBy8WSU4jAeVgQ</a></p>
+<p>【2】<a href="https://consensys.io/blog/ethereum-dencun-upgrade-explained-part-1">https://consensys.io/blog/ethereum-dencun-upgrade-explained-part-1</a></p>
+<p>【3】<a href="https://hackmd.io/@vbuterin/sharding_proposal">https://hackmd.io/@vbuterin/sharding_proposal</a></p>
+<p>【4】<a href="https://twitter.com/VitalikButerin/status/1554983955182809088">https://twitter.com/VitalikButerin/status/1554983955182809088</a></p>
+<p>【5】<a href="https://arxiv.org/abs/1911.12095">https://arxiv.org/abs/1911.12095</a></p>
+<p>【6】<a href="https://docs.google.com/document/d/1AeXoQXnEuc_HEHb8UfLQM_Inu6_u3nDS3S3Y3j7aNqg/edit#heading=h.tn00saza05ia">https://docs.google.com/document/d/1AeXoQXnEuc_HEHb8UfLQM_Inu6_u3nDS3S3Y3j7aNqg/edit#heading=h.tn00saza05ia</a></p>
+<p>【7】<a href="https://ethresear.ch/t/mev-resistant-zk-rollups-with-practical-vde-pvde/12677">https://ethresear.ch/t/mev-resistant-zk-rollups-with-practical-vde-pvde/12677</a></p>
+<p>参考文章：</p>
+<p>【 1 】<a href="https://pansophicchad.substack.com/p/the-tech-sequencers">https://pansophicchad.substack.com/p/the-tech-sequencers</a></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">注册教程</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=qkdaquan">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.techxiaofei.com/post/vpn/chuanyunjian/">自用机场推荐，翻墙VPN，秒开4K，解锁ChatGPT、奈飞流媒体</a></td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=qkdaquan">美国虚拟信用卡，可订阅ChatGPT
+                    Plus会员</a></td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/63456/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">OpenAI联创：由于Sam Altman被免去OpenAI CEO，我辞去总裁一职</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/63461/">
+                <span class="next-text nav-default">Sam Altman离职OpenAI，Worldcoin能否成其事业重心？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#简述rollup经济学">简述 Rollup 经济学</a>
+      <ul>
+        <li><a href="#rollup的角色">Rollup 的角色：</a></li>
+        <li><a href="#rollup的成本">Rollup 的成本：</a></li>
+        <li><a href="#rollup的收入">Rollup 的收入：</a></li>
+        <li><a href="#简述rollup工作原理">简述 Rollup 工作原理：</a></li>
+      </ul>
+    </li>
+    <li><a href="#什么是排序器">什么是排序器</a>
+      <ul>
+        <li><a href="#op-rollups-与-zk-rollups-的不同排序方案">Op Rollups 与 Zk Rollups 的不同排序方案</a></li>
+      </ul>
+    </li>
+    <li><a href="#排序器的中心化与去中心化">排序器的中心化与去中心化</a></li>
+    <li><a href="#第二层的不同类型">第二层的不同类型</a></li>
+    <li><a href="#去中心化排序器解决方案">去中心化排序器解决方案</a></li>
+    <li><a href="#展望">展望</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        jayz
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.9b62a90c8b961b45885ef8584891a1319d0f62c31b073d9610a88e41ea87bc31.js" integrity="sha256-m2KpDIuWG0WIXvhYSJGhMZ0PYsMbBz2WEKiOQeqHvDE=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

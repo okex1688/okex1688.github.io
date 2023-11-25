@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          MUD引擎发展简史：我们如何从零开始 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="我们为什么要坚持创建一个让开发人员能够构建富有创意的应用程序的框架？我们在这个过程中有哪些发现，遇到了哪些问题，以及取得了哪些突破？" />
+<meta name="keywords" content="鏈上科技, Gamefi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="https://okex1688.github.io/post/63913/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="MUD引擎发展简史：我们如何从零开始" />
+<meta property="og:description" content="我们为什么要坚持创建一个让开发人员能够构建富有创意的应用程序的框架？我们在这个过程中有哪些发现，遇到了哪些问题，以及取得了哪些突破？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okex1688.github.io/post/63913/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-11-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-23T00:00:00+00:00" />
+
+<meta itemprop="name" content="MUD引擎发展简史：我们如何从零开始">
+<meta itemprop="description" content="我们为什么要坚持创建一个让开发人员能够构建富有创意的应用程序的框架？我们在这个过程中有哪些发现，遇到了哪些问题，以及取得了哪些突破？"><meta itemprop="datePublished" content="2023-11-23T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-11-23T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5547">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MUD引擎发展简史：我们如何从零开始"/>
+<meta name="twitter:description" content="我们为什么要坚持创建一个让开发人员能够构建富有创意的应用程序的框架？我们在这个过程中有哪些发现，遇到了哪些问题，以及取得了哪些突破？"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">MUD引擎发展简史：我们如何从零开始</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      <a href="/about">
+        <span class="post-meta-author-name">
+          佚名
+        </span>
+      </a>
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2023-11-23">
+      2023-11-23
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5547 字 -
+        预计阅读 12 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="https://okex1688.github.io/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+    <tr>
+    <th style="text-align:left">推荐平台</th>
+    <th style="text-align:left">链接</th>
+    <th style="text-align:left">注册教程</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+    <td style="text-align:left"><span style="white-space:nowrap"><a href="https://www.okbtc.cn/binance?ref=qkdaquan">注册链接</a></span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/binance?ref=qkdaquan">自用机场推荐，翻墙VPN，秒开4K，解锁ChatGPT、奈飞流媒体</a></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=qkdaquan">注册链接</a></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=qkdaquan">美国虚拟信用卡，可订阅ChatGPT Plus会员</a></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=qkdaquan">注册链接</a></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a></td>
+    </tr>
+    </tbody>
+    </table>
+<p>Lattice 团队已经投入了近两年的时间来开发 MUD引擎。在这段时间内，我们发布了两个 MUD 版本，三个游戏，构建了数百万个实体（entity），并投入了无数的工程时间。随着 MUD v2 的开发完成，以及 Open Zeppelin 的审计即将结束，我们想回顾一下我们的开发历程。</p>
+<p>我们为什么要坚持创建一个让开发人员能够构建富有创意的应用程序的框架？我们在这个过程中有哪些发现，遇到了哪些问题，以及取得了哪些突破？我们对 MUD 的未来还有什么规划，以帮助我们实现拓展 EVM 应用程序边界的使命？</p>
+<h2 id="01来自宇宙的信号"><strong>01.来自宇宙的信号</strong></h2>
+<p>2021 年，全链上游戏还处于起步阶段。Dark Forest 的成功展示了人们对于完全可定制并可扩展的世界的需求。这些世界可以完全独立地运行，不受管理员的干扰。该游戏还拥有一个忠实而热情的玩家群体，他们开发了几十款插件（https://plugins.zkga.me/），并形成了各种用户协作的公会和联盟。游戏的代码是开源的；自治之神是满意的。</p>
+<p>但是，当时人们并不清楚该如何构建下一个 Dark Forest，或者说其他任何类型的全链游戏。如果你查看 Dark Forest 的代码库，你会发现一种对于游戏来说效果尚可，但很难被抽象化的方法。Dark Forest 使用的格式是：</p>
+<ul>
+<li>
+<p>使用各种struct(例如Planet, Player,&hellip;) 来存储不同类型的事物；</p>
+</li>
+<li>
+<p>使用mapping对每个struct进行映射（同时使用数组来追踪 key）；</p>
+</li>
+<li>
+<p>对不同存储(storage)类型都实现对应的getter函数；</p>
+</li>
+<li>
+<p>当任何时候数据变化时（<code>PlanetInitialized</code>, <code>PlanetUpgraded</code> 等）触发事件（event）；</p>
+</li>
+<li>
+<p>客户端上实现和智能合约上类似的数据结构（例如Planets），同时编写自动加载初始化状态的函数，以及监听<code>PlanetInitialized</code>，<code>PlatetUpgraded</code> 等事件（event）的reducer；</p>
+</li>
+</ul>
+<p>当然，所有这些被妥善的整合了起来。但他依然是定制化的，并没有为其他游戏提供一个简单的参考框架。</p>
+<p>在网络方面，也存在可扩展性问题。为了从合约中访问游戏状态，Dark Forest 核心开发人员使用了 getter 函数，这些函数不能被 RPC 缓存。因此，在 xDai 上运行的 RPC 变得非常昂贵。当 Dark Forest 举办新一轮游戏时，RPC 的成本会高达数万美元。</p>
+<p>这些便是当时的实际情况：在 EVM 上设计游戏面临着巨大的挑战。没有简洁的框架，也没有任何捷径。一切都需要定制。</p>
+<p>受 Dark Forest 的启发，我们决定建立一个新的游戏——一种介于桌游和大逃杀之间的游戏，名为 ZKDungeon。回顾这段经历，这可能是一个过于雄心勃勃的尝试。ZKDungeon 使用了与 Dark Forest 相同的方法，但我们很快意识到开发游戏的大部分时间都用来处理网络调用相关的技术栈上：更新结构体（struct），更新事件（event），更新事件在客户端上的事件（event）处理逻辑。这是一个要求很高同时很难操作的过程，使得我们很难对游戏进行迭代。我们实现了 Diamond Standard（译者注 ERC2535），但它并不是万能的：我们仍然需要在更改合约时更新 Diamond storage。</p>
+<p>回顾起来，这有点像一场噩梦。很难相信，就在不久之前，开发者还需要这样开发游戏。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1123/29_syqgozzv53.png" alt="MUD引擎发展简史：我们如何从零开始"></p>
+<h2 id="02mud-v1-的起源寻找钻石"><strong>02.MUD V1 的起源：寻找钻石</strong></h2>
+<p>我们希望未来的世界是这样的，开发者不需要管理链上和链下状态之间的同步，并且可以很容易的更新应用程序代码。我们仔细思考了如何将状态管理问题抽象化，使其不再困扰开发者，并得出结论：我们需要一个链上数据结构，当你更新他时会自动触发事件，并且客户端可以使用他来复制链上状态。但这该如何实现呢？</p>
+<p>与此同时，我们开始更全面地研究游戏开发，并发现了 ECS（Entity Component System）框架。在这个框架中，状态存储在组件中，逻辑存在于系统中，实体是组件中状态的键，系统通过读取实体“属性”来“作用于”来自组件的实体。他似乎是一个能够缓解我们痛苦开发过程的理想抽象方式。他还似乎是将逻辑分配到单独的合约，并最终将逻辑与状态分离的良好方法，他将是一种“协议内”的Diamond Standard。</p>
+<p>当时，没有人在链上使用 ECS，所以这很像是赌博。在 Solidity 中实现 ECS 也没有明确的路线图，因此我们必须从第一性原理出发来思考如何实现这个目标。</p>
+<p>首先，我们需要有一个对不同类型的状态都有相同签名的事件（event）。换句话说，我们在更新状态时需要移除掉不同的类型，使用 字节（bytes）这种通用的类型，这本质上是一种无类型化处理的数据（untyped data）。因此，我们知道我们更新事物（event）时必须要使用 字节 （bytes）来表示状态。</p>
+<p>但是如何将你的自定义类型编码为字节（bytes）并且之后能够解码回去呢？恰好Solidity 有一个叫做“ABI编码”的概念，所以你可以使用<code>abi.encode</code>函数将几乎所有的数据都转化为字节块。如果你知道数据的之前的类型，你可以使用<code>abi.encode</code>函数将数据转化为原始的形式。我们利用了这个机制来实现存储数据的“组件（component）”功能。</p>
+<p>每个组件（component）都是一个单独的合约，实现了具有状态的 setter 和 getter 的接口。他在内部将事件（event）以字节的形式发出，并在storage中存储原始的 ABI 编码字节。然后，我们在另一个组件中存储每个组件的类型，并用他在客户端上解码状态。每个系统（Systems）也是一个单独的合约。索引器可以监听所有这些事件，解码数据，并将其存储在数据库中。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1123/29_4vds8o3i7f.png" alt="MUD引擎发展简史：我们如何从零开始"></p>
+<p>同时还有一个将他们统一起来的中央合约，我们称之为“World”（在 ECS 中为“全局状态”常用术语）。系统将从World合约的组件注册表中获取他们想要的组件地址，然后读取和写入组件上的状态。每个组件都有其自己的访问控制，确定谁有权进行写入。</p>
+<p>每次组件更新时，都会在中央 World 合约中注册状态更新，该合约会发出一个事件，供链下索引器复制状态。这意味着不再需要可以发射特殊事件的合约，也不需要定制的网络代码来确保这些事件可以在客户端或像 The Graph 这样的索引工具中被外部读取。</p>
+<p>这种方法产生了效果——他大大加快了我们的迭代速度。这种构建方式最终演变为了 MUD v1版本。</p>
+<p>那么开发速度有多快呢？为了测试 MUD v1，我们决定开发一个与 Minecraft 类似的游戏，名为 OPCraft。最初的概念验证只用了两天就设计了出来，这要归功于我们设计的 ECS 框架和引擎。ECS 的设计原理是这样的：</p>
+<ul>
+<li>
+<p>每个块都是一个实体，拥有<code>TerrainType</code>和<code>Position</code>组件；</p>
+</li>
+<li>
+<p>当玩家进行挖掘时，位置组件被移除，替换成 OwnedBy 组件。这让代码库变得非常简单；</p>
+</li>
+</ul>
+<p>然后，我们又花了三个月的时间，把原型做成了成品。这包括使用Solidity实现的佩雷噪声（perlin noise）模块（https://github.com/latticexyz/mud/tree/main/packages/noise），使用WebAssembly在挖掘块之前使用程序化的方式来生成地形，还包括其他的改进，比如用“随机”方法在地图上放置钻石，以及对图形、音效和操控方式的全面更新。</p>
+<p>我们还为玩家位置添加了链下点对点广播机制，以及一种可以使在地块中抵押最多钻石的玩家来占领地块的机制（这种机制后来被一个匿名用户利用创建了 OPCraft 自治人民共和国）。在 OPCraft 中看到的自发行为验证了我们对 MUD 的另一个理念：他不仅有助于项目团队本身构建富有创意的应用，而且其抽象性也很容易让第三方开发人员开发插件和模组。</p>
+<p>我们于 2022 年在 Devcon 期间的首个 Optimism Bedrock 测试网上发布了 OPCraft，并计划进行为期两周的试玩，目的是展示技术成果并推广 MUD v1。尽管试玩很成功，但我们遇到了一个大问题：状态膨胀。在试玩结束时，即使使用了索引器（而不是直接从 RPC 区块链节点加载），加载客户端状态仍然需要大约 20 分钟。这一定程度上是由 OPCraft 架构造成的（因为其对每个块都建立单独的实体，而不是只记录每个玩家每个类型的块的数量），部分是由于 MUD1 的简单和低效的数据编码（<code>abi.encode</code>）。我们本可以做得更好。</p>
+<p>所以，我们又回到了起点。我们知道我们还没有完成 MUD 的开发。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1123/29_ufbujof4je.png" alt="MUD引擎发展简史：我们如何从零开始"></p>
+<h2 id="03从-mud-v1-到-mud-v2重返天空"><strong>03.从 MUD V1 到 MUD V2：重返天空</strong></h2>
+<p>MUD v2 的诞生致力于解决三个主要问题：对数据编码（data encoding）的方式、MUD 本地的数据模型，以及 ECS 模型的局限性。在 2023 年初，alvarius 在两个现在已经成为标志性的 Github issues中详细说明了这些问题，一个关于数据建模（https://github.com/latticexyz/mud/issues/347），另一个关于 World 框架（https://github.com/latticexyz/mud/issues/393）。</p>
+<p>如上文所述，MUD v1 中的 <code>abi.encode</code> 方法是简单和低效的。他进行了很多额外的填充（每个值不论大小都需要 32 字节，还要加上另外 32 字节的元数据），因此在事件（event）中发出的数据和在存储中的数据都不是最高效的。</p>
+<p>对于 MUD v2，我们做了很多改进：我们实现了更有效的数据编码，不会对链上存储和事件进行不必要的额外填充。我们还开发了一个更先进的索引器，以更紧凑的模式存储数据（有助于缓解状态膨胀问题）。</p>
+<p>不过，还有其他的限制需要我们克服。ECS模型把开发者限制在只有单一主键的数据库上，这是一种只有游戏开发者才熟悉，但对于大多数关系型数据库开发者并不友好的模式。MUD v1中的数据模型是这样的，实体ID作为主键，组件关联到主键上。但在关系型数据库（如Postgres）中，可以有多个列作为主键（比如，多个键的组合可以唯一标识一行）。我们希望MUD v2能够以更通用的方式表示数据，并支持多键值（就像在传统的关系数据库中一样）。</p>
+<p>我们成功地实现了高效紧凑的位打包（bitpacking），来存储表中的数据。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1123/29_5zece21g7l.png" alt="MUD引擎发展简史：我们如何从零开始"></p>
+<p>这意味着在MUD2中添加的多个键值可以让我们以一种更高效的方式设计OPCraft，把表中的行数从<code>3x total number of blocks</code>，也就是大约每个块总数的3倍（三个表，每个表每个块一个行），减少到<code>number of users x types of blocks</code>，也就是用户数量x方块类型（这是原始表数量的0.06%，因为在OPCraft中开采了大约1000万个块，但只有大约2k玩家和大约10种块类型）。MUD v2中的这种数据模型为我们接下来对Sky Strife（https://skystrife.xyz/）游戏的开发铺平了道路。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1123/29_n1i09qj8n5.png" alt="MUD引擎发展简史：我们如何从零开始"></p>
+<p>此外，在v1中，每个组件本身都是一个独立的合约，系统由客户端直接调用，没有一个集中的地方可以放置共享逻辑（如访问控制或账户委托）。我们想要把所有这些都抽象掉；开发人员唯一关心的是他们正在处理的数据类型。他们应该能够在配置中定义数据，并生成与数据交互的Solidity库。为此，我们设计了一个中央存储引擎。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1123/29_vm0gedd6eq.png" alt="MUD引擎发展简史：我们如何从零开始"></p>
+<p>中央存储引擎开启了许多新的可能性：他改善了开发人员的体验，并为像账户委托（account delegation）或storage hooks这样发生在系统上一层的功能打开了可能。在此之前，开发人员必须为每个系统创建账户委托逻辑，因为每个系统都是分开调用的。现在，一切都由中央World合约负责管理。</p>
+<p>Sky Strife的开发以及游戏所揭示的需求为MUD带来了进一步的升级。其中之一是MUD的状态分割功能。Sky Strife比赛的时间很短，只有约十五分钟，而且有很多比赛同时进行。如果客户端必须加载所有比赛的状态，而不是玩家在某一时间参加的特定比赛，这将会非常昂贵并且低效。为了解决这个问题，MUD中的World合约现在可以使用复合键（composite key）来定义状态的段（segments of state），索引器和客户端都可以忽略与你客户端无关的键。这将向所有的MUD开发者开放，尽管他起源于扩展Sky Strife和OPCraft的需求。</p>
+<p>通过改进的数据编码（data encoding），更适用于数据库的数据模型，以及从ECS转移到关系型数据库，MUD v2的更新已经完成。在9月份，我们选择了Open Zeppelin作为MUD v2的审计师，并正在对合约和代码生成的库进行审计。</p>
+<h2 id="04未来的计划"><strong>04.未来的计划</strong></h2>
+<p>在接下来的日子里，我们对模块化感到兴奋，这是一些可以安装到现有部署的Worlds合约中并通过新功能进行扩展的表格、系统和其他资源的包。模块可以只被开发并部署一次，然后可以集成到任意数量的Worlds合约中。我们计划拥有一个像npm一样的用于MUD Worlds的链上模块注册表。在以太坊上有许多共享的库（例如Open Zeppelin库），但是没有“包管理器”，每个人都会为自己的项目重新部署相同的库。使用模块，你只需要实现一次，然后就能够部署到任何多已经存在的World中。</p>
+<p>目前已经有数十个团队正在使用MUD进行开发，待v2版本审计完成后，我们便可以正式推荐大家在主网中部署使用。这尤其令人兴奋，考虑到我们最近发布的Redstone是一个非常经济的用于游戏和自主世界的链。随着我们覆盖更广泛的受众，我们将继续改进框架，并推动以太坊应用程序的发展。我们很期待看到下一代全链上应用程序和自主世界的开始。</p>
+<p>我们要感谢基于MUD开发产品的团队、通过Discord或直接提供反馈的开发者们，以及所有MUD代码库的贡献者，是你们使这一切变为现实。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">注册教程</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=qkdaquan">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.techxiaofei.com/post/vpn/chuanyunjian/">自用机场推荐，翻墙VPN，秒开4K，解锁ChatGPT、奈飞流媒体</a></td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=qkdaquan">美国虚拟信用卡，可订阅ChatGPT
+                    Plus会员</a></td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/63780/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">MT Capital研报：资产发行新叙事 铭文赛道全扫描</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/63760/">
+                <span class="next-text nav-default">Open Source Ventures总裁：美国国税局应向 DeFi 用户提供免费纳税报告工具</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01来自宇宙的信号"><strong>01.来自宇宙的信号</strong></a></li>
+    <li><a href="#02mud-v1-的起源寻找钻石"><strong>02.MUD V1 的起源：寻找钻石</strong></a></li>
+    <li><a href="#03从-mud-v1-到-mud-v2重返天空"><strong>03.从 MUD V1 到 MUD V2：重返天空</strong></a></li>
+    <li><a href="#04未来的计划"><strong>04.未来的计划</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        jayz
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.9b62a90c8b961b45885ef8584891a1319d0f62c31b073d9610a88e41ea87bc31.js" integrity="sha256-m2KpDIuWG0WIXvhYSJGhMZ0PYsMbBz2WEKiOQeqHvDE=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

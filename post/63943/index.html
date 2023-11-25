@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          代码分析：为什么说Blast完全不是L2 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Blast只有一个3/5多签的智能合约，没有测试网，没有交易，没有桥，没有Rollup，也没有向以太坊发送交易数据，完全不是L2。" />
+<meta name="keywords" content="Blast, Blur" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="https://okex1688.github.io/post/63943/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="代码分析：为什么说Blast完全不是L2" />
+<meta property="og:description" content="Blast只有一个3/5多签的智能合约，没有测试网，没有交易，没有桥，没有Rollup，也没有向以太坊发送交易数据，完全不是L2。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okex1688.github.io/post/63943/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-11-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-24T00:00:00+00:00" />
+
+<meta itemprop="name" content="代码分析：为什么说Blast完全不是L2">
+<meta itemprop="description" content="Blast只有一个3/5多签的智能合约，没有测试网，没有交易，没有桥，没有Rollup，也没有向以太坊发送交易数据，完全不是L2。"><meta itemprop="datePublished" content="2023-11-24T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-11-24T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2505">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="代码分析：为什么说Blast完全不是L2"/>
+<meta name="twitter:description" content="Blast只有一个3/5多签的智能合约，没有测试网，没有交易，没有桥，没有Rollup，也没有向以太坊发送交易数据，完全不是L2。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://okex1688.github.io/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">代码分析：为什么说Blast完全不是L2</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      <a href="/about">
+        <span class="post-meta-author-name">
+          佚名
+        </span>
+      </a>
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2023-11-24">
+      2023-11-24
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2505 字 -
+        预计阅读 5 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="https://okex1688.github.io/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+    <tr>
+    <th style="text-align:left">推荐平台</th>
+    <th style="text-align:left">链接</th>
+    <th style="text-align:left">注册教程</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+    <td style="text-align:left"><span style="white-space:nowrap"><a href="https://www.okbtc.cn/binance?ref=qkdaquan">注册链接</a></span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/binance?ref=qkdaquan">自用机场推荐，翻墙VPN，秒开4K，解锁ChatGPT、奈飞流媒体</a></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=qkdaquan">注册链接</a></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=qkdaquan">美国虚拟信用卡，可订阅ChatGPT Plus会员</a></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=qkdaquan">注册链接</a></td>
+    <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a></td>
+    </tr>
+    </tbody>
+    </table>
+<p>作者：Jarrod Watts，Polygon开发者关系工程师，evmkit.com创始人；翻译：金色财经0xjs</p>
+<p>有人说“Blast只是一个3/5多重签名……”</p>
+<p>过去几天我深入研究了源代码，看看这个说法是否属实。</p>
+<p>下面是我看到的一切：</p>
+<p>1、<strong>一个新钱包0x52c31部署了两个合约</strong> ： 1、0xa01：Blast Deposit代理合约；2、0x5f6：Blast Deposit实现合约。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1124/15_2buubuyqtt.png" alt="V9SAt9kYJ54FcE7zeoCe09Y2Ebpi6vTzE8JSE3yk.png" title="7142027">如果你不熟悉这些“代理合约”设置，后文还会回到这个。</p>
+<p>2、0x52c31部署这些合约后，<strong>将所有权转移给Gnosis Safe智能合约</strong> 。</p>
+<p>Gnosis Safe 或“Safe2”合约是最受欢迎和最值得信赖的多重签名智能合约。它们要求大多数签名者签名才能执行交易。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1124/15_spafkl0wzt.png" alt="YMZq2Vwki5rSHrXEziL8iK3ODY5v3GQlIop1GS4F.jpeg" title="7142028">3、<strong>现在拥有Blast合约的Safe合约中有 5 个签名者</strong> 。</p>
+<p>这意味着大多数（即 3/5）签名者需要代表此 Safe 合约执行交易。这 5 个钱包都是非常新的钱包，但主人不详。</p>
+<p>4、所以3/5多重签名合约现在是Blast Deposit合约的“所有者”。</p>
+<p>正如我们所提到的，Blast Deposit 合约由两个合约组成：代理和实现。</p>
+<p>成为它们的“所有者”实际上意味着什么呢？</p>
+<p>5、对于常规智能合约，一旦部署到区块链，你就无法更改代码。<strong>代理智能合约允许你对智能合约执行“升级”（更改），而无需替换整个合约。</strong> 这通常用于修复错误或添加功能。</p>
+<p>6、Blast代理实现OpenZeppelin的UUPSUpgradeable 合约。这包括诸如“_upgradeTo”之类的函数，<strong>允许更改实现合约的逻辑</strong> 。这意味着用户交互的合约能够维护相同的合约地址。</p>
+<p>7、<strong>这种可升级性的最坏情况是（多重签名）所有者将合约的逻辑更改为恶意的内容</strong> 。</p>
+<p>这听起来有点可怕，对吧？……实际上，这些“辅助功能”被当今大多数 L2 采用。</p>
+<p>8、<strong>像Optimism和Arbitrum这样的Optimistic Rollups也有这个功能</strong> 。</p>
+<p>根据L2Beat： </p>
+<ul>
+<li>
+<p>保护OP Mainnet和 Base 系统的代码可以任意更改，恕不另行通知。</p>
+</li>
+<li>
+<p>Arbitrum One 的升级大约需要 12 天的延迟，但理事会可以毫不延迟批准。</p>
+</li>
+</ul>
+<p>9、<strong>zkEVM世界也是如此</strong></p>
+<p>根据L2Beat： </p>
+<ul>
+<li>
+<p>保护 Linea、Scroll 和 zkSync 系统的代码可以任意更改，恕不另行通知。</p>
+</li>
+<li>
+<p>Polygon zkEVM 的升级有约 10 天的延迟（除非激活紧急状态）</p>
+</li>
+</ul>
+<p>10、这些Rollup具有可以执行升级的多重签名的原因是为了在技术成熟时实现临时安全。正如 L2Beat 在其 L2 阶段博客中概述的那样，Rollup的最后阶段应该限制这些安全委员会解决“严重缺陷”的能力。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1124/15_gs5cmh6d4m.png" alt="uKuMh845wzD7WPzHvUNgZaguFAQmDUqQnbyP5HNx.jpeg" title="7142029">11、安全理事会的能力随着时间的推移而减弱。然而，成员知名度很重要。</p>
+<p>例如，Polygon PIP-29 提议由 13 个成员来管理“对系统智能合约的范围狭窄、时间限制的变更”。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1124/15_gs757qe3jv.png" alt="PKa7I2yeTzK2Zy2PLBoHi8WPAa5YcErVnUskROBM.jpeg" title="7142033"></p>
+<p>12、因此，<strong>虽然Blast确实有可能通过多重签名来执行代码升级并立即窃取资金，但*目前*许多其他 L2 解决方案也具有相同的功能。</strong></p>
+<p>到目前为止，我一直在为 Blast辩护。但是，下面是坏消息了&hellip;让我们继续。</p>
+<p>13、<strong>Blast不是L2</strong> 。</p>
+<p>Blast只是一个具有两个功能的智能合约： 1、接受用户的资金。2、将用户的资金投入Lido等协议中。</p>
+<p>没有测试网，没有交易，没有桥，没有Rollup，也没有向以太坊发送交易数据。这不是L2。</p>
+<p>14、通过向Blast合约存款，你基本上信任 3-5 个陌生人会为你质押你的资金。</p>
+<p><strong>除非这 3-5 个人决定将来做正确的事情，否则你将无法在任何时候提取这笔钱</strong> 。再说一次，这里没有桥。</p>
+<p>15、这对我来说真的很疯狂&hellip;</p>
+<p><strong>你无法从Blast取回你的钱，直到：</strong>  </p>
+<ul>
+<li>
+<p><strong>由陌生人组成的 3/5 多重签名部署了一份新合约；</strong></p>
+</li>
+<li>
+<p><strong>该合约具有从中提取资金的功能；</strong></p>
+</li>
+<li>
+<p><strong>他们将所有资金转移到新合约中。</strong></p>
+</li>
+</ul>
+<p>16、但是，<strong>还有更糟的情况。</strong></p>
+<p>我可以告诉你，他们甚至不需要进行“升级”来窃取合约中的所有资金，而这个合约里用户存进的资金其他人都不能取出。</p>
+<p>我们接着看。</p>
+<p>17、函数“enableTransition”要求“mainnetBridge”合约作为参数。</p>
+<p><strong>这个“mainnetBridge”合约的功能： 获取所有质押的ETH 、DAI</strong> 。</p>
+<p>那么，这个“mainnetBridge”合约什么样？</p>
+<p><img src="https://img.bibiqing.com/news/2023/1124/15_3s5m7nm8dm.png" alt="yWCiuNjEfPtXiz4mmrLDlNJuFbE3k9UWfF4B0mzI.jpeg" title="7142030"></p>
+<p>18、它绝对可以是任何东西！<strong>Blast批准任意“mainnetBridge”合约，以花费最大可能数量的LIDO和DAI…</strong></p>
+<p>这个合约的正确性肯定有一些限制？好吧，*是的*，让我们看看该代码。</p>
+<p>19、下面是“_setMainnetBridge”函数中的断言语句。</p>
+<p><img src="https://img.bibiqing.com/news/2023/1124/15_ioo67ztf2d.png" alt="QI6SrafQLnRG0xPWLX1P2jzsmlO1zYRm6eGtPoWJ.jpeg" title="7142031"></p>
+<p>它&hellip;检查该地址是否有任何代码！是的，<strong>只要它不是EOA地址即可；它已批准拥有合约中的所有资金。目前资金总量已经超过2亿美元。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2023/1124/15_34y48lylny.png" alt="i3JYT7mo2v41KnlF4yJ9QhEq83C9bMIrJfHSz8tL.jpeg" title="7142032">20、因此，可以假设，它们可以：</p>
+<p><strong>1、创建一个极其简单的智能合约并将其设置为mainnetBridge合约；</strong></p>
+<p><strong>2、让该智能合约接收所有质押的ETH 和 DAI（2 亿+）</strong> </p>
+<p><strong>调用智能合约将所有资金提取到EOA钱包。</strong></p>
+<p>21、我们发现的两个主要威胁是： </p>
+<ul>
+<li>
+<p>经3/5多重签名批准升级恶意代码以窃取资金。</p>
+</li>
+<li>
+<p>制作恶意智能合约并将其设置为“mainnetBridge”智能合约来窃取资金，同样是通过 3/5 多重签名。</p>
+</li>
+</ul>
+<p>22、这会真的发生吗？就我个人而言，如果我必须猜测的话，我认为资金不会被盗。</p>
+<p><strong>无论如何，我实际上认为Blast原生收益的想法是一个非常有趣的权衡。</strong></p>
+<p>23、因此，虽然我个人认为在目前的状态下发送资金到Blast是有风险的，但发送不发送最终是用户的决定，我只是在这里分享我看到的东西。</p>
+<p>我仍然祝愿Blast团队和所有已经存款的人一切顺利。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">注册教程</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=qkdaquan">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.techxiaofei.com/post/vpn/chuanyunjian/">自用机场推荐，翻墙VPN，秒开4K，解锁ChatGPT、奈飞流媒体</a></td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=qkdaquan">美国虚拟信用卡，可订阅ChatGPT
+                    Plus会员</a></td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=qkdaquan">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=qkdaquan">国内无法使用ChatGPT？教你使用云服务器一键部署自己的ChatGPT网站</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/63843/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">代币化和现实世界资产正成为焦点</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/63939/">
+                <span class="next-text nav-default">等了七个月，飞书终于不藏了，搬砖效率震惊公司！</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=qkdaquan" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        jayz
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.9b62a90c8b961b45885ef8584891a1319d0f62c31b073d9610a88e41ea87bc31.js" integrity="sha256-m2KpDIuWG0WIXvhYSJGhMZ0PYsMbBz2WEKiOQeqHvDE=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>
