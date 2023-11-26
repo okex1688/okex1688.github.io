@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Curve V2方案解析：通用与定制化AMM之争 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在正式介绍 Curve V2 的意义之前，有必要先用最简单易懂的语言，解析一下 Curve 是如何在 V2 版本中，实现对非稳定币交易对的支持的。" />
+<meta name="keywords" content="curve" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/24677/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Curve V2方案解析：通用与定制化AMM之争" />
+<meta property="og:description" content="在正式介绍 Curve V2 的意义之前，有必要先用最简单易懂的语言，解析一下 Curve 是如何在 V2 版本中，实现对非稳定币交易对的支持的。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/24677/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-22T00:00:00+00:00" />
+
+<meta itemprop="name" content="Curve V2方案解析：通用与定制化AMM之争">
+<meta itemprop="description" content="在正式介绍 Curve V2 的意义之前，有必要先用最简单易懂的语言，解析一下 Curve 是如何在 V2 版本中，实现对非稳定币交易对的支持的。"><meta itemprop="datePublished" content="2021-06-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3173">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Curve V2方案解析：通用与定制化AMM之争"/>
+<meta name="twitter:description" content="在正式介绍 Curve V2 的意义之前，有必要先用最简单易懂的语言，解析一下 Curve 是如何在 V2 版本中，实现对非稳定币交易对的支持的。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Curve V2方案解析：通用与定制化AMM之争</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-22">
+      2021-06-22
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3173 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>Curve V2 版本的发布极其低调，既没有制作精美的介绍页面，也没有讲解原理的视频，甚至都没有进行像样的宣传。整个的发布活动，便是在项目的官方网站放出了一版介绍 V2 基本原理的白皮书。该版白皮书虽然只有区区 5 页，但其中却充满了让普通用户望而生畏的数学公式。所以，在正式介绍 Curve V2 的意义之前，有必要先用最简单易懂的语言，解析一下 Curve 是如何在 V2 版本中，实现对非稳定币交易对的支持的。</p>
+<h3 id="白话解读-curve-v2-基本原理">白话解读 Curve V2 基本原理</h3>
+<p>大家千万不要一开始就被 Curve 白皮书中的累加“∑”或累乘“Π”等数学符号所吓倒，之所以 Curve 的公式会变得如此复杂，并不是因为其算法有多么玄妙。而是因为 Curve 希望在一开始就能够在底层逻辑上，原生的支持多币种交易资金池，因此原本简单易懂的二维恒定乘积公式 xy=k，也就需要升维变成</p>
+<p><img src="https://img.bibiqing.com/news/2021/0622/63en128gkp0vqss" alt="Curve V2方案解析：通用与定制化AMM之争"></p>
+<p>这种看似复杂的多维恒定乘积形式。</p>
+<p>因此，为了使读者能够更好地理解，我们在此重新将多维模型降低到更易理解的二维状态（双币资金池）。那么，在更简单的二维模型里，Curve V2 的价格曲线是什么样子呢？</p>
+<p><img src="https://img.bibiqing.com/news/2021/0622/ep02js7gqp8t0zp" alt="Curve V2方案解析：通用与定制化AMM之争"></p>
+<p>上图是摘自 Curve V2 白皮书中的价格曲线。<strong>与 Curve V1 中通过将 xy=k 与 x+y=k 两个基本价格曲线按照一定权重比例进行拟合类似，Curve V2 的价格曲线也是由其他基本曲线拟合而成。</strong> 简单来讲，就是曲线在交易价格附近更接近 Curve V1 的曲线形状（蓝色），而在远离交易价格的位置，则更加接近 xy=k（左下方虚线）。以此构成了一个在交易价格附近更平滑，但在远离交易价格范围后弧度更大的一条价格曲线（橙色）。相比 V1 版本中更接近于一条直线的价格曲线，V2 的曲线在远端的弧度更大，以此增加对非稳定币交易对的支持程度。</p>
+<p>当然，如果 Curve V2 仅仅是重新构造了一条固定形状的价格曲线，自然也无法达到其在所有价格点动态聚合流动性的目标。Curve V2 最关键的改进，是在当价格偏离原聚合范围时，可以对流动性进行自动再平衡（rebalance），重新构造一条适用于新价格的曲线。</p>
+<p>此时需要解决的另一个问题是，系统该如何感知市场价格的变化，并在适当的时候进行再平衡操作呢？大多数同类项目会选择直接接入外部预言机，但引入外部预言机也同时也会为系统引入新的外部风险，一旦预言机失效或被操纵，LP 的资金安全便很难得到保证。</p>
+<p><strong>Curve V2 为了彻底杜绝外部风险，改为依靠内部数据作为参考价格，官方将这种机制称为 EMA（exponentially moving average）预言机。</strong> 读者这里同样不需要去理解 EMA 是什么，只需要了解这个 EMA 预言机提供的价格，是根据 Curve 的历史成交价以及最新的交易信息综合计算出的一种参考价格就可以。这个参考价格有些类似于技术分析中的 30 天均线，他会根据最新的成交价格进行动态调整，但在调整的同时也会保有一定的滞后性，以免在价格剧烈波动时过度频繁地触发再平衡机制。</p>
+<p>有了内部预言机提供的参考价格，系统便有了进行再平衡的触发依据。当 EMA 预言机报出的价格偏离原始价格超过一定范围后，协议便会自动对整条曲线的形状进行调整，使得流动性重新聚合于最新的交易价格附近。</p>
+<h3 id="curve-v2-与-uniswap-v3-的解决方案有哪些不同">Curve V2 与 Uniswap V3 的解决方案有哪些不同</h3>
+<p>早在 Curve V2 刚刚发布的时候，便有评论认为 Curve V2 版本将与 Uniswap V3 展开直接竞争。毕竟两者都提出了在全部价格区间聚合流动性的通用解决方案。可是如果仔细分析这两个项目的具体实现方式，又会发现两者间存在着明显的区别。</p>
+<p>区别一：如何决定在何处聚合流动性</p>
+<p>在 Curve V2 中做市，完全不需要 LP 主动选择流动性的聚合范围。系统将会依据市场价格的变动，自动将 LP 的流动性集中到交易价格的附近。而 Uniswap V3 则需要 LP 自己判断市场的价格走势，并自主选择做市的价格区间。</p>
+<p>区别二：LP 的头寸是否同质</p>
+<p>我们知道，由于每个 LP 的做市金额与范围都不尽相同，Uniswap 在 V3 中使用 NFT 来表示 LP 的做市头寸。而在 Curve V2 中则完全没有这个问题，每一个 LP 在资金池中的流动性分布是完全相同的，相互之间只有数量差异，因此依然可以使用同质的 ERC20 代币表示 LP 的头寸。这大大降低了其他协议与 Curve 进行组合时候的困难程度。</p>
+<p>区别三：如何对资金进行再平衡</p>
+<p>我们常常说 Uniswap 在升级到 V3 版本后，被动的做市管理方案已经不再有效，LP 需要不断主动判断价格走势并调整头寸。而 Curve V2 将再平衡的策略完全融入了协议层本身，用户不再需要了解再平衡的基本原理，也不需在市场诸多代理方案中进行选择，只需要考虑什么时候存入，何时取出，剩下的全部交给 Curve 的协议层自动执行。</p>
+<p>区别四：交易手续费如何确定</p>
+<p>在手续费的问题上，Uniswap 其实并没有给出通用的解决方案。系统原生只提供了三个档位的费率供 LP 们选择，每个档位对应一个独立的资金池，这不但限制了用户的选择范围，还增加了流动性的割裂程度。</p>
+<p>相对来说，<strong>Curve V2 依然采用了自动化解决方案，系统内置的手续费率范围为 0.04%-0.4%（此比例来源于社区讨论，如有错误欢迎订正）。</strong> 当市场价格接近流动性聚合的中点时手续费最低，而在偏离时手续费会逐渐升高。整个过程完全自动完成，不需要 LP 进行管理和干预。</p>
+<p>经多以上对比，我们发现相比 Curve V2 这种一站式解决方案，Uniswap V3 似乎显得既复杂又难用。不但做市的几乎所有关键参数都需要用户自主选择，还需要在后续做市过程中不断进行再平衡。那么同样有着行业内顶尖开发团队的两个头部 DEX 项目，为什么会针对同样的需求，却交出了差别如此之大的解决方案呢？</p>
+<h3 id="方法论之争做应用还是做生态">方法论之争：做应用还是做生态</h3>
+<p>两种截然不同的解决方案，显然不是受制于开发团队的技术能力，根本原因在于两个团队创始人对行业核心诉求的理解截然不同。</p>
+<p>Uniswap V3 的核心思路，是通过开发一套可以模拟任何形状价格曲线的通用解决方案，从根本上解决不断产生的定制化 AMM 分叉项目。因此开发团队必须将各种关键参数的决定权留给市场，并通过成立开发者基金不断扶持生态的发展。寄希望于市场能够通过自由竞争，形成几套成熟的主动做市管理方案，以解决不断变化的市场需求。</p>
+<p>承认个人与团队的意志无法永远正确，并将选择权充分的开放给市场和社区，自己仅参与底层基础架构的建设，是 Uniswap 团队的核心理念。</p>
+<p>而 Curve 团队则反其道而行之，他们认为用户的时间和注意力都是有限的，不应再使他们陷于复杂的选择困境之中。开发团队应当直接为用户提供全套的最优解决方案，使用户只需考虑何时存入资金，何时取回资金，其他的过程一律交给协议自动完成。</p>
+<p>承认多数用户不具备专业分析能力，作为更专业的行业精英有必要提供一揽子解决方案，尽量解决用户可能遇到的一切障碍，是 Curve V2 的核心理念。</p>
+<p>是直接做一个功能强大的好产品，还是成为一个通用的底层架构并赋能生态发展，这是 Curve 与 Uniswap 两个顶级团队开发思路最重要的区别。两种不同的方法论哪一个会最终通过市场的考验，或许只有等待时间来给出答案。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/24700/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">CoinList春季种子轮项目浅析（下）</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/24692/">
+                <span class="next-text nav-default">DeFi的创新速度到底有多快？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#白话解读-curve-v2-基本原理">白话解读 Curve V2 基本原理</a></li>
+        <li><a href="#curve-v2-与-uniswap-v3-的解决方案有哪些不同">Curve V2 与 Uniswap V3 的解决方案有哪些不同</a></li>
+        <li><a href="#方法论之争做应用还是做生态">方法论之争：做应用还是做生态</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

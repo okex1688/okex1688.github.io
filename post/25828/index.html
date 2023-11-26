@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          分布式数字身份的几个“非技术”思考 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="长远来看，分布式数字身份要发挥出应有的价值，还是要依托更多的应用场景，深入融合到数据和价值的整个生命周期去，为用户提供更多更优质的服务和体验。" />
+<meta name="keywords" content="区块链" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25828/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="分布式数字身份的几个“非技术”思考" />
+<meta property="og:description" content="长远来看，分布式数字身份要发挥出应有的价值，还是要依托更多的应用场景，深入融合到数据和价值的整个生命周期去，为用户提供更多更优质的服务和体验。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25828/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-14T00:00:00+00:00" />
+
+<meta itemprop="name" content="分布式数字身份的几个“非技术”思考">
+<meta itemprop="description" content="长远来看，分布式数字身份要发挥出应有的价值，还是要依托更多的应用场景，深入融合到数据和价值的整个生命周期去，为用户提供更多更优质的服务和体验。"><meta itemprop="datePublished" content="2021-07-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4044">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="分布式数字身份的几个“非技术”思考"/>
+<meta name="twitter:description" content="长远来看，分布式数字身份要发挥出应有的价值，还是要依托更多的应用场景，深入融合到数据和价值的整个生命周期去，为用户提供更多更优质的服务和体验。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">分布式数字身份的几个“非技术”思考</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-14">
+      2021-07-14
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4044 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>7月11日，以“构建数字社会基础设施”为主题的分布式数字身份（苏州）高峰论坛暨DIDA联盟2021年度会议在苏州高铁新城召开。论坛由分布式数字身份产业联盟（DID-Alliance，简称DIDA）主办，微众银行区块链首席架构师张开翔作为联盟理事单位代表出席本次论坛。</p>
+<p>论坛上，张开翔给出了关于分布式数字身份的几点“非技术”思考，并就数字身份的融合创新发展进行了探讨。</p>
+<p>  <strong>分布式数字身份不是一个技术问题</strong></p>
+<p>“身份”本身是基础和客观的存在，尤其在数字化世界中，我们首先要“标识”出人或物的唯一性、全局性；其次， 在网络中的“身份”要可以无缝流转，在不同的受众处得到认同，这是最基本的逻辑。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0714/29_bt8m4kq0js.png" alt="分布式数字身份的几个“非技术”思考"></p>
+<p>要让网络中不同的参与者都认识这个“身份”，首先需要大家用共同的语义对身份进行描述，也就是达到相当程度的规范性和标准化；其次，在认识“身份”后，如何评估“身份”所代表的人或物所蕴含的真实意义和可信程度，则是评估体系的“分内之事”；最后，还有一些“灵魂拷问”：大家为什么要接受某个“身份”并为之提供服务，是因为市场和商业逻辑的需要，还是管理上的要求呢？身份互通互认这件事情，能给人或企业带来什么好处？要付出什么成本，又会有什么风险要应对呢？ </p>
+<p>审视以上问题，我们会发现，这些考量和“写代码”并无直接相关性，更多的是略显宏大且尚无标准答案的命题。</p>
+<p>目前，身份的唯一性标识以及身份的互通、互认被行业公认是非常必要的， 这已然是一个基本共识。在这基础上，行业也逐步认可W3C DID是分布式数字身份的重要（即使不是唯一）协议和规范。</p>
+<p>可能有人会说，DID不就是技术规范吗？其实读一下DID的文案，会发现它更像语义上的约定，以及管理章程的制定，以帮助大家建立描述身份、管理凭据的统一方法论。DID并不像是硬核的技术规范，其原文中也频繁提到：“建议实现某个功能（如选择性披露），但不限定用什么技术实现”。换言之，对于DID，只要能互通互认，可以采用开放性的技术路线，技术细节并不重要。 </p>
+<p>相比其他具体的技术问题，这个领域的挑战，其实更在于场景、市场、治理体系，以及协议和规范路线的选择。总之，想清楚“<strong>做什么</strong> ”、 “<strong>能带来什么好处又有什么风险</strong> ”比“技术上怎么做”更重要。从这个层面来看，分布式数字身份本质上并不是一个技术问题，或者说，这个概念的范围比单纯的技术问题更“大”。</p>
+<p>  <strong>分布式数字身份的技术并不是问题</strong></p>
+<p>即使已经把上一节的灵魂拷问想清楚了，要着手去实现一个完整的分布式数字身份系统，从最底层的密码学、到区块链、以及上层的应用体系，确实还是会存在庞大的技术版图。这仿佛也在佐证“并不是（仅有）一个技术问题”。</p>
+<p>但我的第二个观点是“<strong>分布式数字身份的技术并不是问题</strong> ”。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0714/29_comgktu3zm.png" alt="分布式数字身份的几个“非技术”思考"></p>
+<p>虽然技术版图可能让人眼花缭乱，但是在过去几年间，经过行业的广泛关注和重点投入，诸多技术门槛已经被迈过。这期间，许多专家已经熟读协议文本，输出大量行业研究，甚至是直接参与了协议的设计，并主导制定相关规范和标准。在基础能力方面，许多和DID相关的开源软件项目、标准化硬件模组、中间件和云平台已经应运而生，而且这些技术成果往往都忠实地实现了相关协议、有着齐备的功能、不错的性能和友好的体验。</p>
+<p>作为应用方，只需要明确需求，约定建设规格，必能找到一款适合的技术方案。与此同时，技术会随着应用需求的变化而快速迭代，绝不会成为堵塞产业发展的制约因素。所以，今天我们可以大胆的说一句：“<strong>技术不是问题</strong> ”，关键是能否把技术“<strong>用起来</strong> ”。</p>
+<p>  <strong>分布式数字身份用什么平台也不是问题</strong></p>
+<p>抛出这个观点，是因为我时常被问到，“DID是不是一定要跑在区块链上？” </p>
+<p>让我们回归问题的本质：分布式数字身份追求的是被“互通互认”，而区块链主要是聚焦于解决 “信任”问题。在现实世界中，如果一个权威机构或大型企业本身已经具备了相当高的信用，得到了广泛的认可，那么提供数字身份服务时，要做的只是采用通用友好的协议（如DID），并遵循相关的运作规范，面向网络提供相关的信息和服务即可。</p>
+<p>如果这个大型企业或权威机构的服务遍布全国全球，并嵌入了多维场景和多种平台（如物联网等）中产生互动，也很难说它不是“分布式”。至于其系统是用区块链、还是云平台，甚至是异地多活的分布式集群架构来承载，都是可行的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0714/29_fk490esv9a.png" alt="分布式数字身份的几个“非技术”思考"></p>
+<p>无论什么平台，只要加载了经过行业共识的协议，就可以成为分布式数字身份服务平台。由于协议本身已经具备了很强的通用性，身份标识可以安全地创建，凭据可以便捷地颁发、核验，能为各种场景提供可信服务，那么，通则不痛。反之，如果数据格式和协议接口是异构的，那么即使是上了区块链也是寸步难行。</p>
+<p>当然，只要是多方协作，就存在信任问题。不论是竞合关系的企业之间，或者是离散的个体，它们彼此之间要建立起价值网络，那么，采用区块链来构建公开、对等的可信网络，并将分布式数字身份作为信任锚点，会是比较常见的方案。 </p>
+<p>  <strong>分布式数字身份有助于改善隐私问题</strong></p>
+<p>在非强信任的环境中，实现互认互通只是完成了“功能需求”，我们还需要审视数据的安全和隐私风险。随着《数据安全法》和《个人信息保护法》等法律法规陆续出台，其对使用数据的合规性也提出了更为严格的要求。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0714/29_ns9klceyss.png" alt="分布式数字身份的几个“非技术”思考"></p>
+<p>如果数据“自产自销”，缺乏流动，那么孤岛效应就会凸显，数字化社会难以实现。如果简单化地“获取”或“输出”数据，就有可能触及红线。</p>
+<p>最终，行业必然要回归到“以用户为中心”的基本准则，在用户安全隐私得到保障的前提下，提供优质合规的服务。</p>
+<p>在数据的完整生命周期中，分布式数字身份是“起点”。我们使用网络服务时，通常要完成验身和KYC(Know Your Client)，既往我们可能把实名信息的明文给到了服务商，在分布式数字身份的创新模式中，我们可以自主管理自己的标识和凭据。</p>
+<p>采用密码学算法生成无法被跟踪和画像的身份标识，通过“<strong>用证明代替明文</strong> ”、“<strong>选择性披露</strong> ”等策略，在隐匿身份信息的同时，依托权威部门授予的密码学凭据，能够证明自己有使用某个服务的资质，而无需泄露不必要的敏感信息，服务商也不能因此拒绝服务。这样就从源头杜绝了信息泄露，符合“知情同意”、 “最小采集”等原则，也可以实现“前台匿名后台实名”的监管审计要求。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0714/29_dgs5fjjvw6.png" alt="分布式数字身份的几个“非技术”思考"></p>
+<p>在保护了用户身份隐私的前提下，用户基于分布式数字身份和服务商交互，所生成的各级数据，依旧可以采用密码学、区块链、隐私计算等方案，进行全流程的管控。其中所牵涉到的技术包括安全多方计算、联邦学习等等，此不赘述。</p>
+<p>总之，“技术不是问题”。重要的是，分布式数字身份的标识和凭据会贯穿数据全生命周期，在追溯数据的来龙去脉，服务授权，保证数据可转移可遗忘等环节起到不可或缺的作用。显然，这个过程不仅需要技术实现，也依托于管理机制、法律法规的完善，进而才能完成闭环。   </p>
+<p>  <strong>分布式数字身份的应用正当时</strong></p>
+<p>当下，技术相对成熟，法律法规趋于成型，我们不妨放手去多做一些应用。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0714/29_a764dho5wv.png" alt="分布式数字身份的几个“非技术”思考"></p>
+<p>在粤澳通关的场景中，微众银行区块链团队就用密码学的方式给用户生成凭证，既能实现健康码跨境互认，支持两地居民往来互通，又确保符合隐私保护等相关法律法规要求，不会造成数据跨境传输等安全合规问题，大大便利了粤澳互通人群的日常生活。除此以外，我们还在绿色出行等多方协作平台、医疗健康、版权和个人证照管理等领域提供开源技术支持，有多个应用场景落地，都取得了非常好的反响。</p>
+<p>在每个领域都要认真和审慎地思考：业务本身是否有着与外部进行多方协作的需求？合作流程中是否要解决身份互信的问题？是否能给参与者以及相关的用户带来价值？这样的合作模式是否可以持续？……如果这些问题都有了肯定的答案，那么，就去使用分布式数字身份来做为业务的起点吧！</p>
+<p>  <strong>分布式数字身份的融合创新持续发展</strong></p>
+<p>总结一下，分布式数字身份本身不是一个技术问题，我们首先要找到基于分布式数字身份进行互通互认的动机，并在应用、市场、政策、治理层面多思考其可行性；在实操层面，分布式数字身份具有开放性的技术体系，无需绑定在单一平台上，在开源开放的技术生态基础上，技术本身也不是问题。</p>
+<p>另外，我们无需把分布式数字身份看做是独立的行当，又或者把它当成能解决所有问题的“万能锤”。在整个数字化价值网络的大版图中，分布式数字身份可以是起点和支柱，和其他部分像齿轮一般互相啮合，共同运转，融合创新。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0714/29_fvjfej3zwd.png" alt="分布式数字身份的几个“非技术”思考"></p>
+<p>在产业联盟中，大家可以先达成基本的共识，选择合理的协议路线，首先确保能“<strong>互通</strong> ”；然后，注重保护用户隐私和坚持业务合规，在周密的治理机制的基础上，对数字化身份的价值达成“<strong>互认</strong> ”。长远来看，分布式数字身份要发挥出应有的价值，还是要依托更多的应用场景，深入融合到数据和价值的整个生命周期去，为用户提供更多更优质的服务和体验。</p>
+<p>无论如何，数字化社会依旧是“以人为本”，分布式数字身份将会帮助数字化社会更健康、透明和高效地发展。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0714/29_e3gsw0z7eu.png" alt="分布式数字身份的几个“非技术”思考"></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25780/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">法国AMF：欧盟应在监管加密货币方面赋予ESMA更大权力</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25832/">
+                <span class="next-text nav-default">分析：12月比特币期货呈现倒挂模式 不确定性占上风</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

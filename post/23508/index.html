@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          不同Layer 2路径的比较研究及Raydius介绍 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="随着使用需求的不断扩大，以太坊的性能瓶颈逐渐凸显，底层扩展性不足的问题极大的限制了应用程序并同时影响了用户体验。" />
+<meta name="keywords" content="扩容方案, Layer 2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/23508/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="不同Layer 2路径的比较研究及Raydius介绍" />
+<meta property="og:description" content="随着使用需求的不断扩大，以太坊的性能瓶颈逐渐凸显，底层扩展性不足的问题极大的限制了应用程序并同时影响了用户体验。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/23508/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-02T00:00:00+00:00" />
+
+<meta itemprop="name" content="不同Layer 2路径的比较研究及Raydius介绍">
+<meta itemprop="description" content="随着使用需求的不断扩大，以太坊的性能瓶颈逐渐凸显，底层扩展性不足的问题极大的限制了应用程序并同时影响了用户体验。"><meta itemprop="datePublished" content="2021-06-02T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-02T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4194">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="不同Layer 2路径的比较研究及Raydius介绍"/>
+<meta name="twitter:description" content="随着使用需求的不断扩大，以太坊的性能瓶颈逐渐凸显，底层扩展性不足的问题极大的限制了应用程序并同时影响了用户体验。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">不同Layer 2路径的比较研究及Raydius介绍</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-02">
+      2021-06-02
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4194 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>随着使用需求的不断扩大，以太坊的性能瓶颈逐渐凸显，底层扩展性不足的问题极大的限制了应用程序并同时影响了用户体验。<strong>近年来，许多研究和工作都致力于解决这一矛盾，包括对以太坊核心协议进行升级的第一层扩展技术（Layer 1）和构建于基础以太坊协议之上的第二层扩展技术（Layer 2）。</strong> 虽然Layer 1和Layer 2解决方案并不互斥，两者共同作用才能为以太坊社区提供更好的发展前景，但在以太坊主网的架构限制和Eth 2.0仍未上线的情况下，<strong>Layer 2在现阶段被投入了更多的关注，同时也取得了巨大的进展。</strong></p>
+<p>相比于Layer 1升级核心协议的直接解决方案，Layer 2采用了迂回的方式来解决当前吞吐量和交易速度掣肘的问题，核心思想是将本应在主网上处理的交易转移到Layer 2上进行，只在必要时才使用Layer 1来保证交易的顺利进行。虽然这种技术理念使得大部分Layer 2是在牺牲掉一定安全性和通用性的情况下才换来吞吐量和成本的改善，但由于其很好的平衡了交易成本、交易速度、用户体验等方面，<strong>因此Layer 2扩容技术对很多安全性和确定性要求相对不高的应用具有很强的吸引力。</strong></p>
+<p>经过几年的努力，以太坊社区中涌现了多种采用了不同技术路径的Layer 2方案，随着时间的推移和越来越多的技术路径加入竞争，不同方案的优势和缺点也逐步暴露在了使用者和投资者的面前。</p>
+<p>作为初代Layer 2方案的状态通道技术，非常适合参与人数确定且需要在一段时间内多次交换更新状态的应用，它采用了“挑战期”这一设定来满足安全性的需要，同时由于交易发生在通道内部，<strong>可以为用户提供很好的私密性。</strong> 但由于“挑战期”的存在而引入的活性假设，使得用户或其受委托方需要一直监控Layer 1以便防止交易的对方在提交状态更新时作恶，而长时间在线对于用户来说是很不友好的。同时，<strong>由于每次在交易成员变动时需要对状态通道的法官合约进行修改，这非常不适用于存在大量一次性交易和短时交易的应用。</strong></p>
+<p><strong>与状态通道一样，Plasma也是一种管理链下交易的技术，同时依靠底层的以太坊区块链来实现其安全性。</strong> 但不同的是，Plasma提供了一个可扩展性框架，可创建依附于以太坊“主”区块链的“子”区块链，使得可以在子链上执行许多复杂的操作，在与主链保持最低限度交互的情况下，运行拥有数千名用户的整个应用程序。<strong>但Plasma 仍然引入了与状态通道相同的活性假设，同时还引入了数据可用性假设，即用户需要相信运营者会提供所有交易数据，</strong> 以便在需要时使用这些数据来验证交易的正确性，这要求Layer 1与Layer 2 之间需要经过检查点沟通数据，因此使得退出时间非常长。此外，状态通道和 Plasma 都不支持智能合约，这严重限制了需要具备 EVM 兼容性的应用。</p>
+<p>由于状态通道和Plasma存在的原生缺陷和在应用场景中的限制，采用这两种技术路径的项目目前基本处于停滞期，少数的团队还在坚持推进，整体来说活力不强。在这种情况下，亟需另一种可以兼顾容量、速度、安全、可用等方面的全新Layer 2技术路径来解决状态通道和Plasma存在的问题。<strong>Rollup是继两者之后最新一代扩容方案的概念统称，核心思想是将多比交易批量打包处理，以实现与Layer 1尽量少的交互以显著降低gas成本。</strong> 同时，由于Rollup采用以太坊中的calldata来汇总Layer 2上的交易，这使得任何用户在任何时候都能从Layer 1中获取Layer 2的交易信息，因此避免了数据可用性假设这一掣肘Plasma应用的缺陷。</p>
+<p><strong>目前的Rollup项目从具体实现方案上又可以分为 ZK Rollup (ZKR) 和 Optimistic Rollup (OR)两类，</strong> 分别利用密码学中的零知识证明和博弈机制中的欺诈证明来确保网络和数据的安全性，而安全性对于扩容技术至关重要，这也是Rollup成为目前最被看好的Layer 2技术的最重要原因之一。<strong>ZKR的理念很简单，</strong> 是利用将计算和验证分开进行，即所有资金由主链上的智能合约持有，而计算和存储则在链下执行，每个 Rollup 区块都会生成一个状态转换零知识证明，并通过主链合约进行验证，以此来提高吞吐量并降低交易成本。<strong>OR则同时借鉴了Plasma和ZKR的设计，</strong> 它基于Layer2的数据对Layer1的状态进行了“乐观”的预测，将交易不断的向前推进，除非有人发布了不正确的状态转换，其它运营者或者用户则可以指出不合法的交易并回滚不正确的区块、惩罚恶意验证者。</p>
+<p>虽然Rollup技术目前已被公认为最优秀的Layer 2解决方案，甚至被称为“短期内唯一的选择”，但ZKR和OR也具有各自的局限性。<strong>ZKR虽然速度很快，安全性也很高，但是在实现与智能合约的兼容方面还存在技术难关。</strong> 而OR虽然可以实现与智能合约的兼容，<strong>但仍存在“挑战期”的问题，挑战期设置的太短影响安全性，而过长则会影响交易效率。</strong> 但总的来说，从安全性、可实现性等方面来说，Rollup技术仍是目前的最优解决方案，未来也极有可能出现利用该技术路径在Layer 2生态系统中占据较大优势的项目。</p>
+<p>除了以上三种技术路径之外，<strong>侧链解决方案也被寄予了一定的期望。</strong> 侧链的本质是在基础层上再搭建一条链，在这条链上用采用另外一套验证方式，因此这项技术的安全性是分开的，即主链有主链的安全策略，侧链有侧链的安全策略。因此，<strong>这也就成为了目前侧链技术路径存在的最大原生缺陷，即安全性非常依靠侧链本身采用的安全策略，被认为是在一定程度上牺牲了安全性而获取的扩容方案。</strong> 但是如果能通过改善侧链安全策略将安全损伤控制在一定范围内，凭借其较高的交易效率和与智能合约兼容的特性，有机会成为Rollup之后较优的Layer 2方案。</p>
+<p>通过以上分析不难看出，在考察各个Layer 2方案时，主要的衡量指标有安全性、通用性/兼容性、成本、交易时间、吞吐量、用户体验等方面，而现有的技术路径在以上不同的性能方面都多少存在缺陷。在这种情况下，不仅Layer 2的技术路径在不断更新和升级，同一个Layer 2技术路径中也存在多个项目的竞争，<strong>因此目前的Layer 2赛道上“百花齐放”，使得不同的Layer 2解决方案被自然的分割成了很多差异化的生态系统，出现了流动性割裂的局面，这似乎与Layer 2起初拓展和连接以太坊社区的初衷背道而驰。</strong> 在这种情况下，有两种解决方案：</p>
+<p>1.利用Layer 1进行跨Layer 2的交易，即将Layer 1作为中转以实现两个Layer 2项目中的资产交互；</p>
+<p>2.搭建跨不同Layer 2项目的流动性解决方案，包括利用状态通道、中间代币桥等的项目。</p>
+<p>第一种解决方案会面临较高的Gas费以及较长的结算时间，对于大多数用户和较频繁的交易很不友好，也没有从根本上解决以太坊社区扩展性不足的问题，因此跨Layer 2项目的流动性解决方案就成为了必然选择。</p>
+<p>优秀的流动性解决方案除了能够搭建不同Layer 2项目间的连接桥梁外，同样也需要满足安全性、通用性、低成本、低耗时以及较好的用户体验等要求，以使得以太坊的Layer 1、Layer 2以及流动性解决方案共同形成一个安全、高效、用户友好的生态整体。<strong>在以上目标驱动下，团队开发了基于Substrate的流动性解决方案——Raydius，在满足不同Layer 2生态系统及Layer 1间可以安全、高效、快捷、便宜连接的基础上，还支持可定制、可兼容、可开发的通用流动性方案的实现。</strong></p>
+<p>对于Layer 2的流动性解决方案来说，安全性是非常重要的衡量指标。由于引入基于去中心化协议技术的Substrate作为框架，Raydius避免了存在于中心化流动性解决方案中的潜在交易风险，同时由于交易数据都是被记录在以太坊上的，因此在区块频繁同步的情况下可以实现更高的系统安全水平。<strong>在链桥设计方面，验证Raydius与其他区块链的交易或同步数据时需要验证者缴纳一定的安全保证金，通过动态控制保证金的阈值从而为Raydius增加了另一层的安全性。</strong></p>
+<p>此外，通用性和兼容性对于流动性解决方案的推广和扩大应用范围也至关重要。Raydius提供了可开发、可扩展的接口，利用与EVM 、eWasm可兼容特性和支持通用智能合约的通用特性，它够支持开发者自主构建应用程序，解决了目前很多流动性解决方案只能实现资产转移的困境。<strong>同时，Raydius还能够支持多种编程语言，使得熟悉不同编程语言的开发者都能够很方便的拓展应用边界，实现更多样的功能。</strong></p>
+<p>目前的Layer 2流动性解决方案总是存在成本与安全性的权衡和取舍，而Raydius在面对这个问题时将选择权交给了用户，通过允许用户根据交易需求和应用的特点自主选择快速通道或标准通道，这能够为具有不同需求的dApp提供更大的灵活性。</p>
+<p>通过以上对安全性、通用性、高效性等方面的分析，可以明确Raydius在设计和开发时是将安全性放在首位，同时非常重视通用性和兼容性，此外还兼顾了成本和用户需求等方面，为促进形成一个安全、高效、用户友好的生态整体提供了一个优秀的流动性解决方案。Raydius期待未来随着Layer 2技术的不断进步，可以实现与更多优秀Layer 2项目的合作，共同建立丰富多样、方便快捷的生态。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/23465/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">波卡联合创始人：波卡平行链将打破区块链 Layer 1 局面</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/23527/">
+                <span class="next-text nav-default">从A股市场看DeFi行情与代币分配改革</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

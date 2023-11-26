@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文看懂典型的NFT合约漏洞有哪些？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="典型的NFT合约漏洞主要包含两大类，一类是NFT自身的漏洞；一类是NFT平台业务相关漏洞问题。" />
+<meta name="keywords" content="NFT" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39193/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文看懂典型的NFT合约漏洞有哪些？" />
+<meta property="og:description" content="典型的NFT合约漏洞主要包含两大类，一类是NFT自身的漏洞；一类是NFT平台业务相关漏洞问题。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39193/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-20T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文看懂典型的NFT合约漏洞有哪些？">
+<meta itemprop="description" content="典型的NFT合约漏洞主要包含两大类，一类是NFT自身的漏洞；一类是NFT平台业务相关漏洞问题。"><meta itemprop="datePublished" content="2022-06-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5502">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文看懂典型的NFT合约漏洞有哪些？"/>
+<meta name="twitter:description" content="典型的NFT合约漏洞主要包含两大类，一类是NFT自身的漏洞；一类是NFT平台业务相关漏洞问题。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文看懂典型的NFT合约漏洞有哪些？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-20">
+      2022-06-20
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5502 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>欢迎来到Web3安全连载系列，上周，我们刚推送《Web3安全连载（1） | 当硬核黑客开始研究“钓鱼”，你的NFT还安全吗？》后，就有一位NFT收藏者被盗。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_r89o7yktgo.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>在上篇文章里，我们就说过Web3世界黑客依然猖狂，因此个人的安全防范非常重要，大家可以再次阅读下面这篇文章：</p>
+<p><strong>干货 | 钓鱼网站“入侵”Web3，这些防骗技巧必须学会！</strong></p>
+<p><strong>此外，NFT智能合约层面上的漏洞同样值得我们警惕！</strong> 随着今年一系列NFT智能合约相关安全事件的发生，如：APE Coin空投事件、TreasureDAO安全事件等，让我们必须再次关注NFT领域的智能合约安全。</p>
+<p><strong>典型的NFT合约漏洞主要包含两大类，一类是NFT自身的漏洞；一类是NFT平台业务相关漏洞问题。</strong> 闲话少说，本文我们将对NFT中的这两类合约安全问题进行详细介绍，欢迎来围观。</p>
+<p>‍‍PART 01</p>
+<p>「NFT自身漏洞问题」</p>
+<p><strong>NFT的生命周期通常分为发行、流转、销毁等阶段，其中在发行阶段存在的安全问题最多。</strong> NFT的购买通常分为预售、正式发售两种情况。而预售阶段项目方一般会设置能够参与的用户白名单。但是即使进行了设置，但仍然存在各类白名单绕过漏洞的问题。</p>
+<p><strong>案例一：APE Coin空投事件</strong>  </p>
+<p>2022年3月17日，推特用户Will Sheehan发布推文称<strong>套利机器人通过闪电贷薅羊毛拿到了超过6万的APE Coin空投。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_7immlpi7sp.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>关于本次攻击事件中，相关信息如下：</p>
+<p>攻击交易：</p>
+<p>0xeb8c3bebed11e2e4fcd30cbfc2fb3c55c4ca166003c7f7d319e78eaab9747098</p>
+<p>获利者地址：</p>
+<p>0x6703741e913a30D6604481472b6d81F3da45e6E8</p>
+<p>漏洞合约地址：</p>
+<p>0x025C6da5BD0e6A5dd1350fda9e3B6a614B205a1F</p>
+<p>攻击者获得相关APE空投的交易具体如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_0ksc8p38t8.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>攻击者套利的主要步骤为：</p>
+<p><strong>1.首先从Opensea购买了ID为1060的BAYC NFT；</strong></p>
+<p><strong>2.通过NFTX以闪电贷借出5个BAYC NFT；</strong></p>
+<p><strong>3.利用空投合约（AirdropGrapesToken）漏洞，领取6个BAYC对应数量的APE Coin；</strong></p>
+<p><strong>4.归还闪电贷，并转移获利的APE Coin；</strong></p>
+<p>其中涉及到的漏洞合约AirdropGrapesToken代码如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_j5blq3sgu1.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>如上图所示，该函数使用 alpha.balanceOf()和beta.balanceOf()判定调用者对BAYC/MAYC NFT的所有权。但是这种方式仅能获取到用户对该NFT所有权的瞬时状态，该瞬时状态可以通过闪电贷借入进行操控，更安全的方式是采用基于默克尔树的（Merkle tree）链下快照方式。该方式将白名单存储在链下项目方的中心服务器上，当用户在前端官网点击mint之后，服务器会根据钱包地址生成Merkle proof，用户再向智能合约发送一笔携带Merkle proof的交易，并在链上的智能合约中进行验证。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_ywf9aitifi.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>该方式一般包含以下三部分：</p>
+<p><strong>- 后台根据白名单地址生成Merkle tree；</strong></p>
+<p><strong>- 将Merkle Root上传到区块链；</strong></p>
+<p><strong>- 验证时前端根据当前用户生成Merkle Proof，并将其传入NFT合约校验；</strong></p>
+<p>具体可以参考NFT项目Invisible Friends (INVSBLE)，合约地址：0x59468516a8259058baD1cA5F8f4BFF190d30E066。以下是INVSBLE项目中采取的白名单铸币方法mintListed()：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_f647f9l0jb.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p><strong>- amount：</strong> 铸造NFT的数量；</p>
+<p><strong>- maxAmount：</strong> 该地址能铸造的NFT最大数量；</p>
+<p><strong>- merkleProof：</strong> 判断某特定白名单地址节点是否属于Merkle tree上所需的数据，包含叶子节点、路径、根；</p>
+<p>该函数首先校验预售是否开启、调用者是否还有额度铸造，接着进行白名单校验，并验证调用者出价是否正确，最后铸造NFT。以下为进行白名单验证的代码实现：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_iqg7sgnvdm.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>keccak256(abi.encodePacked(sender,maxAmount.toString()))用于计算默克尔树的叶子节点，此处用白名单用户地址和每个用户能够铸造的最大NFT数量作为叶子节点属性。同时还隐藏了一个校验，即msg.sender必须是白名单地址本身。</p>
+<p>Merkle Proof验证计算使用library MerkleProof，计算过程可以参考SPV验证，具体源码如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_slbzmb3t7f.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>使用该方式，NFT发行合约中不需要存储整个白名单列表，只需要存储Merkle root。当交易发送方是非白名单用户时，因为其无法提供合法的Merkle Proof，则无法通过校验。</p>
+<p><strong>链下数据快照验证白名单还有另一种使用签名的方式，此时如果合约开发者未设置足够的安全检查，也容易造成安全问题，如：NBA薅羊毛事件。</strong></p>
+<p><strong>案例二：NBA薅羊毛事件</strong>  </p>
+<p>2022年4月21日，NBAxNFT项目方遭遇黑客攻击。根据官方回复，<strong>由于其白名单校验出现问题导致预售提前售罄。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_mcbkobq3un.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>本次攻击事件中，漏洞合约地址：</p>
+<p>0xdd5a649fc076886dfd4b9ad6acfc9b5eb882e83c</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_3sofkzalws.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>上述代码存在两个安全问题：<strong>签名冒用和签名复用。签名复用指的是，同一个签名只能使用一次，一般项目方会在合约中设置一个mapping结构存储该签名是否已经被使用，具体源码如下：</strong></p>
+<p> mapping(bytes =&gt; bool) private usedClaimSignatures</p>
+<p>其中bytes代表Hash签名数据，bool值代表该签名是否曾经被使用，但是mint_approved()函数中并未存储该值，所以存在签名复用问题。</p>
+<p>本文主要研究白名单校验中的签名冒用问题，即由于vData memory参数info在传参时未进行msg.sender校验导致签名可冒用。具体白名单校验函数verify()如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_c09dkcogk9.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>上述代码采用签名校验的方式验证白名单，白名单存储在中心化服务器上，用户从前端NFT官网点击mint时，服务器会首先校验是否是白名单用户。如果是，则由服务器使用项目方私钥进行签名，再将签名数据返回。最后用户携带该签名的交易发送到链上进行验证。因此此处ecrecover()验证的仅仅是项目方的地址，仅能证明该签名数据是由项目方进行签发的，但是由于未对签名数据中的调用者，即info.from进行验证，所以导致签名可冒用。</p>
+<p>PART 02</p>
+<p>「NFT平台漏洞问题」</p>
+<p>NFT平台主要有两类，一类是NFT交易平台，如：<strong>Opensea、TreasureDAO等；另一类是结合了DeFi业务的平台，如：Revest Finance等。</strong> 根据平台类型不同，对应的业务类型也不同，造成的安全漏洞也不同。</p>
+<p><strong>NFT+DeFi 类型</strong></p>
+<p>目前NFT + DeFi主要分为三种类型：<strong>一种是将NFT当作流动性代币，</strong> 如：Uniswap-V3等；<strong>一种是将NFT碎片化，</strong> 即FNFT（Fractional Non-Fungible Token），如：Revest Finance等；<strong>另一种是将NFT作为借贷的抵押品，</strong> 如：Position Exchange等。其中Revest Finance项目包含以上三种业务类型，因此本文从业务逻辑的角度研究了Revest Finance安全事件。</p>
+<p>Revest Finance是针对DeFi领域的staking解决方案，用户通过该项目参与任何Defi的staking，都可以直接生成一个F-NFT，其代表了staking仓位当前和未来的价值，具体的业务模型如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_mewbqas3nb.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>该项目中用户可以通过mintAddressLock()铸造对应抵押资产的FNFT，具体代码如下所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_2m9z58ut2u.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>其中涉及到的重要参数为：</p>
+<p><strong>- trigger：</strong> 只有该address可以解锁质押的资产；</p>
+<p><strong>- recipients：</strong> 铸造的FNFT对应的接收者；</p>
+<p><strong>- quantities：</strong> 各个接收者接收的FNFT数量；</p>
+<p><strong>- IRevest.FNFTConfig：</strong> 描述FNFT对应的质押资产，包括：asset（抵押的资产类型，如WETH等）、depositAmount（每个FNFT代表的抵押资产数量，包含精度）等。</p>
+<p>用户也可以通过depositAdditionalToFNFT()追加FNFT的抵押资产，具体代码如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_aj5oyyjanz.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>其中涉及到的重要的参数为：</p>
+<p><strong>- fnftId：</strong> 需要追加资产的FNFT；</p>
+<p><strong>- amount：</strong> 每个FNFT需要追加的抵押资产数量，包含精度；</p>
+<p><strong>- quantity：</strong> 为多少个FNFT追加抵押；</p>
+<p>用户追加质押资产时，根据quantity的不同存在三种情况，第一种情况是为所有FNFT追加抵押，第二种情况是为其中一部分FNFT追加抵押，第三种情况是追加抵押的FNFT数量大于FNFT总量，此时报错返回。该漏洞为第二种情况下造成的重入，具体逻辑如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_22uy4tb6uc.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>由上述代码可知，追加抵押时需要先把之前的FNFT销毁，之后再铸造新的FNFT。但是在铸造时，由于min()函数中未判断需铸造的FNFT是否已经存在，并且状态变量fnftId自增在_mint()函数后。而_min()中存在ERC-1155中的隐藏外部调用_doSafeTransferAcceptanceCheck()，造成了重入漏洞。具体代码如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_2q3liid0ss.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>此处的mint()函数中_mint()包含一个隐藏的外部调用，具体如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_qg8slhjowg.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>攻击主要包括以下三个步骤：</p>
+<p><strong>1.调用mintAddressLock()铸造了2个fnftId为1027的FNFT，但是它们对应的资产为0；</strong></p>
+<p><strong>2.调用mintAddressLock()铸造了360000个fnftId为1028的FNFT，它们对应的抵押资产仍然为0；</strong></p>
+<p><strong>3.在步骤2中，利用ERC-1155中_mint()函数中的_doSafeTransferAcceptanceCheck()重入了depositAdditionalToFNFT()，将1个fnftId为1027的FNFT对应的抵押更新为1 WETH。</strong></p>
+<p><strong>由于此时fnftId还未自增，仍然为1027，所以该函数会生成一个fnftid为1028且价值为1 WETH的FNFT，导致将id为1028的FNFT价值从0更新为了1 WETH。</strong></p>
+<p>综上，由于FNFT是一种证券化后的NFT，其价值会根据业务逻辑的不同产生波动，如该例中的staking仓位价值。所以FNFT存在价值变更的情况，一般会通过重写burn()和mint()等函数实现价值变更，如：本例中的FNFTHandler合约。如果实现时没有考虑检查-交互-生效机制，就可能存在严重安全问题。</p>
+<p><strong>NFT交易平台</strong>  </p>
+<p>该类平台一般会实现简单的市场功能，包括：挂单、取消挂单、购买、出价、取消出价、接受出价、提现等。其中涉及到的NFT资产包括ERC721、ERC1155两种，开发过程中如果没有考虑到二者的区别，就可能造成安全问题，如TreasureDAO事件。</p>
+<p>2022年3月3日，TreasureDAO生态的TreasureMarketplace交易平台遭到黑客攻击，造成NFT token被盗。传送门——《怪事？盗了又归还？TreasureDAO安全事件分析》</p>
+<p>在本次事件攻击事件中，攻击者信息如下：</p>
+<p>交易发起地址：</p>
+<p>Arbitrum：0x9b1acd4336ebf7656f49224d14a892566fd48e68</p>
+<p>漏洞合约：</p>
+<p>Arbitrum：0x812cda2181ed7c45a35a691e0c85e231d218e273</p>
+<p>攻击交易：</p>
+<p>Arbitrum：0x57dc8e6a28efa28ac4a3ef50105b73f45d56615d4a6c142463b6372741db2a2b</p>
+<p>TreasureMarketplaceBuyer合约的buyItem函数在传入_quantity参数后，并没有做代币类型判断，直接将_quantity与_pricePerItem相乘计算出了totalPrice，因此safeTransferFrom函数可以在ERC-20代币支付数额只有0的情况下，调用TreasureMarketplace合约的buyItem函数来进行代币购买。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_8k1py2dysj.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>但是在调用TreasureMarketplace合约的buyItem函数时，函数只对购买代币类型进行了判断，并没有对代币数量进行非0判断，导致ERC-721类型的代币可以在无视_quantity数值的情况下直接购买，从而实现了漏洞攻击。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0620/18_gii7508feq.png" alt="一文看懂典型的NFT合约漏洞有哪些？"></p>
+<p>本次安全事件主要原因是ERC-1155代币和ERC-721代币混用导致的逻辑混乱，ERC-721代币并没有数量的概念，但是合约却使用了数量来计算代币购买价格，且最后在代币转账的实现中也未进行逻辑分离。</p>
+<p>此外，在与NFT交易平台相关的漏洞中，除了上述由于NFT本身造成的漏洞外，<strong>还有由于平台本身存在安全问题而危害NFT交易的情况。如：近期发现的Opensea Wyvern 2.2合约漏洞，攻击者可以利用该漏洞窃取Opensea市场中具有活跃报价的用户WETH。</strong> 所幸Opensea团队预先发现了该问题，并进行了及时的修复，尚无相关攻击产生。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39172/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">一文读懂Web3数据赛道独角兽、破局者与未来之星</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39169/">
+                <span class="next-text nav-default">以太坊“灰色冰川”硬分叉6月底进行 合并或拖到9-10月</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

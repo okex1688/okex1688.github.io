@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Polygon 与以太坊主网一些有趣的数据对比 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在 ERC20 代币智能合约的建立、DeFi 协议使用和稳定币大宗交易上，Polygon 似乎正在「反客为主」。" />
+<meta name="keywords" content="以太坊, ERC20" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/24177/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Polygon 与以太坊主网一些有趣的数据对比" />
+<meta property="og:description" content="在 ERC20 代币智能合约的建立、DeFi 协议使用和稳定币大宗交易上，Polygon 似乎正在「反客为主」。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/24177/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-12T00:00:00+00:00" />
+
+<meta itemprop="name" content="Polygon 与以太坊主网一些有趣的数据对比">
+<meta itemprop="description" content="在 ERC20 代币智能合约的建立、DeFi 协议使用和稳定币大宗交易上，Polygon 似乎正在「反客为主」。"><meta itemprop="datePublished" content="2021-06-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2207">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Polygon 与以太坊主网一些有趣的数据对比"/>
+<meta name="twitter:description" content="在 ERC20 代币智能合约的建立、DeFi 协议使用和稳定币大宗交易上，Polygon 似乎正在「反客为主」。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Polygon 与以太坊主网一些有趣的数据对比</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-12">
+      2021-06-12
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2207 字 -
+        预计阅读 5 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>在 ERC20 代币智能合约的建立、DeFi 协议使用和稳定币大宗交易上，Polygon 似乎正在「反客为主」。</p>
+<p>原文标题：《透过 Nansen 对比 Polygon 和以太坊数据的几点有趣发现》</p>
+<p>关于以太坊、Layer 1 和 Layer 2 孰优孰劣、以及管理可扩容性、安全性和去中心化三位一体的最佳面貌，一直存在很多争论。围绕非以太坊链和各种 L2 解决方案，正在形成全新的去中心化应用（DApp）生态系统，让用户能够以更低的 gas 费用享受相同的 DeFi 体验。</p>
+<p>币安智能链（BSC）和 Polygon 就是这样的例子。</p>
+<p>Polygon 的 Gas 费用肯定更低。Polygon 上的每日活跃交易数量远远超过以太坊，但每天支付的 Gas 费用总额从未超过 1 万美元。相比之下，以太坊用户每天花费高达 700 万美元的 Gas 费用进行交易。</p>
+<p>但除此之外，Polygon 和以太坊上链上活动之间的奇怪差异也值得进一步调查。在本文中，我们对 Polygon 中链上数据进行了简短的探索性分析，并与以太坊上的活动进行了比较。</p>
+<h3 id="合约部署活动">合约部署活动</h3>
+<p>合约部署活动可能是显示区块链项目开发状况的一个很好的晴雨表。 当比较以太坊和 Polygon 之间的数据时，某些异常会非常明显。</p>
+<p>我注意到，一方面，ERC20 代币合约部署在 Polygon 上的合约总数占比要高得多。 自 4 月以来，每部署 220 个其它合约，Polygon 上就会部署 1 个 ERC20 代币合约。 而在以太坊上，每 1430 个其它合约中会部署 1 个 ERC20 代币合约！</p>
+<p>事实上，Polygon 上经常出现名称重复的代币。主要是由于两个原因：有人部署虚假代币以诱使人们买入；以及部分开发人员在进行生产测试。这就是廉价 Gas 费用带来的「奇迹」。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/9ubyissvy1mdgkp" alt="Polygon 与以太坊主网一些有趣的数据对比"></p>
+<p>同名代币数量</p>
+<p>如果您在 Nansen 上的以太坊跟踪器仪表板上停留了足够长的时间，您就会知道每月部署的以太坊合约中有多达 60% 是 ChiToken 合约。作为节省 Gas 费的一种途径，这些代币被部署，然后与交易一起被销毁。而 Polygon 上似乎几乎没有这些合约——根本不需要它们。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/ftrpvlbngj6g7kc" alt="Polygon 与以太坊主网一些有趣的数据对比"></p>
+<p>以太坊每月合约部署数量</p>
+<h3 id="同时横跨以太坊和-polygon-的地址">同时横跨以太坊和 Polygon 的地址</h3>
+<p>我们还跟踪了同时横跨以太坊和 Polygon 的活跃地址数量。截至 6 月 9 日，这个数字大约占到所有 Polygon 地址的 34%。</p>
+<p>我决定解析自 2021 年 4 月以来横跨以太坊和 Polygon 的交易，以快速了解这些地址在两条链上的作用。这一用户组在 Polygon 上使用最多的项目合约属于 QuickSwap 和 Polycat.Finance。在以太坊上，Uniswap V2 的路由器使用最频繁。</p>
+<p>更有趣的是，在这些重叠的地址中，有将近 17,000 人加入 Polygon 上的 Aave——却从未在以太坊上使用过 Aave。涉及 Curve.Fi，这一数字约为 3000 人。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/hpprgwvyf9p1nv3" alt="Polygon 与以太坊主网一些有趣的数据对比"></p>
+<p>以太坊主网和 Polygon 上 Aave 和 Curve 的用户数</p>
+<h3 id="稳定币采用情况">稳定币采用情况</h3>
+<p>在以太坊上，USDT 以巨大的优势占据着稳定币流通的主导地位——USDT 的每日交易额几乎是 USDC 和 DAI 总和的两倍！ 然而在 Polygon 上，USDC 似乎是首选稳定币——始终占稳定币转帐的 50% 以上。</p>
+<p>几种 Polygon 原生稳定币协议正在开发中，IRON 和 miMATIC 其中是值得注意的两个项目。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/fg2ezu3c84iad7r" alt="Polygon 与以太坊主网一些有趣的数据对比"></p>
+<p>)Polygon 上稳定币日转账金额</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/h37csvdymk1pikb" alt="Polygon 与以太坊主网一些有趣的数据对比"></p>
+<p>Polygon 上稳定币日均用户数</p>
+<p>先发优势很可能在这里生效。最早的 QuickSwap 矿池有采用 USDC 的代币对而没有 USDT，这个 Polygon 上最早的项目对 USDC 矿池的激励力度更大。事实上，QuickSwap 上与 WETH 相比，与 USDC 配对的代币更多。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/6jcmcctr22tlu9m" alt="Polygon 与以太坊主网一些有趣的数据对比"></p>
+<p>QuickSwap 上交易对占比</p>
+<p>Uniswap 上的代币对则不同，其中多达 74% 的货币对是针对 Wrapped Ether 创建的，而针对 USDT 创建的货币对仅为 3.5%。</p>
+<h3 id="以美元计的稳定币交易价值">以美元计的稳定币交易价值</h3>
+<p>以美元为单位的稳定币转账平均值是显示 Polygon 用户一般资本规模的良好指标。Nansen 一个有用的图表是随时间变化的、交易规模的价值分布，可在我们的以太坊稳定币主仪表板上找到。</p>
+<p>我使用来自 Polygon 的链上数据进行了相同的分析，令我惊讶的是，在过去几天中，超过 100 万美元的交易占据了稳定币每日交易量的 65%。该图表看起来与以太坊上的图表非常相似，「巨鲸」显然正在进军 Polygon。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/62lkg7nt4hddq2s" alt="Polygon 与以太坊主网一些有趣的数据对比"></p>
+<p>)Polygon 上稳定币单笔交易额分布</p>
+<p>值得注意的是：规模在 1 万至 10 万美元左右的稳定币交易在 Polygon 上约占稳定币总交易量的 10-15%，但在以太坊上仅占总交易量的 6-10%，至少在过去几周内是如此。</p>
+<p>1000 至 1 万美元之间的交易也出现了相同的特征。 这可能证实了以太坊上较高的 Gas 费用会劝退美元价值较低的交易。</p>
+<p>下图是以太坊和 Polygon 每个交易区间平均总交易量百分比的可视化图表，数据取自 2021 年 6 月 1 日至 7 日。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/55nbbz1lpt1vksv" alt="Polygon 与以太坊主网一些有趣的数据对比"></p>
+<p>撰文：Ling Young Loon，Nanse 分析师<br>
+翻译：Perry Wang<a href="https://www.nansen.ai/research/polygon-and-ethereum-piecing-the-data-together"></a></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/24147/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Plasm &amp; Shiden 背后的 Stake 科技完成 1000 万美元的战略融资！</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/24184/">
+                <span class="next-text nav-default">Vitalik: 区块链信任模型</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#合约部署活动">合约部署活动</a></li>
+        <li><a href="#同时横跨以太坊和-polygon-的地址">同时横跨以太坊和 Polygon 的地址</a></li>
+        <li><a href="#稳定币采用情况">稳定币采用情况</a></li>
+        <li><a href="#以美元计的稳定币交易价值">以美元计的稳定币交易价值</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

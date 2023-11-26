@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Layer2 终极指南 (上) - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="我将谈谈以太坊上的 L2，当前扩容生态系统的状态；以及为什么我认为长期来看在以太坊上运行 L2 为最经济和最技术可持续的扩容解决方案。" />
+<meta name="keywords" content="Layer 2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/31427/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Layer2 终极指南 (上)" />
+<meta property="og:description" content="我将谈谈以太坊上的 L2，当前扩容生态系统的状态；以及为什么我认为长期来看在以太坊上运行 L2 为最经济和最技术可持续的扩容解决方案。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/31427/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-12-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-02T00:00:00+00:00" />
+
+<meta itemprop="name" content="Layer2 终极指南 (上)">
+<meta itemprop="description" content="我将谈谈以太坊上的 L2，当前扩容生态系统的状态；以及为什么我认为长期来看在以太坊上运行 L2 为最经济和最技术可持续的扩容解决方案。"><meta itemprop="datePublished" content="2021-12-02T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-12-02T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6068">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Layer2 终极指南 (上)"/>
+<meta name="twitter:description" content="我将谈谈以太坊上的 L2，当前扩容生态系统的状态；以及为什么我认为长期来看在以太坊上运行 L2 为最经济和最技术可持续的扩容解决方案。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Layer2 终极指南 (上)</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-12-02">
+      2021-12-02
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6068 字 -
+        预计阅读 13 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>介绍</strong></p>
+<p>在本文中，我将谈谈以太坊上的 L2，当前扩容生态系统的状态；以及为什么我认为长期来看在以太坊上运行 L2 为最经济和最技术可持续的扩容解决方案。</p>
+<p>免责声明：本文汇总了我的想法、其他人的资源和各种技术信息。这篇文章并不是对扩容生态系统的简单总结，而是对以太坊 L2 可扩展性的当前状态和未来可行性更详细的概述。</p>
+<p>为了更深入地研究，我们需要先了解一些定义和概念。</p>
+<p><strong>摘要</strong></p>
+<p>为了总结这篇冗长的指南，我将列出与该技术及其未来前景有关的重要几点：</p>
+<ul>
+<li>
+<p>用户将不再需要与以太坊主网交互，因为它将仅作为 L2 的数据可用性层</p>
+</li>
+<li>
+<p>Web3 应用程序的 UX 将把所有的复杂性都以简明的形式呈现出来</p>
+</li>
+<li>
+<p>模块化的区块链是经济和技术最可行的长期可扩展性设计方案</p>
+</li>
+<li>
+<p>目前，以太坊在模块化区块链中占主导位置，因为它拥有很强的安全性，并随着转向 PoS 安全性也会进一步提高</p>
+</li>
+<li>
+<p>长期来看，有效性证明比欺诈证明更佳</p>
+</li>
+<li>
+<p>Volition L2 基础设施 (Validium + zk-rollup) 正成为基于 zkVM 的 L2 的黄金标准</p>
+</li>
+<li>
+<p>以太坊作为 L1 层同时也利用数据分片、维克尔树 (verkle trees)、无状态和其他改变提高可扩展性</p>
+</li>
+<li>
+<p>L2 领域正在加速构建一个共享的跨 L2 通信框架，这将使不同的 L2 项目之间共享流动性和具有智能合约可组合性</p>
+</li>
+<li>
+<p>L2 使用 ETH 作为 gas 费，但之后会利用激励机制创建 DAO 治理代币以实现去中心化运营</p>
+</li>
+<li>
+<p>应用程序设计空间正不断扩大，因为构建者可用的带宽将更多且面临的执行层障碍将更少</p>
+</li>
+</ul>
+<p><strong>Layer2 是什么？</strong></p>
+<p>L2 (二层) 是一种扩容解决方案，它具有一个单独的执行层 (代码运行的地方，如 EVM 这样的环境) 并运行在 L1 (在我们的讨论中 L1 即为以太坊) 之上。而这个执行层继承了 L1 网络的安全保证和去中心化特性。这意味着，如果 L2 由于漏洞、基础设施故障而宕机，L1 也会在智能合约桥接内安全地保护用户的资产。</p>
+<p>根据提交到主网上的最新状态快照可以取回资产。真正的 L2 桥接是完全无需许可和去中心化的，因此一旦用户存入资金，用户总能访问自己的资产。目前几种扩容解决方案使用的是不同的加密证明机制，其中都具有不同的安全和可扩展性权衡。在下文中我们将深入讨论它们之间的差异。</p>
+<p><strong>L2 的主要类型</strong></p>
+<p>有两种参数可以用来对 L2 扩容解决方案进行分类。其一是根据使用的加密证明分类，其二是看它们的数据可用性 (DA) 存储在链上还是链下。</p>
+<p>两种主要的证明类型：</p>
+<ul>
+<li>
+<p>有效性证明 - 这是一种利用零知识 (ZK, zero-knowledge) 密码学以确保交易有效性的数学证明</p>
+</li>
+<li>
+<p>欺诈证明 - 这种证明引入了一种所谓的争议时间延迟 (Dispute Time Delay, DTD)，一旦证明提交至 L2，验证者留有一定的时间以标记出无效的证明；无效证明可能包含着不正确的状态转换，因而会对涉及的验证者施加惩罚；随后状态回滚至最近的有效快照状态处</p>
+</li>
+</ul>
+<p>数据可用性存储在链上或链下是什么意思呢？</p>
+<ul>
+<li>
+<p>链上：状态数据连同所有交易的所有执行的 calldata (智能合约函数调用、原生代币转移、签名) 一起放入交易捆/rollup 的加密证明中，这使得可以在链上访问和验证所有数据。</p>
+</li>
+<li>
+<p>链下：执行的 calldata 和状态由 L2 处理并存储在链下。这使得这个方案不够安全和去中心化。然而，链下存储数据方案更容易将更多交易打包进一个 rollup 中，也因此比链上调用数据证明方案的速度快许多。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/1202/8_z53n0gzo57.png" alt="Layer2 终极指南 (上)"></p>
+<p>扩容解决方案分类</p>
+<p>这些是帮助区分不同类型 L2 的主要相关属性。但是，既然我们可以直接通过 L1 实现扩容，为什么要使用 L2 呢？为什么不使用更便宜的链，如 Solana、Fantom、Avalanche 或 BSC？我们将在下一节回答这个问题。</p>
+<p><strong>模块化 vs. 单一型基础结构</strong></p>
+<p>在区块链中，有一个著名的概念叫做三难困境 —— 即试图优化三个主要的因素：安全性、去中心化和可扩展性。在同一个系统中实现三种优化十分困难。通常来说，区块链对三点中的某一点做出权衡并实现其他两点的优化。而在以太坊这个用例中，我们首先优化安全性和去中心化水平，同时将提高可扩展性作为次要优先的工作。需要明确的是，可扩展性并非以太坊核心开发者的主要优先考虑事项。</p>
+<p>整个 2021 年，由于 DeFi 和 NFT 的增长，以太坊主网变得越来越拥挤。因而以太坊对区块空间的需求前所未有地高。但是，我们不能简单地通过改变区块 gas limit 的大小来增加区块可以包含的交易数量，因为这将极大提高运行一个节点的硬件要求，这意味着运行节点将变得更加困难 (降低去中心化)。再者，如果区块变得太大，这会破坏共识 (降低安全性)。</p>
+<p><strong>单一型区块链</strong></p>
+<p>其他链采用了不同的方法，它们优先考虑可扩展性，其次是安全性，最后才是去中心化。让我们以 Solana 主网 beta 版本为例。该网络有一个主要的客户端开发团队 (Solana Labs)、大约 1000 个验证者 (来源：SolanaBeach)，以及另一种称为 Proof of History (PoH) 的共识机制。</p>
+<p>Solana 采取了独特的扩容方案，这是一种单一型区块链。随着计算能力的增加，他们计划无限扩展运行网络的验证节点。这种方法使网络去中心化程度降低，因为节点验证者被迫不断购买性能更好的硬件以不断跟上网络。由于量子隧道效应，当我们达到芯片内部所能容纳的极限时，人们担心计算能力的增长速度会放缓。某种程度上，我们需要一种新的计算范式出现或技术上的重大突破，以使这种方法可持续。因此，我的结论是区块链扩容有更好的长期替代方案。</p>
+<p><strong>模块化区块链</strong></p>
+<p>模块化区块链的方案本质上由一个主要网络组成，该网络优先考虑安全性和去中心化，以便它可以充当 L2 的数据可用性层。如果这个主要网络出现故障，所有 L2 都会出现故障。但是，如果某个 L2 出现故障，所有资金都是安全的 (由 L1 提供安全性保障)。这是以太坊采用的方法，因为 L2 将为我们提供最大的扩容空间。当然，还有其他一些扩容 L1 的方案，如数据分片、状态休眠机制 (state expiry) 和维克尔树 (verkle trees) 以及其他各种方法。然而，需要更多时间实现这些方案，因为以太坊优先提高安全性和去中心化。</p>
+<p>模块化区块链的一个关键方面是它们可以无限扩展，而无需快速升级硬件。它们之所以能做到这一点，是因为与单一型区块链的架构相比，它们在技术和经济上都是可持续的。至于为什么模块化架构比单一型架构更可持续，更详细的论证可以在这篇文章，作者：推特号 @ epolynya (u/Liberosist - Reddit)。</p>
+<p>从本质上讲，区块链的可持续性从两个维度来分析：</p>
+<p><strong>技术可持续性</strong></p>
+<ul>
+<li>
+<p>节点需要保持同步</p>
+</li>
+<li>
+<p>在合理的时间内完成从区块链的创世区块开始的同步</p>
+</li>
+<li>
+<p>避免状态过度膨胀而导致失控</p>
+</li>
+</ul>
+<p><strong>经济可持续性</strong></p>
+<ul>
+<li>
+<p>理想情况下，L1 产生的收入高于运营网络的成本</p>
+</li>
+<li>
+<p>不能人为地提高吞吐量，因为最终所有中心化的 L1 将不得不增加它们的费用</p>
+</li>
+</ul>
+<p>Rollup 和数据分片 (rads) 成为满足这些需求的唯一解决方案，这就是为什么模块化架构是唯一长期可行的扩容解决方案。</p>
+<p>更完整的解释请阅读下文中“拓展阅读”板块里  @epolynya&rsquo;s articles 的文章。</p>
+<p><strong>L2 的当前状态以及用户如何从中受益</strong></p>
+<p>我们正实现扩容，过去几年一直研究的解决方案已经上线了 —— 至少提供了有限的可扩展容量。而且在不久的将来会有更多解决方案在主网上发布其 L2 的改进版本和 Alpha 版本。在上文的 “L2 的主要类型” 板块中描述了扩容方案的不同属性，根据这些属性可以将扩容方案分成不同的类别。</p>
+<p><strong>L2 解决方案的不完整列表</strong></p>
+<p><strong>Optimistic rollups</strong></p>
+<p><strong>➤ Arbitrum</strong></p>
+<p>Arbitrum 由 Offchain Labs 团队构建。该网络本身叫做 Arbitrum One，它利用 optimistic rollup 的技术方案来扩容以太坊。Arbitrum One 使用欺诈证明 (fraud proofs)，并具有链上调用数据可用性，这意味着每笔交易的所有数据都被完全排序、捆绑并提交到主网上。由于 Arbitrum 使用了欺诈证明，它会有周期大概为七天的争议时间延迟 (dispute time delay, DTD)。一旦 DTD 通过了，就可以认为网络上的状态更改是有效的，用户可以通过本地桥接提出他们的可用余额。我们稍后会讨论其他中心化的桥接，这些桥接允许你通过跨 L2 的流动性池绕过欺诈证明的周期，实现即时提款。</p>
+<p>Arbitrum One 是目前锁仓量最高的 L2 网络。一个很棒的网站  L2Beat 向我们统计了这些数据。</p>
+<p>已经有许多协议和应用程序支持 Arbitrum 了，包括支持无缝切换至 Arbitrum L2 的基础设施。目前使用 L2 的唯一问题是它需要累积更多的流动性，并且像跨 L2 AMM 架构 (比如由 Starkware 和 Loopring 发明的 dAMM) 这样的创新方案以及 Connext 和 Hop 这样的流动性协议需要足够多的流动性和足够去中心化，以便所有扩容解决方案能够共享同样的基础设施，而不会导致生态系统碎片化。</p>
+<p>关于 Arbitrum 应用程序的生态系统概述，请浏览 Arbitrum Portal 网页。</p>
+<p><strong>主要工具：</strong></p>
+<ul>
+<li>
+<p>区块浏览器 - Arbiscan</p>
+</li>
+<li>
+<p>桥接 -Arbitrum 原生桥接 (提款大约需要等待 7 天的 DTD 时间)</p>
+</li>
+<li>
+<p>网络 RPC 配置- Chainlist (搜索 Arbitrum One 并添加至 MetaMask) / 在桥接你的资产之前请检查你的移动钱包是否支持 Arbitrum (这可能会导致你的财产永久丢失) — 个人建议：Rainbow wallet (免责声明：尚未支持 Arbitrum)</p>
+</li>
+<li>
+<p>AMM 聚合器 - 1inch</p>
+</li>
+</ul>
+<p>如果读者使用 Arbitrum 桥接时感到困惑，请查看 Arbitrum 桥接教程。如果想要从以太坊以外的其他网络进行桥接，请查看下文的 L2 桥接板块 (注意，这些桥接都有不同程度的中心化)。</p>
+<p><strong>Arbitrum Nitro</strong></p>
+<p>Arbitrum Nitro 是 Arbitrum One L2 的升级版，它使用 Web Assembly (WASM) 目标取代了自定义的 AVM (Arbitrum VM) 以负责欺诈证明。这个升级也会使得整个系统与 EVM 更加兼容。另一个变化是，EVM 模拟器 (EVM-emulator) 会被 Geth 取代 (Geth 是目前运行最多的以太坊客户端)。ArbOS 组件也被修改，以提供跨链通信；还会发布一个新的、改进的交易批处理和压缩系统，以最小化 L1 成本。</p>
+<p>这次升级将会无缝推出，所以用户无须做任何事情。升级后，执行速度预计会提高 20-50 倍并极大地降低交易成本。更多内容请阅读 Offchain Lab 团队发布的公告。</p>
+<p><strong>Arbitrum 的未来方向</strong></p>
+<p>像 Offchain Labs 团队宣称的那样，Arbitrum 不仅仅是一个 optimistic rollup 方案，他们会推出其他基于零知识证明 (zero knowledge proofs) 的扩容解决方案，同时还将继续改良 Arbitrum One optimistic rollup L2 方案。这是零知识化趋势的一个很好的例子，许多项目正在转向零知识方向。因为一旦 zk L2 的技术实现得到了更好的研究并能够实现通用的 EVM 计算，执行环境就会更加灵活，或者说可扩展性更强。</p>
+<p><strong>Optimism</strong></p>
+<p>Optimism 是一家公益公司  (PBC)，它在以太坊上构建了一个 optimistic rollup L2 解决方案 Optimistic Ethereum (OE)。我将通过解释 Arbitrum 和 OE 在基础架构上的异同来描述 OE。详细的比较可以阅读 Kris Kaczor 发布的推文介绍。</p>
+<p><strong>Optimism 和 Arbitrum 的相同之处：</strong></p>
+<ul>
+<li>
+<p>都属于 rollup 并且所有交易数据都存储在 L1 上</p>
+</li>
+<li>
+<p>都属于 “optimistic” 机制，因为都使用欺诈证明</p>
+</li>
+<li>
+<p>都利用定序者 (sequencer) 来实现即时 “最终确定性”</p>
+</li>
+<li>
+<p>都具备通用的跨链通信功能，可以用来构建高级代币桥</p>
+</li>
+<li>
+<p>都支持与 EVM 相关的工具，但是需要专门的插件</p>
+</li>
+</ul>
+<p><strong>Optimism 和 Arbitrum 的不同之处：</strong></p>
+<ul>
+<li>
+<p>具有不同的欺诈证明验证机制</p>
+</li>
+<li>
+<p>Optimism OVM 2.0 目前是 EVM 等同的 (EVM equivalence)，而 Arbitrum One (即便 Nitro 升级之后) 只是 EVM 兼容的</p>
+</li>
+<li>
+<p>Optimism 采用单轮欺诈证明，而 Arbitrum 采用多轮欺诈证明</p>
+</li>
+<li>
+<p>在 Optimism 上部署 app 依然需要通过许可 (为之前的申请者开放私有白名单网络)，而 Arbitrum 发布了公开主网版本 (无需许可)</p>
+</li>
+</ul>
+<p><strong>主要工具：</strong></p>
+<ul>
+<li>
+<p>区块浏览器 - Optimistic Etherscan</p>
+</li>
+<li>
+<p>原生桥接 - Optimism Gateway</p>
+</li>
+<li>
+<p>用户指南</p>
+</li>
+<li>
+<p>现有的应用程序门户</p>
+</li>
+<li>
+<p>网络 RPC 设置 - Chainlist (搜索 Optimistic Ethereum)</p>
+</li>
+</ul>
+<p><strong>OVM 2.0</strong></p>
+<p>OVM 是 Optimistic Virtual Machine (Optimistic 虚拟机) 的缩写，它是执行 OE L2 中所有交易的虚拟机。OVM 2.0 于 11 月 11 日完成了主网升级。</p>
+<p>Optimism 通过 OVM 2.0 升级实现 EVM 等同性这一目标，这将使得 OE 成为完全等同于 EVM 的编译目标。像 Dapptools (智能合约代码库和命令行工具 — 形式化验证、符号执行、项目管理等等)、Hardhat、Solidity、Vyper 等等这样的开发者工具将可以直接在 OVM 2.0 本地运行，这些工具的开发者不必担心如何支持碎片化的代码库。这就是以太坊社区中每个人都提到的强大的“网络效应”。值得注意的是，EVM 的任何竞争者都必须从头开始重建所有这些开发者工具。</p>
+<p>阅读 Optimism 的博客文章以了解他们如何实现 EVM 等同性。</p>
+<p><strong>追溯性公共物品募资</strong></p>
+<p>我认为 Optimism 团队最重要的公告之一就是他们承诺将其所有利润用于推动公共物品发展 (总计超过 100 万美元)，并追溯性地使用二次方投票。团队还承诺将 L2 定序者的利润 100% 捐赠出去以推动公共事业发展。这笔利润是由产生的交易费收入减去向以太坊主网提交欺诈证明所需支付的成本而剩下的金额。这位以太坊社区中其他 L2 项目树立了一个利他主义的榜样。</p>
+<p><strong>OE 的未来方向</strong></p>
+<p>Optimistic Ethereum 未来的计划雄心勃勃，其路线图可在 Optimism 规范中查看。</p>
+<p>摘自其规范：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1202/8_51dom4pezl.png" alt="Layer2 终极指南 (上)"></p>
+<p>该路线图和抽象的设计是为了使每个组件能够独立发展。这 4 个主要组件是：</p>
+<ul>
+<li>
+<p>optimistic 主网部署</p>
+</li>
+<li>
+<p>欺诈证明基础设施</p>
+</li>
+<li>
+<p>无状态客户端</p>
+</li>
+<li>
+<p>分片</p>
+</li>
+</ul>
+<p>每个组件都会发布独立且增量式的版本，每一次更新都会让 Optimistic Ethereum 更加统一、更加强大。</p>
+<p><strong>Boba Network</strong></p>
+<p>Boba 是一个以太坊 L2 扩容解决方案，由 OMG 基金会核心贡献者 Enya 团队构建。Boba 是 Optimistic Rollup 解决方案，可以降低 gas 费，提高交易吞吐量，并扩展智能合约的性能。Boba 通过社区驱动的流动性池为用户提供了快速退出功能 (类似于 Connext 或 Hop 协议等其他解决方案)，将 Optimistic Rollup 的退出周期从 7 天缩短到只有几分钟，同时让流动性提供者能够进行流动性挖矿并从中获益。</p>
+<p>Boba 最初通过分叉 Optimism 而形成，他们团队是 OVM (optimistic 虚拟机)的关键贡献者之一。一个有趣的事实是，Boba 部署 OVM 2.0 的时间比 optimism rollup 早，后者于 11 月 11 日在 Optimistic Ethereum 上发布。尽管 Boba 是分叉而来的，但它们确实有一个模块化的结构，使其能够向主网提交证明，这允许在未来实现可升级性或零知识化。团队计划为即将发布的 v3 完全重写代码库，v3 将在未来几个月在主网上发布。Boba 的设计还能够实现智能合约可扩展性，并允许开发者构建dapp，调用在 web 规模的基础设施 (如AWS Lambda) 上执行的代码，这使得无法在链上执行或成本过于昂贵的算法得以使用。</p>
+<p>BOBA 空投 - 治理代币</p>
+<p><strong>资源：</strong></p>
+<ul>
+<li>
+<p>区块浏览器</p>
+</li>
+<li>
+<p>Boba 网络门户网站 (桥接)</p>
+</li>
+<li>
+<p>开发者门户</p>
+</li>
+</ul>
+<p><strong>Metis</strong></p>
+<p>Metis 是以太坊上的 L2 扩容解决方案，它使用并行或分片式的 optimistic rollup 架构。在 Metis 虚拟机 (或 MVM) 中，有着所谓的去中心化自治组织，即DAC (Data Availability Committee)，它们拥有独立的计算和存储层，可以根据 L2 应用 (如 DAO、dapp、协议等等) 的需求定制。这些 DAC 是 optimistic rollup 的并行执行层。由于 DAC 具有跨层通信协议，各个 DAC 之间是完全可互操作的，并且流动性可以无缝地在它们之间转移。根据 Metis 的技术白皮书，他们设计的扩容解决方案可以对以太坊进行横向扩容，而无需在基础设施上投入大量资金。</p>
+<p>在 Liscon 期间，我偶然遇到了 Metis DAO 团队，我对其基础构架的理解是，它是一个具有不同执行层的网络，不同的执行层专门为特定的应用者服务以达到扩容目的 (DAO、dapp 等等)，同时通过向主网提交欺诈证明来保证其具有以太坊 L1 级别的安全性。可能也会有一些公共 DAC，比如一些用来做 swap 的 AMM 流动性协议。由于其具有跨 DAC 的原生互操作性，其他 DAC 的用户也可以在需要时使用这种公共 DAC。这是一种新颖的设计和有趣的实验。</p>
+<p>来源 | mirror.xyz/dcbuilder.eth</p>
+<p>作者 |  DCBuilder</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/31390/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">FTX.US NFT市场开放以太坊NFT交易</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/31421/">
+                <span class="next-text nav-default">Maven 11 Capital推出第二支加密货币投资基金，规模达1.2 亿美元</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

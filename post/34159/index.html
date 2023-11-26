@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          人机之战再次打响：Web3身份管理的逻辑与实践 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="上期《人机博弈才刚刚开始》讲到了为什么 DID 和 PoP 在 Web 3.0 尤为重要。本周，我们将对 DID 和PoP的概念进行挖掘，并为大家介绍几个 PoP 验证方式和头部项目。" />
+<meta name="keywords" content="POP, 去中心化身份" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/34159/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="人机之战再次打响：Web3身份管理的逻辑与实践" />
+<meta property="og:description" content="上期《人机博弈才刚刚开始》讲到了为什么 DID 和 PoP 在 Web 3.0 尤为重要。本周，我们将对 DID 和PoP的概念进行挖掘，并为大家介绍几个 PoP 验证方式和头部项目。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/34159/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-14T00:00:00+00:00" />
+
+<meta itemprop="name" content="人机之战再次打响：Web3身份管理的逻辑与实践">
+<meta itemprop="description" content="上期《人机博弈才刚刚开始》讲到了为什么 DID 和 PoP 在 Web 3.0 尤为重要。本周，我们将对 DID 和PoP的概念进行挖掘，并为大家介绍几个 PoP 验证方式和头部项目。"><meta itemprop="datePublished" content="2022-02-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3274">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="人机之战再次打响：Web3身份管理的逻辑与实践"/>
+<meta name="twitter:description" content="上期《人机博弈才刚刚开始》讲到了为什么 DID 和 PoP 在 Web 3.0 尤为重要。本周，我们将对 DID 和PoP的概念进行挖掘，并为大家介绍几个 PoP 验证方式和头部项目。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">人机之战再次打响：Web3身份管理的逻辑与实践</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-02-14">
+      2022-02-14
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3274 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="did--pop身份验证和管理-">**<strong>DID &amp; PoP身份验证和管理</strong> **</h2>
+<p>上期《人机博弈才刚刚开始》讲到了为什么 DID 和 PoP 在 Web 3.0 尤为重要。本周，我们将对 DID 和PoP的概念进行挖掘，并为大家介绍几个 PoP <strong>验证方式</strong> 和<strong>头部项目</strong> 。</p>
+<p><strong>PoP(Proof of Personhood)</strong> <strong>与DID(Decentralized Identifier)都是身份管理的概念</strong> 。提到“身份管理”，我们首先联想到的就是身份证。每个人都有一个身份证号，这串数字会伴随一个人的一生。当需要验证身份时，我们就会拿出身份证件，证件上印着我们的照片。这样人和证一对应，就能证明“我是我”了。我们的生活离不开这张小小的证件，参加高考，开微博账号，工作了之后缴社保，都需要身份证。因此，越来越多的“身份信息”会被附属到身份证号上，形成一个人在社会中的身份。</p>
+<h2 id="普适的身份管理逻辑-">**<strong>普适的身份管理逻辑</strong> **</h2>
+<p>不管是现实世界的身份管理，还是Web3.0的DiD，都遵循以下这些逻辑。</p>
+<ul>
+<li>
+<p><strong>标记个体</strong> 。首先，我们需要一个 identifier 来“标记”一个人。<strong>这个 identifier 必须是唯一且不变的，比如身份证号。</strong></p>
+</li>
+<li>
+<p><strong>验证身份</strong> 。其次，我们需要对 identifier 进行验证。通常现实世界的身份验证是通过证明所属权，比如持有身份证件，或者通过生物信息进行验证（指纹识别、面部识别等）。当一个人有了唯一“identifier”的标记，并且这种对应关系被验证为正确时。一个生物人就和一个身份等同了。</p>
+</li>
+<li>
+<p><strong>转移数据</strong> 。最后，人的数据就会被“转移”到这个身份上，包括社交数据、地理位置、工作单位等等一切有关信息都会被附加在身份上。这就是现实世界身份管理的大致过程。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0214/20_2lqysb51sy.png" alt="人机之战再次打响：Web3身份管理的逻辑与实践"></p>
+<p>（图片来源：IOSG Ventures）</p>
+<h2 id="did的特殊之处">DID的特殊之处</h2>
+<p>那么 DID 有什么特殊之处呢？首先是DID 在“decentralized”方面。与传统的由中心化权威机构控制的 identifier 不同，DID 的 identifier <strong>应该是自有的，独立的，依存于P2P去中心化网络的</strong> 。其次，DID的验证手段也有所不同，并不是通过持有某种证件证明的，而是<strong>通过加密的公钥-私钥对签名进行验证的</strong> 。最后，个人信息的侧重点也有所不同。<strong>这里的信息主要是链上活动</strong> ，如购买了哪些NFT，有多少转账记录，玩了什么链游等等，这些链上数据会被附属到 identifier 上。</p>
+<p>这个过程看起来和中心化的身份管理没有本质区别。然而，DID并不需要本人去某个机构办理，而是在线上进行的。这就产生了很多现实世界身份系统从未遇到过的问题，即在所有的身份管理程序启动之前，<strong>如何验证屏幕前面是AI还是生物人？</strong> 我们上一篇文章《<a href="http://mp.weixin.qq.com/s?__biz=MzUzNjk5MzI5Nw==&amp;mid=2247489243&amp;idx=1&amp;sn=3363acb220ed520d178b0d872166fc44&amp;chksm=faec9da5cd9b14b3719a377ecf7ecd6e68e1c5c2d01ff58eac1b711f81aa46b1326d260793da&amp;scene=21#wechat_redirect">人机博弈才刚刚开始</a>》正式针对这一问题的解决方案，可以点击查看，此处将不再赘述。接下来，我们就为大家介绍几种主流的PoP验证。</p>
+<p><strong><img src="https://img.bibiqing.com/news/2022/0214/20_rk7gfss7do.png" alt="人机之战再次打响：Web3身份管理的逻辑与实践"></strong></p>
+<p>   （图片来源：IOSG Ventures）</p>
+<h2 id="pop的各种实践">PoP的各种实践</h2>
+<p>Proof of Personhood，顾名思义，是基于生物人的身份验证，如何有效区分生物人和AI呢。如今，人工智能的发展已经到了可以在很多领域打败人类的程度，例如AlphaGo击败世界围棋冠军等。因此，要像成功识别出AI和生物人，还需要从AI的弱点入手。</p>
+<p>首先，最简单直接的逻辑就是人和AI长得不一样。AI可以模仿人的思维，却很难模仿人的外表，比如瞳孔、皮肤质感等等生物特征。因此，最直接方式就是通过展示生物特征让人进行分别，这种方式被称为<strong>匿名聚会</strong> <strong>（Pseudonym Parties）</strong> 。就像参加面试一样，用户需要通过参加线上或者线下的聚会来展示自己的面容、声音等等生物特征，以证明自己是生物人。</p>
+<p>其次，人类区别于AI的另一大特点为社交属性。人类是社会动物，必定会与周围的人产生社交联系，这是机器人并不具备的。因此，<strong>信任网络（Web of Trust）</strong> 就利用了这一特点，通过人的社交属性进行验证。如果一个用户长时间使用多个社交平台，并与他人产生越多交互，那么这个人是 bot 的概率就会越低。</p>
+<p>此外，区别于AI，人类十分擅长逻辑思考和图形识别，这恰恰是机器学习很难攻克的一点。<strong>逆图灵测试（Reverse Turing Tests）</strong> 正是利用了这一特性。逆图灵测试已有多年历史并且应用十分广泛。大家在上网时一定都遇到过一个包含的九个图块的弹出窗口，让用户选出包含红绿灯/机车/斑马线的图块完成识别，这便是逆图灵测试的应用。</p>
+<p>目前PoP赛道的头部项目大多采用了以上一种或者多种混合的验证方式。例如 Proof of Humanity 和 BrightID 通过匿名聚会和社交关系进行验证。这两个项目的逻辑相似，都是通过小圈子的视频共识来进行验证。BrightID还在此基础之上进行了创新，推出了基于在社交网络图上的所处位置的新验证方式——Bitu验证。<strong>Bitu验证的方式是，评估用户每个社交关系靠近网络中心的程度。如果用户和毫无交集的陌生账户进行关联，则会收到扣分惩罚，增加了“作恶”的成本</strong> 。然而，Proof of Humanity和BrightID依然存在一些问题。首先是要求用户“露脸”并公布一些个人数据，一定程度上牺牲了用户的隐私。另一个缺陷是组织会议、人工验证和维护 PoP 网络的成本太高，降低了可扩展性。</p>
+<p><strong><img src="https://img.bibiqing.com/news/2022/0214/20_yce6qsfwet.png" alt="人机之战再次打响：Web3身份管理的逻辑与实践"></strong></p>
+<p>提到可扩展性高的验证方式，那就不得不提到另外一个领跑者——Idena Network。想要从Idena Network获得验证，用户需要获得参加测试的资格，即从已通过验证的用户那里获得邀请码。这便是Idena为用户设置的第一道“关卡”，需要一些实际的人际关系才能获得验证码。获得验证码后，用户必须在全球同步的指定时间参与线上逆图灵测试。并且在参加完测试之后，还需要用户参与设计新的测试。通过这重重关卡才能获得“Human”认证。<strong>该协议理论上在当前拥有 PoP 业界最高的扩展性和效率，但实质上图片题目均由用户上传，相当繁琐且耗费用户时间，并且题目质量较低。</strong> 长期来看题目被 AI 破解也只是时间的问题。项目机制设计还要求用户每隔一段时间必须重新通过验证，费时费力。综合看来此方案也并不比社交验证更有优势。</p>
+<p><strong><img src="https://img.bibiqing.com/news/2022/0214/20_7g7dcb8bc1.png" alt="人机之战再次打响：Web3身份管理的逻辑与实践"></strong></p>
+<h2 id="idena用户验证级别和数量"><strong>Idena用户验证级别和数量</strong></h2>
+<p>对于DID和PoP的探索，还任重道远。目前，大多数 DID 解决方案都致力于为用户积累链上/链下数据，比如最近火热的 SocialFi 项目，CyberConnect、Galaxy 等等，它们为用户建立社交图谱和用户画像。然而，<strong>对于“identifier”的讨论和探索还相对滞后，人们普遍将 Web 3.0 的 identifier 与钱包地址等同起来。一个人只能有唯一的身份，却可以申请无数个钱包地址。</strong> 幸运的是，Sismo 在这个方向上迈出了第一步，Sismo 是一个利用 zk 技术并且基于链上活动向用户颁发徽章的 DID 解决方案。用户可以指定其他钱包地址，并且将其他钱包地址的活动徽章都汇集在 同一ENS域名下。这样即解决了用户多个钱包和唯一身份的冲突，又保护了用户隐私。然而，用户依然可以申领多个ENS域名。<strong>目前业界对 identifier 的探索各出奇招，然而这些应用的广泛推广还任重道远。</strong> 作为Web3.0基础的DID，未来定会有更多创新的项目对其进行探索。持续关注 IOSG，我们会带来更多有关 Web 3.0 的文章。</p>
+<p>作者：Chloe, IOSG Associate</p>
+<p>编辑：Elaine，Investment Relations</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/34130/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">普华永道报告：2021年Crypto并购交易额飙升至550亿美元 环比增长5000%</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/34129/">
+                <span class="next-text nav-default">如何对一款 NFT 项目进行价值评估？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#did--pop身份验证和管理-">**<strong>DID &amp; PoP身份验证和管理</strong> **</a></li>
+    <li><a href="#普适的身份管理逻辑-">**<strong>普适的身份管理逻辑</strong> **</a></li>
+    <li><a href="#did的特殊之处">DID的特殊之处</a></li>
+    <li><a href="#pop的各种实践">PoP的各种实践</a></li>
+    <li><a href="#idena用户验证级别和数量"><strong>Idena用户验证级别和数量</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

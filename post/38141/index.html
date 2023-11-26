@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          NFTs、社交通证与分数：链上声誉系统应如何构建？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="历史上，从未有过其他途径可以如此轻易地了解一个人或查看其社会声誉。" />
+<meta name="keywords" content="数据" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38141/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="NFTs、社交通证与分数：链上声誉系统应如何构建？" />
+<meta property="og:description" content="历史上，从未有过其他途径可以如此轻易地了解一个人或查看其社会声誉。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38141/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-23T00:00:00+00:00" />
+
+<meta itemprop="name" content="NFTs、社交通证与分数：链上声誉系统应如何构建？">
+<meta itemprop="description" content="历史上，从未有过其他途径可以如此轻易地了解一个人或查看其社会声誉。"><meta itemprop="datePublished" content="2022-05-23T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-23T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4029">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NFTs、社交通证与分数：链上声誉系统应如何构建？"/>
+<meta name="twitter:description" content="历史上，从未有过其他途径可以如此轻易地了解一个人或查看其社会声誉。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">NFTs、社交通证与分数：链上声誉系统应如何构建？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-05-23">
+      2022-05-23
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4029 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>声誉分数的未来与社区息息相关</strong></p>
+<p>现实世界中，我们可以用驾照来证明自己的身份，但它无法显示足够的个人信息或是声誉。要在现实世界中了解一个人或是其过往经历，就可能需要问问共同的熟人，或者和他（她）聊聊喜欢的话题。但是，深入了解一个人的过程要花费很多时间，效率不高。</p>
+<p>相较之下，在网络上了解某个人并详细了解其社会声誉显得更加容易。只需要花几分钟访问 Facebook 和谷歌搜索，你就可以查看一个人的照片、想法、他们分享的文章等内容并从中了解他的声誉。但目前网络途径也有两个问题，首先是人人都在努力维持自己的网络声誉，其次它是难辨真伪的。</p>
+<p>就在这种时候，去中心化网络（又称 Web3）诞生了**。现在我们的数据（大部分）都储存在链上，这些数据是开放的、容易访问的、可相互操作的，能够在许多不同类型的去中心化应用加以使用** 。历史上，从未有过其他途径可以如此轻易地了解一个人或查看其社会声誉。</p>
+<p>事实上，我们的在线身份和社会声誉不仅仅是重要的核心数据（例如姓名、序列号、等级），它们还在不断发展。根据不同的环境（例如在工作中，在 Twitter 上，与朋友在一起），我们可以对个人身份的多个方面加以利用。我们存放在链上的信息越多，我们对于个人价值的量化就越贴近个人真实价值。利用 Web3 技术对社会声誉进行良好的评估将允许人们从验证的角度，而不是从信任的角度来查看对方的资料（例如能力、价值、地位），从而达到新层次的互动。</p>
+<p>然而，虽然现在我们逐渐把越来越多的数据存储在链上，但仍然缺乏一个评估系统来有效地量化我们的社会声誉。现有的多种解决方案各有取舍，但没有一个称得上是完美的。</p>
+<p><strong>解决方案 1：通过社交通证量化声誉</strong></p>
+<p>社交通证是存在于区块链上的虚拟货币。它可通过完成特定的任务获得，可兑换为其他加密货币或是通证相关的特殊社区福利（如访问通证限定的内容、对未来战略决策的投票权）。</p>
+<p>这些虚拟货币对于去中心化自治组织（DAO）的高效运行是至关重要的，它们可以作为工资发放，创造更强的信任，调整激励机制并使贡献者留下来。</p>
+<p>在工作领域，社会通证可作为 DAO（我们可以把它比作 Web3 创业公司）中的虚拟货币。<strong>它能很好地衡量游戏中的皮肤和社区参与，也能很好地量化社会声誉，它在如何量化并衡量经验、声誉、在线成就方面提供了很多微观的实践经验</strong> 。</p>
+<p>一个人拥有的通证越多，他参与、帮助 DAO 成长的贡献程度就越高。Coinvise 等部分平台已经实施了这种的功能，它旨在通过社交通证来更好地反映工作质量和社区影响。</p>
+<p>社交通证在申请 DAO 时可以用作可验证的凭证。作为交换，去中心化的社区将有能力预先评估候选人的价值并相应地安排他们在项目中的工作。</p>
+<p>社交通证提供了一个很好的系统，它能发现、分析、使用用户在另一个应用程序、平台、网络、DAO 上创建的数据。</p>
+<p>然而，社交通证仍有几个问题亟待解决：</p>
+<ul>
+<li>
+<p>人人都可以购买通证&amp;ampmdash;&amp;ampmdash;如今，人们可以通过购买通证来增加他们的声誉和投票权，这对通过努力工作赚取通证的人来说是不公平的。我们将需要一个系统来区分&amp;ampldquo;购买的通证&amp;amprdquo;和&amp;ampldquo;赚取的通证&amp;amprdquo;。</p>
+</li>
+<li>
+<p>Web3 钱包没有对社交通证进行优化&amp;ampmdash;&amp;ampmdash;目前的钱包不支持用户便捷地向他人展示自己的通证。Web3 钱包应该对社交通证进行优化，为其创建一个专门的空间并允许用户轻松管理社交通证（包括隐藏、展示等功能）。</p>
+</li>
+<li>
+<p>社交通证仍处于发展的试验阶段&amp;ampmdash;&amp;ampmdash;时至今日，它还没有形成真正的网络效应。我们需要更多的 DAO 采用这种量化社会声誉，只有在这种情况下，我们才能看到社交通证的繁荣。</p>
+</li>
+<li>
+<p>链上更加昂贵&amp;ampmdash;&amp;ampmdash;由于网络成员必须支付GAS费用来发送社交通证，目前只通过社交通证来获得社交声誉是很昂贵的（需要注意的是，第2层区块链即将到来，它可以解决这个问题）。</p>
+</li>
+</ul>
+<p><strong>解决方案 2：通过 NFTs 量化声誉</strong></p>
+<p>&amp;ampldquo;非同质化通证&amp;amprdquo;（NFTs）（通常而言）是一种社区的准入方式。它们具有地位性、稀缺性以及特定社区成员的归属感。NFTs 的集合代表了不同社区的成员资格，并为这些社区提供了特殊福利。</p>
+<p>它们是一个量化声誉的好办法，经历过 2020 年围绕 NFTs 的炒作之后，它们已经具有了强大的网络效应。它是如今 Web3 技术中最为广泛采用的技术之一，人们已经围绕自己的 NFTs 创建了自己的在线身份（例如@punk6529 或@BAYC2745），用来推进 NFTs 易于采用、使用、整合的性质。此外，还有几十个项目为 NFTs 建立了 Web 3 社交/身份工具。这种技术上的网络效应是支持使用 NFTs 作为身份基础的最强因素。</p>
+<p>NFTs 也是展示自己在特定社区的归属的好办法，Web3 钱包的界面为社区成员身份展示进行了优化。购买一个稀有的 NFT 就能立刻增加社会声誉，它就是这么简单。</p>
+<p>最后，由于 NFTs 的存在和价值不需要依赖流动性，因此它没有维护流动性的成本，这使得 NFTs 成为量化社会声誉的好办法，它前景大好且具有成本效益。</p>
+<p>但是，如果要使 NFTs 成为有效量化声誉的方式，就还有几个问题亟待解决：</p>
+<ul>
+<li>
+<p>它只在一个特定的时间点上发行一次。比起对某人的声誉的实时观察，它更像是一个&amp;ampldquo;徽章&amp;amprdquo;。</p>
+</li>
+<li>
+<p>它可以转让，它代表的更多是财富和地位，而不是声誉（例如 Crypto Punks, BAYC）。</p>
+</li>
+<li>
+<p>它对社区有好处，但并不真正专注于个人（例如 FWB，WHALE）。</p>
+</li>
+<li>
+<p>它们存在于公共区块链上，所以默认是公开的。但它们是存在于特定的链上，缺乏对 NFTs 的跨链支持，所以它们的声誉是孤立的。</p>
+</li>
+</ul>
+<p><strong>解决方案 3：通过分数量化声誉</strong></p>
+<p>正如一句名言所说，&amp;ampldquo;建立声誉需要多年，毁掉声誉仅需一天&amp;amprdquo;。声誉的性质意味着它是一项&amp;ampldquo;光谱式&amp;amprdquo;的全面评价，而不是一个&amp;ampldquo;是或不是&amp;amprdquo;的简单答案。它不仅是一项全面评价，而且还会根据声誉评价者的不同而变化。例如，你在朋友面前的表现可能与在家人或同事面前不同。</p>
+<p>分数为量化链上声誉的提供了一个新视角。它们可以被看作是特定环境下的数字，根据他们在链上和链下的行为（如果二者与同一地址存在联系）来不断地更新、评估一个地址的声誉。这就模拟了声誉在现实世界中的运作方式，使人们能够更加广泛地表达某人是如何得到&amp;ampldquo;信任&amp;amprdquo;的以及信任的来源。按照分数创建者的选择，通过单独查看或结合查看链上数据、快照投票数据、DAO 贡献指标得出的分数可以是狭义或广义的。分数的例子可以包括：</p>
+<ul>
+<li>
+<p>通证：特定 HODL 分数，它可以衡量你持有通证的时间长短。</p>
+</li>
+<li>
+<p>Airdrop：特定 Airdrop 分数，它可以衡量你相较于其他参与者保留了多少空投通证。</p>
+</li>
+<li>
+<p>协议：特定的 Credit 分数，它可以衡量你提供动态负载条件的信用度。</p>
+</li>
+</ul>
+<p>相对于其他类型的声誉，分数还是一种崭新的类型，它有很多东西有待发掘。关于分数的一大担忧是它们在本质上会变得二元化，类似于中国的征信系统。这里的关键区别在于它只是在钱包层面进行行为的判断，如果某个用户不希望他们过去的行为跟随一生，那他完全可以（换掉钱包）重新开始。</p>
+<p>分数还有另一个主要部分&amp;ampmdash;&amp;ampmdash;由于需要处理和遍历大量的数据集，它们纯粹是在链外计算、在链上上传。这意味着分数把声誉存放在某个链上之后，其他链上也都可以使用。它的缺点在于用户对链外计算引擎产生了潜在的信任，并需要确保了分数在链上完整发布。ARCx 之类的平台正在努力创建分数功能，用于给支持声誉的 Web3 应用程序提供动力。</p>
+<p><strong>结语</strong></p>
+<p>链上信誉和链上身份是加密货币的下一个主要领域，它们可以实现一个全新的应用类别。在我们现在所处的这个阶段，人人都在试图了解各种架构方法如何能够实现&amp;ampldquo;创造真正的终端用户价值&amp;amprdquo;的最终目标。就我们如今的情况而言，目前有几项突出的问题值得我们思考：</p>
+<p>1、信誉元素该是动态的还是静态的？</p>
+<p>2、它应该把全部内容储存在链上，还是可以把某些元素存在链外？</p>
+<p>3、不可转让性应作为一项硬性要求，还是可选项？</p>
+<p>4、它们是否需要与现实世界的身份（社交令牌）相联系，还是支持使用假名的身份？</p>
+<p>5、信誉元素应该如何在储存链上？它应该作为一个 NFT，一个 Oracle，还是一个不断更新的 Merkle 根上传吗？</p>
+<p>这些都是关于如何量化声誉的基本问题，但随着市场上更多产品的推出，我们将会逐渐得出所有问题的答案。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38173/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Linda Xie：从 DAO 实践中学到的关键知识和经验</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38151/">
+                <span class="next-text nav-default">Web3 与虚拟人将如何重塑社交体验</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

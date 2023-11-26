@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="从定价模型、滑点、无常损失、交易费等角度比较分析 Uniswap V3、Curve V2 和 Balancer V2。" />
+<meta name="keywords" content="AMM" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25923/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2" />
+<meta property="og:description" content="从定价模型、滑点、无常损失、交易费等角度比较分析 Uniswap V3、Curve V2 和 Balancer V2。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25923/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-16T00:00:00+00:00" />
+
+<meta itemprop="name" content="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2">
+<meta itemprop="description" content="从定价模型、滑点、无常损失、交易费等角度比较分析 Uniswap V3、Curve V2 和 Balancer V2。"><meta itemprop="datePublished" content="2021-07-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4206">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"/>
+<meta name="twitter:description" content="从定价模型、滑点、无常损失、交易费等角度比较分析 Uniswap V3、Curve V2 和 Balancer V2。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-16">
+      2021-07-16
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4206 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<blockquote>
+<p>从定价模型、滑点、无常损失、交易费等角度比较分析 Uniswap V3、Curve V2 和 Balancer V2。</p>
+</blockquote>
+<p>自动做市商机制（AMM），以其常数级别的时间空间占用的优势，被许多去中心化交易所（DEX）采用，迄今为止已有许多此类项目大获成功。说到其中佼佼者，必须要提到 Uniswap、Balancer 和 Curve，它们都在近期推出了新的版本， 以针对流动性提供者所关注的各种问题和风险。 本文将会从多个方面对这三个协议的最新版本做出比较。</p>
+<h2 id="定价模型和不变式">定价模型和不变式</h2>
+<p>参与到自动做市商机制中的人群，包括两种不同的角色：流动性提供者（LP）和交易者。流动性提供者向机枪池存入资金，而交易者用一种货币从池中换取另一种代币。AMM 协议需要解决的第一个问题就是如何定价，以一个二币池为例，即如何用代币 2(t2) 的数量表示代币 1(t1) 的价格。</p>
+<p>假设池中两种货币的数量分别为 R1 和 R2，在一笔交易中一个交易者想用Δ2 数量的 t2 来买Δ1 数量的 t1。我们可以用一个交易函数ψ来描述一个 AMM 协议，其必须满足在交易前后函数值不变，不变式表示为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_389yndi3r1.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>根据这个等式，我们就可以由Δ1 推出Δ2 （或反之）。而这笔交易同时也会影响价格，因为池中的代币总量在交易之后改变了。实际上，因为机枪池的交易价格和外部参考市场的价格有差距，所以套利者会不断交易知道价差回归，AMM 正是利用这种机制来矫正池内的交易价格。每次交易的平均价格定义为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_fs0keojvf9.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>当 dΔ1-&gt;0 时，我们可以计算得到边际价格。 三种协议的边际价格总结如下表</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_huy90u1om7.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>Table 1 边际价格</p>
+<p><strong>Uniswap V3</strong></p>
+<p>Uniswap 的交易函数定义如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_b19w7tcfsl.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>由此可得不变式为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_v6d9vsapfr.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>推导出Δ2 的表达式为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_of7hzvhecp.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>边际价格为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_2v9ynn8dbc.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>当 Δ1-&gt;0 时，</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_190spd31ys.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>在新版本 V3 中，由于在不同价格区间的流动性密度不同，需要对每个同一流动性密度的小区间单独计算。当跨过区间边界时，需要的下一个区间做类似计算。</p>
+<p><strong>Balancer V2</strong></p>
+<p>Balancer 的交易函数定义如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_sjvesy3n00.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>由此可得不变式为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_zu533m3tpy.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>推导出Δ2 的表达式为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_1qstrdt7j1.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>边际价格为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_6obw82p034.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>当 Δ1-&gt;0 时，</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_awlkdwdkrl.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>权重ω1，ω2 也代表两种代币总市值的占比，如果指定ω1=ω2=1/2，那么该池就等价于 Uniswap 的池子。<br>
+特别的，Balancer 允许至多 8 种代币的混合池，当代币种类大于两种时，其交易函数扩展为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_ilu60vmzsi.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>其他推导步骤也可类似地拓展到多币的情形，推导步骤在此略过。</p>
+<p><strong>Curve V2</strong></p>
+<p>Curve 协议的交易函数是恒定和函数和恒定积函数的线性组合：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_tzzjzbu9ic.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>类似的，我们可以推导出边际价格，当 Δ1-&gt;0 时，</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_3iatgwcjcm.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_9q591ki0eq.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<h2 id="价格影响和滑点">价格影响和滑点</h2>
+<p>根据上一步得出的边际价格公式，我们可以通过比较单次交易前后边际价格的变化，来定义这次交易的价格影响。比较三种协议的价格影响，我们能得出以下结论：假定交易同等数量的代币 1，设定ω1 越高的 Balancer 池，其价格影响越大，如果ω1&gt;1/2，那么价格影响大于相同交易在 Uniswap 池中的影响，反之亦然。而在平衡点附近（即价格偏移不严重） Curve V2 的价格影响最小。</p>
+<p>在下面的例子中，我们比较四个不同池子的单次交易价格影响，假设初始池中代币总量 R1=R2=10000：</p>
+<ul>
+<li>
+<p>一个 Uniswap V3 池，初始价格为 1</p>
+</li>
+<li>
+<p>一个 Balancer V2 池，ω1=0.4,ω2=0.6，初始价格为 0.666</p>
+</li>
+<li>
+<p>一个 Balancer V2 池，ω1=0.6,ω2=0.4，初始价格为 1.5</p>
+</li>
+<li>
+<p>一个 Curve V2 池，α=1,β=3，初始价格为 1</p>
+</li>
+</ul>
+<p>四个池子的价格影响曲线如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_w8s5fhz29i.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>Figure 1 价格影响曲线</p>
+<p>明显的，对于交易相同数量 Δ1 的代币 1，对价格的影响排序如下：Balancer V2 w1=0.6 &gt; Uniswap V3 &gt; Balancer V2 w1=0.4 &gt; Curve V2。</p>
+<p>对于 Curve 来说，因为其在一定范围内价格影响最小，所以最适合稳定币的交易对。根据以往 AMM 协议的经验，价格影响曲线的形状往往和流动性提供者的收益相关。距上图所示，因为 Curve 的价格影响曲线最平缓，导致滑点较低，从而使交易者在这个区间中更频繁地（或更大量）交易，最终流动性提供者赚取了更多的交易手续费。</p>
+<h2 id="无常损失">无常损失</h2>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_1tjmypsoev.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>Table 2 无常损失</p>
+<p>对于 Uniswap V3 来说，来自单一提供者的流动性是被放置在某一封闭区间上的，当一种代币的价格下降时，LP 对该种代币的风险敞口逐渐增大，直到价格来到区间边界。此时，该 LP 只有对该种代币的风险敞口，对另一种代币的敞口为 0，若价格继续往同方向移动，则敞口维持不变。</p>
+<p>对于 Balancer V2 和 Curve V2 来说，流动性是对整个价格区间提供的，所以敞口会在整个区间上逐渐变化，不会到达最大 / 最小值。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_98bl3y56w5.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>Figure 2 Balancer 池在不同权重配置下的相对价格变化对无常损失影响</p>
+<p>对于 Balancer 协议来说，代币 1 的权重ω1 越小，相同价格波动下的无常损失越小，这是符合直觉的，因为 LP 持有代币 1 的量变小了。</p>
+<h2 id="出金与入金">出金与入金</h2>
+<p>对于想要参与这三种协议的流动性提供者来说，它们对于出金和入金的规则比较起来并没有绝对的优劣，不过根据个人的资产类别和风险偏好，每个协议都有更适合的情形：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_9uyspssu8b.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>Table 3 出金与入金</p>
+<p>对于 Uniswap V3 来说，入金时存入两种代币的配比由两点因素决定（1）区间的两个边界 （2）当前交易价格。 简单来说，如果当前交易价格等于两个边界价格的几何平均数的话，LP 需存入 50:50 等量的两种代币。若当前价格更偏向一侧，那么 LP 需要存入的代币中，更便宜的那种代币占据更高的比重。若当前价格在区间之外，LP 只需提供更便宜的一种代币即可。</p>
+<p>具体计算方法如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_kaifmurlk7.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>当出金时，两种代币的本金提取量可做类似计算。已赚取的手续费部分，以交易发生时的代币类型收取并提取。<br>
+对于 Balancer V2，LP 入金时总是需要提供池中所有种类的代币，其配比决定与该池的权重设置</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_9p1m6lso6r.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>对于 Curve，当入金时，LP 可以按任意比例存入代币，或仅存入单一种类的代币。但是，若存入比例和当前池内的代币总量比例不符合，LP 将承受一定程度的损失（或奖励）。因为当 LP 获取 LP 代币时，获得的量由以下公式计算：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_616k0fyvql.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>其中 D 是在平衡点时池内代币总量，在流动性增加前其值为 D0，在流动性增加后其值变为 D1。但是，（假设投入相同数量的代币）当池内代币比例离平衡点越远，D 值会相对越小，导致 LP 得到的 LP 代币量较少，即产生了损失。相反的，若投入的代币使得池内代币比例趋向于回归平衡点，那么 LP 将得到更多的 LP 代币，即获得了奖励。</p>
+<h2 id="流动性聚集">流动性聚集</h2>
+<p>就流动性聚集来说，Uniswap V3 给予了 LP 最大程度的灵活性，LP 们可以根据自己的意愿聚合出任意形式的流动性分布曲线。相较之下，Balancer 和 Curve 以更多的固定参数设定代替了这种灵活性。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_cdjv90sf9q.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>Table 4 流动性聚集方式</p>
+<p>Uniswap V3 允许每个 LP 设置任意的流动性范围，以期望总体流动性聚集在一个最活跃的区间。但是，理论上，根据每个 LP 的自主决定，流动性可以被塑造成任意分布。</p>
+<p>举例来说，一个和 Uniswap V2 等效的流动性分布入下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_zq669o68cw.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>Figure 3 流动性分布 Uniswap V2</p>
+<p>这表示，若所有的 LP 都将流动性区间设置为最大可能区间，那么 Uniswap V3 池将会同 V2 等效。</p>
+<p>以下是一个和 Curve 近似的流动性分布，所有的流动性都聚集在平衡点附近的一个狭小区间内</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_p3sjds8vlw.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>Figure 4 流动性分布 Curve</p>
+<p>然而，上图仅仅是 Curve V3 的近似，其实际要更复杂。随着市场条件变化，最活跃价格区间偏离原平衡点太多时，Curve V3 会根据内置 Orcale 来重新调整平衡点和价格曲线。</p>
+<p>以下是一个等效于 Balancer V2 的流动性分布，其聚集于更大权重的代币价格更低的一侧</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_jc5o84eln9.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>Figure 5 流动性分布 Balancer V2</p>
+<p>然而，以上都不是实际观察到的 Uniswap V3 池常见流动性分布，常见的分布更类似于以下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_h0thsrokgu.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>Figure 6 实际观察到的流动性分布 Uniswap V3</p>
+<h2 id="交易费用">交易费用</h2>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_88vnqvdzdt.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<p>Table 5 交易费用</p>
+<p><strong>Uniswap V3</strong></p>
+<p>每个交易对有三个费用梯度的池子供 LP 选择：0.05%，0.3%，1%。直观上看，LP 更偏向于高费用池，但当高费用池的交易活跃度远低于低费用池时，LP 就不得不参与低费用池。交易者更偏向低费用池，但当低费用池的流动性过于稀薄而滑点过高时，交易者就会被迫从高费用池中交易。</p>
+<p>根据实际观察，对于稳定币交易对来说，0.05% 费用的池子最活跃。对于其他交易对，当市场波动率高时，高费用池变得更活跃，当波动率低时，低费用池更活跃。</p>
+<p><strong>Balancer V2</strong></p>
+<p>Balancer 协议收取两种费用：（1）交易手续费，以交易额的一定百分比对交易者收取 （2）出金费用，当 LP 从协议中出金时按提取额度收取</p>
+<p>交易手续费可设置为 0.05% 到 1% 之间，由池子创建者设置初始值，并由协议根据多因子来动态调整，因子包括：波动率，交易额，无常损失，流动性总量，流动性挖矿奖励，等等。</p>
+<p>出金手续费可由协议设置，但迄今为止未采用。</p>
+<p><strong>Curve V2</strong></p>
+<p>费用可设置为 0.04% 到 0.4% 之间，可根据目前池内代币比例做动态调整，当前比例距离平衡点越远，费用率越低：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0716/18_6qhywfuobr.png" alt="多维度解析头部 AMM：Uniswap V3、Curve V2 与 Balancer V2"></p>
+<h2 id="结论">结论</h2>
+<p>通过多方面的比较，可以看出每个协议都采取的不同的方法来契合 LP 和交易者们的多方面不同需要。</p>
+<p>Uniswap V3 给予了 LP 最大的灵活性，几乎所有参数都可以由 LP 自主决定，而团队并没有额外加入更多辅助特性，以保持协议的简单化。而 LP 则需要管理自己的各种风险。</p>
+<p>Curve 历史上曾专注于稳定币交易对，此新版本 V2 致力于扩展所涵盖代币的种类。不同于稳定币，非稳定币交易对的市场中价可能会偏移到新的活跃区间，所以此协议可根据内置 Oracle 的喂价调整流动性聚集范围，而无需 LP 自己重部署流动性区间。此种设计对个人投资者更加友好，但限制了开发更复杂的定制化做市策略的可能性。</p>
+<p>Balancer V2 在同一流动性池中容纳了多于两种的代币，并且赋予不同的权重，这满足了一部分 LP 差别对待不同种代币风险敞口的需求。通过增加一侧风险波动的方式，来降低另一侧的风险。</p>
+<p>引用文献</p>
+<p>[1] G. Angeris, A. Evans, T. Chitra; When does the tail wag the dog? Curvature and market making, 2020.</p>
+<p>[2] Hayden Adams, Noah Zinsmeister, Moody Salem, River Keefer, and Dan Robinson. Uniswap v3 Core. (2021).</p>
+<p>[3] Michael Egorov, Curve Finance (Swiss Stake GmbH). Automatic market-making with dynamic peg (2021)</p>
+<p>[4] Fernando Martinelli, Nikolai Mushegian. Balancer Whitepaper (2019)</p>
+<p>撰文：Ricky Li、Siddharth Lalwani、 Hongxu Yan，就职于 Altonomy Ventures</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25916/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">大厂炒币青年：傲慢与偏见</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25962/">
+                <span class="next-text nav-default">范一飞：招商银行近期已获准加入数字人民币研发</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#定价模型和不变式">定价模型和不变式</a></li>
+    <li><a href="#价格影响和滑点">价格影响和滑点</a></li>
+    <li><a href="#无常损失">无常损失</a></li>
+    <li><a href="#出金与入金">出金与入金</a></li>
+    <li><a href="#流动性聚集">流动性聚集</a></li>
+    <li><a href="#交易费用">交易费用</a></li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

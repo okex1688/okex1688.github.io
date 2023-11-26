@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          对提议者/区块构建者分离友好的费用市场设计 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="为应对 MEV 带来的问题，Vitalik 对提议者/区块构建者分离方案提出两条思路。" />
+<meta name="keywords" content="MEV" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25018/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="对提议者/区块构建者分离友好的费用市场设计" />
+<meta property="og:description" content="为应对 MEV 带来的问题，Vitalik 对提议者/区块构建者分离方案提出两条思路。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25018/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-28T00:00:00+00:00" />
+
+<meta itemprop="name" content="对提议者/区块构建者分离友好的费用市场设计">
+<meta itemprop="description" content="为应对 MEV 带来的问题，Vitalik 对提议者/区块构建者分离方案提出两条思路。"><meta itemprop="datePublished" content="2021-06-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4070">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="对提议者/区块构建者分离友好的费用市场设计"/>
+<meta name="twitter:description" content="为应对 MEV 带来的问题，Vitalik 对提议者/区块构建者分离方案提出两条思路。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">对提议者/区块构建者分离友好的费用市场设计</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-28">
+      2021-06-28
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4070 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>作者 | Vitalik Buterin</p>
+<p>特别感谢 Justin Drake 和 Flashbots 团队的反馈和讨论。</p>
+<p>对现在运行中的去中心化共识网络的一个重大威胁是关于矿工可提取价值 (miner extractable value) 的经济学，即从选择下一个区块内容的能力中提取利润的复杂技巧。一个简单的 MEV 例子是根据前一个区块的价格变动在所有链上的去中心化交易所套利。尽管正常情况下 PoS 的奖励是合理的、平均的，即单个验证者的回报率跟强大的质押池是一样的，但现在找寻复杂的 MEV 提取机会已经形成相当显著的规模经济了。10 倍大的池子就有 10 倍的机会提取 MEV，但池子也需要能够在专有的优化上投入更多，以在每个机会里提取更多的价值。</p>
+<p>除了这个问题以外，MEV 也让去中心化的质押池变得更复杂，因为在去中心化质押池里，打包交易和提议区块仍然需要由一个实体来完成，他们可以轻易地秘密提取 MEV，而不在池里分配这些收入。</p>
+<p>最为人所知的是解决方案区块提议者 (proposer)/构建者 (block builder)分离。不同于区块提议者自己生成一个收入最大化的区块，他们依赖一个市场，这个市场由外部的区块构建者组成，他们生成包含完整区块内容和给区块提议者费用的交易捆，然后提议者选择包含最高费用的交易捆。这样，区块提议者的选择就被简化为选择费用最高的交易捆，这可以由一个简单算法实现——在一个去中心化池里，它甚至可以在 MPC (多方计算) 里完成，以防止作弊。</p>
+<p>本文对如何实现这点提出了一些设计。</p>
+<p>本文的想法非常直接地受 2018 年的这篇文章启发： </p>
+<p>Optimised proposal commitment scheme 20</p>
+<p><strong>提议者/构建者分离的区块提议设计的所需特性</strong></p>
+<p>我们会专注的五大所需特性：</p>
+<ul>
+<li>
+<p>无须信任提议者友好性：提议者欺负区块构建者的风险几乎是零，因此区块构建者没有动机偏向链下有声誉的或与构建者有个人关系的提议者 (因为这有可能偏向大型质押池)。</p>
+</li>
+<li>
+<p>无须信任构建者友好性：构建者欺负提议者的风险几乎是零，因此提议者没有动机偏向链下有声誉或与构建者有个人关系的构建者 (因为这有可能导致新进入市场的构建者不被选择)。</p>
+</li>
+<li>
+<p>弱提议者友好性：这个机制不应该要求提议者有 (i) 高带宽或其他计算资源， 或 (ii) 高技术水平</p>
+</li>
+<li>
+<p>不可窃取的交易捆 (bundle)：提议者应该不能接受由区块构建者提议的交易捆，并从中提取交易形成自己的交易捆，从而阻止区块提议者赚取利润 (并可能进一步伤害他们)</p>
+</li>
+<li>
+<p>共识层保持简单与安全：从共识层的角度，该机制应该保持安全性不变，最好与现有的区块提议机制一起可以被同一个分析框架。</p>
+</li>
+</ul>
+<p><strong>想法1</strong></p>
+<ul>
+<li>
+<p>区块构建者构建交易捆并发布这些交易捆的捆头 (bundle head)。一个交易捆头包含对交易捆主体 (bundle body) 的承诺 (预期的区块内容)，给提议者的付款信息，以及构建者的签名。</p>
+</li>
+<li>
+<p>提议者选择提供最高费用的交易捆头 (仅需要考虑交易捆的构建者实际上是否有足够的余额可以支付)。他们对交易捆头签名并发布包含该交易捆头的一个提议。</p>
+</li>
+<li>
+<p>当看到有签名的提议后，提供打包交易捆头的区块构建者发布完整的交易捆。</p>
+</li>
+</ul>
+<p>此时，分叉选择规则能够做出以下三个判断中的一个 (而不是平常的两个，存在区块 vs. 不存在区块)：</p>
+<ul>
+<li>
+<p>不存在区块提议</p>
+</li>
+<li>
+<p>存在区块提议但不存在交易捆主体</p>
+</li>
+<li>
+<p>区块提议和交易捆主体都存在</p>
+</li>
+</ul>
+<p>请注意，在第二种情况下，提议仍然会被打包到链上，区块构建者给提议者的付款也仍会处理 (但区块构建者自己不会获得任何费用或 MEV )。</p>
+<p><strong>分析</strong></p>
+<p>五项特性中的三项是相当容易呈现的：</p>
+<ul>
+<li>
+<p>区块提议者无条件接收承诺的付款，因此交易捆不能欺负提议者</p>
+</li>
+<li>
+<p>三个步骤都非常自动化且低带宽，因此这满足弱提议者友好性</p>
+</li>
+<li>
+<p>提议者不能看到他们要的签名交易捆的信息，因此这满足交易捆不可窃取性。</p>
+</li>
+</ul>
+<p>共识层特性和无须信任提议者友好性这两点比较棘手。这个设计的确会改变分叉选择机制，从两个选项增加到三个，这意味着提议者将不再是这个机制里的最后一个行动者。理论上，人们可以推断如果分叉选择是可以做出决定的，那么这应该没问题，但这仍然是一个具有潜在未知性的重大变更。</p>
+<p>区块提议者看不到交易捆的内容，并不能通过窃取交易捆欺负区块构建者，但他们可以对区块构建者发起一种更微妙的攻击。他们可以在 slot 末发布提议，确保证明者 (大概) 能及时看到提议，但区块构建者没有足够的时间发布交易捆主体，因此很有可能证明者来不及看到交易捆主体。这会给区块构建者带来风险，并等于鼓励他们偏向值得信任的提议者。另外，这还给了恶意的大多数机会，重罚那些他们不喜欢的区块构建者。</p>
+<p>我觉得有两套方法可以缓解这个问题。</p>
+<ul>
+<li>
+<p>证明者在他们接受提议的最长时间和他们接受交易捆主体的最长时间之间有 2 秒的延迟。如果你信任证明者，这基本解决了问题，尽管区块构建者丢失资金的这个风险仍然存在。另外，还不清楚让证明者以这种方式投票是否有激励作用 (虽然可以想象到会有人通过要求他们对一个 2 秒的可延迟验证函数的提议做证明，强迫他们等待)</p>
+</li>
+<li>
+<p>如果交易捆的主体没有被打包，提议者只能获得付款的一半 (而区块构建者只需支付一半)。这使得提议者的破坏行为成本很高，但它仍然确保区块构建者破坏的成本也是高昂的 (当两种情况的成本都足够高时，总的来说你就能信任即使是匿名行动者都不会想做破坏行为)。例如，如果一个交易捆的提议者费用是 1，区块构建者获利 1.05：</p>
+</li>
+</ul>
+<p>诚实行为会带来的构建者和提议者收益分别是 0.05 和 1。</p>
+<p>提议者或证明者太迟发布，导致仅区块头被接受了，这样构建者和提议者的收益分别是 -0.5 和 0.5。</p>
+<p><strong>想法2</strong></p>
+<ul>
+<li>
+<p>区块构建者构建并发布交易捆头。交易捆头包含对内容的承诺、给提议者的付款、以及构建者的签名。</p>
+</li>
+<li>
+<p>提议者对他们看到的交易捆头进行选择，形成列表，并对列表组成的声明进行签名。</p>
+</li>
+<li>
+<p>在看到该声明时，被选的区块构建者会发布相应的交易捆主体。</p>
+</li>
+<li>
+<p>提议者在他们之前承诺的一列交易捆头中选出一个并用它发布提议。</p>
+</li>
+</ul>
+<p>还需要一个新的罚没条件，任何在同一个 slot 里提议不在自己承诺列表里的交易捆头的提议者都会被逐出和被惩罚。</p>
+<p>还要注意的是，在第 2 步里，提议者提交的交易捆头列表也可以成为一个对交易捆头进行加密的哈希值列表，其中哈希值都加密到区块构建者的公钥，因此只有构建者知道它们是否被接受了。这会减少 DoS 攻击风险。</p>
+<p><strong>分析</strong></p>
+<p>同样地，五项特性中的三项式相当容易显示的：</p>
+<ul>
+<li>
+<p>提议者不能窃取交易捆，因为当他们已经把自己限制在一个有限的现有交易捆头集里时，他们只能看到交易捆的主体。</p>
+</li>
+<li>
+<p>当完整的交易捆没有被打包前，构建者给提议者的付款是不可能成功的，因此提议者也无法在经济上欺骗构建者。</p>
+</li>
+<li>
+<p>共识特性保持不变，因为系统设定仍然是提议者作为机制的最后行动者，共识规则决定的内容没有变更。</p>
+</li>
+</ul>
+<p>在这个情况里，更棘手的两个特性是弱提议者友好性和无须信任区块构建者友好性。对于这个方案的忧虑是恶意区块构建者可以通过制造大量高交易费的提议攻击提议者，但永远不发布这些交易捆的主体。如果提议者对接受的交易捆数有上限，这种攻击可以把所有合法交易捆排除在外，使得提议者没有合法交易捆可以提议打包到区块。如果提议者对接受的交易捆数没有上限，那么可能会有无数个满的交易捆主体 (试想：每个 500 kB) 发送给提议者，这将需要非常大量的带宽。</p>
+<p>解决这个难题的一个办法是以某种方式对交易捆头的提交进行速率限制，这不是一个硬性限制。</p>
+<ul>
+<li>
+<p>提交交易捆需要支付一定费用，通过类似 EIP-1559 的机制来调整到某个速率 (例如，每 slot 8 个交易捆)</p>
+</li>
+<li>
+<p>成为区块提议者需要押金 (无论如何都是必要的，以确保提议者得到报酬)，同时还需要一条规则，如果你发布的交易捆没有被打包，但一个更低价的交易捆被打包了，那么你在接下来的 N 个 slot 都无法提交交易捆。</p>
+</li>
+</ul>
+<p>只有在这种情况也会被扣费：你的交易捆没有被打包，但更低价的交易捆被打包了，因为这种特定情况可能是你作恶了 (或提议者作恶、或是网络状态不好)。</p>
+<p>这方面有先例；之前的 ENS 竞拍设有 0.5% 失败者费用，以阻止有人在明显不会赢的情况下出价，以迫使赢家支付更多。</p>
+<p>但是，这些技术可能会引入对提议者的信任要求，因此他们需要谨慎处理，对打包交易捆失败的惩罚不能太高。</p>
+<p>一个替代方案是允许自由和无限制地发布交易捆主体，但限制主体在在网络层广播。一个简单算法是：</p>
+<ul>
+<li>
+<p>为交易捆得以传播添加一个稍微延迟的最短时间限制：交易价格最高的交易捆是 0 秒，第二高的交易是 0.2 秒，第三高的是 0.38 秒，一般来说对于第 k 个最高交易价格的交易困是 2∗[1−0.9^(k−1)] 秒。</p>
+</li>
+<li>
+<p>增加一条规则：如果一个节点已经广播了一个更高交易费的交易捆主体，它不能再广播了。</p>
+</li>
+</ul>
+<p>这两项技术可以结合在一起：你可以用一个低价费用来减少预期的交易捆数，比如每个 slot 50 捆，然后使用像这样的网络层机制来进一步减少带宽要求。</p>
+<p><strong>结论</strong></p>
+<p>到目前为止，我不明确是否唯有上述两种方法能解决这个问题，可能还有其他。在这两种方法里，想法 (1) 在概念上更简单，但它会给区块构建者带来风险，也会引入更复杂的分叉选择规则要求。想法  (2) 在分叉选择和共识上更简单，但在处理恶意区块构建者带来的 DoS 攻击上有困难，且任何解决这个问题的方法都可抗产生其他问题，尽管可以想到将其最小化的方法。到目前为止，我仍然不确定哪一个更好。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25003/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">对 EIP-3074 的批评以及一种简单的替代</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25010/">
+                <span class="next-text nav-default">分析Swarm的风险与创新 矿工入场仍需谨慎考虑</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

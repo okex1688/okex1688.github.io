@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          深度解析DeFi中不可忽视的流动性忠诚度问题 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="我们在本文中将流动性泛指为与项目相关的所有流动性——交易对的治理代币的流动性、协议中所有相关的流动性衡量标准等。" />
+<meta name="keywords" content="DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/26735/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="深度解析DeFi中不可忽视的流动性忠诚度问题" />
+<meta property="og:description" content="我们在本文中将流动性泛指为与项目相关的所有流动性——交易对的治理代币的流动性、协议中所有相关的流动性衡量标准等。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/26735/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-02T00:00:00+00:00" />
+
+<meta itemprop="name" content="深度解析DeFi中不可忽视的流动性忠诚度问题">
+<meta itemprop="description" content="我们在本文中将流动性泛指为与项目相关的所有流动性——交易对的治理代币的流动性、协议中所有相关的流动性衡量标准等。"><meta itemprop="datePublished" content="2021-08-02T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-02T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7636">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="深度解析DeFi中不可忽视的流动性忠诚度问题"/>
+<meta name="twitter:description" content="我们在本文中将流动性泛指为与项目相关的所有流动性——交易对的治理代币的流动性、协议中所有相关的流动性衡量标准等。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">深度解析DeFi中不可忽视的流动性忠诚度问题</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-02">
+      2021-08-02
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7636 字 -
+        预计阅读 16 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>总价值锁定（TVL）同时是DeFi中最受欢迎和最容易被误解的指标。总资本分配 (TCA) 可能是更准确的措辞。TVL暗示价值被“锁定”在协议中，忠诚且坚定不移。不幸的是，对于许多项目而言，情况并非如此。短期金钱游戏占主导地位。除了少数蓝筹股外，所有的叙述都指导价格。叙事、价格和流动性都具有高度反射性的关系。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_q9miv7mb1k.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>我们在本文中将流动性泛指为与项目相关的所有流动性——交易对的治理代币的流动性、协议中所有相关的流动性衡量标准等。</p>
+<p>在这篇文章中，我们通过演示以下内容来声称流动性不忠诚：</p>
+<p>流动性仅在最高质量的项目中具有粘性。即便如此，忠诚度相对于传统股票市场来说也是转瞬即逝的。</p>
+<p>为每个人解锁早期流动性的性质创造了巨大的风险溢价。这并不是天生的坏事，只是不同而已。</p>
+<p>早期流动性在设计上不如后期流动性忠诚。</p>
+<p>推动流动性的代币激励是一种激励网络活动和流动性的绷带解决方案。治理的吸引力取决于它所治理的价值和声誉。</p>
+<p>我们将通过提供一系列项目可以采取的政策步骤来完成这项工作，以适当调整激励措施并吸引更多忠诚的流动性提供者和忠诚的代币持有者。</p>
+<h2 id="第1-幕了解推动-defi-流动性的因素"><strong>第1 幕：了解推动 DeFi 流动性的因素</strong></h2>
+<p>TVL 作为一种高级指标可以很好地展示随着时间的推移将资金投入 DeFi 的整体兴趣。从 DeFi 夏季（2020 年）到 2021 年第二季度，DeFi 中的资本增长明显超过了以太坊的增长。收益率很容易找到，流动性很乐意留在有风险的农场。由于 Staking Pool 2 的流行，项目的基础治理代币具有良好的流动性。DeFi 出现爆炸性增长，TVL 显着超过 ETH 市值的增长。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_24s8l9sv7o.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>从那时起，加密货币已从山寨币的繁荣中退缩。结果，从风险承担到风险承担的转变开始了，收益率相应地被压缩。流动性慢慢地从 2 池中流出并流入稳定币。如果我们将 Aave 和 Compound 稳定币池作为无风险利率，由于大量稳定币流动性但借款有限，收益率被压缩至历史低点。高于这些收益率的风险池中的风险溢价同样低迷。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_mjn2s6233v.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>在此期间，风险收益率几乎无处不在。大多数情况下，代币价格下跌了 60% 以上，并导致收益率相应下降，因为流动性提供者的奖励是在崩溃的代币中支付的。</p>
+<p>无常损失 (IL) 的风险将许多流动性提供者 (LP) 赶出了这些池，从而耗尽了流动性并创造了一个自然卖家。随着时间的推移，随着价格的持续下跌，越来越多的 LP 投降了。尽管 IL 的风险增加，但价格在阴沟里，这些农场的产量也是如此。</p>
+<p>由于这些 LP 中的许多人离开 Pool 2 去冒险，他们发现自己在稳定币池中寻找新的收益来源。虽然 DeFi 已经远离风险，但穿越空间的稳定币已达到历史水平。对稳定币的需求是坚定不移的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_cc5n5n470m.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>并且这些稳定币中的许多都牢固地在链上，在 DeFi 中创造了有吸引力的稳定币机会，或者准备在加密风险增加时增加去中心化交易所的交易量。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_ll8ipn8ve3.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>这种向稳定资产的转移意味着风险池的流动性已经基本耗尽。x*y=k 流动性提供者眼睁睁地看着无常损失吞噬他们的收益。以流行治理代币ALCX的买入持有策略为例。将代币从其当地最高点保持在 1,800 美元以呈现净回报 -80%，如果考虑到 ALCX 的单边赌注，则约为 -70%。然而，ALCX-WETH 池中的流动性提供者导致 LP 损失 -65%，在更高的风险和显著更高的管理费用下获得了相当的回报。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_8ctw92w9qf.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>IL 模拟器：https : //old.croco.finance/simulator</p>
+<p>在此期间，Curve、Aave 和 Compound 不出所料地在 TVL 中占据主导地位，因为它们几乎所有的流动性都集中在稳定币中。但很自然地，随着流动性的增加，上述利率下降也随之而来。</p>
+<p>Curve 和类似的稳定 DEX 可以说是游戏中唯一一款风险相对较低且回报有吸引力的稳定池，因此这种资本继续保持充裕。Curve 收益率的争夺变得如此激烈，以至于 Yearn、Convex 和 Stake DAO 不断购买和分配大量的 Curve 治理代币 CRV，以争取 Curve 仪表中可能的最佳收益率。这些仪表是 DAO 管理的控制，用于控制奖励如何在 Curve 池之间分配。锁定 CRV (veCRV) 对这些奖励的分配方式进行投票。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_2c7b39mojg.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>数据来源：Dune Analytics</p>
+<p>Curve 可能创造了 DeFi 中最强大的激励结构，用于通过治理代币来激励流动性。他们在仪表中使用 CRV 导致大量供应分配给生产用途，有效地长时间锁定了他们的绝大多数代币供应。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_y2wnivrpqc.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>数据来源：Dune Analytics</p>
+<p>这创造了强大的反馈循环，尽管来自无情发行/奖励的持续和无情的抛售压力，代币仍然保持价值。无数各方不断地在公开市场上种植和倾销这些代币。但作为城里的顶级表演，他们可以侥幸逃脱。大多数其他项目就没那么幸运了。Curve 强大的流动性和先发优势使其在其稳定的资金池中得到了持续的强劲利用。</p>
+<p>大多数治理代币并没有经历完全相同的命运。像下面的匿名代币一样，稀疏的使用和稀薄的流动性讲述了一个一致的故事：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_04pgq5cuz5.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>随着流动性几乎耗尽，代币现在在出现任何买家或卖家迹象时都会经历剧烈的每日波动。由于上述治理代币通过流动性激励措施得到回报，因此持续的抛售压力依然存在。该项目依靠治理代币来激励使用并保持竞争力。上述协议可以维持奖励创可贴以保持竞争力多长时间？</p>
+<h2 id="第2幕对于大多数贪婪协议而言当前的代币设计是不可避免的中期死亡螺旋"><strong>第2幕：对于大多数“贪婪”协议而言，当前的代币设计是不可避免的中期死亡螺旋</strong></h2>
+<p>对于没有接触稳定币的国库的团队来说，这种接触他们自己的治理代币是有问题的，特别是如果团队的工资是以项目的治理代币支付的。存在潜在的反馈循环：</p>
+<ul>
+<li>
+<p>忠诚度有限的雇佣农民，短期锁定的风险投资，以及需要支付租金的团队成员，不断向市场出售新鲜的代币。</p>
+</li>
+<li>
+<p>价格因不断增加的抛售压力而相应下跌。</p>
+</li>
+<li>
+<p>团队必须支付大量的代币，以保持美元等值的工资不变。</p>
+</li>
+<li>
+<p>农民同时看到他们的产量受到影响，选择退出，让他们的头寸被淹没，或者增加资本以对抗因代币价格下跌而造成的无常损失和回报下降。</p>
+</li>
+<li>
+<p>随着越来越多的代币被出售到公开市场，进一步发行继续压低价格。</p>
+</li>
+<li>
+<p>随着时间的推移，流动性会退出池，因为他们的头寸因无常损失或开始失去信心而完全被淹没。</p>
+</li>
+<li>
+<p>散户和风险投资者质疑他们对该项目的信心。许多人退出并进一步压低价格。</p>
+</li>
+<li>
+<p>流动性经历了死亡螺旋，项目的2池现在实际上已经死了。</p>
+</li>
+</ul>
+<p>由于早期项目的固有风险和短暂的忠诚度，越来越多的团队被鼓励将他们的资金分散到更具风险的资产中。这当然需要权衡。主要是社区质疑团队对他们项目的信念。在项目生命周期的早期，它可以使资金多样化，可能就越好。</p>
+<p>如果农民和其他利益相关者有从事雇佣军行为的动机，那么什么样的动机可以引导团队、用户和投资者持有治理代币并提供持续的流动性？许多因素，但主要是：</p>
+<ul>
+<li>
+<p>作为费用、代币销毁、回购等奖励的当前或未来现金流。</p>
+</li>
+<li>
+<p>边际买家推高代币价格（价格由叙述驱动，通常由现金流驱动的叙述 - 请注意这种关系中的自反性）</p>
+</li>
+</ul>
+<p><strong>治理作为对代币持有者的唯一激励只是一种假象。</strong> 这是一种逃避监管的软弱尝试，在协议的真正现金流上拖延时间。</p>
+<p><strong>代币持有者期待更多。</strong> 他们期待未来的流动性。在传统市场中，我们经常观察到流动性溢价。具有优越流动性的资产以溢价交易，以提高投资者的套现能力。加密资产大致相同。没有流动性承诺的项目会带来更高的风险和更低的忠诚度——就像 TradFi 做市商如何预测以避免在他们的账簿上保留过多风险一样，DeFi 中的散户和专业流动性提供商也在不断监控风险。DeFi 中通常较差的流动性使得忠诚度稀少。</p>
+<p>缺乏流动性忠诚度意味着在出现危险的第一个迹象时会逃避风险。逃避风险标志着代币价格的下降。代币价格下降标志着流动性退出，而流动性退出则标志着代币价格下降。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_f9urhzqp8b.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<h2 id="第3幕早期流动性的新范式并没有失败它只是不同"><strong>第3幕：早期流动性的新范式并没有失败；它只是不同</strong></h2>
+<p>加密革命的标志性创新之一是扩大了对早期流动性的访问。这在很多方面都是风险投资的民主化。旧的范式提供了长达 10 年的时间，然后散户才能通过首次公开募股、直接上市等方式接触公司。现在，交易员和投资者可以获得早期流动性，可以说相当于种子前的流动性和种子阶段，通过 ICO、IDO 和早期的 DEX 流动性。</p>
+<p>可以说，这种早期的流动性导致了巨大的价格溢价。该领域的估值被大大夸大了。可以说这是合理的，因为在任何阶段通过公共 DEX 流动性向风险投资者提供固有的流动性溢价。他们不再需要为退出事件等待 10 年。许多风险投资者对即使失败的项目仍可能有大量通过零售退出的机会感到垂涎三尺。赢家收货 100 倍以上的回报，即使是最惨的输家，有时也可能是洗牌、微利或可挽回的损失。</p>
+<p>这创造了巨大的溢价，许多风险投资公司竞争早期分配。尽管溢价继续膨胀，但估值会超过溢价的水平。</p>
+<p>早期资本的设计流动性较低。风险投资通过设计涉及锁定和有限的流动性。二级市场是为了曝光而存在的，但最终公司和投资者之间的锁定和长期联姻是传统风险投资的现状。加密货币很快就会意识到，高质量的团队需要投资者提供更长的锁定期。6 个月的锁定根本不会削减它。风险投资者可以很容易地减少损失并弃船，在他们的代币解锁的那一刻将他们的配置卖到一个开放的市场。他们遭受声誉风险，但短期资本风险仍然重要得多。</p>
+<p>但是，这种话语的钟摆可能在惩罚风险投资者的行为上太过分了。在许多方面，新范式让所有散户投资者成为风险投资者。零售业的投资阶段在历史上本来是为风险投资人保留的。如果我们要对风险企业施加锁定，也许团队可以探索扩大零售锁定。在 IDO 中发行治理代币并通过质押 Pool 2 DEX 头寸的团队应该探索这些治理代币的锁定期延长 1-5 年，并增加奖励。</p>
+<p>毕竟，这些项目和投资者打算在 1-5 年内出现，对吗？答案往往是否定的。偏向于短期激励的团队和投资者应该期待更高的风险以及潜在的短期回报。</p>
+<p>出售一篮子产品前治理代币的长期看涨期权可能是明智的。不是因为这些项目可能会失败，而是因为风险溢价将在未来几年重新定价，因为项目需要为其出售的每一个项目提供更多价值。</p>
+<h2 id="第4幕调整激励措施是一个复杂的游戏需要仔细考虑期望的结果"><strong>第4幕：调整激励措施是一个复杂的游戏，需要仔细考虑期望的结果</strong></h2>
+<p>生物学描述了自然界中的三种共生关系：</p>
+<p><strong>互惠互利：</strong> 双赢。</p>
+<p><strong>共生主义：</strong> 一个受益而另一个未受伤害。</p>
+<p><strong>寄生：</strong> 一种有益而另一种受到伤害。</p>
+<p>在项目的最初阶段，几乎所有参与者都在参与互惠互利。当项目引导他们的网络时，最早的投资者和流动性提供者承担更高的风险。这些早期投资者通常是直言不讳的支持者，并协助营销，有时是开发工作、分析等。</p>
+<p>在这些项目生命周期的某个地方，这种关系变成了共生主义，即边际代币持有者不再引导网络，现在在期望回报的情况下承担更少的风险。他们对社区的参与往往较少。如果他们提供流动性，那么流动性通常就不那么忠诚了。如果他们获利并运行他们对项目的影响充其量只是微不足道，他们的个人收益可能是巨大的。如果他们的头寸被冲洗掉，项目就会从他们的流动性中获利，但投资者会遭受损失。</p>
+<p>最后，存在第三类寄生性。他们采取行动纯粹是为了使他们的短期结果受益。他们参与挖矿式治理实践。他们寻求的结果只会有利于他们的个人结果。他们采用可疑的营销策略，并依靠他们的影响力来说服边缘投资者。在投资者方面，这可能是在私人回合中进行大量分配，但锁定时间较短，对项目的贡献很小。在项目方面，这可能是一个影响社区或从未达到某个开发里程碑的项目。</p>
+<p>目前，该领域的很多人都认为时间太短了。但也许这没问题。我们仍处于快速创新的循环中。短期思考和超越竞争对手是非常有利可图的。随着更多高质量玩家进入该领域，长期思考将变得更有利可图。</p>
+<p>流动性只与项目的底层用户一样忠诚。随着项目的成熟，这些用户类别会发生变化。目前的用户行为变化很大。有充分的理由。创新发展太快，流动性无法与一个团队或代码库结合。或许随着时间的推移，更多的护城河会形成，创新也会放缓。目前，集中风险和极端主义是愚蠢的差事。</p>
+<h2 id="第5幕通过明智的政策忠诚的流动性是可能的尽管它需要权衡"><strong>第5幕：通过明智的政策，忠诚的流动性是可能的，尽管它需要权衡</strong></h2>
+<p>通过协议和投资者的正确激励和集体支持，项目可以为成功做好准备。</p>
+<p>在提出一些政策建议之前，保持流动性最可靠的方法是什么？利用。</p>
+<p><strong>如果基础产品没有用户，那么代币经济学就不重要。</strong></p>
+<p>利用率——这是加密货币中的布吉人。深入研究利用率，其中许多项目和网络都是真正的“鬼城”。他们在 DEX 上拥有活跃的治理代币对，但几乎没有理由保持这种流动性保持忠诚。</p>
+<p>没有利用，叙述是脆弱的。没有利用现金流是稀疏的。</p>
+<p>凭借强大的利用，叙述是稳健的。随着使用现金流是丰富的。我们之前的图表发生了变化……</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_ghdq91adt1.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>由于上述反馈循环，我认为具有长期目标的项目应该等待更长时间才能推出代币或提供 DEX 流动性。产品前项目要么坚持寻找私人资本承诺，锁定代币交易，要么接受为社区提供早期流动性的风险/权衡。没有利用，准备一个喧嚣的旅程。请注意，即使是大多数具有功能性产品的项目也无法吸引大量用户增长和使用其协议。</p>
+<p>到目前为止，我们会将 Sushiswap 视为蓝筹 DeFi 的巅峰之作。即使是 Sushi 的用户（地址）保留也很困难。现在想象一下不是一个高峰蓝筹项目。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_6lc85gc2o8.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>数据来源：Dune Analytics</p>
+<p>尽管层出不穷的激励措施、创新、顶级品牌以及完全强大的社区驱动策略，Sushiswap 用户保留率仍然很挣扎。</p>
+<p>只有少数项目表现出强大的利用率和现金流。具有讽刺意味的是，在其中的许多激励措施中，这些激励措施确实是最根本的，主要是因为它们可以。Uniswap 就是一个明显的例子。Uniswap 的产品中没有内置流动性激励措施。基础利用率推动费用，这些费用推动流动性提供者继续参与。</p>
+<p>UNI 代币持有者没有得到任何承诺，尽管普遍的情绪是对未来现金流和国库价值的预期。</p>
+<p>虽然许多具有 Uniswap-v2 流动性的项目提供质押，但 v3 已经成功地吸引了整个产品的流动性和使用量，这纯粹是利用费用的优点。资本效率和产品优势正在巩固他们作为 DEX 总量的主导者的地位。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_1onybh0yuk.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>数据来源：Dune Analytics</p>
+<p>除了所有货币对的流动性很高之外，治理代币本身也具有很高的流动性。Uniswap 代币的需求是 DeFi 中最高的。利用率（几乎）就是一切。没有它，任何短期奖励都只是长期命运的权宜之计。</p>
+<p><strong>拥有你的流动性。</strong></p>
+<p>忠诚流动性的一种独特方法是通过自己拥有流动性来将流动性掌握在您的项目中。让用户买入和卖出你的代币，但要采取措施来拥有你自己流动性的很大一部分。OlympusDAO 是完美的案例研究。</p>
+<p>OlympusDAO 为忠诚的流动性问题提供了同类解决方案。DAO 拥有超过 99% 的储备货币流动性。它通过出售债券以折扣其代币来做到这一点。债券在 7 天内到期。它为 Sushi 流动性头寸 (SLP) 或稳定币出售债券。随着时间的推移，出售 SLP 债券会增加 DAO 对流动性的所有权，现在拥有 OHM-DAI 和 OHM-FRAX 超过 99% 的 SLP。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_uuo1twoz2j.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>数据来源：Dune Analytics</p>
+<p>为稳定币出售债券会增加国库。对于 OHM 而言，这意味着充当其储备货币的后盾。对于其他选择出售债券的项目，这可能意味着有专门的资金来支付开发人员、营销人员等费用。</p>
+<p>随着时间的推移，预计会有更多项目采用这种自主流动性结构，即他们以原生代币出售债券，以拥有越来越多的 LP 头寸份额。项目自身流动性的所有权还使其能够不断地从池中收取费用。通过这种方式，即使代币经历下行波动，他们也可以通过收取费用来对冲。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_flpwul6sno.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p><strong>编纂忠诚。接受增长放缓的权衡。</strong></p>
+<p>已经尝试了几种不同的锁定、归属等方法，以在 DeFi 中取得不同程度的成功。主要：</p>
+<ul>
+<li>
+<p>锁定单边 Staking 仓位、流动性仓位奖励机制、长期锁仓奖励等。</p>
+</li>
+<li>
+<p>代币奖励的归属期以分散卖方压力/拖延时间。</p>
+</li>
+<li>
+<p>与投资者达成私人协议，成为 DEX 的 LP、CEX 的做市商。</p>
+</li>
+<li>
+<p>更广泛地获取针对 LP 头寸的衍生品。更灵活的对冲意味着更少的需要退出头寸。</p>
+</li>
+</ul>
+<p>减轻流动性打击的最简单方法是锁定。虽然单边锁定的 Staking 头寸不会直接激励流动性，但它们会减轻对资本配置者的打击。以 CREAM 作为一个很好的案例研究。在更长的时间范围内逐步提高 APY 会激励各级利益相关者。尽管流动性稀薄，但由于代币持有者保持稳定且流动性忠诚，抛售压力仍处于健康水平。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_upp0jhba8a.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>4 年锁定期承诺的代币最多，在 4 年锁定期中约有 10% 的 3M 代币流通供应量。每个其他层锁定的代币逐渐减少。持币者可以获得健康的奖励，协议通过拖延时间来减轻打击。</p>
+<p>对一个项目的期望是，在 4 年内他们要么想通了并经历了健康的增长，要么几乎失败了。如果他们经历了健康的增长，那么流动性就会很强；如果他们愿意，任何大型代币持有者在 4 年内都会有大量的流动性可以出售。如果他们失败了，那么流动性讨论无论如何都是没有意义的。</p>
+<p>迄今为止，CREAM 上健康、持续的用户/贷方增长与忠诚资本的结合一直是 CREAM 市值的成功组合，但该项目的流动性薄弱，尤其是在 DeFi 的风险规避时期。持有者更愿意抵押他们的代币而不是承担风险的 LP 头寸。好消息是 CEX 流动性正在增长，FTX 和 Binance 都为 CREAM/稳定币对提供了健康的市场。但是该项目的 DEX 与 FDV 的总流动性仍然非常薄弱。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_smjotcmfoy.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<p>“我怎么帮你？” — 匿名 VC</p>
+<p>加密领域的一小部分风险投资公司具有高度技术性，它们的技术利基分布在研究、安全/审计、代币经济学等领域。绝大多数风险投资公司技术含量较低，将资本作为其主要增值。拥有来自新投资者的大量资金的聪明创始人应该探索与投资者达成正式协议，以提供流动性，最好是在基础对中，但在其他地方的自举利用也可以间接促进网络的增长，从而对基础对产生兴趣。</p>
+<p>在借贷协议中，这可能意味着投资者是第一个存入借贷市场的人，用 50 万美元到数百万美元的稳定币或协议的基础代币引导一个池子，以鼓励其他人跟随。在 DEX 中，这可能意味着向战略对（可能是项目的代币）增加资本。创始人不应该害怕询问投资者他们参与这些计划并锁定从投入资本中获得的任何回报。最近，不止一个聪明的创始团队拒绝了无法承诺奖励锁定的投资者。不要害怕从最早的投资者那里得到更多期望。</p>
+<p>最后，开放衍生品的使用增加了 LP 的灵活性和忠诚度。考虑到所有因素，无论结果如何，许多 LP 都更愿意跟随这艘船。调整头寸会产生税务责任并增加复杂性。目前，大多数 LP 要么被限制访问加密衍生品，要么没有适合其所需 r/r 配置文件的产品。</p>
+<p>获得衍生产品使 LP 能够对冲他们的头寸，在上行情况下留下一些回报，在下行情况下保护资本。扩大对衍生品的访问将允许更多 LP 留在游戏中。例如，我可能会选择继续对我的 LP 头寸中的底层证券滚动看跌期权。下面我们对各种看跌期权的收益进行建模；获得更多针对我们的标的期权将是朝着正确方向迈出的积极一步，向更多对冲流动性提供者提供贷款。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0802/11_64jajsddss.png" alt="深度解析DeFi中不可忽视的流动性忠诚度问题"></p>
+<h2 id="第6幕结束想法"><strong>第6幕：结束想法</strong></h2>
+<p>谁知道金融的未来会被一群才华横溢的工程师、不墨守成规者和散户所推动？</p>
+<p>要么快，要么粗犷。</p>
+<p>一路向前。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/26732/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">如何对冲 DeFi 风险？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/26730/">
+                <span class="next-text nav-default">探究中央银行数字货币（CBDC）对支付和银行的影响</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#第1-幕了解推动-defi-流动性的因素"><strong>第1 幕：了解推动 DeFi 流动性的因素</strong></a></li>
+    <li><a href="#第2幕对于大多数贪婪协议而言当前的代币设计是不可避免的中期死亡螺旋"><strong>第2幕：对于大多数“贪婪”协议而言，当前的代币设计是不可避免的中期死亡螺旋</strong></a></li>
+    <li><a href="#第3幕早期流动性的新范式并没有失败它只是不同"><strong>第3幕：早期流动性的新范式并没有失败；它只是不同</strong></a></li>
+    <li><a href="#第4幕调整激励措施是一个复杂的游戏需要仔细考虑期望的结果"><strong>第4幕：调整激励措施是一个复杂的游戏，需要仔细考虑期望的结果</strong></a></li>
+    <li><a href="#第5幕通过明智的政策忠诚的流动性是可能的尽管它需要权衡"><strong>第5幕：通过明智的政策，忠诚的流动性是可能的，尽管它需要权衡</strong></a></li>
+    <li><a href="#第6幕结束想法"><strong>第6幕：结束想法</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

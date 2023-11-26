@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文读懂0x协议如何聚合Layer 2和Layer 1的分散流动性 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="流动性来源正在分散在以太坊Layer 2扩展解决方案和其他Layer 1 网络中。聚合器在选择它们将在哪些 L2 上运行时必须进行权衡。" />
+<meta name="keywords" content="Layer 2, 0X" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/26052/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文读懂0x协议如何聚合Layer 2和Layer 1的分散流动性" />
+<meta property="og:description" content="流动性来源正在分散在以太坊Layer 2扩展解决方案和其他Layer 1 网络中。聚合器在选择它们将在哪些 L2 上运行时必须进行权衡。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/26052/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-19T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文读懂0x协议如何聚合Layer 2和Layer 1的分散流动性">
+<meta itemprop="description" content="流动性来源正在分散在以太坊Layer 2扩展解决方案和其他Layer 1 网络中。聚合器在选择它们将在哪些 L2 上运行时必须进行权衡。"><meta itemprop="datePublished" content="2021-07-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3675">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文读懂0x协议如何聚合Layer 2和Layer 1的分散流动性"/>
+<meta name="twitter:description" content="流动性来源正在分散在以太坊Layer 2扩展解决方案和其他Layer 1 网络中。聚合器在选择它们将在哪些 L2 上运行时必须进行权衡。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文读懂0x协议如何聚合Layer 2和Layer 1的分散流动性</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-19">
+      2021-07-19
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3675 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>流动性来源正在分散在以太坊Layer 2扩展解决方案和其他Layer 1 网络中。聚合器在选择它们将在哪些 L2 上运行时必须进行权衡。聚合器将使交易所变得可互换，这个流行的论点仍未得到证实。在此之前，聚合器必须在 L2 和其他网络上构建应用程序，以吸引最多的兑换流动性。这些决定造成了权衡，因为聚合商可能会选择放弃一条链上的流动性来源，转而使用另一条链，例如放弃在Rollup上部署，而是部署在高增长侧链上。在互操作性基础设施充分发展之前，交易市场的碎片化可能会加深。</p>
+<p>0x 项目非常适合分散的流动性。作为一组开发者工具，0x 为其他基于以太坊的应用程序提供点对点流动性功能。将 0x 与去中心化交易所（DEX）进行比较是错误的。与去中心化交易所（DEX）不同，0x 通过在任何应用程序中启用可组合资产交易来分解流动性。该项目的核心功能是交易所 API，通过最有效的可用方式将用户和应用程序连接到流动性来源。当 0x API 将订单接受者连接到 DEX 时，0x 就像一个聚合器。除了 API，0x 还提供自己的做市商社区来填充 0x 订单。当 DEX 成本相对较高时，0x 可以将订单接受者连接到其内部做市商网络，例如交易所。 0x 协议总是寻求成本最低的交易，因此它通过 ZRX 代币奖励来补贴做市商成本，以保持其价格与最具流动性的交易所竞争。 0x 使用 DEX 和聚合器功能来维护所有去中心化资源之间的竞争性资产市场。多元化的流动性网络将 0x 与 DEX 和聚合器区分开来，而该项目的代币经济学使其具有优于两者的竞争优势。</p>
+<p>Uniswap 和 Sushiswap 在过去一年中以被动流动性主导了 DEX 市场。这些和其他顶级 DEX 汇集了来自寻求存款收入的代币持有者的资产供应。自动化销售机制使 DEX 能够无缝满足大多数市场需求，然而，0x 的市场份额显示，近 7% 的 DEX 交易需要活跃的流动性。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0719/njgmfibwfwgsd48" alt="一文读懂0x协议如何聚合Layer 2和Layer 1的分散流动性"></p>
+<p>最新的 0x 平台具有独特的优势，可以从跨 L2 的流动性碎片中受益。 0x v4 强调了他们历史上做市商的重点是在任何数量的流动性来源之间保持市场竞争力。随着市场的激增，他们将努力通过降低成本来获得用户。该平台的工具套件通过 0x API 路由 0x 订单，以尽可能低的成本向用户结算。该协议奖励做市商直接通过 0x 本地兑换基础设施提供流动性，并最终试图击败 DEX 定价。通过 0x，这些做市商可以提供构成每个市场需求方的所有 0x API 用户或接受者。 0x API 为其他应用程序提供开箱即用的流动性来源，以满足任何数量的用户资产交换需求。目前，应用可以建立在 0x API 上以访问网络内的市场供应，即以太坊 L1、L2 或币安智能链（BSC）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0719/55f3hcebmsreoyq" alt="一文读懂0x协议如何聚合Layer 2和Layer 1的分散流动性"></p>
+<h2 id="0x-产品">0x 产品</h2>
+<p>0x 为区块链原生应用提供了一套工具，以尽可能低的成本直接匹配兑换订单。 0x 协议在链下执行匹配，然后在链上解决它们，以减少网络使用和每笔交易的成本。 0x 本地交易量包括来自中继器、聚合器和 0x 做市商的所有 0x 订单。 0x API 交易量仅包括交换端点、接受者和需求方起源。 0x API 交易量与 0x Native 交易量重叠，因为 0x API 订单可以访问 0x Native 流动性来源。 Matcha交易量包括在网络应用上完成的所有订单。 因为 Matcha 是基于 0x API 构建的，所以交易量与 0x Native 和 0x API 交易量重叠。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0719/evso7akc0jfz2a8" alt="一文读懂0x协议如何聚合Layer 2和Layer 1的分散流动性"></p>
+<p>过去一年的产品交易量表明，0x Native资源提供了网络的大部分流动性。 0x API 交易量包含 Matcha 交易量，因为该聚合器是基于 0x API 构建的。但是，0x API 可以聚合 DEX 和 0x Native流动性来源。在过去的一年中，0x Native 交易量超过了 0x API交易量。无论是通过 Zapper.fi 和 MetaMask 等应用路由，还是直接通过专有交易业务获取流动性，0x 网络满足的 0x 协议交易量比 0x API 用户可用的所有交易所都要多。</p>
+<p>作为聚合器，Matcha 获得了市场份额，但在去年全年都落后于 1inch协议。在以太坊上，1 inch在总交易量中占主导地位。自 2020 年 5 月以来，1inch 平均获得了所有以太坊 DEX 交易量的 10%。这个聚合器领导者为 DeFi 用户提供了垂直整合的一站式交易界面。 1inch 的使命是通过以最低成本提供最简单的执行来掩盖交易来源。 1inch通过专注于DEX聚合有效地确保了其市场领先地位。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0719/27s72ltps415jtc" alt="一文读懂0x协议如何聚合Layer 2和Layer 1的分散流动性"></p>
+<p>虽然 Matcha 试图与 1inch 在DEX 聚合器赛道展开竞争，但 0x 协议通过多样化来驱动交易量并作为流动性聚合器获取价值。 0x 做市商网络不是主要或完全从 DEX 获取流动性，而是在 DEX 市场之外提供大量流动性。 0x API 在 2021 年 5 月路由了所有以太坊 L1 DEX 交易量的 4%，并且全年也落后 1 英寸。同月，0x 网络几乎达到了该数量的两倍。在 0x 协议中，自定义链上流动性在过去 12 个月中的每一个月都超过了聚合链上流动性。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0719/g2my47tm5nu9dit" alt="一文读懂0x协议如何聚合Layer 2和Layer 1的分散流动性"></p>
+<p>可组合的应用程序开发工具提供 0x 的优势。使用 0x，应用程序开发人员可以在将最终用户资产兑换功能外包的同时保持专注于其应用程序的主要用途。 0x 做市商可以获得多样化的需求。做市商可以通过与 0x API 聚合的 DEX 流动性竞争来满足大小订单。使用 0x API 或其他交易所开发工具构建的应用程序为用户提供具有竞争力的主动和被动流动性。</p>
+<h2 id="0x-代币经济学">0x 代币经济学</h2>
+<p>对于 0x 和其他聚合器，链下订单匹配效率将主要驱动网络价值，竞争最终将聚合费用压缩为零。凭借聚合器和交换功能，0x 平台支持这一原则。据 0x 团队称，0x API 路由了去年 DEX 交易量的近 4%，因为它保持了较低的交易成本。在 DEX 提供被动流动性的地方，0x 提供了一个活跃的做市商网络，这些做市商拥有 DEX 市场份额的很大一部分。 0x 协议的两个特性解决了费用压缩问题，而新举措则准备在未来维持该协议的优势。</p>
+<p>0x 做市商收取协议费用作为流动性回扣。这个回扣有四个设计目标，以改进 0x 做市平台。首先，协议费用旨在从套利交易中赚取比个人零售兑换更多的收入。其次，费用结构被平等地应用于小型和大型做市商，以创造平等竞争。第三，费用激励用户所有权和治理参与。只有做市商才能运营Staking池，ZRX持有者可以参与做市商运营的Staking池。第四，0x 旨在为做市商创建一种简单的方法来预测流动性费用将如何影响他们的底线。</p>
+<p>吃单者按交易的 gas 成本比例支付 0x 平台费用。费用在执行时以 ETH 支付，因此用户每笔交易仅体验一次成本。相对于低 gas 价格，其他交易费用模型可能变得昂贵，并可能加剧高 gas 价格。无论gas价格如何，0x 协议费用都被设计为同样昂贵。最近，0x 协议 DAO 投票决定降低他们的 gas 价格乘数，因为 gas 价格已升至历史高位。</p>
+<p>0x 订单费用仅由必须由 0x 做市商运营的池中的 ZRX 质押者产生。做市商根据他们提供的流动性和他们的 ZRX 份额按比例赚取费用。任何超额费用都会转到 0x 国库用于平台开发。</p>
+<p>做市商只能通过增加交易量来增加他们在协议费用中的份额。增加交易量的唯一方法是击败 DEX 价格。在过去三个月中，0x 协议费用仅随着交易量的增加而增加。同时，ZRX 的质押量有所波动，而数量却在增长。费用与 ZRX 价值的比率随着 0x 协议量的增加而增长。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0719/g2fk63n3sjiualp" alt="一文读懂0x协议如何聚合Layer 2和Layer 1的分散流动性"></p>
+<p>ZRX 质押池的奖励改善了 0x 最终用户体验。 0x 协议费用补贴做市商提供符合 DEX 价格的供应。做市商在满足更多需求时获得更多回报。代币持有者可以在成功的做市商池中质押 ZRX 以被动赚取收入。做市商和质押者一起通过最大化他们的费用与质押比率来最大化 ZRX 奖励。因此，随着 ZRX 质押的增加，做市商必须产生更多的交易量来增加费用。更多的 ZRX 奖励使做市商能够保持有竞争力的价格以增加交易量，尤其是在 DEX 定价缓慢适应市场条件的情况下。补贴 0x 做市商可确保最终用户能够以最优惠的价格完成订单。 0x 协议使用 ZRX 流动性回扣来使做市商激励与最终用户利益保持一致。</p>
+<h2 id="结论">结论</h2>
+<p>0x v4 旨在跟上做市商和 DEX，因为该协议可移植到许多区块链网络。当开发人员想要在 Web3 游戏或新的数字资产钱包中构建交易所功能时，他们会随身携带 0x。就像 Matcha 演示的那样，可以在 0x 上构建整个交易所聚合器应用。 0x 项目是为 DeFi 构建者设计的。</p>
+<p>做市商和应用开发人员是 0x 目标用户，0x 代币经济学激励他们优化最终用户体验。该协议的费用作为流动性回扣来奖励做市商的交易量增长。费用抵消了做市商必须提供的具有竞争力的定价，以与 0x API 聚合的 DEX 竞争。做市商和 DEX 之间的竞争为 0x 终端用户提供了被动和主动流动性的优势。很少有其他交易所协议可以提供这种两全其美的服务。</p>
+<p>来源：Messari</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/26039/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">虚拟世界 NFT代币经济的差异化</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/26042/">
+                <span class="next-text nav-default">一文了解Uniswap V3 主动管理策略的成本</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#0x-产品">0x 产品</a></li>
+    <li><a href="#0x-代币经济学">0x 代币经济学</a></li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

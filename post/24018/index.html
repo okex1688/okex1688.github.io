@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          科普 | 一文理清跨layer与跨链方式 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文对各种跨layer与跨链方式做了简要总结，希望能让「跨」这件事看上去清晰些。" />
+
+  <meta name="keywords" content="区块大全, 区块链, 区块链资讯, 区块链快讯, 区块链新闻, 比特币行情" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/24018/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="科普 | 一文理清跨layer与跨链方式" />
+<meta property="og:description" content="本文对各种跨layer与跨链方式做了简要总结，希望能让「跨」这件事看上去清晰些。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/24018/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-10T00:00:00+00:00" />
+
+<meta itemprop="name" content="科普 | 一文理清跨layer与跨链方式">
+<meta itemprop="description" content="本文对各种跨layer与跨链方式做了简要总结，希望能让「跨」这件事看上去清晰些。"><meta itemprop="datePublished" content="2021-06-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7055">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="科普 | 一文理清跨layer与跨链方式"/>
+<meta name="twitter:description" content="本文对各种跨layer与跨链方式做了简要总结，希望能让「跨」这件事看上去清晰些。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">科普 | 一文理清跨layer与跨链方式</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-10">
+      2021-06-10
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7055 字 -
+        预计阅读 15 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>来源：<a href="https://mp.weixin.qq.com/s/5iOX3ADwvQaHu8YcuOiG4Q">机械钟</a></p>
+<p><em>撰文：李画</em></p>
+<p><em>受访人：p0n1，安比实验室研究员；王东，路印协议创始人；刘毅，Cdot 创始人；John，Poly Network 创始成员</em></p>
+<p>跨layer、跨链、不同跨layer的方式、不同跨链的方式，看上去纷繁芜杂令人迷惑，但它们背后的逻辑是简单的，本文对各种跨layer与跨链方式做了简要总结，希望能让「跨」这件事看上去清晰些。</p>
+<p>这篇文章更像一个索引，围绕下图展开，每种方式的具体实现如果以前文章讨论过，便只做关键内容的引用，如果你对此了解便可跳过；如果未讨论过，便会详细展开。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0610/23_ro7ymhvpkp.png" alt="科普 | 一文理清跨layer与跨链方式"></p>
+<h2 id="01-跨layer"><strong>01 跨layer</strong></h2>
+<p>Layer 2与侧链（包括其他公链）是两种不同的主体，跨Layer与跨链是两件截然不同的事情。以比喻来做说明：</p>
+<p>古希腊的神庙用麦子为公民记账，假设「主神庙」太忙记不过来，便让其他神庙帮它记，这些神庙记账后需要定期汇报给主神庙知道，而不管公民的账被记在哪个神庙，也不管这些神庙是否发生变故，公民想取出资产时总能拿到属于他的麦子，这是跨Layer。</p>
+<p>假设有另一片大陆，一个聪明人为两地的商人提供一项服务，使大家在古希腊账本上的资产能跨到这片大陆的账本上使用，某个人把资产跨过来后，这片大陆为他记账时是不会把账目信息汇报给主神庙知道的；此外，这片大陆是不产麦子的，它的记账单位也不是麦子，如果这个人想在这片大陆取出资产，他拿到的不是麦子，这是跨链。他能拿到什么取决于不同的跨链方式。</p>
+<p>跳出比喻来说就是：<em>Layer 2为子账本，跨Layer 是一套账本体系下具体的记账地方发生了变化，Layer 2和Layer 1的记账单位相同，Layer 2记的账需要告知Layer 1；链是不同的账本，跨链是从一套账本体系到另一套账本体系，侧链和主链的记账单位不同，侧链记的账不会告知主链。</em></p>
+<p><strong>Rollup</strong></p>
+<p>在区分Layer 2与跨链后，来看Layer 2。Rollup 是最主流也最有发展潜力的Layer 2，目前阶段似乎只需要关注它。<strong>Rollup 是什么</strong> ：</p>
+<p><em>“Rollup 指先在链下进行复杂的计算和状态维护，再将与状态更改相关的数据通过合约调用的方式，利用更便宜的CALLDATA 在链上保存。</em></p>
+<p><em>任何人都能根据链上保存的数据复原出全局的状态，从而消除因数据可用性问题带来的安全风险。Rollup将大量交易卷起/汇总成为一个交易，在保证数据可用性的前提下提高</em> <em>TPS。”</em></p>
+<p>通俗来讲就是：Rollup 负责处理具体的记账事宜，但它的账是如何记得是要汇报并记录在以太坊上的，这会使以太坊承认Rollup 记的账。具体而言，<strong>Rollup</strong>  <strong>以如下方式工作</strong> （以ZK Rollup 为例）：</p>
+<p><em>“有一个技术的东西叫Merkle Tree，它是把不同的数据一层一层的哈希，最后变成一个简单的哈希值，这个值就叫树的根。这个根实际上能代表树里边一切的状态，虽然不知道具体的状态是什么。</em></p>
+<p><em>这棵树本身是要能够在某个地方找到的，如果没有这棵树，只有根，那这个账户也是不安全的。ZK Rollup</em> <em>就是在Layer 2</em> <em>维护这样一棵树。它最开始的时候非常简单，里边什么都没有，然后当你交易或支付时，就会改这棵树里边的数据，这个改动本身是要放到以太坊上去的，作为一个数据存到以太坊上。（注：并不是把这棵树放在以太坊上，这棵树在Layer 2，但要把对这棵树的改动的数据放在以太坊上）</em></p>
+<p><em>因此，你可以通过以太坊把这棵树在任何一个时间点的历史状态全部恢复出来，恢复出来之后，你可以通过树根来验证你恢复的数据是不是对的。任何一个用户都可以把从叶子节点到根的一串数据拿过来，这一串的数据叫默克尔证明。</em></p>
+<p><em>把这个证明扔到以太坊的路印协议的智能合约里，合约就会算这个默克尔证明能不能证明你确实是在这棵树里面，如果能证明你在这棵树里，就会把这棵树里标记的你有多少钱从以太坊的智能合约里解锁出来，直接转到你的以太坊账号里。这就是在最不理想的情况下提现的方式。”</em></p>
+<p><em>——王东，《专访王东：关于路印新版本的一切》</em></p>
+<p><strong>Rollup 实现扩容的原理如下</strong> （以ZK Rollup 为例）：</p>
+<p><em>“为什么ZK Rollup 能够扩容，能够变得那么快、那么省钱，与对这棵Merkle Tree 的更新涉及到的一些计算相关。</em></p>
+<p><em>比如一个人的账户状态改了，那要怎么改Merkle Tree 的根？需要一层一层的去算，算到那个根。所以一笔交易可能要改大约4、5个叶子节点，一笔转账大概要改3个叶子节点，这些改动是非常多的。</em></p>
+<p><em>但现在，这些改动跟以太坊没有关系，它不用去做这些改动过程的计算，计算都是在Merkle Tree 上面，在中继里边做的，以太坊上只要把零知识证明验证一下就行了，可能就花费10万gas</em> <em>还是多少gas，大概是这样。</em></p>
+<p><em>比如说做1000笔交易，改动可能是大约4000个叶子节点，可能要算几万次哈希算出一个根，但这些数据都在Layer 2，最后扔到以太坊上的数据其实就是三种：第一个是对各个叶子怎么改的；第二个是对根怎么改的；第三个是一个证明来证明前两者的一致性。</em></p>
+<p><em>零知识证明做什么呢？零知识证明就是验证改这棵树里边这么多数据的时候，这个根的计算跟各种改动是能够匹配得上的。零知识证明只是做了这么一件事，就是证明数据的一致性。它对应的也不是每一笔交易怎么去证明，而是说一大堆交易打成一个包/块，如何去证明这个包，它是一个批处理的过程。“</em></p>
+<p><em>——王东，《专访王东：关于路印新版本的一切》</em></p>
+<p>通俗来讲就是：Rollup 帮主链干活，那么干活的人多了，能同时干的活也就多了。</p>
+<p><strong>ZK Rollup</strong>  <strong>与Optimistic Rollup</strong></p>
+<p>在理解Rollup 后，来看<strong>ZK Rollup</strong>  <strong>与Optimistic Rollup，两者的核心区别如下</strong> ：</p>
+<p>ZK Rollup <em>方案的关键在于_ZK</em>，它的每一次的状态转变都需要提供零知识证明，并由主链上的合约进行验证，只有验证通过才能更改状态。即，ZK Rollup 的状态转变严格依赖于密码学证明。_</p>
+<p><em>Optimistic Rollup</em> <em>方案中，每次状态转变无需严格验证，它是先乐观地假设每次转变都是正确的，然后在一定时限内可以对某次转变进行挑战，如果挑战成功就证明之前的提交有问题，会惩罚提交者并将状态回滚。即，Optimistic Rollup</em> <em>的状态转变依赖于经济激励和博弈。</em></p>
+<p><em>——p0n1，《时髦有趣且有用：这12个以太坊新事物你不能错过》</em></p>
+<p>ZK Rollup 的突出问题在于对可编程性的实现上，这是因零知识证明而起，如果你对此感兴趣可以看<a href="http://mp.weixin.qq.com/s?__biz=MzAwMDg3NTMxMQ==&amp;mid=2247484122&amp;idx=1&amp;sn=69482a689c074cb57c610dfd43076ec6&amp;chksm=9ae30c9aad94858c54eb2e58f683a80afb352b3c6bc3a724f25446f9091e9a96719a24febde0&amp;scene=21#wechat_redirect">《彻底读懂零知识证明及其实现方法：解析zk-SNARK》</a>一文，它介绍了如何实现零知识证明，从中能了解它为何难以实现可编程性。不过，zkSync（Matter Labs）的VM 及相关设计能够让可编程性落地，值得期待。</p>
+<p>Optimistic Rollup 最被关注的问题似乎是当资金从Layer 2返回时，因为挑战期带来的延时问题，但可以有中间商提供垫付服务曲线救国，所以这一点也许不会成为困扰。</p>
+<p>以上是关于跨layer 的全部，它是在子账本记账，记的账要成批的汇报给以太坊知道；ZK Rollup 用密码学的方法杜绝假账，Optimistic Rollup 用监督举报的方法避免假账。</p>
+<h2 id="02-跨链"><strong>02 跨链</strong></h2>
+<p>跨链是从一套账本体系到另一套账本体系，不管参与方是哪两条链，也不管以何种方式跨链，当跨链发生时，都需要一个第三者在两条链之间传话，不然两条链都不会知道对方链发生了什么，跨链也就无从谈起。</p>
+<p><strong>一个完整的跨链过程如下</strong> （以锁定+铸造方式为例）：</p>
+<p><em>“跨链桥很形象，它有两个桥墩和一个桥梁。两个桥墩就是两套智能合约，一个运行在A链，一个运行在B链；中间是桥梁，桥梁是链下进程，负责监控两边这两套智能合约的事件。</em></p>
+<p><em>假设现在有一个ERC20</em> <em>的代币，比如说是UNI，它发行在以太坊上，我们想把它跨到PlatON上去。那么以太坊这边要有一个智能合约，比如叫Vault</em> <em>合约，它是跨链桥的一个桥墩；跨链的用户要发给Vault</em> <em>合约Lock</em> <em>方法，把要锁定的币种和数量作为参数传进去，然后还要提供一个PlatON</em> <em>的地址，说我锁500个UNI 是为了在这个地址上铸造出500个UNI</em> <em>的替代品。</em></p>
+<p><em>这个时候，Vault</em> <em>合约就会去调用UNI</em> <em>合约做UNI</em> <em>的转移，把UNI</em> <em>从用户地址转到Vault</em> <em>合约的地址上，也就是把UNI</em> <em>锁住。锁完之后，Vault</em> <em>合约就会发一个事件，比如叫AssetLock</em> <em>事件。</em></p>
+<p><em>链下进程是通过RPC</em> <em>接口连在以太坊节点上的，它会订阅Vault</em> <em>合约的AssetLock</em> <em>事件，这个事件只要一出现在日志里，链下进程就得到这个事件了，这个事件里包含相关参数，比如锁定的是哪个币，锁了多少，另一条链上的受益人是谁。链下进程也有一个连接PlatON</em> <em>的RPC接口，它会提交一笔交易到PlatON，假设这笔交易叫Mint。</em></p>
+<p><em>PlatON</em> <em>上也会有一个合约，比如叫Control</em> <em>合约，它是跨链桥的另一个桥墩；Control</em> <em>合约事先会创建一个类似ERC20</em> <em>的合约，比如叫EUNI。Control</em> <em>合约收到Mint</em> <em>请求后，验证这个请求确实来自于见证人，就会调用EUNI</em> <em>合约的Mint</em> <em>方法，告诉它给某个地址铸造500 个EUNI</em> <em>代币；EUNI</em> <em>铸造出来后，就会放在用户之前提供的地址上，用户就可以用了。</em></p>
+<p><em>假设用户把EUNI</em> <em>转给了另外一个用户，新用户想要以太坊上的UNI，那他要做的操作是调用Control</em> <em>合约的Redeem</em> <em>方法，烧掉比如说100 个EUNI，并释放一个事件叫AssetBurn。</em></p>
+<p><em>链下进程监控到Control</em> <em>合约的AssetBurn</em> <em>事件，就会给以太坊Vault</em> <em>合约发一个交易请求，调用Release</em> <em>接口，以太坊验证这个交易是来自于见证人后，就会把UNI</em> <em>从Vault</em> <em>合约的地址上转移到指定的用户地址上，用户就得到了原始的UNI。这就是一个完整的跨链过程。”</em></p>
+<p><em>——刘毅，《一文详解跨链的技术点及难点：从完美跨链谈起》</em></p>
+<p>简单而言，跨链是先在A链上做一个操作，然后由一个传话的人把这个消息告诉B链，之后B链做一个对应的操作。从中也可见侧链与Layer 2方式的不同，侧链只在跨链发生时与主链通消息，而Layer 2定期要与Layer 1通消息。</p>
+<p>虽然跨链说的是把资产从A链跨到B链，但B链是没有真正的A链资产的（没有麦子），比如，比特币链之外的任何链上都不会有真正的BTC，以太坊之外的任何链上都不会有真正的ETH。用户在B链上收到的是什么取决于不同的跨链实现方式。</p>
+<p><strong>锁定+铸造</strong></p>
+<p>锁定+铸造方式这样工作：在A链锁定资产，在B链铸造出对应的资产；在B链销毁铸造出的资产，在A链解锁对应的资产。</p>
+<p>用户在B链收到的，是他使用的跨链协议铸造出来的资产，比如使用Ren 跨链协议，收到的便是renBTC，它类似于BTC 的某种等值兑换券。只要跨链协议和B链不出问题，这种兑换券便不会有问题。</p>
+<p><strong>锁定+解锁</strong></p>
+<p>假如有一种代币叫test，其发行方在A链和B链都发行了代币，那针对这种代币就可以使用锁定+解锁方式：在A链锁定资产，在B链释放等额资产；在B链锁定资产，在A链释放等额资产。</p>
+<p>在这种情况下，用户在B链收到的不是类似于兑换券的「假」资产，而是「真」资产。<em>用户不用担心跨链桥出问题，因为不再需要依赖跨链桥把资产跨回源链兑现，锁定+解锁方式对跨链桥的使用可以是单方向、一次性的</em>。（文中的真、假并无褒贬意，只为清晰区分不同的跨链方式）</p>
+<p>这种跨链方式安全、利落，但只适用于在多条链上都做了发行的token，且需要发行方与跨链协议合作。它也许是最优选择，但单独使用时是不具有普适性的。</p>
+<p><strong>跨链池：兑换</strong></p>
+<p><em>兑换的方式需要引入跨链池这个新主体</em>。跨链池既不位于源链，也不位于目标链，它位于提供跨链服务的协议的链上，其工作方式如下图所示（以Poly Network为例）：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0610/23_zfeyliuk4n.png" alt="科普 | 一文理清跨layer与跨链方式"></p>
+<p><strong>用户的USDT 从以太坊跨链到BSC 的过程如下</strong> ：先在以太坊上锁定USDT，然后在Poly 上释放PUSDT，之后在跨链池中把PUSDT 兑换为PBUSD，接着在Poly 上锁定PBUSD，最后在BSC 上释放BUSD。</p>
+<p>这个过程看上去比较复杂，有两次跨链操作加一次交易操作，不过对跨链用户而言该过程是无感的，他放入以太坊上的USDT，得到BSC 上的BUSD。在兑换方式下，用户在目标链收到的是「真」资产，因此也不用担心跨链桥出问题。</p>
+<p>这种跨链方式之所以被发明并开始变得流行，是因为它能带来两个好处：</p>
+<p>1.<strong>随意跨token</strong> 。用户可以在以太坊上放入任意token，获得BSC 上他希望的任意token。在下图的例子中，用户放入ETH，获得BNB。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0610/23_eicgb1ces9.png" alt="科普 | 一文理清跨layer与跨链方式"></p>
+<p>相比对应币种的跨链，该跨链过程需要多一次的交易操作，此交易并不是发生在跨链协议的交易池里，而是发生在源链或目标链本来的交易协议中，跨链协议在此处分别提供源链和目标链的DEX 聚合器功能，为用户寻找源链或目标链上最好的交易价格。</p>
+<p>至于交易是发生在源链还是目标链，取决于哪种跨链路径上的价格更好，比如该跨链过程也可以是：ETH-PETH-PBETH-BETH-(BETH:BNB)-BNB。</p>
+<p>更进一步，假设用户想把ETH 换为USDT，此时BSC 上的交易价格好于以太坊，那么一种可能的交易路径是：ETH-PETH-PBETH-BETH-(BETH:BUSD)-BUSD-PBUSD-PUSDT-USDT。有_一些协议称打通不同链的流动性，我想很大程度上便是指这件事情，这种跨链架构能够通过交易路径的选择，给用户提供多条链上最好的交易价格_。</p>
+<p>2.<strong>随意跨链</strong> 。锁定+解锁方式是两条链的直连：跨链协议在以太坊与BSC 之间建了一条跨链桥，在以太坊与Polygon 之间建了一条跨链桥，这时候如果想实现BSC 与Polygon 之间的跨链，就需要在BSC 与Polygon 之间再新建一条跨链桥。</p>
+<p>但_兑换方式通过跨链池把多条链连接起来，可实现该架构中任意两条链之间的跨链_：跨链协议接入了以太坊和BSC，这时候如果它接入Polygon，就可以提供Polygon 与以太坊、Polygon 与BSC 间的跨链，无需再一一建桥。其结构如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0610/23_w2ijageedr.png" alt="科普 | 一文理清跨layer与跨链方式"></p>
+<p><em>「跨链池:兑换」方式可能会催生一个或多个跨链底层协议：各个想要在自己应用中提供跨链功能的协议，只需接入这些跨链协议即可支持跨链</em>；而另一方面，「跨链池:兑换」也是应用自己做链的方式，已有一些DeFi 应用声明将要做链，它们的链并不是像公链一样支持各种应用的链，而很大可能是上文所述的这样一条维护它自己的多链的流动性池的链。</p>
+<p>要注意的是，兑换方式与锁定+铸造方式并不一种取代对方的关系，它们解决不同的问题。兑换方式的跨链是基于两条链上已经存在的资产的，它不能把目标链上没有的资产从源链「带」过去，当需要在目标链铸造源链资产时，需要使用锁定+铸造的方式。</p>
+<p><strong>跨链的其他分类维度</strong></p>
+<p>跨链需要第三者在两条链之间传话，上述3种跨链方式都不例外。这个传话的第三者可以是许可式的，比如由跨链协议组建的联盟；也可以是非许可式的，比如由无需许可进入的节点。因此便有3×2=6 种跨链方式。</p>
+<p>跨链还可以分为<strong>见证人跨链和中继跨链，它们的区别是：</strong></p>
+<p><em>“当目标链收到一个消息后，如果是见证人跨链，验证的是这条消息来自于见证人，如果相信见证人，就执行该执行的操作；如果是中继跨链，验证的不是这条消息来自于哪个中继，验证的是这条消息是不是来自于源链，如果是，就执行该执行的操作。</em></p>
+<p><em>也就是说，见证人可以看做是需要被信任的中继，中继可以看做是无需被信任的见证人。这就是两者的核心区别，中继显然比见证人更符合trustless 的原则。”</em></p>
+<p><em>——刘毅，《一文详解跨链的技术点及难点：从完美跨链谈起》</em></p>
+<p>中继跨链优于见证人跨链，在这种方式中，负责传话的第三者是无法作恶的，但该方式需要两条链上互有对方链的轻客户端，而有些链是没有办法实现别的链的轻客户端的，比如比特币。</p>
+<p>因此这种分类方法不会带来6×2=12 种跨链方式，而是：如果有条件实现中继跨链，跨链协议都会去实现它或者以实现它为目标；如果没有条件实现中继跨链，也只能以见证人的方式跨链。</p>
+<p>以上是关于跨链的全部。跨链是跨到另一个账本记账，有3种不同的跨链方法，不同的方法决定了当跨到目标链后你拥有的是什么，也决定了对跨链桥的不同的依赖程度。</p>
+<h2 id="结束语"><strong>结束语：</strong></h2>
+<p>提到跨链，我们还会谈论波卡与Cosmos。但实际上波卡并不是为跨链服务的，它是一个以链为单位的结构体，它的跨链是指这个结构体内部的链与链的交互；Cosmos 则是为跨链服务的，它做的是链之间的通信标准，采用其标准的链易于实现跨链，但前提是要采用其标准。</p>
+<p>最后想要表达的是，虽然现在有一批发展中的公链，但其中的绝大部分与以太坊是相似的，真希望未来能出现一些与以太坊不太一样的公链，不是在性能上的不一样，而是在能做的事情上的不一样。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/24035/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">科普 | 一文了解预言机的起源、定义、原理及发展</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/24000/">
+                <span class="next-text nav-default">了解Web 3.0概念背后的技术方向</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-跨layer"><strong>01 跨layer</strong></a></li>
+    <li><a href="#02-跨链"><strong>02 跨链</strong></a></li>
+    <li><a href="#结束语"><strong>结束语：</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

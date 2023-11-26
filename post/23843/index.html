@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          解析平行链：实现过程、技术难点、未来发展方向等 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="对话平行链研究者和代码实现者" />
+<meta name="keywords" content="Polkadot, 波卡" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/23843/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="解析平行链：实现过程、技术难点、未来发展方向等" />
+<meta property="og:description" content="对话平行链研究者和代码实现者" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/23843/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="解析平行链：实现过程、技术难点、未来发展方向等">
+<meta itemprop="description" content="对话平行链研究者和代码实现者"><meta itemprop="datePublished" content="2021-06-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4644">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="解析平行链：实现过程、技术难点、未来发展方向等"/>
+<meta name="twitter:description" content="对话平行链研究者和代码实现者"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">解析平行链：实现过程、技术难点、未来发展方向等</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-08">
+      2021-06-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4644 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>加入 PolkaWorld 社区，共建 Web 3.0！</p>
+<p><img src="https://img.bibiqing.com/news/2021/0608/27_hbp9n29wsi.png" alt="解析平行链：实现过程、技术难点、未来发展方向等"></p>
+<ul>
+<li>
+<p>平行链是如何从研究论文，变成代码实现的？</p>
+</li>
+<li>
+<p>平行线程、嵌套中继链等，未来将如何发展？</p>
+</li>
+<li>
+<p>平行链可扩展性的极限在哪里？</p>
+</li>
+</ul>
+<p>在 2021 Polkadot Decoded 的圆桌讨论 <strong>“解析平行链：谁做了平行链？平行链是什么？为什么要有平行链？”</strong>  中，研究员 Jeff、代码实现者 Rob 和主持人 Joe 一起讨论了一些对于平行链发展很重要的问题。PolkaWorld 在本文中总结了该圆桌主要内容。</p>
+<p><strong>Jeff：</strong> Jeff Burdges，W3F 密码学研究员，做了很多平行链开发方面的研究</p>
+<p><strong>Rob：</strong> Robert Habermeier，波卡联合创始人/Parity 核心开发者，带领实现团队让平行链能够在实际中运行起来</p>
+<p><strong>Joe：</strong> Joe Petrowski，W3F 技术集成负责人，本场圆桌主持人</p>
+<p><img src="https://img.bibiqing.com/news/2021/0608/27_st4kmq2ovg.png" alt="解析平行链：实现过程、技术难点、未来发展方向等"></p>
+<p><strong>Joe：</strong> <strong>大约一年半以前，Jeff 带领着一个团队发表了一篇关于可用性和有效性的论文。在实现时，这个方案已经改变了很多。Jeff，你可以简单谈一谈这篇论文的想法是如何产生的吗？</strong></p>
+<p><strong>Jeff：</strong> 我们从以太坊生态那里获得了一些想法，比如使用纠删码的想法。但是围绕这些想法的一些具体的东西，比如如何优化分片，都没有正式确定下来。</p>
+<p>在 2019 年末，我们决定要把这些想法正式化，提出更精确的方法。一般来说，我们设计复杂协议的方式是，我会写下所有可能的设计选项，然后用排除法。</p>
+<p>在 2020 年初，我写下了这个设计，并且和大家讨论，我们注意到了一些问题，我想出了一个叫 “Two-phase inclusion” 的技巧。也就是说在真正开始之前，平行链中继链必须知道一个区块，验证人必须说这个区块是有效的。</p>
+<p>之后我们开始做纠删码，然后开始做真正的检查它的工作。这样做的好处之一是，因为有人在这个过程中投入了很多切身利益，从而会限制其可以尝试的次数。从而做到如果你要攻击它，那么你也会毁掉你自己。它不是加密学安全性，而是分布式系统安全性，但是是合理的。</p>
+<p><strong>Joe：</strong> 对于不熟悉分片的人来说刚刚说的可能有点抽象。其实就是，我们有一千个验证人，当你想要包含这些平行链区块中的一个时，你其实需要把数据块发给所有验证人，涉及到费用、复杂性、网络、存储等，让所有人都得处理这个消息，所以你想要真正确保这些消息是有效消息，而且是有理由的。</p>
+<p><strong>Jeff：</strong> 是的。纠删码其实挺老了，有不同类型的纠删码。不过一般来说当如果你用密码学的话，一般是使用一些基于拉格朗日插值法或者里德-所罗门码之类的。原因是它的阈值很陡峭，所以我们可以从任何三分之一的碎片，来恢复全貌。</p>
+<p>那我们怎么做呢？我们有平行链区块，叫做候选区块，我们有 3f+1 个验证人。那么我们把这些东西纠删码为 3f+1 个碎片，你只要有了任何的 f+1 个碎片，就可以重构原始区块。也就是说只要比 1/3 多一点点的碎片，你就可以重构原始区块。</p>
+<p>这是一种很古老的数学方法，实际上是让我们的速度更快。根据我们目前的验证人数量，我们必须找到一些比较新的论文，来进行优化。这就是我们今年做的事 —— 去大大优化纠删码。我们让它的运行速度快了 400 倍，渐进地看其实更快。从 O(N²) 算法到了 O(log n) 算法。这让计算变得没有那么的有负担。之后我们可能还会做得更好。这是我们最近的一个突破，当然了如果我们能在更早就解决的话就好了哈哈哈。</p>
+<p><strong>Joe：</strong> <strong>把这些研究变成代码，其实也是很大的挑战。我们去年年中上线了 Rococo 测试网，Rob 可以谈谈这个协议的实现早期遇到的一些挑战吗？</strong></p>
+<p><strong>Rob：</strong> 我记得第一次跟平行链相关的代码提交是在 2018 年下半年，2019 年中有了我们所说的 V0 协议的初稿，在最初的几年中，我们更多地投入在 BABE、GRANDPA 共识上，也就是出块和区块确认方面，那时候其实还没有真的深入研究平行链的东西，因为平行链的部分更复杂，需要更多的开发时间。</p>
+<p>从 2019 年中后期到 2020 年初左右，事情有了很大的进展，就像刚刚 Jeff 提到的，研究团队开始真正把协议确定下来了，像是可用性确保了平行链区块仍然存在，以便其他人可以检查它们，来进行额外的检查，从而确保安全性。</p>
+<p>我觉得实现所有的这些研究其实非常困难。如果你在构建任何类型的系统，那么你每向系统添加一点额外的复杂性，那么创建该系统所需的时间就会指数级增加。这个规则也同样适用于代码，因为一旦你达到了一定的代码量，其实真的很难再添加更多的东西，因为新的东西一定会扰乱、破坏之前做好的一些东西。</p>
+<p>所以说有一个好的设计和规划是很重要的，在我们迭代协议的时候，我们肯定会来来回回做一些研究。但是 2020 年的时候，我们把精力放在了《实现者指南》上，在那里面进行迭代，而不是在代码里。我可以和 Jeff 和 Al（Alistair） 通话，来讨论论文草案里的内容，然后写一个页面来说明 “我们会这样写代码”，而不是直接就去写代码，我们用这种方法节省了几周的时间，之后我可以把这些写代码的工作分配给很多个开发者。</p>
+<p>所以我觉得在建设这样的系统的时候，有一个很好的计划很重要。还有就是有一个模块化的系统，这样的话你可以添加一个独立部分的代码，你可以把这些代码整理成小的包，而不是一整个系统，因为一个人很难搞定一整个庞杂的系统。</p>
+<p><strong>Joe：说到目前的阶段。现在 Kusama 已经上线了 Shell 空白链，Rococo 上已经有了 12 条平行链，但是 Kusama 的出块时间在 12 秒左右，我们正在解决这个问题。为了将出块时间提高到 6 秒，并且在 Kusama 上上线更多的链，短期内我们面临的挑战是什么？</strong></p>
+<p><strong>Rob：</strong> 我觉得这一切本质上说都归结到网络。Kusama 有 900 个验证人，这些验证人都是一些拥有 KSM 的人，在全球部署了节点来同步链。这件事很酷，这可能是全球最大的验证人集之一。</p>
+<p>但是当你向这个网络添加一些复杂性，比如添加平行链的时候，肯定就会增加很多负载。其实我们之前也在 Rococo 上用相同的参数测试过，但是在 Kusama 上的效果却完全不同，因为在 Kusama 上验证人节点在全球各地运行，所以最主要的挑战就是让网络代码尽可能平稳地运行。我们写网络代码的时候，做了很多反作弊的机制，这种东西就是，如果没人捣乱的时候你都注意不到它的存在，但是如果有人作恶，你就会发现这些防御机制非常重要。</p>
+<p><strong>Jeff：</strong> 没错。当我们添加越来越多的平行链的时候，会出现更多的计算负载，我们会看看到时候会如何发展，我们会如何在这个过程中成长。其实观察这些操作会如何影响网络，也是一个渐进的学习过程。</p>
+<p><strong>Joe：</strong> 这就是 Kusama 存在的意义，不是吗？</p>
+<p><strong>Rob：</strong> 没错。随着平行链变多，验证人的负载肯定会变多的。因为验证人要验证一个区块，并且要把自己的币抵押在区块背后，其他的一些验证人就会自我选择去做检查。平行链越多，你要做的计算就会越多，虽然计算量应该比平行链增加的数量慢，这也是为什么这个网络是可扩展的，而不是像其他一些区块链一样不可扩展。但是作为验证人，你可能还是需要在每秒内验证几十个区块。</p>
+<p><strong>Joe：我们聊点更实际的吧，聊下接下来一年波卡和 Kusama 的计划吧。我们有一个平行线程的规划，其实现在在 UI 里面已经能看到了，因为链在升级为平行链之前，都是以平行线程的形式注册的。但是之后我们会让平行线程更加的实用，你们可以谈谈平行线程的设计、实现，为了实现它还剩下哪些工作待完成吗？</strong></p>
+<p><strong>Rob：</strong> 平行线程跟平行链差不多，主要区别在于它被调度的方式不同。我们有一个调度程序，如果你是平行链，那么每个区块都会被安排到；如果你是平行线程，那么你需要进行拍卖，平行线程收集人可以互相竞争，来获得写入区块的的权利。这会带来收集方面的网络改变，当你是平行线程出块人的时候，你需要让验证人知道你有区块要提交。</p>
+<p>所以总的来说挑战有三点：调度程序、拍卖、网络方面的改变。</p>
+<p><strong>Jeff：</strong> 其实当时做平行线程有种设计，但是最后我们选择了有拍卖的这个。因为这个设计可以更好地防止作弊，但是对于平行线程来说，如果它们出于某些原因无法提交区块的话，它们可能会丢失资源。所以我们还得再看看一些经济方面的问题。</p>
+<p><strong>Joe：我们说过会把一些核心功能从中继链中释放出来，下放到平行链中，来进一步实现可扩展性，和实现嵌套中继链（Nested relaychain）的想法。你们想谈谈为什么要这样做吗？</strong></p>
+<p><strong>Jeff：</strong> 其实相比 “嵌套中继链” 的说法，我更愿意称其为 “中继链分片”，因为嵌套中继链听起来像是某一条链是主导地位。</p>
+<p>从某种意义上说，中继链的分片比我们现在已经做到的（平行链分片）还要简单一些。不过我觉得可能会在超过 3000 个验证人的时候来做这个事，我想告诉大家现在还不用急着去实现它。在这之前，我们希望能先让中继链的功能尽可能简单，我觉得这样对于开发者来说工作量是最小的。</p>
+<p><strong>Rob：</strong> 目前来看，Staking 和选举模块和一些治理功能其实是比较重的，会给中继链带来较大的负载。所有中继链上发生的事，中继链验证人都需要去执行。而根据设计，发生在平行链上的事情只需要验证人的子集来处理。所以这就是可扩展性的来源，把每个验证人机器都需要执行的事变得尽可能少。</p>
+<p>我觉得安全地去提炼出 Staking 和治理之类的东西其实挺难的。因为波卡有一些故障模式，比如一个机制是在进行争议分析的时候的时候，链可能会被阻止出块。你可能无法进行 Slash 交易，验证人集无法更新交易等。这些都是很棘手的挑战。</p>
+<p>不过这个其实也不是很紧急。在这之前，我们应该会优化节点那边，比如如何处理平行链和网络消息，来获得更高的扩展性，和运行更多的平行链。</p>
+<p><strong>Jeff：</strong> 我觉得我们的目标应该是，虽然这个目标可能无法达到，但是目标应该是达到同等水平，让每条平行链有一个验证人。这个可能无法实现，但是当我们到达这个情况的时候，我们应该知道这个极限的存在，然后朝其他的方向努力。</p>
+<p><strong>Joe：</strong> 刚刚你说 3000 个验证人，意味着 3000 条平行链。Rob 你作为实现者，怎么评价这个目标？</p>
+<p><strong>Rob：</strong> （笑）暂时还做不到，这是肯定的。我觉得代码经过一轮优化之后能运行 80-100 条平行链，我就很开心了，而且这对社区来说也绰绰有余了。</p>
+<p><strong>Jeff：</strong> 是的。最终我们可能会到达一个点，用户耗尽了，我们得开始说服更多的人来使用，所以我猜可能会有很多次这样的爆发。</p>
+<p><strong>Rob：</strong> 我想是的，我觉得这有点像波卡治理遇到的挑战 —— 拍卖计划的长尾效应是什么？因为在某些时候，如果所有的技术进展顺利，那么我们可能有能力运行更多的平行链，甚至可能超出市场对平行链的需求。但是我们也不希望平行链的资源被一些垃圾项目填满，占用个两年，当然之后社区的发展赶上来了（平行链的位子又会不够用），肯定会有这种来来回回的发展过程。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/23865/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">监管重拳下的币圈</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/23868/">
+                <span class="next-text nav-default">金色DeFi日报 | 世界经济论坛发布DeFi监管政策工具包</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文全面了解 4 大 Polygon 全栈 zk 扩容方案 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="详解 Polygon 全栈 zk 扩容方案：Hermez、Nightfall、Miden 和 Zero，这四种方案具体技术特性与开发进度如何？" />
+<meta name="keywords" content="扩容" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/36056/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文全面了解 4 大 Polygon 全栈 zk 扩容方案" />
+<meta property="og:description" content="详解 Polygon 全栈 zk 扩容方案：Hermez、Nightfall、Miden 和 Zero，这四种方案具体技术特性与开发进度如何？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/36056/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-30T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文全面了解 4 大 Polygon 全栈 zk 扩容方案">
+<meta itemprop="description" content="详解 Polygon 全栈 zk 扩容方案：Hermez、Nightfall、Miden 和 Zero，这四种方案具体技术特性与开发进度如何？"><meta itemprop="datePublished" content="2022-03-30T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-30T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7746">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文全面了解 4 大 Polygon 全栈 zk 扩容方案"/>
+<meta name="twitter:description" content="详解 Polygon 全栈 zk 扩容方案：Hermez、Nightfall、Miden 和 Zero，这四种方案具体技术特性与开发进度如何？"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文全面了解 4 大 Polygon 全栈 zk 扩容方案</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-30">
+      2022-03-30
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7746 字 -
+        预计阅读 16 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>长期以来，以太坊 L2 之争的焦点都被 ZK Rollup 和 Optimistic rollup 两者占据。因为 OP 的 EVM 兼容性和技术较为成熟等特性，更容易被项目开发者采用，因此，OP 在当下更为通用和主流。据 L2BAET 的数据，仅 Arbitrum、Optimism、Metis 三个采用 OP 方案的项目，就占据了 L2 市场份额的 70.8%。而 ZK rollup 因开发难度较高、技术进展较慢，目前采用率和市场份额占比都比较低。</p>
+<p>作为目前总锁仓量最高的以太坊扩容方案，Polygon 则坚定地将扩容的未来押注到了 zk 技术上。去年，Polygon 大手笔收购了 Hermez、Mir，并为 zk 扩容做出了 10 亿美元的重金承诺。</p>
+<p>现在，Polygon 拥有了 “一整套”zk 扩容方案，分别是 Hermez、Nightfall、Miden 和 Zero。四种扩容方案虽都建立在 zk 技术之上，但各有千秋，策略不同。那么，这四种方案具体技术特性与开发进度如何？哪个更有希望先杀出来？</p>
+<p>在这篇文章中，我们将详细讨论这四种 zk 解决方案，包括其开发历史、运作机制和开发进度等。以下内容整理自 Polygon DAO 专栏作者Pedro关于 Polygon 研究的 Medium 系列文章，链捕手在原文基础上进行了适当的精简和便于理解的增补。</p>
+<h2 id="polygon-zero">Polygon Zero</h2>
+<p>Polygon Zero 是一个 ZKL2 解决方案，由最快速、最高效的递归证明系统 Plonky2 提供支持。前身为 Mir 协议，是由 Brendan Farmer 和 Daniel Lubarov 创办的 Predicate Labs 于 2019 年构建。Mir 协议的特色是，执行程序过程中会生成递归的 ZKP（zk-proof）验证。简而言之，递归证明就像生成证明的证明。用于验证一组交易证明是否有效。</p>
+<p>递归证明是一项非常年轻的技术，于 2014 年首次在理论上被引入。2019 年，Mir 能够在 2 分钟内生成递归证明，显然，这时间不算短，也缺乏扩展性。</p>
+<p>2020 年，由于 Aztec 团队的探索，Mir 取得了巨大突破，实现了在 60 秒内生成递归证明。在此基础上，Mir 团队开发了 Plonky，允许 Mir 协议在 15 秒内生成递归证明。</p>
+<p>2021 年 12 月，Polygon 以 4 亿美元收购了 Mir，协议更名为Polygon Zero。最初 Mir 正在构建的启用 zk 技术的独立 L1 链的设想，变为在 Polygon 之上构建一个分布式的 zk-rollup。</p>
+<p>今年 1 月，Polygon Zero 发布了 Plonky2，这一技术能在 Mac-Book Pro 上以小于 170 毫秒的速度生成递归证明。这是有史以来最快的递归证明。而递归证明这项技术的突破，也将为 Polygon Zero 服务——Plonky2 将支持最具可扩展性的 zkEVM。</p>
+<h4 id="1plonky2">1、Plonky2</h4>
+<p>Plonky2 是 Plonky1 的迭代，前面也提到它建立在 2020 年 Aztec 构建的验证系统之上。<img src="https://img.bibiqing.com/news/2022/0330/19_ltz8aoqysh.png" alt="一文全面了解 4 大 Polygon 全栈 zk 扩容方案"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0330/19_q1q9o40z2p.png" alt="一文全面了解 4 大 Polygon 全栈 zk 扩容方案"></p>
+<p>这三者之间的一个共同点是 Plonk，所以我们需要先弄明白 Plonk 是什么。</p>
+<p>ZKP 是指在不透露相关信息的同时生成某个计算的有效性证明。所以没有信息并不会被泄露，只是生成证据。</p>
+<p>两个主要的 ZKP 分别是SNARK 和 STARK（<em>由于下文会反复提到这两种证明系统，所以链捕手在此处增加了对二者的详细对比</em>）。二者主要区别包括：SNARK 依赖椭圆曲线来保证安全性，而 STARK 依赖散列函数来保证安全，使用散列函数意味着量子抗性。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0330/19_4gddh4p8po.png" alt="一文全面了解 4 大 Polygon 全栈 zk 扩容方案"></p>
+<p>SNARK 和 STARK 对比，来源： Consensys 官网</p>
+<p>SNARK 的证明规模更小，这意味着链上数据存储更少，最终用户支付的 gas 更少。尽管 SNARK 对开发人员更加友好，但 STARK 提供了一些独特的优势，例如会更加透明，不需要受信任的设置，而且是 “量子安全” 的，在未来会有更大的潜力。这些优势也曾让 Vitalik 称 STARK 其实是 “更新、更耀眼” 的技术。</p>
+<p>但因为 SNARK 早在 2012 年就被提出并投入使用，而 STARK 则在 2018 年才被提出。所以，SNARK 在采用方面具有很大的先发优势，目前 Z-Cash、路印协议和摩根大通都采用了 SNARK 技术，而且因为被广泛采用，SNARK 拥有更多已发布的代码、开发人员库、项目和开发人员。但 STARK 作为新星，因其独特的优势，也在被更多项目采用。</p>
+<p>Plonk 是证明系统的名称，它属于 SNARK 证明系统的一种。</p>
+<p>接下来，我会分析几种与 Plonk 结合的不同类型的方案：<img src="https://img.bibiqing.com/news/2022/0330/19_5qt18vos2t.png" alt="一文全面了解 4 大 Polygon 全栈 zk 扩容方案"></p>
+<p>Aztec 使用 Plonk +KZG 的递归证明时间为 60 秒；</p>
+<p>Plonky1 使用 Plonk +Halo，递归证明时间为 15 秒。Halo 于 2019 年由 Zcash 首次推出，是第一个不需要可信设置的递归证明方案。但 Halo 的缺点是不兼容以太坊，这就是为什么 Mir 会在最初想建立独立的 L1 链；</p>
+<p>Plonky2 使用 Plonk +FRI，递归证明时间为 170 毫秒。2021 年，Polygon Zero 负责人 Daniel Lubarov 提出将 FRI 与 Plonk 结合。</p>
+<p>FRI 是用于 STARK 的方案，这意味着通过使用 FRI，Plonk 就变成 STARK（Plonk 最初是 SNARK 的一种），也意味着增加系统的透明度。当时，只有一个项目（Fractal）实现了递归 FRI 证明，该协议的证明时间约为 10 分钟且不可扩展。</p>
+<p>为了保证快速，Polygon Zero 采用了 Plonky 的第一个版本，并用 FRI 替换了 Halo。上文图表可看出，FRI 的证明速度是 “可变的”，提交的数据越少，获得的证明就越快。但数据越少，安全性就越低。</p>
+<h4 id="2plonky2-正在构建什么">2、Plonky2 正在构建什么？</h4>
+<p>如前所述，Polygon Zero 最终要建设由 Plonky2 提供支持的最具可扩展性的 zkEVM。</p>
+<p>即，每个 zk-rollup 都需要一个 zkEVM 才能真正处理计算。用于 Polygon Zero 的 zk-rollup 的 zkEVM 将由 Plonky2 提供支持，这是目前最高效、最快的 zk 证明系统。</p>
+<p>开发人员将能够在 Polygon Zero 之上部署智能合约，不仅能利用 Polygon 的高性能，同时也利用以太坊的安全性。据其中一位创始人的说法，此 L2 将允许建设具有更多操作和功能的应用程序。</p>
+<h4 id="3polygon-zero和starkware的区别">3、Polygon Zero和Starkware的区别</h4>
+<p>大多数 rollup，包括 Starkware，都会将交易打包，并生成该交易包中的每个事务都是有效的证明。</p>
+<p>Polygon Zero 使用递归证明，因此，每笔交易都会同时制作一堆非常快速的证明。然后将这些单独的交易证明捆绑在一起来创建更大的证明，即验证其他证明有效性的证明。</p>
+<p>这意味着 Polygon Zero 可以进行水平缩放。因此，如果有一堆机器并行生成这些交易证明，那么添加更多机器（例如 Macbook）就可以证明更多交易。通过使用递归证明，可以扩展到更多事务，而不用以时间延迟为代价。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0330/19_z6ucls5ws8.png" alt="一文全面了解 4 大 Polygon 全栈 zk 扩容方案"></p>
+<p>Polygon Zero 相关数据</p>
+<h2 id="polygonhermez">PolygonHermez</h2>
+<p>五年前，三位共读 MBA 的同事 Jordi Baylina、David Schwartz 和 Antoni Martin 创办了一家名为 Iden3 的公司，他们从事的第一个项目是自主身份解决方案，当时项目被称为 “自我主权身份”（Self Sovereign ID，简称 SSI），与我们当下比较流行的去中心化身份 DID 其实是相同的概念。</p>
+<p>但这三个人在研发 SSI 项目的过程中逐渐意识到，要想进一步让 SSI 成为主流，就必须先使得现有的区块链具备充分的可扩展性。这之后，三人决定转向新项目 Hermez。</p>
+<p>Hermez 是基于 zk 技术的去中心化 L2 rollup 解决方案。Hermez 1.0 是目前正在运行的支付平台，该平台允许用户通过一个简单易用的网络或移动界面将任何已注册的 ERC-20 代币从一个 Hermez 帐户转移到另一个帐户。去年 7 月，该团队宣布开发 zkEVM，Hermez 2.0，开发完成后将为以太坊带来一个完全兼容的 zkEVM。</p>
+<p>去年 8 月，Polygon 宣布以 2.5 亿美元收购 Hermez。新项目将命名为 Polygon Hermez，两个项目的代币 MATIC 和 HEZ 进行合并，Hermez 的 26 名员工也将加入 Polygon 的 80 人团队。</p>
+<h4 id="1hermez-10">1、Hermez 1.0</h4>
+<p>Hermez 最初是作为 zk-rollup 开始的，专注于在以太坊上扩展支付和代币转移。</p>
+<p>rollup 指的是打包一打交易（数千个）并在链下一次执行。当这数千笔交易在链外执行时，就 Hermez 而言，会生成一个 zk-SNARK。SNARK 证明了批次中每笔交易的有效性，随后再由以太坊验证证明（SNARK），而不是单个交易。</p>
+<p>与 Optimistic rollup 相比，zk rollup 可以立即生效，实现即时提款，而 Optimistic rollup 必须等待 7 天。这种能够在恒定时间内高效验证证明的能力，是所有 zk rollup 的核心。</p>
+<p>Hermez 的处理速度为 2000 TPS。据 Hermez 团队介绍，在未来处理速度还将大幅提升。</p>
+<p>Hermez 上可进行三种不同的交易：</p>
+<p>存款：将任何已注册的 ERC-20 代币从 L1 以太坊发送到 L2 Hermez。存款需要支付以太坊 gas 费。</p>
+<p>转账：将任何已注册的 ERC-20 代币从一个 Hermez 账户发送到另一个 Hermez 账户，此类转账交易非常便宜且即时。</p>
+<p>取款：将 ERC-20 代币从 L2 Hermez 发送回 L1 以太坊。提款需要支付以太坊 gas 费。</p>
+<p>在提款时需要注意的一点是，Hermez 提供了一种保护机制，即 “强制提款”，允许用户随时将资金从 L2 Hermez 转回 L1 以太坊，即便是协调员在试图作恶的情况下。</p>
+<p>协调者和捐赠证明</p>
+<p>协调者是 Hermez 版本的区块生产者。这些人通过生成 zk-proof 来证明链下交易的有效性。</p>
+<p>协调者就是将交易捆绑打包的人，他们会将所有的事务请求汇总在一个单元中，每次 rollup 会执行数千条事务，然后再生成 zk-proof，再通过以太坊上的智能合约验证此 zk 证明。</p>
+<p>Hermez 之所以是去中心化的，是因为任何人都可以成为协调者并通过服务来赚取奖励。网络上可以同时有任意数量的协调者，但是只有一个能够实际处理交易并在任何给定的时间段（10 分钟长）内获得奖励。</p>
+<p>Hermez 网络通过拍卖过程选择下一个协调者。基本上任何人都可以使用 MATIC 代币出价，出价最高的人将赢得在 10 分钟内处理尽可能多的交易的权利，直到选择下一个协调员。这是一个非常有效的过程，因为它要求协调员在这 10 分钟内尽可能多地进行交易，以使获得的回报超过出价。</p>
+<p>如果协调者竞标失败，MATIC 代币将被退回原钱包，而那些竞标成功的资金，将有以下三个用途：</p>
+<ul>
+<li>
+<p>30% 永久销毁</p>
+</li>
+<li>
+<p>40% 用于由以太坊基金会管理的捐赠账户</p>
+</li>
+<li>
+<p>30% 用于网络激励，以帮助推动 Hermez 网络的进一步采用。</p>
+</li>
+</ul>
+<p>值得一提的是，Hermez 支持原子交易。原子交易是一连串不可再分的交易，要么交易全部发生，要么全部不发生。例如，Alice 想向 Bob 发送 1000 DAI 来换取 1 ETH，在原子交易的情况下，二者必须都发送代币给对方之后，交易才可以成功，缺少一个步骤，交易都会失败。所以，这种交易方式能有效预防诈骗。</p>
+<h4 id="2hermez20">2、Hermez2.0</h4>
+<p>去年 7 月，在 EthCC 4 大会期间，Hermez 团队宣布正在开发 zkEVM 即 Hermez 2.0。</p>
+<p>我们都知道，目前 L2 多采用 Optimism 而 ZK 还没真正起飞的关键点就在于，zk 还无法做到 EVM 兼容。所以，zkEVM 就是要解决这个问题，在 zk-rollup 上运行智能合约。</p>
+<p>目前很多项目也在开发 zkEVM，仅在 Polygon 生态中，就有 Polygon Zero 和 Polygon Hermez 这两种解决方案。然而，每个项目都以不同的方式在解决这个问题，并且每个项目都有自己的权衡。</p>
+<p>Hermez 的特色在于不论是工具、生态系统还是安全性，均能与以太坊兼容。这就意味着在理想状态下，在以太坊上运行的智能合约能够在 L2 Hermez 上运行。为开发人员提供无摩擦的体验。Optimism 和 Arbitrum 一推出，就吸引了一批项目和用户迁移过来。不难想象，等 zk-rollup 成熟，会产生甚至更强的网络效应。</p>
+<p>Hermez 创始人 Antoni Martin 形容 zkEVM 说：“如果你充分利用每个解决方案的最佳部分，你就可以制造出最好的汽车……”。所以，Hermez在开发zkEVM时同时采用了SNARKS 和 STARKS两种 ZKP 方案，力求两全其美。</p>
+<p>具体而言，当 Hermez 处理交易并在链下产生新区块时，将生成一个 STARK 证明，证明这些交易都是有效的。STARK 证明的问题是在链上（以太坊）验证成本很高，而 SNARK 则在此时就有了用武之地，它需要做的就是在以太坊上验证 STARK 证明的有效性。</p>
+<p>如果你想进一步深入了解此zkEVM 的架构，可_点击此处查看_Hermez2.0 开发文档。<img src="https://img.bibiqing.com/news/2022/0330/19_d3phbqtvm5.png" alt="一文全面了解 4 大 Polygon 全栈 zk 扩容方案">Hermez 2.0（zkEVM）功能</p>
+<p>上图展示了 HermezzkEVM 提供的不同功能。当然，2.0 还在开发过程中，据主网上发布 2.0 路线图显示，Hermez2.0 计划于今年第一季度上线公测网络，主网预计于第二季度上线。还有一处划重点，那就是 Hermez2.0 正在开发一个无需许可的跨链桥，允许用户将资产从 Hermez L2 转移到其他 L2。</p>
+<h2 id="polygonnightfall">PolygonNightfall</h2>
+<p>去年 9 月，Polygon 和全球专业服务和技术公司安永 (EY，Ernest &amp; Young) 建立合作关系，随后发布了 Polygon Nightfall。</p>
+<p>安永在 2019 年公布了 Nightfall 的初始版本，和其他 zk 解决方案最不同的一点是，Nightfall是以隐私为重点的 rollup，安永将其定位为 “以太坊上最突出的隐私解决方案之一”。具体来说，就是 Nightfall 上每笔交易都包含隐私，意味着如果 Alice 向 Bob 发送一笔资产，其他人将无法看到该资产是什么、包含了多少价值或它去了哪里。</p>
+<p>之所以更注重交易的隐私性，是因为安永瞄准的客户是企业。最开始，Nightfall 试图直接在以太坊上构建第一个企业级区块链，但最后发现，在以太坊主网拥有隐私过于昂贵，于是转了 L2 并最终选择和 Polygon 合作。</p>
+<p>二者合作发布的 Polygon Nightfall 是迭代多次后的 Nightfall3.0 版本，其最突出的特点是有效地将 Optimistic Rollup 的主干概念与 ZK-Rollups 中常用的零知识 (ZK) 密码学相结合，从而实现了可扩展性和隐私性的融合。</p>
+<p>Polygon Nightfall 目前正在测试网阶段，主网预计于今年上线。</p>
+<h4 id="1nightfall-如何运作">1、Nightfall 如何运作？</h4>
+<p>Polygon Nightfall 本质上是一个利用 zk 加密保护隐私的 Optimistic Rollup。Polygon 和安永的合作的重点在于使用 Nightfall 技术构建产业链，使企业能够以可预测的低费用且在监管指导下链接到 L1 上。</p>
+<p>下图为 Nightfall 具体运作机制：<img src="https://img.bibiqing.com/news/2022/0330/19_bn7ozojesg.png" alt="一文全面了解 4 大 Polygon 全栈 zk 扩容方案"></p>
+<p>我们目前可以把可扩展性的瓶颈归结为 “状态”，因为在在链上存储数据的成本很高。因此，扩展解决方案的目标是不断降低存储在链上的数据量。Nightfall 在降低存储方面采用了成本更低的 Optimistic rollup。</p>
+<p>通常使用 Optimistic rollup 方案都会存在 7 天的挑战期，也就是说从 L2 提现到以太坊主网需要等待 7 天。但 Nightfall 改善了这一点，为用户提供了“即时退出”的选项。其运作方式是，由流动性提供者与用户该笔交易交换位置，先为用户垫付即时提款所需的资金，并在 7 天的等待期内占据该位置。</p>
+<p>Nightfall 希望交易同时兼具隐私性。所以，在 Optimistic Rollup 上，Nightfall添加了一个额外的 zk 隐私层，来保证交易的私密性。</p>
+<p>NightfallVS Aztec<img src="https://img.bibiqing.com/news/2022/0330/19_q45k7rdwsz.png" alt="一文全面了解 4 大 Polygon 全栈 zk 扩容方案"></p>
+<p>上图显示了两种不同的启用隐私的方法。左边的 Polygon Nightfall 使用了 zk 密码学的 Optimistic rollup，右边的 Aztec 使用了 zkrollup 和 zk 密码学。我相信，最理想的方案是类似 Aztec 的 zk/zk 方法，但在当下，这种解决方法太昂贵了。所以，在一定程度上来说，Nightfall更像是一种能够立刻投入使用的折中方案。一旦 zk 费用得到解决，Nightall 团队会最终切换到 zk/zk 方案。</p>
+<p>下图为 Nightfall 的架构：<img src="https://img.bibiqing.com/news/2022/0330/19_j9rvpp6v5l.png" alt="一文全面了解 4 大 Polygon 全栈 zk 扩容方案"></p>
+<h4 id="2具体用例">2、具体用例</h4>
+<ul>
+<li>
+<p>金融企业和机构投资者：Nightfall 独特的隐私性为希望将交易和掉期保密的投资组合管理公司创造了一个巨大的机会。</p>
+</li>
+<li>
+<p>为企业提供供应链可追溯性：企业可通过 Nightfall 处理供应、执行销售订单、私密支付等。目前，已有一家啤酒厂在使用安永的 Nightfall 供应链进行可追溯性交易，企业可轻松追踪有多少啤酒、它在哪里、运输数量等。此外，一家制药公司通过 Nightfall 来将生产线上的每一种产品都铸造成 NFT，每天约产生 60000 个 NFT。</p>
+</li>
+<li>
+<p>ESG：ESG 评级是针对企业在环境（Environmental）、社会（Social）和公司治理（Governance）三个方面进行评分考核，从长远角度判断企业是否具备可持续发展的价值。目前已有平台使用 Nightfall 技术，使用户可在不透露确切的慈善机构的情况下向某个慈善机构捐款。确保了资金使用上的私密性。而且通过在链上添加慈善机构的供应链，公众可以监督慈善机构的进度和资金去向。</p>
+</li>
+</ul>
+<h2 id="polygon-miden">Polygon Miden</h2>
+<p>去年 11 月，Polygon 宣布推出基于 zk-STARKs 的扩容解决方案 Miden。这个项目由曾经主导研发了 Winterfell 技术的 Facebook 前核心零知识证明技术研究员领导。</p>
+<p>Polygon Miden 是一个基于 STARK 的 zk rollup。Polygon Miden的特色是它旨在解决 rollup很难支持任意逻辑和交易的挑战。rollup 通过打包交易来减少链上数据存储，可以减少拥塞并降低交易费用，但很难支持交易包中的某个任意交易的验证，影响了它验证所有链下交易的能力。Polygon Miden 通过使用 Miden VM（虚拟机）来解决这个当今 zk rollup 的最大难题之一。</p>
+<p>Polygon Miden 框架的核心组件有两个：Distaff VM 和 Winterfell。</p>
+<p>Distaff VM 是一个 zk-EVM。每当在 zk-VM 中执行程序时，都会生成 zk 执行证明（zk-proof of execution）以验证程序是否正确运行，而无需实际运行该程序。Distaff 是一个基于 STARK 的虚拟机。</p>
+<p>对于在 Distaff VM 上执行的任何程序，都会自动生成基于 STARK 的执行证明。然后，任何人都可以使用这个证明来验证程序是否正确执行，而无需重新执行程序，甚至不需要知道程序是什么。</p>
+<p>Miden VM 就采用了 Distaff VM，并为其添加一个更有效的证明系统——Winterfell。Winterfell 是一个功能齐全的多线程 STARK 证明器和验证器，用于任意计算。本质上是性能更高的最新版本的 STARK 证明。</p>
+<p>一旦开发完成，任何项目都可以在这个 zk-rollup 之上部署智能合约。</p>
+<p>其他项目不同之处在于，Miden 生成 STARK 证明。尽管使用 STARK 证明更贵，但它相对要更安全。Miden 创始人还计划进一步研究递归 STARK 证明，来降低其价格。</p>
+<h4 id="1miden-的架构">1、Miden 的架构</h4>
+<h4 id="一文全面了解-4-大-polygon-全栈-zk-扩容方案httpsimgbibiqingcomnews2022033019_k46bmzl720png"><img src="https://img.bibiqing.com/news/2022/0330/19_k46bmzl720.png" alt="一文全面了解 4 大 Polygon 全栈 zk 扩容方案"></h4>
+<ul>
+<li>
+<p>交易首先会分发送给 Miden 的执行节点；</p>
+</li>
+<li>
+<p>这些执行节点一次将 5000 笔交易捆绑到区块中，并生成一个 STARK 证明；</p>
+</li>
+<li>
+<p>每 200 笔交易捆绑的区块生成一个 STARK 证明，证明交易的有效性；</p>
+</li>
+<li>
+<p>最后将最终 STARK 证明结果是上传到 L1 以太坊来达成共识和确定性。</p>
+</li>
+</ul>
+<h4 id="2miden-vm的亮点">2、Miden VM的亮点：</h4>
+<ul>
+<li>
+<p>对开发人员友好：Miden 的目标是让开发人员甚至无需学习任何有关密码学或 zk 证明的知识，即可在此 zkVM 之上运行智能合约。</p>
+</li>
+<li>
+<p>支持多种编程语言：团队正在努力增加对多种编程语言的支持，但同时保证 Solidity 优先。</p>
+</li>
+<li>
+<p>以安全为中心：通过 zk 技术使 Miden VM 比 EVM 本身更安全。</p>
+</li>
+<li>
+<p>以隐私为重点：虽然这不是现在的重点，但 Miden 团队在路线图部署了相关开发计划。</p>
+</li>
+</ul>
+<p>据官网公布的信息，Miden 预计于 2023 年第一季度推出。</p>
+<h2 id="总结">总结：</h2>
+<p>最后，我们再简单快速对比一下 Polygon 的四种 zk 扩容方案：</p>
+<p>Polygon Zero 开发了一种基于 SNARK 的递归证明系统 Plonky2，这一技术能在 Mac-Book Pro 上以小于 170 毫秒的速度生成递归证明。在如此高效、快速的 Plonky2 证明系统上，Polygon Zero 将最终开发最具可扩展性的 zkEVM。</p>
+<p>Hermez 开发的 zk rollup 的特点是在交易过程中通过拍卖选择协调者，竞标成功的协调者为了盈利，会在单位时间内尽可能地进行交易，所以这一竞争机制会带来交易上的高效。此外，Hermez 也在开发 zkEVM，且同时采用了 SNARK 和 STARK 两种 ZKP 方案，力求两全其美。</p>
+<p>而 Nightfall 要更特殊一些，和其他 zk 解决方案最不同的一点是，Nightfall 是以隐私为重点的 rollup，他瞄准的客户是企业。此外，Nightfall 有效地将 Optimistic Rollup 的主干概念与 ZK-Rollups 中常用的零知识 (ZK) 密码学相结合，从而实现了可扩展性和隐私性的融合。</p>
+<p>Miden 最核心的产品是 Miden VM，和其他 rollup 不同，它采用较为冷门的 STARK 证明系统来建设虚拟机，旨在解决 rollup 很难支持任意逻辑和交易的挑战，提高验证所有链下交易的能力。</p>
+<p>目前，四个方案多处于开发和测试阶段，都将于今年或明年正式上线。随着前述新 zk 解决方案的投入使用，Layer2 将很大程度解决此前技术方案落后的质疑，并在主流 Layer2 解决方案中占有一席之地，为加密用户带来更多选择空间。</p>
+<p>作者：Pedro，Polygon DAO 作者</p>
+<p>整理：海尔斯曼，链捕手</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/36074/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">一文读懂强势崛起的老牌公链 Waves</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/36048/">
+                <span class="next-text nav-default">以太坊客户端Geth发布v1.10.17版本，包含为合并做的多项准备</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#polygon-zero">Polygon Zero</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#polygonhermez">PolygonHermez</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#polygonnightfall">PolygonNightfall</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#polygon-miden">Polygon Miden</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结：</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

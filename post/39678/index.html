@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          教程：创建由以太坊支持的 Web3 聊天 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在本文中，我们将学习如何将以太坊智能合约连接到React应用程序，并使用户能够与之交互。" />
+<meta name="keywords" content="Web 3.0" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39678/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="教程：创建由以太坊支持的 Web3 聊天" />
+<meta property="og:description" content="在本文中，我们将学习如何将以太坊智能合约连接到React应用程序，并使用户能够与之交互。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39678/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-01T00:00:00+00:00" />
+
+<meta itemprop="name" content="教程：创建由以太坊支持的 Web3 聊天">
+<meta itemprop="description" content="在本文中，我们将学习如何将以太坊智能合约连接到React应用程序，并使用户能够与之交互。"><meta itemprop="datePublished" content="2022-07-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-07-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3365">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="教程：创建由以太坊支持的 Web3 聊天"/>
+<meta name="twitter:description" content="在本文中，我们将学习如何将以太坊智能合约连接到React应用程序，并使用户能够与之交互。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">教程：创建由以太坊支持的 Web3 聊天</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-07-01">
+      2022-07-01
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3365 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>在本文中，我们将学习如何将以太坊智能合约连接到React应用程序，并使用户能够与之交互。</strong></p>
+<h3 id="先决条件"><strong>先决条件</strong></h3>
+<ul>
+<li>
+<p>要在浏览器中安装MetaMask扩展</p>
+</li>
+<li>
+<p>一个代码编辑器</p>
+</li>
+<li>
+<p>关于以下主题的一些知识：以太坊，MetaMask, React, TypeScript</p>
+</li>
+</ul>
+<p>在以太坊主网上工作要花真金白银！</p>
+<p>在本教程中，我假设的是你的MetaMask设置为使用Rinkeby。Rinkeby是一个复制主网的测试网络，允许我们免费部署和使用智能合约。</p>
+<h3 id="项目"><strong>项目</strong></h3>
+<p>我们将为这个基于区块链的聊天建立一个界面，如下所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_jh5ekvcn5z.png" alt="教程：创建由以太坊支持的 Web3 聊天"></p>
+<ul>
+<li>
+<p>左边的侧边栏包含一个按钮，用于连接到聊天或指示连接用户的地址。</p>
+</li>
+<li>
+<p>右侧的聊天框，显示消息和输入栏。</p>
+</li>
+</ul>
+<p>在本篇文章中，我们不会关注如何让UI更漂亮，我们的目标是关注如何用最直接的方式与智能合约交互。</p>
+<p>我已尽力使本教程易于理解，但如果有些东西还是不甚清晰，也不用灰心，你会在本文的最后找到一个包含已完成项目的 GitHub 存储库的链接。</p>
+<h3 id="智能合约"><strong>智能合约</strong></h3>
+<p>首先，我们要连接到前端的智能合约，如下所示:</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_ytw68w69i2.png" alt="WPUDlrDxo0LBY1JggLB4zdn4GX2A6OHqFEf00E0a.png" title="6265925"></p>
+<p>event 、emit 这些东西是什么？</p>
+<p>event 用于通知外部用户区块链上发生的事情。</p>
+<p>在我们的例子中，“外部用户”是我们的前端应用程序，它将监听发送到智能合约的新消息，因此我们可以立即在我们的UI中显示它们。</p>
+<h3 id="前端"><strong>前端</strong></h3>
+<p>我准备了一个样板，这样你就可以马上开始编码了。</p>
+<p>以下是启动项目的Github链接：</p>
+<p><a href="https://github.com/thmsgbrt/web3-chat-powered-by-ethereum-starter">https://github.com/thmsgbrt/web3-chat-powered-by-ethereum-starter</a></p>
+<p>一旦你克隆了项目，使用npm install安装依赖项，并用npm start启动了它，那么花几分钟检查几个文件以了解应用是如何构造的，也是有必要的。这是非常基本的React，就不在此赘述了。</p>
+<p>以下是我们的行动计划：</p>
+<p>A-允许用户通过MetaMask连接到聊天</p>
+<p>B-在我们的前端实例化智能合约</p>
+<p>C-从我们的智能合约中获取消息并显示它们</p>
+<p>D-允许用户在聊天中发布消息</p>
+<p>E-收听新信息</p>
+<p><strong>A - 允许用户通过MetaM</strong> <strong>ask连接到聊天</strong></p>
+<p>要做到这一点，我们首先需要确保MetaMask扩展安装在了浏览器上。</p>
+<p>让我们创建一个Hook来实现这一点：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_q8sp3addas.png" alt="crxZ5IKCp8sFEiN5Fm34ekZtOk1t2y108HotyJFm.png" title="6265926"></p>
+<p>解释：</p>
+<p>MetaMask在window.ethereum注入了一个全局API。该API允许网站请求用户的以太坊账户，从用户连接的区块链读取数据，并建议用户签署消息和交易。</p>
+<p>现在我们已经准备好了Hook，转向Sidebar.tsx，这样我们就可以利用它：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_jy1jln0hg8.png" alt="hKRsKuyFzTGeDiOHhE6xoz4A3XVLs23gLrJKyJOk.png" title="6265927"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_ssq1dr7gu4.png" alt="1YbF9fl05btX2ZcGzOrHmBQBo6leVxS7edhNsUf5.png" title="6265928"></p>
+<p>以现在，我们有一种方法来检测是否安装了MetaMask，如果没有安装MetaMask，我们可以警告用户，他们需要在浏览器上安装MetaMask。</p>
+<p>接下来，让我们为“Connect With MetaMask”按钮添加一个onClick处理程序：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_bg70fith8b.png" alt="r4XOBHfmP9jLD1PWqyZpuuPXnFdxBmwfaSBvQNqa.png" title="6265930"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_amd9q5mtj2.png" alt="VFxVikiHUfUp13EcX5bO1nTmeTT2vi6OFrWOnlsU.png" title="6265931"></p>
+<p>现在，当用户单击 Connect With MetaMask 时，MetaMask 扩展程序将提示一个模式并询问要使用哪个帐户：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_hr168l9dqp.png" alt="教程：创建由以太坊支持的 Web3 聊天"></p>
+<p>MetaMask 要求我们连接到我们的聊天</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_q1r82nn8am.png" alt="教程：创建由以太坊支持的 Web3 聊天"></p>
+<p>现在已连接！</p>
+<p>侧边栏现在显示你的以太坊地址!</p>
+<h3 id="b---在我们的前端实例化智能合约"><strong>B - 在我们的前端实例化智能合约</strong></h3>
+<p>为了能够获取信息并使用户能够发送消息，我们需要有一种方法与我们的智能合约进行通信。</p>
+<p>我们要使用ethers库。</p>
+<p>ethers是一个库，可以帮助我们的前端与智能合约进行对话。ethers通过提供商(在我们的例子中是MetaMask)连接到以太坊节点，它可以帮我们做很多事情。</p>
+<p>让我们创建另一个Hook，它将允许我们在ethers的帮助下与我们的智能合约交互：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_0bwpr1j6kb.png" alt="GOC2oHLtErUUJSMiKhpm3tiw6luARLvApqti0VN5.png" title="6265932"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_6p2383704c.png" alt="pdUMizFWuW5liflPHVXmkRnw6nPzCQfsdKDUpYmi.png" title="6265933"></p>
+<p>让我们来分解一下：</p>
+<ul>
+<li>
+<p>我们先检查一下window.ethereum 是否存在并从中获取了 Web3 Provider。</p>
+</li>
+<li>
+<p>如果已经定义了accountis，这意味着用户点击了“Connect With MetaMask”按钮，webThreeProvider.getSigner()会返回给我们他们的地址。</p>
+</li>
+<li>
+<p>最后，返回一个带有新的ether . contract()的合约实例。</p>
+</li>
+</ul>
+<p><strong>实例化我们的智能合约</strong></p>
+<p>前往App.tsx，在那里我们可以使用我们创建的hook：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_fc1q38li4a.png" alt="tzJXdalFDANTMskUcczFNH2of2QYgntjj1t5glEQ.png" title="6265934"></p>
+<p>你是否注意到了，我们这里有一个错误，需要去做两件事情来解决问题：</p>
+<ul>
+<li>
+<p>contractAddress不是合约地址。</p>
+</li>
+<li>
+<p>./contract/BlockchainChat-artifact.json是空的。</p>
+</li>
+</ul>
+<p><strong>合约地址</strong></p>
+<p>这个地址告诉我们在哪里找到区块链上的区块链聊天智能合约。</p>
+<p>你可以使用我为大家部署到 Rinkeby 的以下地址之一：</p>
+<ul>
+<li>
+<p><code>0x56cD072f27f06a58175aEe579be55601E82D8fcD</code></p>
+</li>
+<li>
+<p><code>0xD99f113cAd1fe2eeebe0E7383415B586704DB5a3</code></p>
+</li>
+<li>
+<p><code>0x23CAEEA0Bb03E6298C2eAaa76fBffa403c20984f</code></p>
+</li>
+</ul>
+<p>选择其中任何一个，它们都是指向已部署的区块链Chat智能合约的地址。</p>
+<p><strong>合约的ABI</strong></p>
+<p>我们的Hook期望一个来自BlockchainChatArtifact的ABI。这是两个新概念…</p>
+<p>当你编译一个智能合约时，你会得到所谓的工件。</p>
+<p>在Remix中(一个用于创建、编译、测试和部署智能合约的IDE)，一旦你的智能合约已经编译完成，你将在contracts/artifacts下找到工件。</p>
+<p>这个工件包含库的链接、字节码、部署的字节码、gas估计、方法标识符和ABI。它用于将库地址链接到文件。</p>
+<p>现在，什么是“ABI”:</p>
+<p>ABI代表应用程序二进制接口。ethers需要我们的BlockchainChat智能合约的ABI，以便知道我们的智能合约可以做什么(方法、事件、错误等)，并为我们的前端提供与它交互的一种方式。</p>
+<p>如果你没有自己部署智能合约，仍然可以通过复制./contract/ blockchainchat - artifacts .json中的以下工件来继续本文。</p>
+<p>指向工件的Gist链接：</p>
+<p><a href="https://gist.github.com/thmsgbrt/1db36bc688d6984070badb14652ed65c">https://gist.github.com/thmsgbrt/1db36bc688d6984070badb14652ed65c</a></p>
+<p>应用程序现在应该没有错误了！</p>
+<h3 id="c---从我们的智能合约中获取消息并显示它们"><strong>C - 从我们的智能合约中获取消息并显示它们</strong></h3>
+<p>现在我们已经在前端实例化了智能合约，我们终于可以获取消息了。打开<code>Chat.tsx</code>并添加以下<code>getMessages</code>函数：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_l2dre1eirm.png" alt="yvAY8WAtW4tmt0Ls1bydGi7G8CufUePMKTuv5djj.png" title="6265935"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_if4kkittht.png" alt="080y9q8Ax866RVGaVxP2vUwLrZ8JGiiSZVUWzF5c.png" title="6265936"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_pmb6q5z1gw.png" alt="cGLR8Mfr0bdcdkXCeb1EAMEiUCBL6bzHjQqyGqy8.png" title="6265937"></p>
+<p><code>Chat.tsx</code>通过它的 props接收<code>chatContract</code>实例，我们可以用它来调用<code>chatContract.getMessages()</code>。通过接收到的消息，我们填充<code>messages</code>状态变量。</p>
+<p>如果你的聊天智能合约发布了消息，它们应该在聊天框中可见。否则，让我们继续允许用户发送消息。以下是目前为止你应该看到的：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_m48y2hr7hs.png" alt="教程：创建由以太坊支持的 Web3 聊天"></p>
+<h3 id="d--允许用户在聊天中发布消息"><strong>D -允许用户在聊天中发布消息</strong></h3>
+<p>在<code>Chat.tsx</code>中，添加以下<code>sendMessage</code>函数来发布消息：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_sqf7ys99qk.png" alt="EymDybfpguzMXFTNQAW2QsvE8nGXHfYW72B3NIjo.png" title="6265938"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_wkk2y0frjs.png" alt="F7V1PWVFY9C6J7lF6VL1kKJwN8VNZZVktruiX4cH.png" title="6265939"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_s0cb53gncc.png" alt="eP1BqDtGIR7fuuGdYvCz3W1Z1FfcVhKxHwXOW5Ws.png" title="6265940"></p>
+<p><img src="/UEditor/themes/default/images/spacer.gif" alt="教程：创建由以太坊支持的 Web3 聊天" title="正在上传..."></p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_4y2877bppp.png" alt="Z1jnLmZToJ6k7lrGsJP74xJlxz8XeM5SrKApZSMO.png" title="6265941"></p>
+<p>让我们继续，在textarea中输入一条消息并发送它！这应该会提示MetaMask，要求验证交易，继续：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_oa6jo7saq9.png" alt="教程：创建由以太坊支持的 Web3 聊天"></p>
+<p>我们UI中的“send message”按钮有不同的状态。它的内容根据交易状态而变化：</p>
+<ul>
+<li>
+<p>“WAIT”表示交易需要用户批准。</p>
+</li>
+<li>
+<p>“SENDING”表示交易正在被验证。</p>
+</li>
+</ul>
+<p>要查看刚刚发布的消息，请重新加载页面。它就应该会被添加。</p>
+<p>但是在用户体验方面，必须重新加载页面以查看是否有新消息发布并不是非常友好的。</p>
+<h3 id="e---收听新信息"><strong>E - 收听新信息</strong></h3>
+<p>回到我们的智能合约。正如你所看到的，当用户发布一条消息时，会触发一个事件：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_5fqwz9a0pt.png" alt="K7ANudHbVAlsE3UwCVNOGu5GulHYRwXAI7c8hRHP.png" title="6265948"></p>
+<p>我们可以通过添加以下setupMessageListener函数来监听这个事件：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_a8ku87nml0.png" alt="yT1TjRxGib0GfkBv0G0zhisRpCsQWCPtydLn32rw.png" title="6265956"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_1ui4wa5o11.png" alt="NfcVs3D6ndEatvv64uqcmzkagx2eij8i1K9xsxZ7.png" title="6265957"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_veilmkk0uk.png" alt="mhupvkMBsa4Cm1QqCSJnuWdi78xSES3IxnsTptk5.png" title="6265958"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_menjhhn7b9.png" alt="FQoXiKy2NBUfkBX3znvFFlEQn2jSHnymoHOW0qs8.png" title="6265959"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_lv13ln42io.png" alt="21zeU4UJJY0RnJQEGnAUIE1z0zjRlI00KLGcwbLG.png" title="6265960"></p>
+<p>接着，发送一条新消息，这一次，就应该不必重新加载页面来查看刚刚发布的消息。如果另一个用户发送消息，这显然也是有效的。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/28_ptni2qhvz5.png" alt="教程：创建由以太坊支持的 Web3 聊天"></p>
+<h3 id="最终项目"><strong>最终项目</strong></h3>
+<p>恭喜完成了本教程的学习。正如上面所承诺的，这里有一个最终项目的链接：</p>
+<p><a href="https://github.com/thmsgbrt/web3-chat-powered-by-ethereum-finished-project">https://github.com/thmsgbrt/web3-chat-powered-by-ethereum-finished-project</a></p>
+<p>Source：https://betterprogramming.pub/create-a-web3-chat-powered-by-ethereum-6886824fad7</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39674/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">红杉资本全面拥抱加密生态 传统投行如何布局Web3</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39704/">
+                <span class="next-text nav-default">金色Web3.0日报 | CZ：5到10年内DeFi规模将超过CeFi</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#先决条件"><strong>先决条件</strong></a></li>
+        <li><a href="#项目"><strong>项目</strong></a></li>
+        <li><a href="#智能合约"><strong>智能合约</strong></a></li>
+        <li><a href="#前端"><strong>前端</strong></a></li>
+        <li><a href="#b---在我们的前端实例化智能合约"><strong>B - 在我们的前端实例化智能合约</strong></a></li>
+        <li><a href="#c---从我们的智能合约中获取消息并显示它们"><strong>C - 从我们的智能合约中获取消息并显示它们</strong></a></li>
+        <li><a href="#d--允许用户在聊天中发布消息"><strong>D -允许用户在聊天中发布消息</strong></a></li>
+        <li><a href="#e---收听新信息"><strong>E - 收听新信息</strong></a></li>
+        <li><a href="#最终项目"><strong>最终项目</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Optimistic Rollups：以太坊扩容的现在和未来 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="我们选择Optimistic Rollup而不是ZK，因为系统固有的可伸缩性和成本优势；我们今天仍然会做出同样的选择。" />
+<meta name="keywords" content="Optimism, Layer 2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/32896/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Optimistic Rollups：以太坊扩容的现在和未来" />
+<meta property="og:description" content="我们选择Optimistic Rollup而不是ZK，因为系统固有的可伸缩性和成本优势；我们今天仍然会做出同样的选择。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/32896/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-01-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-11T00:00:00+00:00" />
+
+<meta itemprop="name" content="Optimistic Rollups：以太坊扩容的现在和未来">
+<meta itemprop="description" content="我们选择Optimistic Rollup而不是ZK，因为系统固有的可伸缩性和成本优势；我们今天仍然会做出同样的选择。"><meta itemprop="datePublished" content="2022-01-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-01-11T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7578">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Optimistic Rollups：以太坊扩容的现在和未来"/>
+<meta name="twitter:description" content="我们选择Optimistic Rollup而不是ZK，因为系统固有的可伸缩性和成本优势；我们今天仍然会做出同样的选择。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Optimistic Rollups：以太坊扩容的现在和未来</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-01-11">
+      2022-01-11
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7578 字 -
+        预计阅读 16 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E8%A7%82%E7%82%B9/"> 观点 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>当下大家常听见很多关于ZK Rollup 如何被认为是通用智能合同系统未来的谈论。而我们不同意——这篇文章解释了原因。它借鉴了我们从运行一个开放、安全、与EVM兼容的L2链中学到的实践经验教训，该链拥有数百个dapp、数十万用户和数百万笔交易。</p>
+<p>我们构建了Arbitrum作为 Optimistic Rollup （OR），因为我们认为OR是满足用户对安全、无条件信任、与EVM兼容的L2的现实需求的最佳方式。我们选择Optimistic Rollup而不是ZK，因为系统固有的可伸缩性和成本优势；我们今天仍然会做出同样的选择。如果你想了解原因，请继续阅读。</p>
+<p><strong>迈克尔约翰逊——最初以苹果和橙子的形式发布到 Flickr——他们不比较，CC BY 2.0</strong> ，</p>
+<p><a href="https://commons.wikimedia.org/w/index.php?curid=4289506">https://commons.wikimedia.org/w/index.php?curid=4289506</a>）</p>
+<p>等等！这个帖子有多长？</p>
+<p>是的，这个帖子很长，在有些地方具有一定技术性。人们希望从链上得到的很简单，但谈论提供这些优势所需的技术需要我们深入研究一些细节。我们希望技术界理解我们的观点。</p>
+<p>如果你不想阅读整篇文章，这里有一个简要大纲。</p>
+<ul>
+<li>
+<p>人们想要一条可以无条件信任的链提供安全、保证进度、可见性和快速性的属性——并且他们想要低成本并与现有工具兼容。</p>
+</li>
+<li>
+<p>与ZK Rollup 相比，我们深入研究了如何使用Optimistic Rollup来提供这些属性的细节。</p>
+</li>
+<li>
+<p>由于ZK的链下成本非常高，Optimistic可以以更低的成本提供用户想要的属性。</p>
+</li>
+<li>
+<p>由于ZK证明非常昂贵，充分参与ZK协议可能需要特殊用途的硬件和/或大规模并行性，使网络有效地更加集中。</p>
+</li>
+<li>
+<p>ZK声称的优势要么也适用于Optimistic Rollup系统，要么需要牺牲重要的安全性或可用性功能。</p>
+</li>
+<li>
+<p>Optimistic Rollup 在操作成本上大获全胜，因为执行代码比计算复杂的加密证明要便宜得多。</p>
+</li>
+</ul>
+<h2 id="从头开始">从头开始</h2>
+<p>我们先从以太坊开始。以太坊用户创建一笔交易以部署或与智能合同交互。你可以用几种不同的方式看待以太坊交易。一方面，可以将其视为不透明的数据。但如果看看它的内容，交易当然远不止于此；它是一个请求，要求智能合同做一些事情：记录一些信息，移动一些资产等。</p>
+<p>当交易发布在以太坊时，会发生两件重要的事情。首先，它被包括在内，以太坊就一套有序交易达成了共识。其次，以太坊执行这些事务并计算由此产生的状态更新。</p>
+<p>Rollup ：Optimistic和ZK的共同点</p>
+<p>让每个以太坊节点执行每笔交易都很昂贵，Rollup是一类扩容解决方案，可以显著减轻此负载。交易的实际执行不是在以太坊完成的，而是转移到第2层（“L2”）区域。</p>
+<p>但等一下—— Rollup 应该由以太坊来保证。这意味着我们需要以太坊以某种方式保证交易执行的正确性，即使它发生在L2上。那么，以太坊如何将其批准印章授予 Rollup 状态呢？</p>
+<p>总之，答案是：证明。Rollup 使用专有证明向以太坊证明其正确性，即使不执行交易，也可以验证其正确性。</p>
+<p>Rollup ：Optimistic和ZK的不同之处</p>
+<p>这些证明似乎相当神奇：允许以太坊在不实际执行的情况下验证 Rollup 状态。你可能想知道这些证明是什么样子的，以及它们在实践中是如何实现的。这就是各种Rollup与众不同的地方。</p>
+<p>ZK Rollup使用有效性证明。ZK依赖于某方发布简洁的加密证明，该证明确定该方知道以特定状态结尾的有效链。这要求验证方执行链，以便知道如何构建验证，然后通过执行一系列复杂的加密操作来构建验证。证明由链上的L1合同检查。ZK证明很简洁，验证成本足够便宜，可以通过以太坊交易完成。</p>
+<p>Optimistic Rollup使用不同类型的证明：欺诈证明。顾名思义，Optimistic Rollup是乐观的，当他们向以太坊发布更新的状态时，他们根本不用发布任何证明。任何人都可以发布一个 Rollup 块，其中包含关于执行某些交易的正确结果的索赔。其他节点执行相同的事务，如果他们不同意第一个节点的主张，可以发布挑战。有效的争议协议可以解决任何分歧，保证正确的一方将赢得挑战。各方有强烈的动机只发布正确的索赔，而不是质疑错误的索赔，因此在通常情况下，所有节点都只是执行所有交易，并且永远不需要调用证明代码。整个过程由L1合约管理。</p>
+<p>好吧，那么哪种类型的 Rollup 更好呢？在接下来，我们将在几个维度上比较ZK和Optimistic Rollup，并解释为什么我们认为未来是Optimistic的，而像Arbitrum这样的Optimistic Rollup本质上更具有可扩展性。</p>
+<h2 id="optimistic-rollup与zk成本">Optimistic Rollup与ZK：成本</h2>
+<p>也许Optimistic Rollup和ZK之间最重要的区别是成本。</p>
+<p>Optimistic Rollup要求节点简单地执行合约。例如，如果合约执行添加操作，节点将执行该添加操作。</p>
+<p>另一方面，ZK需要生成一个复杂的加密证明，该证明需要数百或数千个昂贵的椭圆曲线操作，才能将添加操作包含在证明中。ZK为每份合约中的每项指令承担这笔费用。需要对每个指令生成复杂的加密证明，而不仅仅是执行指令，这对ZK来说是一个固有的成本劣势——而且是一个很大的成本劣势。</p>
+<p>ZK倡导者有时认为，只需要一方当事人才能创建证明，而Optimistic Rollup要求系统有很多节点。但是，如果你运行的是大型链，无论你使用哪种验证系统，它都会有很多节点。真正的链需要许多节点来服务非变异调用事件日志，向用户显示交易数据，为用户提供将资金撤回到L1所需的数据，等等。Optimistic Rollup链的安全依赖于这些节点做他们已经需要做的事情——执行交易和跟踪链的正确状态。</p>
+<p>另一方面，ZK构建昂贵的椭圆曲线证明是一个非常大的额外成本。你需要特殊用途的硬件设备或大规模并行性——或两者兼而有之，才有可能用ZK进行大规模证明，但这很贵。</p>
+<p><strong>结论：Optimistic Rollup系统具有固有的、巨大的成本优势。</strong></p>
+<h2 id="optimistic-rollup与zkevm兼容性">Optimistic Rollup与ZK：EVM兼容性</h2>
+<p>在构建Arbitrum时，我们的一个重要考虑因素是与EVM的兼容性。Arbitrum与EVM完全兼容；它具有相同的RPC接口，并接受与EVM相同的字节码。在实践中，这意味着为以太坊编写的任何代码都可以在Arbitrum上开箱即用。</p>
+<p>我们已经运行开放的、与EVM兼容的链（包括测试网）一年多了，我们已经了解了真正兼容是多么具有挑战性。前95%的兼容性并不难，但这在实践中还不够好，做得更好既需要大量的努力，也需要一个不会妨碍的产品架构。</p>
+<p>ZK系统在兼容性方面运行范围很广。有些人将其视为遗留工具，并鼓励人们学习他们的自定义语言。</p>
+<p>但一些ZK系统没有试图兼容。当然对于不在乎兼容性的开发人员和用户来说，这很好。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0111/18_984fdeo49w.png" alt="Optimistic Rollups：以太坊扩容的现在和未来"></p>
+<p>我们并没有争辩EVM客观上是有史以来最好的。我们认为的是，考虑到已经与EVM配合使用的开发人员、代码和开发人员工具的数量，EVM具有很多实际优势。考虑一个部署在以太坊上的项目，该项目如果希望扩展到 Rollup ，必须用新语言重写代码，委托进行新的安全审计，并维护多个代码库，这既麻烦又容易出错。但即使对于尚未编写任何代码的新项目，EVM兼容性也是一个很大的优势，因为它允许这些项目利用围绕EVM存在的代码、工具和人才库。</p>
+<p>一些ZK项目正在努力实现与EVM兼容的版本，但尽管它们的声明含糊不清，但我们不知道迄今为止发布的任何代码允许人们在ZK Rollup 时运行EVM合同。现有的初步的系统存在严重的不兼容性。例如，一个声称EVM兼容性的ZK系统未能实现ADDMOD、SMOD、MULMOD、EXP、SELFDESTRUCT和CREATE2操作码；正在考虑删除对XOR、AND和OR的支持；不支持标准事务格式；不支持任何预编译；并可能限制事务中的合约调用次数。与ZK模型似乎存在根本性的不兼容，这保证了即使在最好的情况下，ZK EVM兼容性也会附带详细的打印页面，而不支持Optimistic Rollups实现的完全兼容性。</p>
+<p>值得澄清的是，今天存在几个特定于应用程序的ZK系统的示例（例如Zcash，ZKSync 1.0，循环）。事实上，其中一些系统运行良好。核心区别在于，这些只是微调的，并针对非常适合ZK实现的特定应用程序进行了特别优化。今天不存在的是通用编译器，允许人们以兼容的方式实现从EVM到ZK转换。虽然有一些团队声称正在研究它，但没有可用的公共代码或用户定义的ZK-EVM合同的证明成本的基准。根据我们的知识和所有公开的数据，我们认为它们的成本高得令人望而却步。</p>
+<p><strong>结论：只有Optimistic支持完全的EVM兼容性，成本最低。</strong></p>
+<h2 id="optimistic-rollup与zk无条件信任的可见性和压缩性">Optimistic Rollup与ZK：无条件信任的可见性和压缩性</h2>
+<p>我们在设计Arbitrum时的关键属性之一是无条件信任的可见性。简而言之，无条件信任的可见性意味着任何人都可以在无中心化的情况下看到或获取链上的内容。重要的是，这不仅意味着每个人都能看到状态快照；还意味着每个人都能看到链上的完整历史——它是如何达到当前状态的。实用链允许任何人运行一个节点，该节点可以支持非变异调用、搜索事件历史记录并查看每个事务——而无需依赖集中数据提供商。无法信任的可见性使这成为可能。</p>
+<p>坦率地说，一些ZK系统在可见性方面有所减弱，并试图围绕它们没有提供完整的区块链功能这一事实进行交谈。当你听到关于“压缩”的谈论时，请好好听一听：他们是否说他们正在更有效地编码链上的内容（Arbitrum这样做了，并将在我们的Nitro版本中做得更好）？还是他们说，除非集中数据提供商稍后愿意与你共享，否则链上历史记录的部分永远不会可用？</p>
+<p>回想一下，ZK证明只证明证明人知道有效的链。证明没有告诉你该链是什么，即使你有足够的数据来验证证明，你可能也没有足够的数据来重建链的历史。</p>
+<p>例如，假设Alice连续向Bob提交 1 ETH的交易，Bob连续向Charlie提交 1 ETH的交易。稍后，你验证了爱丽丝比以前少1个ETH的证明，Bob的余额没有改变，Charlie比以前多1个ETH。</p>
+<p>但发生了什么事？爱丽丝付钱给鲍勃了吗？Bob付钱给Charlie了吗？也许爱丽丝直接付钱给查理。也许爱丽丝烧掉了一个ETH，Charlie是由别人支付的。也许戴安娜是中介，不是鲍勃。Bob指望区块链寻找证明，但一些ZK Rollup 无法提供链式可见性，他无法分辨区别。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0111/18_7yrvccev07.png" alt="Optimistic Rollups：以太坊扩容的现在和未来"></p>
+<p>许多智能合同应用程序需要的不仅仅是偶尔知道一个检查站。它们需要了解链上——知道发生了什么以及如何达到最终状态。ZK Rollups有时吹嘘比Optimistic Rollups有更好的“压缩”，但事实上是隐藏了链的数据，以便只有证明人知道它不是压缩——它删除了重要数据。如果ZK提供商表示他们“不需要”发布链上历史记录，他们真正说的是，他们不能保证链可见性。放弃链式可见性保证不是我们愿意做出的妥协。</p>
+<p><strong>结论：Optimistic Rollup系统以最低的成本提供无条件信任的可见性。</strong></p>
+<h2 id="optimistic-rollup与zk无条件信任及时的结局">Optimistic Rollup与ZK：无条件信任、及时的结局</h2>
+<p>考虑 Rollup 时的一个关键要求是它是否提供了无条件信任、及时的最终结果。简而言之，这意味着在你提交交易后，你应该迅速、确定地向你和其他人知道该交易的结果，任何人都不应更改或撤销它。</p>
+<p>我们认为，实现及时终结的最佳方法是将交易的顺序与其执行分开。排序生成一个最终的拟议事务序列，执行尝试执行该序列中的事务。如果事务的执行是确定性的，就像在仲裁上一样，那么完成事务的顺序就足以最终确定结果，因为结果是事务序列的确定性函数。如果每个人都知道交易顺序，那么每个人都可以轻松确定结果。</p>
+<p>最终确定序列需要将序列发布到L1链中，并包含足够的信息，以便任何人都可以自己执行交易，以便无条件信任地了解结果。理想的 Rollup 是尽可能频繁地将序列交易数据发布到L1链。</p>
+<p>在Optimistic Rollup系统中，发布到L1链的开销最小，事实上，Arbitrum通常每隔1分钟左右都会向L1链发布序列化的交易数据，为用户提供快速的最终结果，并保证没有人可以撤销他们的交易。大约每小时都会做出新的Optimistic Rollup结果断言，但由于序列已经完成，并且执行是确定性的，这不会减慢最终结果。</p>
+<p>原则上，ZK系统可以以类似的方式运行；即将交易顺序（可以经常发布到L1）与稍后进行的验证分开，偶尔会提供有效性证明。然而，以这种方式运行的ZK Rollup 要求将基本与Optimistic Rollup系统发布的数据发布到L1链上；上面讨论的（所谓的）“压缩”技术都不会可用。为了使这些“压缩”技术发挥作用，每次发布一批L2交易时，在同一笔L1交易中，必须实时验证一系列L2交易的有效性。</p>
+<p>因此，寻求使用吹捧的“压缩”技术的ZK Rollup 留有两种选择：</p>
+<ol>
+<li>
+<p>每一分钟左右发布序列交易以及执行证明：这保留了快速性，但要求每分钟在链外生成ZK-Proof并在L1链上验证。根据实施情况，在链上发布ZK证明的成本估计在50万至500万的gas之间。</p>
+</li>
+<li>
+<p>每小时发布顺序交易和证明：这使ZK证明检查成本合理，但将最终时间延长到一小时。在用户向ZK运营商提交交易到发布在链上的几个小时内，用户甚至不能保证他们的交易将被包括在内，而只是信任运营商的消息。</p>
+</li>
+</ol>
+<p>如果我们正在构建ZK系统，我们会发现这两个选项不可接受——第一个太昂贵，第二个没有提供及时的最终结果。因此，我们最终会使用与Optimistic Rollup版本相同的序列器，并在ZK版本的Arbitrum中在线发布基本相同的数据。</p>
+<p>如果你听到有人吹嘘ZK可以将数小时的数据压缩到一个时间节点，请小心。如果他们只在很长一段时间结束时发布单个数据点，那么这意味着他们在此期间没有提供终结。</p>
+<p><strong>结论：出于实际的考虑迫使Optimistic Rollup和ZK系统以同样的方式及时处理终结。</strong></p>
+<h2 id="optimistic-rollup与zk无条件信任的活力">Optimistic Rollup与ZK：无条件信任的活力</h2>
+<p>无条件信任的活力意味着任何人都可以迫使系统取得进展。（无条件信任的安全属性确保了这一进展是正确的。）</p>
+<p>优化的 Rollup 允许任何节点声明正确的执行。提出索赔只需要节点执行链上交易，然后存入股份，该股份可以在协议确认索赔后退还。</p>
+<p>在ZK系统上，进度要求任何节点都可以创建和发布推进链状态所需的ZK证明之一。这必须使用任何人都可以随时可用的硬件和软件。因此，它绝不能要求构建或购买特殊用途硬件，也不能进行大规模并行计算。必须有在普通设备上构建合适的ZK证明的途径。不提供此服务的ZK提供商，或未发布为其系统生成证明的代码，不提供无条件信任的进展，系统也没有活力保证。他们的系统是集中的，因为只有拥有特殊装备的各方才能迫使进步。（目前还不清楚领先的ZK Rollup 提供商是否会使证明对普通用户可行。）</p>
+<p><strong>结论：在一个Optimistic Rollup系统中，更容易有无条件信任的进步。</strong></p>
+<h2 id="zk-vsoptimistic-rollup桥接">ZK vs.Optimistic Rollup：桥接</h2>
+<p>ZK Rollup 确实具有优势的一个领域是与以太坊的桥梁。Optimistic Rollup系统预计将资金从 Rollup 到L1将延迟一周，而ZK Rollup 允许在ZK证明发布到L1后立即架起。在实践中，这并没有那么大的差异，因为Optimistic Rollup用户可以利用快速桥接服务，将L2资金换成低延迟的L1基金。因此，ZK的优势主要是其用户可以避免支付桥接服务收取的小额费用（这些服务在价格上相互竞争）。这不只是理论上的：今天有很多实时快速桥接服务，可以提供从Arbitrum的即时提款。</p>
+<p>重要的是，ZK Rollups的桥接优势相当狭窄：它仅适用于从L2到以太坊的桥接。从前（大约2019年），许多人认为Rollups将提供一两个实时dapp的缓慢推出。在这样里的世界里，Rollup用户会不断发现自己在L1和L2之间来回切换。但那不是我们所处的世界。Arbitrum拥有一个蓬勃发展的生态系统，数百个dApp遍布Defi的每个角落，许多用户正在与Arbitrum建立桥梁，并长期停留在那里。此外，由于用户跳过多个链，他们不仅仅是去以太坊。它们也会使用其他L1和侧链，对于这种直接桥接，ZK Rollups没有比Optimistic Rollups的优势。</p>
+<p><strong>结论：ZK系统在与L1桥接方面略有优势，但由于快速桥接和多链使用模式，它在实践中很大程度上被消解了。</strong></p>
+<h2 id="总结">总结</h2>
+<p>将Optimistic Rollup和ZK系统相比，我们认为Optimistic Rollup系统显然是赢家。Optimistic便宜得多，与EVM和现有工具完全兼容，在实践中唯一真正的缺点是，如果没有快速桥接服务，L1桥接速度会更慢。ZK的其他假设优势需要牺牲链的可见性或快速性，我们认为这不是用户想要的权衡。</p>
+<p>这些都不太可能有改变。ZK证明与EVM兼容的合约执行仍将比Optimistic Rollup执行昂贵得多，实现保证进展、链式可见性和分散化的要求也将保持不变。虽然如果情况发生变化，我们总是愿意将Arbitrum切换到基于ZK的执行，但我们认为他们不会。</p>
+<p>最后，我们谨慎地进行总结。人们倾向于将Arbitrum今天提供的内容与ZK系统表示的未来提供内容进行比较。但这种比较毫无意义，因为如果我们比较当今存在的系统，像Arbitrum这样的 Optimistic Rollup 是唯一支持开放部署一般智能合约的系统。或者，如果我们比较未来的系统，那么我们应该比较未来的Arbitrum和未来的ZK系统。我们正在不断改进Arbitrum——例如，我们即将发布的Nitro版本包括降低成本和更好地优化链上数据的无损压缩。我们正在不懈努力改进Arbitrum，并将成本降至理论极限。正如我们在这篇文章中表明的那样，我们认为，当考虑当今存在的系统及其各自的理论限制时，Optimistic Rollup显然是赢家。</p>
+<p>原文作者：offchain labs</p>
+<p>贡献者：Believer@DAOrayaki</p>
+<p>原文: Optimistic Rollups: the present and future of Ethereum scaling</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/32901/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">NFT：游戏厂商眼中的“魔戒”</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/32905/">
+                <span class="next-text nav-default">Outlier Ventures创始人详解MetaFi：元宇宙中的DeFi</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#从头开始">从头开始</a></li>
+    <li><a href="#optimistic-rollup与zk成本">Optimistic Rollup与ZK：成本</a></li>
+    <li><a href="#optimistic-rollup与zkevm兼容性">Optimistic Rollup与ZK：EVM兼容性</a></li>
+    <li><a href="#optimistic-rollup与zk无条件信任的可见性和压缩性">Optimistic Rollup与ZK：无条件信任的可见性和压缩性</a></li>
+    <li><a href="#optimistic-rollup与zk无条件信任及时的结局">Optimistic Rollup与ZK：无条件信任、及时的结局</a></li>
+    <li><a href="#optimistic-rollup与zk无条件信任的活力">Optimistic Rollup与ZK：无条件信任的活力</a></li>
+    <li><a href="#zk-vsoptimistic-rollup桥接">ZK vs.Optimistic Rollup：桥接</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

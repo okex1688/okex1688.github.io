@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          科普：什么是侧链和rollup？他们有何区别？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Rollup 网络可以保持与以太坊主网同样的安全性，但也要在以太坊网络中消耗更多的资源。" />
+<meta name="keywords" content="侧链, Rollup" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/27933/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="科普：什么是侧链和rollup？他们有何区别？" />
+<meta property="og:description" content="Rollup 网络可以保持与以太坊主网同样的安全性，但也要在以太坊网络中消耗更多的资源。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/27933/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-29T00:00:00+00:00" />
+
+<meta itemprop="name" content="科普：什么是侧链和rollup？他们有何区别？">
+<meta itemprop="description" content="Rollup 网络可以保持与以太坊主网同样的安全性，但也要在以太坊网络中消耗更多的资源。"><meta itemprop="datePublished" content="2021-08-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4072">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="科普：什么是侧链和rollup？他们有何区别？"/>
+<meta name="twitter:description" content="Rollup 网络可以保持与以太坊主网同样的安全性，但也要在以太坊网络中消耗更多的资源。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">科普：什么是侧链和rollup？他们有何区别？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-29">
+      2021-08-29
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4072 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原文标题：《 Off-chain protocols: Sidechains and Rollups 》  原文作者: Patrick McCorry  </p>
+<p><img src="https://img.bibiqing.com/news/2021/0829/uc51vdhr0samta6" alt="科普：什么是侧链和rollup？他们有何区别？"></p>
+<p>Infura 现已支持以太坊之外的网络，包括 Arbitrum、Optimism 和 Polygon。</p>
+<p>这三个项目都是全新的区块链网络。相比以太坊，它们提供了更低的交易费和更快的交易确认速度。关键是，它们还提高了以太坊的易用性，因为用户原本放在以太坊上的资产也能拿到这几个网络中使用。</p>
+<p>这种扩展方法被称为「链下协议」。我们写了一篇简短的文章来解释它们如何能有助于扩展以太坊的吞吐量（并提高其易用性）。</p>
+<h3 id="为什么不直接在以太坊上交易呢吞吐量的瓶颈在哪">为什么不直接在以太坊上交易呢，吞吐量的瓶颈在哪</h3>
+<p><img src="https://img.bibiqing.com/news/2021/0829/cp33i8rbt81mmt4" alt="科普：什么是侧链和rollup？他们有何区别？"></p>
+<p>过去三个月的平均 Gas 价格。在网络拥堵时就会飙升  </p>
+<p>以太坊只支持每秒 15 笔交易，而且，从图 1 中可以看到，在用户的需求超过吞吐量瓶颈时，手续费水平就会飙升。从某种程度上来说，吞吐量的限制是社区为了追求去中心化而制定的自我约束。</p>
+<p>去中心化的目标是最大化全世界能够实时验证区块链完整性的参与者的数量。这个目标对于最小化对区块生产者的信任，是非常关键的，所以社区自我强制实施了界定区块有效性的共识规则。为了达成参与者占世界人口比重的目标，需要限制交易处理所带来的计算量、存储量和带宽负担。</p>
+<p>（译者注：作者在此处的推理是成立的，但是表述却是浪漫化的。我从来没听过谁能确定全节点（也即所谓的实时验证者）的运行负担与参与者数量的关系并以此提出计算量等方面的资源约束。这样的研究有几分可信度是值得质疑的。而现实也根本不是这样运行的。我们只需知道，提高吞吐量并不是没有代价的事情，就可以了。暗示大家有个一致的共识应该怎么控制吞吐量，则神化了「社区」这个概念，阻碍了人们认识实际的情形。）</p>
+<p>我们的挑战是，既要提高吞吐量，又不能逾越资源的约束。</p>
+<h3 id="为什么我需要了解链下协议比如侧链和-rollup">为什么我需要了解链下协议比如侧链和 rollup  </h3>
+<p>大部分扩展网络的方法都从下面几点着手：</p>
+<p><strong>分发验证负担。</strong> 验证任务在网络的节点之间分配，而不是像以太坊当前这样要求所有节点都做一模一样的工作。</p>
+<p><strong>更好地利用网络中可用的资源。</strong> 网络中的资源应该能持续不断地得到利用，而不应出现闲置。举个例子，缩短出块的时间间隔以更好地利用带宽。</p>
+<p>这些可扩展方案可能仍需要很多年来实现，因为它们需要对底层的以太坊协议作重大变更。</p>
+<p>但另一种更为流行的替代方案是链下协议，它们是现在就可用的。因为它会以如下的方式来扩展网络的吞吐量：</p>
+<p><strong>链下协议：交易处理的负担从以太坊上转移到另一个网络中，但这些交易影响的资产仍然驻留在以太坊上。</strong></p>
+<p>这样的扩展方案等于是动用了另一个区块链网络，其资源约束也将与以太坊的不同。这样的网络可以用来实验多种扩展协议（也可以单纯用来测试 go-etherum（以太坊网络当前的主流客户端）的极限），同时提高以太坊的易用性。</p>
+<h3 id="当我把资产充进另一个网络时这些资产去了哪里">当我把资产充进另一个网络时，这些资产去了哪里</h3>
+<p>你的资产会转移到以太坊上的一个专门的桥接合约里，然后目标网络里会你的账户中会出现等量的资产。资产铸造完成后，你就可以在目标网络里使用这些资产了，并且最终，当你想把资产取出时，你需要通过相应的桥接合约来取回。</p>
+<p>并非所有的桥接合约都具备同样的功能和特性。我们必须考虑桥接合约是怎么决定在何时释放资产、还给用户的。理想状态下，只有桥接合约确信对应的网络没有遭到破坏时，才应该放行资产。这个就是所谓的「信任假设」，是保护用户资金的终极措施。在讨论链下协议是否真的能扩展以太坊时，这一点经常会引发争议。</p>
+<p>一方面，有些用户认为，另外的区块链网络确实是一个扩展方案，因为它们能保证与以太坊同等（或非常接近）的安全性。常常被人讨论的「rollup」协议最理想时是能实现这种程度的安全性的。但是，另一些用户会接受更强的信任假设，相信锁在另一个网络中的资产总是足够安全的（只需要是「侧链」就能让他们满意）。</p>
+<p>与主链保持同样安全性的 rollup 方案（相比于侧链），会需要付出更多的资源。举个例子，Rollup 网络中的每一笔交易都需要向桥接合约提交一次状态更新。但侧链协议就无需以太坊投入巨大的资源开销，因为交易的验证是由一组外部的参与方来执行的。（译者注，确切来说，是因为侧链无需把自己运行的任何细节暴露在以太坊区块链上）。这种 安全性/资源 的取舍，最终会转化成用户的经济负担，天下没有免费的午餐。</p>
+<p>不管怎么说，我们相信，采取不同信任假设的桥接合约都会出现。最终，所有支持交易以太坊上资产的网络都会提高以太坊的易用性。只是用户在把资金锁入桥接合约之前需要三思，需要意识到信任假设的区别和风险。</p>
+<h3 id="什么是侧链">什么是侧链  </h3>
+<p><strong>「侧链」这个词是始创于 Blockstream 的一篇论文。</strong> 它是一种互操作性的解决方案，让两个区块链网络能通过轻量级的证明来验证有关彼此进展的信息。这种构想的初衷是希望能在比特币区块链上锁定比特币，然后在另一个网络中释放（或者反之），而无需信任任何中介。</p>
+<p>但几年过去，「侧链」这个词获得了自己的生命力。它通常用来指代与另一个区块链网络有关联的一个独立的区块链网络。实际上，这是通过一个允许资产从主链（比如以太坊）移到另一个区块链网络的桥接合约来实现的。</p>
+<p><strong>侧链可能会用到三种不同类型的桥接合约：</strong></p>
+<p><strong>单组织型。</strong> 单个团体托管了锁定在桥接合约中的资金。</p>
+<p><strong>多组织型。</strong> 特定的多个独立参与方托管了锁定的资金。N 个参与者中只需 K 个同意即可执行动作。</p>
+<p><strong>密码经济型。</strong> 动态的参与者组合，由资产权重决定参与资格，决定锁定资金的去向。</p>
+<p>举个例子，WBTC 就是一个单组织型的桥，因为 BTC 是由 BitGo 托管的。而 Liquid 网络和 RSK 区块链则是由多组织桥来实现的，因为一组预先指定的参与方有权把资产从一条链转移到另一条链（以多签名来表示许可）。而 Polygon 是一个密码学经济桥，因为它依赖大于（2/3）的权益多数来指定验证者，再由验证者定期向桥接合约提交网络状态检查点（且这个检查点可以用来授权用户取款）。</p>
+<p>最重要的是，侧链的桥合约是不会去验证其它网络的完整性的，因此，它需要一组参与者为有效性负责。也就是它假设了至少会有一定比例的参与者会因为经济激励而保持诚实并保护用户的资产。</p>
+<h3 id="什么是-rollup">什么是 rollup  </h3>
+<p><strong>「Rollup」一词来源于 barry whitehat 提出的 zkrollup 概念，脱胎于 Plasma 的研究。</strong></p>
+<p>一个 Rollup 系统也是一个独立的区块链网络，但是 Rollup 系统中交易的资产留存在以太坊区块链上并受到桥接合约的保护。桥接合约必须不断确认 rollup 网络没有被破坏、资金没有处于风险之中。在最糟糕的情况下，桥接合约需要无视网络的请求，允许用户取回资金。</p>
+<p>Rollup 可以保持（至少是非常接近）以太坊的安全程度，代价是要解决以下几个问题：</p>
+<p><strong>数据可得性。</strong> 桥接合约必须确定所有数据都是公开可得的。这使得每个人都能独立计算这个 rollup 的最新状态。</p>
+<p><strong>状态转换的完整性。</strong> 桥接合约必须确认，所有的状态转换（交易）都是有效的。</p>
+<p><strong>抗审查性。</strong> 桥接合约可以自主执行交易，以保证如果网络被攻陷（或者不能推进），用户最终可以自己取出资金。</p>
+<p>快速总结一下解决方案。数据可得性问题通过把系统内所有交易的数据发布到以太坊区块链上来解决，这也是「rollup（卷）」名字的由来（它把交易都卷了起来成批上链）。状态转换的完整性问题则使用错误性证明（fraud proof）（Optimistic rollup）或者有效性证明（ZK rollup）来解决。抗审查问题则有些棘手，通常也不会讨论，但它需要桥接合约能够自主接受和执行普通用户发起的交易。</p>
+<p>Rollup 有一个持续付出的成本。这样的网络必须持续向桥接合约提供证明，证明所有得到处理的交易都是有效的，网络没有被攻破。这需要消耗以太坊的资源，也影响了它的可扩展性。不过，从中期来看，它还是可以大幅降低用户的交易成本。举个例子，在 Arbitrum 上，一次币币互换的成本是 1600 gas，而在以太坊主网上需要 12 万 gas。</p>
+<p>虽然侧链交易不需要消耗以太坊的资源，代价就是它无法获得以太坊同等的安全性以及（最终来看）免信任性。</p>
+<h3 id="侧链与-rollup-有何区别">侧链与 Rollup 有何区别</h3>
+<p>侧链（比如 Polygon）和 Rollup（比如 Optimism 和 Arbitrum）都是独立的区块链网络，它们有自己的区块生产者和智能合约运行环境。它们的关键区别在于锁定资金的桥接合约。准确来说，是保护用户资金的信任假设的区别。</p>
+<p><strong>侧链。</strong> 桥接合约会接收关于独立网络的信息，但不会验证其正确性。一组掌控这个桥接合约的参与者会负责检查独立网络的状态（确保其未被攻陷），并向桥接合约表示相关的事实。</p>
+<p><strong>Rollup。</strong> 一组参与者（定序器）负责为独立网络的状态更新提供证据，并由桥接合约来验证这些证据的有效性（以及独立网络是否完整而未遭破坏）。</p>
+<p>这里面有个细微的区别，但归根到底，在于主链上的桥接合约是否能强制保证独立网络上的交易的有效性，还是说，它只能依赖于一组受信任的参与方来表示这些交易是有效的。</p>
+<p>当然，天下没有免费的午餐。Rollup 网络可以保持与以太坊主网同样的安全性，但也要在以太坊网络中消耗更多的资源。这就拉高了在 rollup 网络上交易的成本。作为一个用户或者开发者，你需要考虑网络所提供的额外安全性和额外付出的财务成本。</p>
+<p>没有最好的，只有最合适的。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/27929/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">金色早报 | 交通银行：数字人民币累积交易金额达到25亿</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/27938/">
+                <span class="next-text nav-default">纽约客：「无聊猿」BAYC 头像为何能席卷世界</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#为什么不直接在以太坊上交易呢吞吐量的瓶颈在哪">为什么不直接在以太坊上交易呢，吞吐量的瓶颈在哪</a></li>
+        <li><a href="#为什么我需要了解链下协议比如侧链和-rollup">为什么我需要了解链下协议比如侧链和 rollup  </a></li>
+        <li><a href="#当我把资产充进另一个网络时这些资产去了哪里">当我把资产充进另一个网络时，这些资产去了哪里</a></li>
+        <li><a href="#什么是侧链">什么是侧链  </a></li>
+        <li><a href="#什么是-rollup">什么是 rollup  </a></li>
+        <li><a href="#侧链与-rollup-有何区别">侧链与 Rollup 有何区别</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          以太坊EIP-1559可能并不稳定 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文我们将就EIP-1559所存在的一些弊端进行深度探讨。" />
+<meta name="keywords" content="ETH, EIP" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/33226/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="以太坊EIP-1559可能并不稳定" />
+<meta property="og:description" content="本文我们将就EIP-1559所存在的一些弊端进行深度探讨。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/33226/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-01-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-19T00:00:00+00:00" />
+
+<meta itemprop="name" content="以太坊EIP-1559可能并不稳定">
+<meta itemprop="description" content="本文我们将就EIP-1559所存在的一些弊端进行深度探讨。"><meta itemprop="datePublished" content="2022-01-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-01-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8031">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="以太坊EIP-1559可能并不稳定"/>
+<meta name="twitter:description" content="本文我们将就EIP-1559所存在的一些弊端进行深度探讨。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">以太坊EIP-1559可能并不稳定</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-01-19">
+      2022-01-19
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8031 字 -
+        预计阅读 17 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>自以太坊因其Gas费高昂而渐渐被其他公链觊觎其市场份额后，<strong>EIP-1559</strong> 的上线就备受大众关注，被寄予厚望。据了解，自EIP-1559上线以来，ETH发行量净减少了约68%，相当于148万枚ETH被销毁。这也被誉为是以太坊历史上最看涨的催化剂。</p>
+<p>但与此同时，一些关于EIP-1559存在缺陷的言论也开始流传起来，甚至还有人称EIP-1559的存在弊大于利。事实上，EIP-1559确实不能解决Gas费高的问题。从经济学角度看，Gas费的高低取决于市场供需关系，因此降低手续费的根本是扩容。但除此之外，EIP-1559还暗含着哪些不足呢？本文我们将就EIP-1559所存在的一些弊端进行深度探讨。</p>
+<p>在本文中我们将使用基本Gas价格来反映EIP-1559的表现。使用EIP-1559，交易有一个新字段，并使用新格式进行序列化。费用不是指定一个唯一的gas价格，而是指定为要支付的最高gas价格和矿工小费（称为“优先费用”），它确定了将支付给矿工的金额高于基本gas价格。由于小费必须是正数，因此要支付的gas价格将始终高于或等于基本gas价格。处理交易时，总费用（价格乘以消耗的Gas）分为两部分：基本金额被烧毁，矿工小费金额支付给区块的矿工。</p>
+<p>当大部分区块链协议需要销毁原生币时，一般都是为了惩罚某一方的不当行为。如果奖励行为不端的一方，那么行为不端的一方可以谴责自己以避免被其他人谴责。在这些协议中，无论谁谴责，各方执行的一系列行动总是导致硬币被烧毁。但是，在EIP-1559的情况下，如果它们以不同的顺序或时间发生，导致代币被销毁的相同操作可以恢复代币。与MEV类似，如果所有相关方都可以合作，代币可以分享收入。</p>
+<p>以下是协议参与者的短期激励：</p>
+<ol>
+<li>
+<p>矿工希望从用户那里或通过降低基本Gas价格收取更多费用。</p>
+</li>
+<li>
+<p>活跃用户希望支付更少的费用，要么降低小费，要么降低基本Gas价格。</p>
+</li>
+<li>
+<p>被动用户希望基础gas价格高，以便更多的代币被销毁，代币的价值上升。</p>
+</li>
+</ol>
+<p>所有活跃的各方都将受益于基础Gas价格的降低。主要问题是活跃用户和矿工之间的联合行动以降低基本Gas价格很难实现。这些是协调的障碍：(1) 两个团体都是匿名的和动态的，(2) 活跃用户的数量很高，(3) 协调需要一些初始时间或金钱努力，(4) 叛逃者可能会破坏计划和(5) 剩余用户可以利用这种情况，以较低的费用进行交易，提高基础gas价格，而无需参与共同努力。</p>
+<p>虽然EIP.-1559驳回了协调，但EIP可能没有预见到当今存在的降低基本Gas价格的巨大激励措施。今天，优先小费仅占Gas基础价格的6%以下。换句话说，矿工可以通过降低基本费用从交易费用中赚取16倍的收益。Eric Voskuil关于加密经济学的书解释说，交易费用是抵制审查的成本，而目前以太坊为此付出的代价太少。这意味着，至少在理论上，所有交易都可以很容易地被抑制。交易的抑制导致基础Gas价格迅速降至零，从而增加了钱包适应变化后的矿工收入。</p>
+<p>如果基本Gas价格降至零，用户和矿工都可以将他们的储蓄分成50/50用于未来的交易。用户将以50%的折扣进行交易，但矿工将从交易费用中获得8倍的收入。由于支付的交易费用（已销毁 + 未销毁）已达到区块补贴的平价，这导致已支付区块奖励增加50%。由于电力和其他运营成本，矿工的净收入只占奖励的一小部分，即使与用户分享新收入的50%，这一新收入来源也可能代表净收入增加300%。这显然是一个非常不稳定的情况。如果只有以太坊区块链可以协调这两个组，或者如果交易可以被审查，那么EIP-1559将是游戏结束。</p>
+<p>如果交易的基础Gas价格通过完美的协调系统神奇地瞬间降为零，那么更多的用户会尝试交易，将交易费用推回到与以前相同的水平。但是，假设矿工之间的协调系统存在，那么基础Gas价格可以永远保持为零。矿工将拥有比以前高400%的稳定净收入。</p>
+<p>在本文中，我们展示了几种方法（一些便宜）来协调降低基本Gas价格。虽然其中一些协调机制可能不完善并且一开始可能会失败，但通常说漏洞只会变得更糟。人们将完善协调系统以实现目标。如此多的方式来实现协调的唯一存在表明了以太坊网络在EIP-1559下的当前脆弱状态。</p>
+<p>本文提出的研究显然缺少对以太坊钱包费用管理代码的分析。预计钱包将正确处理基本Gas价格的降低，并恢复为任意增加小费以确认交易，就像之前的EIP-1559钱包所做的那样。但是，钱包可能会实施健全性检查，以防止旧的费用市场再次运作。深入分析需要查看大多数现有钱包的源代码，以查看与EIP-1559兼容的钱包是否有硬编码限制，以防止支付高于基本汽油价格的小费。</p>
+<p>同样重要的是，PoS合并越接近，PoW矿工个人和集体行动的动机就越高。</p>
+<h2 id="没有经典51攻击的矿工协调"><strong>没有“经典”51%攻击的矿工协调</strong></h2>
+<p>我们假设大多数<strong>矿工</strong> （比如60%，就哈希率而言）愿意合作以降低基本Gas价格。我们称他们为协调多数（CM）。一个CM具有任意增加或减少块Gas限制的能力，我们的第一个协调方法将利用这种能力。</p>
+<p>EIP-1559将CM组的存在与51%攻击进行了比较。但这种情况并非如此，经典的矿工51%攻击是丢弃少数矿工的区块以增加多数矿工的利润。在CM中，大多数矿工为少数人提供利益。从矿工的角度来看，这与攻击相反，是捐款。从矿工理性的角度来看，所有矿工都被激励与幕后的CM合作，即使出于政治原因他们不加入CM。</p>
+<p>这为我们带来了第一种回避基本Gas价格控制机制的方法。目前区块Gas限制为30M Gas。如果 60%的矿工创建消耗15M气体的区块，而其他矿工将它们填充到120M气体，这相当于57M气体/块的吞吐量。我们可以假设对Gas的需求会满足这个提议，因为BSC链有80M的区块Gas限制并且会填满它的一些区块。因此，如果CM决定将区块Gas限制提高 4倍至120M，而CM人为地将其自己的区块消耗的Gas限制为15M，则所有矿工都赢了。即使Gas价格的下降与吞吐量的增长成反比，这一点仍然成立。</p>
+<p>为了说明为什么这种策略有利于所有矿工，我们可以看到，如果少数人完全消耗了区块中的所有可用Gas，每个非CM区块将增加12.5%的基础Gas价格（协议允许的最大涨幅）。每个以1500万Gas为目标的CM区块都会导致基础Gas价格下降10.9%。因为CM开采了60%的区块，结果是基础Gas价格持续净下降。需要190个区块才能将基本Gas价格降低 90%。</p>
+<p>攻击需要一个准备阶段，CM将Gas限制提高到120M，这需要1422个块（约6小时）。在这么短的时间内，社区将没有机会协调响应，更不用说硬分叉了。但在Gas供应快速扩张期间会发生什么尚不清楚。如果在准备阶段需求与供应不匹配，则基本Gas价格可能会下降。有可能仅通过扩大供应量使基本Gas价格变为零，并且小费也会减少，从而导致矿工奖励的净减少。CM可以将其视为对未来回报的投资，但以今天的以太币价格（6小时收入），“投资”可能达到80万美元。但是，我们将提出更好的协调机制。</p>
+<h2 id="51攻击的矿工协调"><strong>51%攻击的矿工协调</strong></h2>
+<p>如果我们假设区块限制提高到120M Gas，但CM开始从消耗超过15M Gas的非CM 矿工那里孤立区块（51%“攻击”），那么降低基数只需要24个区块Gas价格为原值的10%。为了避免与其他矿工发生公开的孤立战争，CM =会提前向所有矿工提供单行代码补丁（甚至可能是配置更改），以便矿工人为地将他们的区块上限限制为15M。</p>
+<p>最终结果是，在6小时内，区块Gas上限可能会提高到120M，网络封顶至15M Gas区块，所有矿工在每个区块中额外收集超过2个以太币，收入翻倍。</p>
+<h2 id="第三方协调"><strong>第三方协调</strong></h2>
+<p>EIP-1559的目标是将所有区块填充到大约50%，除非在高需求期间。EIP-1559的特性之一是，如果所有奇数块都为空，并且所有偶数块都以30M的Gas 100%填充（实现相同的平均目标吞吐量），那么基本Gas价格会持续下降。在仅300个交替的空块和完整块（约1.25小时）之后，基本Gas价格达到其原始值的10%。请注意，没有必要100%的矿工决定创建空的奇数块。如果只有30%的矿工创建空的奇数块，则在300个块后，基本Gas价格降低50%，在1000个块（约 4 小时）后再次降低90%，我们看到不需要大多数矿工。</p>
+<p>请注意，如果所有矿工填充的区块少于47%，则基础Gas价格也会下降并在316个区块后达到10%，但吞吐量略有下降1.5%。</p>
+<p>补偿矿工因开采空块而造成的任何暂时损失的收支平衡点要早于1.25小时。只有40%的矿工参与，并且仅在15分钟（60个区块）内，基本Gas价格可以降低20%，这足以补偿他们因空区块造成的任何损失。基准Gas价格的螺旋式下降已被触发。</p>
+<p>现在我们将邀请第三方帮助达到收支平衡点。假设有一个名为Charles的隐藏协调方愿意投资奖励创建空奇块15分钟的矿工，补偿每个人在创建空块时的潜在损失，外加10%的奖金。假设每15秒一个块，Charles的最大成本对应于本可以在60个块中支付的小费（给空的块生产者30个小费）乘以1.1以提供奖金。我们假设以太币价格为3200美元/以太币，每个区块包含2.12个以太币，用户支付的费用，其中有2个以太币被销毁。</p>
+<p>假设Charles将过去15分钟内的平均小费作为参考，这将导致1.3万美元的预算。只有40%的参与度，如果市场通过提高小费金额来应对Gas供应的上限，那么仅仅15分钟后，所有矿工总共赚取了高达4万美元的费用，防止他们被销毁。40%参与的人多赚了16,000美元。</p>
+<p>Charles可以接受链上的捐赠，为持续的偶数/奇数采矿模式创造激励，但这不是必需的。</p>
+<p>Charles可以说，只有少于40%的人参与挖掘空奇数块，才会支付奖金。这意味着矿工永远不会赔钱：要么Charles补偿他们，要么他们得到支付更高Gas价格小费的用户的补偿。由于最可能的结果是矿工参与，Charles可以保存赏金并将其重新用于下一轮。在矿工意识到他们降低基础Gas价格的能力之后，即使Charles离开了，矿工很可能只是继续挖掘空的奇数块作为新的谢林点！螺旋式下降已经开始。</p>
+<h2 id="通过智能合约进行协调"><strong>通过智能合约进行协调</strong></h2>
+<p>如果你不相信可以达到一个新的Schelling点，或者可以信任第三方来协调它，那么我们展示了智能合约的力量可以实现相同的目标：我们可以替换外部方Charles通过将矿工聚集在一起的开放且安全的智能合约。让我们称之为收集者。矿工将直接与Gatherer交互，而不信任任何外部实体。只需要矿工了解合约，任何矿工都可以引发连锁反应，增加矿工收益。</p>
+<p>很明显，在以太坊中构建Gatherer是可能的，使用BLOCKHASH操作码来获取最近15分钟或更长时间内的块的哈希值。Gatherer必须为用户或矿工提供一些激励，以将完整的区块头信息提交给Gatherer合约，Gatherer将检查此信息是否与安全获得的区块哈希值匹配。通过区块头，合约可以了解其过去区块的所有信息，并发现哪些矿工创建了空的奇数块，并相应地补偿它们。检测空块很简单，因为交易根哈希对应于空的trie哈希。毕竟，协调是以太坊的好处。</p>
+<p>Gatherer可以轻松决定支付赏金或再使用15分钟，所以最可能的结果是Gatherer只需要1.3万美元的初始投资，这些资金将永远持续下去。如果由于供气较短而需要更多时间来提高提示，则可以延长赏金和赏金时间。这是参数化的问题，但不是可行性问题。</p>
+<h2 id="少数矿工和私人用户的协调"><strong>少数矿工和私人用户的协调</strong></h2>
+<p>EIP-1559的期望属性之一是用户可以更好地估计交易费用并避免多付。但与此同时，基本Gas价格必须迅速适应拥堵。目前，基础Gas价格在一天内上涨100%是很常见的。</p>
+<p>巨大的费用可变性为用户与矿工协商固定费率创造了动力。正如我们将展示的，我们称为Mina的矿池可以通过挖掘空块为用户提供更低的交易价格，同时获得巨大的收入增长。EIP-1559提出了这个问题并忽略了它：不开采空块的矿工将破坏Mina的计划。然而，我们的模拟表明情况并非如此。</p>
+<p>这就是Mina开展业务的方式：Mina向用户提供固定费率合同，我们称之为Mina的“私人客户”。该产品在区块编号给出的截止日期之前有效，如果私人客户试图在截止日期之前双花给定交易，他们同意受到处罚。</p>
+<p>惩罚机制是由我们称为Penelope的智能合约完成的。私人客户存入的抵押品大约等于Penelope两笔交易的成本。当客户端向Mina发送带有nonce N的私人交易T时，它还会签署消息M断言他将在截止日期D之前避免创建任何双花 T´。要签名的消息如下：“nonce N将保留给事务 TxId(T)，直到块 D”。私人交易T将指定低于（即 3%）当前基本Gas价格的最高费用，该价格由私人客户和Mina协商确定。如果私人客户双花nonce N，那么Mina会将证据发送给Penelope并收取赏金。请注意，Mina的私人客户更有可能是大型加密货币交易所。</p>
+<p>Mina现在可以根据同一协议自由地从其他客户那里收集尽可能多的其他私人交易。请注意，如果Mina收集了足够多的承诺（例如，她可以填充一个完整的区块），那么这也意味着她已经从市场上移除了待消耗的Gas，并且填充的区块将减少，并且基础Gas价格为更低，甚至在Mina开采空块之前。</p>
+<p>目前在以太坊中，平均小费不到基本Gas价格的6%。为了简化我们的解释，我们假设基本Gas价格是100个代币，平均小费是6个代币。Mina的私人客户的交易最多支付给她103个代币（比 106少了约3%），但他们指定了15.5个代币的小费（远高于其他的6个代币）。Mina不能滥用这些私人交易，因为它们在基本Gas价格为100的区块中是无效的。Mina将等待。让我们假设所有区块都是半满的，并且基础Gas价格是稳定的。让我们假设块的Gas限制是30个单位的Gas。现在我们解释Mina将如何通过挖掘空块从这些私人合约中受益。</p>
+<p>一旦Mina收集到一个充满交易的区块，她就会开始挖掘空区块。她每挖一个空块，基础Gas价格降低12.5%，基础Gas价格变为87.5个币。如果她恰好在挖完空块后挖了一个块，她可以用私人交易将其填满，每使用一个Gas单位就可以获得103–87.5=15.5个代币。由于她将区块完全填充到30M Gas，因此她获得了15.5*30=465个代币。每次她挖出一个空块，她就会损失大约 6*15=90个代币的收入。这意味着，只要Mina可以每5个区块连续创建两个区块，她就可以获得正收益。</p>
+<p>拥有45%算力的矿工有更高的机会开采两个连续的区块，而不是每5个区块一个。因此，假设大多数矿工需要从降低基本Gas价格中获利是错误的，因为我们表明45%的矿工实际上可以获利。</p>
+<p>我们在这里考虑到，在挖出一个空块后，剩余的矿工会填满他们的块来消耗之前没有消耗的所有Gas，但情况可能并非如此。如果不是所有的Gas都被消耗掉，那么Mina的策略可能会触发基础Gas价格的持续下降，而整体交易成本保持不变，以造福所有矿工。在实践中，实际会发生什么取决于钱包如何编程以在确认延迟的情况下增加小费。</p>
+<p>我们尚未评估Mina的策略对剩余用户（未与Mina签订私人合同的用户）的影响。了解Mina的策略后，愿意进行交易的用户可能会决定等到创建了一个降低基础Gas价格的区块，然后立即广播他们的交易以竞争具有低基础Gas价格的区块空间，设置较低的最高费用。使用我们之前示例中的数字，一种可能性是10个代币的小费，最高费用为100个代币，成功节省6个代币。该策略使所有矿工受益，包括Mina。在空块之后，矿工的收入几乎翻了一番。因此，他们的动机仍然是保护Mina，即使他们不是Mina的一部分。</p>
+<h2 id="自主挖矿和eip-1559"><strong>自主挖矿和EIP-1559</strong></h2>
+<p>想要预售区块空间但不希望搭便车者追随他的空区块的矿工可能会尝试自主挖矿，试图连续创建两个私有区块，并将它们一起发布。如果不可能，那么第一个区块将被释放，稍后作为叔集包含在内，至少会失去 1/8 的区块补贴。目前，如果80%的费用从基础Gas价格转移到优先小费，那么费用将提供比块补贴更高的收入，这意味着自主挖矿可能成为具有大哈希率百分比的矿工的理性策略。同样，一旦触发了基础Gas价格的下降，它可能以零基础Gas价格结束。</p>
+<h2 id="eip-1559-合并-pos-之后"><strong>EIP-1559 “合并” PoS 之后</strong></h2>
+<p>以太坊PoS共识中EIP-1559的问题之一是矿工提前知道他何时能够连续开采两个区块。矿工可以以低于平均Gas价格的价格预售区块空间，当轮到开采两个连续区块时，开采一个空区块，然后开采一个私人填充区块。由于领导者选择的开放性，以太坊PoS还使矿工很容易与先前或后续矿工协调行动以降低基本Gas价格。</p>
+<p><strong>解决方案</strong></p>
+<p>我们找不到EIP-1559激励问题的完美解决方案。我们提出的解决方案是只销毁一部分基础费用（即20%），其余的给矿工，比矿工池更可取。</p>
+<p>一些变化可以减少协调的动机。最简单的补丁是降低基本Gas价格的变化率，从12.5%/block降低到3%/block左右，但这会改变EIP-1599的属性以将拥塞传达给用户。尽管如此，仍无法阻止通过智能合约进行长时间的协调。另一个部分解决方案是将块体积中的硬限制设置为 30M（有几个 EIP尝试这样做）。</p>
+<p>由于EIP-1559已将交易审查成本降低到可接受的范围以下，所以如果不减少消耗的费用，那么EIP-1559就无法保存。时间会证明EIP-1559是稳定的还是在没有建议的更改的情况下变得不稳定。社区对矿工的压力可以减轻风险，即使他们不绕过EIP-1559是不合理的。</p>
+<h2 id="总结"><strong>总结</strong></h2>
+<p>虽然EIP-1559的意图有利于以太坊社区，尤其是被动的以太坊持有者，但我们认为它是不稳定的。当所有活跃的参与者都可以从协调中获得高度收益，并且协调的成本很低时，只需要一个火花就可以触发将EIP-1559恢复到先前状态的更改。一连串的事件可以迅速收敛到一个新的互惠Schelling点，以消除基本<strong>Gas</strong> 价格。问题的根源在于基础Gas价格可以通过交易审查来改变，而以太坊的审查成本已经变得非常低。如果平均吞吐量保持在1500 万/块，那么以当前以太币价格抑制奇数块交易的成本仅为77,000美元/小时。</p>
+<p>在本文中，我们展示了六种不同的方法来在一些参与者可能背叛的对抗情况下实现协调，但协调可以取得进展。我们还展示了如何使用智能合约的以太坊协调能力来促进消除EIP-1559的共同利益。EIP-1559使非活跃用户受益而损害活跃用户这一事实使其不稳定，因为非活跃用户在开始合作删除EIP-1559时可能没有关注区块链的状态。</p>
+<p>来源：medium</p>
+<p>作者：Sergio Demian Lerner</p>
+<p>编译：陈一晚风</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/33224/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">伊朗即将试行国家加密货币</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/33241/">
+                <span class="next-text nav-default">以太坊链上NFT销售总额突破170亿美元 创历史新高</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#没有经典51攻击的矿工协调"><strong>没有“经典”51%攻击的矿工协调</strong></a></li>
+    <li><a href="#51攻击的矿工协调"><strong>51%攻击的矿工协调</strong></a></li>
+    <li><a href="#第三方协调"><strong>第三方协调</strong></a></li>
+    <li><a href="#通过智能合约进行协调"><strong>通过智能合约进行协调</strong></a></li>
+    <li><a href="#少数矿工和私人用户的协调"><strong>少数矿工和私人用户的协调</strong></a></li>
+    <li><a href="#自主挖矿和eip-1559"><strong>自主挖矿和EIP-1559</strong></a></li>
+    <li><a href="#eip-1559-合并-pos-之后"><strong>EIP-1559 “合并” PoS 之后</strong></a></li>
+    <li><a href="#总结"><strong>总结</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

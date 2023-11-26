@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          代币经济学：加密项目经济模型设计指导手册 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="代币经济学作为加密货币的核心概念，一直是一个项目的结构设计中的重要话题。" />
+<meta name="keywords" content="加密市场, 代币发行" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/40027/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="代币经济学：加密项目经济模型设计指导手册" />
+<meta property="og:description" content="代币经济学作为加密货币的核心概念，一直是一个项目的结构设计中的重要话题。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/40027/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-11T00:00:00+00:00" />
+
+<meta itemprop="name" content="代币经济学：加密项目经济模型设计指导手册">
+<meta itemprop="description" content="代币经济学作为加密货币的核心概念，一直是一个项目的结构设计中的重要话题。"><meta itemprop="datePublished" content="2022-07-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-07-11T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6343">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="代币经济学：加密项目经济模型设计指导手册"/>
+<meta name="twitter:description" content="代币经济学作为加密货币的核心概念，一直是一个项目的结构设计中的重要话题。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">代币经济学：加密项目经济模型设计指导手册</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-07-11">
+      2022-07-11
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6343 字 -
+        预计阅读 13 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>代币经济学作为加密货币的核心概念，一直是一个项目的结构设计中的重要话题。</strong> 然而它很复杂，令人摸不着头脑。对于开发者、发行者和投资者来说，这篇文章是一个全面介绍和参考指南。我们将从密码学、应用以及背后的动机介绍它。</p>
+<p>代币经济学是“代币”（特别是加密代币或货币）和“经济学”的有机组合。这个词代表了多种区块链和去中心化技术相互作用的过程和状态。</p>
+<p>在理想状态下，代币经济学与各参与方的动机应保持一致。从一个为开发者赚取利润的简单模型，成长为拥有数百万参与者和数十亿美元市值的去中心化项目，这一点至关重要。</p>
+<p>我们需要协调这些贡献者、参与者和投资者在加密货币“游戏”中的利益分配。他们可能从某一项目的运营中，会获得多个不同“种类”的收益，这些角色变得越来越复杂和模糊：参与者可能成为投资者，投资者也可能参与项目建设，等等。</p>
+<p>因此，一个正确且合适的代币经济模型，是一个加密项目成功的基础。特别是一旦代币和智能合约已经部署并在世界范围内推广，即使不是不可能，但很难进行更改。</p>
+<p>精心设计的代币经济模型会带给人愉悦的体验、增加价值，并提高盈利能力。反之，糟糕的代币经济模型会导致快速贬值、体验感差、用户流失，甚至项目核心财务崩溃。</p>
+<p>在游戏、赌博、商业和金融领域有几个例子。例如，P2E（Play-to-Earn），在MMORPG（其中代表是魔兽世界）中“打金”和“代练”已经存在了几十年，在《万智牌Online》和《第二人生》等地方也有很多相似概念。我们甚至可以在EVE Online观察大型、复杂的游戏经济结构如何与现实世界的传统银行业务交互。同时，治理代币的功能类似于股票，代币交易所类似于现有的股票市场。</p>
+<p>另一方面，加密领域的关键概念：去中心化和自治，发挥着重要作用。当参与者和贡献者共同合作且目标一致时，就会推动着经济和商品（产品）的发展和构建。虽然DAO（去中心化自治组织）不是本文的重点，但与之相关的各种话题都会涉及。</p>
+<p>我们也将避免讨论代币经济学的技术和法律要素，因为这些同样是广泛而复杂的领域。本文所涉及的机制假设，涉及的代币是基于以太坊区块链或其衍生品上的，具有类似的功能集，并且符合你当地国家的监管要求。</p>
+<p>本文的目的是，拆解并分析参与者激励机制和代币经济模型。当这些想法结合在一起时，再去思考和设计你的代币经济模型，会有一个更好的想法出现。</p>
+<h2 id="代币机制"><strong>代币机制</strong></h2>
+<p>掌握和构建代币经济学需要了解可以使用的工具。具体来说，就是利用什么方法来生成、引导和修改代币，以及这些程序的优劣之处。因此，这一部分将概述基本的代币机制，以及相关系统和情况。</p>
+<h2 id="代币和货币"><strong>代币和货币</strong></h2>
+<p>货币是区块链的原生价值存储。例如，ETH是以太坊区块链的原生币，而BTC是比特币区块链的原始币。这些货币经常被用作共识方法的奖励，如工作证明中的挖矿或权益证明中的质押。</p>
+<p>另一方面，就如何在地址之间转移而言，代币的作用类似于货币。与货币不同的是，代币是由用户定义的，这意味着它是通过一种可编程的技术从一个指定的地址生成的。</p>
+<p>在以太坊内，ERC-20标准是一个广泛使用的通用代币结构。该标准使代币能够以预先确定的方式行事和行动。由于这个标准，ERC-20代币可以以一种可预测的方式进行交互，如交易，即使个别代币是未知的。</p>
+<p>代币有多种效用，包括：</p>
+<ul>
+<li>
+<p>证券（或治理）：这些代币的功能类似于股票，允许持有人对某些问题进行投票并分享利润。</p>
+</li>
+<li>
+<p>平台：平台代币，可以用计算时间等东西来交换。</p>
+</li>
+<li>
+<p>NFT：具有独一无二信息的代币，此代币可能用于治理或实际用例，例如访问私人聊天室。</p>
+</li>
+</ul>
+<h2 id="可替代性"><strong>可替代性</strong></h2>
+<p>可替代性是代币经济学中的一个核心概念，它允许通过一个代币与其他代币进行交易交换来实现不同的行为。</p>
+<p>可替代性是指任何东西都可以进行类似的交换（例如1美元纸币）而不失去其功能或价值。如果一个物品是独一无二的（如蒙娜丽莎），它被认为是不可替代的，因为它不能在不失去其价值的情况下被替代。</p>
+<p>因此，可替代代币是项目内货币的理想选择，因为它们可以自由授予、交易和消费。另一方面，NFT有自己的一套信息，将其与其他代币区分开来。NFT是项目内物品的理想选择，如角色、属性，因为它们的信息和不可替代性。</p>
+<p>由于它们数量种类众多且不具唯一性，可替代性代币经常通过自动交易所在二级市场上随时交易，这些交易所对每个代币（或代币—硬币）进行动态估值。另一方面，非可替代物由于其独特的特性和有限的可用性，具有更广泛的价值区间。因此，NFT经常在二级市场上通过拍卖或卖方设定的价格进行交易和购买。</p>
+<h2 id="智能合约"><strong>智能合约</strong></h2>
+<p>智能合约是可以自动化货币、代币和外部输入之间交互的代码片段，并在区块链上生成。</p>
+<p>例如，智能合约可以让玩家用货币代币支付并选择一个NFT，然后执行合约来增加他们的NFT的属性。</p>
+<p>外部数据也可以被拉入智能合约。在以太坊，这是通过使用 &ldquo;预言机&quot;完成的。一个预言机可用于向智能合约提供实时气象数据，然后可用于确定农作物（如胡萝卜代币）在耕作过程中是成功还是失败。</p>
+<h2 id="铸币"><strong>铸币</strong></h2>
+<p>铸币是指与特定地址的合同在区块链上产生代币（可替代或不可替代）的过程。在铸币时，代币必须满足一系列条件，包括：</p>
+<p>代币的名字就是它的名字。例如“胡萝卜”（一个假设的代币）。</p>
+<ol>
+<li>
+<p>缩写，例如“CRT”，用作符号。</p>
+</li>
+<li>
+<p>小数：一个代币的最大小数。为了声明一个代币是一个整数，可以将其设置为零。</p>
+</li>
+<li>
+<p>可能生成的代币总数称为总供应量。</p>
+</li>
+<li>
+<p>总供应量上限对流通中的代币数量施加了一个不可改变的限制。这样做的好处是，代币明显的有限性减少了供应量，造成了稀缺性，从而提高价格。</p>
+</li>
+</ol>
+<h2 id="发行"><strong>发行</strong></h2>
+<p>发行是指购买、交易或以其他方式分配新代币的过程。代币可以通过各种方式发行：</p>
+<ul>
+<li>
+<p>预售：在代币可使用之前，出售可替代或不可替代的代币的方法。这经常被用于与众筹活动相同的方式，由未来的持有者购买代币以支持未来的发展。</p>
+</li>
+<li>
+<p>首次代币发行（ICO）是一种预售或推出证券代币公开交易的形式，类似于证券交易所的IPO（首次公开募股）。</p>
+</li>
+<li>
+<p>持有者购买：持有者进行购买。</p>
+</li>
+<li>
+<p>持有者奖励：参与项目的奖励，例如赢得比赛。</p>
+</li>
+<li>
+<p>开发者奖励：对项目方的提议和交付功能、错误补丁或其他软件开发的奖励，包括错误赏金。</p>
+</li>
+<li>
+<p>支付给第三方顾问，例如代币经济模型开发商，以使其目标与代币的长期可持续性保持一致。</p>
+</li>
+<li>
+<p>水龙头：一个网站，项目参与者可以免费或通过完成任务（例如填写调查或加入邮件列表）获得代币。</p>
+</li>
+<li>
+<p>空投：免费向地址分发代币以推广代币或其关联项目，这些通常会分发给那些已注册空投或社区活跃成员的人。</p>
+</li>
+</ul>
+<p>请注意，这并不是所有发行机制的完整清单，其中一些技术可能会重叠。例如，一个预售可能包含一个空投的代币储备，以奖励那些随机购买的人。</p>
+<p>此外，已发行的代币可能会受到限制，即避免持有人购买后快速抛售的质押期约束。</p>
+<h2 id="燃烧"><strong>燃烧</strong></h2>
+<p>与铸造发行相反的是燃烧，即销毁（或以其他方式从流通中永久移除）代币或一组代币。</p>
+<p>销毁代币可以通过两种方式实现：，通过程序化降低总供应量（通过智能合约）；或者，通过将代币发送到一个具有未知私钥的地址（即一个无法访问的钱包）。前者是一种黑客行为，可能违背了原始代币开发者的愿望，但如果代币被设置为可以以这种方式进行交互，那么就很棒。</p>
+<p>作为交易的一部分，可能会有一些燃烧。例如，使用繁殖令牌来繁殖两个NFT来铸造（产出）一个NFT。在这一基础上，代币被烧毁，新的代币可能会在以后产生。</p>
+<p>燃烧的好处是减少总供应量，从而创造稀缺性，这可能会提高代币价格，从而使持有人获益。因此，当有一个预先确定的供应上限时，代币持有人经常选择代币燃烧，使得代币出现通缩。</p>
+<h2 id="通货膨胀"><strong>通货膨胀</strong></h2>
+<p>当代币的总流通量（或上限）由于持续铸造和发行而增加时，就会发生通货膨胀。尽管流通量增加，但这些代币可能不会成为流动性，即不能在交易所交易。相反，受益人可能持有或质押新的代币（参见质押一节）。</p>
+<p>通胀代币的优势在于让参与者更容易获得（更便宜和/或更具流动性）代币，而且它们经常通过直接销售为创造者赚取收益。但是，如果代币的需求没有同样增加（例如新的参与者），较高的供应会减少需求，从而降低代币的市场价值。</p>
+<h2 id="浮动供应"><strong>浮动供应</strong></h2>
+<p>当存在燃烧过程但无限（或极高上限）发行量时，供应被称为浮动供应。也就是说，根据当前的市场情况，代币随时可能出现通胀或通缩。</p>
+<p>这对于创建一个自平衡系统很有效，在该系统中，无论个人是否存在，价格仍试图保持一致。</p>
+<h2 id="质押"><strong>质押</strong></h2>
+<p>质押是在预定时间段内锁定代币以换取报酬的做法。通常奖励是更多的相同代币，但注意，这并不一定代表“正收益”。</p>
+<p>通过PoS共识机制，以保证在链中具有经济利益的人验证区块链。在运行过程中，它常用于分配代币收益，通常是借助金库运行（参见金库一节）。</p>
+<p>质押代币可以通过两种方式提高其价值。首先，质押激励意味着锁定代币获得被动收入，因此代币的最低价值是未来奖励价值的倍数。其次，锁定代币，使其不能被交换，具有降低市场供应和提高代币价格的辅助效果。</p>
+<h2 id="金库"><strong>金库</strong></h2>
+<p>金库是汇集和分配现金和代币的地址集合。这些现金和代币可能是出售其他代币得来的，或者它们可能是由于特定的事件（如繁殖）而沉淀来的。</p>
+<p>可以使用多种技术或规则来自动分散其持有的资产：</p>
+<ul>
+<li>
+<p>质押：质押代币以获得总金库持有的份额或赢得份额的机会。</p>
+</li>
+<li>
+<p>开发和建议：对顾问、内部或外部开发人员的补偿。外部开发者可以为一项倡议提供建议，并在接受和交付后，获得报酬。</p>
+</li>
+<li>
+<p>参与者奖励：这些是根据参与者的表现给予参与者的奖励，例如赢得比赛。</p>
+</li>
+</ul>
+<p>代币是为更大经济体的某些组成部分（例如自动交易所）的流动性而提供的，以避免价格操纵。</p>
+<h2 id="投票"><strong>投票</strong></h2>
+<p>在参与治理、金库或社区有关的问题上，通常可以用代币进行投票。这也是为什么具有投票权的代币通常被称为治理代币（或证券代币），后者指的是它们与企业股票具有相似之处。</p>
+<p>代币持有者利用他们的代币，按照（通常基于网络的）系统流程对提议进行投票，在该系统中，拥有的代币数量与投的票数之间存在联系—例如，10个代币等于10票。</p>
+<p>投票允许代币持有者在直接影响他们的问题上进行决策，这可以为投资者带来归属感。</p>
+<p>另一方面，投票是自主开发的重要组成部分，理论上工程师可以与程序员分离，由社区监督并选择产品的未来方向。</p>
+<h2 id="锚定"><strong>锚定</strong></h2>
+<p>将一种代币的价值与另一种代币的价值联系起来的技术称为锚定（或其他一些资产，如法定货币）。</p>
+<p>当一个代币被锚定时，它表明它可以随时交易一定数量的货币。例如，赌场筹码与货币价值（例如英镑）挂钩，因为它们能以面值购买或出售。为此，赌场的现金储备等于流通中的筹码数量。因此，10英镑的赌场筹码始终具有相同的价值。</p>
+<p>同理，Tether是一种基于以太坊的代币 (USDT)，可以从其发行人 (Bitfinex) 以每个代币1美元的价格购买和出售，据称Bitfinex持有相当于全部USDT供应量的现金储备。也就是说，Tether与美元锚定，并保持一致的价格，因此获得了“稳定币”的称号。</p>
+<p>或者，可以使用诸如Dai的目标利率反馈机制 (TRFM) 等算法调整来实现稳定性，该机制可以在不用保证金的情况下保持1美元左右的稳定性，DAI的价值仍为1美元。</p>
+<p>锚定的好处是随着时间的推移，它可以减少资产波动，使交易和定价更加可预测。尽管代币交易可行，但这更适用于偏好过度投机的各种场景。</p>
+<h2 id="外部defi-和交易所"><strong>外部：DeFi 和交易所</strong></h2>
+<p>代币的一个特性是它们不仅存在于钱包及其相关的应用中。换句话说，它们可以存在于更广泛的加密生态中。</p>
+<p>例如，如果在侧链上，代币可以桥接到以太坊等主网（主网是一个功能齐全、可操作的区块链网络，与测试网和regtest网络等不同）。</p>
+<p>将代币连接到主网有两个关键优势：</p>
+<ul>
+<li>
+<p>实用性：连接到更广阔的DeFI世界，允许你的代币连接去中心化交易所（DEX）。此外，其他dapp（去中心化应用程序）允许借用代币（例如NFT），也有其他应用程序创建金融衍生品，以实现对资产进一步的投机。</p>
+</li>
+<li>
+<p>可移植性：公链允许数据在多个项目中使用，无需许可。这意味着可以通过开源、社区建设或其他商业方式来扩展项目。</p>
+</li>
+</ul>
+<p>将你的代币使用权开放，意味着放弃对你的代币的控制权。甚至可能成为某些骗局的受害者。此外，铸币和智能合约等错误是不可逆的，需要我们谨慎再谨慎。</p>
+<h2 id="设计过程"><strong>设计过程</strong></h2>
+<p>如果你是设计加密项目领域的新手，你可以阅读我们关于构建经济系统、留存框架、平衡、LTV和货币化催化的博客。</p>
+<p>从头到尾详细说明整个代币经济学的设计过程超出了本文的范围。但是，可以向自己或你的团队提出一些问题来理清基本思路：</p>
+<ul>
+<li>
+<p>你的项目为哪些人服务？</p>
+</li>
+<li>
+<p>你将如何吸引来自加密和各行业生态的参与者、投资者和其他人？它如何让参与者保持兴趣，同时提供持久的体验和（或）经济性？</p>
+</li>
+<li>
+<p>哪些动机能吸引参与者？</p>
+</li>
+<li>
+<p>为什么你的参与者会参与并持续参与项目？例如，作为平衡代币经济模型的一部分，参与者和投资者的动机是否相互补充或相互作用？</p>
+</li>
+<li>
+<p>项目核心机制是什么？</p>
+</li>
+<li>
+<p>项目机制如何与众不同、有趣、有市场并与代币系统兼容？如何在保持其核心吸引力和社区的同时维护和调整项目？如何确保为新参与者提供有意义的体验，同时也为投入大量精力和资金的已有参与者提供服务？</p>
+</li>
+<li>
+<p>什么是中心锚定价值？</p>
+</li>
+<li>
+<p>锚定价值是一些资源，设计者可以从这些资源中通过一个或多个转换来连接其他资源。例如，项目的“代币”可以作为核心货币，用于兑换其他项目内货币、用于购买项目内物品或提供流动性。一个精心的构思和集成的锚定价值让开发者可以建模、构建和完善项目的经济结构—以及它的货币化潜力。仔细考虑你的锚定价值和项目内经济结构如何与项目代币相关联。查看我们深入的Axie Infinity解析，了解成功的加密经济模型的案例。</p>
+</li>
+<li>
+<p>应该应用什么模型？</p>
+</li>
+<li>
+<p>建模让你可以探索和规划系统和代币经济模型的各种构成要素。你可以使用常见的成熟手段对用户获取、生命周期价值、留存和货币化等进行建模。但是，对于加密项目，你还需要对项目内代币、参与者和更广泛的代币经济模型之间的交互进行建模。虽然在短时间内快速赚钱的加密项目会带来一些价值，但构建具有持久、可维护的加密项目更值得投入努力。</p>
+</li>
+</ul>
+<h2 id="结论"><strong>结论</strong></h2>
+<p>加密货币技术和驱动它们的人类动机一样复杂和多样。要完全掌握从采矿，投资惯例，经济理论、项目设计和web3的一切，是费时和困难的，但在本质上，只有三个领域需要考虑：</p>
+<ol>
+<li>
+<p>机制：技术支持哪些机制。意味着代币和货币如何相互作用以及在链上和链下流动。</p>
+</li>
+<li>
+<p>动机：参与者参与、开发者构建和改进以及投资者投机和获利的动机。</p>
+</li>
+<li>
+<p>系统：机制如何将其结合在一起并调整这些动机。</p>
+</li>
+</ol>
+<p>与任何项目设计一样，需要将人们需求与技术相结合，以创造体验。无论是项目方、参与者还是投资者，加密项目的新特点是这些参与者互相之间的透明和紧密联系。它为每个人创造良好的体验，将每个人团结在一起，使产品取得成功。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/40044/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">从Avalanche的角度 深度解析二线公链之间的竞争</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/40018/">
+                <span class="next-text nav-default">对 Web3 批评者的反驳 ：你们这些不懂技术的技术员</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#代币机制"><strong>代币机制</strong></a></li>
+    <li><a href="#代币和货币"><strong>代币和货币</strong></a></li>
+    <li><a href="#可替代性"><strong>可替代性</strong></a></li>
+    <li><a href="#智能合约"><strong>智能合约</strong></a></li>
+    <li><a href="#铸币"><strong>铸币</strong></a></li>
+    <li><a href="#发行"><strong>发行</strong></a></li>
+    <li><a href="#燃烧"><strong>燃烧</strong></a></li>
+    <li><a href="#通货膨胀"><strong>通货膨胀</strong></a></li>
+    <li><a href="#浮动供应"><strong>浮动供应</strong></a></li>
+    <li><a href="#质押"><strong>质押</strong></a></li>
+    <li><a href="#金库"><strong>金库</strong></a></li>
+    <li><a href="#投票"><strong>投票</strong></a></li>
+    <li><a href="#锚定"><strong>锚定</strong></a></li>
+    <li><a href="#外部defi-和交易所"><strong>外部：DeFi 和交易所</strong></a></li>
+    <li><a href="#设计过程"><strong>设计过程</strong></a></li>
+    <li><a href="#结论"><strong>结论</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          论再平衡：DeFi实现指数基金的正确方式 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="作者：比原链研究院 DeFi三年来的发展创新创造了很多原生的金融形态，如AMM、Pool、CDP、虚拟合成等，这些金融形..." />
+<meta name="keywords" content="undefined" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/21263/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="论再平衡：DeFi实现指数基金的正确方式" />
+<meta property="og:description" content="作者：比原链研究院 DeFi三年来的发展创新创造了很多原生的金融形态，如AMM、Pool、CDP、虚拟合成等，这些金融形..." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/21263/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-24T00:00:00+00:00" />
+
+<meta itemprop="name" content="论再平衡：DeFi实现指数基金的正确方式">
+<meta itemprop="description" content="作者：比原链研究院 DeFi三年来的发展创新创造了很多原生的金融形态，如AMM、Pool、CDP、虚拟合成等，这些金融形..."><meta itemprop="datePublished" content="2021-04-24T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-24T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8954">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="论再平衡：DeFi实现指数基金的正确方式"/>
+<meta name="twitter:description" content="作者：比原链研究院 DeFi三年来的发展创新创造了很多原生的金融形态，如AMM、Pool、CDP、虚拟合成等，这些金融形..."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">论再平衡：DeFi实现指数基金的正确方式</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-04-24">
+      2021-04-24
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8954 字 -
+        预计阅读 18 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>作者：比原链研究院</strong></p>
+<p><img src="https://appserversrc.8btc.com/FlZkEntrSZNHBy9m5JrcxSNXUZcj.png" alt="论再平衡：DeFi实现指数基金的正确方式"></p>
+<p>DeFi 三年来的发展创新创造了很多原生的金融形态，如 AMM、Pool、CDP、虚拟合成等，这些金融形态均支撑起了高市值、高活跃的新项目和新加密代币，UNI 一度成为市值前十的加密货币，构建起庞大的链上交易组织。继往开来，我们深知 DeFi 洪流已成常态化，并将与底层公链一道成为新一轮的基础设施和锚点，共同催化衍生下个三年大家再度追逐的热点。</p>
+<p>今天我们想把指数、指数基金、指数 ETF 的概念再度呈现在大家面前，并思考这种传统金融的产物能否以及如何在 DeFi 上复刻、存活、超越。从 Balancer 提出的权重指数基金理论到已经陆续上线的 DeFi 指数产品（如 PieDAO、PowerPool、Set、Synthetix），从形态上的实物与合成之争到 AMM 再平衡原理，似乎指数基金已经在 DeFi 上落地，然而相比于 DeFi 其他重磅领域的火热，指数基金或许还缺些什么。通过本篇 research report，我们希望能够在三方面引起大家的广泛争论：指数的资产配置与择时、引入 AMM 再平衡的合理性、链上指数基金的载体。</p>
+<h1 id="配置与择时">配置与择时</h1>
+<p>首先需要解释一下指数、指数基金、指数 ETF 三者本来的样子。在传统证券市场中，为了反映整体大盘或者各个细分行业下的综合股票行情，会选取具有代表性的、市值较高的几种股票标的组成一篮子，并根据市值占比来设置每种股票在篮子的权重比例，称之为“资产配置”。每种股票都有当前的市场价格，结合各自的权重比例，通过加权平均的方法便可计算出一个综合数值，称为“指数”，例如标普 500、中证 500 等，可以窥一指数而知大盘。随后这篮子里的股票有的会大涨，其市值占比就会变大，有的也会大跌，市值占比大大减少，甚至跌出篮子、让位新人，因此在一定周期后，需要对指数进行新一轮的配置，包括重新确定资产标的（剔除与新增）、重新根据最新市值占比调整各股票标的的权重（可能会强者愈强，市值越大、涨幅越大的股票每轮调整后的权重越来越大）。</p>
+<p>指数可谓大盘与行业的晴雨表，围绕这样一种纯数字形态，证券市场的基金经理会建立一种能够跟踪指数的基金，称之为“指数基金”。如果大盘或者某个行业的指数一路上行，该指数便存在一个正向的收益率，指数基金的本质便是希望可以通过配置跟指数篮子一样的资产获得这样一种正向的收益率，即指数涨则基金涨，并保持幅度基本一致。再进一步人们又发明了更为高效、入场成本也更为低廉的指数 ETF，这是一种集开放式基金和封闭式基金特征于一体的双重交易市场，一级市场为基金份额的申购和赎回，对机构开放，形成的 ETF 份额会在二级市场交易，向散户开放，两个市场会不断地出现溢价与套利操作，这使得 ETF 在跟踪指数上效果更为显著。</p>
+<p>指数基金和指数 ETF 是股民入场配置资产最简便的方式，只管投钱，剩下的交给大盘和指数基金经理。再回到 DeFi 上来，尤其是近几年 DeFi 概念代币板块的崛起，似乎让我们看到了所谓“行业指数”的雏形，而在这之前可能只存在一个以主流币为篮子的“大盘指数”，而且往往这大盘篮子里的主流币是全联动的，基本上只看比特币的情绪。DeFi 的兴盛还带动了稳健型资产的出现，比如各种链上稳定币、去中心化稳定币、以 LP token（Uniswap/Curve）和 cToken（cDAI）为代表的收益率型低风险资产，使得在链上建立传统指数基金“股债平衡”成为可能。例如，成立于 2020 年 10 月的 DEFI+L 指数产品包含 7 种市值超过 2 亿美元的 DeFi 代币：LINK、YFI、AAVE、UNI、SNX、COMP、MKR。用户购买时可以存入对应比例的 7 种代币铸造 DEFI+L 指数代币；成立于 2020 年 7 月的 USD++ 包含 4 种稳定币：USDC、TUSD、DAI 和 sUSD，USDC 权重设定为 47.22%，TUSD 权重为 28.58%，DAI 权重为 20.42%，sUSD 权重为 3.78%。</p>
+<p>从目前的行情来看，主流币、稳健型资产、DeFi 概念币之间的联动性也大为减弱，DeFi 概念币在一定程度上甚至可以存在独立行情，其代币背后的价值支撑也更为丰富，当然这都是相对而言，在压倒性的熊市面前，整个行业都会显得非常脆弱。然而历经多年低迷而重新崛起的加密货币大行情还是为我们去敢于尝试提供了非常有利的条件和基础假设。因此在尝试建立链上指数基金产品时，我们不妨多去思考该如何划分加密代币的“行业”，思考资产间风险的分散和权重的配比，思考可纳入指数的代币应该具备的条件，如均值回归。</p>
+<p>很遗憾的是，截止到目前，虽然形形色色的指数产品都出现了，但却没能向市场共识出一种甚至几种被公允的指数，尤其是可以反映整体市场行情的大盘指数（似乎大家还只认 BTC 的情绪效应）。而且形态单一，基本上都是以几种头部的 DeFi 概念币为篮子被动跟随。DeFi 天然无门槛以及处处可交易的优势决定了传统指数基金的优势可能并不是链上建立指数基金的优势，任何人都可以轻松购买 DeFi 概念币，而且大多数人往往都会购买 N 种 DeFi 币。因此我们想传达的另外一层意思是，DeFi 建立的指数基金可能并不是帮助用户解决了入场门槛和购买便捷性方面的需求，链上指数基金也不应当完全去复刻传统指数基金的模式。</p>
+<p>于此处我们也给出一种初步思考。DeFi 指数基金吸引用户的优势应该在于自己独特的配置和择时，而且需要用收益率来说话，尤其是当前还未形成公允的链上指数，这就意味着百舸争流，任何竞争者都可能将自己所拥护的指数发展成为行业风向标。而要达成这个目标，便是我们前面所讲，不能止于仅仅是添加头部几种 DeFi 概念币，而应当配置出更为新颖的篮子，并选择在适当的时机建立（例如在牛市启动前建立和在牛市顶点建立将是截然不同的结局），以达到极具竞争性的收益率，甚至不亚于某一热门币的涨幅。所以做正确的资产配置和择时才是今后众多链上指数产品在建立自身初期壁垒和用户选择效应所采取的正确方式。在加密市场，用户永远会以收益率来作为自己评判与选择的重要指标。正如灰度可以引领主流币的选择配置一样，链上指数基金应该也存在灰度模式。与此同时，我们主张种类繁荣的指数被纷纷建立起来，然后去彼此竞争证明，去争相做大规模，由市场和用户优胜劣汰，形成优质的复合型资产市场，最好应该出现某些重要指数能够成为一种崭新的基础性资产资源被其他场景和协议所广泛集成的现象，指数只有成为一种独特的代币形态才符合 DeFi 的本质宗旨，可以被组合性才是 DeFi 上建立指数基金有别于传统指数基金的优势所在。</p>
+<h1 id="再平衡">再平衡</h1>
+<p>在传统指数基金市场，基金经理的职责所在便是做再平衡操作。假设在基金启动时，基金经理将所拥有的 100 元资金中 50 元用来购买 A 资产（权重为 50%）、30 元用来购买 B 资产（30%）、20 元买 C 资产（20%），在随后的日子里，A 出现了大涨翻倍，B 和 C 则稳定不动，则此时实际上 A 资产的权重已经远远超过了 50%，所谓的再平衡，便是于此时将 A 部分卖出并变成 B 和 C 资产，使得 A、B、C 三资产的价值占比重新回到 5:3:2 的初始状态。这是一种“高抛低吸”的提倡性操作，可以有效地降低随后的回落风险、保持住收益。在传统指数基金里，再平衡并不是一个频繁的操作，一方面源自基金经理在证券市场不断买卖资产的摩擦成本，另一方面指数基金往往追求长期性的收益，不对短时的波动性做出剧烈反映，期望可以收获市场的平均收益。</p>
+<p>再回到 DeFi 建立指数基金上，从 Balancer 的提出到已经上线的几个知名指数产品，似乎大家已经找到了取代传统基金经理来做再平衡的绝佳方式，即 AMM 自动再平衡。Balancer 引以为豪的几何加权平均函数表达式可以轻松将多种代币纳入自动交易公式，且可以为每种代币分配不同的权重，使得每种代币在池子中的价值占比不尽相同，这就非常类似传统指数中的市值加权（不等权）模式，且因为本质是 AMM 交易池，因此可以通过自动套利交易来维持每种代币的价值占比永恒不变，例如 Uniswap ETH/DAI 中不论 ETH 如何增涨，几乎每时每刻 ETH 的价值占比恒等于 DAI。这似乎就是所谓的“再平衡”了，Balancer 也是这么主张的，它认为可以通过 AMM 自动交易的模式取代基金经理的人工操作，只要在套利机制作用下，不论代币涨跌，池子中的 N 种代币资产总能一直维持恒定的权重比例。其他已经推出指数的项目也集成了 AMM 做再平衡。这是 DeFi 可以给予指数基金最精彩的一笔。AMM 做再平衡的优点是，效率极高，且可以将交易手续费变作额外收益，真正实现被动基金，以算法取代人工主观操作，从长期来看更为正确；缺点是，需要经受 AMM 独有的无常损失，且某些情况下会限制篮子的增长。我们借此想引出一个讨论：究竟是 AMM 实时再平衡还是定周期再平衡更适合指数基金的增长。</p>
+<p>我们先来看一下最基础的指数基金—— Uniswap 交易对。如果从广义来看，任何 AMM 产品都是指数，Uniswap 本身就是一种集交易与指数基金于一身的特殊形态，任何参与 Uniswap 交易对的 LP 在注入流动性时，从那以后获得的不仅仅是稳健的手续费收益，其实更多的是被动跟随市场的贝塔收益。特别是我们纵观从去年下半年到现在，那时选择在 Uniswap 上建立 ETH/DAI 流动性的 LP 至今已经获得了巨额财富，ETH 超越了 6 倍涨幅，Uniswap 的 AMM 机制在这一过程中会逐步将 ETH 变现为 DAI，保障了即便在今天的最高点依然可以有 ETH 可卖，LP 被动地致富了。而如果用户不选择成为 LP，仅仅是在自己钱包选择主观理财，或许在 ETH 翻倍之时已经清仓大半，很难撑到如今的高点。这便是最为朴素的指数基金，AMM 为 LP 做了再平衡。</p>
+<p>接着来看 LP 的财富梦可以保持多久。如果 LP 一直不撤出基金，ETH 具有均值回归的历史现象，假如大盘重新回到了低点，LP 的贝塔收益也将不复存在，甚至 AMM 再平衡会不断买入不断跌落的 ETH，好在我们相信 ETH 的均值回归，可以再熬几年重新等待新一轮价值回升。所以，对 LP 或者指数基金的用户来讲，择时反倒成了具有决定性的因素，即不要在牛市高点建仓、要在牛市时选择撤离，DeFi 指数基金虽然去除了基金经理，但反而让用户自己成为了基金经理。作为对比，我们再来看一下传统的定周期再平衡会有什么样的特征。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0424/23_ndm1jsfgs6.png" alt="论再平衡：DeFi实现指数基金的正确方式"></p>
+<p>在上面这个假象的走势图中，基金经理成功在高点（2004 年）迎来了新一轮再平衡周期并平衡了 50-50 组合，即将基金资产的上涨部分开始卖出换成稳定债券资产（所谓股债平衡）。在转而的熊市过程中，如果单持有基金，显然在 2008 年时已经回到了起点，用户无所收益，空等 8 年。类似的，Uniswap 中当 ETH 重新回落到了起点，用户的财富和仓位也就回到了起点。然而在定周期再平衡中，在熊市回落过程，只要不到下一轮周期开始，基金经理不会主动去购买跌落资产，因此成功保持住了在高点套现的价值增幅。在随后的几年里，在价值最低点处也恰逢再平衡开始，基金经理开始买入基金，成功抄底并开始享受财富更大幅度上涨的收益。最后在 2016 年时，虽然基金资产价格再次回到了起点（10000 均值回归），但此时的 50-50 再平衡却为用户创造了有史以来最高的财富净值，如果当初选择只持有基金（对比，只做 Uniswap AMM 再平衡），这 16 年来财富依旧如初。</p>
+<p>虽然这是一次偶然的假象模拟，但我们或许可以大胆假设（小心求证，我们留给日后更为专业和学术的模型模拟），如果长期下来，即便该基金资产始终来回均值回归，即便用户自己不去择时撤出，整体上用户收益可以有机会做到持续上涨。而反观 AMM，则完全取决于用户是否可以在高于自己注入时的点撤出资金，这样才能获得贝塔收益。</p>
+<p>插一句：这也是我们为什么提出 MOV 超导兑换 V2 协议的考量。虽然最朴素的恒定乘积 AMM 具备基本的定投和网格交易思维，也具备基础的指数基金再平衡特征，然而除了无常损失这一痛点外，其实非常依赖用户的择时的正确性。我们一直在思考，为什么不可以将真正的无限网格思维通过 AMM 来实现，于是有了超导 V2 多区间分段函数的设计思想——</p>
+<p><img src="https://img.bibiqing.com/news/2021/0424/23_kuvj5znusq.png" alt="论再平衡：DeFi实现指数基金的正确方式"></p>
+<p>如上图，超导 V2 在原有恒定乘积曲线做市商机制的基础上进一步分段构造出了不同形态的曲线形态，以满足无限网格的基本定义——“分段买入卖出，即便在市场最高点时也有现货可以卖出，在市场最低点时也能完成建仓操作”。超导 V2 通过上面四种分段函数的构造，希望可以实现——“在行情上涨时，能够适当出货 BTC，但不要大量出货，逐步逐量，既能够帮 LP 在达到最高点前守住 BTC，也能够在上涨行情中智能化地卖出适当数量 BTC，以应对潜在的大跌风险；在行情下跌时，HOLD，以上涨时积累的 USDT 获得财富增值”。</p>
+<p>认真对比便会发现，超导 V2 其实正是现实世界指数基金经理的定期或者定幅再平衡策略。大家都希望可以抓住牛市上升的机遇，并可以在主升浪和高点附近卖出增值资产，去做一次再平衡的风险分散，并且希望可以在转熊的过程中不再如朴素 AMM 那样再次等量买回下跌资产，而是可以固守高位套现的财富净值，直到真正的熊市低点附近再开始新一轮的抄底“再平衡”。当然，我们也需要正视，超导 V2 要成功便不得不依赖准确的预判和灵活调整错误，同样，传统指数基金的定周期再平衡也不尽然如上面我们所举 50-50 例子，基金经理也并非可以在周期更跌时刻恰逢牛熊转换。然而不论是指数基金还是超导 V2，我们鼓励提倡的都是一种 LP 长期投资行为，数以年计，穿越牛熊而不乱，最终用户所获的的收益一定是平均收益，甚至阿尔法收益，如果我们去看现实世界的指数基金，长期信仰奉为圭臬，正如《漫步华尔街》一书中马尔基尔投资思想的精髓，也是马尔基尔拿历史数据证明出来的事实——买入并长期持有市值权重的指数基金。这一建议看起来似乎显得很消极，因为百年来，投资者都在追求超额收益，要超过市场基准，认为打败市场才是赢家，但历史表明：长期下来，只有少数人才能做到这一点，而且方法各异，后人也难以简单复制。而这一平凡至极，平淡无奇，平常心至的成功经验——买入并持有，才是可复制的，几乎也是百分之百能走向成功的经验。</p>
+<p>此外，格雷厄姆和斯文森都大力推荐“资产配置+再平衡”。格雷厄姆建议最简单的策略：股票和债券各占一半，并根据市场情况变化进行小幅（例如 5% 左右）的动态平衡。普通投资者无法通过预测股价涨跌、“择时”来获取收益。而应尽力在股票价格低于其公允价值时买入，高于其公允价值时卖出。斯文森建议：放弃择时和选股，通过基于指数基金的资产配置和动态平衡 实现长期投资收益。资产配置在决定投资结果上起主导作用。根据对大量机构投资者的研究，投资收益 90% 源于资产配置，只有 10% 来自选股和择时。</p>
+<p>追求获得市场平均收益，同时控制住低廉的成本，从而尽量多地真正拿到这个市场平均收益，长期下来，便可以成为那一小部分投资成功的人。所以我们再总结一下再平衡的本质。由于再平衡操作，我们会在高点卖出并在低点买入，最终在零收益的市场实现正收益，实现被动择时，其背后的道理其实是一个很简单的常识——均值回归。任何资产价格都不可能永远无限上涨，而合规合法的大类资产也不太可能无限下跌。均值回归这个道理已经经过了无数次的检验和证明，泡沫总要破灭，估值洼地总要被填平。基金定投利用的其实也是均值回归的道理。被动择时，高抛低吸。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0424/23_a1e4npn38t.png" alt="论再平衡：DeFi实现指数基金的正确方式"></p>
+<blockquote>
+<p>先看图中橙色线，无再平衡操作的组合，最终收益介于股票基金（绿线）和债券基金（蓝线）的中间，波动风险降低了，但是组合的收益也随着降低了。然后再看 50-50 每年再平衡的组合（红线），由于再平衡操作的存在，组合的收益远超没有再平衡的组合账户，而且波动明显更小。50-50 账户的收益甚至高于全仓指数基金（绿）的收益水平，而且组合的波动大幅降低，不用承受行情过山车之苦。</p>
+</blockquote>
+<p>所以，我们建议后来的指数基金竞争者们不妨在再平衡上认真比较和权衡，毕竟在指数基金的领域只有为用户带来长久而大幅度的正向收益率才是获客之本。AMM 是一件绝佳的武器，但也并非如 Balancer 那样朴素而直接，AMM 自动再平衡与定周期甚至定幅也完全可以有机结合起来。例如，结合起定周期后，DeFi 指数基金不必每时每刻启动 AMM 套利交易，只需在周期切换时，通过逐步更改公式权重或者通过预言机喂价的方式进行主动做市调整，依然可以自动完成仓位的再平衡，而且可以去除很大一部分的无常损失，同时也能够在长期的均值回归中不断积累财富增值。还有一些创新项目主张在 AMM 再平衡的基础上改进指数基金的权重，让在长期以来表现最好的拥有更高的权重，才能确保整体基金的长久支撑。如下图便是一种进化历程，值得认真思考。这里重点提一下 PowerIndex，希望对指导 AMM 再平衡有所帮助。它的流动资金为 1 亿美元，每个代币的份额为 12.5％。后来经过市场表现，想将 Token1 的份额从 12.5％ 更改为 10％，将 Token2 的份额从 12.5％ 更改为 15％，这将导致向市场交付价值 250 万美元的 Token1，并从市场吸收价值 250 万美元的 Token2。这就是为什么必须仔细设计更改指数权重的过程的原因，因为它可能导致资产价格的显着变化，从而导致集合资本规模的显着变化。于是 PowerIndex 提出了动态权重更改模型——</p>
+<blockquote>
+<p>Token1 的份额必须在 3 天（或 259,200 秒）内从 12.5％ 降低到 10％，Token2 的份额必须从 12.5％ 增加到 15％。由于重量变化率以秒为单位，因此每秒将改变重量 2.5 / 259200 = 0.0000096％。新块的时间戳减去前一个块的时间戳确定每个特定块的权重变化。权重变化存在套利缺口，一旦市场上有足够的流动性，套利者就会在套利缺口对他们足够有利可图的情况下平衡储备金。基本上，他们只会购买一种资产，然后再出售另一种资产（假设在指定时期内市场上没有其他变化）。</p>
+</blockquote>
+<p><img src="https://img.bibiqing.com/news/2021/0424/23_e9skdf46l2.png" alt="论再平衡：DeFi实现指数基金的正确方式"></p>
+<p>在这一章节最后，我们也想把另外一个争议抛出来——等权重还是（市值）加权。在传统指数基金里，以市值加权的指数，其成份股中的大盘股都会占较大权重，对指数的影响比较大，而采用等权重加权方法，就是为了规避个别大市值股票权重过高对指数造成的影响。有时候小盘股表现好过大盘股，采用等权重加权，等于是提高小盘股的权重，所以不考虑其他因素的情况下，等权重指数表现会好于传统指数。数据似乎也证实了这一点，自 2000 年以来，10 年间标普 500 等权重指数显著跑赢标普 500 指数。除了上述规模效应，等权重指数还隐含了价值投资的理念。一般等权重指数的成份股所占权重会定期调整，如中证等权重 90 指数的权重调整时间就定为每年 1 月和 7 月的第一个交易日，以定期调整生效日前第五个交易日的收盘后数据计算等权重因子。这里面就隐含了一个价值效应，同股票涨幅总有差异，涨幅较大的股票在指数中所占权重就会自然提高，而定期调整权重，实际上就是卖掉涨得多的股票，买入便宜的股票，等于是设定了一个严格纪律，按这个纪律来操作，被动实现了对成份股的低买高卖。</p>
+<p>虽然我们看到现在出现的 DeFi 指数产品也分为了等权和加权两大阵营，从目前数据上看（市值）加权的产品规模略大，似乎更受用户欢迎。然而我们还是讲，DeFi 做金融拥有其独特的优势，是不会完全复刻传统金融，也许在传统金融领域的劣势反而在 DeFi 上不复存在。所以等权和加权之争相信会是“配置与择时”的一个重要考量，我们也无法给出明确的结论，一切依然靠实践检验。不过，在传统指数基金中，人们倾向市值加权的原因是从小盘股流动性和交易频率摩擦方面考虑成本和风险，其实在 DeFi 上如果一个币可以被纳入指数，其流动性应该也是无处不在的，当然如果指数基金规模过大，确实需要考虑传统金融的经验教训。</p>
+<h1 id="载体">载体</h1>
+<p>DeFi 指数基金形态应该建立在什么基础设施之上，是跟现在已经出现的指数产品一样独立生长，还是应该由 Uniswap 这种 AMM 大交易平台衍生，还是应该由合成资产平台来合成。如前所说，DeFi 指数基金最终的形态应当也是一种合成的 token、合成资产，它不应当仅仅是一个封闭的投资策略池，它的资产也应该流出去，去提供一种更加稳定的稳定币、一种更为稳健的 DeFi 概念集合、一种真正的大盘晴雨表，这似乎是合成资产平台的优势。</p>
+<p>如果我们基于 Uniswap 或者 Balancer 来打造，便可以借助 LP token 这一现成的基础架构。按照 Balancer 的规则，注入流动性可以获得 BPT（LP Token）。PieDAO 通过 pie-proxy 代理合约与 Balancer 直接绑定，注入流动性不再生成 BPT，而是直接生成指数代币，例如 DeFi++产品资金池就是生成 DeFi++指数代币。所以说，LP token 即指数代币，这也是 DeFi 建立指数基金的巨大优势，而这种指数代币又可以被借贷和稳定币协议所抵押集成，成为一种最为优质的基础资产。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0424/23_he6iykjs29.png" alt="论再平衡：DeFi实现指数基金的正确方式"></p>
+<p>我们也曾设想能否将以 MakerDAO 为代表的稳定币合成资产平台和以 Balancer 为再平衡策略的指数 ETF 合成资产平台统一起来。其实本质上对用户来讲都可以称之为 deposit 操作，用户来到操作界面需要向系统 deposit 不同类型的资产，后台会进行区别，比如根据用户 deposit 的单个 btc，进入到稳定币模块，并且是超额 deposit，然后给用户一种稳定币；根据用户deposit 了一组资产，比如 uni+aave+sup，便进入指数 etf 模块，且等额 deposit。而对于无常损失，便可以从这样一个整体系统的角度去解决，收益率问题亦是如此。</p>
+<p>不论是 Uniswap 在不断迭代自己的特征，还是 Synthetix 在合成模式上构建了指数产品，还是其他独立指数项目将 Balancer 模块集成为己所用，技术上大家可以互通有无，但 DeFi 毕竟还是资产壁垒、用户效应、收益导向，只有基于头部 AMM、合成资产平台等载体，指数才能在资金规模和用户情绪效应加持下被广泛认同。我们一直相信，DeFi 上诞生并可以长久存在的金融形态一定是要超越传统金融固有的形态，指数基金也是，它在 DeFi 上最终可能看起来更不像一个指数产品，或许就是一个 AMM、一个合成资产、一个优质的组合性介质。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/21270/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">链上操作必备防坑指南</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/21266/">
+                <span class="next-text nav-default">论再平衡：DeFi实现指数基金的正确方式</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

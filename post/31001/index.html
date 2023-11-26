@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          金色观察｜一文读懂AWS中的区块链 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="区块链作为新的基础设施形式，必然会成为亚马逊云的业务之一。" />
+<meta name="keywords" content="区块链" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/31001/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="金色观察｜一文读懂AWS中的区块链" />
+<meta property="og:description" content="区块链作为新的基础设施形式，必然会成为亚马逊云的业务之一。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/31001/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-11-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-20T00:00:00+00:00" />
+
+<meta itemprop="name" content="金色观察｜一文读懂AWS中的区块链">
+<meta itemprop="description" content="区块链作为新的基础设施形式，必然会成为亚马逊云的业务之一。"><meta itemprop="datePublished" content="2021-11-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-11-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4083">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="金色观察｜一文读懂AWS中的区块链"/>
+<meta name="twitter:description" content="区块链作为新的基础设施形式，必然会成为亚马逊云的业务之一。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">金色观察｜一文读懂AWS中的区块链</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-11-20">
+      2021-11-20
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4083 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>亚马逊云是全球最大的云服务商，而区块链作为新的基础设施形式，必然会成为亚马逊云的业务之一。</p>
+<p>本文中笔者整理了亚马逊云服务中的区块链技术服务资料。</p>
+<h2 id="服务综述">服务综述</h2>
+<p>无论用户是需要一个集中式分类帐数据库来维护不可变、以加密方式验证的事务记录，还是需要一个完全托管的多方区块链网络来帮助消除中介，AWS 都提供了专用工具来满足需求。</p>
+<p>使用 AWS，开发区块链和分类帐应用程序更简单、更快速、更高效。Amazon Managed Blockchain 将托管 Hyperledger Fabric 框架所需的时间缩短 60%，消除了建立区块链网络所涉及的繁重工作。Managed Blockchain 还支持 AWS CLI、AWS CloudFormation 和 Amazon Cloudwatch Logs，因此使网络操作变得容易。Amazon QLDB 比传统框架快 2-3 倍，并且还提供类似 SQL 的运算符和用于处理事务的文档数据模型。</p>
+<p>AWS 提供了合作伙伴的 70 多种经过验证的区块链解决方案，这些合作伙伴为所有主要的区块链协议提供支持，包括 Hyperledger Sawtooth、Corda、DAML、Ethereum、Quorum、Blockstack、Blockapps Strato、RSK、Kadena ScalableBFT 等。</p>
+<p>与任何其他云供应商相比，有更多的客户信任 AWS 的区块链和分类账技术工作负载。全球所有 Ethereum 工作负载中有 25% 在 AWS 上运行。Hyperledger Fabric 的企业客户有 Nestle、Sony Music、BMW、Sage、Guardian、DTCC、Workday、Klarna Bank、SGX、Legal＆General、Splunk、Zilliant、Contura Energy、DVLA UK 等。</p>
+<h2 id="amazon-qldb">Amazon QLDB</h2>
+<p>Amazon QLDB 是一个完全托管的分类账数据库，提供了一个透明、不可变、可以加密方式验证的事务日志，且该事务日志由一家可信的中央机构拥有。Amazon QLDB 可跟踪每次的应用程序数据更改，并不断维护完整且可验证的更改历史记录。</p>
+<p>Amazon QLDB 包含内置不可变日志，用于存储每个准确且已排序的数据更改条目。此日志为仅附加日志，这意味着只能将数据添加到日志中，而无法重写或删除数据。这样可确保已存储的更改历史记录无法被删除或修改。即使从分类账删除数据，仍可通过从不可变日志中读取来访问该数据的更改历史记录。</p>
+<p>借助 Amazon QLDB，您可以访问应用程序数据的全部更改历史记录。您可以查询历史更改的摘要以及与交易历史记录相关的特定详细信息。</p>
+<p>Amazon QLDB 使用加密技术创建更改历史记录的简要摘要。此安全摘要使用加密哈希函数 (SHA-256) 生成。该摘要可作为数据更改历史记录的证明，使您可以回顾并验证数据更改的完整性。您可以结合使用此摘要和 QLDB 的 API 来证明任意交易的完整性（例如，某个交易发生与否）。虽然 QLDB 还允许您查询和访问数据的历史记录，但可验证性对于需要特定交易相关证明的业务场景来说非常有用。</p>
+<p>Amazon QLDB 提供无缝自动扩展功能来满足应用程序的需求，而无需预置容量或配置读取和写入限制。此外，由于 QLDB 是数据库，因此它可以提供比区块链框架更好的性能和扩展性。QLDB 可以轻松扩展，并且可以执行的事务数是通用区块链框架的 2-3 倍。区块链框架是分散式的，并且需要对等节点来验证事务，然后才可将事务存储到分类账，因而这会影响其性能。另外，在 QLDB 中执行事务与任意 AWS 数据库一样简单。</p>
+<p>可以轻松地开始使用 Amazon QLDB，因为没有要管理的服务器或要预置的容量。您可以使用 AWS 管理控制台、AWS 命令行界面 (CLI)、一个 AWS CloudFormation 模板或通过调用 QLDB API 在数分钟内创建新的分类账。</p>
+<p>Amazon QLDB 会提供分类账的 Amazon CloudWatch 指标。借助 QLDB，您可以查看读写 IO 的关键操作指标。</p>
+<p>Amazon QLDB 支持新的开放标准查询语言 PartiQL。 PartiQL 支持对 QLDB 面向文档的数据模型的 SQL 兼容访问，此模型包括半结构化和嵌套数据，同时保持独立于任何特定数据源。借助 PartiQL，您可以使用熟悉的 SQL 运算符轻松查询、管理和更新数据。</p>
+<p>Amazon QLDB 使用面向文档的数据模型存储数据，这样您就可以灵活地存储结构化和半结构化数据。此外，QLDB 的数据模型还支持嵌套的数据结构，该结构可以简化应用程序。</p>
+<p>执行数据库操作时，Amazon QLDB 会提供原子性、一致性、隔离性和持久性 (ACID) 属性。此外，QLDB 事务具有完全可串行性的最高级别隔离。借助事务的 ACID 属性，可以轻松地编写正确的应用程序。例如，在银行应用程序中，当将 100 USD 从账户 A 转入账户 B 时，此操作要么完全一致地执行（从账户 A 扣除相应款项并将其记入账户 B），要么完全不执行。事务从来不会以部分和不一致的方式执行，即相应款项记入账户 B 但未从账户 A 中扣除，或者从账户 A 中扣除了相应款项但未记入账户 B 中。</p>
+<h2 id="amazon-managed-blockchain">Amazon Managed Blockchain</h2>
+<p>Amazon Managed Blockchain 是一项完全托管的服务，让您可以使用流行的开源框架 Hyperledger Fabric 和 Ethereum 轻松加入公共网络或创建和管理可扩展的私有网络。</p>
+<p>Blockchain 实现了这样一些应用程序的构建：多方可以执行事务，不需要受信任的中央机构。 目前，使用现有技术构建可扩展的区块链网络的设置复杂且难以管理。要创建区块链网络，每个网络成员需要手动预置硬件、安装软件、创建和管理用于访问控制的证书，以及配置网络组件。区块链网络运行后，需要持续监控基础架构并根据变化（例如事务请求增加或新成员加入或离开网络）进行调整。</p>
+<p>Amazon Managed Blockchain 省去了创建网络或加入公共网络所需的开销，并可自动扩展以满足数千个应用程序运行数百万个事务的需求。网络启动并运行后，可使用 Managed Blockchain 轻松管理和维护区块链网络。它会管理您的证书，可以轻松邀请新成员加入网络。</p>
+<p>借助 Amazon Managed Blockchain，您可以快速创建跨多个 AWS 账户的区块链网络，使一组成员无需借助中央机构即可执行事务和共享数据。与自托管区块链基础架构不同的是，Amazon Managed Blockchain 不需要手动预置硬件、配置软件，也不需要设置网络连接和安全组件。使用 Managed Blockchain 的投票 API，网络参与者可以通过投票来添加或删除成员。添加新成员后，Managed Blockchain 即可允许该成员启动并配置多个区块链对等节点，从而处理事务请求并存储分类帐的副本。Managed Blockchain 还会监控网络，并自动替换性能不佳的节点。</p>
+<p>Amazon Managed Blockchain 支持两种流行的区块链框架，即 Hyperledger Fabric 和 Ethereum。Hyperledger Fabric 非常适合需要对一组已知成员具有严格的隐私和权限控制的应用程序，例如，控制某些贸易相关数据仅与选定银行共享的金融应用程序。Ethereum 尤其适用于重视所有成员数据透明性的高度分散区块链网络，例如，允许网络中的任何零售商独立验证所有成员之间的用户活动，以便获取兑换权益的客户忠诚度区块链网络。另外，Ethereum 还可以用于加入公共 Ethereum 区块链网络。</p>
+<p>由于网络上的应用程序使用量会随着时间的推移不断增长，Amazon Managed Blockchain 可以轻松扩展区块链网络。当网络成员需要额外的容量来创建和验证事务时，成员可以使用 Managed Blockchain 的 API 快速添加新的对等节点。Managed Blockchain 提供了精选的实例类型，其中包含不同的 CPU 和内存组合，使您可以灵活地为工作负载选择适当的资源组合。此外，Managed Blockchain 还使用 AWS Key Management Service (KMS) 技术保护网络证书的安全，您不必设置自己的安全密钥存储。</p>
+<p>Amazon Managed Blockchain 提高了“排序服务”的可靠性，“排序服务”是 Hyperledger Fabric 框架中的一个组件，可确保交付区块链网络中的事务。Hyperledger Fabric 的默认排序服务不存储完整的事务历史记录，因此很难在需要时跟踪和恢复事务历史记录。Managed Blockchain 的排序服务使用 Amazon QLDB 技术构建，具有不可变的更改日志，可准确维护区块链网络中所有事务的完整历史记录，确保持久保存此数据。</p>
+<p><strong>Managed Blockchain 使用案例</strong></p>
+<p>交易和资产转移</p>
+<p>交易需要许多组织彼此协作，如进口商、出口商、银行、航运公司和海关部门。使用 Amazon Managed Blockchain，金融和贸易联盟可以轻松创建区块链网络，各方都可以通过电子方式交易，并处理与贸易相关的文书工作，不需要借助中央可信机构来完成。一些其他流程需要在利益相关者之间来回处理贸易相关文书（需要 5-10 天才能完成），但使用 Managed Blockchain 构建的区块链网络中的事务可以即时处理。</p>
+<p>零售</p>
+<p>零售商通常希望通过与其他零售商、银行和第三方合作来提升客户忠诚度计划，提供在广泛的合作伙伴网络中都可以兑换的更全面客户奖励组合。如果使用中央代理作为处理奖励事务的中间人，通常会减慢处理速度（需要 5-7 天）。借助 Amazon Managed Blockchain，零售商团体可以轻松实现区块链网络，零售商能够快速、透明地共享和验证奖励信息，无需中央机构来处理零售商之间的奖励事务。</p>
+<p>供应链</p>
+<p>小型企业通常依赖于分散的供应链网络，此类网络没有任何单一实体控制整个网络中的端到端物流。例如，珠宝店经常需要跟踪宝石的原产地，以确保货品的真实性和价值。使用 Amazon Managed Blockchain，此类企业可以在其供应链网络中快速实现区块链，提供更高的透明性，以及实时记录和跟踪从一方到另一方的货物。每个供应商或分销商都可以成为该区块链网络的成员，维护各自的分布式分类帐，并独立跟踪与物流相关的所有信息，例如时间戳、入境口岸和到货数量。鉴于所有成员都保留了分布式分类账的独立副本，因此，各方都可以信任货物的真正来源和接触点，而无须依赖中央机构。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/30990/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">金色观察｜链游新潮已至：盘点各大公链火热链游</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/30991/">
+                <span class="next-text nav-default">金色前哨 | 希拉里·克林顿：加密货币可能会破坏国家稳定</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#服务综述">服务综述</a></li>
+    <li><a href="#amazon-qldb">Amazon QLDB</a></li>
+    <li><a href="#amazon-managed-blockchain">Amazon Managed Blockchain</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          从EVM到Wasm的范式转换 为什么波卡会成为公链的常青树？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="EVM和Wasm VM是两种区块链常用的虚拟机，现在许多大火的区块链几乎都会或多或少的兼容EVM，但是也有许多新兴公链会采用Wasm技术，这背后会是怎样的一种变化呢？" />
+<meta name="keywords" content="Polkadot" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/28735/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="从EVM到Wasm的范式转换 为什么波卡会成为公链的常青树？" />
+<meta property="og:description" content="EVM和Wasm VM是两种区块链常用的虚拟机，现在许多大火的区块链几乎都会或多或少的兼容EVM，但是也有许多新兴公链会采用Wasm技术，这背后会是怎样的一种变化呢？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/28735/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-17T00:00:00+00:00" />
+
+<meta itemprop="name" content="从EVM到Wasm的范式转换 为什么波卡会成为公链的常青树？">
+<meta itemprop="description" content="EVM和Wasm VM是两种区块链常用的虚拟机，现在许多大火的区块链几乎都会或多或少的兼容EVM，但是也有许多新兴公链会采用Wasm技术，这背后会是怎样的一种变化呢？"><meta itemprop="datePublished" content="2021-09-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7771">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="从EVM到Wasm的范式转换 为什么波卡会成为公链的常青树？"/>
+<meta name="twitter:description" content="EVM和Wasm VM是两种区块链常用的虚拟机，现在许多大火的区块链几乎都会或多或少的兼容EVM，但是也有许多新兴公链会采用Wasm技术，这背后会是怎样的一种变化呢？"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">从EVM到Wasm的范式转换 为什么波卡会成为公链的常青树？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-17">
+      2021-09-17
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7771 字 -
+        预计阅读 16 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>本文由Patract Labs与Polkadot生态研究院联合出品，本文会涉及一些技术用语，不过我们会用通俗易懂地方式再阐述一下，大家可酌情看重要解释即可。</p>
+<h2 id="背景"><strong>背景</strong></h2>
+<p>如果时光倒退到2017年，人们还会记得那一年区块链领域发生的事，尤其是公链领域的爆发，那一年号称要做公链的项目用数以万计来形容也不足为过，但后来的故事告诉我们，能真正倘过历史大河的公链其实屈指可数。于是，公链的竞争似乎由“万箭齐发”变成了“九九归一”，只剩下了以太坊扛起公链的生态大旗。</p>
+<p>而4年后的今天，我们把时间拨回到2021年初，彼时公链生态已经没有了所谓的“以太坊杀手”，大家把注意力都放在了以太坊身上，不管是DeFi还是NFT，都从以太坊生态中所衍生。然而以太坊生态项目的火爆，也把以太坊的性能压榨完了，以太坊的转账慢，gas费高等老问题又再一次出现。</p>
+<p>于是，一些新的解决方案逐渐浮出水面，最先脱颖而出的是币安智能链BSC，通过兼容EVM，快速将以太坊成熟的应用复刻到BSC上，并在币安交易所的支持下迅速壮大，成为如今第二大锁仓体量的公链。接着便是定位为Layer2聚合器的Polygon和高性能公链Solana相继在4月开始发力，公链兴起的概率越来越高。</p>
+<p>而刚刚过去的8月，我们再一次见证了公链潮的爆发，Avalanche、Fantom、Celo等公链相继迎来了巨大的增长。</p>
+<p>这些公链突然振奋起来的原因，除了市场的炒热以及公链的激励机制，还源于他们几乎都采用或兼容了EVM(Ethereum Virtual Machine)“以太坊虚拟机”（Solana除外），从而能够快速用上智能合约，并实现有效的兼容，使得生态能够快速扩张起来，因此EVM奠定了一些公链爆发的基础。</p>
+<p>尽管EVM目前算是区块链领域较为完备的机制，但它的局限性和时效性随着区块链发展也显得有些“落伍”，而作为EVM合约升级版的Wasm合约开始受到了众人关注。</p>
+<p>我们也看到，以太坊创始人“V神”早就表示以太坊2.0将会升级为Wasm合约（eWASM），以满足更多开发需求。而如今，Wasm合约的发展已经有了一定雏形，尤其是在波卡生态，开始有了更多接受者和采用者，他们似乎看到了遥远的未来……</p>
+<h2 id="快速了解evm和wasm"><strong>快速了解EVM和Wasm</strong></h2>
+<p>EVM和Wasm VM是两种区块链常用的虚拟机，现在许多大火的区块链几乎都会或多或少的兼容EVM，但是也有许多新兴公链会采用Wasm技术，这背后会是怎样的一种变化呢？要了解清楚这些，我们需要先简单了解些EVM和Wasm。</p>
+<p><strong>EVM是什么？</strong></p>
+<p>按照比较标准的定义，EVM是专门为以太坊客户端开发的虚拟机，主要用于在以太坊网络上运行智能合约代码，其本质上是虚拟机（VM)，只不过更轻量。虚拟机，可以简单理解为它就是一台虚拟的计算机，于是我们可以在这台计算机上编写程序，运行程序。</p>
+<p>而将该虚拟机（VM）应用到以太坊上，便有了我们熟知的EVM（以太坊虚拟机，Ethereum Virtual Machine），其主要作用是支持以太坊调用智能合约，从而完成合约的主动生效和自动执行。同时，借助以太坊的智能合约功能，我们才能在区块链网络上顺利完成各种模块化的任务。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/27_8tgqws83wo.png" alt="从EVM到Wasm的范式转换 为什么波卡会成为公链的常青树？"></p>
+<p>通俗来说，借助以太坊的虚拟机我们可以将现实世界的合同或者合约映射到区块链上，从而当需求（或条件）发生时，自动完成交易或者转账，避免了合约的违规，可以说有了虚拟机的以太坊才有了以太坊后续的发展，也才给区块链带来了更多的应用，不管是DeFi、NFT还是其他联盟链功能。</p>
+<p><strong>Wasm是什么？</strong></p>
+<p>Wasm全称WebAssembly，一种在基于栈的虚拟机上运行的二进制的指令格式，这些代码可以是C、C++或Rust等，它们会被编译进你的浏览器，在你的CPU上以接近原生的速度运行，而这些代码的形式是二进制文件。Wasm的开发团队分别来自Mozilla、Google、Microsoft、Apple等公司，标准由W3C组织制定。</p>
+<p>Wasm原本是为浏览器设计的虚拟机，但是越来越多开发者使用Wasm之后，便逐渐拓展了Wasm的使用场景，使得Wasm成为了目前最通用的格式之一。</p>
+<p>在区块链领域，它的主机独立性、安全沙盒和整体简洁性等特性，使其成为智能合约的理想运行时（Runtime）。此外，它还允许使用多种现代编程语言（Rust、C++、JavaScript等）开发合约。以太坊团队一直在试用一个基于Wasm的合约引擎eWasm，并计划在2021年的某个时候正式发布它。</p>
+<h2 id="为什么说evm会范式转换到wasm上"><strong>为什么说EVM会范式转换到Wasm上</strong></h2>
+<p><strong>范式转换是什么？</strong></p>
+<p>范式转换(Paradigm Shift)，又称“范式转移”，由美国著名科学哲学家托马斯·库恩(Thomas S.Kuhn)最早提出，他认为“范式”是指特定的科学共同体从事某一类科学活动所必须遵循的公认的模式，它包括共有的世界观、基本理论、范例、方法、手段、标准等等与科学研究有关的所有东西。而这个概念还可以衍生到其他层面，比如经济层面，企业管理层面，商业层面等等。</p>
+<p>而范式转换也就是长期遵循的公认的模式A转换到另一种模式B的过程。比如，bp寻呼机的使用转换到手机的使用，短信转换到微信，DVD转换到流媒体等等。</p>
+<p>反馈到现在的人类科学进程来看，我们的每一次巨大的科技进步都不是一种偶然，甚至可以说是一种必然，这些科技的指向性就向托马斯所描述的，“科学的发展是由一系列新理论取代旧理论的过程”，对于区块链来说，同样如此。</p>
+<p>EVM自以太坊诞生以来，已经走过了7个年头，和当年的区块链世界相比，目前已经有了巨大的飞跃。按照范式转移的路径，以太坊即将迈入2.0时刻，那么EVM同样亟需更新迭代，EVM还是几年前的设计，但是新技术却在飞速发展，EVM似乎正在转向Wasm，也是范式转移的结果。</p>
+<p><strong>Wasm对于EVM有什么优势？</strong></p>
+<p>以太坊基金会在Devcon上多次说明了自己打算将EVM过渡到Wasm的想法，但已经上线的庞大合约体量无法支持深层次的变革，生态也在这一临时方案上越走越远。选用Wasm作为智能合约的虚拟机的优势有以下几点：</p>
+<p>1.<strong>完胜EVM虚拟机</strong> 。相比EVM需要开发者预编译，较高的编程成本，Wasm虚拟机的结构、指令完备性及执行效率远胜于EVM虚拟机，将成为合约开发的新引擎。</p>
+<p>2.<strong>执行速度快</strong> 。Wasm有一套完整的语义，且具有紧凑的二进制格式，体积很小，这使得Wasm字节码运行时的效率可以接近于本地机器码的效率，比EVM的性能高1到2个数量级，后期还会升级为更快JIT虚拟机。</p>
+<p>3.<strong>交易费用低</strong> 。更快的Wasm虚拟机，致使交易吞吐量大幅提升，那么合约部署和交易成本也能大幅降低。可以说Wasm合约很好的解决了现在以太坊上交易费用高和交易拥堵的问题。</p>
+<p>4.<strong>合约语言广</strong> 。Wasm扩展了智能合同开发者可用的语言系列，支持使用任何Wasm的高级语言（如Rust、C++、JavaScript等）开发编写复杂业务逻辑，这意味着你可以用你熟悉的任何语言编写智能合约，包括最成熟的基于Rust的ink!，或基于AssemblyScript的Ask!等。</p>
+<p><strong>EVM会范式转换到Wasm的原因</strong></p>
+<p>尽管刚刚我们已经简述了Wasm在技术层面上比EVM有众多优势，但是EVM会范式转换到Wasm的原因绝不仅仅只是这一方面。</p>
+<p>作为EVM的发明者同时也是波卡创始人Gavin博士，对这个问题拥有足够的话语权。在做波卡的时候，Gavin并没有沿用自己发明的EVM，而是选择Wasm，这背后的原因就能很好的解答这个问题。</p>
+<p>尽管现在看来以太坊的EVM已经有六七年的历史了，并且许多公链都在采用或者兼容EVM，但是EVM并不一定会是最终的答案。</p>
+<p>在当初Gavin博士选择离开以太坊，准备做新项目时，他有非常多的选择。但是对于Gavin博士来说，如果只是做一个别的项目的 “山寨版”，或者只是稍微地迭代一下，增加一下交易吞吐量，或者创造一种稍有改进的语言的话，是无法满足十分喜欢创新的他的。</p>
+<p>于是，Gavin没有想过去走老路，他选择了一条没有人走过的路，创新的做一个比公链更底层的基础设施项目，而这就是波卡。</p>
+<p>在做波卡时，选择Wasm的理由，也可以从他对EVM的态度可以看出：“很多人已经在使用EVM，所以支持这些遗留协议和遗留语言是非常重要的”，但同时也不能只靠着老技术吃饭，还要放眼新未来，“开始思考下一代工具是什么，而对我来说那就是使用WebAssembly作为智能合约”。</p>
+<p>事实上，Wasm本身的许多优势还与波卡十分匹配。比如，区块链需要确定性，以便在点对点网络中的所有节点上进行可靠的状态转换更新，而不强制每个节点运行完全相同的硬件。Wasm就非常适合用于可能不同的机器集之间的可靠性。Wasm既高效又快速，这种效率意味着它可以作为一团代码上传到链上，而不会造成太多的状态膨胀，同时保持其以接近本机速度执行的能力。Wasm还支持了波卡的无分叉升级，也为波卡提供了另一大利器。</p>
+<p>最懂EVM的Gavin都是如此选择Wasm的，对于其他公链来说也是如此。毕竟EVM的诞生也是有时代背景的，一个是当时的互联网发展还比较早，可以选用的优质技术并不多，Wasm在当时还未诞生（2015年6月Wasm才算诞生），所以当初Gavin博士还在以太坊担任CTO时，在设计以太坊的时候，他们试图不偏离世界当时所熟悉的东西太远，也就是比特币。EVM的问题在于它是一种非常固执己见的设计，因为它源自一种已经非常固执的设计，也就是比特币的脚本设计。</p>
+<p>由此也可以看出，EVM算是时代的产物，也会受制于当时的时代背景和技术背景，并不是最优解。而随着Wasm在互联网领域做大做强逐渐完善，区块链领域的技术达人们也在尝试把这个更加优秀的技术运用到区块链上了。这也是为什么比较新兴的公链会更多的支持Wasm，然后以兼容的形式对接EVM了。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/27_syot0flgk7.png" alt="从EVM到Wasm的范式转换 为什么波卡会成为公链的常青树？"></p>
+<h2 id="evm可能以怎样的形式转换到wasm上"><strong>EVM可能以怎样的形式转换到Wasm上</strong></h2>
+<p><strong>对于以太坊等EVM生态来说会是怎么转换的？</strong></p>
+<p>首先我们看以太坊会如何从EVM迁移到eWASM上，而这绕不开的是讨论以太坊2.0的更新，按照以太坊开发团队公布的进程，随着以太坊2.0的实现，eWASM将会布局到新的以太坊使用环境中，以获取更快速、更便捷和更具包容性的开发。</p>
+<p>而较早前，eWASM团队已经给出了其具体的设计目标：构建EVM转译器，以eWASM合约形式添加计量注入器，并发布明确详细的规范：以太坊接口、eWASM合约语义以及为solc编译器构建一个eWASM后端，同时提供C语言和Rust语言的相应指令和库，以支持智能合约编写。</p>
+<p>当然，像EOS这样的生态早已进入了Wasm的怀抱，而像Tron和Cardano这样的公链也在走向Wasm的路上。</p>
+<p><strong>对于EVM和Wasm都支持的波卡来说是怎么转换的？</strong></p>
+<p>波卡原生支持Wasm技术，随后原本就十分熟悉以太坊的他们自然也明白EVM还是有许多优点的，比如已经形成网络效应的EVM生态拥有众多开发者和应用，这些都是宝贵的资源，必须妥善运用起来。</p>
+<p>在2020年，Parity开发了兼容以太坊EVM的Substrate模块以及兼容层Frontier，从而允许EVM智能合约与Substrate其他的模块进行交互。用户也可以直接在Substrate上部署Solidity智能合约，同时使用Web3 RPC的工具（如Metamask和Truffle）与链上应用进行交互。</p>
+<p>所以，波卡上基于Substrate的链可以同时拥有两个模块，一个是EVM-Contracts 模块（用于执行原始Solidity/EVM代码），另一个是Substrate-Contracts模块（用于执行Solidity/Wasm或Ink! Wasm代码）。两者之间可以互操作，甚至可以将消息发布到桥接过来的单独的Parity-Ethereum链上，或者如果部署为平行链，则可以传播到包括以太坊主网在内的更广阔的波卡社区。</p>
+<p>兼容并且可以交互，便可以让波卡顺利完成EVM到Wasm的过渡和迭代。</p>
+<p><strong>Patract如何加速EVM转换到Wasm</strong></p>
+<p>Parity是波卡的主要开发团队之一，他们的主要工作在于Substrate和Polkadot，因此在智能合约的部分工作相对而言没有很多。而在Wasm合约部分，尽管波卡已经选择了一个更优质的Wasm技术，但是Wasm合约开发者距离合约平台之间仍然有较大的鸿沟，因此Patract Labs便致力于成为连接合约开发者与合约平台之间的桥梁。</p>
+<p>Patract Labs（https://patract.io/zh）是专注于波卡Wasm合约技术的实验室，目前受到波卡议会和国库的支持，先后为开发者推出数十款应用性强、技术超前的免费全套Wasm合约开发工具和服务，包括合约测试链、AS合约语言、合约开发脚手架、合约运行沙盒、波卡API服务、零知识证明支持、合约库、监控台、SDK、IDE等。</p>
+<p>并联合Parity和社区平行链改进合约模型、合约语言和开发工具等，推动成立Wasm合约开放平台——Patract Open Platform（https://open.patract.io）。通过这个平台将波卡生态内有意愿加入到Wasm合约生态的优秀的平行链或应用团队汇聚一起，展示其Wasm合约的具体实践和技术创新，提供市场和技术支持。</p>
+<p>Patract Open Platform的成立不仅仅是提供底层设施和技术支持，Patract Labs还将通过Wasm合约技术，进一步探索波卡生态在未来产生的无限可能性。例如，以太坊合约采用EVM虚拟机和Solidity语言，导致无法低成本开发复杂合约，如果执行高频复杂度高的合约，交易成本将大幅上升，执行效率低下，对于像DeFi这样的领域就有非常大的局限性。对此，Patract Open Platfrom将从合约模型、合约标准（类似ERC20业务标准）、Runtime接口定制三个方向进行探索。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/27_5ids6f8ytg.png" alt="从EVM到Wasm的范式转换 为什么波卡会成为公链的常青树？"></p>
+<h2 id="为什么说波卡会是公链的常青树"><strong>为什么说波卡会是公链的常青树</strong></h2>
+<p><strong>波卡独特的功能奠定其位置</strong></p>
+<p>波卡的角色决定了它不是与一般公链做竞争，而是更好地为各个公链做跨链交互的底层支撑。如当下知名的公链比特币、以太坊、BSC、Cosmos、Near等等，都是可以通过转接桥或平行链等形式接入波卡。</p>
+<p>而这些项目分别代表了不同时期，不同技术代表的公链，这已经验证了波卡是一个可以作为能伴随区块链技术更迭的长期存在的基础设施。</p>
+<p>如今，各公链百家争鸣，也有一些如Terra这样基于Cosmos的应用链也大放异彩，我们已经可以明确区块链的未来一定是多链的，那么注定未来的发展一定会是“铁打的波卡，流水的公链”。</p>
+<p><strong>波卡天然优势</strong></p>
+<p>波卡的创新设计，使得它获得了在升级和迭代底层技术方面其他公链所不具有的特性。</p>
+<p>众所周知，公链进行升级必须要通过硬分叉来实现，而波卡由于在设计之初就定位为更底层的元协议，因此波卡升级无需硬分叉。这就使得波卡在迭代升级上就非常的容易，也更利于波卡自身的进化。</p>
+<p>另外，波卡背后有一个划时代的发明——可以一键发链的Substrate框架，基于这个框架可以迅速构建一条区块链，而在这个框架中你可以将许多现成的功能模块添加到自己所构建的区块链中，就像组装电脑一样简单。这其中就有支持EVM的模块，那么同理可得，如果有更新的技术需要迭代，波卡也可以通过将这样的技术整合到Substrate框架中，从而让自己的生态也能兼容新技术。</p>
+<p>这边是让波卡能够时刻保持最前沿技术的原因之一，也是为什么我们说波卡会是常青树的理由之一。</p>
+<p><strong>波卡会有迭代技术的经验</strong></p>
+<p>波卡兼容EVM又支持Wasm，波卡的许多生态项目也是两者皆有。目前，波卡已经有一套完整的方案，用于EVM切换到Wasm上，意味着波卡已经探索出一条能够成功从老技术EVM迭代到新技术Wasm的路径。那么，当未来如果出现比Wasm更先进的技术，波卡可以复刻EVM到Wasm的范式转换，从而让Wasm再转换到新技术上。</p>
+<p>用一个不是那么准确但又神似的比喻来形容这个过程，好比是我们有一个多卡多待的手机，可以同时插一个支持3G的电话卡和一个支持4G的电话卡，我们的手机可以享受两个卡的功能，并且可以互相兼容。但是有新技术出现时，波卡的迭代就很容易，可以把支持新技术5G的电话卡插入手机中，我们可以兼顾以前的老技术的同时享受新技术，而随着时间的推移，老技术的3G不怎么用了，变成长期用4G和5G，这样就做到了平滑的技术更迭。</p>
+<p>有如此强大的可扩展性，波卡便有了不断迭代进化的可能性，不用担心波卡的技术会落后，也无需担心波卡升级很困难，这些都是支持波卡常青的原因。</p>
+<h2 id="后记"><strong>后记</strong></h2>
+<p>波卡虽然作为常青树，不用太担心技术迭代的问题，但是波卡生态非常巨大，光靠波卡官方肯定是不够的。所以，许多围绕着波卡生态在做努力建设的一些组织，正在用自己的方式加速波卡生态的发展。</p>
+<p>比如，为了让波卡有更多平行链项目诞生，一个专为开发者准备的最基本的节点环境是必不可少的，Patract就启动了一条Jupiter平行链测试网，并于8月上线了平行链跨链转账，能够将Westend（波卡测试网）与Jupiter的代币互相转换，以便更好的让开发者进行测试。</p>
+<p>另外，Patract还开发完成了基于JavaScript的自动化测试环境Redspot开发脚手架。Europa合约沙盒环境已经式进入生产可用阶段，与Redspot一致进入长期维护。Elara API服务的官网已经开发完成，Elara v1.0对于平行链节点已支持Statemine，Karura，MoonRiver，Bifrost。开发者可基于Metis合约标准库构建常规DAPP。Ask!合约语言已经可以用于实验性质的环境下，通过AssemblyScript编写ERC20、ERC721这类复杂合约。</p>
+<p>而为什么Patract以及我们Polkadot生态研究院等组织愿意深耕波卡生态，也离不开对波卡创始人Gavin的初心的认同——未来一定是多链的。</p>
+<p>而波卡的技术创新与稳扎稳打也确实在逐步实现这个愿景，波卡确实值得我们托付梦想。所以，波卡虽然发展慢，但足够稳，稳到可以见证和陪伴许多公链的兴衰，我们不妨坐上这趟观光车，静看区块链技术的前行。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/28743/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">创建 ERC20 代币支付拆分智能合约</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/28744/">
+                <span class="next-text nav-default">德勤2021年区块链调查报告：数字资产正成为金融服务业的优先事项</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景"><strong>背景</strong></a></li>
+    <li><a href="#快速了解evm和wasm"><strong>快速了解EVM和Wasm</strong></a></li>
+    <li><a href="#为什么说evm会范式转换到wasm上"><strong>为什么说EVM会范式转换到Wasm上</strong></a></li>
+    <li><a href="#evm可能以怎样的形式转换到wasm上"><strong>EVM可能以怎样的形式转换到Wasm上</strong></a></li>
+    <li><a href="#为什么说波卡会是公链的常青树"><strong>为什么说波卡会是公链的常青树</strong></a></li>
+    <li><a href="#后记"><strong>后记</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

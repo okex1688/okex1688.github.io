@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文读懂Giskard共识协议 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文我们将简单介绍PPoS共识和BFT理论，其后重点分析Giskard。" />
+<meta name="keywords" content="共识协议, 隐私计算" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/23686/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文读懂Giskard共识协议" />
+<meta property="og:description" content="本文我们将简单介绍PPoS共识和BFT理论，其后重点分析Giskard。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/23686/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-05T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文读懂Giskard共识协议">
+<meta itemprop="description" content="本文我们将简单介绍PPoS共识和BFT理论，其后重点分析Giskard。"><meta itemprop="datePublished" content="2021-06-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7116">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文读懂Giskard共识协议"/>
+<meta name="twitter:description" content="本文我们将简单介绍PPoS共识和BFT理论，其后重点分析Giskard。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文读懂Giskard共识协议</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-05">
+      2021-06-05
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7116 字 -
+        预计阅读 15 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>PlatON的Giskard共识协议由概率性权益证明PPoS(<em>PlatON proof of stake</em>)和Giskard拜占庭容错协议-Giskard BFT(<em>Giskard Byzantine Fault Tolerance</em>) 组成。PPoS使用质押、委托、随机选取的形式选出参与共识的验证节点，Giskard BFT使用类BFT算法实现区块的生产和验证。</p>
+<p>本文我们将简单介绍PPoS共识和BFT理论，并分析PBFT算法特性及PBFT存在的问题，其后重点分析Giskard BFT借鉴PBFT、Tendermint、Hotstuff等共识协议的演进之路。</p>
+<p>区块链技术本质脱离不开传统分布式系统。分布式一致性算法是传统分布式系统的一大难题，经过长期的研究和应用，诞生了如paxos、raft、zab等成熟安全的算法。</p>
+<p>相比于传统的分布式系统，公共区块链中没有中心化的假设，任何节点都可以加入并自由访问所有的数据，因此公链中不可避免会存在恶意节点。所以，区块链系统中的共识机制不仅需要支持CFT(<em>Crash fault tolerance</em>) 还需要支持BFT(Byzantine Fault Tolerance) 。BFT是一个已经被研究得比较透彻的理论，PBFT是其中最为著名的实现算法，目前广泛应用于各大区块链系统中。</p>
+<p>PlatON的Giskard共识协议由概率性权益证明PPoS(PlatON proof of stake)和Giskard拜占庭容错协议-Giskard BFT(Giskard Byzantine Fault Tolerance) 组成。PPoS使用质押、委托、随机选取的形式选出参与共识的验证节点，Giskard BFT使用类BFT算法实现区块的生产和验证。</p>
+<p>PPOS——验证节点选取</p>
+<p><strong>在介绍PPoS之前，我们先科普一下PoS，目前PoS共识方案可以分为四类：</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0605/16_co0o0znk3s.png" alt="一文读懂Giskard共识协议"></p>
+<p>PoS共识概述</p>
+<p><strong><em>Chain-Based</em></strong></p>
+<p>这是早期的一代PoS。根据持有token的数量伪随机地选择验证人进行区块生产。其中还有PoS+PoW方案，一般是PoW出块，通过PoS选择验证人进行验证，以太坊的Casper1.0也是一种混合PoS/PoW的方案，作为其从PoW转换到PoS的中间方案。</p>
+<p><strong><em>DPoS (Delegated Proof of Stake)</em></strong></p>
+<p>委托权益证明。每个token持有人可以把权利委托给部分代表，由代表参与区块的生产和验证。</p>
+<p><strong><em>VRF (Verifiable Random Function)</em></strong></p>
+<p>可验证随机函数用于验证节点的随机选取。目前，Dfinity、Cardano和Algorand等采用了这种方案。</p>
+<p><strong><em>BFT (Byzantine Fault Tolerance)</em></strong></p>
+<p>拜占庭容错。选出验证节点后通过运行BFT协议经过多轮投票确认区块完成共识。目前Tendermint、Stellar、Ontology、Zilliqa、NEO等都是采用这类共识算法。</p>
+<p>PlatON的共识方案PPoS，也就是我们常说的概率性权益证明，它本质是一种PoS共识方案，根据节点的权益绘制成二项分布累积分布曲线，并使用VRF随机选取验证节点。</p>
+<p>PPoS解决的关键核心点在于验证人的选取不仅与节点权益的大小有关，还兼具随机性，也就是说选出的验证节点不一定是权益最高的节点，权益较低的节点也有一定的选中概率。随机性算法可以保证选取的结果不可预测、不可操控且公平可靠。PPoS本质上是PoS+VRF方案的结合。</p>
+<p>简单总结就是：<strong>PPoS提供了一种尽可能公平、随机地从众多参与节点中选取出若干验证节点的方案。</strong></p>
+<p>BFT——区块共识</p>
+<p>验证节点被选举出来之后，运行共识协议进行区块生产和验证，整个过程需要节点之间相互协作，对区块进行相互确认，得出一致结论，达成区块共识。</p>
+<p>上文中提到，区块链中的共识算法不仅需要考虑Crash节点，还需要考虑Byzantine节点。什么是拜占庭节点？我们从一个故事说起。</p>
+<p><strong>拜占庭将军问题</strong></p>
+<p>拜占庭罗马帝国国土辽阔，为了达到防御目的，每块封地都驻扎一支由将军统领的军队，每个军队都分隔很远，将军与将军之间只能靠信差传递消息。 </p>
+<p>在战争的时候，拜占庭军队内所有将军必须达成一致的共识，决定是否有赢的机会才去攻打敌人的阵营。但是，在军队内有可能存有叛徒和敌军的间谍，左右将军们的决定影响将军们达成一致共识。在已知有将军是叛徒的情况下，其余忠诚的将军如何达成一致协议的问题，这就是拜占庭将军问题。</p>
+<p>拜占庭将军问题所描述的是好的将军不知道其他将军是好的，还是坏的，但所有好的将军的目的是：行动一致，共同进退。所以，他们需要在策略上达成一致。</p>
+<p>看到这里，相信大家对拜占庭节点也有了初步的理解。简单地说，在区块链系统中存在以下两类错误：</p>
+<ul>
+<li>
+<p>第一类错误是节点崩溃、网络故障、丢包等，这种错误类型的节点是没有恶意的，属于非拜占庭错误。</p>
+</li>
+<li>
+<p>第二类错误是节点可能是恶意的，不遵守协议规则。例如验证者节点可以延迟或拒绝网络中的消息、领导者可以提出无效块或者节点可以向不同的对等体发送不同的消息。在最坏的情况下，恶意节点可能会相互协作。这些被统称为拜占庭错误。</p>
+</li>
+</ul>
+<p>要让这个问题有解，还需要先引入一个概念——<strong>分布式网络模型</strong> ，按照分布式系统理论，分布式系统的网络模型分为三类：</p>
+<ul>
+<li>
+<p><em>同步网络模型</em>：节点所发出的消息，在一个确定的时间内，肯定会到达目标节点</p>
+</li>
+<li>
+<p><em>异步网络模型</em>：节点所发出的消息，不能确定一定会到达目标节点</p>
+</li>
+<li>
+<p><em>部分同步网络模型</em>：节点发出的消息，虽然会有延迟，但是最终会到达目标节点</p>
+</li>
+</ul>
+<p>拜占庭将军问题的解决，有一个十分重要的前提，那就是通信信道必须是可靠的。如果信道不能保证可靠，那么拜占庭问题无解。这也就是FLP不可能原理，即在异步网络模型假定下，共识算法不可能同时满足安全性（safety）和活跃性（liveness），也就是说，在一个不可靠的通信链路上试图通过通信以达成一致是基本不可能或者十分困难的。至于什么是安全性和活跃性，我们后面再说。</p>
+<p>其实，拜占庭将军问题最早是由Leslie Lamport在1982年发表的论文《The Byzantine Generals Problem》提出的，他证明了在将军总数大于3f，背叛者为f或者更少时，忠诚的将军可以达成命令上的一致，即3f+1&lt;=n。而Miguel Castro和Barbara Liskov在1999年发表的论文《Practical Byzantine Fault Tolerance》中首次提出PBFT算法，该算法容错数量也满足3f+1&lt;=n。</p>
+<p>BFT是一个已经被研究得比较透彻的理论，它告诉我们，基于部分同步网络模型的假定，在不超过三分之一的故障节点和作恶节点情况下，非拜占庭节点之间可达到最终一致性。PBFT是其中最为著名的实现算法，意为实用拜占庭容错算法。目前，区块链的共识算法大多都是基于BFT的实现。Giskard BFT也是由PBFT演进而来。</p>
+<p>PBFT算法在区块链共识的应用</p>
+<p>PBFT算法被广泛应用于各类区块链共识，它不仅解决了共识过程中可能发生的拜占庭节点问题，同时也使系统始终能够保持两个属性：安全性（safety）和活跃性（liveness）。</p>
+<ul>
+<li>
+<p><em>安全性</em>：在Crash节点和Byzantine节点两类错误发生时，共识系统不能产生错误的结果。在区块链中，指的是不会产生双重花费和分叉。</p>
+</li>
+<li>
+<p><em>活跃性</em>：系统一直能持续产生提交，在区块链中，指的是共识会持续进行，不会卡住。假如一个区块链系统的共识不可持续，那么系统无法响应客户端新的交易请求，也就是不满足liveness。</p>
+</li>
+</ul>
+<p>我们直接以PBFT算法在区块链共识的应用为例，总结算法的核心流程：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0605/16_rcs7524t3t.png" alt="一文读懂Giskard共识协议"></p>
+<p>PBFT的共识过程</p>
+<p>由上图可知，PBFT是一个典型的三阶段提交算法：</p>
+<ul>
+<li>
+<p><em>pre-prepare（预备阶段）</em>：各节点负责接收区块、执行区块，产生区块投票签名，开始广播签名给所有共识节点</p>
+</li>
+<li>
+<p><em>prepare（准备阶段）</em>：各节点负责收集签名，某节点收集满2*f的签名后，表明自身达到可以提交区块的状态，开始广播Commit包</p>
+</li>
+<li>
+<p><em>Commit（提交阶段）</em>：各节点负责收集Commit包，某节点收集满2*f+1的Commit包后，直接将本地缓存的最新区块提交到数据库</p>
+</li>
+</ul>
+<p>看到这里，也许你会有以下疑问：</p>
+<p><em>为什么不同阶段所需要的签名个数不同</em></p>
+<p>对于prepare和commit阶段来说，考虑最坏的情况：我们假设收到f个是正常节点发过来的签名，也有f个是恶意节点发过来的，那么，第2*f+1个签名只可能是正常节点发过来的（因为我们限制了最多只有f个恶意节点）。由此可知，「大多数」正常的节点还是可以让系统工作下去的。所以2*f+1这个参数和n&gt;=3f+1的要求是逻辑自洽的。而在prepare阶段，节点0发出消息即可认为确认消息，所以prepare阶段只需收集2*f个签名。</p>
+<p><em>为什么只有两阶段消息不能达成一致性</em></p>
+<p>只有pre-prepare和prepare两个阶段消息是无法达成一致的。举例说明，假设没有commit阶段，节点1在prepare阶段收集满2*f的签名后，达到Prepared状态，然而这个Prepared仅是节点1的一个局部视角，不是全局一致，此时节点1不能保证其余节点都达到Prepared状态，如果少于f个非拜占庭节点成为Prepared状态，节点1又确认了该消息，那么系统就出现了不一致。</p>
+<p><em>为什么三阶段消息可以达成一致性</em></p>
+<p>说到这里，其实就很好理解为什么三阶段消息可以达成一致性，某节点收集满2*f+1的Commit包意味着有f+1个非拜占庭节点达成了Prepared状态，也就意味着「多数」节点已经认同了消息。</p>
+<p>下面，我们再介绍PBFT的视图和视图切换流程。</p>
+<p>PBFT共识算法使用视图view记录每个节点的共识状态，相同视图节点维护相同的Leader和Replicas节点列表。当Leader出现故障，为了保证协议活跃性（liveness），会发生视图切换，若视图切换成功(至少2*f+1个节点达到相同视图)，则根据新的视图选出新leader 。</p>
+<p>话不多说，直接上视图切换流程图：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0605/16_jpgjjfot13.png" alt="一文读懂Giskard共识协议"></p>
+<p>PBFT的视图切换流程</p>
+<p>PBFT的视图切换流程也分为三个阶段：</p>
+<ul>
+<li>
+<p><em>view-change</em>：各副本节点（Replica) 认为主节点（Primary）有问题时，会向其它节点发送view-change消息</p>
+</li>
+<li>
+<p><em>view-change-ack</em>：各节点接收到2*f+1 个view-change消息后，选举当前存活的节点编号最小的节点成为新的主节点，并向该节点发送view-change-ack消息</p>
+</li>
+<li>
+<p><em>new-view</em>：当新的主节点收到2*f+1个其它节点的view-change-ack消息后，向其它节点广播new-view消息。注意：从节点不会发起new-view事件</p>
+</li>
+</ul>
+<p>通过对共识流程的分析，相信大家对view切换流程都能够很好地理解，这里我们不再赘述。接下来我们着重分析PBFT算法存在的问题，以及Giskard BFT改进优化。</p>
+<p>PBFT存在的问题</p>
+<p>通过对PBFT共识流程三阶段的详细分析，可以看到消息传输的开销很大。系统在尝试达成状态共识时，涉及到n个节点都需要广播消息到n-1个其它节点，因此算法通信复杂度达到 O(n²)，在节点数目为1000的情况下所需要交换的通信量为1,000,000。有实验得出当节点数量超过20时，算法的性能会急剧下降。</p>
+<p>另外，在PBFT选举Leader的过程中，有可能经过多轮交互，选举出的Leader一直长时间运行，直到Leader节点出现故障才发起视图切换流程。但在区块链系统中，视图view表示一个共识单元，共识过程由一个接一个的view组成，每个view中由一个确定的提议人来主导共识协议，产生区块，其余验证人对区块进行投票签名达成共识。因为节点产生区块与利益相关（如记账权，区块奖励等），因此需要频繁地更换出块节点，也就是需要频繁地切换视图view，这势必会带来巨大的网络资源消耗。</p>
+<p>Giskard BFT共识优化</p>
+<p>所以我们基于BFT协议，结合区块链的特性，主要围绕着以下几点进行协议优化，设计了Giskard BFT 。</p>
+<h3 id="_view-change流程优化-_">_<strong>view-change流程优化</strong> _</h3>
+<p>所有的BFT协议都通过view-change来更换主节点。PBFT，SBFT等协议具有独立的view-change流程，当主节点出问题后才触发。而在Tendermint、HotStuff等协议中没有显式的view-change流程、view-change流程合入正常流程中，因此提高了view-change的效率，将view-change的通信复杂度降低。</p>
+<p>Giskard BFT也是基于view的的共识协议，为降低通讯复杂度，Giskard BFT也没有显式的view change流程，而是把这个流程和正常出块流程结合。Giskard BFT约定每个提议节点在本视图内连续产生10个区块，并且每个区块都达成QC（Quorum Certificate，表示节点收到针对该区块的2*f+1个签名）状态后，则自动切换到下一个view ，不需要单独的view-change投票流程。</p>
+<p>下图是显式的ViewChange流程，可以看到它并没有类似PBFT中的view-change-ack和new-view阶段，这两个流程被后续的prepareQC(n)进行代替。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0605/16_gzja1edjbu.png" alt="一文读懂Giskard共识协议"></p>
+<p>Giskard BFT viewchange投票流程</p>
+<p>总结一下，view-change流程优化的两个重点：</p>
+<ul>
+<li>
+<p>不需要显式的view change流程，减少投票动作。</p>
+</li>
+<li>
+<p>没有view-change-ack和new-view阶段，而是结合区块链特性，由后续的prepareQC(n)对新的view进行「间接」确认。</p>
+</li>
+</ul>
+<p>_<strong>应用BLS聚合签名</strong> _</p>
+<p>为了进一步减少消息通讯量，我们采用了聚合签名技术。业界主流的聚合签名方案是BLS聚合签名。BLS聚合签名是在BLS签名方案基础上的扩展方案。</p>
+<p>在Giskard BFT中，我们把针对block和view-change消息的多个节点签名聚合成一个签名，可以简单地理解为：把多个节点的一段很长的签名「压缩」为一个签名。这种做法极大地降低了通讯量，对提高协议的通信效率也起到了很大的作用。</p>
+<p>_<strong>区块生产和验证并行化</strong> _</p>
+<p><strong>此处优化是Giskard BFT的独到创新之处。这里的并行指的是：区块生产和区块验证的并行化。</strong></p>
+<p>上文提到，Giskard BFT是基于视图view的共识协议，每个提议节点在本视图内连续产生10个区块，并行流程如下：</p>
+<ul>
+<li>
+<p>提议节点在一个view内可以连续提议多个区块，下一个区块的产生不用等上一个区块达到QC状态。</p>
+</li>
+<li>
+<p>验证人在接收上一个区块投票的同时，可以并行执行下个区块的交易。</p>
+</li>
+</ul>
+<p><strong>这种做法极大提高出块速度，也提高了系统的共识性能。</strong></p>
+<p>引进pipeline方式对区块进行确认</p>
+<p>在传统BFT主导的区块链系统中，每个区块的共识通常都需要经历明确的Pre-Commit和Commit阶段才最终确认：</p>
+<ul>
+<li>
+<p><em>Pre-Commit</em>：当节点收到2*f+1个 Prepare投票时会广播Pre-Commit，Pre-Commit可以看作对Prepare阶段的确认。</p>
+</li>
+<li>
+<p><em>Commit</em>：当收到2*f+1个 Pre-Commit投票时，表明所有节点对指定消息达成一致，提交到本地磁盘。</p>
+</li>
+</ul>
+<p>Giskard BFT中的每个区块只有Prepare投票，没有明确的Pre-Commit和Commit阶段，那么区块如何达到最终的确认呢？Giskard BFT可看作Pipeline版本的BFT ，每个prepareQC都是对前面区块更高阶段的确认。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0605/16_t9p9a6l22q.png" alt="一文读懂Giskard共识协议"></p>
+<p>Giskard BFT 的区块确认流程</p>
+<p>如图所示prepareQC(2)作为Block(1)的Pre-Commit阶段prepareQC(3)作为Block(1)的Commit阶段，Block(2)的Pre-Commit阶段。</p>
+<p>简单来说，就是「省略」了PBFT的Commit阶段，这里读者可能有疑虑：前文不是明确给出结论，必须通过三阶段消息才能达成一致性？其实Giskard BFT不是真的没有Commit阶段，而是结合区块链特性，将下一个区块的QC状态作为上一个区块的Commit间接确认。</p>
+<p>Giskard BFT结合区块链的链式结构，引进pipeline方式对区块进行确认，使得协议变得简洁而优美，能够很好地进行流程化作业，提高了协议的性能，另外也对协议的可扩展性留足了设计空间。</p>
+<p>结语</p>
+<p>目前，应用了Giskard共识协议的PlatON测试网、主网和Alaya网络都已经长时间稳定、高效运行，它的安全性（safety）和活跃性（liveness）得到了充分的验证，同时Giskard共识对解决系统过于中心化，降低网络通信复杂度、消息复杂度，提升共识效率以及整个区块链的交易处理性能所起到的作用毋庸置疑。</p>
+<p>在后期的协议版本中，我们将继续深入优化：验证人的选取不仅采用VRF，还计划结合可验证秘密分享PVSS、BLS等密码算法进一步增加随机性；引入分组共识再次提升算法的可扩展性，以高效支持更多的验证节点加入，增加网络的安全性和容错性。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/23687/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">融资新闻丨CUDOS获Animoca Brands投资，全球游戏用户已超10万</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/23689/">
+                <span class="next-text nav-default">以吸血鬼攻击开启的Defi农场 资金粘性较差</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#_view-change流程优化-_">_<strong>view-change流程优化</strong> _</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

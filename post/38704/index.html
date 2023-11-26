@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          DeFi 去风险：分析去中心化系统中的系统性风险 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="由于高杠杆和流动性不匹配，DeFi 尤其表现出许多漏洞。在某些应用中，如果发生冲击，内置的互连性会导致级联故障的可能性很高。" />
+<meta name="keywords" content="DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38704/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="DeFi 去风险：分析去中心化系统中的系统性风险" />
+<meta property="og:description" content="由于高杠杆和流动性不匹配，DeFi 尤其表现出许多漏洞。在某些应用中，如果发生冲击，内置的互连性会导致级联故障的可能性很高。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38704/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="DeFi 去风险：分析去中心化系统中的系统性风险">
+<meta itemprop="description" content="由于高杠杆和流动性不匹配，DeFi 尤其表现出许多漏洞。在某些应用中，如果发生冲击，内置的互连性会导致级联故障的可能性很高。"><meta itemprop="datePublished" content="2022-06-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4109">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DeFi 去风险：分析去中心化系统中的系统性风险"/>
+<meta name="twitter:description" content="由于高杠杆和流动性不匹配，DeFi 尤其表现出许多漏洞。在某些应用中，如果发生冲击，内置的互连性会导致级联故障的可能性很高。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">DeFi 去风险：分析去中心化系统中的系统性风险</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-08">
+      2022-06-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4109 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>从来没有避免金融灾难的万能方法。</strong></p>
+<p>在不可预测的社会中，系统性风险被只能部分处理。经济条件、技术和人类行为都会随着时间而变化，因此应对系统性风险的方法也必须保持可变。这种发展不一定会带来更有效和更稳定的状态，因为它会不断受到创新、监管行动、金融市场参与者不断变化的心理模式和行为的影响。在传统金融和去中心化金融中都是如此。</p>
+<p><strong>我们将系统性风险定义为：相互关联的代理网络中的风险，其中一个或多个代理造成的痛苦可传播给网络中的其他几个代理，从而产生广泛的危机。</strong> <strong>系统性风险传统上与制度失灵有关。</strong> 其中，违约可能导致资本成本的催化性增加，银行挤兑就是一个例子，这会使得银行被迫破产。由于银行经常相互借贷，违约行为可能会引发多米诺骨牌效应。</p>
+<p>一般来说，有3种情况被认为是系统性风险。</p>
+<ul>
+<li>
+<p><strong>信息传染——储户对危机可能性的预期导致银行挤兑。</strong></p>
+</li>
+<li>
+<p><strong>直接传染——通过银行间层面和系统产生的债务/信用关系等金融联系，或公司间信用链等其他风险敞口传播。</strong></p>
+</li>
+<li>
+<p><strong>共同风险——资产价值下降，风险在于持有相同或相关资产的代理人。</strong></p>
+</li>
+</ul>
+<h2 id="传染图理论"><strong>传染图理论</strong></h2>
+<p>让我们从图论的角度分析默认传染的影响。如果额外的链接有助于在网络中的节点之间分配与它们的吸收能力成比例的损失流，那么就抵御传染的能力而言，网络将变得更加健壮。只有在以下非常严格的要求下，才能保证轻微的特殊冲击，才能保证连通性的有利效果：</p>
+<ol>
+<li>  损失流在网络N上展开，沿着有向树</li>
+</ol>
+<p>2）所有节点具有相同的吸收能力和向外扩张能力。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0608/25_3awrfazeqz.png" alt="DeFi 去风险：分析去中心化系统中的系统性风险"></p>
+<p>在上图中，特异性冲击击中虚线的起始节点。链接的添加对以前未触及的网络部分造成了一些损害。因此，损失的负担由更多的节点承担，从而减少了流量对每个单个节点的影响。但是，如果影响太大，则增加的连接性会导致连级故障。</p>
+<p>在闭合路径和循环中，网络会产生不均匀的损失分配。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0608/25_8kq0vpvvom.png" alt="DeFi 去风险：分析去中心化系统中的系统性风险"></p>
+<p>闭合路径情况</p>
+<p>将 B 连接到 E 的虚线创建了一条闭合路径，使 E 承载损失，同时减少可能流向 C 和 D 的流量。如果 C、D 和 E 具有相同的吸收能力，则虚线的作用使系统能够更好地处理传染。</p>
+<p>同样的原因也适用于循环路径。在下图中，虚线创建了 A =&gt; B =&gt; D =&gt; A 的循环，损失减少到 E。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0608/25_uzzpp4ve86.png" alt="DeFi 去风险：分析去中心化系统中的系统性风险"></p>
+<p>循环路径情况</p>
+<p>因此，连接度低的网络更可能是树状网络，而连接度高的网络更可能是循环和闭合路径。更高程度的连通性导致借贷行为更加多样化。将链接添加到具有高度连通性的网络会增加循环和封闭路径的数量，因此会降低去中心化多样性的好处。因此，当网络的连通性达到顶峰时，多样化的好处也得到了最大化。</p>
+<p>基于以上情况，我们可以提出一个理论：</p>
+<p><strong>在有向链路数量与节点数量比例较低的网络中，连接将会增加。对传染最具弹性的网络结构，则是具有最高连接可能性的网络结构。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0608/25_l3s3dmjid4.png" alt="DeFi 去风险：分析去中心化系统中的系统性风险"></p>
+<p>显示高阶网络对银行所经历的最大冲击的影响</p>
+<p>为了展示高阶网络与所经历的最小/最大冲击之间的关系，我们使用传统的银行网络来模拟市场冲击和传染事件，其灵感来自Stuart Gordon Reid。我们创建了一个包含大约 50 家银行的银行间网络模型。然后我们统一生成一个介于 50 到 2500 之间的随机数来表示网络中的连接数（节点是随机选择的）。当连接数等于 50 时，每个 bank 仅连接到另一个 bank。理论上，当连接数等于 2500 时，所有 bank 都是互连的。</p>
+<p>创建网络后，模拟对系统的冲击并观察传染传播。随着冲击通过网络传播，冲击的影响与连接到每家银行的邻居数量成正比。</p>
+<p>这些图表有助于可视化趋势并且已经过平滑处理。从这个初步的实验中，我们可以看到网络规模的增加与网络稳定性的整体增加呈正相关，但在某个点之后，稳定性会恶化。这是相当直观的，因为完全连接的网络最容易受到系统性风险传染的影响。这是一些方面，也可以转化为加密网络，每个验证节点代表每个银行节点，尽管这个模型非常简单。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0608/25_l4jbs8w3ni.png" alt="DeFi 去风险：分析去中心化系统中的系统性风险"></p>
+<p>显示高阶网络对银行所经历的最小冲击的影响</p>
+<h2 id="区块链环境中的系统性风险"><strong>区块链环境中的系统性风险</strong></h2>
+<p>到目前为止，我们只讨论了广义节点网络的系统性风险，这些风险可以归因于各种网络，宏观和微观等。但是，系统性风险只会随着系统变得更加复杂而增加。区块链技术已经从根本上改变了衍生品的市场结构。相比之下，中央交易对手通过创建容易失败的大型实体来创造风险。区块链去中心化清算功能可以降低过度中心化带来的风险。理想的基于区块链的系统将清算功能去中心化，并将这些任务分配给网络成员，而不会造成不平等的压力。</p>
+<p>让我们考虑一个去中心化清算系统，它通过默认传染来减轻系统性风险。实际清算功能的主要挑战是确定可用资金和解决对支付资历的分歧。在区块链清算机制中，这两个问题是自动解决的，而不是通过中介，从而减少了摩擦。因此，区块链系统既提高了违约资产的回收率，又增加了银行对风险交易的责任。</p>
+<p>唉，我们发现自己在重复一句古老的格言：闪光的不是金子。由于对中心化治理形式不可避免的需求，以及共识机制具有具体权力的趋势，区块链系统只有一种去中心化的错觉。<strong>由于高杠杆和流动性不匹配，DeFi 尤其表现出许多漏洞。在某些应用中，如果发生冲击，内置的互连性会导致级联故障的可能性很高。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0608/25_bk5d4k7e3t.png" alt="DeFi 去风险：分析去中心化系统中的系统性风险"></p>
+<p>DeFi 和 CeFi 在加密领域的主要区别在于，金融服务是通过智能合约实现自动化，还是由中心化中介机构处理以及稳定币设计的处理</p>
+<h2 id="系统性风险缓解"><strong>系统性风险缓解</strong></h2>
+<p>预言机系统是智能合约的喉舌，这经常被认为是一个关键的故障点。可以在流行的去中心化预言机服务 Chainlink 中找到最好地检验这一主张的案例研究。</p>
+<p>Chainlink 通过三管齐下的方法有效地将我们的理论应用于风险效率高的去中心化系统：</p>
+<ol>
+<li>
+<p>分布式数据源</p>
+</li>
+<li>
+<p>分布式预言机</p>
+</li>
+<li>
+<p>使用受信任的硬件。</p>
+</li>
+</ol>
+<p>我们现在将更仔细地研究分布式预言机如何帮助使其成为一个传染性风险容忍系统。 </p>
+<p>Chainlink 构建了一个模块化而非单一的系统，以确保风险不会集中在一个预言机中。这将创建n 个不同的预言机节点 { O 1 , O 2 , &hellip;, O n } 的集合，每个预言机都联系自己不同的数据集源。</p>
+<p>Chainlink 防止级联故障的最佳方法之一是防止预言机相互复制。想象一个预言机O z 观察另一个预言机O i的响应并复制它。这可能会通过减少数据源的多样性导致安全性减弱，从而导致整个系统产生错误的响应。Chainlink 通过提交/显示算法避免了这种情况。下面的算法显示了一个保证可用性的协议，给定 3 f + 1 个节点。只有在做出所有承诺之后，Oracle 响应才会重新提交，并暴露于潜在的复制中。这排除了作弊预言机复制另一个预言机的响应。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0608/25_nzqs0c4gcr.png" alt="DeFi 去风险：分析去中心化系统中的系统性风险"></p>
+<p>来源：chainlink白皮书</p>
+<p>给定总共 3f + 1 个节点，最多f将有缺陷，这意味着至少有 2 f + 1 将在步骤 4 中发送承诺。这些承诺中最多f来自有问题的节点，因此至少有f + 1 来来自可信赖的节点。由于单个值A上的至少一个f + 1 承诺必须来自诚实节点，因此很明显，A或聚合响应将作为算法的结果是准确的。</p>
+<p>在认识到可能存在故障节点的同时，难以就值A达成共识，这类似于拜占庭将军的问题。</p>
+<h2 id="缺乏共识是系统性风险"><strong>缺乏共识是系统性风险</strong></h2>
+<p>拜占庭容错（BFT）共识协议是拜占庭式的解决方案。</p>
+<p>拜占庭将军问题，由Lamport、Shostak 和 Pease在 1982 年提出。该问题指出，有一支军队散布在城市周围，由一名将军和 n-1 名中尉组成。军队正准备攻击一个共同的敌人，但尚未决定何时发动攻击。只有全军同时冲锋，攻击才会成功。通过来回发送信号，将军和他的副手必须就最佳打击时机达成一致。然而，有些副官是叛徒，这意味着他们可以对自己的决定撒谎。</p>
+<p>拜占庭将军的问题与区块链问题类似，网络（将军和他的副手）必须就广播交易（攻击的时间）达成一致，即使某些节点不可靠（副手背叛）。拜占庭容错是系统的一种属性，它允许容忍来自拜占庭将军问题的给定数量的故障，从而降低通信故障的风险。</p>
+<p>传统的金融系统不是 BFT 系统。TradFi 仍然成为不诚实或错误信息输入的牺牲品，因此，灾难接踵而至。这个问题是如此普遍，以至于墙上的一个裂缝最终可能升级为整个房子的破坏，可以这么说。</p>
+<h2 id="如何保障未来"><strong>如何保障未来</strong></h2>
+<p>改善 DeFi 的底层基础设施，需要公共监管机构和私营部门参与者的广泛努力。过去，监管倾向于将两者结合起来，更全面的政府监管时期源于系统性危机，或私营部门未能执行自我强加的标准。</p>
+<p>一般而言，自我监管在限制危机和保护客户方面越有效，国家监管就越难获得政治支持。因此，整个 DeFi 监管框架将受到私营部门自我监管举措的类型和有效性的重大影响。风险保险公司、DeFi 服务提供商和最终用户都将从系统安全水平的提高中受益，这会产生很多激励机制。保险提供商已经在指导智能合约安全最佳实践方面做出了贡献，但是，深思熟虑的尝试永远是有空间的，开发保险产品，开发标准和技术以降低灾难性的可能性事件及其附带损害都是值得的。</p>
+<p>最后，<strong>与传统金融相比，更高程度的数字化、透明度、自动化和拜占庭容错是 DeFi 在缓解系统性风险方面的主要技术优势</strong> 。去中心化清算功能并以成比例的方式在网络成员之间分配这些杂务（即：定向链接≤节点）是理想的基于区块链的风险缓解解决方案。DeFi 中使用的开源代码和可公开验证的账本越多，就越容易构建自动化风险模拟、压力测试、监控、预警信号、断路器、保险范围、索赔处理、报告和其他集成形式的风险管理。</p>
+<p>文/TheTieLabs</p>
+<p>编译/ S.L</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38730/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">a16z：如何建立提高智能合约安全性的开发流程</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38749/">
+                <span class="next-text nav-default">Felix Capital推出6亿美元基金支持Web3初创公司</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#传染图理论"><strong>传染图理论</strong></a></li>
+    <li><a href="#区块链环境中的系统性风险"><strong>区块链环境中的系统性风险</strong></a></li>
+    <li><a href="#系统性风险缓解"><strong>系统性风险缓解</strong></a></li>
+    <li><a href="#缺乏共识是系统性风险"><strong>缺乏共识是系统性风险</strong></a></li>
+    <li><a href="#如何保障未来"><strong>如何保障未来</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

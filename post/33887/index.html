@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          为什么说模块化是必然的？以及它对我们的启示 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="逆向思考如何设计一条公链，你会发现模块化是多么的顺理成章" />
+<meta name="keywords" content="公链" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/33887/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="为什么说模块化是必然的？以及它对我们的启示" />
+<meta property="og:description" content="逆向思考如何设计一条公链，你会发现模块化是多么的顺理成章" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/33887/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="为什么说模块化是必然的？以及它对我们的启示">
+<meta itemprop="description" content="逆向思考如何设计一条公链，你会发现模块化是多么的顺理成章"><meta itemprop="datePublished" content="2022-02-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6008">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="为什么说模块化是必然的？以及它对我们的启示"/>
+<meta name="twitter:description" content="逆向思考如何设计一条公链，你会发现模块化是多么的顺理成章"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">为什么说模块化是必然的？以及它对我们的启示</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-02-08">
+      2022-02-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6008 字 -
+        预计阅读 12 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>逆向思考如何设计一条公链，你会发现模块化是多么的顺理成章</p>
+<p>此前PANews在文章《Layer2之后该怎么扩容，深度解读Celestia的数据可用性模块》中简单介绍过什么是模块化，但这次希望在此基础上，谈谈为什么区块链需要被模块化。</p>
+<p>首先来复习一下模块化是什么。在这个概念中，一条公链可以被分解成安全层，数据可用层和执行层。安全层通常是承载共识的，也就是负责让最终交易结果上链。数据可用层则可以被简单理解成帮助执行层“自证清白”，防止执行层作恶的。我们常挂在嘴边的Rollup，或者Layer2就是执行层，它是一个模块，同时也是区块链模块化的产物，负责执行交易。</p>
+<p>这三项功能原本被放到一整条公链中，直到链上的节点越来越多，区块越来越大，交易越来越忙不过来，最后的结果就是，不但Gas费爆炸了，出块速度还很慢。于是就有我们常说的区块链“不可能三角”理论，即如果用加大区块大小来提高数据流通量，就得拉高节点的门槛，淘汰掉算力不达标的节点同时，也降低公链的去中心化程度。如果想要保住去中心化，只有增加更多更强大的节点，可节点一多，交易速度又慢了，只得继续增加区块大小，就又回到了最开始的问题。这个故事有很多种讲法，核心是只能靠牺牲一部分来成全另一部分，就像Solana，价格低，速度快，但是中心化程度高，它赌的是摩尔定律，赌算力和带宽的成本增长追不上链上交易给它带来的收入增长。</p>
+<p>到这里，模块化的必然性就已经出现了，现在我们甚至不必再讨论扩容的方法将会有哪些，Layer2已经从一种可能性坍缩成了现实，将公链解耦的模块化就是答案。我们可以把上述三项功能中，其中至少一项单独外包出去的公链称为模块化公链，比如以太坊，它把执行层外包给了Layer2。也比如Polkadot和Near，它们有分片验证的外包设计。而Avalanche则像一个伪模块化公链，它看到了模块化的好处，于是做了一个单片链的组合，也让公链的基本功能在自家门内做了解耦，缺憾是目前还没有做好共享安全性。Cardano则处在一个临时状态，尽管没把已经解耦的功能外包出来，但从路径图上看也只是时间问题了。这些都是公链在模块化上所做的尝试，而模块化的最终愿景可能是Celestia与Evmos合作的那样——一个Rollup套娃，具体在开头所提文章中有展开阐述。所以，长远来看，模块化是公链扩容的必经之路，即便是“反对模块化”的Near其实反对的也只是“别人来做我的模块”，因为它要“我自己做我的模块”。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0208/19_5puezuk1vr.png" alt="为什么说模块化是必然的？以及它对我们的启示"></p>
+<p>目前不仅执行层在模块化之后的成就有目共睹（Arbitrum和Optimism的体验明显好过Solana或是Fantom这类的Layer1公链，因为前者只需要一个算力足够强的节点来做Sequencer就够了，而后者哪怕是牺牲了去中心化来提升节点性能，也需要至少21个节点来做Sequencer），数据可用性也因此需要和执行层解耦。只有这样，当Layer2出问题时，用户才能借助数据可用性来提出“挑战”（针对OP）或是强行把自己的资产从Layer2上拉回Layer1（针对ZK）。这样的一个数据可用层，放在Layer2上（或是Layer2提供的链下第三方验证机构），你会不放心。放在Layer1上，你会心疼钱。分片并且放在一个单独的链上，随用随取，可能是目前最好的答案。这就是模块化开始快速发展的背景，长期趋势仍在酝酿，短期痛点已然出现。</p>
+<h2 id="模块化背后的递归思维">模块化背后的——递归思维</h2>
+<p>考虑到这个话题对大多数人是无意义的，就像我们吃鸡蛋，却不必知道没心情下蛋的母鸡该怎么哄。所以我希望能和大家讲讲模块化背后的抽象思维，也许再听完后，你会发现这种思维其实无处不在，并且在理解后，能帮我们解决不那么抽象的问题，就像乐事薯片的“双曲抛物面”如此坚固，背后的道理却和蛋壳结构相同。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0208/19_s4s7pn9rsm.png" alt="这种形状是刻意为之，不是受热不均，不信你自己炸一下"></p>
+<p>“模块化”的概念在web2.0已经被实践了很多年了，甚至可以说，从打有计算机开始，我们就在想办法把一类问题，做成一个模块。坦白讲计算机的本质是机械运动，就像算盘，我要去拨动算珠，算盘才能执行运算，我每拨动一下，算盘运算一次，所以这个时候真正在<strong>执行计算的是我，不是算盘</strong> 。我今天遇到了一个算数问题，我拨了100次才把这个问题解决，但我没有把这个问题的答案记下来。如果第二天，我遇到了同样问题，我还是需要拨100下算盘。相信各位读者都有投资的经验，不难看出，我这两天一共拨了200次算盘，解决了两次问题，这是我用时间换来的基础收益。可如果我在第一次计算这个问题的时候把答案记下来了，那无论我遇到这个问题几次，我都只需要拨最开始那100次算珠。<strong>资源的复用，才能带来超额收益</strong> 。在这个例子里，被复用的是“时间”。“把答案记下来”就是我得到的最基础的模块。在此之后，我还可以把更多计算公式也做成一个个模块，这样当计算机收到我的提问后，会找到对应的模块执行，最终把执行的结果反馈给我。此时在<strong>执行计算的是计算机，不是我</strong> 。这个过程，就叫递归，所有的Rollup本质也是一种递归，它们通过不断的调用自身，来满足数据可用层的验证要求，这种资源的复用，是我们在大多数时候觉得计算机比人类效率更高的主要原因。</p>
+<p>人类对这个世界的认识是由近及远、从少到多，一点点扩展来的，这就是人类固有的认识和思维方式，根植于我们的基因中。这样的认识和思维方式让我们很容易理解具体的事务，但是限制了我们的想象力和大局观。当需要思维触达那些远离我们生活经验的地方时，我们就会出现理解障碍。</p>
+<p>和人不同，计算机在一开始就被设计用来处理规模大得多的问题，因此计算机有条件采用与常人完全不同的方式来解决问题。如果一个人能够站在计算机的角度想问题，就可以被算作拥有“计算思维”，这就如同我们说某个人具有科学思维或者工程思维一样。如果一个人在做事情的时候，采用的是计算机解决问题的方法，这个人就具有计算机的方法论。在计算机的思维中，最重要的是一种自顶向下，先全局后局部的逆向思维，它被称为递归（Recursive）。与之相对的，是人类采用的自底向上，从小到大的正向思维，它被称为递推（Iterative）。</p>
+<p>在扩容的问题上，假如我们用现在的常规思维去想，交易变多了，那我需要给矿工更多的费用，而且我收到的交易费一定要高于我给矿工的费用，否则就会亏损，但我现在没这么多钱，所以我只能提高交易费，可这样一来交易量会缩小，于是我只好增加吞吐量，同时让节点数量减少，在安全性上做妥协。这种情况下，如果不减少节点数量，又不提高交易费，就只好发行更多的代币，用来支付矿工，这样做的结果就是这条公链的通胀越来越严重。比如Solana，至今为止，它一共执行了562亿次交易，按照其官网公布的，每笔交易手续费为0.00025美金，其收取的手续费总额为1400万美金左右。如果我们去Stakingrewards上看一下，可以查到它目前的Staked Value在455亿美金左右，按照较低一档的APY 5.88%计算，Solana最近三十天内要分给质押者约2.2亿美金。也就是说自其主网上线至今收到的所有交易费，仅相当于最近一个月支出的6.2%。以至于Solana需要15.4万TPS的吞吐量才有可能做到收支平衡，尽管我们知道它赌的就是摩尔定律能把带宽和算力成本拉下来，但这种规模的亏损，怕是禁不起一场熊市。这就是递推的思维，我遇山开山，遇水架桥，直到走进一个“死胡同”里。</p>
+<p>以太坊没有采用这种通胀模型，其结果就是交易费用爆炸，但它在一天里收取的交易费用，甚至比Solana和Polygon一年的交易收入加起来都多。如果我们逆向去想这件事，矿工收取用户手续费，仅仅是因为矿工执行了交易么？交易人人都能执行，之所让矿工帮忙上链，无非是因为用户希望自己的交易能得到去中心化的安全保障。那让一条链把安全和交易全做了，岂不是自找不痛快？Solana收取交易的费用，付给矿工的是安全的钱，那它肯定亏本啊；用户交给Eth交易的任务，Eth收的却是安全的钱，那用户显然也不痛快。所以为什么要把安全和交易混为一谈呢？假如把数据可用性和分片从公链上分担出来，那节点越多，数据吞吐量就越大，而且节点门槛可以做到和手机一样，凭着这种可以无限增大的性能和与Layer1上矿工收入完全无关成本，我可以让这条链上的Rollup少说增加一个数量级。众多的Rollup，收取的也仅仅是交易的费用，提供的也是交易的服务。Rollup的数量上来了，能交给Layer1和数据可用层的费用就也增加了，前者的矿工这下任务轻了，把数据压缩上链就行了，后者也有钱买更多节点了，于是这下又增加了Rollup的空间。重复执行这项“递归”，公链将得益于全局思考的模块设计，走上一个正循环。</p>
+<h2 id="模块化的深化web3加强组合性">模块化的深化，Web3加强组合性</h2>
+<p>我甚至认为模块化在占领区块链底层后依然不会停下脚步。Web3.0才刚刚开始形成概念，我们就已经看到有个GameFi项目Metasport，用ETH做资产层，Starkware做P2E激励层，用Internet Computer做游戏玩法和逻辑层，IPFS做存储冗余层。模块化不应该被如此简单地定义在底层技术上。虚拟世界与现实之间的主要不同，在于虚拟世界更加稳定，不会因为一场突如其来的疫情，就让各国之间的供应链断裂，生产者被迫囤积大量库存，或干脆自己做自己的供应商。虚拟世界最大的风险不过是熊牛转换，在现实世界面前不值一提，所以我们也希望看到越来越多的应用开发者，在自己保留部分基础能力的同时，将实际任务外包给其它生态成员。毕竟虚拟世界的干扰因素少，所以我们有能力实现理论上的效率最大化。唯一需要考虑的就是安全问题，这个问题的难度等价于现在的跨链问题，但说到底也没什么大不了的，既然是技术问题，就总有解决的时候。</p>
+<p>我想说的效率，其实还有另外一层。就是在区块链世界逐渐被大众所熟悉的今天，会有更多的优秀人才和资本被吸引进来。在web3.0概念中，供应商们很难像web2.0那样把用户留存在自己的生态里。如果是这样，这些“增量”会选择以一种什么样的方式进入到区块链世界中？我能想到的方式有两种，一是做卖铲子的人，他们将是模块的供应方，在现有的基础设施中找到可以被改进的点，唯有这样才能不依赖“流量”，同时利用模块化打造出自己的长板，与所在生态拼接成一个“木桶”。还有一种方式是将自己在链下的流量导流到链上，流量的入口仍然在链下，他们将作为模块化的需求方，需要的是开箱即用的体验，以及快速的应用搭建速度。</p>
+<p>而模块化的区块链世界无疑能进一步拉低创新的门槛，我们甚至可以期待一个效率远超web2.0的区块链世界。<strong>只有当低水平的重复工作被模块化工具所终结，真正的创新才能开始</strong> ，对区块链来说是这样，对我们每个人来说也一样。远的不提，大家有没有发现几乎所有DEX的前端页面全都长得像一个样子，几乎每个Solidity初学者做的第一个完整项目都是把Uniswap的代码复制一遍。对于开发者而言，这些常被拿来“学习”的内容，本身就是一个个封装好的“模块”，很多人就是在“学习”的过程中，站在前人的肩膀上，发现他们之前没有解决好的漏洞，做出一点点改进，然后成为其他人可以站上的肩膀。</p>
+<p>现在开始，世界各地，从瑞士到马耳他到塞舌尔到新加坡到旧金山，会有更多一无所有的年轻开发者每天晚上扪心自问:</p>
+<p>和尚摸得，为什么我摸不得?别人可以简简单单的在前人的代码上改进出新的项目，为什么我不可以?既然模块化已经提供了足够的基础组件，我为什么要花时间自己再重新写一遍？当更多开发者发出这样的问题后，区块链上的创新将会指数增长。</p>
+<h2 id="总结">总结</h2>
+<p>模块化是扩容的答案：现有的公链要么已经开始模块化的尝试，要么仍处在币价涨幅难以支付矿工费用的亏损中。安全保护和计算执行是两种服务，理应分开收费。而这些仍在挣扎的公链，越早一天接入Layer2，其原始价值能被保留的越多，否则只能在无尽的通胀中被稀释殆尽。当然，将自己直接转化为某条公链的Layer2也是个可取的思路，我们不需要太多的公链用独立的安全层承载属于自己的共识，过度分散的共识对效率没有帮助，而自由的市场，终究会毁灭“更高效率”面前的所有阻碍。</p>
+<p>商业竞争促成模块化：只有资源的复用能带来超额收益，诚然公链可以开发自己的模块化来解决自己的扩容问题，但在同等劳动付出下，完全独立的模块化项目会服务更多的用户，商业法则会淘汰那些得不到超额收益的竞争者。而模块化无论对需求方还是供给方而言，都是效率最高的方式。</p>
+<p>安全问题很严峻，但不要被吓倒：web2.0解决安全性的方式能给我们带来一定启示，组件化在一开始带来的问题，比它解决的问题还要多。很多人一看到某些项目因为采用了多个供应商提供的模块\组件，结果被黑客找到机会，给用户带来了损失，就认为这个方向本身不对。实际上这可能仅仅是因为时间太短，我们还看不出效果。在区块链世界中，模块化的概念仍在早期，实践的步伐要慢，但既然已经迈出了第一步，在想要改变这个方向之前，要更慢。同理对于那些坚持单片设计的公链，大家也要多一些耐心。</p>
+<p>任何方向的改变在一开始都会有很大的下行的不确定性。比如我们常常讲免税可以刺激经济发展，从长远来讲能够获得更高的税收，但是幅度太大的免税会使得政府一下子入不敷出，然后不得不推高债务，成为经济发展的负担。牢记万事皆有滞后性，夏至来临的时候，往往还不到一年中最热的时候，把一克冰融化成水的能量，却能把这一克水从1度加热到80度。Web2.0的组件化花了很多年才初见成效。安全问题虽然是web3.0模块化的桎梏，但我相信它终有一天会被打破。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/33905/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">晚间必读5篇 | DAO：为什么治理很重要？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/33895/">
+                <span class="next-text nav-default">我为什么看好波卡Polkadot？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#模块化背后的递归思维">模块化背后的——递归思维</a></li>
+    <li><a href="#模块化的深化web3加强组合性">模块化的深化，Web3加强组合性</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

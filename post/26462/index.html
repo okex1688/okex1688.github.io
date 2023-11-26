@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="去中心化交易所代表了以太坊上最广泛的gas消耗。根据TheBlock的统计数据，与代币交换相关的合约（代码段）是消耗区块链资源最多的合约之一。" />
+<meta name="keywords" content="Gas" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/26462/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标" />
+<meta property="og:description" content="去中心化交易所代表了以太坊上最广泛的gas消耗。根据TheBlock的统计数据，与代币交换相关的合约（代码段）是消耗区块链资源最多的合约之一。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/26462/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-27T00:00:00+00:00" />
+
+<meta itemprop="name" content="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标">
+<meta itemprop="description" content="去中心化交易所代表了以太坊上最广泛的gas消耗。根据TheBlock的统计数据，与代币交换相关的合约（代码段）是消耗区块链资源最多的合约之一。"><meta itemprop="datePublished" content="2021-07-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-27T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3711">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"/>
+<meta name="twitter:description" content="去中心化交易所代表了以太坊上最广泛的gas消耗。根据TheBlock的统计数据，与代币交换相关的合约（代码段）是消耗区块链资源最多的合约之一。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-27">
+      2021-07-27
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3711 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>用户在以太坊区块链中发现的主要用例是无需中介即可在加密资产之间进行交换的能力。去中心化交易所或DEX是用于此活动的平台。它们可以概括为一个应用程序，允许您使用其池中可用的流动性将ETH或任何代币交换为其他代币。</p>
+<p>去中心化交易所代表了以太坊上最广泛的gas消耗。根据TheBlock的统计数据，与代币交换相关的合约（代码段）是消耗区块链资源最多的合约之一。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_2fs3vdatrb.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>来源：TheBlock</p>
+<p>尽管这些系统具有无需许可的性质、惊人的数量和无可争议的成功，但在链上进行操作成本高昂，给一些用户带来了负担。交易成本可以分解为几个不同的成本要素：</p>
+<ul>
+<li>
+<p>价格的影响</p>
+</li>
+<li>
+<p>流动性提供者费用</p>
+</li>
+<li>
+<p>滑点</p>
+</li>
+<li>
+<p>底层区块链的交易费用</p>
+</li>
+</ul>
+<p>了解这些成本对于资本效率至关重要，可以为做出正确选择的用户节省数千美元。</p>
+<p>DEX行业有几个可供用户选择的替代协议应用程序，它们提供相同的代币交换核心服务。本文旨在比较最后一个项目，当使用不同的指数在市场上可用的交易费用的成本。</p>
+<p><strong>为什么gas成本在交易和DEX之间存在差异？</strong></p>
+<p>任何链上操作都需要根据它消耗的计算资源量来定价。在以太坊网络中，gas是用于衡量用于执行每个特定操作的计算工作量的单位，并直接影响交易成本。由于每个协议采取不同的方法并且需要执行不同的功能来进行交换，因此每笔交易/协议的消耗也不同。</p>
+<p>一笔交易可以调用任意数量的函数，并与许多不同的智能合约进行交互。下面，我们可以看到使用Tenderly提供的工具进行的两个不同交易的gas消耗明细。如您所见，第二笔交易最终花费的gas比第一笔交易多70%。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_zeanuksun6.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>两种通用交换交易的Gas细分</p>
+<p><strong>比较法</strong></p>
+<p>每个DEX都有其执行交换的方法，但是可以在它们之间确定一些模式。为了比较不同DEX之间交易的gas成本，分别都选择了一种。UniswapV2代表了传统的恒定产品池，UniswapV3引入了中心化流动性池，选择了Curve作为其混合和自定义curve池，最后选择了带有加权池的BalancerV2。对于他们中的每一个，都设置了一个Dune表盘：</p>
+<ul>
+<li>
+<p>Balancer:https://duneanalytics.com/yulesa/Balancer-Gas</p>
+</li>
+<li>
+<p>Curve:https://duneanalytics.com/yulesa/Curve-Gas-Usage</p>
+</li>
+<li>
+<p>UniswapV2:https://duneanalytics.com/yulesa/Uniswap-V2-Gas-UsageUniswapV3:</p>
+</li>
+<li>
+<p><a href="https://duneanalytics.com/yulesa/Uniswap-V3-Gas-Usage">https://duneanalytics.com/yulesa/Uniswap-V3-Gas-Usage</a></p>
+</li>
+</ul>
+<p>仪表盘允许通过在选择框中输入池地址来单独检查每个池。它还有一个事务表来过滤异常值以进行更详细的调查。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_1cpwog8vg0.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>DEX gas比较仪表板</p>
+<p>当分析一个协议的多个矿池时，只有超过100笔交易符合上述标准的矿池才会被绘制出来，以获得更相关的结果。在分析与单个池交互的交易时，交易按交换中涉及的跃点数进行分组。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_0nm02jy2u4.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>涉及多次交换的交易</p>
+<p>交换执行可以包装在也执行其他代码的交易中。为了排除这种影响，只分析了直接调用协议保险库/路由器合约的交易。该过滤器用于排除由DEX聚合器和合约路由的交易，这些合约捆绑了多个会增加交易成本，但与DEX协议本身无关的功能。</p>
+<p><strong>Balancer</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_rusvjl76zs.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>Balancer池分布</p>
+<p>Balancer的大部分交易来自DEX聚合器应用程序，例如1inch、Metamask等。由于这些交易被排除在分析之外，这自然会减少可用的数据量。尽管如此，仍有14个矿池符合至少100个直接调用交易的标准。正如预期的那样，当单独评估每个池时，可以看到单跳交换和多跳交换之间的显着差异。另一项发现是，池中代币的数量不会改变使用它的交易的gas支出。重要的是要记住，Balancer中的V2代币池可能会也可能不会充当预言机——如果它们这样做了，当存储价格数据的内存槽被初始化时，gas成本会更高一些。这可以在这些池的移动平均图表上查看。请注意一旦所有内存插槽都已初始化，平均值是如何突然下降的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_vues58if9n.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_soscu28yo5.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_jlzlergahp.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>分别是LINK/WET、USDC/WETH</p>
+<p>和WBTC/WETH池分布</p>
+<p><strong>Curve</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_7vz9qhnq3p.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>Curve池分布</p>
+<p>从本文研究的DEX来看，Curve有其独特的机制，这使得比较有时会不平衡。每个Curve池（metapool除外）都是为其资产定制的。</p>
+<p>Curve显示出所分析的DEX之间最显着的gas消耗差异。这得到了部分解释，因为Curve允许交换未包装的代币，如DAI或USDC，而资金池设计为不依赖其他协议IOU，如cDAI或yUSDC，并且包装和拆分过程是交易的一部分。结果，尽管资金池中的资产从这些协议中获得了好处，但它使交易变得相当昂贵。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_ya5gzys6af.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_0yepeubi81.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_zjh5zbjj87.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>分别为3pool、renBTC和Tricrypto池的分布</p>
+<p><strong>Uniswap V2</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_toibmp1bnl.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>UniswapV2池分布</p>
+<p>除了作为此列表中最古老的协议之外，UniswapV2还被广泛采用。协议中已经创建了2500多个资金池，服务于资产的长尾市场。绘制上图时存在了一些限制，但它们可以描绘协议中的gas成本。一些最受欢迎的代币，例如稳定币和BTC，广泛用于ABC&lt;-&gt;ETH&lt;-&gt;WBTC等交易中的多跳交换。有时ABC转账是gas密集型的，会增加涉及这些流行代币的交易中使用的平均gas。再一次，在调查每个资金池时，交易gas使用之间最显着的差异可以分配给每笔交易进行的跳数。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_5sms1stagc.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_e7jo7i8g6w.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_kh7o75m6nq.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>分别是LINK/WET、USDC/WETH</p>
+<p>和WBTC/WETH池分布</p>
+<p><strong>Uniswap V3</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_omh4fyaesq.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>UniswapV3池分布</p>
+<p>Uniswap协议第3版的最大担忧之一是交换交易可能会花费更多的gas。Uniswap V3交易受其造成的价格影响。相对于可用流动性的订单越高，它将越能推动价格跨分时，离散的价格区间代表0.0001%的价格上涨或下跌，其中流动性需要调整。由于大多数交易对价格的影响相对较小，因此交易成本中位数与之前的版本一致。但是，在处理适度的流动性池时，用户需要关注订单对价格的影响。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_5sms1stagc.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_e7jo7i8g6w.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_kh7o75m6nq.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>分别是LINK/WET、USDC/WETH</p>
+<p>和WBTC/WETH池分布</p>
+<p><strong>比较协议</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_snhy2jvl0i.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>每个协议的gas成本</p>
+<p>选择了Balancer V2和Uniswap V2和V3共有的三个相同数位池来进行详细比较——USDC/WETH、WBTC/WETH和LINK/WETH。由于Curve的方法不同，因此选择了它的一些资金池来融入图片，但不会参与比较。</p>
+<p>可以观察到，3个DEX之间消耗的gas没有显着差异。观察到的差异可能与为研究选择的方法不精确有关。对于2跳交易，差异可归因于交易中涉及的其中一个代币合约中的转移函数的二阶效应。</p>
+<p>此外，这里有一个表格，计算成本（以美元为单位）、当前ETH价格和DEX之间观察到的大致差异。从一个角度来看，在2000美元的ETH场景中，gas为50gWei，为WBTC/WETH 2跳交换选择Uniswap V2而不是V3的差异将节省3.12美元。如果订单金额超过1040美元，通常0.3%的LP费用要高于此差额。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0727/14_hykbv0zwyl.png" alt="各大DEX的Gas费对比：执行交换所进行的跳数才是影响Gas差异的关键性指标"></p>
+<p>不同场景的gas成本</p>
+<p><strong>结论</strong></p>
+<p>该研究表明，分析的DEX之间没有显着差异。对交易所使用的gas的最大影响是执行交换所必须进行的跳数。1跳和2跳交易之间的差异比DEX之间的差异更有意义。此外，根据交易的规模，交易成本的其他因素，如LP费用或滑点，可能会对总成本产生更显着的影响。</p>
+<p>尽管Curve在gas支出方面有一些非常有竞争力的资金池，但其中一些资金池是用底层协议IOU设计的，包装和展开过程对它们的交易有显著影响。</p>
+<p><strong>关于分析的考虑</strong></p>
+<p>执行交易通常意味着调用参与的代币合约的转移函数——例外是由于Balancer的单一保险库模型或在Balancer保险库中使用内部用户余额，而在Balancer上进行多跳交易。一些代币在调用转移函数时可以执行的不仅仅是简单的记账，从而增加了交易的成本。尚未完全实现使用Dune排除这种影响的实用方法。当交易执行多跳以进行交换并且其中一个代币表现不佳时，这种行为尤其令人担忧。虽然，相信这个问题会系统地影响所有协议，并且很少会显着影响结果。将分析范围限制为每个代币池的单跳交易可以减轻这种影响。</p>
+<p>由于某些协议从一开始就有数以千计的交易，在Dune/Internet 浏览器中处理如此大量的数据会大大降低仪表板的可用性。因此，在这些协议中，对分析的交易数量施加了限制。然而，数据人口的减少不会显着改变结果。对于单个池视图，仪表板的上限为1000笔交易。Uniswap V2仅限于上个月的交易。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/26417/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">高盛向美SEC申请推出DeFi ETF</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/26442/">
+                <span class="next-text nav-default">哈萨克斯坦进行加密货币银行账户试点，允许用户交易加密货币</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

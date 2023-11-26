@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          星际联盟解读 Filecoin中的WinningPoSt是什么？区块奖励是如何产生的？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="WinningPoSt是Filecoin网络奖励存储提供者的机制，旨在构建一个安全、高效、可靠地分布式存储网络。" />
+
+  <meta name="keywords" content="区块大全, 区块链, 区块链资讯, 区块链快讯, 区块链新闻, 比特币行情" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/28587/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="星际联盟解读 Filecoin中的WinningPoSt是什么？区块奖励是如何产生的？" />
+<meta property="og:description" content="WinningPoSt是Filecoin网络奖励存储提供者的机制，旨在构建一个安全、高效、可靠地分布式存储网络。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/28587/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-13T00:00:00+00:00" />
+
+<meta itemprop="name" content="星际联盟解读 Filecoin中的WinningPoSt是什么？区块奖励是如何产生的？">
+<meta itemprop="description" content="WinningPoSt是Filecoin网络奖励存储提供者的机制，旨在构建一个安全、高效、可靠地分布式存储网络。"><meta itemprop="datePublished" content="2021-09-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-13T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4549">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="星际联盟解读 Filecoin中的WinningPoSt是什么？区块奖励是如何产生的？"/>
+<meta name="twitter:description" content="WinningPoSt是Filecoin网络奖励存储提供者的机制，旨在构建一个安全、高效、可靠地分布式存储网络。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">星际联盟解读 Filecoin中的WinningPoSt是什么？区块奖励是如何产生的？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-13">
+      2021-09-13
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4549 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>概述:</p>
+<p>WinningPoSt是Filecoin网络奖励存储提供者的机制，旨在构建一个安全、高效、可靠地分布式存储网络。</p>
+<p>Winning代表出块权，Post就是在获得出块权时需要提交的时空证明。当存储提供者通过EC共识的leader竞选算法成功赢得出块权后，便要进行WinningPoSt挑战。WinningPoSt挑战的答案必须在短时间内提交，使得存储提供者来不及通过密封找到挑战的答案，以此保证挑战者存储了指定数据副本。证明答案会放进区块中，每个成功创建区块并被主链认可的存储提供者会得到FIL奖励，并且在区块中打包消息，可以收取其他Filecoin参与者的费用。如果存储提供者未能及时提交时空证明，便会失去本次打包区块的机会，但不会受到任何惩罚。</p>
+<p>本文将详细分析Lotus代码中WinningPost以及EC共识的设计。</p>
+<p>源码分析</p>
+<p>(基于Lotus v1.11.1)</p>
+<p>1. 启动</p>
+<p>使用lotus-miner init初始化一个miner，该miner将主要负责两个任务，一个是worker的调度，另一个Mining协程就是负责出块（WinningPoSt）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/1_j99v1ru36e.png" alt="nhuBElJW0Jzfe5sRZHwb4Gjem9FwvL37NudU8ZxV.png"></p>
+<p>2. m.mine()</p>
+<p>type MiningBase struct {</p>
+<p>   TipSet     *types.TipSet</p>
+<p>   NullRounds abi.ChainEpoch //从Base到当前高度,没有产生区块的轮次数</p>
+<p>}</p>
+<p>go  m.doWinPoStWarmup()   //唤醒WinningPoSt,log记录本次唤醒时长</p>
+<p>For {</p>
+<p>  For {</p>
+<p>    •Prebase = GetBestMiningCandidate   //获取最优Tipset</p>
+<p>    •如果base和prebase的高度、nullrounds相同，则退出循环进行出块   //如果此时拿到的不是最优Tipset，出块会形成孤块</p>
+<p>    •waitFunc   //等待一个网络传播延迟</p>
+<p>    •api.BeaconGetEntry(prebase.TipSet.Height()+prebase.NullRounds+1)  //等待能够获得最新回合的随机信标</p>
+<p>    •Base = prebase </p>
+<p>  }</p>
+<p>  b = m.mineone()    //竞选Winner</p>
+<p>  SyncSubmitBlock(b) //将新创建的区块通过PubSub同步到网络上</p>
+<p>}</p>
+<p>首先，Filecoin是一个由Tipset组成的链，一个高度对应一个Tipset，Tipset包含了对应高度生成的区块，目前一个高度预期出块数约为5，如果在一个高度没有人出块，则称为空Tipset。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/1_2iapo67syi.png" alt="czNp5T9a2JfPHJjEMk840lO9o78Vvo3EldaRYmZW.png"></p>
+<p>Mine函数使用了两层循环，里面一层是为了获取最优Tipset，最优Tipset是指从当前轮次向前推，上一个非空的完整的Tipset，称为base，每有一个空Tipset，base.NullRounds加1。但由于产生空Tipset（即在该轮次全网没有人出块）的概率非常低，一般情况下NullRounds值为0。外层是获取最优Tipset后开始竞选Winner，竞选的成功率基于泊松分布，如果竞选成功并创建区块同步到网络上，该区块被主链认可后，便能得到FIL奖励。</p>
+<p>3. m.mineone()</p>
+<p>//获取Base的基本信息，包括Miner和全网算力、需要抽取的sector信息、用于生成随机数的Beacon</p>
+<p>MinerGetBaseInfo() </p>
+<p>       //获取900个高度前的Tipset</p>
+<p>       GetLookbackTipSetForRound </p>
+<p>computeTicket()</p>
+<p>       //依次写入base回合随机信标、加密类型、上一轮次和Miner地址计算Hash</p>
+<p>       Store.DrawRandoness</p>
+<p>       ComputeVRF  //使用私钥给Hash值签名，生成一段可验证的VRF输出</p>
+<p>IsRoundWinner()</p>
+<p>       //依次写入本轮的随机信标、加密类型、当前轮次和Miner地址计算Hash</p>
+<p>       Store.DrawRandoness </p>
+<p>      //若某Miner成功赢得选举提交区块，其他Miner可以通过提交的VRF输出判断winner是否符合条件</p>
+<p>      ComputeVRF </p>
+<p>      //计算赢得的奖励数，算法基于泊松分布</p>
+<p>      ComputeWinCount(MinerPower,NetworkPower)</p>
+<p>      //抽取一个Sector,并计算该Sector上的66个叶子的CommR</p>
+<p>      ComputeProof()</p>
+<p>api.MpoolSelect() → CreateBlock() //从消息池中挑选一些Message打包成区块</p>
+<p>MinerGetBaseInfo获取用于出块的基本信息，需要注意的是其中GetLookbackTipSetForRound获取了900个高度前的那个Tipset，因为此时可以认为该Tipset在链上的状态是稳定的，几乎不可能处于分叉链上。用于出块的Miner算力、全网算力、抽查扇区和worker均是基于900个高度前的Tipset，而不是当前的情况。</p>
+<p>其中抽查扇区逻辑使用cgo调用rust函数generate_winning_post_sector_challenge实现，具体如下：</p>
+<p>let mut hasher = Sha256::new();</p>
+<p>hasher.update(AsRef::&lt;[u8]&gt;::as_ref(&amp;prover_id));</p>
+<p>hasher.update(AsRef::&lt;[u8]&gt;::as_ref(&amp;randomness));</p>
+<p>hasher.update(&amp;n.to_le_bytes()[..]);</p>
+<p>let hash = hasher.finalize();</p>
+<p>let sector_challenge = LittleEndian::read_u64(&amp;hash[..8]);</p>
+<p>let sector_index = sector_challenge % sector_set_len;</p>
+<p>其将prove_id、随机数和抽查扇区类型做sha256的hash计算，计算结果与扇区数取模，得到结果就是抽查的扇区ID。</p>
+<p>这里选择抽查扇区ID时引入了随机数，随机数的生成基于DRand协议。DRand是一个公开的可验证随机信标协议，使用基于BLS的(t,n)-阈值签名方案。简单来说，就是生成n份签名，只需要收集到其中t份签名就能重构出完整的BLS签名，Filecoin使用blake2b散列算法将签名转换为一个256bit的字符串。drand轮数和Filecoin高度之间存在映射关系，在winning竞选前，MinerGetBaseInfo函数以当前高度和base高度为入参，得到相对应的DRand轮数来获取随机信标。如果DRand信标中断则会打断Filecoin区块的产生，期间Miner只能发布空块。不过DRand分发恢复后会快速产生drand值赶上当前回合，从而快速的恢复Filecoin区块生产。</p>
+<p>ComputeTicket得到的Ticket存放到创建的区块中，用于该区块在Tipset中的排序，Ticket最小的优先级最高，其打包的消息会被优先执行。</p>
+<p>ComputeProof会调用Rust函数fil_generate_winning_post生成时空证明。该函数也引入了随机数，以从上述ID对应的扇区抽查随机的66个叶子节点，验证是否可以正确计算出CommR和Merkle树根。</p>
+<p>EC共识</p>
+<p>区块链世界中，千千万万个Miner夜以继日的工作为的就是取得出块权，分配出块权的机制称为共识，像Bitcoin使用的是PoW工作量证明，谁先算出哈希难题，谁就有权出块得到奖励。</p>
+<p>上面的mineone代码逻辑中包含了Filecoin中最为重要的共识协议称为EC共识(Expected Consensus)。EC共识采用非交互的方式来选举leader，即每个节点私下进行运算，如果运算成功，提交一个证明即可。在每个Epoch开始时，所有的存储提供者都会运行一次leader选举，选举中它们做的是同一道题，计算量不大，只是每个人的参数不同，预期指定数量的参与者代入参数后答案不为0，竞选成功获得出块权。EC共识保证了竞选获胜者是随机的，获胜的几率仅仅与他们自身的算力大小相关，目前每一轮全网预期获胜数为5，并且EC共识的计算量很小，是一个绿色环保的共识机制，使得存储提供者更愿意投入存储空间而不是计算力。</p>
+<p>1. 泊松分布</p>
+<p>X服从参数为λ的泊松分布，则概率分布为</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/1_apsc0shvs0.png" alt="Zuj1Ha9fiUxw3UWNc6ftKUMFSsSnG438Xuhz71On.png"></p>
+<p>期望E(X)= λ，λ很小时的泊松分布图像如下</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/1_qocn83whol.png" alt="bDL8kJjHkg7SQnaM3wymGyYUHpHxljlF4OZ2HZrw.png"></p>
+<p>2. ComputeWinCount函数</p>
+<p>Lhs  = blake2b.Sum256(ep.VRFProof).Int   //获取一个随机数，位于[ 0, 2^256)</p>
+<p>λ = power/totalpower * 5  //λ很小时,泊松分布图像如上图所示</p>
+<p>Rhs(j) = 1-P(X=0)-p(X=1)-…-p(X=j)   * 2^256</p>
+<p>for( j=0; Lhs&lt;Rhs(j) &amp;&amp; j&lt;15; j++)；</p>
+<p>Wincount = j；</p>
+<p>代码的逻辑是当Lhs&gt;=Rhs(j)或j&gt;=15时退出循环， Wincount = j</p>
+<p>不难理解，wincount=0概率为p(0)，以此类推，wincount=i的概率为p(i)</p>
+<p>∴ Wincount ~ P(λ)</p>
+<p>3. WinCount</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/1_514aqsfdeo.png" alt="ssVFyevG6ppEj578DIyFZ6OMagK5Lq2439bhVVpI.png"></p>
+<p>E(Wincount(p)) = λ = p/t  * 5</p>
+<p>矿工的算力越大，获得的Wincount期望越高</p>
+<p>E(Wincount(2p)) = 2p/（t+p）∗5≈2p/t∗5=2E(Wincount(p)) </p>
+<p>由于单个矿工的算力相对于全网总算力非常小，所以wincount的期望与矿工的算力线性相关，矿工拆分算力获得的奖励和不拆分获得的奖励几乎是一样的</p>
+<p>又设单个旷工算力为Pi ，则全网wincount总期望为</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/1_hca7bjraqh.png" alt="i9cX2nPBVGLIcLaQMJNOLctiZY6dSBXZ4U8WD6fL.png"></p>
+<p>所以每个Epoch全网预计wincount为5</p>
+<p>4. 出块率</p>
+<p>当Wincount≠0时，Miner便能获得出块权。Wincount &gt;0时，Miner虽然只出一个块，但可以获得多份奖励，Wincount的和会被计入Tipset的权重中</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/1_5sosajcaks.png" alt="aQLVRJQS4AO632EoJzkxsIIzVbmU3x1Tt3iNTtXd.jpeg"></p>
+<p>9月8日全网总算力为10.4388EiB，得出块率和算力的关系图像如下</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/1_6gclinkf13.png" alt="NpIUOVSdzwN33yBLrcp497PmmABn5YIOk3fuoV10.png"></p>
+<p>当Miner算力小于500PiB时，出块率和算力大小几乎成正比，每PiB获得出块权的概率约为0.00046。随着全网算力持续增长，单P出块率正持续下降。以8月8号为例，当日全网算力为8.77EiB计算得当日单P出块率为0.00054，仅仅一个月的时间，单P产量就下降了15%，另外当前全网存储总量已经超过了基线要求，有效算力高速增长致使出块的奖励也在减少，所以越早加入Filecoin网络，获取的收益率越高。</p>
+<p>5. 共识错误惩罚</p>
+<p>出于利益，存储提供者可能会选择无视共识协议，试图分叉链，影响协议的公平性。为此，Filecoin为共识错误攻击设置了相当严重的惩罚。</p>
+<p>如在同一个区块高度连续发布多个区块，就可能触发共识攻击惩罚。根据合约ReportConsensusFault，一旦出现共识错误攻击，所有网络节点均可报告，检验属实将会导致攻击者接下来7.5个小时不能出块，pre消息不能上链，并扣除一个区块奖励，举报者可以获得惩罚的1/20。</p>
+<p>总结</p>
+<p>Filecoin中每30秒存储提供者竞争一次出块权，全网预期赢得的区块奖励数为5。每个存储提供者出块的几率仅与自身的算力大小相关，当算力小于500PiB时，出块率和算力大小几乎成正比。此外，存储提供者拆分算力和不拆分获得的奖励几乎是一致的。获得出块权后需要对一个随机扇区的随机66个叶子节点进行验证，并挑选消息打包区块同步到网络上，被主链认可后便能获得区块奖励。</p>
+<p>Filecoin使用了绿色环保的EC共识机制，有效的激励存储提供者积极封装算力，为分布式存储的未来不断添砖加瓦。而目前单P产量正处于快速下降中，对于存储提供者来说，越早的加入Filecoin网络才能获得更高的收益率，而对于整个项目来说，这表明正有越来越多的人参与到Filecoin网络的建设，有助于项目的长期发展和价值提升，未来的局面也越发令人期待！</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/28570/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">新闻周刊 | 美联储希望在“未来几周”发布CBDC报告</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/28563/">
+                <span class="next-text nav-default">央行数研所谈区块链：技术上去中心化并不等于管理去中心化</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

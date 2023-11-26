@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="如果用户不幸中招了怎么办呢？今天我们就来告诉你怎么办。" />
+<meta name="keywords" content="安全漏洞" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39505/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧" />
+<meta property="og:description" content="如果用户不幸中招了怎么办呢？今天我们就来告诉你怎么办。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39505/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-28T00:00:00+00:00" />
+
+<meta itemprop="name" content="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧">
+<meta itemprop="description" content="如果用户不幸中招了怎么办呢？今天我们就来告诉你怎么办。"><meta itemprop="datePublished" content="2022-06-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3656">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"/>
+<meta name="twitter:description" content="如果用户不幸中招了怎么办呢？今天我们就来告诉你怎么办。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-28">
+      2022-06-28
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3656 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>点击阅读：<a href="https://www.jinse.com/blockchain/1682322.html">Web3安全连载（1）当硬核黑客开始研究“钓鱼” 你的NFT还安全吗？</a></p>
+<p>点击阅读：<a href="https://www.jinse.com/blockchain/1727088.html">Web3安全连载（2）一文看懂典型的NFT合约漏洞有哪些？</a></p>
+<p>我们推出连载系列的最后一篇——NFT钓鱼流程及防范技巧，其中一类是盗取用户签名的钓鱼攻击，另一类是高仿域名和内容的NFT钓鱼网站。那么如果用户不幸中招了怎么办呢？今天我们就来告诉你怎么办。</p>
+<p><strong>「钓鱼网站是如何“钓”你的？」</strong></p>
+<p><strong>第一种：盗取用户签名</strong> </p>
+<p>在前两篇文章里，我们提到过该类钓鱼网站主要是引诱用户在钓鱼网站签名，如果用户签署了签名，则钓鱼网站可以获取到用户钱包中所有的NFT。具体的签名内容如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_lssedvdj0f.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p>上图中<strong>红框一显示的是签名请求的网站来源，红框二显示的是请求的签名内容，</strong> 由于显示的内容是一串二进制字符，所以用户其实不知道具体签署的是什么服务。</p>
+<p><strong>如果用户点击了“Sign”按钮，则可能会授权一些无法预测的服务，包括一些危险操作，如：授权钓鱼网站拥有用户钱包中NFT的转账权限等。</strong></p>
+<p><strong>第二种：高仿域名和内容的NFT钓鱼网站</strong> </p>
+<p>前面的的文章里我们提到过该类钓鱼网站主要分为三类，<strong>第一类是仅更换原官网的顶级域名，第二类是主域名添加单词或符号进行混淆，第三类是添加二级域名进行混淆的钓鱼网站。</strong></p>
+<p>涉及到的钓鱼手法主要分为三种，<strong>第一种是伪造NFT项目官网诱骗用户直接进行转账的钓鱼网站，第二种是使用假空投诱骗用户授权的钓鱼网站，第三种是诱骗用户输入钱包助记词的钓鱼网站。</strong> 下面将对其钓鱼手法进行详细介绍。</p>
+<p><strong>1.伪造官网引诱用户直接转账</strong></p>
+<p>该类钓鱼网站主要是通过伪造NFT项目官网UI界面，诱骗用户连接钱包之后，点击“mint”按钮进行铸币。用户点击之后会向虚假的项目方地址转账，但是并不会收到对应的NFT。具体如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_db7r7p1o8o.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p>用户进入到钓鱼网站后，会首先点击对应的“connect wallet”按钮，连接钱包。之后UI界面会进行刷新，出现如图所示的“mint”按钮。通常页面上还会出现类似“xx用户已经mint了xxNFT”这样的浮动标题，主要是为了刺激用户赶紧点击mint。如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_z1kw5vyetp.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p>用户如果点击“Mint”按钮之后，一般情况下钓鱼网站为了防止自己的转账黑地址泄露，会首先检测钱包余额是否为空。如果为空则不会进行交易，如果不为空才会弹出类似MetaMask的小狐狸钱包，进行交易。</p>
+<p><strong>2.假空投诱骗用户进行NFT授权</strong></p>
+<p>该类钓鱼网站主要是利用假空投等手段，诱骗用户访问钓鱼网站。在用户连接钱包后，就会出现“CLAIM NOW”等引诱用户进行点击的按钮，用户点击之后就会对钓鱼网站的黑地址进行授权。具体如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_y75i6hr1wi.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_ao5sqhlfvp.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p>之后获得授权的钓鱼网站会将用户钱包中的NFT全部转走，具体如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_ts13vjgrmq.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p>下面是受害者被盗取的NFT交易：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_stprhu64sv.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p><strong>3.诱骗用户填写助记词</strong></p>
+<p>该类钓鱼网站主要是在网页连接钱包处，或者其他位置诱骗用户点击，之后弹出一个伪造的网页，提示用户诸如“MetaMask插件版本需要升级”等信息。如果用户相信并填写了自己的钱包助记词，那么用户的私钥就会上传到攻击者服务器导致用户钱包被盗。具体如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_ogyk16de1s.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p>该钓鱼网站弹出如下信息，提示用户检测到了MetaMask的一个安全问题，需要用户升级该钱包插件版本。如果用户在框中输入助记词，则会导致钱包被盗。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_r29lb1zvsj.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<h2 id="注意如上图红框处所示该跳转的钓鱼页面上网址并非是正常的域名网址而变成了一串异常数值-用户也可以通过对比metamask官网域名与该页面异常网址识别钓鱼页面">注意，<strong>如上图红框处所示，该跳转的钓鱼页面上网址并非是正常的域名网址，而变成了一串异常数值。</strong> 用户也可以通过对比MetaMask官网域名与该页面异常网址识别钓鱼页面。</h2>
+<p><strong>「必须学会的防范技巧」</strong></p>
+<p><strong>一：防范签名被盗</strong> </p>
+<p>目前多数网站为了保护用户安全已经不支持盲签的签名方式，<strong>但是如果用户访问某些网站时仍然遇到盲签的情况，请尽量拒绝签署。</strong> 本文主要讨论以下两种非盲签的情况下，用户如何防范钓鱼。</p>
+<p><strong>1.用户签署交易时需要确认签署的内容</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_h3nvfmwdij.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p>如上图所示，用户签署授权时主要是对红框部分的服务条款进行签名，包括：提示用户如果点击“Sign”按钮则代表接受网站的服务条款，这个请求不会发起交易或者消耗gas费，并且该授权状态将在24小时后重置等。以及包括签署签名的用户地址、Nonce值等。</p>
+<p><strong>2.用户在进行交易签名前，应进行多方信息交叉验证，确保发起交易的网站是真官网。</strong></p>
+<p><strong>二：防范高仿域名和内容的NFT钓鱼网站</strong> </p>
+<p>此前文章我们介绍了三种高仿域名和内容的NFT钓鱼网站，其中第三种是直接诱骗用户输入助记词。针对该类网站，用户只需记住任何要求输入助记词的网页都是不安全的即可。本文主要介绍其他两种钓鱼网站的相关防范措施：</p>
+<p><strong>1. 伪造官网引诱用户直接转账</strong></p>
+<p>这类的钓鱼网站通常域名和内容都跟原项目官网十分相似，用户在访问时需特别注意识别官网。</p>
+<p>1）一般在访问NFT官网时，首页通常有官方社交媒体账号，如：twitter、discord等。</p>
+<p>目前很多NFT官方网站都不会直接提供“mint”功能，或将更多数量的NFT放到了诸如Opensea之类的交易所上进行售卖，如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_d5ct000sws.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p>同时，一般在NFT项目官网底部都会列举出官网社交账号，下图红框处从左往右依次是：Discord、twitter、traitsniper、opensea。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_6ht4wpqcp4.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p>用户可以访问这些社交账号，首先识别其账号是否是官方账号，通常直接在twitter上搜索项目名称可以发现官方账号，如果存在同名的情况那么注意筛选出关注人数较多的账号，具体如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_s5jikarsgg.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p>上图中显示的第一个红框就是NFT项目对应的官网，任何其他的网址都是钓鱼网站；第二个红框是该项目在其他平台上的官方链接，如：Opensea交易所等；第三个红框是关注的人数，从人数上也可以对官方账号进行筛选，当然也需要警惕钓鱼大号，最好是进行信息交叉验证，保证自己访问的是官网。</p>
+<p><strong>2）假空投诱骗用户进行NFT授权</strong></p>
+<p>攻击者通常会通过Discord等社交账号发布假空投的钓鱼链接，这一类的钓鱼网站往往难以识别真假，本文提出以下几点建议希望帮助用户减少损失。</p>
+<p><strong>a. 资产隔离</strong></p>
+<p>在进行这类危险交易时，可以采用资产隔离的方式进行，通常包括以下几种类型：</p>
+<p><strong>钱包隔离：</strong> 用户可以将钱包根据用途分为两类，第一类用于存储资产，包括一些大额资产等，该类资产可以使用冷钱包存储提高安全性；第二类用于资产交易，尤其是在进行诸如领取空投这样的危险交易时，可以使用一些临时钱包。临时性的钱包包括：使用MetaMask之类的钱包重新创建一个地址里面存储很少的钱；或一些网络钱包如：Burner Wallet等，该钱包可以通过在网页上简单地设置转账的参数，如：转账地址、金额等，就可以生成一个临时性的小额交易二维码，如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_psoz42uunf.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p><strong>交易媒介隔离：</strong> 通常指的是用户在交易时使用的PC、浏览器等，可以在进行一些可能存在的危险交易时使用不同的PC，或者使用不同的浏览器。</p>
+<p><strong>b. 使用项目方智能合约进行mint()</strong></p>
+<p>上文提到有很多骗局在推广免费空投领取时，“mint”按钮实际上触发的是请求用户签名的操作，一旦点击将会批准钓鱼网站转移用户的NFT。所以如果能够确定领取空投的合约地址，直接调用智能合约里的mint()方法是更安全的方式，下图是某NFT的合约：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_cbko53e137.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p>如上图所示，首先点击“contract”，之后选择“Write Contract”页签，接下来需要点击“Connect to Web3”按钮，连接钱包。如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/9_nhpud371lr.png" alt="Web3安全连载（3） | 深入揭秘NFT钓鱼流程及防范技巧"></p>
+<p>接着点击mint()方法，设置mint需要的NFT数量和金额，点击“Write”按钮即可。这种方式因为是直接调用的合约方法，所以不存在被钓鱼网站盗用签名的情况。但是，用户在调用NFT合约时需注意同样需要交叉验证项目合约的地址，避免被钓鱼合约诱导受骗。</p>
+<p><strong>c. 确认消息源</strong></p>
+<p>如果用户收到领取空投的钓鱼网站链接，首先需要确认信息源，一般可以在官方twitter等社交账号上确认下有没有发布的空投消息。如果没有的话，请不要随意点击其他渠道上发布的空投链接。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39495/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Web3.0与区块链有何不同？现在处于哪个阶段？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39494/">
+                <span class="next-text nav-default">巴西金融科技公司CloudWalk完成1.5亿美元融资，将推出区块链</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#注意如上图红框处所示该跳转的钓鱼页面上网址并非是正常的域名网址而变成了一串异常数值-用户也可以通过对比metamask官网域名与该页面异常网址识别钓鱼页面">注意，<strong>如上图红框处所示，该跳转的钓鱼页面上网址并非是正常的域名网址，而变成了一串异常数值。</strong> 用户也可以通过对比MetaMask官网域名与该页面异常网址识别钓鱼页面。</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

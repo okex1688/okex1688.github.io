@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          从共识机制谈起，探讨区块链应用范式的变迁 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="共识的最低成本，就是存储成本" />
+<meta name="keywords" content="undefined" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/20644/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="从共识机制谈起，探讨区块链应用范式的变迁" />
+<meta property="og:description" content="共识的最低成本，就是存储成本" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/20644/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-16T00:00:00+00:00" />
+
+<meta itemprop="name" content="从共识机制谈起，探讨区块链应用范式的变迁">
+<meta itemprop="description" content="共识的最低成本，就是存储成本"><meta itemprop="datePublished" content="2021-04-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5348">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="从共识机制谈起，探讨区块链应用范式的变迁"/>
+<meta name="twitter:description" content="共识的最低成本，就是存储成本"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">从共识机制谈起，探讨区块链应用范式的变迁</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-04-16">
+      2021-04-16
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5348 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>原文标题：《共识的变迁，区块链应用范式进化之旅》</strong><br>
+<strong>撰文：outprog</strong></p>
+<p>09 年比特币诞生，开启了区块链纪元。在一个分布式的网络中，所有节点对一个难题进行计算，先到先得（先算出先得），最先解决难题的机器获得比特币奖励。在无限多的难题计算过程中，产生一条永远不可伪造的数据链，而链上记录的转账信息，刻画在链上的客观标志，在人们的共识推动下产生了巨大的价值。这种不可伪造的账本，后来称为区块链，对使用了几千年的账本进行了彻底的革新。</p>
+<p>下文会探讨近几年区块链领域的共识的变迁，区块链应用方式的变化，以及我们为什么可以通过存储计算范式构建一种全新的可信应用。</p>
+<h2 id="绝对的去中心化">绝对的去中心化</h2>
+<p>比特币原教主义者，坚信绝对的去中心化。比特币的网络就像著名科幻电影《终结者》里的天网，是一种运行在全球的网络，无数服务器上的账本，同天网一样，想要关闭它或许只有毁灭整个网络。这种 P2P 节点网路具备去中心化的特性，不由任何国家和机构控制。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0416/21_e1nknsou5b.jpg" alt="从共识机制谈起，探讨区块链应用范式的变迁"></p>
+<p>绝对的去中心化要求用户自己验证所有的交易。早期我们在 PC 上安装一个比特币钱包需要花数小时甚至数天的时间才能同步整个网络，只有等待同步完成后才能进行转账操作。当我们的个人电脑离线或者关闭导致钱包长时间离线，下一次进行任何操作前还需要继续同步数据，直到所有数据完全更新后才能进行新的交易。这样的体验对于绝大数用户是无法接受的。</p>
+<p>人们总是需要同步和验证所有交易，才能获得绝对的去中心化信任。</p>
+<h2 id="信任钱包服务商">信任钱包服务商</h2>
+<p>随着 17 年 ICO 火爆，以太坊将区块链带入一个全新的高度。新用户涌入，以太坊官方的 Mist 钱包（同比特币一样需要下载数天验证所有交易）已经很难满足用户的需求。imToken 顺势而出，构建了一种更易于使用的 API 钱包。</p>
+<p>用户不需要再去做长时间的数据同步，下载应用开箱即用。区块链节点由钱包服务商提供，用户的私钥还是保存在个人的手机上。用户通过 API 访问服务商的节点，在手机上进行交易签名，并将交易发送到服务商的链节点。</p>
+<p>API 钱包的另一个典范是 MetaMask，从 18 年到 20 年 DeFi 崛起的过程中起到了至关重要的作用。浏览器插件钱包也是开箱即用，配合全新的以太坊基础设施 infura，让用户跳过账本验证直接使用 DeFi。从 Uniswap 兑换，Compound 借贷，到 20 年中旬开始风靡币圈的流动性挖矿，MetaMask 都是用户必备的 DeFi 利器。</p>
+<p>然而在体验 DeFi 的爽快过程中，或许已经遗失了一些对共识的根本看法。在使用 API 钱包的过程中，用户并没有验证每一笔区块链交易，而是信任服务商部署的节点。绝对去中心化已经被抛弃，用户体验占了上风。以太坊官方钱包 Mist 甚至没有坚持到 DeFi 爆发就早早宣布停止更新。</p>
+<p>虽然绝对的去中心化（用户独立验证账本）逐渐的从历史舞台褪去，但是去中心化共识并未减弱。随着用户门槛的降低，带来了 DeFi 的繁荣崛起，整个区块链的故事更加的深入人心。其本质在于不管我们是使用 imToken 或者 MetaMask，纵然背后是内部节点，用户没有去校验账本，但用户交易一旦打包到链上，就可用通过成千上万的其他区块链节点进行保障。这种客观事实不是由一家服务商或者一个中心化的云服务所能改变。对于一家中心化服务商而言，可以骗用户一时，但骗不了用户一世。用户交易的客观事实已经打包在了广大的区块链节点网络中，无法被篡改和伪造。</p>
+<h2 id="客观事实和数据呈现">客观事实和数据呈现</h2>
+<p>Compound 是运行在以太坊这台世界计算机上的金融借贷应用，Compound 的每一笔交易都会被成千上万的以太坊节点进行计算，以保障 Compound 借贷业务的客观事实。但是不管是用户和服务商，都不能直接从链上获取到借贷业务的收益利率。借贷的事实一直在发生，所产生的年化收益率却需要对链上数据额外统计才能得出。事实客观存在，而用户的决策依据是事实所演算的表象数据。此时客观事实和数据呈现是信任是分离的。</p>
+<p>回到比特币原教主义的视角，当且仅当用户使用全节点或者 SPV 钱包对每一笔交易进行过校验后，用户所获取的数据呈现才具备完全的去中心化可信。而使用 imToken/MetaMask 这样的 API 钱包的时，用户是在向 infura 或者其他服务商所请求余额信息，这种余额信息本质上也仅是一种数据呈现，和 Compound 的收益利率没有本质区别。</p>
+<p>Compound 的收益利率是在官方的中心化服务器上通过链上数据进行运算的结果（通常使用以太坊 event log 进行计算）。同时，用户向 infura 或者其他服务商请求的余额，也是中心化服务器的以太坊程序运算产生的状态。特别的注意在中心化服务器上以太坊节点也是一个普通的应用程序可以被修改和调整。因此，不论是使用太坊节点 API 获得的数据，还是对节点数据进行的二次加工产的新数据，都不能提供完全去中心化的信任。服务商的服务器完全可以修改以太坊节点和任意定制统计程序。可见，在用户不自行进行所有交易校验时，客观事实和数据呈现必然产生二元分离的情形。用户通过服务商获得的数据都是一种对客观事实的二次陈述。</p>
+<p>想要获取绝对客观事实，用户必须自行验证所有交易，自行统计数据。这种绝对去中心化可信模式，由于用户门槛过高在现实场景中难以适用，成为一种理想主义。</p>
+<h2 id="区块链应用范式的变迁">区块链应用范式的变迁</h2>
+<p>随着以太坊官方钱包 Mist 的失败，整个共识已经潜移默化的改变：用户不再自行验证交易，而是使用 infura 或者应用服务商的链节点进行交易。这时其实已经将信任完全交予服务商。</p>
+<p>用户对共识的认知正在逐步的改变。改变的根源之一是区块链的用户群体的变化，原教主义者们不断的迎来了新的区块链用户。这些新用户从未自行部署过节点和 SPV 钱包，用户的需求不是去中心化信任，而是简单易用的代币转账和高收益的 DeFi 应用。关于去中心化的愿景，从要求自主获得绝对客观事实转变为依赖服务商提供事实的二次陈述。变迁过程如下图所示，从一个单层的拓扑图模型变为双层模型，在不远的将来可能会演变为一个三层的模型。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0416/21_2jz41f5kja.jpg" alt="从共识机制谈起，探讨区块链应用范式的变迁"></p>
+<p>图 1 是绝对去中心化模型，用户的客户端和节点处于同一个层级，用户会去同步节点并验证所有的交易。该模型下用户体验极差。</p>
+<p>从 17 年 ICO 后，imToken/MetaMask 崛起，为了解决急剧膨胀的用户需求，我们进入了图 2 的双层模型时代。用户不再验证交易，节点完全由服务商运维和部署。用户仅将签名后的数据发送给服务商，由服务商的节点进行交易处理。此时用户体验有所提升，用户不再进行痛苦的交易同步和验证。</p>
+<p>图 3 的三层模型，会将用户完全和区块链进行解耦，这个模型下用户完全不再接触链，包括用户签名的交易也不再发送到链节点。服务商的可信由各种区块链来提供，用户的交易也完全由应用方进行处理。三层模型带来最大的好处是为用户互联网级的体验，这里包括互联网级别的 TPS 和可信的互联网账户。</p>
+<p>整个变迁的过程是用户体验的提升，从难用到可用，最后到易用</p>
+<h2 id="进化到三层模型">进化到三层模型</h2>
+<p>其实我们当前的 DeFi 应用，已经不是一个纯粹的双层模型，而是一个 2.5 层的模型。</p>
+<p>用户在使用 DeFi 的过程中，大部分的数据都不是从节点上原生输出，已经通过中心化的服务器进行统计所呈现。区块链仅提供了一个结算功能，而部署在服务商的节点也是完全可以修改程序和伪造数据。</p>
+<p>我们可以假设两种攻击：</p>
+<ol>
+<li>具有误导性的数据呈现+真实节点。服务商提供了真实的节点，但是呈现的利率、汇率或者其他信息是被修改过的，诱导用户去进行链上操作。交易还是在链上真实成交，但是交易的事实结果和数据呈现有一定的差距，比如显示的年化收益率是 10%，实际却只有 9%；兑换的汇率是 256，实际成交是 250。</li>
+<li>完全虚假的节点，直接导致用户的转账、DeFi 结果都是虚假的。</li>
+</ol>
+<p>为了避免这两种攻击，用户不得不自行运行节点和进行数据统计。然而这些对用户都非常困难，此时用户只能信赖这种数据呈现，或者通过其他第三方进行数据核验。现实中的例子是，通过 imToken/MetaMask 使用 DeFi 时，我们总是需要去 etherscan 进行交易核查。</p>
+<p>服务商在开发应用时，绝对去中心化的信任会传导到应用上。用户信赖的是服务商，也可以通过其他第三方服务商进行交易核验以获得更高的可信。不管怎么样，用户的信任已经和区块链的去中心化信任形成割裂。总结如下，我们现在可以把信任分为两种：</p>
+<ol>
+<li>绝对可信：不信任任何人，自行验证区块链所有交易，获得完全去中心化的账本</li>
+<li>相对可信：信任服务商，通过服务商获得账本的数据呈现，使用其他多个服务商的数据进行交易对照</li>
+</ol>
+<p><img src="https://img.bibiqing.com/news/2021/0416/21_1nizn40913.jpg" alt="从共识机制谈起，探讨区块链应用范式的变迁"></p>
+<p>左图是双层模型的延展，用户和服务商的节点进行交互，同时使用服务商统计的数据呈现。对于用户而言，是处在一个相对可信的环境，服务商提供的节点，并不一定是真实的节点，用户需要去第三方进行核对或者自行进行验证。</p>
+<p>在双层模型中，用户还会直接接触链节点，向节点发起交易。右图是三层模型，用户、服务商、链节点三层分离，用户完全不再接触链节点。服务商提供基于存储的可信计算，此时通过链下程序处理用户的交易。虽然交易是由链下的程序处理，但是程序的所有处理过程都会通过区块链进行保障（基于 Arweave 的存储计算范式），因此链下计算也完全是可以通过第三方或者自行进行验证。</p>
+<blockquote>
+<p>存储计算范式：将确定性的程序开源或者上传到链上，程序完全在链下运算，所有输入都会发送到存储型区块链进行保存，数据一旦打包就具备顺序（时序）。任何第三方可以运行程序，程序会加载链上的事实数据，生成事实状态。</p>
+</blockquote>
+<p>不管是双层、2.5 层还是三层模型，用户都只能获得相对可信，绝对可信仅与服务商有关系。只要用户不自行验证所有交易，就无法做到完全去信任化。</p>
+<p>在三层模型中，我们可以构建全新的 Compound，这样的 Compound 不需要再使用 EVM 链上计算模型，只需要保证程序可信，数据可信，那么应用运行的客观事实就绝对存在。在三层模型的架构中，不仅仅年化收益链下计算，每笔交易产生余额状态也通过在链下计算并呈现。将双层模型改进到三层模型，不会改变客观事实，同时用户的相对可信环境并没有任何变化。而交易上链后的客观事实，由区块链技术进行支撑。</p>
+<h2 id="三层模型的优势">三层模型的优势</h2>
+<p>为什么要建立一个三层的计算模型将用户和区块链完全隔离？</p>
+<p>链具有太多的限制，很难满足普通用户的低门槛需求。区块链的 TPS 有太多限制，昂贵的矿工费，私钥助记词管理等，都让普通用户难以接受。区块链在获得绝对去中心化的目标后，损耗了大量的易用性。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0416/21_1v3e7qcss4.jpg" alt="从共识机制谈起，探讨区块链应用范式的变迁"></p>
+<p>使用三层模型构建的应用，区块链节点会为应用进行可信赋能，应用开发可以获得极大的灵活性，为用户提供极致的易用性。</p>
+<ul>
+<li>可组合性：使用存储计算范式不损耗组合性，任何应用都可以直接通过 API 进行交互。应用产生的交易打包到区块链后，都会成为客观事实不可篡改，并且可以验证。两个相互信任的应用如果在 API 实时交互的过程中出现了虚假交易，这些虚假交易后续产生的所有交易都可以被检测到并进行回滚，这是一种链下回滚，或者说是将错误的账目冲正，让链下程序和区块链的事实保持一致。</li>
+<li>开发门槛低：只要将传统应用开源并将交易打包到区块链上，即可让应用获得透明可信，并可由第三方进行验证。此时开发没有任何的语言限制，仅需使用这个范式思想即可。</li>
+<li>无性能限制：链下程序的性能，仅取决于部署程序的机器和开发团队的能力。</li>
+<li>共识成本极低：将共识的成本缩减到区块链存储的成本，使用 Arweave 进行交易存储，1 美金可以进行近百万笔交易。</li>
+</ul>
+<h2 id="劣势">劣势</h2>
+<p>主要损失了去准入：应用由一个中心化服务商实现和部署，服务商可以过滤以及审查用户的交易。同时单点的服务故障可能导致服务暂停。</p>
+<p>不过任何人都无法损害账本的客观事实，事实程序加上由用户进行签名的每一笔交易都会印证在区块链上，成为可验证的事实状态。</p>
+<h2 id="结语">结语</h2>
+<p>共识的最低成本，就是存储成本。通过区块链不可伪造、可追溯的特性，我们可以保存事实程序和事实数据，它们运行的结果一定是真实客观存在并且不可篡改的。至于计算，其实不在事实范畴内，因为不论计算是否已经发生，客观的事实并不会改变。可验证性是整个区块链共识和可信的关键。任何人都可以去验证那些不可篡改的客观事实，是所有信任的根基。</p>
+<p>存储计算范式所提供的可验证信，为多方之间建立了信任的桥梁，可验证的透明账本彻底革新了传统账本技术，解决了传统账本（契约）在生产关系协调过程中产生的种种矛盾和纠纷。</p>
+<p>账本是人类协作的关键要素，每个人、每个机构的账本相互组合促成了当今社会的协作和分工。区块链作为一种革命性的事实机器，会彻底改变基于账本构建的信任体制，让信任更易于达成，让价值无界流动。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/20646/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">从共识机制谈起 探讨区块链应用范式的变迁</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/20668/">
+                <span class="next-text nav-default">当前BTC全网合约持仓总量121.3亿美元</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#绝对的去中心化">绝对的去中心化</a></li>
+    <li><a href="#信任钱包服务商">信任钱包服务商</a></li>
+    <li><a href="#客观事实和数据呈现">客观事实和数据呈现</a></li>
+    <li><a href="#区块链应用范式的变迁">区块链应用范式的变迁</a></li>
+    <li><a href="#进化到三层模型">进化到三层模型</a></li>
+    <li><a href="#三层模型的优势">三层模型的优势</a></li>
+    <li><a href="#劣势">劣势</a></li>
+    <li><a href="#结语">结语</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

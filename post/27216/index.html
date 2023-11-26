@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          原生代币流动性的艺术与科学 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在这篇文章中，我们将了解2池的复杂性，并给出一些项目方如何解决其原生代币流动性的方案。" />
+<meta name="keywords" content="代币发行" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/27216/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="原生代币流动性的艺术与科学" />
+<meta property="og:description" content="在这篇文章中，我们将了解2池的复杂性，并给出一些项目方如何解决其原生代币流动性的方案。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/27216/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-12T00:00:00+00:00" />
+
+<meta itemprop="name" content="原生代币流动性的艺术与科学">
+<meta itemprop="description" content="在这篇文章中，我们将了解2池的复杂性，并给出一些项目方如何解决其原生代币流动性的方案。"><meta itemprop="datePublished" content="2021-08-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5450">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="原生代币流动性的艺术与科学"/>
+<meta name="twitter:description" content="在这篇文章中，我们将了解2池的复杂性，并给出一些项目方如何解决其原生代币流动性的方案。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">原生代币流动性的艺术与科学</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-12">
+      2021-08-12
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5450 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>为什么项目方想要为其原生代币提供流动性？</strong></p>
+<p>从根本上说，拥有代币的流动性很重要，因为它允许新投资者轻松地投资项目并让不活跃的投资者退出。少一点流动性不会破坏一个强大的项目，而过多的流动性也只是徒劳。</p>
+<p>在这篇文章中，我们将了解2池的复杂性，并给出一些项目方如何解决其原生代币流动性的方案。</p>
+<p>我们将介绍：</p>
+<ol>
+<li>
+<p>流动性上限目标+改善2池的其他机制；</p>
+</li>
+<li>
+<p>不均匀流动性池以迎合长期参与者；</p>
+</li>
+<li>
+<p>利用闲置财政库中的资本作为引导机制；</p>
+</li>
+</ol>
+<h2 id="等等2池到底是什么"><strong>等等，2池到底是什么？</strong></h2>
+<p>所谓2池，是指有项目原生代币的流动性池，它们依靠去中心化交易所 (DEX) 生存，并通过奖励流动性提供者（LP）token来人为地引导流动性。虽然这些池子目前因作为实现代币流动性的默认策略而备受关注，但它们是DeFi中最微妙、最不直观的机制之一，因此需要谨慎关注。</p>
+<h2 id="如何考虑激励原生代币流动性"><strong>如何考虑激励原生代币流动性</strong></h2>
+<p>现实情况是 DeFi 充斥着雇佣资本，这是项目在设置2池奖励时需要考虑的事情。项目方可能会考虑将2池的APY 作为主要营销策略，以吸引参与者对该协议的关注。这不仅缺乏创造性，而且往往与协议本身无关，而且我们的研究（见附录一）表明，2池是多么糟糕的营销工具，因为它们吸引的流动性是缺乏黏性的。在我们抽样的数十个2池中，几乎所有池子的流动性在激励结束后30天下降了50% 以上。这种变化无常的流动性表明，与其将营销注意力集中在2池及其代币流动性上，项目方更应该将重点放在使用2池来满足基本需求上：便利投资者在最佳环境（低滑点）下买入/卖出项目token。</p>
+<p>考虑这会是什么样子，首先要了解 LP 的想法。</p>
+<p>对于LP而言，2池是很复杂的，因为项目向 LP 支付收益，必须从原生代币实现，同时LP还要持有这种代币。这是一个微妙的平衡，因为 LP 基本上是在做空主要的价格变动，并且只有在他们期望代币在一个范围内交易时才会激励 LP。如果他们预期代币价格会迅速升值，那么停止提供流动性并持有代币会变得更有利可图。或者，如果LP预期代币价格将呈下降趋势，他们也会选择退出流动性。如果一个代币是较新的，那么价格发现可能在两个方向上都是极端的，这加剧了所谓的无常损失。这种无常损失风险也使得项目的长期支持者很难向2池注资，因为他们可能会因为提供流动性而蒙受损失。</p>
+<p>尽管如此，原生代币的流动性对于项目及社区而言发挥着重要作用，它是值得项目方付出代价的，因为它可以启动一个自反飞轮，为协议带来更多用户和注意力。*但是，值得注意的是，原生代币的流动性并不会成就或破坏一个原本稳固的项目。即使没有适当的原生代币流动性，产品市场契合度强的项目也能成功，而产品市场契合度不强的项目，即使其拥有很强的代币流动性，它也会经历失败。因此，就像传统公司需要严格预算一样，项目应该致力于在使用代币来激励其产品的核心行为，以及激励原生代币流动性之间找到正确的平衡点。就2池而言，主要挑战在于确定正确的成本并支付正确数量的流动性。</p>
+<p>还有其他方法可以实现2池之外的代币分发。有关这些替代方案的比较，请参见附录 II。</p>
+<h2 id="激励原生代币流动性的更优方法"><strong>激励原生代币流动性的更优方法</strong></h2>
+<p>尽管存在细微差别，但不可否认，对于项目而言，2池是利用其代币（他们拥有的超额代币）来提升代币流动性的一种有用方式。</p>
+<p>如果一个项目方确定2池是是他们的最佳方法，这里有三个建议：</p>
+<ol>
+<li>
+<p>运行较短的计划（30 – 90 天）以允许重新配置及经验测试；</p>
+</li>
+<li>
+<p>尝试降低 APY（&lt;100%）、解锁区块奖励以及不可转让代币等策略，以确保与长期参与者保持一致；</p>
+</li>
+<li>
+<p>取消流动性上限目标以防止为流动性支付过高的费用；</p>
+</li>
+</ol>
+<p>在第(1) 点上，项目方应该进行更短的背靠背实验，而不是将自己锁定在多年的计划中。较短的计划允许项目方对其2池计划的有效性进行分析，并为项目提供重新配置和重新评估其杠杆/奖励的选择权（请参阅附录 III，了解要衡量的潜在2池指标）。它还允许社区在确定项目的代币激励措施方面发挥作用。值得研究的有趣案例研究包括 PancakeSwap、1inch 和 CREAM。</p>
+<p>在第(2) 点上，项目应包括关注长期参与者的功能。特别是，项目方希望激励那些已经习惯于持有代币的LP，而不是纯粹因为APY高而买入代币的纯收益农民。通过使快速实现收益变得更加困难，这些战略可以迫使LP作为利益相关者，而不是只追求收益的农民。除了 Aave 的2池（我们将在下一节中探讨）之外，另一个案例研究是 Ribbon Finance，它对其早期流动性池的提款费、不可转让代币和上限TVL进行了实验。</p>
+<p>我们将在本节的其余部分讨论第(3) 点，即流动性上限目标，并从为什么拥有一个目标很重要开始。</p>
+<p>如果项目没有目标，他们就会陷入困境，试图弄清楚他们是否有足够的流动性以及是否应该支付更多费用。找到流动性上限目标，归结为为较大的投资者找到可接受的最小交易规模，并确保池子有足够的流动性来支持它在可接受的滑点范围内（&lt;2%）。通常，流动性的增加可支持对协议代币的重新评级（向上），因为交易量足以供基金和大型投资者在二级市场购买。取消流动性上限目标可确保你为大型投资者提供足够的代币流动性，而无需支付超出要求的费用。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0812/22_sosjg6oj4v.png" alt="原生代币流动性的艺术与科学"></p>
+<h2 id="如何撤销流动性上限目标"><strong>如何撤销流动性上限目标</strong></h2>
+<p>考虑流动性上限目标的一个框架是考虑相对于市值的流动性深度。在下表中，我们根据市值对不同类型的项目进行了分类，并估计了大型投资者希望在 2% 滑点范围内交易的总市值百分比。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0812/22_grpt3z0csp.png" alt="原生代币流动性的艺术与科学"></p>
+<p>步骤：</p>
+<ol>
+<li>
+<p>确定项目市值；</p>
+</li>
+<li>
+<p>取名义交易规模的下限；</p>
+</li>
+<li>
+<p>使用此等式/电子表格来确定需要多少流动性来促进不同滑点水平的交易规模；</p>
+</li>
+</ol>
+<p>示例：我是一个中低市值项目的创始人，项目的市值为 5000 万美元。我最多希望为大型投资者以 2% 的滑点交易协议0.1%-0.3%的token提供便利，这大约是5万美元至15万美元的交易规模。</p>
+<p>电子表格中使用的公式表明，500万美元的池子（50/50 权重）可促成滑点小于2%且规模达到5 万美元的交易。这意味着我的池子中不需要超过 500 万美元来为大型投资者提供便利，而且我最多需要250万美元的自有代币以及250万美元的USDC/ETH资金池。</p>
+<p>注：这是为传统AMM池子而设计的，Uniswap V3 改变了这些数字，并要求参与者对价格变动有更多的信心。</p>
+<p>然而，拥有高代币流动性并不总是有益的，虽然流动性上限目标可作为防止为代币流动性支付过高代价的指导，但这不是目标。对于早期项目，代币流动性并不像专注于产品和寻找产品市场契合度那么重要。过度关注代币流动性的低市值项目，有可能会吸引交易员/投机者，而以牺牲长期投资者和利益相关者为代价。</p>
+<h2 id="不均匀池的力量"><strong>不均匀池的力量</strong></h2>
+<p>在以往的2池中，Aave的激励代币池是唯一一个在没有高APY（&lt;5%）的情况下保持长期流动性的流动性池子。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0812/22_0v0cosvkl9.png" alt="原生代币流动性的艺术与科学"></p>
+<p>在这个80/20 AAVE/ETH Balancer智能池中，LP提供流动性，以赚取AAVE和BAL的交易费用和奖励。Aave的成功为我们提供了一个窗口，让我们了解了不均匀池子相对于传统50/50流动性池的好处。</p>
+<p><strong>主要好处是：不均匀池的无常损失更少。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0812/22_py6e6r2vgn.png" alt="原生代币流动性的艺术与科学"></p>
+<p>无常损失风险的降低，意味着LP更愿意为较低的收益率提供流动性。从成本的角度来看，这减少了协议需要奖励的金额。</p>
+<p>与此同时，代币持有者可以将他们的资金投入使用，而如果代币价格上涨，不均匀池会限制他们的无常损失风险。这导致了更好的激励一致性，因为他们可以获得交易费用和奖励，而不会损失他们对代币的大部分敞口。</p>
+<p>虽然不均匀加权池对LP来说是更友好的，但这需要权衡。主要缺点是需要较高的TVL以实现相同的滑点环境。如下图所示，就滑点而言，50/50流动性池是最有效的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0812/22_y76l0fmcmc.png" alt="原生代币流动性的艺术与科学"></p>
+<p>Source: Balancer Labs</p>
+<p>此外，随着项目的成熟，不均匀池也会影响代币的上涨，因为池子需要更多的稳定币/ETH（与50/50池相比）来提高价格。在初始募集/分配完成且项目成熟后，项目方可考虑调整为 50/50 的池子，以允许更好的滑点以及更有效的价格发现。在平台方面，Balancer是目前唯一提供不均匀池的协议，而 Sushiswap 计划在未来几个月内推出分叉版本（Trident）。</p>
+<h2 id="利用闲置财政库创建混合流动性方法"><strong>利用闲置财政库创建混合流动性方法</strong></h2>
+<p>已筹集资金或拥有健康/多元化资金的现有项目，应考虑利用其财政库全部或部分初始流动性，并将其中的一部分转化为ETH/USDC，以提供双面流动性。这有很多好处，包括：</p>
+<ol>
+<li>
+<p>允许项目方从交易费用中赚取额外收入；</p>
+</li>
+<li>
+<p>允许更好地控制流动性，而不仅仅受 APR 的影响；</p>
+</li>
+<li>
+<p>如果代币价格下跌，则创建自动“回购”机制；</p>
+</li>
+<li>
+<p>使财政库多样化（组合其他资产对，例如ETH/USDC）；</p>
+</li>
+</ol>
+<p>需要注意的一点是，项目方会承担无常损失的风险。</p>
+<p>这里举dHEDGE这个例子，该协议开始时每周奖励约10000 DHT（当时约为2万美元），但很快就转向以350万美元（50/50池）提供大部分流动性。通过使用他们的财政库来支付流动性，他们能够减少治理代币的稀释，并用它来激励人们使用他们的平台。就收入而言，dHEDGE每天收取500-1000美元的交易费用，其在过去2.5个月内收取了超过4.5万美元的费用。</p>
+<p>以下是协议可使用2池来实现混合策略的一些开箱即用的方式：</p>
+<ol>
+<li>
+<p>使用闲置财政库提供50-80%的流动性目标，然后在必要时使用协议代币激励额外流动性；</p>
+</li>
+<li>
+<p>使用财政库提供流动性，收取交易费用以激励额外的LP；</p>
+</li>
+<li>
+<p>使用闲置的长期财政库为前 6 个月至 1 年提供流动性，同时进行流动性激励的短期实验；</p>
+</li>
+</ol>
+<p>或者，项目方可简单地取消流动性上限目标，并使用闲置财政库来提供流动性，而无需激励任何额外的 LP。</p>
+<h2 id="总结"><strong>总结</strong></h2>
+<p>没有精确的科学来实现协议原生代币的流动性。但我们所探讨的各种方法（例如流动性上限目标、不均匀（即80/20）池、财政库流动性提供），可以让深思熟虑的创始人和投资者解决原生代币的流动性问题。虽然本指南的大部分内容只是冰山一角，但我们希望它能够推动围绕设计更可持续、更高效的代币流动性的讨论。</p>
+<p>非常感谢Mechanism 团队（Andrew、Ben、Marc、Daryl、Alec）帮助完善这些想法并筛选数据，同时感谢Tristan、Zaheer 和 Julian 的有用反馈。</p>
+<p>本文中的任何内容均不构成投资建议。</p>
+<h2 id="附录"><strong>附录</strong></h2>
+<p><strong>附录 I：资产池研究</strong></p>
+<p>Nansen 的研究分析了 400 个流动性农场的所有代币转移，结果发现很大比例的收益农民（36.4%）在进入池子的前 5 天内会退出池子，而今天只有13%的地址在继续当LP。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0812/22_oi00zljyqf.png" alt="原生代币流动性的艺术与科学"></p>
+<p>资料来源：Nansen Research</p>
+<p>同样，上面的热图让我们直观地了解这些收益农民的情况。忘记数年的激励计划吧，大多数收益农民在第75天就已撤离了池子。为了进一步量化这一点，在启动时进入的收益农民（即位于信息漏斗顶部的农民）中，几乎有一半会在24小时内离开，然后3天内会离开70%的收益农民。随着 LP 奖励的减少和稀释，那些因为激励而吸引来的参与者，将简单地拿走他们的代币奖励并将流动性转移到另一个池子。</p>
+<p>在分析12个项目的2池后，我们还发现，虽然大多数激励池都出现了短暂性的流动性增长，但大多数流动性水平在奖励停止后30天内就下降了50%以上。其中一个例子，就是Badger在牛市高峰期推出的2池。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0812/22_u08y5g3ls5.png" alt="原生代币流动性的艺术与科学"></p>
+<p>在这里，数据显示 12 月早期引导代币池流动性（见红色区域）的尝试在很大程度上失败了，牛市情绪推动了池子的流动性。从3月份开始，随着奖励的减少，资金池流动性的减少与奖励的减少成比例，这表明它们吸引的是雇佣军LP，这些人会随着奖励的减少而抛售代币。该图还突出了这些激励池的反身性，因为随着 LP 出售代币，它会降低 APR，从而导致更多 LP 退出池子。我们在 $DHT、$ALPHA 以及 $1INCH 的2池中看到了类似的模式。</p>
+<p><strong>附录二：比较财政库OTC、CEX 以及 DEX</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0812/22_ypk2bma9pl.png" alt="原生代币流动性的艺术与科学"></p>
+<p>一些交易所对增长轨迹良好的项目免收上市费用</p>
+<p><strong>附录 III：2池指标示例</strong></p>
+<p>LM牵引</p>
+<ol>
+<li>
+<p>用户总数；</p>
+</li>
+<li>
+<p>LP 数量 vs 质押者数量；</p>
+</li>
+<li>
+<p>平均LP持续时间，雇佣交易者数量（短时间内撤退的）；</p>
+</li>
+<li>
+<p>随着 APR 稀释/减少而退出的 LP 数量；</p>
+</li>
+<li>
+<p>获客成本（CAC) 与长期价值 (LTV)</p>
+</li>
+</ol>
+<p>流动性</p>
+<ol>
+<li>
+<p>总 TVL 的百分比增长；</p>
+</li>
+<li>
+<p>池子流动性增加百分比；</p>
+</li>
+<li>
+<p>LM 激励后的池子流动性；</p>
+</li>
+<li>
+<p>APR与流动性比率；</p>
+</li>
+<li>
+<p>市值与流动性比率；</p>
+</li>
+</ol>
+<p>统计关系</p>
+<ol>
+<li>
+<p>进入池子的时间和LP的时间之间有什么关系(通知长度）；</p>
+</li>
+<li>
+<p>LP 大小和长度 LP 之间有什么关系？（通知 TVL/地址上限）</p>
+</li>
+<li>
+<p>哪些是长期LP的常见观察结果，而不是更多的雇佣LP观察结果？</p>
+</li>
+</ol>
+<p>链下</p>
+<ol>
+<li>
+<p>网站流量和用户流量（网站点击量、页面停留时间）</p>
+</li>
+<li>
+<p>社区活动/倡议/提案（副项目、不和谐活动）</p>
+</li>
+<li>
+<p>社交媒体上的新互动（推文数量、新关注者、标签）</p>
+</li>
+</ol>
+<p>注：原文来自mechanism.capital，作者是Eva Wu。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/27227/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">元宇宙热潮：深度解析Decentraland和Sandbox</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/27148/">
+                <span class="next-text nav-default">2021年第二季度货币政策执行报告：货币政策预期管理取得明显成效</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#等等2池到底是什么"><strong>等等，2池到底是什么？</strong></a></li>
+    <li><a href="#如何考虑激励原生代币流动性"><strong>如何考虑激励原生代币流动性</strong></a></li>
+    <li><a href="#激励原生代币流动性的更优方法"><strong>激励原生代币流动性的更优方法</strong></a></li>
+    <li><a href="#如何撤销流动性上限目标"><strong>如何撤销流动性上限目标</strong></a></li>
+    <li><a href="#不均匀池的力量"><strong>不均匀池的力量</strong></a></li>
+    <li><a href="#利用闲置财政库创建混合流动性方法"><strong>利用闲置财政库创建混合流动性方法</strong></a></li>
+    <li><a href="#总结"><strong>总结</strong></a></li>
+    <li><a href="#附录"><strong>附录</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

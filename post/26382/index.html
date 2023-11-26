@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          深入剖析BTC锚定币发行方式 如何形成安全、高效、易用的锚定币？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="这就形成了DeCus的三个核心优势，即完全去中心化；托管人的质押率低（质押率约20%），资金利用率高；用户与托管人质押的均为比特币，无清算和脱钩风险。" />
+<meta name="keywords" content="BTC" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/26382/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="深入剖析BTC锚定币发行方式 如何形成安全、高效、易用的锚定币？" />
+<meta property="og:description" content="这就形成了DeCus的三个核心优势，即完全去中心化；托管人的质押率低（质押率约20%），资金利用率高；用户与托管人质押的均为比特币，无清算和脱钩风险。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/26382/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-26T00:00:00+00:00" />
+
+<meta itemprop="name" content="深入剖析BTC锚定币发行方式 如何形成安全、高效、易用的锚定币？">
+<meta itemprop="description" content="这就形成了DeCus的三个核心优势，即完全去中心化；托管人的质押率低（质押率约20%），资金利用率高；用户与托管人质押的均为比特币，无清算和脱钩风险。"><meta itemprop="datePublished" content="2021-07-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5431">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="深入剖析BTC锚定币发行方式 如何形成安全、高效、易用的锚定币？"/>
+<meta name="twitter:description" content="这就形成了DeCus的三个核心优势，即完全去中心化；托管人的质押率低（质押率约20%），资金利用率高；用户与托管人质押的均为比特币，无清算和脱钩风险。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">深入剖析BTC锚定币发行方式 如何形成安全、高效、易用的锚定币？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-26">
+      2021-07-26
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5431 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>从小众到主流采用，比特币经过十多年的发展，市值已经超越了Facebook等互联网巨头。虽然没能成为中本聪设想的“点对点支付系统”，但在价值储备这条路上却越走越远，正在加入越来越多公司的资产负债表，并向着“超主权货币”这一方向发展。</p>
+<p>受限于比特币网络可编程性的不足，比特币这个最古老、共识最强的加密货币在自身网络中的应用却很有限。BTC锚定币的出现为比特币搭建了更广阔的舞台，通过这种形式可以扩展到以太坊等图灵完备的区块链上，作为最具共识的底层资产参与繁荣的生态建设。</p>
+<h2 id="比特币网络仍是最安全的区块链网络">比特币网络仍是最安全的区块链网络</h2>
+<p>比特币网络是最早出现的区块链，从链上数据看，比特币仍然是如今最安全、共识最强的加密货币。根据Glassnode的数据，截至7月18日，比特币活跃地址约为64万个，持有大于0.01 BTC的地址有900万个，每天链上转移117万BTC，约等于369亿美元，相当于玻利维亚一年的GDP，2020年GDP超过这一数值的国家也只有94个。</p>
+<p>比特币的每一轮新的牛市都伴随着更多的用户涌入，也可以说正是越来越多的用户造成了比特币的价格上涨，本轮牛市正是由大型机构的采用所推动的。2020年10月，国际支付巨头PayPal宣布进军加密货币市场，允许用户使用PayPal的在线钱包购买、出售和持有比特币和其它虚拟货币。几乎在同一时间，新加坡星展银行宣布推出数字资产交易平台，并支持BTC等加密货币的交易。此后，特斯拉、美图等公司开始购买比特币。比特币也逐渐从小众走向主流采用。</p>
+<p>比特币的巨大波动让很多投资者难以接受，但随着更强大的机构买家逐步进场，比特币的波动性正变得越来越低。根据BitPremier统计的数据，从2010年到现在，比特币的30天波动性整体呈下降趋势。即使是去年3.12期间，波动性也不如2010年-2014年间。波动性的降低也让比特币能以一种另类资产的身份被机构所配置。因为比特币与多数主流资产之间并没有相关性，持有一部分比特币能够增强机构一篮子资产的多样性。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0726/24_470fpfjnzd.png" alt="深入剖析BTC锚定币发行方式 如何形成安全、高效、易用的锚定币？"></p>
+<p>纵观比特币的发展历程，在遭遇了无数次危机之后，比特币在全球范围内的知名度越来越高，共识越来越强。2017年8月1日，部分矿工在比特币区块高度478558处执行硬分叉，BCH诞生，此后BCH又分叉出BSV，他们都称自己为“真正的比特币”，但与比特币的价格之比却不断走低。2014年，历史上曾经最大的加密货币交易所MtGox因为被盗窃价值4亿美元的虚拟货币而倒闭。2017年9月4日，中国交易所因监管而开始出海。</p>
+<p>“任何不能杀死你的，都会使你更强大”。各种监管、黑客攻击等都没有击倒比特币，反而使比特币成为最安全的区块链网络。而Altcoin（Bitcoin alternative，比特币代替品）却更容易遭到安全问题，比如2018年比特黄金BTG遭到的双花攻击，导致交易所遭受1.1亿人民币的经济损失，现如今BTG价格只剩下不到2017年高点的10%。</p>
+<h2 id="btc优质资产的价值应得到更多应用">BTC优质资产的价值应得到更多应用</h2>
+<p>BTC作为最优质的加密资产本应该得到广泛应用，但因为比特币网络本身的可编程性不足、出块时间长、区块容量有限，才限制了BTC的日常使用，曾经被视作希望的闪电网络等扩容方案也发展缓慢。而随着以太坊生态的繁荣，BTC作为一种优质资产开始在以太坊上的DeFi应用中广泛使用。目前，在以太坊上发行的比特币锚定币已超过比特币总量的1%，这一数字仍在持续增加。</p>
+<p>将BTC作为一种跨链资产引入别的区块链对其它公链、持币用户和比特币网络本身都有好处。</p>
+<h2 id="对其它公链的好处">对其它公链的好处</h2>
+<p>比特币的高市值、高流动性、低波动率对于任何公链来说都是一种优质资产，因此比特币锚定币作为底层资产，在以太坊上的借贷协议中广泛使用。对于其它缺乏资产的公链，比特币的引入更加重要。</p>
+<p>资产类型的增加，也使DeFi乐高的堆叠更加安全。在去年3.12之前，以太坊上的资产还比较单一，行情波动大时导致大量资产被清算。在MakerDAO中，大量用户需要DAI来偿还借款，DAI的溢价一度升至20%以上。倘若可以通过抵押更多种类的资产来借入DAI，则可以增加借贷协议的反脆弱性，随着WBTC等跨链比特币的应用，这一问题已经得到解决。</p>
+<h2 id="对持币用户的好处">对持币用户的好处</h2>
+<p>对于比特币的持币用户而言，通过跨链的方式在其它链上使用比特币能有效降低成本并增加使用场景，使用比特币锚定币有多种优势：</p>
+<ul>
+<li>
+<p>转账成本更低，在网络不拥堵的情况下，一般比特币网络中的转账成本约为5美元；而以太坊中Gas Price为10 GWEI的情况下，ERC20代币的转账成本约为1美元。Solana、Polygon、Harmony等其它链上的转账成本基本可以忽略不计。</p>
+</li>
+<li>
+<p>交易确认更快，比特币的出块时间约为十分钟，以太坊约为十三秒，而新兴公链能在几秒钟之内完成交易确认。</p>
+</li>
+<li>
+<p>作为抵押借贷、交易、衍生品、债券等协议中的优质资产，例如可以通过抵押比特币锚定币借出稳定币等资产。</p>
+</li>
+<li>
+<p>可以帮助持币用户获得收益，这在比特币网络中无法实现。</p>
+</li>
+</ul>
+<h2 id="对比特币网络本身对好处">对比特币网络本身对好处</h2>
+<p>对于比特币网络本身，跨链比特币也能增加比特币的共识。</p>
+<ul>
+<li>
+<p>跨链意味着比特币能被更多网络上的用户所接受，增加BTC的持币用户。根据以太坊区块链浏览器上的数据，WBTC的持币地址目前有33046个。</p>
+</li>
+<li>
+<p>有利于巩固比特币的价值存储地位。原生比特币都质押在比特币网络中，并不会影响比特币的价值存储作用，且能通过其它网络获得收益，并将收益转换为更多的比特币资产。</p>
+</li>
+<li>
+<p>有利于增加比特币的实际效用。比特币的出块速度慢，在比特币网络中难以得到应用，交易上链可能需要10分钟，等待6个区块确认大约需要1小时。通过锚定币的形式更有利于比特币的实际使用，以太坊等区块链的交易确认速度更快，可以在三分钟内完成10个区块确认。</p>
+</li>
+</ul>
+<h2 id="btc锚定币的发行方式">BTC锚定币的发行方式</h2>
+<p>比特币锚定币是发行在非比特币网络中，且价格锚定原生比特币的一类代币。当前使用较多的比特币锚定币包括WBTC、HBTC、renBTC、sBTC、oBTC、pBTC。截至7月19日，仅在以太坊上发行的比特币锚定币就达到了262642枚，他们的发行方式各不相同。</p>
+<h2 id="跨链-vs-合成">跨链 VS 合成</h2>
+<p>根据锁定的底层资产，可将比特币锚定币分为跨链和合成两种实现方式。</p>
+<h2 id="跨链">跨链</h2>
+<p>以这种方式实现的比特币锚定币，其原生比特币也1:1的锁定在比特币网络中，然后在其它区块链上铸造锚定币。当前使用最广泛的几种比特币锚定币都以这种方式实现，如WBTC、HBTC、renBTC。</p>
+<h2 id="合成">合成</h2>
+<p>通过这种方式生成的比特币锚定币并没有真正的BTC作为抵押，只是通过抵押其它代币来“模拟”铸造等同于比特币价值的资产，如sBTC和xBTC。</p>
+<p>两者的比较：通过跨链方式实现的比特币锚定币，在比特币网络中有真正的比特币作为抵押品，这个过程不会产生额外的比特币，只是资产通过1:1的映射到其它链上。而通过合成方式生成的比特币，底层并没有原生比特币作为支撑，只能依靠较低的资金使用率，以流动性更低、波动性更大的Altcoin进行抵押，这样既造成资金使用率的低下，又不能保证足够安全。从这个角度上说，以原生BTC进行抵押的方式更加合理。</p>
+<h2 id="中心化-vs-去中心化">中心化 VS 去中心化</h2>
+<p>以跨链的方式发行比特币就必然面临一个问题，那就是资金的托管。用户的原生比特币都需要1:1地质押在比特币网络中，而这些比特币必须要有人来保管，并向用户发放收到原生比特币的“凭证”，我们通常称这类人为“托管方”。托管方保管资产的方式可以分为两种：中心化和去中心化。</p>
+<h2 id="中心化">中心化</h2>
+<p>在以中心化的方式发行的比特币锚定币中，托管工作由单一主体完成，如发行WBTC所需的抵押品都由BitGo托管。根据维基百科介绍，BitGo由Mike Belshe和Ben Davenport于2013年创立，是一家总部位于美国加利福尼亚州的数字资产信托和安全公司。</p>
+<h2 id="去中心化">去中心化</h2>
+<p>不受单一主体控制，由一个分散的去中心化网络完成托管工作。比如renBTC中，就由Ren虚拟机（RenVM）进行资金托管，这些虚拟机也被称为暗节点。tBTC中通过系统随机选择创建和管理BTC钱包的签名者来确保去中心化托管。</p>
+<p>两者的比较：中心化的托管方更可能发生单点故障，如资产被盗甚至主动窃取用户，去中心化的托管方式才是趋势，也更符合区块链的精神。</p>
+<h2 id="铸币上限--清算风险">铸币上限 &amp; 清算风险</h2>
+<p>在去中心化的比特币锚定币发行中，为了维护资金安全，防止托管方作恶，除了用户需要1:1抵押原生比特币之外，托管方也需要质押资产才能进行工作。托管方通常质押的都不是比特币，而是其它Altcoin，因此可能需要超额抵押。</p>
+<p>在已有的方案中，renBTC选择以REN代币作为节点的抵押品，其中的暗节点需要注册并质押10万枚REN代币作为抵押品。tBTC以ETH作为抵押品，抵押金额不少于托管资产的1.5倍。而Synthetix中，合成资产的整体质押率更是高达588%。这就意味着生成的BTC锚定币数量受到抵押品的限制，同时超额抵押也会造成了资金的极大浪费。</p>
+<p>根据7月15日CoinMarketCap的数据，当前REN的市值为3.26亿美元，renBTC的市值已经超过REN。Ren的官方文档显示，理想的renBTC的抵押率在300%以上，只要不低于100%就能保证资产安全，但现在renBTC的抵押率已经小于100%，RenBTC的发行量可能已经接近上限，且可能存在安全风险。</p>
+<p>随着比特币锚定币需求的增加，铸币上限的问题会越发严重，已经有多个协议在寻求降低抵押率，增加资金使用效率。如Synthetix在2020年8月通过提案将抵押率从700%降低到600%，oBTC也在近期寻求将抵押率从125%降低至115%，投票已在SnapShot上举行，并获得了94.17%的支持率。</p>
+<p>当前的托管方式还面临一个问题，节点质押的山寨币波动性更大，当质押物在短期内大幅下跌时可能就无法依靠质押来维护网络的安全，托管方可能联合作恶窃取用户质押的比特币。</p>
+<h2 id="比特币锚定币的理想属性">比特币锚定币的理想属性</h2>
+<p>如上所述，理想的比特币锚定币应有原生比特币作为铸币用户的抵押品，采用去中心化的形式发行，资金利用率和铸币上限足够高，清算风险足够低。PANews认为，比特币锚定币的理想属性需要包括：</p>
+<ul>
+<li>
+<p>公平：完全去中心化的资产托管，托管人之间权重相同存在于随机网络中且可随时自由进出，防止托管人的单点故障，使得托管方不能盗取系统内的原生BTC资产。</p>
+</li>
+<li>
+<p>安全：铸币用户的抵押品为原生比特币，只是在新的网络中1:1地完成映射，永远无脱钩风险。</p>
+</li>
+<li>
+<p>抗审查：不用进行KYC，任何人都可以创建、兑换和使用比特币锚定币，无论他们的身份是什么，或是身处在哪个司法管辖区。</p>
+</li>
+<li>
+<p>铸币容量高：不因自身机制设计而限制比特币锚定币的铸币数量，应尽可能大的保证可铸出比特币锚定币数量。</p>
+</li>
+<li>
+<p>资金利用率高：在网络足够安全的情况下，托管方的抵押率应尽可能低，抵押资产的价格应足够稳定，增加资金利用率。市场上大部分BTC锚定币的总质押率均在250%以上（sBTC：600%，tBTC：250%），总质押率越高，资金效率越低。</p>
+</li>
+</ul>
+<p>为了解决以上问题，DeCus提出了一种新的去中心化的跨链铸币方案。</p>
+<p>首先，托管方的抵押品为BTC资产，初期为WBTC，后面逐渐扩展到包括自身铸造出的跨链BTC在内的跨链BTC上，理论上可以容纳将所有BTC通过抵押铸造为跨链BTC。</p>
+<p>根据Conflux研究总监杨光博士的一篇SCI论文，形成了高效的托管模型，建立了一个可自我调节的托管网络。托管方甚至不需要足额抵押，就可以保证整体网络的安全。</p>
+<p>根据DeCus的重叠分组方案，随着网络的成熟，托管方越多，抵押率将随之降低。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0726/24_mjpgf8pduj.png" alt="深入剖析BTC锚定币发行方式 如何形成安全、高效、易用的锚定币？"></p>
+<p>这就形成了DeCus的三个核心优势，即完全去中心化；托管人的质押率低（质押率约20%），资金利用率高；用户与托管人质押的均为比特币，无清算和脱钩风险。同样，DeCus的跨链BTC也能保持更快的交易确认速度、更便宜的转账费用等其它区块链带来的优势。</p>
+<p>此外，DeCus还计划将跨链BTC进行拆分，以方便使用。现如今的1 BTC价值过大，DeCus将发行比特币的拆分币SATS，1 BTC = 1亿SATS，SATS和BTC之间能够随时按固定比例进行互换。因为有铸币用户质押的原生BTC以及托管方质押的跨链BTC，SATS将足够安全。</p>
+<p>文 | 蒋海波</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/26378/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">如何透过数据投资 NFT 赛道？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/26361/">
+                <span class="next-text nav-default">数据：以太坊2.0合约质押量突破640万枚</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#比特币网络仍是最安全的区块链网络">比特币网络仍是最安全的区块链网络</a></li>
+    <li><a href="#btc优质资产的价值应得到更多应用">BTC优质资产的价值应得到更多应用</a></li>
+    <li><a href="#对其它公链的好处">对其它公链的好处</a></li>
+    <li><a href="#对持币用户的好处">对持币用户的好处</a></li>
+    <li><a href="#对比特币网络本身对好处">对比特币网络本身对好处</a></li>
+    <li><a href="#btc锚定币的发行方式">BTC锚定币的发行方式</a></li>
+    <li><a href="#跨链-vs-合成">跨链 VS 合成</a></li>
+    <li><a href="#跨链">跨链</a></li>
+    <li><a href="#合成">合成</a></li>
+    <li><a href="#中心化-vs-去中心化">中心化 VS 去中心化</a></li>
+    <li><a href="#中心化">中心化</a></li>
+    <li><a href="#去中心化">去中心化</a></li>
+    <li><a href="#铸币上限--清算风险">铸币上限 &amp; 清算风险</a></li>
+    <li><a href="#比特币锚定币的理想属性">比特币锚定币的理想属性</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

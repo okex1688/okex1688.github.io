@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文回顾以太坊 DeFi 协议的历史 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文通过 gas 消耗量等数据回顾 DeFi 协议的历史" />
+<meta name="keywords" content="DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25325/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文回顾以太坊 DeFi 协议的历史" />
+<meta property="og:description" content="本文通过 gas 消耗量等数据回顾 DeFi 协议的历史" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25325/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-05T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文回顾以太坊 DeFi 协议的历史">
+<meta itemprop="description" content="本文通过 gas 消耗量等数据回顾 DeFi 协议的历史"><meta itemprop="datePublished" content="2021-07-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3633">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文回顾以太坊 DeFi 协议的历史"/>
+<meta name="twitter:description" content="本文通过 gas 消耗量等数据回顾 DeFi 协议的历史"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文回顾以太坊 DeFi 协议的历史</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-05">
+      2021-07-05
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3633 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>以太坊于 2015 年 7 月首次上线，其去中心化应用程序 (dApps) 的生态系统多年来取得了惊人的发展。0x 的第一个场外交易市场于 2017 年推出。Uniswap 于 2018 年 11 月首次部署。Yearn Finance 于 2020 年进行了空投。去中心化金融 (DeFi) 是一个不断发展的行业，回想起来，其增长似乎不可避免。</p>
+<p>与任何具有竞争产品的经济体一样，各协议的市场影响力起起落落，不断创新，形成了我们现在看到的 DeFi 格局。DeFi 的历史可能是主观的，但以太坊区块链不是。在这篇研究文章中，我们通过数据讲述了以太坊的故事以及此类协议的发展。在这里，我们通过绘制图表展示了从 2018 年到今天在以太坊上花费的总 gas 费用，以四周为周期累计。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0705/29_ust3sl34cs.png" alt="一文回顾以太坊 DeFi 协议的历史"></p>
+<p>从 2018 年到 2019 年，以太坊上的交易活动相当少。每个月的总 gas 费消耗几乎不超过 40,000 ETH。从 2020 年开始，交易活动开始频繁，并且 gas 消耗呈抛物线状的走势，在 2020 年 9 月左右的四周内达到了 650,000 ETH 的峰值。那是以太坊的价格仍为 400 美元。时间过得真快！</p>
+<p>我们通过分析各个协议实体花费的总 gas 费的百分比来仔细观察数据。在本文中，我们想要研究最热门的 30 个 gas 消耗实体在过去时间里消耗 gas 的比例。</p>
+<p>在一段时间内所消耗的 gas 费是许多因素共同作用的函数：有多少用户在与智能合约进行交互、执行该函数的计算强度以及当时的总 gas 价格。</p>
+<p>在我们深入讨论之前：我们必须注意到，2018 年至 2019 年以太坊的格局与现在的格局非常不同。2018 年至 2019 年活跃的大量合约如今已不再使用。我们可以在此<strong>对 2018 年至 2019 年期间的前 30 个 gas 消耗者进行排序</strong> ，以便进一步了解。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0705/29_oy73psijoh.png" alt="一文回顾以太坊 DeFi 协议的历史"></p>
+<p>（注：图中协议可点进原文查看）</p>
+<p>除了实体之外，我还在数据图表中汇总了代币合约消耗的总 gas，这一组一直占以太坊链上交易活动的 10% 左右。2018 年的许多合约都是庞氏骗局和赌博游戏，其中很大一部分来自中国。以 LastWinner 为例，这个游戏基于一个简单的机制：用户将 ETH 存入合约中，直到达到某个 ETH 上限。最后一个存入 ETH 的人将赢得池里全部 ETH。大家可以查看 2018 年年中的活动高峰期。</p>
+<p>下表显示的数据更加有趣：展示了排名前 30 的实体消耗 gas 的相对比例。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0705/29_ll2qrmjt3s.png" alt="一文回顾以太坊 DeFi 协议的历史"></p>
+<p>（注：图中协议可点进原文查看）</p>
+<p>通过这些数据，我们可以讲述每年的有趣故事。让我们从 2018 年开始吧。</p>
+<p><strong>2018: 去中心化的种子</strong></p>
+<p><strong>0x 首先去掉中间商。</strong> 许多人以为 Uniswap 是首个诞生的去中心化交易所，但使用智能合约的去信任交易所的历史可以追溯到更早的时候。2017 年，最初的 DEX 模型试图模仿中心化交易所的订单簿模型，但它们的计算量大且速度慢，以至于无法使用。2017 年 7 月，0x 部署了一种用于链上交易的订单结算方法。</p>
+<p>它曾被称为 0x OTC，因为该模型确实如此。当人们在场外交易市场做交易时，1、价格发现仅发生在两方之间；2、谈判在没有保证报价的情况下发生 (我可以随时撤销，但在公开市场上，我下的订单可以立即被接受)。用户会在推特等社交媒体平台上发布链下订单，但通过 0x 在链上结算。2018 年，0x 日交易额为 400 万美元。</p>
+<p><strong>Bancor 成为用户首选的 DEX。</strong> Bancor 在 2018 年 8 月发布的一篇博客文章中提到了自动做市商的想法，并完全颠覆了订单簿式市场的想法。在 Bancor 上，所有代币都可以与 BNT 配对，这种做法一直持续到今天。相比之下，Uniswap 上允许所有代币对进行交易。</p>
+<p><strong>Kyber 留下了它的印记。</strong> Kyber 本质上促进各方以去中心化的方式获取以及贡献流动性。它本身不是一个 DEX，而是专注于整合来源不同的资金池，包括 DEX 和中心化做市商。把它想象成一个通用的 Uniswap 路由器！这种流动性为支付网络等实体所利用，这在当时是真正开创性的。</p>
+<p><strong>2019: 新的金融经济</strong></p>
+<p><strong>Chainlink 逐渐成为 DeFi 的躯干。</strong> Chainlink 于 2017 年首次上线，它将外部以及链下数据安全地连接至以太坊智能合约。人们没有意识到预言机对于合成产品和边际产品来说是多么地重要。BZx 为其保证金交易平台引入了 Chainlink 的预言机，Synthetix 也立即集成 Chainlink，为真实世界的资产提供价格流。Decrypt 甚至在 5 月发布了 Chainlink 集成的规范列表。</p>
+<p>另一个预言机服务是 Tellor，其使用量在 10 月份有过短暂的激增。截至 2021 年，Chainlink 在以太坊上的 gas 费使用份额一直保持在 4% 以上。</p>
+<p><strong>高级的交易功能开始萌芽。</strong> dydx 最初负责借贷市场，后来开始开发一项保证金交易功能，其杠杆率可达 4 倍，用户界面也很美观。没有任何产品要比它更接近 CEX 的用户体验了。</p>
+<p><strong>Synthetix 找到了自己的定位。</strong> 现在很少有人知道 Synthetix 最初叫做 Havven，并且当时是被设计成类似于 Maker 的稳定币协议。大家可以看看 gas 图表，这些年里 Maker 几乎占统治地位。随后，Synthetix 开始为合成加密货币以及逆价值资产创建市场，截至 7 月，其交易额达到 6000 万美元。</p>
+<p><strong>合成资产的利润开始叠加。</strong> -- Compound V2 于 5 月以全新的面貌推出。多年来，Compound 的货币市场几乎没有变化，但其稳定的 gas 吞吐量 (1.5-5%) 证明了其设计的可持续性。毫不奇怪，你会发现在过去的几年里，借贷协议的 gas 消耗比 DEX 的更少。</p>
+<p><strong>2020: 更多明星项目出现</strong></p>
+<p><strong>Uniswap 主导着 AMM (自动做市商) 市场。</strong> Uniswap 于 2018 年 11 月首次推出，但其交易量于 2019 年 2 月正式超过 Bancor 的交易量。虽然两者都采用 50/50 流动性提供的模式，但 Uniswap 更节省 gas 以及对用户更加友好。Uniswap 还允许用户在其平台无需许可地发布资产，使其与更庞大的 DeFi 生态系统更好地组合。以下节选自 2019 年的一篇博客文章：</p>
+<p>我们的代币在 Bancor 上发布了几个月后才改用 Uniswap。在 Bancor 上发布代币的过程是这样的：我们先联系 Bancor 团队，并与他们合作将 ETH 和我们等量的代币转移到 Bancor 团队提供的地址中。Bancor 团队还要求我们在设置期间转移不少于 6 万美元的 ETH，用于提供流动性。从我们决定将代币发布 Bancor 上到 Bancor 上出现我们代币的流动性，整个和 Bancor 团队协调的过程花了 一到两天。相比之下，创建一个 Uniswap 合约的过程很简单，只需填写一份简短的表格并点击一个按钮。为合约添加流动性的过程同样如此简单。这个过程只花了一两分钟，并且我们不需要联系 Uniswap 团队，也没有对合约应添加多少流动性的硬性要求。</p>
+<p><strong>1inch 隆重登场。</strong> 1inch 可能是 2020 年增长最快的 DeFi 协议，它在 8 月才开始种子轮融资，随后在 11 月其 gas 消耗量就占据了总 gas 消耗量的 6%。它提供了一种 DEX 聚合服务，将订单通过不同的流动性池进行分割和传送，以找到最节省成本的交易。去年年底，1inch 向用户进行了追溯空投，并且其 gas 消耗量在 12 月占总消耗量的 10%。</p>
+<p><strong>Forsage 火爆起来 &ndash; 十分突然。</strong> 这在当时很让人费解。Forsage 显然要求用户支付 ETH 来使用该平台，并承诺为他们为他们推荐的每个人支付 ETH。就像传销。这个项目似乎现在还在运行。</p>
+<p><strong>DeFi 用户追崇 Yearn。</strong> 如果没有谈论到 Yearn Finance 的 YFI 空投，以太坊的历史是不完整的。这个“无价值的治理代币”在 7 天内价格翻了 35 倍。自 2020 年以来，Yearn 一直走在 DeFi 的前沿，其增长结构和形式为当今一些新出的协议指明方向。</p>
+<p><strong>2021 及未来</strong></p>
+<p><strong>Tether 和 Centre</strong>  的交易占了以太坊网络交易活动的很大一部分 &ndash; 它们的 gas 消耗量目前占总消耗量的 12%。这是统计转移进出以太坊的资产数量的一个很好的途径，因为 gas 用于铸造和销毁 USDT 和 USDC。</p>
+<p><strong>Wrapped ETH 合约</strong>  (以太坊 DeFi 的支柱) 仍然被广泛使用。WETH 在当时是一个非常具有革命性的想法。代币化的以太坊可以用作抵押品、交易手段以及其他代币的定价基准。WETH 是 DeFi 乐高的其中一个例子，它满足了用户的需求、被广泛使用并且很稳定。哦对，它没有治理代币！</p>
+<p><strong>一个鲜活的产品生态系统：</strong> 一系列 swap 协议目前在以太坊网络上各占据自己的份额 &ndash; 虽然 Uniswap 还是占主导地位。Nansen 追踪了至少 94 个 DEX 协议 &ndash; 每个协议都有自己的特点和价值主张。自今年年初以来，以太坊上就部署了 280 多万个合约。到目前为止，已经部署了 19.8 万个 ERC20 合约。</p>
+<p><strong>你也为这个网络的交易量做出了贡献。</strong> 到目前为止，你所进行的每一次 swap、质押、存款、提款以及铸造代币，都记录在了以太坊区块链上。你是以太坊森林的参与者，这个森林将继续扩张、变化及繁荣。你猜我们接下来会遇到什么？</p>
+<p>来源 | www.nansen.ai</p>
+<p>作者 | Ling Young Loon</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25359/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">一文洞悉NFT的行业格局和未来发展机遇</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25315/">
+                <span class="next-text nav-default">一些海外专家学者如何看待加密资产未来的？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

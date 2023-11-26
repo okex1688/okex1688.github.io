@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Web3底层基建？简析昨天CloudFlare服务中断的原因 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本篇文章，会讲一下什么是CloudFlare，到底是个什么公司，CloudFlare和Web3的缘起，以及从技术上解释一下本次故障的原因。" />
+<meta name="keywords" content="其他" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39304/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Web3底层基建？简析昨天CloudFlare服务中断的原因" />
+<meta property="og:description" content="本篇文章，会讲一下什么是CloudFlare，到底是个什么公司，CloudFlare和Web3的缘起，以及从技术上解释一下本次故障的原因。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39304/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-23T00:00:00+00:00" />
+
+<meta itemprop="name" content="Web3底层基建？简析昨天CloudFlare服务中断的原因">
+<meta itemprop="description" content="本篇文章，会讲一下什么是CloudFlare，到底是个什么公司，CloudFlare和Web3的缘起，以及从技术上解释一下本次故障的原因。"><meta itemprop="datePublished" content="2022-06-23T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-23T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6109">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Web3底层基建？简析昨天CloudFlare服务中断的原因"/>
+<meta name="twitter:description" content="本篇文章，会讲一下什么是CloudFlare，到底是个什么公司，CloudFlare和Web3的缘起，以及从技术上解释一下本次故障的原因。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Web3底层基建？简析昨天CloudFlare服务中断的原因</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-23">
+      2022-06-23
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6109 字 -
+        预计阅读 13 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>Cloudflare是一家于2019年上市的CDN和安全服务公司，不过2022年6月21日（周二）因为它的服务暂时中断，影响了大量的服务和平台正常运营。包括FTX，Discord，Omegle，DoorDash等等。</p>
+<p><strong>本篇文章，会讲一下什么是CloudFlare，到底是个什么公司，CloudFlare和Web3的缘起，以及从技术上解释一下本次故障的原因。</strong></p>
+<p><strong>本文结构</strong></p>
+<p><strong>1.事件背景</strong></p>
+<ul>
+<li>  2022年6月底（本周二）发生了什么？</li>
+</ul>
+<p><strong>2.什么是CDN（内容分发网络）</strong></p>
+<ul>
+<li>
+<p>什么是CDN</p>
+</li>
+<li>
+<p>什么是路由</p>
+</li>
+<li>
+<p>CDN公司通常都是安全公司？</p>
+</li>
+</ul>
+<p><strong>3.</strong> **<strong>Cloudflare是个什么公司？</strong> **</p>
+<p><strong>4.Cloudflare和Web3的缘起</strong></p>
+<ul>
+<li>IPFS&amp;以太坊</li>
+</ul>
+<p><strong>5.</strong> **<strong>Cloudflare为什么会发生服务中断？（技术分析部分）</strong> **</p>
+<ul>
+<li>
+<p>和架构转型有关</p>
+</li>
+<li>
+<p>本次服务终端的时间线和背景</p>
+</li>
+<li>
+<p>补救和后续步骤</p>
+</li>
+<li>
+<p>结论</p>
+</li>
+</ul>
+<p><strong>事件背景</strong></p>
+<p>6月21日（周二）发生了一件事，就是因为Cloudflare的服务暂时中断，影响了大量的服务和平台正常运营。包括FTX，Discord，Omegle，DoorDash，Crunchyroll，NordVPN和Feedly等等、还有Zeroda，Medium.com，新闻媒体Register，Groww，Buffer，iSpirt，Upstox和Social Blade的，用户无法访问这些网站，甚至Coinbase，Shopify和英雄联盟也受到了部分影响。</p>
+<p><strong>本篇文章，会讲一下什么是CloudFlare，到底是个什么公司，CloudFlare和Web3的缘起，以及从技术上解释一下本次故障的原因。</strong></p>
+<p><strong>什么是CDN（内容分发网络）</strong></p>
+<p><strong>在讲Cloudflare之前，我们先普及一个概念（CDN）</strong></p>
+<p><strong>什么是CDN？</strong></p>
+<p>CDN，全称为Content Distribute Network(内容分发网络 )或者Content Delivery Network；那么，什么是内容分发网络呢？是可以通过互联网互相连接的电脑网络系统，利用最近每位用户的服务器，更快、更可靠地将音乐、图片、视频、应用程序及其他文件发送给用户，来提供高性能、可扩展性及低成本的网络内容传递给用户。</p>
+<p><strong>形象的说，CDN有点类似于京东物流模式</strong> ，通过在全国各地建立物流点(缓存服务器)，当有人从京东购买货物时(用户资源请求)，京东上次可以根据用户的收货地址(CDN进行用户域名解析)找最近的或者最快的一个物流点进行派送(将访问用户连接到最近的缓存服务器进行资源传输)。</p>
+<p>CDN服务可用于确保快速可靠地分发静态内容，这些内容可以缓存，最适合在网速庞大的网络中存储和分发，这样就能把主干网络通道空出来给必须实时传输的动态内容，比如网络直播，降低时延。</p>
+<p>我们举个例子，比如有一家英国公司，主要客户也在英国，如果给这家公司建立网站，那么，通常会把网站服务器放在英国。但是，会存在延迟这样的情况，影响用户们的网站访问体验，不过，如果延迟是由于网络阻塞导致的，那么这种延迟是可以改善的。<strong>具体怎么改善呢？</strong></p>
+<p>主要是通过提高点到点之间的带宽、优化网络路由来解决这些问题。举个例子，比如从伦敦到牛津，增加这两地之间光纤的数量，就是最容易的提高带宽方法。</p>
+<p>注意，这里光纤数量主要是我们建设基础设施如海底光缆、铁路和高速公路的时候，同时铺设的。因此，这些年我们用的带宽一直在增加，你可以把增加网络贷款理解为拓宽交通公路，就是个花钱铺设的事情。</p>
+<p><strong>路由</strong></p>
+<p>我们前面提到过网络路由，<strong>路由是啥呢？</strong> 其实路由解决的主要问题，就是两点之间的通信，究竟走什么线路的问题。举个例子，一旦伦敦到牛津的出现网络堵塞，系统还可以选择其他路由。有点像智慧交通，互联网的路由优化也类似。所以这些年，尽管流量越来越大，但是网络性能也是一直在改善的。</p>
+<p>通俗一点讲，就是给网站加速，部分网站由于原因使得打开变得极为缓慢，这就需要用CDN来进行加速。</p>
+<p>CDN也是一类较为先进网络技术，解决内容在互联网上的分发问题。什么是内容分发网络呢？这与交通网络类似，也就是说，再快的飞机，也是有速度上限的，距离越远，延迟越长。网络也一样，如果距离远，就会出现网络延迟的情况。</p>
+<p>所以如果某个欧洲用户想要访问美国网站的内容，CDN‍就是在欧洲建立一个服务器，把美国的内容翻译到这个服务器。当欧洲用户进入域名访问时，由于CDN运营商知道这个用户访问来自欧洲系统，就把欧洲服务器的IP地址给这个用户，用户自然就访问到欧洲的服务器了。</p>
+<p><strong>CDN公司通常都是安全公司？</strong></p>
+<p>属于CDN一个重要特点，是CDN天生具备安全属性，因为cdn对哪些人在访问用户的网络非常清楚，因此，可以帮助客户阻挡网站攻击。网络安全是cdn公司的一项增值服务，尽管cdn的出现，远远早于云计算，但是目前大家已经把cdn归类成云计算，原因是用户通常会根据使用量，来对cdn服务进行按月付费和按照流量付费，这其实属于典型的云计算订阅模式，同时cdn的服务器也不一定就是传统的物理服务器，这些服务器可能也是来自公有云运营商的虚拟机，所以现在你完全可以把CDN看成一个云计算的IaaS服务。</p>
+<p>注：本部分关于CDN的解释内容，部分来自于Youtube博主老科谈科技股</p>
+<p><strong>Cloudflare是个什么公司？</strong></p>
+<p>2010年，Cloudflare正式创立，总部位于美国旧金山。是一家以其 CDN 和安全服务为主营业务的公司，Cloudflare公司的主营业务是向客户提供基于反向代理的内容分发网络及分布式域名解析服务（Distributed Domain Name Server）。从2009年开始，该公司由Union Square Ventures等风险投资参投，百度也参与了Cloudflare的D轮融资, 2019年8月15日，Cloudflare正式IPO。</p>
+<p>除此之外，Cloudflare收购了一系列网络服务和安全公司，2014年收购StopTheHacker 、CryptoSeal；2016年收购Eager Platform Co.；17年及以后收购Neumob、S2 Systems、Linc、Zaraz；今年收购了Vectrix和Area 1 Security.</p>
+<p><strong>Cloudflare和Web3的缘起</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0623/12_1wk8vg8hi4.png" alt="Web3底层基建？简析昨天CloudFlare服务中断的原因"></p>
+<p>Cloudflare是比较早就开始支持Web3开发的CDN公司，它的官网是这么说的：Cloudflare是用户通往Web3的门户，通过Cloudflare，可以轻松访问IPFS和Ethereum网络。并且，官网提到，Web 1.0让世界有了快速传播信息的能力，而Web 2.0则让这些信息具有互动性。Web 3.0，或Web3，被认为是互联网的下一次迭代，建立在IPFS和以太坊等去中心化的技术之上。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0623/12_iaf9fh56d4.png" alt="Web3底层基建？简析昨天CloudFlare服务中断的原因"></p>
+<p>图片来自Cloudflare官网</p>
+<p>Cloudflare具备 IPFS Gateway，客户可以在继续使用HTTP协议的时候，同时享受IPFS的好处。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0623/12_gbjb0v7k34.png" alt="Web3底层基建？简析昨天CloudFlare服务中断的原因"></p>
+<p>Cloudflare以太坊网关允许客户使用自己的域,可以通过 HTTP 的 JSON RPC 查询发送到自定义域名。Cloudflare可以管理、维护和监控Web3基础设施，构建者可以专注于重要的事情：构建Dapp。Cloudflare可以通过行业内领先的全球网络，创建基于Web3技术的安全、可靠和快速服务。</p>
+<p><strong>Cloudflare为什么会发生服务中断？</strong></p>
+<p><strong>2022年6月21日的Cloudflare服务中断事件的官方解释：</strong></p>
+<p>2022 年 6 月 21 日，Cloudflare 服务中断，影响了 19 个数据中心的正常运行，而不幸的是，这19个地点处理了Cloudflare很大一部分全球数据。这次服务中断是由一个长期运行项目出现的问题引起的，这个项目主要是想提高最繁忙数据中心的弹性而发起的。是因为，更改了部分位置的网络配置，而导致服务中断，中断的具体时间是从UTC 时间 06：27 开始，到了 06：58 UTC，第一个数据中心重新开始工作，到 07：42 UTC，所有数据中心都可以正常工作。根据用户在世界上的不同位置，可能无法访问依赖 Cloudflare为基础设施的网站和服务，不过在其他没有受影响的地点，Cloudflare继续正常运行。</p>
+<p>对此次中断，Cloudflare 深表歉意，这是Cloudflare 的错误，而不是因为攻击或其他恶意活动的。</p>
+<p><strong>本次架构转型的背景</strong></p>
+<p>在过去 18 个月，Cloudflare 一直致力于将所有最繁忙的数据中心的架构转型，让它们更为灵活、且更具弹性。目前，已经有19个数据中心，成功转换为此架构，Cloudflare内部称其为Multi-Colo PoP（MCP）;这19个数据中心分别位于：阿姆斯特丹，亚特兰大，阿什本，芝加哥，法兰克福，伦敦，洛杉矶，马德里，曼彻斯特，迈阿密，米兰，孟买，纽瓦克，大阪，圣保罗，圣何塞，新加坡，悉尼和东京。</p>
+<p>这个新架构被设计成Clos网络，它的一个关键部分是增加了一个额外的路由层（见下图），创造了一个网状的连接。这个网状结构使我们能够轻松地禁用和启用数据中心的部分内部网络，以便进行维护或处理问题。这一层由下图中标识为的Spine部分表示。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0623/12_2ub77pvz7u.png" alt="Web3底层基建？简析昨天CloudFlare服务中断的原因"></p>
+<p>注：Clos network是一种多级交换网络，由Charles Clos于1953年首次正式使用该术语，它代表了实际多级电话交换系统的理想化表示。当物理电路交换的需求超过了单crossbar switch的最大可实现容量的时候需要使用Clos network。Clos network的主要优势点在于：所需的交叉点数量远小于整个交换系统使用一个大的Crossbar Switch来实现所需的交叉点数量。</p>
+<p>这种新的架构显著改善了Cloudflare的可靠性，可以使Cloudflare能够在这些地方进行维护，并且不中断客户流量。<strong>不过，由于这些地点同时也承载着Cloudflare流量的很大部分，任何这里的问题都会产生非常广泛的影响，不幸的是，这就是6月21日Cloudflare服务终端的原因所在。</strong></p>
+<p><strong>服务中断的时间线和影响</strong></p>
+<p>Cloudflare应用了名为BGP的协议_(边界网关协议，Border Gateway Protocol，是运行于 TCP 上的一种自治系统的路由协议 )_。该协议的由运营商定义政策，决定有哪些前缀（相邻IP地址的集合）会被广播给对等的节点（他们连接的其他网络）。这些策略有单独的组成部分，按顺序进行评估。最终的结果是，任何给定的前缀要么被广播，要么不被广播。政策的变化可能意味着以前会广播的前缀不再被广播，被称为 &ldquo;撤销&rdquo;，这些IP地址将不再能在互联网上正常运行。</p>
+<p>运营商制定了某种策略，决定某些路由前缀可以被广播（这里的广播指的是，路由可以被其他边缘bgp路由器学习到，进而其他的bgp网络知道这些路由变化，前缀就是prefix，是用来唯一地标识着连入Internet的一个网络号）</p>
+<p><img src="https://img.bibiqing.com/news/2022/0623/12_l54fv4fs9h.png" alt="Web3底层基建？简析昨天CloudFlare服务中断的原因"></p>
+<p>前缀通告策略更改时，术语的重新编排，导致Cloudflare必须撤回前缀的关键子集。</p>
+<p>政策的变化可能意味着以前会广播的前缀不再被广播，Cloudflare工程师在受影响的数据中心，对有问题部分进行恢复时，就遇到了额外困难，不过Cloudflare有处理此类问题的备份程序。</p>
+<p><strong>03：56 UTC</strong> ：Cloudflare将更改部署到第一个（数据中心）位置，所有位置都没有受到此次更改的影响，因为这些位置使用的旧的架构。</p>
+<p><strong>06：17</strong> ：部署更改到Cloudflare最繁忙的地点，但是没有部署到具备 MCP（Multi-Colo PoP） 体系结构的位置。</p>
+<p><strong>06：27</strong> ：部署到达了启用 MCP （Multi-Colo PoP）的位置，并且更改已部署到关键部位。<strong>这是服务中断事件开始的时候</strong> ，这个时候，19个数据中心迅速离线。</p>
+<p><strong>06：32</strong> ：Cloudflare内部宣布本次服务中断事件。</p>
+<p><strong>06：51</strong> ：在路由器上进行的首次更改，以验证根本原因。</p>
+<p><strong>06：58</strong> ：排查故障，找出根本原因，还原出现问题的部分</p>
+<p><strong>07：42</strong> ：最后一次还原已完成，网络工程师开始检查对方的更改，还原状态，此时问题偶尔重新出现，因此延迟了一点。</p>
+<p><strong>08：00</strong> ：服务中断事件结束。</p>
+<p>这些数据中心的重要性，可以从下图全球范围内处理的成功HTTP请求的数量中清楚地看出：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0623/12_ywrh7utu02.png" alt="Web3底层基建？简析昨天CloudFlare服务中断的原因"></p>
+<p>尽管这些出问题的数据中心，仅占Cloudflare总网络的 4%，但这次中断影响了总请求的 50%；</p>
+<p><img src="https://img.bibiqing.com/news/2022/0623/12_falen18cey.png" alt="Web3底层基建？简析昨天CloudFlare服务中断的原因"></p>
+<p>（本部分有小部分代码，此处略去，感兴趣的网络工程小伙伴可查看原文：</p>
+<p><em><a href="https://blog.cloudflare.com/cloudflare-outage-on-june-21-2022/">https://blog.cloudflare.com/cloudflare-outage-on-june-21-2022/</a></em>）</p>
+<p><strong>补救和后续步骤</strong></p>
+<p>本次服务终端事件造成了广泛且严重的影响，Cloudflare一贯对可用性是非常重视，目前已经提出了几个需要改进的领域，而后将继续努力，发现可能潜在导致服务终端的所有问题。</p>
+<p><strong>流程</strong> ：虽然 MCP 计划旨在提高可用性，但我们在更新这些数据中心方面的程序性差距，导致造成了严重影响。虽然Cloudflare确实为设计了交错策略，但是它并不完美，部署过程和自动化中，需要包含 MCP 的测试和具体部署过程，以确保不会产生意外后果。</p>
+<p><strong>架构</strong> ：路由器配置的错误会阻止正确的路由广播，从而阻止了正常流量和基础设施的运行。Cloudflare将会重新设计路由广播的策略语句，防止排序的错误。</p>
+<p><strong>自动化</strong> ：Cloudflare自动化套件中有可以降低此事件负面影响的部分。Cloudflare将专注于自动化改进，为网络配置的推出强制实施改进的交错策略，并提供自动 &ldquo;提交-确认 &ldquo;回滚。前者将大大降低整体影响，后者将大幅度减少事件中的解决时间。</p>
+<p><strong>结论</strong></p>
+<p>尽管Cloudflare在MCP架构设计上投入了大量资金，提高服务可用性，但在本次服务中断事件中，让客户失望了。对于服务中断期间，无法访问互联网和数字资产的客户，以及所有用户，Cloudflare深表歉意，已经开始着手进行所有的改进和优化，努力确保类似情况不会再次发生。</p>
+<p>【参考文献】</p>
+<p>CDN解释部分：Youtube-老科谈科技股-Cloudflare</p>
+<p>企辰科技：云、CDN、IDC 三个概念的区别是什么？</p>
+<p><a href="https://techcrunch.com/2022/06/21/cloudflare-outage-crypto-exchanges/">https://techcrunch.com/2022/06/21/cloudflare-outage-crypto-exchanges/</a></p>
+<p><a href="https://blog.cloudflare.com/cloudflare-outage-on-june-21-2022/">https://blog.cloudflare.com/cloudflare-outage-on-june-21-2022/</a></p>
+<p><a href="https://techcrunch.com/2022/06/20/cloudflare-outage-knocks-popular-services-offline/">https://techcrunch.com/2022/06/20/cloudflare-outage-knocks-popular-services-offline/</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Cloudflare#cite">https://en.wikipedia.org/wiki/Cloudflare#cite</a>_note-13</p>
+<p><a href="https://en.wikipedia.org/wiki/Cloudflare">https://en.wikipedia.org/wiki/Cloudflare</a></p>
+<p><a href="https://baike.baidu.com/item/%E8%BE%B9%E7%95%8C%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE/2987527?fromtitle=BGP%E5%8D%8F%E8%AE%AE&amp;fromid=1989644&amp;fr=aladdin">https://baike.baidu.com/item/%E8%BE%B9%E7%95%8C%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE/2987527?fromtitle=BGP%E5%8D%8F%E8%AE%AE&amp;fromid=1989644&amp;fr=aladdin</a></p>
+<p><a href="https://www.cloudflare.com/zh-cn/web3/">https://www.cloudflare.com/zh-cn/web3/</a></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39309/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Web3.0撕裂资本圈</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39307/">
+                <span class="next-text nav-default">鲍威尔：国会需要澄清谁对加密货币和稳定币拥有监管权力</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

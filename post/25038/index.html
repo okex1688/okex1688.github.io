@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          以太坊扩容之战：探秘侧链方案 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="侧链算力强，又可以支持所有的以太坊虚拟机（EVM）合约。这些优点使得侧链成为许多dApps扩容解决方案的共同选择，因为它们gas费低，交易时间短。" />
+<meta name="keywords" content="Layer 2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25038/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="以太坊扩容之战：探秘侧链方案" />
+<meta property="og:description" content="侧链算力强，又可以支持所有的以太坊虚拟机（EVM）合约。这些优点使得侧链成为许多dApps扩容解决方案的共同选择，因为它们gas费低，交易时间短。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25038/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-29T00:00:00+00:00" />
+
+<meta itemprop="name" content="以太坊扩容之战：探秘侧链方案">
+<meta itemprop="description" content="侧链算力强，又可以支持所有的以太坊虚拟机（EVM）合约。这些优点使得侧链成为许多dApps扩容解决方案的共同选择，因为它们gas费低，交易时间短。"><meta itemprop="datePublished" content="2021-06-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3148">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="以太坊扩容之战：探秘侧链方案"/>
+<meta name="twitter:description" content="侧链算力强，又可以支持所有的以太坊虚拟机（EVM）合约。这些优点使得侧链成为许多dApps扩容解决方案的共同选择，因为它们gas费低，交易时间短。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">以太坊扩容之战：探秘侧链方案</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-29">
+      2021-06-29
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3148 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="可扩容性问题"><strong>可扩容性问题</strong></h2>
+<p>以太坊是迄今为止市值最大、并被最多人采用的智能合约区块链，支持DeFi、NFT、社交代币等各种项目。根据加密货币APP追踪器State of the Dapps的数据显示，目前有超过3000个去中心化的应用程序在以太坊区块链上运行。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0629/23_powf6u0i3n.png" alt="以太坊扩容之战：探秘侧链方案"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0629/23_oig58poot5.png" alt="以太坊扩容之战：探秘侧链方案"></p>
+<p>以太坊Gas Fee (来源: Ethereum Gas Tracker)</p>
+<p>虽然以太坊收获了如此巨大的成功，但是依然存在可扩容性和gas费用的限制问题。在当前的区块gas限制下，它每秒只能进行14笔交易。为了解决扩展的问题，许多解决方案如侧链、rollup、plasma和状态通道都在进行各自的探索，最终目标是在不影响安全的情况下降低gas费用，并使每个区块单位时间内能处理尽可能多的交易。尽管如此，由于缺乏十分有效的解决方案，目前交易更快速更安全的以太坊2.0升级暂时还未能实现。</p>
+<h2 id="解决以太坊的扩容问题侧链"><strong>解决以太坊的扩容问题：侧链</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2021/0629/23_imko3vkct4.png" alt="以太坊扩容之战：探秘侧链方案"></p>
+<p>侧链解决方案对照表 (来源: IOSG Ventures)</p>
+<p>侧链是独立的区块链，有自己的共识机制和安全属性，与以太坊（主链）兼容。侧链可以通过桥梁与以太坊沟通，这样资产就可以在链之间转移。在现有的侧链解决方案中，就每秒钟的交易（TPS）数量而言，Polygon（7000 TPS）和Skale（20000 TPS）的都有优异的表现。<strong>同样，我们可以看到，Polygon的gas费用最便宜，每笔交易&lt;0.0001美元。</strong></p>
+<h2 id="polygon优势与劣势"><strong>Polygon：优势与劣势</strong></h2>
+<p>Polygon是一个旨在支持基础设施开发和解决Ethereum扩展问题的平台。2021年2月，Matic Network改名为Polygon，并将自己定位为支持多种二层基础设施的平台。<strong>它的主要功能是灵活的模块化框架（Polygon SDK），允许开发者建立和连接其他与以太坊兼容的Layer-2基础设施，如Plasma、Rollups和侧链</strong> 。Polygon也有自己的侧链产品，名为Polygon PoS侧链。其安全性是由无需许可的PoS验证器来实现。目前，Polygon SDK、Polygon PoS侧链和基于Plasma的支付系统都已上线。Polygon与zk Rollups、Optimistic Rollups、Stand-Alone链和Shared Security链之间的对接很快也会上线了 。</p>
+<p>Polygon可以使用户通过以太坊和Polygon主网之间的PoS链或Plasma桥轻松登陆其平台。作为一个TPS 达到 7k的侧链（以太坊只有14 TPS），Polygon网络的gas费利用效率高，也优化了需要小额支付的多种应用场景。<strong>在交易速度方面，与以太坊的平均从五分钟左右到几小时交易时间相比，使用PoS链的人将享受几乎瞬时的交易（&lt;2秒）</strong> 。</p>
+<p>然而，Polygon也有一些侧链的遗留问题。Polygon作为一个有自己的共识机制的侧链，与以太坊相比，去中心化程度较低。此外，1:1的挂钩系统意味着侧链代币Matic(主要用于支付gas费用和作为Polygon的质押奖励）需要保持价值，从而作为激励支持代币经济。</p>
+<h2 id="polygon的生态"><strong>Polygon的生态</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2021/0629/23_3okcbdb42d.png" alt="以太坊扩容之战：探秘侧链方案"></p>
+<p>Polygon生态 (来源: Blockcrunch)</p>
+<p><strong>随着时间的推移，Polygon已经成为各种应用进行扩容的优先选择</strong> 。如NFT（OpenSea，Decentraland），Defi（QuickSwap，SushiSwap，Aave，Curve，0x），游戏（ATARI，Decentral.Games），DAO（MantraDAO，Snapshotm，Polydoge）等。Polygon上的许多项目也将被部署在以太坊上。目前，有超过13个垂直领域和超过356个dApp项目在Polygon的基础设施上运行。</p>
+<ul>
+<li><strong>Polygon的总交易量</strong></li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0629/23_iulpuhvrv6.png" alt="以太坊扩容之战：探秘侧链方案"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0629/23_t8kzy75nps.png" alt="以太坊扩容之战：探秘侧链方案"></p>
+<p>总交易量和月增长率 (来源: IOSG Ventures)</p>
+<p>以太坊的问题给了侧链发展的机会。从图里我们可以看到，币安智能链网络的日交易量从一开始不到100万，飙升到高峰时的1100万。此外，Polygon在2021年第二季度追赶得非常快，最近甚至超过了BSC的日交易量。自2021年3月以来，Polygon的总交易增长已增加到69%，并超过了BSC（24.9%）和Eth（14.8%）。在过去的2-3个月中，总交易量的增长有所下降。然而，Polygon环比增长60%，而Eth是-11.5%，BSC是-42.4%。</p>
+<ul>
+<li><strong>Polygon的唯一钱包地址总数</strong></li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0629/23_n6vb1jv5fc.png" alt="以太坊扩容之战：探秘侧链方案"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0629/23_3brk75w6mr.png" alt="以太坊扩容之战：探秘侧链方案"></p>
+<p>唯一钱包地址总数和月增长率（来源：IOSG Ventures）</p>
+<p>虽然就2021六月份为止，BSC的总钱包数量是Ploygon的十倍，但是自2021年4月以来，Polygon的唯一钱包地址总数的环比增长（55.6%）超过了Eth（2.8%）和BSC（10.0%）。近几个月来，全网唯一钱包地址总数的环比增长一直在下降，但仍然是正数，Polygon的增长率最高，为205.3%，而Eth为3.9%，BSC为7.5%。</p>
+<ul>
+<li><strong>Polygon与其他侧链项目的比较</strong></li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0629/23_9m86milsg0.png" alt="以太坊扩容之战：探秘侧链方案"></p>
+<p>Polygon对其他侧链项目的吸引力（来源：IOSG Ventures，百万）</p>
+<p>Polygon的平台上有超过356个项目，到目前为止Polygon的总交易数最高，达到3.5亿。其次是xDai、POA网络、Ronin和新崛起的平台Aurora。</p>
+<ul>
+<li><strong>Polygon的未来发展路线图</strong></li>
+</ul>
+<p>Polygon认识到，可能没有一个完美的解决方案能够解决扩容问题的所有需求，更有可能的是几个解决方案并存，帮助以太坊集体扩容。这也是Polygon在生态系统中的目标方向，即提供必要的基础设施，使这些解决方案共存。</p>
+<h2 id="未来的l2扩容"><strong>未来的L2扩容</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2021/0629/23_kwkhsq5he1.png" alt="以太坊扩容之战：探秘侧链方案"></p>
+<p>每月钱包数Polygon vs BSC（来源：IOSG Ventures）</p>
+<p>对于每个扩容解决方案，都有不同的优缺点。许多项目都还在开发早期。大多数解决方案如状态通道、plasma和ZK-Rollups虽然可以扩容，但如果没有支持智能合约的能力，其应用会非常受限。Optimism-Rollup可以支持智能合约，所以像Optimism和Arbitrum这样的项目最近受到了极大关注，这也是目前的侧链解决方案极有力的竞争对手。同时，侧链虽然有其自身的缺点，但仍将是主要的扩展解决方案。<strong>侧链算力强，又可以支持所有的以太坊虚拟机（EVM）合约。这些优点使得侧链成为许多dApps扩容解决方案的共同选择，因为它们gas费低，交易时间短。</strong> 就近期的数据来看，Polygon的单月钱包数量已经超过BSC，就IOSG的数据研究，如果每月的交易增长保持在19.6%（BSC）和42.9%（Polygon），Polygon的月交易量预计也将在一年左右的时间内超越BSC。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25062/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">一文读懂比特币合成资产：如何释放比特币的DeFi价值？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25030/">
+                <span class="next-text nav-default">英国FCA：越来越多的加密公司正放弃向英国监管机构注册</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#可扩容性问题"><strong>可扩容性问题</strong></a></li>
+    <li><a href="#解决以太坊的扩容问题侧链"><strong>解决以太坊的扩容问题：侧链</strong></a></li>
+    <li><a href="#polygon优势与劣势"><strong>Polygon：优势与劣势</strong></a></li>
+    <li><a href="#polygon的生态"><strong>Polygon的生态</strong></a></li>
+    <li><a href="#未来的l2扩容"><strong>未来的L2扩容</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

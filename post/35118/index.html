@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          浅谈DeFi游戏的半衰期：协议如何完成自我救赎？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="如果我们把DeFi协议视为游戏，那么有我们理由认为，随着更多分叉项目的出现，人们会玩得越来越好，游戏被攻克的速度也会越来越快。" />
+<meta name="keywords" content="DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/35118/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="浅谈DeFi游戏的半衰期：协议如何完成自我救赎？" />
+<meta property="og:description" content="如果我们把DeFi协议视为游戏，那么有我们理由认为，随着更多分叉项目的出现，人们会玩得越来越好，游戏被攻克的速度也会越来越快。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/35118/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="浅谈DeFi游戏的半衰期：协议如何完成自我救赎？">
+<meta itemprop="description" content="如果我们把DeFi协议视为游戏，那么有我们理由认为，随着更多分叉项目的出现，人们会玩得越来越好，游戏被攻克的速度也会越来越快。"><meta itemprop="datePublished" content="2022-03-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3776">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="浅谈DeFi游戏的半衰期：协议如何完成自我救赎？"/>
+<meta name="twitter:description" content="如果我们把DeFi协议视为游戏，那么有我们理由认为，随着更多分叉项目的出现，人们会玩得越来越好，游戏被攻克的速度也会越来越快。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">浅谈DeFi游戏的半衰期：协议如何完成自我救赎？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-08">
+      2022-03-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3776 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>从对（3，3）的狂热崇拜到（1，1），从高峰期的40亿市值到现在只有5亿的市值，从150个分叉项目到整个分叉群体的死亡，Olympus DAO的诞生引发了人们对DeFi 2.0的想象和谈论，而它的“死亡”让大家怀疑这是否就是DeFi的现状。</p>
+<p>我们还不知道Olympus在未来几个月的时间里会如何发展，我们也不知道它是否能在未来几年生存下去。但在它引发大量的兴趣和创新之后，我们也许能够从中得出一些教训。</p>
+<p>从一开始接触DeFi时，我就注意到了它与游戏有非常多的相似之处。所有的DeFi项目其实就是GameFi。既然是游戏那它就自然会面临客损，而且它们都有自己的半衰期。我自己从来都不是一个狂热的游戏玩家，但我仍然注意到了DeFi和游戏的无数相似之处：活动的同构性（即两者都是关于奖励最大化的），玩家之间竞争的性质，重叠的社区，相同的分析技能组。在加密货币风险投资公司和项目的面试中，都不可避免的会涉及游戏相关的问题——撸啊撸、魔兽、文明6、求生之路、堡垒之夜、国际象棋、围棋、扑克、桥牌。因此，看看为什么一些游戏会被淘汰可以非常好的预测一个DeFi项目的未来发展。</p>
+<p>事实上，DeFi新手可能还没想明白的一点是，这些让你在挖矿上收获满满的协议其实并不是一项真正的投资。你所做的代币交换并不是真正的交易。如果投资被理解为基于基本面分析的投资，那么我们看到的DeFi挖矿和跟风进场（aping）就不能被归类为投资，而是投机和赌博。</p>
+<p>因此，这使得DeFi的每个协议都变成了一个赌桌，在那里有赢家就一定会有输家，因为它是零和游戏。但是交易却不一定是零和的，投资也不一定是零和的。一个新协议的出现就是一个新赌场的开幕，一个协议的创新就相当于发明了一款新游戏。</p>
+<p>你可能会抱怨DeFi不是真正的零和。是的，当资金通过各种聚合器被分批送到DeFi挖矿，这样你就可以节省gas费用，靠你的LP tgt赚取费用等等。</p>
+<p>但说实话，当你无脑跟风进场的时候，你并不是这么想的。你害怕被人抢先拿走更多的利润，你害怕别人会提早砸盘，你更关心的是代币的价格而不是协议长期的愿景，这些听上去都是废话，因为你们的内心都渴望着利润最大化。</p>
+<p><strong>分叉是另一轮游戏的开始，另一把扑克，另一局国际象棋。</strong></p>
+<p>游戏是可以被攻克（solve）的。已解游戏（solved game）是指在假设双方都完美发挥的情况下，其结果（赢、输或打平）可以从任何方向进行正确预测的<a href="https://en.wikipedia.org/wiki/Game">游戏</a>。当且仅当任何棋手的最优策略都被发现时，一个游戏就可被称作已解游戏。显然，在归纳的层面上，可以被攻克的游戏是没有乐趣的。井字棋就是一个已解游戏：两个完全理性的玩家玩井字游戏，结果一定是平局。如果他们在上面赌钱，那么两个人都不会赢，事实上，玩井字棋实际上会浪费他们的时间（机会成本），所以对他们来说玩井字棋就会造成净损失。因此，当有人邀请你玩井字游戏时，理性的做法是say no。</p>
+<p>四子棋也是一个已解游戏。而且，它已经被数学证明是谁出先手谁会赢。如果玩家打算在这个游戏上下注，那么后手玩家就会一直输钱。因此，如果有人提出让你作为后手玩四子棋时，你同样应该拒绝。</p>
+<p>虽然已解游戏在博弈论中有着严格的数学定义，但我们可以直观地感觉到，随着我们参与同一类型游戏的次数逐渐增多，我们在游戏中的表现也会越来越好，因此我们也会越来越接近游戏的最优策略。简而言之，我们在游戏的过程中学习，进化博弈论捕捉到了这种直觉。有趣的是，进化博弈论的发明和提出是出于解释达尔文进化论中利他行为的需要——这就是为什么Olympus试图将（3，3）策略meme化的原因，如果所有矿工都是理性的那这就是最优策略。唉，但人类是不理性的。</p>
+<p>考虑到人类并不理性，用最优策略的数学定义来描述玩家因为知道游戏规则而干脆停止游戏的最终状态并不完全准确。Olympus分叉项目的死亡不是因为协议是可以被攻克的（即矿工已经根据协议的数学结构找出了最优策略），而是因为矿工已经根据他们实际挖矿的方式找出了最优策略。</p>
+<p>如果我们把DeFi协议视为游戏，那么有我们理由认为，随着更多分叉项目的出现，人们会玩得越来越好，游戏被攻克的速度也会越来越快。换句话说，一个游戏被攻克的时间会越来越短。</p>
+<p>我们可以在下面的图表中看到这一点：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0308/8_nk73aans5l.png" alt="浅谈DeFi游戏的半衰期：协议如何完成自我救赎？"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0308/8_sszqpfkjt8.png" alt="浅谈DeFi游戏的半衰期：协议如何完成自我救赎？"></p>
+<p>当我们看主要的原始DeFi协议时，我们也能看到这种衰减行为：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0308/8_dfa85h0wi0.png" alt="浅谈DeFi游戏的半衰期：协议如何完成自我救赎？"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0308/8_9g1z03c6nv.png" alt="浅谈DeFi游戏的半衰期：协议如何完成自我救赎？"></p>
+<p>一个DeFi协议是否可以被攻克，与它是否表现出疯狂炒作是不同的。疯狂的炒作看起来是这样的：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0308/8_u5grmgsh35.png" alt="浅谈DeFi游戏的半衰期：协议如何完成自我救赎？"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0308/8_sr3mbw0w15.png" alt="浅谈DeFi游戏的半衰期：协议如何完成自我救赎？"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0308/8_38uk7iebkh.png" alt="浅谈DeFi游戏的半衰期：协议如何完成自我救赎？"></p>
+<p>我们也许可以称Olympus为已解游戏，它的所有实例肯定都表现出了炒作的狂热，但狂热并不是一个协议可解的必要条件。一个表现出炒作狂热的协议不一定是一个已解游戏。如果人们只是对它失去了兴趣，代币的价格出现了暴跌，那么这与协议是否可解是不相关的，如果我不关心这个协议，我不关心是否每个人都知道如何挖矿和赢得更多的利润。</p>
+<p>然而，如果一个协议被攻克了，它肯定会表现出炒作周期的下跌路线。</p>
+<p>一个尚未被攻克的协议，很可能表现出狂热的上升阶段——因为人们不知道要怎么更好的去挖矿，他们都觉得自己可能会赢。而一旦协议出现了问题，人们就会想退出，因为他们认为自己的策略不是最佳策略，或者他们已经输了。但如果一个协议是无法被攻克的，那么矿工们就更愿意留下来，只是因为他们觉得自己可能会赢。因此，一个无法被攻克的协议是一个炒作曲线的恐惧和投降部分向外延伸的游戏。一个无法被攻克的协议是一个具有无限半衰期的游戏。虽然同一款协议的新版本迭代仍然会不断推出，但其中较新的游戏版本不一定会提供像之前协议那么多的奖励。</p>
+<p>项目方当然有兴趣让他们的协议无法被攻克——因为如果一个协议在他们的代币解锁之前被攻克，那么炒作曲线的恐惧和投降阶段将在团队代币解锁之前发生。考虑到一个可解游戏的性质是没有玩家会回到游戏中，那么一旦协议被攻克，团队在建立了一个在某一点上有大量奖励的协议后可能会分文不得。</p>
+<p>一个协议如何才能使自己尽可能地做到不可被攻克呢？我可以想到三种方法：</p>
+<p><strong>1. 让它变得不可解：</strong> 就像国际象棋或围棋。这当然是假设不可解性意味着不可解性。 在DeFi协议设计中，这可能表现为大量增加自由度和你可以用协议做的事情的数量。</p>
+<p>这方面的问题是，我们并不清楚你该如何才能真正做到这一点。在金融乐高中复制国际象棋或围棋的复杂性是什么样子的？这有可能吗？</p>
+<p><strong>2. 继续在上面搭建协议：</strong> Olympus的V2债券和逆向债券。这样做的麻烦在于你必须不断地搭建、搭建，再搭建。</p>
+<p><strong>3. 让协议自我进化：</strong> 就像新的代币和项目如何在成功产品的基础上不断进化，Convex在Curve的基础上，或者你如何在以太坊的基础上建立DeFi协议，这可以使以太坊上的游戏持续运行。 这一点的伟大之处在于，你正在将你的工作进行外包。</p>
+<p>第三点特别有意思。我以前在某个地方读到过关于“基础层主题”的文章，成功的协议必然是你允许其他人在你的基础之上进行构建的协议。</p>
+<p>另外，第三点似乎与去中心化有一种共生关系。去中心化对一个项目很重要，因为它意味着你作为创始人可以离开而不被抛弃。</p>
+<p>从创始人的角度来看，我需要说清楚“去中心化 = 可以退出”。</p>
+<p>在实践中，人们可能需要做到上述这三点，这些增加不可攻克性的技巧应该在炒作周期的狂热高峰期前实施，以免你的开发团队被一个已经过了黄金期的项目代币所束缚。虽然在炒作周期的高点实施协议可能仍然会引入新的兴趣，但项目更希望它们的市值在炒作高峰期前达到稳定。</p>
+<p>Treasure DAO的一个有趣的发展是，在它的外表下仍然是一颗DeFi的心，但它看起来可以被当作游戏来推销。正如其43页的白皮书中所概述的那样，它在协议中拥有大量的操作，这为玩家提供了许多合理的策略。</p>
+<p>（我已经找不到43页白皮书的链接了。我怀疑他们摆脱白皮书的原因是他们不希望人们过早地破坏游戏——他们不希望有人过早地攻克它）。</p>
+<p>这似乎是未来DeFi协议可能出现的一个模式：避免被攻克的愿望，再加上让价值捕获远离TradFi的愿望（这也会减缓被攻克的速度），我们很有可能在未来看到越来越多像这样的协议。</p>
+<p>原文来源：GBV</p>
+<p>原文编译：Captain Hiro</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/35125/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">​欧易联姻曼城 一文读懂“Crypto&#43;体育”新格局</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/35129/">
+                <span class="next-text nav-default">全国政协委员陈晓红：加快推进元宇宙市场稳健发展</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

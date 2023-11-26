@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          OpenSea 新协议 Seaport 源码解析 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="NFT 市场 OpenSea 宣布推出全新 Web3 市场协议 Seaport 协议" />
+<meta name="keywords" content="OpenSea" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39783/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="OpenSea 新协议 Seaport 源码解析" />
+<meta property="og:description" content="NFT 市场 OpenSea 宣布推出全新 Web3 市场协议 Seaport 协议" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39783/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-04T00:00:00+00:00" />
+
+<meta itemprop="name" content="OpenSea 新协议 Seaport 源码解析">
+<meta itemprop="description" content="NFT 市场 OpenSea 宣布推出全新 Web3 市场协议 Seaport 协议"><meta itemprop="datePublished" content="2022-07-04T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-07-04T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8891">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenSea 新协议 Seaport 源码解析"/>
+<meta name="twitter:description" content="NFT 市场 OpenSea 宣布推出全新 Web3 市场协议 Seaport 协议"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">OpenSea 新协议 Seaport 源码解析</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-07-04">
+      2022-07-04
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8891 字 -
+        预计阅读 18 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="一seaport-简介">一、Seaport 简介</h2>
+<p>近期，NFT 市场 OpenSea 宣布推出全新 Web3 市场协议 Seaport 协议，用于安全高效地买卖 NFT。本文将深度分析其关键业务实现和接口实现。SeaPort官方文档 <a href="https://docs.opensea.io/v2.0/reference/seaport-overview">https://docs.opensea.io/v2.0/reference/seaport-overview</a> ， 可配合查阅，进一步加深理解。</p>
+<p>Uniswap 用开源去中心化交易改变了加密货币交易的游戏规则，这是我们现在所知的 2020 年 DeFi Summer的开始，也带来了 DEX 和 DeFi 的大规模增长和创新 。OpenSea的新协议Seaport或许也有改变NFT交易游戏规则的潜力，这也是我们分析Seaport协议的原因。</p>
+<p>Seaport 是一个市场合约，用于安全有效地创建和执行 ERC721 和 ERC1155 代币的订单。 每个订单包含任意数量的供应商愿意提供的物品（“报价(offer)”）以及任意数量的必须连同其各自的接收者一起接收的物品（“对价(consideration)”）。Seaport 协议的 6 大关键点，以及它对 NFT 领域的意义：<br>
+（1）开源代码：<br>
+有了 Seaport 协议，任何人都可以使用该协议构建一个 NFT 市场，因为它是去中心化和开源的。在未来几年，我们应该会看到更多的 NFT 市场建立起来。更多的竞争=更好+更快的创新<br>
+（2）去中心化：<br>
+OpenSea 说这个协议没有合约所有者，任何人都可以更新或生成代码。<br>
+（3）交易新范式：<br>
+与一些平台只能用加密货币换取 NFT 不同，Seaport 协议允许用户以一系列新方式获取 NFT，投标人（或报价者）可以捆绑不同的资产（如提供 ETH/ERC20/ERC721/ERC1155 资产）以换取 NFT。<br>
+（4）交易特定的 NFT：<br>
+当交易 NFT 时，你也可以设置 NFT 必须具备的特定“条件”。<br>
+（5）荷兰式拍卖列表：<br>
+在 Seaport 协议中，你可以设置一个开始和结束价格，表明你希望拍卖持续多长时间。该列表将降低（或提高）价格，直到找到买家（或拍卖时间到）。<br>
+（6）更高的安全性：<br>
+OpenSea 正在进行为期两周的协议审计竞赛，奖金总额为 100 万美元。任何开发人员都可以审核代码，提交他们发现的评审和错误，并获得奖励。</p>
+<h2 id="二关键业务实现">二、关键业务实现</h2>
+<h3 id="1nft订单">1、NFT订单</h3>
+<p>每一个订单都包含11个关键组件：</p>
+<ul>
+<li>
+<p><code>offerer</code> 订单的报价者提供了所有的供应代币并且必须亲自执行订单（即 <code>msg.sender == offerer</code> ）或者通过签名（标准的65字节 ECDSA，64字节 EIP-2098 或 EIP-1291 <code>isValidSignature</code> 检查）或列举链上订单（即调用 <code>validate</code>）来批准订单。</p>
+</li>
+<li>
+<p><code>zone</code> 订单的区域是附加到订单的可选辅助帐户，具有两个额外的权限：</p>
+</li>
+<li>
+<p>该区域可以通过调用 <code>cancel</code>来取消命名为该区域的订单。（注意，报价者仍可以取消他们自己的订单，可以单独取消，也可以通过调用 <code>incrementNonce</code> 立刻取消由其当前 nonce 签名的所有订单）。</p>
+</li>
+<li>
+<p>“受限”订单（有订单类型声明）必须由区域或报价者执行，或者必须通过调用区域上的 <code>isValidOrder</code> 或 <code>isvalidOrderIncludingExtraData</code> 视图函数来获得批准。</p>
+</li>
+<li>
+<p><code>offer</code> 报价包含可以从报价者帐户转移的一系列代币，其中每个代币由以下组件组成：</p>
+</li>
+<li>
+<p><code>itemType</code> 指定代币类型，有效类型包括 Ether（或者其他指定链的原生代币）、ERC20、ERC721、ERC1155、ERC721、有“条件(criteria)”的 ERC721 以及有“条件(criteria)”的 ERC1155。</p>
+</li>
+<li>
+<p><code>token</code> 指定代币合约的账户地址（空地址用于以太币或其他原生代币）。</p>
+</li>
+<li>
+<p><code>identifierOrCriteria</code> 表示 ERC721 或 ERC1155 代币标识符，或者在基于条件的代币类型的情况下，表示由代币的有效代币标识符集合组成的 merkle 根。对于 Ether 和 ERC20 类型 ，该值会被忽略，并且对于基于条件的代币类型，可以将值设置为 0 以允许任何标识符。</p>
+</li>
+<li>
+<p><code>startAmount</code> 表示如果在订单激活时完成订单所需要的相关代币的数量。</p>
+</li>
+<li>
+<p><code>endAmount</code> 表示如果在订单到期时执行订单所需要的相关代币的数量。如果此值与 <code>startAmount</code> 不同，则根据订单激活后经历的时间线性计算出实际的数量。</p>
+</li>
+<li>
+<p><code>consideration</code> 包含为完成订单而必须接收的代币数组。它包含所有与所提供代币相同的组件，并且还包括一个用于接收每个代币的 <code>recipient</code> 组件。该数组可以由执行者在订单执行时进行扩展，以支持“小费”（例如中继费或推荐费）。</p>
+</li>
+<li>
+<p><code>orderType</code> 订单类型，根据两个不同的偏好，指定订单的四种类型之一，：</p>
+</li>
+<li>
+<p><code>FULL</code> 表示不支持部分填充，而 <code>PARTIAL</code> 允许填充订单中的一部分，注意每个代币必须被提供的分数完全整除（即除法后没有余数）。</p>
+</li>
+<li>
+<p><code>OPEN</code> 表示任意账户都可以提交执行订单的调用，而 <code>RESTRICTED</code> 则需要订单必须由报价者或订单所在区域执行，或者在区域上调用 <code>isValidOrder</code> 或 <code>isValidOrderIncludingExtraData</code> 视图函数时返回表示订单被批准的神奇的值。</p>
+</li>
+<li>
+<p><code>startTime</code> 表示订单激活时的区块链时间。</p>
+</li>
+<li>
+<p><code>endTime</code> 表示订单到期的区块链时间。该值与 <code>startTime</code> 与每个代币的 <code>startAmount</code> 和 <code>endAmount</code> 一起使用以得出它们的当前数量。</p>
+</li>
+<li>
+<p><code>zoneHash</code> 表示一个任意的 32 字节值，当执行受限订单时，该值将提供给区域，该区域在确定是否是授权订单时可以使用该值。</p>
+</li>
+<li>
+<p><code>salt</code> 表示订单的任意熵源。</p>
+</li>
+<li>
+<p><code>conduitKey</code> 是一个 <code>bytes32</code> 类型的值，表示在执行转移时应将哪个渠道(conduit)（如果有）用作代币批准的来源。默认情况下（即当 <code>conduitKey</code> 设置为零哈希时），报价方将直接向 Seaport 授予 ERC20、ERC721 和 ERC1155 代币批准，以便它可以在执行期间执行订单指定的任何转移。相反，选择使用渠道的报价者将授予与提供的渠道密钥相对应的渠道合约的代币批准，然后 Seaport 指示该渠道转移相应的代币。</p>
+</li>
+<li>
+<p><code>nonce</code> 表示必须与给定报价者的当前随机数匹配的值。</p>
+</li>
+</ul>
+<h3 id="2订单执行">2、订单执行</h3>
+<p>订单通过以下4种方式中的一种来执行：</p>
+<ul>
+<li>
+<p>调用两个“标准”函数 <code>fulfillOrder</code> 和 <code>fulfillAdvancedOrder</code> 中的一个，并且构造第二个隐含订单，同时其调用者作为报价者(offerer)，已执行订单的对价(consideration)作为报价(offer)，已执行订单的报价作为对价（使用“高级”订单包含应与一组“条件解析器”一起填写的部分，这些“条件解析器”为已执行订单上的每个基于条件的代币指定一个标识符和相应的包含证明）。所有报价代币将从订单报价者转移到执行者，然后所有对价代币将从执行者转移到指定的接收者。</p>
+</li>
+<li>
+<p>调用&quot;基本&quot;函数 <code>fulfillBasicOrder</code>，并提供六种基本路线类型（<code>ETH_TO_ERC721</code>、<code>ETH_TO_ERC1155</code>、<code>ERC20_TO_ERC721</code>、<code>ERC20_TO_ERC1155</code>、<code>ERC721_TO_ERC20</code> 以及 <code>ERC1155_TO_ERC20</code>）中的一种，将从组件子集派生要执行的订单，假设相关订单符合以下条件：</p>
+</li>
+<li>
+<p>该订单仅包含一个报价代币，并且包含至少一个对价(consideration)代币。</p>
+</li>
+<li>
+<p>该订单仅包含一个 ERC721 或 ERC1155 代币，并且该代币不是基于条件的。</p>
+</li>
+<li>
+<p>订单的报价者是第一个对价代币的接收者。</p>
+</li>
+<li>
+<p>所有其他代币都具有相同的以太币（或其他原生代币）或 ERC20 项目类型和代币。</p>
+</li>
+<li>
+<p>该订单不提供以以太币（或其他原生代币）作为其项目类型的项目。</p>
+</li>
+<li>
+<p>每个项目上的 <code>startAmount</code> 必须与该项目的 <code>endAmount</code> 匹配（即项目不能有升序/降序数量）。</p>
+</li>
+<li>
+<p>所有“忽略”的项目字段（即 <code>token</code> 和原生代币项目中的 <code>identifierOrCriteria</code> 以及 ERC20 项目中的 <code>identifierOrCriteria</code>）都设置为空地址或零。</p>
+</li>
+<li>
+<p>如果订单中有 ERC721 项目，则该项目的数量为.<code>1</code></p>
+</li>
+<li>
+<p>如果订单有多个对价(consideration)项目，且除了第一个对价项目以外的所有对价项目与报价项目的项目类型相同，报价项目数量不小于除了第一个对价项目数量外的所有对价项目数量之和。</p>
+</li>
+<li>
+<p>调用两个“可用执行”函数（<code>fulfillAvailableOrders</code> 和 <code>fulfillAvailableAdvancedOrders</code>）中的一个，并且提供一组订单与一组执行声明，其中的执行声明指定哪些报价项目可以聚合到不同的转移中，相应地哪些对价项目可以聚合在一起，以及其中已经取消的订单是因为时间无效，或者已经完全成交的订单将被跳过，而不会导致其余可用订单回滚。此外，一旦锁定 <code>maximumFulfilled</code> 可用订单，剩余的所有订单都将被跳过。与标准执行函数类似，所有报价项目将从各自的报价者转移到执行者，然后所有对价项目将从执行者转移到指定的接收者。</p>
+</li>
+<li>
+<p>调用两个“匹配”函数（<code>matchOrders</code> 和 <code>matchAdvancedOrders</code>）中的一个，并且提供一组明确的订单以及一组执行，该执行指定了哪些报价项目应用于哪些对价项目（并且“高级”案例以类似的方式运行标准方法，但支持通过提供的分子 <code>numerator</code> 和分母 <code>denominator</code> 小数值以及可选的 <code>extraData</code> 参数进行部分填充，当执行受限订单类型时，这些参数将作为调用区域上的 <code>isValidOrderIncludingExtraData</code> 视图函数的一部分提供）。 请注意，以这种方式执行的订单没有明确的执行者； 相反，Seaport 将简单地确保每个订单的需求一致。</p>
+</li>
+</ul>
+<p>虽然标准方法在技术上可用于执行任何订单，但在某些情况下存在关键的效率限制：</p>
+<ul>
+<li>
+<p>与简单的“热路径(hot path)”的基本方法相比，它需要额外的调用数据。</p>
+</li>
+<li>
+<p>它要求执行者批准每个对价项目，即使对价项目可以使用报价项目来执行（在执行为 ERC721 或 ERC1155 项目提供 ERC20 项目并且还包括具有相同的考虑对价的订单时通常是这种情况用于支付费用的 ERC20 项目类型）。</p>
+</li>
+<li>
+<p>它可能导致不必要的转移，而在“匹配”情况下，这些转移可以减少到更小的集合。</p>
+</li>
+</ul>
+<h3 id="3检查余额和批准交易">3、检查余额和批准交易</h3>
+<p>创建报价时，应检查以下要求以确保订单可以执行：</p>
+<ul>
+<li>
+<p>报价者应在所有报价项目中有足够的余额。</p>
+</li>
+<li>
+<p>如果订单未指明使用渠道，则报价者应为所有提供的 ERC20、ERC721 和 ERC1155 项目的 Seaport 合约设置足够的批准。</p>
+</li>
+<li>
+<p>如果订单_确实_指明了使用渠道，则报价者应为所有提供的 ERC20、ERC721 和 ERC1155 项目的相应渠道合约设置足够的批准。</p>
+</li>
+</ul>
+<p>执行_基本_订单时，需要检查以下要求以确保订单可以执行：</p>
+<ul>
+<li>
+<p>需要执行上述检查以确保报价者仍有足够的余额和批准。</p>
+</li>
+<li>
+<p>执行者应该对所有对价项目有足够的余额，<em>除了那些项目类型与订单提供的项目类型相匹配的项目</em>——例如，如果执行的订单提供 ERC20 项目，并且要求向报价者提供 ERC721 项目并且向另一个接受者提供相同的 ERC20 项目，那么执行者需要拥有 ERC721 项目，但不需要拥有 ERC20 项目，因为它将来自报价者。</p>
+</li>
+<li>
+<p>如果执行者不选择使用渠道，他们需要为已执行订单上所有的 ERC20、ERC721 和 ERC1155 对价项目设置足够的 Seaport 合约批准，<em>项目类型与订单提供的项目类型匹配的 ERC20 项目除外</em>。</p>
+</li>
+<li>
+<p>如果执行者_确实_选择使用渠道，则他们需要为已执行订单上的所有 ERC20、ERC721 和 ERC1155 对价项目为其各自的渠道设置足够的批准，<em>项目类型与订单提供的项目类型匹配的 ERC20 项目除外</em>.</p>
+</li>
+<li>
+<p>如果已执行的订单将以太币（或其他原生代币）指定为对价项目，则执行者必须能够将这些项目的总金额提供为 <code>msg.value</code></p>
+</li>
+</ul>
+<p>执行_标准_订单时，需要检查以下要求以确保订单可以执行：</p>
+<ul>
+<li>
+<p>需要执行上述检查以确保报价者有足够的余额和批准。</p>
+</li>
+<li>
+<p><em>在收到所有的报价项目后</em>，执行者应该对所有的报价项目有足够的余额——例如，如果执行的订单提供了 ERC20 项目，并且需要向报价者提供 ERC721 项目，并且向另一个接收者提供相同的 ERC20 项目，其数量小于或等于提供的数量，执行者不需要拥有 ERC20 项目，因为它将最先从报价者处接收到。</p>
+</li>
+<li>
+<p>如果执行者不选择使用渠道，他们需要为已执行订单上的所有 ERC20、ERC721 和 ERC1155 对价项目的 Seaport 合约设置足够的批准。</p>
+</li>
+<li>
+<p>如果执行者_确实_选择使用渠道，则他们需要为已执行订单上的所有 ERC20、ERC721 和 ERC1155 对价项目其各自的渠道设置足够的批准。</p>
+</li>
+<li>
+<p>如果已执行的订单将以太币（或其他原生代币）指定为对价项目，则执行者必须能够将这些项目的总数量提供为 <code>msg.value</code></p>
+</li>
+</ul>
+<p>在执行一组_匹配_订单时，需要检查以下要求以确保订单可以执行：</p>
+<ul>
+<li>
+<p>作为执行的一部分执行，执行采购 ERC20、ERC721 或 ERC1155 项目的每个帐户必须在触发执行时在 Seaport 或指定的渠道上具有足够的余额和批准。请注意，先前的执行可能会为后续执行提供必要的余衡。</p>
+</li>
+<li>
+<p>涉及以太币（或其他原生代币）的所有执行的总和必须以 <code>msg.value</code> 的形式提供. 请注意，提供者和接收者是同一帐户的执行将从最终执行集中被过滤掉。</p>
+</li>
+</ul>
+<h3 id="部分成交">部分成交</h3>
+<p>在构建订单时，报价者可以选择通过设置适当的订单类型来启用部分成交。然后，支持部分执行的订单可以在相应订单的_某一部分_中执行，从而允许后续执行绕过签名验证。总结一下部分填充的几个关键点：</p>
+<ul>
+<li>
+<p>当创建支持部分成交的订单或确定这些订单要成交的部分时，订单上的所有项目（报价和对价）数量必须能被提供的部分项目数量完全整除（即除法后没有余数）。</p>
+</li>
+<li>
+<p>如果要填写的所需部分会导致要填写的订单数量超过全部订单金额，则该部分将减少为剩余要填写的数量。这适用于部分填充尝试和完全填充尝试。如果不需要这种行为（即填充应该是“全部或无”），则执行者可以使用“基本”订单方法（如果可用）（这需要填写全部订单数量），或使用“匹配” 订单方法，并明确提供一个要求收到全部所需金额的订单。</p>
+</li>
+<li>
+<p>举例来说：如果一个执行者尝试执行订单的 1/2，但另一个执行者首先执行订单的 3/4，则原始执行者最终将执行订单的 1/4。</p>
+</li>
+<li>
+<p>如果部分可成交订单上的任一项目指定了不同的 <code>startAmount</code> 和 <code>endAmount</code>（例如，它们是递增数量或递减数量的项目），则在确定当前价格之前，该分数将应用于_这两个_数量。这确保了在构建订单时可以选择完全可分的金额，而不依赖于最终完成订单的时间。</p>
+</li>
+<li>
+<p>部分成交可以与基于条件的项目进行组合，以支持构建提供或接收多个项目的订单，否则这些项目将无法部分成交（例如 ERC721 项目）。</p>
+</li>
+<li>
+<p>举个例子：报价者可以创建一个部分可成交的订单，为给定集合中最多 10 个 ERC721 项目提供最多 10 个 ETH；然后，任何执行者都可以执行该订单的一部分，直到它被完全执行（或取消）。</p>
+</li>
+</ul>
+<h3 id="5业务关键步骤">5、业务关键步骤</h3>
+<h4 id="51-执行订单">5.1 执行订单</h4>
+<p>当通过 <code>fulfillOrder</code> 或 <code>fulfillAdvancedOrder</code> 来执行订单时：</p>
+<ol>
+<li>计算订单哈希值</li>
+</ol>
+<ul>
+<li>
+<p>计算报价项目和对价项目的哈希值</p>
+</li>
+<li>
+<p>检索报价者的当前计数器</p>
+</li>
+<li>
+<p>计算订单哈希值</p>
+</li>
+<li>
+<p>执行初始化校验</p>
+</li>
+<li>
+<p>确保当前时间在订单有效时间内</p>
+</li>
+<li>
+<p>确保调用者对于当前订单类型是有效的； 如果订单类型收到限制且调用者不是 <code>offerer</code> 或者 <code>zone</code>，调用 <code>zone</code> 判断订单是否有效</p>
+</li>
+<li>
+<p>检索并更新订单状态</p>
+</li>
+<li>
+<p>确保订单未被取消</p>
+</li>
+<li>
+<p>确保订单没有被全部执行</p>
+</li>
+<li>
+<p>如果订单是部分执行的，如有必要，减少提供的执行数量，以免订单被过度执行</p>
+</li>
+<li>
+<p>若订单签名尚未验证，则验证订单签名</p>
+</li>
+<li>
+<p>根据偏好 + 可用金额 (preference + available amount) 确定要执行的分数</p>
+</li>
+<li>
+<p>更新订单状态（已验证+执行分数）</p>
+</li>
+<li>
+<p>确定每个项目的金额</p>
+</li>
+<li>
+<p>比较初始金额 <code>startAmount</code> 和结束金额 <code>endAmount</code></p>
+</li>
+<li>
+<p>若相等，将执行分数应用于该金额，确保结果是整数，然后使用该结果</p>
+</li>
+<li>
+<p>若不等，对这两个金额都应用执行分数，确保两个结果都是整数，然后根据当前时间找到这两个结果的现行拟合值</p>
+</li>
+<li>
+<p>应用条件解析器</p>
+</li>
+<li>
+<p>确保每一个条件解析器都应用于一个基于条件的订单项目</p>
+</li>
+<li>
+<p>如果项目具有一个非零的条件根值(a non-zero criteria root)，确保为每个项目提供的标识符是有效的</p>
+</li>
+<li>
+<p>更新每个项目的类型和标识符</p>
+</li>
+<li>
+<p>确保所有剩余的项目都不是基于条件的项目</p>
+</li>
+<li>
+<p>触发 <code>OrderFulfilled</code> 事件</p>
+</li>
+<li>
+<p>包括更新的项目（即在金额调整和条件解决之后）</p>
+</li>
+<li>
+<p>将报价项目（代币）由报价者转移到调用者</p>
+</li>
+<li>
+<p>使用渠道或 Seaport 直接获得批准，具体取决于订单的类型</p>
+</li>
+<li>
+<p>将对价项目（代币）有调用者转移到对应的接受者</p>
+</li>
+<li>
+<p>使用渠道或 Seaport 直接获得批准，具体取决于执行者声明的偏好</p>
+</li>
+</ul>
+<h4 id="52-匹配订单">5.2 匹配订单</h4>
+<p>当通过 <code>matchOrders</code> 或者 <code>matchAdvancedOrders</code> 来匹配一组订单时，步骤 1 到 6 几乎完全相同，但针对_每个_提供的订单执行。从这里开始，执行与上面的标准执行不同：</p>
+<ol>
+<li>应用执行</li>
+</ol>
+<ul>
+<li>
+<p>确保每次执行都涉及一个或多个报价项目和一个或多个对价项目，所有这些项目都具有相同的类型和代币，并且每个报价项目具有相同的批准源以及每个对价项目具有相同接受者</p>
+</li>
+<li>
+<p>将每个报价项目和对价项目的金额减少到零，并跟踪其总减少金额</p>
+</li>
+<li>
+<p>比较每个项目的总金额，并将剩余金额加回相应订单一侧（报价项目或对价项目）的第一个项目</p>
+</li>
+<li>
+<p>为每个成交返回一个执行</p>
+</li>
+<li>
+<p>扫描每个对价项目并确保没有一个对价项目仍然有非零的剩余金额</p>
+</li>
+<li>
+<p>作为每次执行的一部分进行转账</p>
+</li>
+<li>
+<p>根据原始订单类型，直接使用渠道或 Seaport 获得批准</p>
+</li>
+<li>
+<p>忽略 <code>to == from</code> 或 <code>amount == 0</code> 时的每次执行（注意：当前实现不执行最后一次优化）</p>
+</li>
+</ul>
+<h2 id="三关键接口">三、关键接口</h2>
+<p>Seaport 是一个通用的 ETH/ERC20/ERC721/ERC1155 市场。它最大限度地减少了外部调用，并为普通路由提供了轻量级的方法，以及更灵活的方法来组合高级订单。</p>
+<p><em>ConsiderationInterface 包含 Seaport 的所有外部函数接口。</em></p>
+<h3 id="fulfillbasicorder">fulfillBasicOrder</h3>
+<p>执行基本订单，仅支持Ether（或指定链的原生代币）与 ERC721 之间的交易。</p>
+<h4 id="实现逻辑">实现逻辑</h4>
+<ol>
+<li>
+<p>提取订单类型和基本订单路由，并且对其进行校验</p>
+</li>
+<li>
+<p>准备执行基本订单<br>
+（1）添加重入锁<br>
+（2）校验时间正确<br>
+（3）检验参数正确<br>
+（4）计算并校验订单的哈希值<br>
+（5）更新订单状态</p>
+</li>
+<li>
+<p>若使用了渠道，则根据订单路由导出渠道</p>
+</li>
+<li>
+<p>根据订单路由，执行原生代币以及ERC721代币的转账，完成订单</p>
+</li>
+<li>
+<p>删除重入锁</p>
+</li>
+</ol>
+<h3 id="fulfillorder--fulfilladvancedorder">fulfillOrder &amp; fulfillAdvancedOrder</h3>
+<ul>
+<li>
+<p>fulfillOrder 执行普通订单，不支持订单部分执行，不支持条件解析器；普通订单作为特殊的高级订单进行执行。</p>
+</li>
+<li>
+<p>fulfillAdvancedOrder 执行高级订单。</p>
+</li>
+</ul>
+<h4 id="实现逻辑-1">实现逻辑</h4>
+<ol>
+<li>
+<p>添加重入锁</p>
+</li>
+<li>
+<p><code>_validateOrderAndUpdateStatus</code>：根据参数，验证订单，更新状态并计算订单哈希值 <code>orderHash</code> 、需要执行订单的分子 <code>numerator</code> 和分母 <code>denominator</code><br>
+（1）时间校验：<code>startTime &lt;= block.time &lt;= endTime</code><br>
+（2）分子与分母校验：</p>
+</li>
+</ol>
+<ul>
+<li>
+<p><code>numerator &lt;= denominator &amp;&amp; denominator != 0</code>;</p>
+</li>
+<li>
+<p>若 <code>numerator == denominator</code> ，需要支持部分执行(Support Partial Fills)</p>
+</li>
+</ul>
+<p>（3）对价项目长度校验以及计算订单哈希值 <code>orderHash</code> :</p>
+<ul>
+<li>
+<p>订单长度校验：<code>orderParameters.consideration.length &gt;= orderParameters.totalOriginalConsiderationItems</code>，即参数中 <code>consideration</code> 数组实际长度要大于或等于参数中直接传递的原始对价项目总数</p>
+</li>
+<li>
+<p>计算订单哈希值 <code>orderHash</code></p>
+</li>
+</ul>
+<p>（4）校验高级订单的有效性：订单类型为 2 或 3 要求 zone 或 offerer 是 caller 或 者 zone 批准。<br>
+（5）校验订单状态 <code>orderStauts = _orderStatus[orderHash]</code>，保证订单没有被取消并且是可执行的</p>
+<ul>
+<li>
+<p>订单未取消，即：保证 <code>orderStauts.isCancelled == false</code></p>
+</li>
+<li>
+<p>订单可执行，即：若 <code>orderStatus.numerator != 0</code>，保证 <code>orderStatus.numerator &lt; orderStatus.denominator</code>。</p>
+</li>
+</ul>
+<p>（6）校验订单签名，即若<code>orderStatus.isValidated == false</code>，则调用 <code>_verifySignature</code> 函数<br>
+（7）计算需要执行订单的分子 <code>fillNumerator</code> 和分母 <code>fillDenominator</code><br>
+（8）更新状态变量 <code>orderStatus</code></p>
+<ol>
+<li>
+<p><code>_applyCriteriaResolvers</code>：用条件解析器，对每个生成的订单类型以及条件解析器的绑定进行校验，确保提交的待执行订单是有效的</p>
+</li>
+<li>
+<p><code>_applyFractionsAndTransferEach</code>：以指定的分数值执行每个项目的转账</p>
+</li>
+<li>
+<p><code>_emitOrderFulfilledEvent</code>：发出一个表明订单已完成的事件。</p>
+</li>
+<li>
+<p>删除重入锁</p>
+</li>
+</ol>
+<h3 id="fulfillavailableorders--fulfillavailableadvancedorders">fulfillAvailableOrders &amp; fulfillAvailableAdvancedOrders</h3>
+<ul>
+<li>
+<p>fulfillAvailableOrders 执行可用普通订单，不支持订单部分执行，不支持条件解析器；可用普通订单作为特殊的可用高级订单进行执行</p>
+</li>
+<li>
+<p>fulfillAvailableAdvancedOrders 执行可用的高级订单</p>
+</li>
+</ul>
+<h4 id="实现逻辑-2">实现逻辑</h4>
+<ol>
+<li><code>_validateOrdersAndPrepareToFulfill</code>：校验订单（若有无效订单则跳过）、更新其状态、通过先前填充的分数减少金额、应用条件解析器并触发 OrderFulfilled 事件。<br>
+（1）添加重入锁<br>
+（2）声明并设置一个错误缓冲区变量，指明任何本地报价项目的状态。<br>
+（3）循环遍历每一个订单，校验订单，更新每一个订单中的参数：</li>
+</ol>
+<ul>
+<li>
+<p><code>_validateOrderAndUpdateStatus</code>：根据参数，验证订单，更新状态并计算订单哈希值 <code>orderHash</code> 、需要执行订单的分子 <code>numerator</code> 和分母 <code>denominator</code></p>
+</li>
+<li>
+<p>循环遍历订单中的每一个报价项目，更新报价项目中的 <code>startAmount</code> 和 <code>endAmount</code></p>
+</li>
+<li>
+<p>循环遍历订单中的每一个对价项目，更新对价项目中的 <code>startAmount</code> 和 <code>endAmount</code></p>
+</li>
+</ul>
+<p>（4）校验错误缓冲区变量<br>
+（5）<code>_applyCriteriaResolvers</code>：应用条件解析器，对每个生成的订单类型以及条件解析器的绑定进行校验，确保提交的待执行订单是有效的聚合已使用的报价和对价项目并执行转账<br>
+（6）触发 OrderFulfilled 事件</p>
+<ol>
+<li><code>_executeAvailableFulfillments</code>：完全或部分执行通过了校验的订单，每个订单具有任意数量的要约和考虑项目，并执行转移。 任何当前未激活、已完全成交或已取消的订单都将被忽略。 然后，剩余的报价和考虑项目将在可能的情况下聚合，如所提供的报价和考虑组件数组所示，并且聚合的项目将分别转移到履行者或每个预期的接收者。 请注意，失败的项目转移或订单格式问题将导致整个批次失败。<br>
+（1）为每一个订单的报价和对价项目的执行分配一个 <code>Execution</code> 结构，构造为一个 <code>Execution</code> 结构数组 <code>executions</code> ，任何当前未激活、已完全成交或已取消的无效订单都将被忽略。<br>
+（2）校验 <code>executions</code> 的长度<br>
+（3）对 <code>executions</code> 中的每一个 <code>Execution</code> 结构对象进行校验，过滤掉当前未激活、已完全成交或已取消的所有订单。<br>
+（4）<code>_performFinalChecksAndExecuteOrders</code>：对高级订单以及 <code>executions</code> 进行最后的校验，然后执行订单，完成执行转账，删除重入锁。</li>
+</ol>
+<h3 id="matchorders--matchadvancedorders">matchOrders &amp; matchAdvancedOrders</h3>
+<ul>
+<li>
+<p><code>matchOrders</code> ：对普通订单中的报价和对价项目按参数 <code>fulfillments</code> 提供的报价组件分配给对价组件的条件求进行匹配然后执行，不支持订单部分执行，不支持条件解析器；普通订单作为特殊的高级订单进行处理</p>
+</li>
+<li>
+<p><code>matchAdvancedOrders</code>：对高级订单中的报价和对价项目按参数 <code>fulfillments</code> 提供的报价组件分配给对价组件的要求进行匹配然后执行</p>
+</li>
+</ul>
+<h4 id="实现逻辑-3">实现逻辑</h4>
+<ol>
+<li>
+<p><code>_validateOrdersAndPrepareToFulfill</code>：校验订单（若有无效订单则回滚）、更新其状态、通过先前填充的分数减少金额、应用条件解析器并触发 OrderFulfilled 事件。若有无效订单，则回滚。</p>
+</li>
+<li>
+<p><code>_fulfillAdvancedOrders</code>：在验证、调整金额和应用条件解析器之后，执行高级订单<br>
+（1）为每一个订单的报价和对价项目的执行分配一个 <code>Execution</code> 结构，构造为一个 <code>Execution</code> 结构数组 <code>executions</code><br>
+（2）循环遍历参数 <code>fulfillments</code> ，将 <code>executions</code> 中的每一个元素对应到<code>fulfillments</code> 的每一个元素，若报价人者（<code>offerer</code>）和接受者（<code>recipient</code>）是相同的，则跳过。<br>
+（3）<code>_performFinalChecksAndExecuteOrders</code>：对高级订单以及 <code>executions</code> 进行最后的校验，然后执行订单，完成执行转账，删除重入锁。</p>
+</li>
+</ol>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39765/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">IMF：加密货币和CBDC是传统金融的替代品</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39748/">
+                <span class="next-text nav-default">PeckShield：Nody代币NODY发生Rug Pull，价格下跌93%</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一seaport-简介">一、Seaport 简介</a></li>
+    <li><a href="#二关键业务实现">二、关键业务实现</a>
+      <ul>
+        <li><a href="#1nft订单">1、NFT订单</a></li>
+        <li><a href="#2订单执行">2、订单执行</a></li>
+        <li><a href="#3检查余额和批准交易">3、检查余额和批准交易</a></li>
+        <li><a href="#部分成交">部分成交</a></li>
+        <li><a href="#5业务关键步骤">5、业务关键步骤</a></li>
+      </ul>
+    </li>
+    <li><a href="#三关键接口">三、关键接口</a>
+      <ul>
+        <li><a href="#fulfillbasicorder">fulfillBasicOrder</a></li>
+        <li><a href="#fulfillorder--fulfilladvancedorder">fulfillOrder &amp; fulfillAdvancedOrder</a></li>
+        <li><a href="#fulfillavailableorders--fulfillavailableadvancedorders">fulfillAvailableOrders &amp; fulfillAvailableAdvancedOrders</a></li>
+        <li><a href="#matchorders--matchadvancedorders">matchOrders &amp; matchAdvancedOrders</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

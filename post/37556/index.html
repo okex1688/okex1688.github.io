@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          金色前哨 | 零知识前沿：关于SNARK、STARK和未来应用 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="“我只知道一件事，那就是我一无所知”" />
+<meta name="keywords" content="零知识证明, StarkWare, zkSync" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/37556/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="金色前哨 | 零知识前沿：关于SNARK、STARK和未来应用" />
+<meta property="og:description" content="“我只知道一件事，那就是我一无所知”" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/37556/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-07T00:00:00+00:00" />
+
+<meta itemprop="name" content="金色前哨 | 零知识前沿：关于SNARK、STARK和未来应用">
+<meta itemprop="description" content="“我只知道一件事，那就是我一无所知”"><meta itemprop="datePublished" content="2022-05-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4129">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="金色前哨 | 零知识前沿：关于SNARK、STARK和未来应用"/>
+<meta name="twitter:description" content="“我只知道一件事，那就是我一无所知”"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">金色前哨 | 零知识前沿：关于SNARK、STARK和未来应用</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-05-07">
+      2022-05-07
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4129 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E8%A7%82%E7%82%B9/"> 观点 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>来源：Vaish Puri @TheTieLabs</p>
+<p><em>“我只知道一件事，那就是我一无所知”——苏格拉底</em> </p>
+<p>最近围绕L2扩容解决方案有很多明显的热情，这是理所当然的。随着Optimism发布治理代币、对ETH主网降低gas费用的需求，以及在背靠背的黑客马拉松中产生的一连串新想法，可以肯定地说，L2在2022正如火如荼地进行。 </p>
+<p>在今天文章中，我将剖析有史以来最强大但经常被误解的加密工具之一：零知识证明。此外，我将重点介绍未来实施的用例和建议，并展示为什么零知识证明是加密未来的关键。 </p>
+<p><img src="https://img.bibiqing.com/news/2022/0507/21_bvtzhhp0ia.png" alt="bsNQYC7TtmYx29JDTsYLSJE3K8vFs5a1wrKmMFdL.png" title="5994974"></p>
+<h2 id="为什么零知识证明很重要">为什么零知识证明很重要</h2>
+<p>简单地说，零知识证明是证明者在不实际透露任何信息的情况下说服验证者某事是真的一种方式。让我们用一个类比来说明这一点：假设我们有两个人，Alice和Bob。Alice有一副密封的 52张扑克牌。Alice偷偷拿了一张红牌，想向Bob证明她有一张红牌，但实际上并没有出示红牌。为了做到这一点，Alice需要将所有的黑牌从牌堆中分离出来，然后将它们展示给Bob。Bob计算所有26张黑牌，验证它们的存在，并确定Alice拥有的卡牌必然是红色的。因此，Alice能够向Bob证明她有红牌，而无需实际出示。这个比喻非常简化并没有描绘全貌，但技术背后的核心理念保持不变。 </p>
+<p>零知识证明对于这十年甚至几千年来说并不新鲜。事实上，这个想法是在1980年代由抽象数学研究人员首次提出的。该解决方案旨在解决当时与证明者和验证者之间的理论系统相关的问题——交互式证明。 </p>
+<p>但是如果验证者被证明是恶意的怎么办？除了验证陈述的真实性之外，Prover还透露了多少额外信息？让我们看看中心化服务器上密码的哈希是如何存储的。传统上，在与服务器交互时，服务器会得到明文密码。这是进行“身份证明”的一种糟糕的方式，因此研究人员转向了一种系统，该系统可以在不泄露任何无关信息的情况下证明声明。 </p>
+<p>更具体地说，假设我们有一些函数C，有两个输入C(x,y)。令x为公开输入，y为秘密见证，让函数的输出为真或假。给定一个特定的公共输入x，证明者必须证明他们知道一个秘密见证y使得C(x,y) == true。从证明者的角度来看，实现零知识需要随机性。在验证者方面，需要随机性来产生对证明者的查询。 第一个被广泛展示的应用是在NP中——完成一类复杂性称为图的三着色问题。这是一个巨大的突破，因为这个应用程序可以应用于NP类中的任何问题。这可以一举多得。 </p>
+<p>在区块链领域，由于零知识证明能够提供可扩展性以及在隐私模型中的实用性，因此有许多实现。具体来说，与没有零知识证明系统的情况相比，验证者执行的计算工作呈指数级减少。另一方面，证明者需要相当多的计算开销来执行证明。我稍后会详细讨论这个问题。</p>
+<h2 id="zk协议">ZK协议</h2>
+<p>虽然目前存在大量的zk协议，但对于这篇文章，我将重点关注SNARK和STARK，并在后面的文章中深入探讨其他协议。</p>
+<p>简洁非交互式知识论证（SNARK）是一种流行的证明机制，它结合了2011年首次引入的零知识证明。在底层，zk-SNARK使用椭圆曲线来保证安全并依赖于可信设置。最初，创建密钥以开发交易所需的证明和验证所述证明。这些秘钥包含一个参考字符串链接验证密钥和发送私人信息的密钥。为此，必须删除创建密钥的方法，并且密钥的创建者是可信赖的（因此称为可信设置）。这种在创建阶段对信任的依赖仍然是zk-SNARKs的一大批评点。此外，参考字符串是不可升级的，这意味着如果程序需要更新，则需要重新运行可信设置阶段。</p>
+<p>然而，在实际实践中，zk-SNARK很难自行实现。在计算中需要检查许多步骤，但是单独检查每个步骤的工作花费的时间是不可行的。解决方案以多项式的形式出现。将计算编码为多项式可以节省大量信息和时间。我们可以用“代替“它们的多项式表达式代替它们，而不是在数字之间有无数个方程。</p>
+<p>但是等等，还有更多！通常，通过检查每个系数来使用多项式验证方程，但这又需要太长时间。多项式承诺在这里发挥作用。多项式承诺可以被视为“哈希”多项式的独特方法。这允许在更短的时间内进行验证，无论多项式有多大。此外，多项式承诺本质上是隐私保护，因为证明比多项式本身小得多。尽管可以添加随机性，但多项式承诺不会显示多项式的少量信息。</p>
+<p>多项式承诺使用三种主要协议之一：bulletproof、KZG和FRI（Fast Reed-Solomon Interactive Oracle Proof of Proximity）。比较和对比它们超出了本篇文章的范围，因为每个都值得自己深入研究。</p>
+<p>2018 年，一群研究人员试图在zk系统中加入透明度。透明度意味着不必依赖受信任方进行初始设置，从而消除了开放后门的威胁。这导致创建了可扩展的透明知识论据，或STARKs。STARK使用哈希函数作为其安全来源，这与SNARK使用的双线性实现不同。可扩展性方面指的是两件事： </p>
+<p>1、与SNARK相比，证明者的运行时间在复杂性上要小得多。</p>
+<p>2、验证时间的大小是多对数。STARKs利用FRI，提升信息存储量和效能。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0507/21_rwn004pukr.png" alt="cHOqK2UXUGxmXXUxZ0neaXfqGTGXVkh4A247CKXp.png" title="5994981"></p>
+<h2 id="当前应用">当前应用</h2>
+<p>尽管像Zcash这样的zk-SNARK先驱已经存在了一段时间，但zk-STARK的创建却迎来了爆炸式增长。zk协议中的工作不仅限于Rollup。事实上，一些L1已经基于zk proof构建，以及萌芽中的游戏项目。 </p>
+<p>StarkWare是 zk-STARK的先驱，开发了两个核心产品：StarkNet，一个无需许可的去中心化zk rollup，以及StarkEx，一个独立的zk rollup SaaS。此外，StarkWare开发了名为Cairo的生产级zk虚拟机 (zkVM) 。Cairo声称可以实现图灵完备的冯诺依曼结构。每个程序与它处理的数据一起驻留在VM 的内存中。今天任何人都可以访问开罗，目前正被著名的StarkEx客户使用，如dydx、Immutable和DeversiFi。其他使用他们自己版本的zkVM的新应用程序包括Polygon Miden和RiscZero，后者正在尝试构建通用zkVM。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0507/21_9s890densz.png" alt="68906fe7f983b93602b4f34c07aecf22" title="5826889">与zkVM意识形态相反的是zkEVM。zkVMs从头开始作为针对zk优化的新区块链VM，或者只是适应Solidity工具和兼容性。另一方面，zkEVM实现了完整的EVM操作码集。使用EVM 操作码有几个好处：</p>
+<ul>
+<li>
+<p>实现与EVM生态系统和工具的完全兼容</p>
+</li>
+<li>
+<p>继承以太坊安全模型</p>
+</li>
+<li>
+<p>效率可能类似于基于编译器的方法</p>
+</li>
+</ul>
+<p>不出所料，zkVM和zkEVM阵营之间似乎存在很大的分歧。</p>
+<p>zkEVM相对于zkVM的最大优势是EVM等效性。历史证明，通过低gas费激励和为开发人员提供轻松的开发体验来瞄准庞大的现有dApp社区是卓有成效的，这正是zkEVM建设者所指望的。 </p>
+<p>目前最流行的zkEVM项目是zkSync，它使用zk-SNARKs作为2层解决方案进行验证和扩展。此外，zkSync选择将数据可用性置于链下，并由zkSync代币质押者使用权益证明 (zkPorter) 进行保护（这意味着空投可能迫在眉睫）。此实现的设计基于StarkWare开发的名为Volition的解决方案。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0507/21_a25qwuh5au.png" alt="ui8nSakqv7Bt4EIF7mEZXDg4BH80wC0GnclDu14C.png" title="5994983"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0507/21_ey57adtjjm.png" alt="yD2SUUYIxoJnVTjMlTwSmPjP8xQhnaZvKGFdqufg.jpeg" title="5994984">最后，一个相当新的参与者，Scroll正在开发一个通用的L2 zkEVM。Scroll采用了一种新方法来使用GPU能力在链下生成zk证明。最近在Poseidon哈希、Plookup和PLONK等zk证明方面的突破已经将成本降低到足以使zkEVM成为现实。此外，GPU和 ASIC/FPGA加速器的进步正在改善硬件条件，进一步降低成本。Scroll仍处于开发阶段，计划在未来几个月内推出他们的 zkEVM测试网。</p>
+<h2 id="未来的应用">未来的应用</h2>
+<p>Zk Proof最初是为了维护隐私而开发的。尽管大众媒体可能会将当前的用例集中在“更大的 TPS 允许”上，但事实仍然是zk Proof具有更广泛的应用范围。 </p>
+<p>一个这样的应用程序是工具zk-ID，它通过zk电路匿名检查钱包中的资产或链上交易来验证用户的身份。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0507/21_5641lefytt.png" alt="DFW6yk4Zo7CoHWp6igZyTANl47GwYDjbGZK3bSkW.png" title="5994986"></p>
+<p>Zk身份具有极其强大的潜力，并且在现实世界中可以立即使用用例。例如，假设我是一名债务人，试图证明自己的信誉，同时仍将银行信息和活动保密。我会证明我已经从多家受信任的银行偿还了大笔贷款，但不会透露银行或这些贷款的规格。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0507/21_vf2keq60pr.png" alt="bsudlqLnN1znlxhjokb8qRwZF9ESGu1j543IJbXB.jpeg" title="5994987">支持未来zk-identity的四个关键组件</p>
+<p>zk领域的另一个重大发展是zk-SNARK证明者的高效私人委托。如前所述，证明的时间相当缓慢。使用SHA2 哈希10kb需要140秒，而不是所需的几毫秒。解决这个问题的方法是外包证明。不幸的是，这带来了另一个困境：秘密总是泄露。需要的是：外包隐私证明。通过仔细实施，可以将证明委托给手机等设备，其速度比本地计算快26倍。这个新颖的框架由Pratyush Mishra在2022年4月的zkSummit上首次提出。 </p>
+<p><img src="https://img.bibiqing.com/news/2022/0507/21_s16lrco4df.png" alt="Q5Wk5rJunmPOzIUQWumHb3zzXnCUyKKWx5ckzW9g.png" title="5994988"></p>
+<h2 id="结语">结语</h2>
+<p>我们在开发基于应用程序的zk Proof方面处于非常早期的阶段。尽管如此，进展的步伐还是很快的。社区之间仍然存在很多冲突，因为阵营正在形成，意见正在被政治化。只有时间会证明哪一方是正确的。可以肯定的是，当历史学家回顾过去时，他们会将这一时期的zk实施视为加密货币壮观历史中的开创性部分。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/37551/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">金色观察｜Project Galaxy：Web3凭证数据网络</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/37539/">
+                <span class="next-text nav-default">金色前哨 | 美国银行：比特币并没有起到通胀对冲的作用</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么零知识证明很重要">为什么零知识证明很重要</a></li>
+    <li><a href="#zk协议">ZK协议</a></li>
+    <li><a href="#当前应用">当前应用</a></li>
+    <li><a href="#未来的应用">未来的应用</a></li>
+    <li><a href="#结语">结语</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

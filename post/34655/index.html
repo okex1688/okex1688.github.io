@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          浅谈 EVM 兼容性：为什么非EVM公链都在拥抱EVM？面临哪些问题？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="以太坊在第一波“以太坊杀手”中幸存下来，随后运行以太坊虚拟机（EVM）的低成本链（Polygon、BSC、Fantom）大受欢迎。" />
+<meta name="keywords" content="EVM" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/34655/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="浅谈 EVM 兼容性：为什么非EVM公链都在拥抱EVM？面临哪些问题？" />
+<meta property="og:description" content="以太坊在第一波“以太坊杀手”中幸存下来，随后运行以太坊虚拟机（EVM）的低成本链（Polygon、BSC、Fantom）大受欢迎。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/34655/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-26T00:00:00+00:00" />
+
+<meta itemprop="name" content="浅谈 EVM 兼容性：为什么非EVM公链都在拥抱EVM？面临哪些问题？">
+<meta itemprop="description" content="以太坊在第一波“以太坊杀手”中幸存下来，随后运行以太坊虚拟机（EVM）的低成本链（Polygon、BSC、Fantom）大受欢迎。"><meta itemprop="datePublished" content="2022-02-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3062">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="浅谈 EVM 兼容性：为什么非EVM公链都在拥抱EVM？面临哪些问题？"/>
+<meta name="twitter:description" content="以太坊在第一波“以太坊杀手”中幸存下来，随后运行以太坊虚拟机（EVM）的低成本链（Polygon、BSC、Fantom）大受欢迎。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">浅谈 EVM 兼容性：为什么非EVM公链都在拥抱EVM？面临哪些问题？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-02-26">
+      2022-02-26
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3062 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原标题：《EVM compatibility and the future of blockchains》</p>
+<p>以太坊在第一波“以太坊杀手”中幸存下来，随后运行以太坊虚拟机（EVM）的低成本链（Polygon、BSC、Fantom）大受欢迎。而现在，在推出有限的成功之后，这些相同的以太坊杀手正在整合 EVM 并竞相进入多链世界。</p>
+<p>具体来说，Polkadot 已经添加了 Moonbeam、Near 推出 Aurora，并且很快（已宣布但尚未发布），Evmos 将在 Cosmos 上线和 Neon 将在 Solana 实现。 </p>
+<p>当这些链首次推出时（不兼容 EVM），它们声称拥有卓越的设计，具有流行的编程语言支持和速度等特性。随着这些链开始支持 EVM，现在他们似乎不那么看好自己技术的优势，而是意识到需要支持以太坊的。通过这样做，这些链正在回溯其最初的愿景，以构建以太坊的替代技术堆栈。</p>
+<p>在这里，我们将看看不同的架构，以及围绕跨区块链的 EVM 的新兴标准将如何创造更多的可组合性。此外，我们看到由此产生的特定于链的生态系统成为产品实验的温床。 </p>
+<h4 id="建设阶段">建设阶段</h4>
+<p>将 EVM 视为一台计算机，它在给定特定输入的情况下计算智能合约的操作输出结果。EVM 的副本在每个节点上运行——必须记住它并不位于一个地方。EVM 也称为“runtime”或“环境”。</p>
+<p>除了runtime，还有一些围绕 EVM 构建的重要工具，它们在下面以红色突出显示。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0226/8_kwsvai68ak.png" alt="7N8hl5bojrE3C9AMGPjqqZafNIXVRFJ2iBsDEkJa.png" title="5801123"></p>
+<p>EVM 接收用 Solidity 语言编写的程序，为了使该语言更强大，创建了许多“库”。Truffle 或 Hardhat 等开发人员工具使智能合约的编写和测试变得更加容易。此外，因为我们谈论的是网络环境，外部钱包通过 API 库（例如 Web3.js）连接到 EVM。 </p>
+<p>在普通用户更熟悉的这些工具中，有强大的区块链浏览器 Etherscan。它知道如何查看数以千计的交易并以人类可读的方式呈现它们。此外，还有 MetaMask 钱包，它通过网络广播用户的命令将用户连接到 EVM。</p>
+<p>数百名高技能开发人员花费了数千小时来构建这些工具和基础设施。在某些情况下，使用成熟工具和未完善工具创建 dApp 所需的时间差异可能是 100:1。这就是为什么专有堆栈区块链构建的工具和基础设施按照行业标准（或 DeFi 年的几十年）进展非常缓慢。 </p>
+<p>除了卓越的技术外，EVM 生态系统还拥有庞大的区块链开发者和开源项目市场。这些项目可以快速复制，不需要耗时的代码重写。</p>
+<h4 id="模型比较">模型比较</h4>
+<p>专有的堆栈链在 EVM 的集成中使用了不同的方法。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0226/8_fsgaoeoitf.png" alt="image"></p>
+<p>Solana 和 Near 使用单链，因此在这些情况下，EVM 将与区块链的主要“智能合约计算机”一起运行。这也可以在 Near 的 Aurora EVM 设计中看到。 </p>
+<p>引用一位<a href="https://youtu.be/wpXtrcYSV-U?t=720">Aurora 开发人员</a>的话： </p>
+<p>“我们重写了所有 EVM 逻辑并将其编译为 WASM 字节码，因此它在 Near 运行时的 WASM 片段中执行。现在它是一个近乎原生的合约，EVM 合约没有什么特别之处。仅仅将 EVM 添加到 Near 内核中就会引入很多复杂性”。</p>
+<p>所以需要注意的是，Aurora 不是链，而是 Near 上的 EVM 环境（尽管它有自己的区块浏览器）。这就是为什么 Near-Aurora 桥不是链之间的桥，而是runtime之间的桥。这种技术设计会影响业务战略：Aurora 没有验证器，它的代币不能保护网络。 因此，在评估使用类似设计的 Aurora 或 Neon 时，必须使用不同的模型，而 Evmos 或 Moonbeam 则拥有自己的原生费用代币。</p>
+<p>有趣的是，EVM + Near 的PoS共识和数据可用性分片使得整体架构类似于 ETH 2.0 的愿景。Neon 的优势在于 Solana 的速度：Neon EVM 声称每秒可处理 4,500 笔交易，并支持不到一秒的确认时间。总的来说，这种将 EVM 与不同类型架构相结合的实验推动了行业的创新。<strong>以太坊现在太大了，无法灵活地改变，因此 EVM 市场的出现创造了一个快速行动和打破事物的机会，而无需以太坊主网的成本和风险。</strong>  </p>
+<p>分别支持 Moonbeam 和 Evmos 的 Polkadot 和 Cosmos 是多链设计的区块链。他们没有选择将 EVM 与主计算机并排添加，而是专门为其创建了一个子链。这意味着如果需要可扩展性，更多 EVM 实例可以作为 Cosmos/Polkadot 上的新子链（以及 Near 上的新分片）启动，为可扩展性铺平道路。另一方面，Solana 的模型似乎缺乏这种可扩展性。</p>
+<p>EVM 集成之间的设计还有其他较小的差异。Aurora 使用 ETH 支付交易费用，这（可能间接地）帮助他们获得了以太坊生态系统的支持。Evmos 将根据其 dApp 的活跃度奖励开发者，通过内置的共享费用收入模式在开发者和网络运营商之间分享部分费用。</p>
+<p><strong>区块链 EVM 未来</strong> </p>
+<p>从底层链的角度来看，使用 EVM 有各种优点和缺点。他们需要考虑的主要问题如下。</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>这些 EVM 还将底层区块链的代币连接到更广泛的 EVM 生态系统。例如，Polkadot 的代币 DOT 通过官方跨链桥连接到 Moonriver，然后通过广泛可用的 EVM 跨链桥（如 Synapse、Allbridge 等）进一步传播。查看下图，它突出显示了在基于 EVM 的 Moonriver 上使用 DOT 进行的挖矿。一般来说，构建 EVM-EVM 桥比 EVM 不同共识桥更容易。</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0226/8_vg02rwm64d.png" alt="image"></p>
+<ul>
+<li>EVM 环境可以成为资产从 EVM 链到这些底层链的入口点。用户将选择对他们来说最方便和最安全的桥。下图展示了 Cosmos Hub 和 Evmos 与 EVM 链交互的示例。</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0226/8_c1sj7bbuh5.png" alt="image"></p>
+<ul>
+<li>EVM 环境可以成为新用户的底层区块链的演示版本。通过使用熟悉的工具，他们将了解新的生态系统、技术、原生项目和资产。想象一下，在买家第一次习惯了普锐斯之后，丰田开始对其电动汽车产生兴趣。</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>
+<p>该模型进一步加强了以太坊，对以太坊工具的更多需求意味着花费更多的资源来改进它们，而以牺牲底层链的专有堆栈为代价。</p>
+</li>
+<li>
+<p>早期的以太坊杀手最初通过流行的编程语言支持和独特的设计（如链的应用程序特异性）来区分自己。这个新方向使他们远离了最初的哲学。缺乏差异化是否会使用户和开发人员的区块链商品化？</p>
+</li>
+<li>
+<p>EVM 的加入也带来了产品自相残杀的威胁。如果通过 EVM 和基础区块链实现都可以使用同一个应用程序，则后者必须为用户提供切实的优势，以放弃熟悉的体验。</p>
+</li>
+</ul>
+<p>总而言之**，底层链在添加 EVM 兼容性方面的最大优势可能是为用户和资产提供了一个新的入口通道。** 但是有一个缺点。如果所有链都提供相同的用户体验，他们可以获取的品牌溢价就会变小。 </p>
+<h4 id="evm-标准"><strong>EVM 标准</strong></h4>
+<p>EVM 市场的出现为协议架构师创造了推动创新的机会，例如分片（以太坊交付缓慢的东西）或特定于应用程序的链。 </p>
+<p>一个被广泛接受的标准很可能会带来更多的可组合性，这将加强 DeFi 中的网络效应。2021 年独立区块链的快速增长已经足够快，但由于共同的 EVM 支持标准，更大的连接性可能会在未来几年引发更快的增长。</p>
+<p>不管对行业有利与否，几乎所有大型开发商都在集成 EVM 这一事实表明该堆栈是当今的必备品，而且如果没有 EVM 兼容性，就很难竞争。</p>
+<p>作者：Denis</p>
+<p>编译：谷昱，链捕手</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/34664/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">欧洲央行行长呼吁批准加密货币监管框架，以阻止俄罗斯逃避制裁</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/34667/">
+                <span class="next-text nav-default">瑞士加密银行SEBA获得在阿联酋金融中心运营许可证</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          首发 | 解读DeFi典型漏洞及其安全风险 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="目前加密领域可被黑客所利用的不同级别漏洞越来越多，CertiK安全专家将这些漏洞分为四大类?，本文将为各位读者带来DeFi相关安全风险讲解" />
+<meta name="keywords" content="安全, DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/23097/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="首发 | 解读DeFi典型漏洞及其安全风险" />
+<meta property="og:description" content="目前加密领域可被黑客所利用的不同级别漏洞越来越多，CertiK安全专家将这些漏洞分为四大类?，本文将为各位读者带来DeFi相关安全风险讲解" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/23097/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-27T00:00:00+00:00" />
+
+<meta itemprop="name" content="首发 | 解读DeFi典型漏洞及其安全风险">
+<meta itemprop="description" content="目前加密领域可被黑客所利用的不同级别漏洞越来越多，CertiK安全专家将这些漏洞分为四大类?，本文将为各位读者带来DeFi相关安全风险讲解"><meta itemprop="datePublished" content="2021-05-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-27T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4195">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="首发 | 解读DeFi典型漏洞及其安全风险"/>
+<meta name="twitter:description" content="目前加密领域可被黑客所利用的不同级别漏洞越来越多，CertiK安全专家将这些漏洞分为四大类?，本文将为各位读者带来DeFi相关安全风险讲解"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">首发 | 解读DeFi典型漏洞及其安全风险</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-05-27">
+      2021-05-27
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4195 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>自DeFi兴起以来，在短短9个月时间内迅速风靡全球。</p>
+<p>BSC凭借低廉的gas和高速壮大的生态应用建立起了日渐完整的生态系统，成功成为了领先的公链平台之一。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0527/22_lzmhuw38ow.png" alt="m4uxxbkvtp99ju8u"></p>
+<p>数据来源：https://bscscan.com/</p>
+<p>如今每天，都有数百个项目在BSC上进行数千万的交易。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0527/22_p609fuqlvh.png" alt="lb8cn21m589j46gq"></p>
+<p>图片来自https://twitter.com/BinanceChain/status/1395060714390315008</p>
+<p>但是链上交易的热度将另外一个隐患带到了我们面前——安全隐患。</p>
+<p>目前可被黑客所利用的不同级别漏洞越来越多。</p>
+<p>CertiK安全专家将这些漏洞分为四大类?，下文将为各位读者带来DeFi相关安全风险讲解。</p>
+<h2 id="管理员密钥泄露">管理员密钥泄露</h2>
+<p>在智能合约中，某些功能受到函数修改器(modifier)的保护——只有特定的操作者才能调用特定的功能。</p>
+<p>在大多数情况下，这些功能是用于修改合约配置或管理智能合约中持有的资金。因此如果攻击者破坏了管理密钥，他们可以完全控制智能合约，调用该功能从而窃取用户资产。</p>
+<p><strong>密钥泄露的原因</strong></p>
+<p>第一种可能性是计算机木马程序。 </p>
+<p>攻击者可以使用木马程序来窃取存储在计算机上的私钥，或者进行网络钓鱼攻击，以诱骗用户将其私钥发送给攻击者。</p>
+<p>对DeFi合约来说，往往是几个人共享一个管理密钥。</p>
+<p>这就意味着如果有内部人员心怀不轨，那么他可以调用管理功能将项目的代币转移到自己的钱包地址中。</p>
+<p>这里有两个案例：2021年3月5日，PAID Network因其私钥管理不当而遭受“铸币”攻击，经推测攻击者很可能是通过网络钓鱼攻击从管理员的计算机中窃取了密钥。</p>
+<p>PAID代币合约位于可升级代理服务器之后，这意味着代币合约可以被代理服务器的所有者替换。</p>
+<p>这类恶意代码有铸币功能，攻击者销毁6000万个PAID代币，然后为自己铸造了5900万枚代币。</p>
+<p>当时2,501,203美元的PAID代币（约为2,040ETH）在Uniswap上被出售，代币价格也从2.8美元暴跌为0.3美元。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0527/22_mrunni20u1.png" alt="ls605gmjmf2denli"></p>
+<p>2021年4月19日，EasyFi创始人声称该黑客为获取管理密钥对管理员进行了针对性的攻击。298万个EASY代币（当时价值约7500万美元）被从EasyFi官方钱包中转移到了几个未知钱包中。</p>
+<p>因此安全存储私钥对于项目安全的重要性可见一斑，管理者切忌将未加密的管理员密钥存储在电脑设备上，或将其无防备的放置于Metamask热钱包中。</p>
+<p>CertiK安全专家建议管理者使用硬件钱包创建账户。</p>
+<p>如果多人团队的每位管理者均使用硬件钱包，一旦其中一位管理者试图进行特权交易，也需获取大部分成员的签署同意，这样可以防止攻击者仅获取一个密钥访问权时就可以调用所有特权功能。</p>
+<p>代币合约应尽可能避免铸造新代币的功能。如果需要铸造新代币，应使用DAO合约或时间锁合约，而非EOA帐户。</p>
+<h2 id="编码错误"><strong>编码错误</strong></h2>
+<p>大家一提到DeFi漏洞，往往会认为漏洞必然是很复杂的，其实并非总是如此。</p>
+<p>有时一个小小的编码错误，就可以导致数百上千万美元的资产一朝蒸发。</p>
+<p>一些常见的编码错误示例：</p>
+<p>1. 函数权限, 修改器(modifier)缺失</p>
+<p>2. 错别字</p>
+<p>3. 数字位数不正确</p>
+<p>4. 变量值分配缺失/不正确</p>
+<p>有一个非常典型的例子就是Uranium Finance曾发生的受攻击事件：黑客攻击了Uranium Finance未受审计的合约，项目因此损失了5700万美元。</p>
+<p>管理员在交换前后比较池中两个代币余额的乘积时使用了不一致的乘数，这使得攻击者可以仅用1 Wei就从池中换出大量代币。</p>
+<p>Uranium finance的代码：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0527/22_qp79ksudsu.png" alt="nuo4hkp1l13322x8"></p>
+<p>正确的代码：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0527/22_nj1bk50jgi.png" alt="qofvmagzxi9vagb3"></p>
+<p>另一个例子是Value DeFi，被黑客攻击导致损失了1000万美元。</p>
+<p>此次事件发生的原因在于Value DeFi合约中的初始化函数缺少“initialized = true”，这意味着任何人都可以将资金池初始化并将自己设置为管理员。</p>
+<p>2021年5月5日，攻击者将资金池初始化，将自己设置为管理员，然后使用“governanceRecoverUnsupported()”函数耗尽了已抵押的代币。</p>
+<p>Value DeFi中的易受攻击的代码：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0527/22_7mnotnyu55.png" alt="fn8hv0zgyektv3un"></p>
+<p>解决方法：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0527/22_3j1jb8jwwd.png" alt="46ia0xf97pw8d2ft"></p>
+<p>只需通过适当的同行评审、单元测试和安全审计，这一类型的代码错误往往极易避免。</p>
+<h2 id="闪电贷和价格操纵">闪电贷和价格操纵</h2>
+<p>闪电贷可以在无需提供任何抵押的情况下进行贷款，当然所有操作必须在一个交易区块内完成。</p>
+<p>开发人员可以从Aave或dYdX等协议中借贷，条件是在交易结束之前将流动资金返还到资金池中。</p>
+<p>如果资金未能及时返回，则交易将被撤回，从而确保储备池的安全。</p>
+<p>闪电贷的一般运行步骤如下：</p>
+<p>1. 使用闪电贷借入大量代币A</p>
+<p>2. 在DEX上将代币A交换为代币B（代币A的价格下降，代币B的价格上升）</p>
+<p>3. 攻击一个依赖A/B价格的DeFi项目</p>
+<p>4. 偿还闪电贷</p>
+<p>上周PancakeBunny遭受了闪电贷攻击，攻击者窃取了11.4万BNB和69.7万Bunny（当时价值约为4000万美元）。</p>
+<p>攻击者利用闪电贷操纵PancakeSwap USDT-BNB V1池的价格，导致大量的BNB流入BNB-Bunny池，这使得该合约能够以虚高的BNB/Bunny的价格铸造Bunny。</p>
+<p>PancakeBunny使用了以下函数来计算Bunny的价格：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0527/22_90izqwq0it.png" alt="ivkqdabnpysxmzn9"></p>
+<p>大量的BNB流入BNB-Bunny池造成变量“ reserve0”变得更大，且价格计算公式存在缺陷，因此导致攻击者非法获取了69.7万Bunny。</p>
+<p>闪电贷攻击的受害者很多，包括DeFi领域的一些知名项目：PancakeBunny（4000万美元损失），Harvest Finance（2500万美元损失），Yearn（1100万美元损失），Value DeFi（700万美元损失），AKROPOLIS（200万美元损失），Cheese Bank，XToken，bZx 等等。</p>
+<p>从这些实例中不难看出——项目方应着重预防价格被闪电贷恶意操纵。</p>
+<p>为了防止这种情况的发生，CertiK安全专家建议①使用时间加权平均价格（TWAP，代表了指定时间段内代币的平均价格），因为攻击者只能在一个区块中操纵价格，因此平均价格并不会被影响，从而规避相关恶意操纵，②或使用可靠的链上价格预言系统，例如Chainlink。</p>
+<h2 id="滥用第三方协议和业务逻辑错误">滥用第三方协议和业务逻辑错误</h2>
+<p>许多项目，例如PancakeSwap和UniSwap都是独立运行的，用户并不与其他第三方协议进行交互。</p>
+<p>在PancakeSwap中，用户可以通过提供流动性以获得奖励代币或将一个代币交换为另一个代币。</p>
+<p>但其他项目（例如Yearn Finance）的运作方式并不同。</p>
+<p>比如Yearn Finance是收集用户资金并将其放入第三方合约，通过投资用户代币以获取收益的。</p>
+<p>第三种情况则是一些项目会从其他项目“借用”代码。</p>
+<p>后两种情况下，如果第三方代码的来源安全风险较大，那么所有使用该代码的项目也会受到攻击。</p>
+<p>假如项目的开发人员不熟悉他们使用的第三方代码，一旦代码存在漏洞，所导致的后果将是灾难性的。</p>
+<p>2021年5月8日，Value DeFi vSwap AMM的非50/50池被攻击，损失总额约为1100万美元。</p>
+<p>为了实现非50/50池，Value DeFi从属于Bancor协议的“ BancorFormula.sol”中复制了“ power()”函数。</p>
+<p>在power()函数的用法说明中，已写明该函数并不支持“ _baseN &lt;_baseD”的情况。</p>
+<p>但Value DeFi并未注意到此注释，因此攻击者成功利用此漏洞，通过往函数中传入特定的参数来用少量的代币A交换代币B。</p>
+<p>Value DeFi的代码：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0527/22_0kvoilvfns.png" alt="txga8btsxlv87nk9"></p>
+<p>DeFi领域中还有许多其他类似的情况。</p>
+<p>2021年5月8日，一名攻击者通过利用集成在Rari Capital V2中的Alpha Homora V1的ibETH池Bank合约的功能，从Rari Capital Ethereum Pool中消耗了大约2600个ETH。</p>
+<p>Bearn Finance使用BUSD的提款金额在其“ BvaultsStrategy”合约中提取ibBUSD，从而让攻击者轻易转移了池中10,859,319 枚BUSD。</p>
+<p>这类问题较难检测，因此项目管理者应谨慎与任何第三方协议进行交互，更不应盲目地复制并部署开发人员不了解的代码。</p>
+<p>CertiK安全专家建议：</p>
+<p>1. 开发人员在集成第三方协议并将部署到生产运行过程中之前，应充分了解其及其分支项目的运行情况。</p>
+<p>2. 开发人员应在项目上线前，先将其部署在测试网上进行测试并及时检查交易记录中的异常情况。</p>
+<p>总体而言，尽管项目难以保证100％的安全，但是以下几点可以尽可能提高项目的安全性：</p>
+<p>1. 安全存储管理员密钥</p>
+<p>2. 避免简单的编码错误</p>
+<p>3. 参考可靠的链上价格</p>
+<p>4. 进行安全审计并做好审计前的准备</p>
+<p>对于终端用户来说，在使用个人资产与项目进行交互之前，有时很难找到有关项目的详细信息。</p>
+<p>为了方便用户获取项目的安全性信息，CertiK开发了全球首个公开透明展示区块链项目安全数据的安全排行榜。</p>
+<p>通过查看公开的安全数据，终端用户可以实时了解项目安全情况。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0527/22_l6yqt4nkvd.png" alt="9j10yudbeyziyn0v"></p>
+<p><a href="https://www.certik.org">https://www.certik.org</a></p>
+<p>除以上防范方式以外，所有项目均应意识到安全审计的重要性。</p>
+<p>那么审计前为了充分利用发挥安全审计的作用，应该如何准备资料和代码？</p>
+<p>以下有几个小tips：</p>
+<p>1. 定义审计的确切范围并设定审计目标</p>
+<p>2. 制作全面的审计代码文档</p>
+<p>3. 确保良好的代码质量</p>
+<p>4. 审计前测试代码</p>
+<p>5. 冻结代码并在审核之前指定代码的commit hash</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/23110/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">市场存不存在“V型反转”？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/23118/">
+                <span class="next-text nav-default">数据：Purpose旗下比特币ETF过去一周增持898枚BTC</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#管理员密钥泄露">管理员密钥泄露</a></li>
+    <li><a href="#编码错误"><strong>编码错误</strong></a></li>
+    <li><a href="#闪电贷和价格操纵">闪电贷和价格操纵</a></li>
+    <li><a href="#滥用第三方协议和业务逻辑错误">滥用第三方协议和业务逻辑错误</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

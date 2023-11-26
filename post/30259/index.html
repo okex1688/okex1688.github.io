@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          “揭开” Tornado.Cash 的匿名面纱 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="据慢雾统计，80% 的黑客在洗币过程中都使用了混币平台 Tornado.Cash，本文以 KuCoin 被盗事件为例，试图从追踪分析过程中找到一丝揭开 Tornado.Cash 匿名性的可能。" />
+<meta name="keywords" content="Tornado.cash" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/30259/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="“揭开” Tornado.Cash 的匿名面纱" />
+<meta property="og:description" content="据慢雾统计，80% 的黑客在洗币过程中都使用了混币平台 Tornado.Cash，本文以 KuCoin 被盗事件为例，试图从追踪分析过程中找到一丝揭开 Tornado.Cash 匿名性的可能。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/30259/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-10-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-29T00:00:00+00:00" />
+
+<meta itemprop="name" content="“揭开” Tornado.Cash 的匿名面纱">
+<meta itemprop="description" content="据慢雾统计，80% 的黑客在洗币过程中都使用了混币平台 Tornado.Cash，本文以 KuCoin 被盗事件为例，试图从追踪分析过程中找到一丝揭开 Tornado.Cash 匿名性的可能。"><meta itemprop="datePublished" content="2021-10-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2306">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="“揭开” Tornado.Cash 的匿名面纱"/>
+<meta name="twitter:description" content="据慢雾统计，80% 的黑客在洗币过程中都使用了混币平台 Tornado.Cash，本文以 KuCoin 被盗事件为例，试图从追踪分析过程中找到一丝揭开 Tornado.Cash 匿名性的可能。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">“揭开” Tornado.Cash 的匿名面纱</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-10-29">
+      2021-10-29
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2306 字 -
+        预计阅读 5 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>随着 DeFi、NFT、跨链桥等项目的火热发展，黑客攻击事件也层出不穷。有趣的是，据慢雾统计，80% 的黑客在洗币过程中都使用了混币平台 Tornado.Cash，本文以 KuCoin 被盗事件为例，试图从追踪分析过程中找到一丝揭开 Tornado.Cash 匿名性的可能。</p>
+<p><strong>事件概述</strong></p>
+<p>据 KuCoin 官网公告，北京时间 2020 年 9 月 26 日凌晨，KuCoin 交易所的热钱包地址出现大量异常的代币提现，涉及 BTC、ETH 等主流币以及 LINK、OCEN 等多种代币，牵动了无数用户的心。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/19_9wsrasazkr.png" alt="“揭开” Tornado.Cash 的匿名面纱"></p>
+<p>图 1</p>
+<p>据慢雾 AML 团队统计，本次事件被盗资金超 2.7 亿美元，具体如下图：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/19_5evbhdz8fh.png" alt="“揭开” Tornado.Cash 的匿名面纱"></p>
+<p>图 2</p>
+<p>值得注意的是，我们全面追踪后发现黑客在这次攻击事件中大量使用了 Tornado.Cash 来清洗 ETH。在这篇文章中，我们将着重说明黑客如何将大量 ETH 转入到 Tornado.Cash，并对 Tornado.Cash 的转出进行分析，以分解出被盗资金可能流向的地址。</p>
+<p><strong>Tornado.Cash</strong>  <strong>是什么？</strong></p>
+<p>Tornado.Cash 是一种完全去中心化的非托管协议，通过打破源地址和目标地址之间的链上链接来提高交易隐私。为了保护隐私，Tornado.Cash 使用一个智能合约，接受来自一个地址的 ETH 和其他代币存款，并允许他们提款到不同的地址，即以隐藏发送地址的方式将 ETH 和其他代币发送到任何地址。这些智能合约充当混合所有存入资产的池，当你将资金放入池中（即存款）时，就会生成私人凭据（随机密钥），证明你已执行了存款操作。而后，此私人凭据作为你提款时的私钥，合约将 ETH 或其他代币转移给指定的接收地址，同一用户可以使用不同的提款地址。</p>
+<p><strong>如何转入？</strong></p>
+<p>攻击得手后，黑客开始大范围地将资金分批转移到各大交易所，但还没来得及变现就被多家交易所冻结了。在经历了白忙一场的洗钱后，黑客将目光转向了 DeFi。</p>
+<p>据慢雾 AML 旗下 <strong>MistTrack 反洗钱追踪系统</strong> 显示，黑客 (0xeb31&hellip;c23) 先将 ERC20 代币分散到不同的地址，接着使用 Uniswap、1inch 和 Kyber 将多数 ERC20 代币换成了 ETH。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/19_p9z0tfne5l.png" alt="“揭开” Tornado.Cash 的匿名面纱"></p>
+<p>图 3</p>
+<p>大部分 ERC20 代币兑换成 ETH 后，被整合到了以下主要地址：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/19_cphg2ou2kt.png" alt="“揭开” Tornado.Cash 的匿名面纱"></p>
+<p>表 1</p>
+<p>在对 ETH 和 ERC20 代币进行完整追踪后，我们梳理出了资金是如何在黑客地址间移动，并分解出了资金是以怎样的方式进入 Tornado.Cash。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/19_bmk5ifkli4.png" alt="“揭开” Tornado.Cash 的匿名面纱"></p>
+<p>图 4</p>
+<p>黑客将资金按时间先后顺序转入 Tornado.Cash 的详情如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/19_r9238o58vp.png" alt="“揭开” Tornado.Cash 的匿名面纱"></p>
+<p>表 2 </p>
+<p><strong>转到了哪？</strong></p>
+<p><strong>猜想</strong></p>
+<p>1. 巨额的 ETH 进入 Tornado.Cash，会集中表现出一些可追踪的特征。</p>
+<p>2. 以黑客急于变现的行为分析，猜想黑客将资金存入 Tornado.Cash 后会随即提款，或下次存入时提款。</p>
+<p>3. 分析攻击者使用洗币平台的方式和行为，可以获得资金的转移地址。</p>
+<p><strong>可能的链上行为</strong></p>
+<p>1. 资金从 Tornado.Cash 转出的时间范围与黑客将资金转入 Tornado.Cash 的时间范围近似（转出会延后于转入）。</p>
+<p>2. 一定时间段内，从 Tornado.Cash 转出的资金会持续转出到相同地址。</p>
+<p><strong>验证</strong></p>
+<p>以黑客地址 (0x34a&hellip;c6b) 为例：</p>
+<p>如表 2 结果所述，黑客在 2020-10-23 16:06:28 ~ 2020-10-26 10:32:24 (UTC) 间，以每次 100 ETH，存 115 次的方式将 11,500 ETH 存入 Tornado.Cash。为了方便说明，我们只截取了该地址在 2020-10-24 3:00:07~6:28:33 (UTC) 间的存款记录，如下图：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/19_z5ji7fdc5v.png" alt="“揭开” Tornado.Cash 的匿名面纱"></p>
+<p>图 5</p>
+<p>接着，我们查看 <em>Tornado.Cash:100 ETH</em> 合约的交易记录，找到地址 (0x34a&hellip;c6b) 在同一时间段（即 2020-10-24 3:00:07~6:28:33 (UTC)）的存款记录，下图红框地址 (0x82e&hellip;398) 在此时间段内大量提款的异常行为引起了我们的注意。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/19_cres88kwck.png" alt="“揭开” Tornado.Cash 的匿名面纱"></p>
+<p>图 6</p>
+<p>查看该地址 (0x82e&hellip;398) 在此时间段的交易哈希，发现该地址并没有将 ETH 提款给自己，而是作为一个合约调用者，将 ETH 都提款到了地址 (0xa4a&hellip;22f)。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/19_sswb23nndb.png" alt="“揭开” Tornado.Cash 的匿名面纱"></p>
+<p>图 7</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/19_kujcmpptv2.png" alt="“揭开” Tornado.Cash 的匿名面纱"></p>
+<p>图 8</p>
+<p>同样的方式，得出黑客地址 (0x34a&hellip;c6b) 经由 Tornado.Cash 提款分散到了其他地址，具体如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/19_r9teshtipf.png" alt="“揭开” Tornado.Cash 的匿名面纱"></p>
+<p>表 3</p>
+<p>经过核对，发现从 Tornado.Cash 提款到表 3 中六个地址的数额竟与黑客存款数额 11,500 ETH 一致，这似乎验证了我们的猜想。对其他地址的分析方法同理。</p>
+<p>接着，我们继续对这六个地址进行追踪分析。据 <strong>MistTrack 反洗钱追踪系统</strong> 展示，黑客将部分资金以 50~53 ETH 不等转向了 ChangeNOW、CoinSwitch、Binance 等交易平台，另一部分资金进入第二层后也被黑客转入了上述交易平台，试图变现。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/19_f1inmlshb5.png" alt="“揭开” Tornado.Cash 的匿名面纱"></p>
+<p>图 9</p>
+<p><strong>总结</strong></p>
+<p>本文主要说明了黑客是如何试图使用 Tornado.Cash 来清洗盗窃的 ETH，分析结果不由得让我们思考：Tornado.Cash 真的完全匿名吗？一方面，既然能分析出部分提款地址，说明不存在绝对的匿名；另一方面，匿名性是具备的，或许只是 Tornado.Cash 不适合在短时间内混合如此大规模的资金而已。</p>
+<p>截止目前，KuCoin 官方表示已联合交易所、项目方、执法和安全机构追回约 2.4 亿美元资金。从各种攻击事件看来，DeFi 或许已成为黑客转移资金的通道，而今监管已至，合规化的脚步愈发逼近，有合规需求的项目方，可以考虑接入慢雾 AML 系统 <strong>(aml.slowmist.com)</strong> ，即使黑客使用了 DeFi，也无处遁形。</p>
+<p>By：Lisa@慢雾 AML 团队</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/30287/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">知识的力量</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/30242/">
+                <span class="next-text nav-default">“买它”？为了元宇宙 Facebook连名字都不要了</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

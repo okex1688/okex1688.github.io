@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          比特币与Ergo之比较：Ergo率先实现扩展UTXO智能合约 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="比特币是一头野兽。是的，其底层软件需要认真升级。它真的太慢了。但是，您也必须承认它的优势，网络效应是非常强大的——比特币是加密货币之王。Ergo怎么比？" />
+<meta name="keywords" content="项目, Layer 2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25065/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="比特币与Ergo之比较：Ergo率先实现扩展UTXO智能合约" />
+<meta property="og:description" content="比特币是一头野兽。是的，其底层软件需要认真升级。它真的太慢了。但是，您也必须承认它的优势，网络效应是非常强大的——比特币是加密货币之王。Ergo怎么比？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25065/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-29T00:00:00+00:00" />
+
+<meta itemprop="name" content="比特币与Ergo之比较：Ergo率先实现扩展UTXO智能合约">
+<meta itemprop="description" content="比特币是一头野兽。是的，其底层软件需要认真升级。它真的太慢了。但是，您也必须承认它的优势，网络效应是非常强大的——比特币是加密货币之王。Ergo怎么比？"><meta itemprop="datePublished" content="2021-06-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4636">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="比特币与Ergo之比较：Ergo率先实现扩展UTXO智能合约"/>
+<meta name="twitter:description" content="比特币是一头野兽。是的，其底层软件需要认真升级。它真的太慢了。但是，您也必须承认它的优势，网络效应是非常强大的——比特币是加密货币之王。Ergo怎么比？"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">比特币与Ergo之比较：Ergo率先实现扩展UTXO智能合约</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-29">
+      2021-06-29
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4636 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%AF%94%E7%89%B9%E5%B8%81/"> 比特币 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>比特币</strong></p>
+<p>比特币是一头野兽。是的，其底层软件需要认真升级。它真的太慢了。但是，您也必须承认它的优势，网络效应是非常强大的——比特币是加密货币之王。在全球范围内，比特币正成为一个常见、被理解和被采用的术语。大型信托、投资巨头和对冲基金经理，都被比特币的主宰地位弄得眼花缭乱。比特币像是一位有很多前任恋人的超级明星。<strong>比特币总共有过</strong> <strong>105</strong> <strong>次分叉</strong> ，其中74次分叉被认为是活跃项目。它的市值超过一万亿美元。交易所的建立是为了促进比特币交易。与之相关的媒体、营销、商业渠道和基础设施在币圈无可匹敌。</p>
+<p><strong>Ergo</strong></p>
+<p>如果我们根据网络效应、受欢迎程度和采用率将Ergo与比特币进行比较，就如同将教室后排的安静孩子与一些名人进行比较。Ergo在市值上排名300开外（译注：截止5月21日，Ergo市值排名已跃升至132名，5.19大暴跌之前曾升至122名）。它仅上了一些较小的交易所。就当前的社会共识、市场知名度和价值而言，这甚至不是一场势均力敌的竞争。实际上，与比特币相比，Ergo有14571倍的潜在上行空间（译注：这是首次发文时的数据）。</p>
+<p><strong>两者的相似性</strong></p>
+<p>比特币和Ergo都是纯工作量证明的加密货币。</p>
+<p>比特币和Ergo都在基于scratch代码构建的自定义代码库上运行。</p>
+<p>比特币和Ergo都基于UTXO（未花费交易输出）模型。</p>
+<p>比特币和Ergo启动时均是无预挖，无首次代币发行（ICO）的。</p>
+<p><strong>Schnorr</strong> <strong>签名</strong></p>
+<p>Schnorr签名是一种数字签名方案，以其简单性和高效的空间占用而著称。它们被提议作为比特币的潜在扩展解决方案，因为相比当前的比特币模型，较小的签名方案将允许更大的TPS（Transactions per Second，每秒交易量）。Schnorr签名还具有线性的附加优点，这意味着可以创建基于Schnorr的智能合约。Schnorr签名提供了潜在的隐私用途。其升级后的模型“Taproot”将是比特币协议自启动以来最大的升级。（译注：Schnorr签名的线性体现在，一个需要多方验证的签名可以简单地由多方单独的签名相加而成。这是Schnorr签名函数的数学特性决定的。）</p>
+<p>目前，Ergo已经拥有Schnorr签名（西格玛协议（Sigma Protocol））、智能合约和隐私工具可用，其中SigmaUSD金库中已有超过140万枚ERG。Ergo启动时采用了自己的Schnorr签名版本。自Ergo主网于2019年启动以来，它就一直在运行。因此，在这方面，比特币的最大升级相当于2019年时的Ergo。（译注：SigmaUSD是Ergo生态上的首个算法稳定币，ERG是Ergo平台的原生代币。）</p>
+<p><strong><em>比特币的前进之路是努力追赶Ergo</em></strong> <strong><em>。</em></strong></p>
+<p><strong>需要追赶的方面：</strong></p>
+<ul>
+<li>
+<p>Schnorr签名</p>
+</li>
+<li>
+<p>UTXO智能合约模型</p>
+</li>
+<li>
+<p>隐私应用的潜力</p>
+</li>
+<li>
+<p>环签名</p>
+</li>
+<li>
+<p>高效的多签名交易</p>
+</li>
+<li>
+<p>混合器应用</p>
+</li>
+</ul>
+<p><strong>其他Ergo</strong> <strong>上面已有但比特币甚至仍未考虑的主要解决方案，比如：</strong></p>
+<ul>
+<li>
+<p>工作量证明之非交互式证明（NiPoPoW）</p>
+</li>
+<li>
+<p>预言机数据方案</p>
+</li>
+<li>
+<p>扩展UTXO智能合约方案</p>
+</li>
+<li>
+<p>代币化治理</p>
+</li>
+<li>
+<p>存储租赁费</p>
+</li>
+<li>
+<p>阻碍ASIC矿机</p>
+</li>
+</ul>
+<p><strong><em>Ergo</em></strong> <strong><em>正在努力再造比特币已实现的网络效应、认可度和采用率。</em></strong></p>
+<p><strong><em>但几乎在每个技术方面，比特币都在尝试重现Ergo</em></strong> <strong><em>已经实现的目标。</em></strong></p>
+<p><strong>CoinJoin</strong> <strong>和</strong> <strong>CoinSwap</strong></p>
+<p>比特币可能具有一些允许混合的隐私功能。这种潜力着实令人兴奋。</p>
+<p>Ergo已经包含一个非交互式混合器，可以混合原生代币ERG以及链上的任何其他自定义代币。随着ErgoSwap交易所的实现，Ergo区块链上的任何自定义代币都有可能被混合。</p>
+<p>Ergo已经用可混合的稳定币SigmaUSD证明了这一点，现在可以通过直接在本地ErgoMixer副本中与合约进行交互来完成此操作。</p>
+<p>也许有一天，当比特币拥有智能合约时，网络可能达成共识（无需另外20次分叉）并创建一个潜在可混合的稳定币协议。</p>
+<p>（译注：CoinJoin是比特币交易的隐私协议，其可以合并多个交易为单一交易，从而让外人无法分辨某笔交易对应哪个账号，起到保护隐私的作用；CoinSwap是基于原子交换的隐私保护技术，其通过多签名中间地址来保护交易者的原始地址不被泄露）</p>
+<p><strong>可调整的区块大小和链上治理</strong></p>
+<p>Ergo可以通过治理来调整区块的大小。如果需要，矿工可以投票修改治理协议。比特币有多达105个分支，证明了为什么链上治理很重要。</p>
+<p><strong>当前的</strong> <strong>Layer 2</strong> <strong>解决方案</strong></p>
+<p>比特币在闪电网络方面处于领先地位。现在，这对于比特币是必要的一部分。比特币需要吞吐能力，因为网络经常很拥堵。闪电网络也是比特币在轻量客户端环境中运行的首选途径。但是，作为Layer 2解决方案，其安全性保证要低于区块链层解决方案，因此NiPoPoW可以提供通往轻量客户端环境的更安全途径。</p>
+<p>Ergo不会拥堵到需要闪电网络的地步。从开始设计网络之前，Ergo Script的创建者Alexander Chepurnoy（译注：即Ergo创始人兼核心开发者）就一直在规划L2扩展解决方案。</p>
+<p>Ergo核心开发者拥有学术研究背景（译注：Google Scholar里面可以检索到大量由Alexander Chepurnoy发表的论文），这一优势体现在：随着发现潜在的可行解决方案，开发者可以在Ergo上添加互操作性和实现。</p>
+<p><strong>Ergo</strong> <strong>的优化方案</strong></p>
+<p>根据Ergo区块链的当前状态，要怎样实现可扩展性呢？Ergo有很多选项和改进可供探索。Ergo致力于完善工作量证明。这是Ergo区块链的核心理念。Ergo何时会达到最终形态？ 理想情况下，永远不会。</p>
+<p>这就是以“科学第一”为宗旨开发项目的重要性。与Ergo兼容的新研究和技术一旦发布就可以被采用。随着未来出现新的挑战，Ergo必须实施新的解决方案。</p>
+<p><strong>Layer 0</strong> <strong>：网络层</strong></p>
+<p>Ergo中的网络层尚未优化。当用户运行ergo-bootstrap或jar时，节点的初始同步时间可能会有点慢。通过优化，区块0到当前区块高度的同步时间可以得到显著提高。在网络层优化到位的情况下，消耗的流量（在同步节点时）也会得到类似的改进。（译注：ergo-bootstrap是帮助用户快速部署Ergo区块链节点的工具集，包括前端和后端；jar是Java归档文件格式）</p>
+<p><strong>Layer 1</strong> <strong>：区块链层</strong></p>
+<p>Ergo的区块链层已经相当先进。Ergo的西格玛协议在区块链行业中处于领先地位。自首次启动以来，Ergo就一直在运行自己的schnorr签名版本。Ergo率先实现扩展UTXO智能合约。这就是Charles Hoskinson将Ergo称为扩展UTXO测试网的原因（译注：Charles Hoskinson是Cardano（ADA）创始人，Cardano和Ergo均采用扩展UTXO，已组成扩展UTXO联盟，据Cointelegraph文章，许多区块链研究员认为扩展UTXO相当于是计算机系统从8位突进到64位的重大飞跃）。</p>
+<p>Ergo已经支持用于全节点的无状态客户端。各节点以如下方式将相关的交易数据发送给接收端：每个传输的信息区块都可以被独立地理解，而无需来自先前区块的上下文信息。无状态客户端可以接收承载与特定输入或输出相关的交易的区块，而不是消化区块链的全部交易。无状态客户端是高容量应用程序的理想选择，可通过消除服务器负载来提高性能。</p>
+<p>早在2018年的比特币扩展（Scaling Bitcoin）研讨会上就有人提出了基于RSA累加器的无状态客户端，但它们基于非常新的加密技术。RSA方案现在普遍存在争议。Ergo针对无状态客户端的解决方案基于哈希型数据结构，因此它们既简单又高效。（译注：RSA累加器，即Rivest-Shamir-Adleman accumulator，其利用RSA加密算法对区块链的数据进行压缩，起到节约空间的作用。）</p>
+<p>用于轻量客户端的NiPoPoW已到位。NiPoPoW将允许客户端在多个环境中运行，而且保证全节点的安全性。NiPoPoW为在具有全节点安全性的移动环境中运行的应用提供了一条可行的途径。随着硬件规范完善，可穿戴设备可能会开启NiPoPoW的另一个用例。用于轻量客户端环境的Layer 2途径是在用安全性换取功能性，而Ergo无需做出这种牺牲。</p>
+<p>还有一个途径就是通过治理，即矿工可以调整区块大小。区块大小的调整可能会增加每个区块x可以容纳的交易量。</p>
+<p>每个Ergo区块已经具有一个带有强制和任意键值数据的扩展部分。通过在扩展部分中放置锚点，仅用丝绒分叉（Velvet Fork）或软分叉就可以制作BitcoinNG样式的微区块，类似Aspen的服务链或通用侧链。Ergo能够实现先进的Layer 1解决方案，而无需进行区块链硬分叉。（译注：BitcoinNG是比特币的轻量化版本，其使用scrypt算法来进行工作量证明。github链接：https://github.com/BitcoinNG/BitcoinNG）</p>
+<p>关于Layer 1上的下一步开发很有可能将基于Ergo、Emurgo和IOG之间将来的侧链研究成果。</p>
+<p><strong>Layer 2</strong> <strong>：链下协议层</strong></p>
+<p>Ergo将来有可能支持闪电网络。也有可能在Layer 2中实现Rainbow网络。零知识有条件支付（Zero-Knowledge Contingent Payments）和FairSwap / FastSwap协议是Alex一直在研究的Layer 2协议。其他状态通道（state channel）可以根据需要来实现。（译注：Rainbow网络是用于创建非存托链下交易所和支付网络的一种技术。状态通道是其术语之一，详情见：https://research.paradigm.xyz/RainbowNetwork.pdf；FairSwap/FastSwap 是一种针对复杂谓词的简单且具体有效的有条件支付方案，详情见：https://eprint.iacr.org/2019/1296.pdf） 事实上，Ergo区块链并没有拥堵到需要探讨可扩展性问题的地步。幸运的是在问题出现之前，解决可扩展性问题的计划就已经到位。</p>
+<p>很难预测Ergo上的应用程序将需要哪种类型的解决方案，但这并不是没有办法克服。目前正在进行的一项研究可能有一天被证明对Ergo的开发有用。这个由理论主导的项目不仅为Ergo，而且为整个加密货币提供了许多有用的结果。Ergo致力于发现并实现可最大程度发挥工作量证明潜力的解决方案。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25034/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">北京商报：300岁圆明园遇上数字人民币</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25023/">
+                <span class="next-text nav-default">币安因面临新法规而将停止在加拿大安大略省的运营</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

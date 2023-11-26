@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文探讨去中心化预言机网络如何驱动智能合约经济 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="预言机（Oracles）是加密经济的一个重要基础设施。没有预言机，区块链就像没有互联网连接的计算机。它们与外部世界隔绝，只能参考区块链内部分类帐的本地信息。" />
+<meta name="keywords" content="预言机" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/26577/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文探讨去中心化预言机网络如何驱动智能合约经济" />
+<meta property="og:description" content="预言机（Oracles）是加密经济的一个重要基础设施。没有预言机，区块链就像没有互联网连接的计算机。它们与外部世界隔绝，只能参考区块链内部分类帐的本地信息。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/26577/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-29T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文探讨去中心化预言机网络如何驱动智能合约经济">
+<meta itemprop="description" content="预言机（Oracles）是加密经济的一个重要基础设施。没有预言机，区块链就像没有互联网连接的计算机。它们与外部世界隔绝，只能参考区块链内部分类帐的本地信息。"><meta itemprop="datePublished" content="2021-07-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6274">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文探讨去中心化预言机网络如何驱动智能合约经济"/>
+<meta name="twitter:description" content="预言机（Oracles）是加密经济的一个重要基础设施。没有预言机，区块链就像没有互联网连接的计算机。它们与外部世界隔绝，只能参考区块链内部分类帐的本地信息。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文探讨去中心化预言机网络如何驱动智能合约经济</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-29">
+      2021-07-29
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6274 字 -
+        预计阅读 13 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>预言机（Oracles）是加密经济的一个重要基础设施。</p>
+<p>没有预言机，区块链就像没有互联网连接的计算机。它们与外部世界隔绝，只能参考区块链内部分类帐的本地信息。</p>
+<p>这限制了加密的用例。Oracles解决了这个问题。</p>
+<p>想获得ETH/USD的实时价格信息来衡量DeFi协议（如Maker、Aave或Compound）的清算阈值？想要交易AMZN、AAPL或TSLA的合成版本吗？你需要Oracles。 </p>
+<p>Oracles需要高度安全，因为很多东西都依赖于它们。如果数据传输被泄露，人们就会蒙受损失。这种情况我们已经见过几次了。</p>
+<p>既然如此多的DeFi依赖于Oracles，我们应该更多地了解他们。今天，ChainlinkGod揭示了去中心化Oracles的价值。</p>
+<p>就让我们一探究竟吧。</p>
+<h2 id="去中心化的oracle网络dons驱动智能合约经济"><strong>去中心化的Oracle网络（DONs）：驱动智能合约经济</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2021/0729/4_ynrdktfmhu.png" alt="一文探讨去中心化预言机网络如何驱动智能合约经济"></p>
+<p>图文：Logan Craig</p>
+<p>智能合约是具有编码逻辑的去中心化应用程序（如果发生x事件，则执行y操作），在区块链网络上确定性地执行。</p>
+<p>公共区块链不是由单一的中心化机构或像Facebook、谷歌或苹果这样的技术垄断者来维护，而是由全球各地的独立计算机网络来维护。通过经济激励，这些计算机在没有任何中央领导者进行协调的情况下，就区块链的当前状态达成全球共识。众所皆知，这提供了一系列有价值的属性，例如抗审查、无许可访问、非托管资产管理和不可逆转的交易。</p>
+<p>然而，有一个基本问题：区块链就像一台没有互联网连接的计算机。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0729/4_6rkvojs94v.png" alt="一文探讨去中心化预言机网络如何驱动智能合约经济"></p>
+<p>区块链仅通过跟踪在其自身分类账中发生的活动来生成其强大的安全属性。因此，区块链是有效隔离的网络，无法在不失去使区块链有用的所有属性的情况下，与现实世界中智能合约可能需要的外部资源进行自然连接。</p>
+<p>这是一个问题，因为绝大多数智能合约用例都需要外部数据，例如访问以太坊对美元的价格、布宜诺斯艾利斯（Buenos Aires）的平均温度、装有原材料的海运集装箱的位置、另一个区块链网络（如比特币）的状态，或任何其他尚未存储在该区块链的本机分类账上的数据。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0729/4_592bood4qe.png" alt="一文探讨去中心化预言机网络如何驱动智能合约经济"></p>
+<p>区块链无法本地连接到外部数据和事件</p>
+<p>为了克服缺乏外部连接的问题，需要一个额外的基础设施，称为“预言机”，它从链外来源获取数据并将其传送到区块链上，以便智能合约应用程序可以使用这些信息。Oracles不仅提供链上传输数据的交付机制，还作为确保数据高度完整性所需的验证机制。如果智能合约要保留端到端的确定性，那么预言机机制需要像底层区块链一样安全可靠，因为预言机数据的输入直接决定了消费智能合约的输出。</p>
+<p>正如那句名言所说，垃圾进入会导致垃圾流出。</p>
+<p>因此，Oracle机制不能是单个中心化节点，因为这会引入单点故障，例如节点损坏或离线。这将违背使用由数千个节点组成的区块链网络的全部目的。此外，Oracle机制不应依赖于单一数据源，因为数据源可能会提供错误数据和/或离线。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0729/4_c1atvu9m9f.png" alt="一文探讨去中心化预言机网络如何驱动智能合约经济"></p>
+<p>中心化预言机是单点故障</p>
+<p>相反，Oracle机制必须在节点运营商和数据源级别去中心化，以确保没有故障点。虽然区块链和预言机旨在实现不同的目标（前者提供交易共识，后者提供现实世界数据共识），但它们的互补性意味着采取相似的方法来实现安全性。</p>
+<p>一个适当保护的去中心化Oracle网络（DON）还必须提供额外的安全层，例如连接到高质量数据源的能力（提供准确性和正常运行时间保证），通过加密签名的数据完整性证明（当数据提供者自己运行oracle节点），通过多层聚合过程进行数据验证（减少停机时间、异常值和损坏的数据），加密经济保证以激励正确操作（隐式激励和显式抵押），以及选择性地提供数据隐私（例如零知识证明）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0729/4_icsm2q4j7j.png" alt="一文探讨去中心化预言机网络如何驱动智能合约经济"></p>
+<p>DONs通过深度防御的方法确保安全性和可靠性</p>
+<p>Chainlink，最广泛采用的预言机解决方案遵循这种防御方法，为智能合约生态系统提供一个通用框架，以构建开放访问任何外部数据资源的DON。</p>
+<p>目前，有超过450个Chainlink喂价（Price Feeds）在多个区块链网络中运行，包括以太坊、Polygon、BSC、Avalanche、xDai和Heco，并计划扩大到更多的区块链和第二层解决方案，如Arbitrum、Optimism、Solana等。oracle网络不仅提供去中心化的数据馈送，还提供广泛的安全链外计算服务，包括可验证的随机性、Keepers以及其他正在开发的各种形式的链外计算，如FSS、DECO和Town Crier。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0729/4_orq55cyd6a.png" alt="一文探讨去中心化预言机网络如何驱动智能合约经济"></p>
+<p>Chainlink为智能合约生态系统提供广泛的预言机服务</p>
+<p>有了适当保护的DON，开发人员可以创建混合智能合约——将基于区块链的智能合约和DON服务相结合的应用程序，以提供比孤立的链上逻辑更先进的功能。这些应用程序充分利用链上和链下世界的优势，以支持长期以来被视为智能合约核心价值主张的用例。</p>
+<h2 id="去中心化oracle网络-don-的用例"><strong>去中心化Oracle网络 (DON) 的用例</strong></h2>
+<p>虽然DON支持的混合智能合约用例几乎没有数量限制，但我将介绍一些我认为在短期、中期和长期具有重大破坏力的用例（包括您可能已经熟悉的 DeFi 应用程序示例与）。随着加密生态系统不断创新和进步，这些用例将随着时间的推移继续扩展，以满足其用户的需求。</p>
+<p>让我们深入了解一下。</p>
+<h3 id="1去中心化金融和价格信息反馈"><strong>1.去中心化金融和价格信息反馈</strong></h3>
+<p>我们今天看到的DON驱动的混合智能合约的第一个也是主要用例是去中心化金融，又称DeFi。可以说，DeFi是区块链技术的产品市场，它为当今的传统金融体系提供了一种去中心化、无需许可、非监管和抗审查的替代方案。然而，鲜为人知的是，DeFi 生态系统之所以成为可能，正是因为DON的存在。</p>
+<p>例如，按目前锁定的总价值计算，排名第一的DeFi应用是Aave，这是一个去中心化的货币市场，允许用户借出和借用数十种不同的链上代币。</p>
+<p>这创造了一个双向市场，贷方可以从闲置的代币中获得被动收益，而借款人则可以获得营运资金以随心所欲地进行部署。Aave、Compound、Cream、Rari等去中心化货币市场协议使用Chainlink Price Feeds来计算创建头寸期间的最大贷款规模，并确定头寸何时变得抵押不足而必须清算，从而持整个市场的偿付能力。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0729/4_e3p4ioatf1.png" alt="一文探讨去中心化预言机网络如何驱动智能合约经济"></p>
+<p>去中心化货币市场使用贷款价格馈送数据的示例</p>
+<p>虽然今天基于DeFi的货币市场特别关注原生加密货币和稳定币的借贷，但未来可以并且将会创建新市场来支持代币化的现实世界资产。例如，这允许用户借用代币化的房地产来代替抵押贷款，或借入CBDC为其业务提供资金。作为通用基础设施，此类市场理论上可以支持任何类型的代币化资产，由于ERC20和ERC721等代币标准，这些资产将以向后兼容的方式存在。</p>
+<p>通过Chainlink DONs实现的另一个强大的金融原素是Synthetix等协议，它使用户能够生成由链上加密货币（SNX）过度抵押的合成资产，并反映现实世界资产的价格，如加密货币（如BTC、ETH、LINK）、法定货币（如美元、欧元、日元）、商品（如黄金、白银、石油）、指数（如FTSE、N225、sDEFI）和股票（如TSLA、GOOG、AMZN）。在全球债务池的支持下，用户可以通过简单地切换决定其代币价值的数据源，以零滑点将其合成资产“交换”为任何其他合成资产。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0729/4_s2fvdf27ch.png" alt="一文探讨去中心化预言机网络如何驱动智能合约经济"></p>
+<p>Synthetix协议使用Price Feeds生成合成资产</p>
+<p>通过链上抵押品和Chainlink数据馈送的结合，现实世界中任何资产或指标的合成版本都可以被带入链上并进入加密经济，包括财产估值、CPI指标、原材料的总价值、TVL特定协议、Vitalik在Twitter上的关注者数量。或其他可以量化和数字化的指标，作为链上数据馈送。</p>
+<p>这里的潜力几乎是无限的，允许用户将任何东西代币化，并开始投机和对冲而不必离开链上生态系统。</p>
+<p>DeFi 生态系统中还有许多其他支持DON的用例，例如去中心化/算法稳定币、收益聚合器、去中心化交易所、永续合约、期权、期货、rebase 代币、预测市场、收益耕作、资产管理、跨链代币、固定利率收益率等。</p>
+<h3 id="2动态nf-和可验证的随机性"><strong>2.动态NF 和可验证的随机性</strong></h3>
+<p>NFT在2021年引起了公众的关注，交易量和铸造代币的多样性呈指数级增长。虽然其中许多NFT是静态图像或gif，但我们也看到了NFT平台（例如Ether Cards）支持的动态NFT的兴起，这些平台通过外部数据输入将获得和拥有NFTs的体验游戏化。</p>
+<p>这些外部输入可以包括实时改变NFT属性的真实世界数据。这包括价值与球员表现数据挂钩的体育NFT或允许艺术家随时间改变其数字艺术品的NFT市场，例如根据纽约市的天气和时间改变图像背景的NFT。通过外部数据增强NFT和链上游戏应用程序的一种越来越普遍的方法是利用可验证的随机性解决方案，例如Chainlink的可验证随机函数（VRF）。</p>
+<p>凭借可验证的随机性，开发人员可以通过分配可证明的随机特征、分布和铸造活动来增强他们的NFT。Aavegotchi是基于NFT的平台的一个例子，它利用了Polygon侧链上的可验证随机性。</p>
+<p>在发布时，Aavegotchi的智能合约要求在链上进行数千次的随机性，以确定用户在打开“门户”（其供应量有限，只有10000个）后获得哪些Aavegotchi的NFT。通过这种基于随机性的游戏化，用户可以参与“稀有农业元游戏”，用户可以通过赢得抽奖和其他游戏来尝试铸造稀有NFT或提升现有NFT的等级。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0729/4_3oqew41eb8.png" alt="一文探讨去中心化预言机网络如何驱动智能合约经济"></p>
+<p>使用Chainlink VRF实现安全随机性的Aavegotchi铸造过程</p>
+<p>另一个典型的例子包括越来越流行的基于NFT的链上游戏应用Axie Infinity，它使用可验证的随机性来确定新铸造的Origin Axies的特征。这样的Axies有机会拥有神秘的零件，而这些零件在历史上的售价超过300 ETH。</p>
+<p>通过创建动态NFT，引入了一个全新的用户体验，这在Web2.0世界中是无法比拟的。</p>
+<h3 id="3链-上审计跟踪和储备证明"><strong>3.链</strong> <strong>上审计跟踪和储备证明</strong></h3>
+<p>随着智能合约生态系统的发展，稳定币、包裹的跨链资产和代币化的现实世界资产的数量也在增长。然而，支持这些代币的抵押品位于链外，这意味着智能合约无法自然地访问审计这些代币所需的数据并确保适当的抵押品。</p>
+<p>其结果是与透明度、抵押品不足和部分储备贷款有关的新风险。DONs可以通过储备证明（Proof of Reserve，PoR）馈送来克服这个问题，它提供必要的链上数据来验证一个代币的链下抵押品。</p>
+<p>通过对由链下资产抵押的代币进行按需链上审计跟踪，用户可以获得更高的透明度，并且智能合约可以通过实施特定的应用逻辑，在检测到抵押不足时执行，快速防止不可预见的部分储备活动。例如，DeFi应用程序可能会暂时暂停服务，或阻止从特定抵押不足的资产中铸造更多代币。储备证明不仅有助于防范2008年大金融危机等系统性风险，还可以为每个人创造一个更值得信赖的 DeFi 生态系统。</p>
+<p>在稳定币的情况下，通常由在链外银行账户中持有的美元作为抵押，我们看到Paxo的PAX稳定币和TrustToken的TUSD稳定币都有储备证明。对于后者，储备数据由美国排名前25的审计公司 Armanino 提供，该公司提供实时更新，证明支持TUSD稳定币的TrustToken的链外美元银行持有量。鉴于TUSD存在于多个区块链上，他们在以太坊上推出了储备证明和供应证明的数据反馈，在允许用户使用稳定币参与经济活动之前，可以通过智能合约应用程序进行交叉引用。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0729/4_rzvsmrgru9.png" alt="一文探讨去中心化预言机网络如何驱动智能合约经济"></p>
+<p>以太坊上的TrustToken（TUSD）储备证明馈送</p>
+<p>除了美元支持的稳定币之外，我们还看到不可避免的多链现实，用户希望在区块链之间桥接他们的加密货币，例如将他们的BTC带到以太坊，以便它可以与DeFi生态系统一起使用。在这种情况下，我们已经看到Ren Protocol的renBTC和BitGo的WBTC代币都启动了储备证明提要，以审计支持这些跨链代币的比特币区块链上的真实BTC持有量。同样，智能合约在允许与跨链代币互动之前可以参考这些馈送，从而保护用户免受无支持代币的后果影响，例如开设不良贷款或进行不公平交易。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0729/4_skp4nhj6mh.png" alt="一文探讨去中心化预言机网络如何驱动智能合约经济"></p>
+<p>以太坊上包裹的BTC（WBTC）储备证明</p>
+<p>启用DON的储备证明的概念远远超出了这些用例，并且可以允许审计真实世界资产支持的代币，例如代币化的房地产。这包括在区块链上提供有关房产所有权和现金流的验证信息，允许用户和智能合约分析支持这些代币的资产的真实性质。随着DeFi经济的发展，对链上透明度的需求将继续增加。</p>
+<h3 id="4链下计算和保管人keepers"><strong>4.链下计算和保管人（Keepers）</strong></h3>
+<p>关于智能合约的性质，一个常见的误解是它们是自治的，但实际上它们默认“休眠”并且必须“唤醒”才能执行任何状态更改。这需要一个由私钥持有者签署和发起的链上交易，也称为外部拥有账户（EOA）。这对于用户自己在链上互动的用例来说是可以接受的，但有许多智能合约功能需要在标准化的时间或基于事件的时间表上被触发。</p>
+<p>虽然DON以提供数据交付服务而闻名，但它们也可以执行信任最小化形式的链下计算。这包括以“Keepers”的形式提供去中心化交易自动化服务，监控智能合约的链上状态和/或现实世界事件，以根据需要自主触发链上功能。这方面的一个实现是Chainlink Keepers，它利用了同一组可靠的预言机节点，这些节点已经通过运营去中心化的数据源证明了它们的可靠性。</p>
+<p>Keepers的一个用例是自动清算Aave等去中心化货币市场的抵押不足贷款。这里Keepers将监测平台上的头寸，并对任何低于特定资金池清算阈值的贷款触发清算功能。然后，Aave的智能合约将通过交叉引用Chainlink Price Feeds来验证链上的清算，然后开始清算过程。因此，货币市场将通过高度可靠的清算机器人为用户提供更多关于平台偿付能力的保证。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0729/4_1mq9szmhgz.png" alt="一文探讨去中心化预言机网络如何驱动智能合约经济"></p>
+<p>Chainlink Keepers在Aave货币市场上清算头寸的用例</p>
+<p>鉴于Keepers提供通用的交易自动化服务，任何智能合约功能都可以自动化，包括执行限价单、收获收益、发放抵押奖励、重新调整算法稳定币、释放既得代币、补充代币余额、管理债务头寸、改变收益策略等。</p>
+<h2 id="结论"><strong>结论</strong></h2>
+<p>去中心化Oracle网络（DON）扩展了区块链网络和智能合约应用程序的功能，使它们能够发挥其真正潜力，提供可在各种用例中完全按预期执行的数字协议。</p>
+<p>虽然DeFi是目前最明显的证据，但更有可能的是，下一个被大规模采用的主要智能合约用例是开发人员在链上访问来自DON的现实世界数据的直接结果。</p>
+<p>可能的用例数量是难以想象的，未来确实从未如此光明。</p>
+<p>撰文：Ryan Sean Adams 来源：Bankless</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/26561/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">一文理解Dfinity浏览器数据背后的意义之链上数据</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/26565/">
+                <span class="next-text nav-default">一文详解影响DeFi流动性提供者盈利能力、权衡和风险回报的关键因素</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#去中心化的oracle网络dons驱动智能合约经济"><strong>去中心化的Oracle网络（DONs）：驱动智能合约经济</strong></a></li>
+    <li><a href="#去中心化oracle网络-don-的用例"><strong>去中心化Oracle网络 (DON) 的用例</strong></a>
+      <ul>
+        <li><a href="#1去中心化金融和价格信息反馈"><strong>1.去中心化金融和价格信息反馈</strong></a></li>
+        <li><a href="#2动态nf-和可验证的随机性"><strong>2.动态NF 和可验证的随机性</strong></a></li>
+        <li><a href="#3链-上审计跟踪和储备证明"><strong>3.链</strong> <strong>上审计跟踪和储备证明</strong></a></li>
+        <li><a href="#4链下计算和保管人keepers"><strong>4.链下计算和保管人（Keepers）</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#结论"><strong>结论</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

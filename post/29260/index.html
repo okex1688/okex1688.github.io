@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          深入理解 EVM 存储机制及安全问题 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="EVM 是一个轻量级的虚拟机，其设计初衷就是提供一种可以忽略硬件、操作系统等兼容性的虚拟的执行环境供以太坊网络运行智能合约。" />
+<meta name="keywords" content="EVM" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/29260/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="深入理解 EVM 存储机制及安全问题" />
+<meta property="og:description" content="EVM 是一个轻量级的虚拟机，其设计初衷就是提供一种可以忽略硬件、操作系统等兼容性的虚拟的执行环境供以太坊网络运行智能合约。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/29260/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-10-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-03T00:00:00+00:00" />
+
+<meta itemprop="name" content="深入理解 EVM 存储机制及安全问题">
+<meta itemprop="description" content="EVM 是一个轻量级的虚拟机，其设计初衷就是提供一种可以忽略硬件、操作系统等兼容性的虚拟的执行环境供以太坊网络运行智能合约。"><meta itemprop="datePublished" content="2021-10-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2665">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="深入理解 EVM 存储机制及安全问题"/>
+<meta name="twitter:description" content="EVM 是一个轻量级的虚拟机，其设计初衷就是提供一种可以忽略硬件、操作系统等兼容性的虚拟的执行环境供以太坊网络运行智能合约。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">深入理解 EVM 存储机制及安全问题</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-10-03">
+      2021-10-03
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2665 字 -
+        预计阅读 6 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="前言">前言</h2>
+<p>EVM 是一个轻量级的虚拟机，其设计初衷就是提供一种可以忽略硬件、操作系统等兼容性的虚拟的执行环境供以太坊网络运行智能合约。</p>
+<p>简单来说 EVM 是一个完全独立的沙盒，在 EVM 中运行的代码是无法访问网络、文件系统和其他进程的，以此来避免错误的代码能让智能合约毁灭或者影响外部环境。</p>
+<p>在此基础上，知道创宇区块链安全实验室带大家一起深入理解 EVM 的存储机制和安全问题。</p>
+<h2 id="evm存储结构">EVM存储结构</h2>
+<p><img src="https://img.bibiqing.com/news/2021/1003/20_u5r3fij65j.png" alt="深入理解 EVM 存储机制及安全问题"></p>
+<p>可以看到 EVM 存储数据分为两类：</p>
+<ul>
+<li>
+<p>存储在 code 和 storage 里的数据是 non-volatile (不容易丢失的)</p>
+</li>
+<li>
+<p>存储在 stack，args，memory 里数据是volatile(容易丢失的)</p>
+</li>
+</ul>
+<h2 id="各个存储位置的含义">各个存储位置的含义</h2>
+<p>Code</p>
+<p>code 部署合约时储存 data 字段也就是合约内容的空间，即专门存储智能合约的二进制源码的空间</p>
+<p>Storage</p>
+<p>Storage 是一个可以读写修改的持久存储的空间，也是每个合约持久化存储数据的地方。Storage 是一个巨大的 map，一共 2^256 个插槽 (slot)，每个插糟有 32byte，合约中的“状态变量”会根据其具体类型分别保存到这些插槽中。</p>
+<p>Stack</p>
+<p>stack 即所谓的“运行栈&quot;,用来保存 EVM 指令的输入和输出数据。可以免费使用，没有 gas 消耗，用来保存函数的局部变量，数量被限制在 16 个。stack 的最大深度为 1024 ，其中每个单元是 32 byte。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1003/20_wlt4genssn.png" alt="深入理解 EVM 存储机制及安全问题"></p>
+<p>Args</p>
+<p>args 也叫 calldata，是一段只读的可寻址的保存函数调用参数的空间，与栈不同的地方的是，如果要使用 calldata 里面的数据，必须手动指定偏移量和读取的字节数。</p>
+<p>Memory</p>
+<p>Memory 一个简单的字节数组，主要是在运行期间存储数据，将参数传递给内部函数。基于 32byte 进行寻址和扩展。</p>
+<h2 id="evm-数据存储概述">EVM 数据存储概述</h2>
+<p>前面已经说过 Storage 是每个合约持久化存储数据的地方其储存数据的方式是通过插槽来实现的，现在就具体介绍它是怎么实现的：</p>
+<h3 id="状态变量">状态变量</h3>
+<p>1.对于大小在 32 字节以内的变量(常量)，以其定义的顺序作为它的索引值来存储。即第一个变量的索引为 key(0)，第二个变量的索引为 key(1)&hellip;</p>
+<p>2.对于连续较小的值，可能被优化存储在同一个位置，比如：合约中前四个状态变量都是 uint64 类型的，则四个状态变量的值会被打包成一个 32 字节的值存储在 0 位置。</p>
+<p>未优化：</p>
+<p>pragma solidity ^0.4.11;<br>
+contract C {<br>
+   uint256 a = 12;<br>
+   uint256 c = 12;<br>
+   uint256 b = 12;<br>
+   uint256 d = 12;<br>
+   function m() view public returns(uint256,uint256,uint256,uint256){<br>
+       return (a,b,c,d);<br>
+   }<br>
+}</p>
+<p><img src="https://img.bibiqing.com/news/2021/1003/20_dm4uny13is.png" alt="深入理解 EVM 存储机制及安全问题"></p>
+<p>优化后：</p>
+<p>pragma solidity ^0.4.11;<br>
+contract C {<br>
+   uint64 a = 12;<br>
+   uint64 c = 12;<br>
+   uint64 b = 12;<br>
+   uint64 d = 12;<br>
+   function m() view public returns(uint64,uint64,uint64,uint64){<br>
+       return (a,b,c,d);<br>
+   }<br>
+}</p>
+<p><img src="https://img.bibiqing.com/news/2021/1003/20_gwa6y30yzy.png" alt="深入理解 EVM 存储机制及安全问题"></p>
+<h3 id="结构体">结构体</h3>
+<p>对于大小在 32 字节以内的结构体同样也是顺序存储，例如结构体变量索引定义在位置 0，结构体内部有两个成员，则这两个成员的依序为 0 和 1。</p>
+<p>pragma solidity ^0.4.11;<br>
+contract C {<br>
+struct Info {<br>
+   uint256 a ;<br>
+   uint256 b ;<br>
+}<br>
+   function m()  external returns(uint256,uint256){<br>
+       Info storage info;<br>
+       info.a = 12 ;<br>
+       info.b = 24 ;<br>
+       return(info.a,info.b);<br>
+   }<br>
+}</p>
+<p><img src="https://img.bibiqing.com/news/2021/1003/20_jqpsnn1psq.png" alt="深入理解 EVM 存储机制及安全问题"></p>
+<h3 id="映射map">映射（map）</h3>
+<p>map 存储位置是通过 keccak256 (bytes32(key) + bytes32(position) ) 计算得到的,position 表示 key 对应 storage 类型变量存储的位置。</p>
+<p>pragma solidity ^0.4.11;<br>
+contract Test {<br>
+ mapping(uint256 =&gt; uint256) knownsec;<br>
+ function go() public {<br>
+     knownsec[0x60] = 0x40;<br>
+ }<br>
+}</p>
+<p><img src="https://img.bibiqing.com/news/2021/1003/20_vqys26slk1.png" alt="深入理解 EVM 存储机制及安全问题"></p>
+<h2 id="数组">数组</h2>
+<h3 id="定长数组">定长数组</h3>
+<p>同上，只要在 32 字节以内也是顺序存储，不过在编译时编译器会进行边界检查防止越界。</p>
+<p>pragma solidity ^0.4.11;<br>
+contract C {<br>
+   uint256[3] a = [12,24,48] ;<br>
+   <br>
+   function m() public view returns(uint256,uint256,uint256){<br>
+       return (a[0],a[1],a[2]);<br>
+   }<br>
+   <br>
+}</p>
+<p><img src="https://img.bibiqing.com/news/2021/1003/20_mo43m4zm5w.png" alt="深入理解 EVM 存储机制及安全问题"></p>
+<h3 id="可变长度数组">可变长度数组</h3>
+<p>由于可变长度数组长度不定，一般在编译可变长度数组时会提前预留存储空间，所以就会使用状态变量的位置存储可变长度数组的长度。</p>
+<p>而具体的数据地址会通过计算 keccak256 (bytes32(position)) 算得数组首地址，再加数组长度偏移量获得具体的元素。</p>
+<p>pragma solidity ^0.4.11;<br>
+contract C {<br>
+   uint256[] a = [12,24,48] ;<br>
+   <br>
+   function m() public view returns(uint256,uint256,uint256){<br>
+       return (a[0],a[1],a[2]);<br>
+   }<br>
+   <br>
+}</p>
+<p><img src="https://img.bibiqing.com/news/2021/1003/20_64wonb2b8v.png" alt="深入理解 EVM 存储机制及安全问题"></p>
+<h2 id="字节数组和字符串">字节数组和字符串</h2>
+<p>如果长度小于等于31字节 ：</p>
+<p>1.对于定长字节数组则是同定长数组一样；</p>
+<p>2.对于可变字节数组和字符串，会在存储值位置补0一直到32字节，并用补0的最后一个字节存储字符串的编码长度。</p>
+<p>pragma solidity ^0.4.4;<br>
+contract A{<br>
+   string public name0 = &ldquo;knownsec&rdquo;; <br>
+   bytes8 public name=0x6b6e6f776e736563;<br>
+   bytes public g ;<br>
+   <br>
+   function test() public {<br>
+       g.push(0xAA);<br>
+       g.push(0xBB);<br>
+       g.push(0xCC);<br>
+   }<br>
+   function go() public view returns(bytes){<br>
+       return g;<br>
+   }<br>
+}</p>
+<p><img src="https://img.bibiqing.com/news/2021/1003/20_c089isl27p.png" alt="深入理解 EVM 存储机制及安全问题"></p>
+<p>当节数组和字符串长度大于31字节时</p>
+<p>1.变量位置存储编码长度，并且编码长度公式更换为编码长度 = 字符数 * 2 + 1</p>
+<p>2.真实存储值第一个位置通过公式 keccak256(bytes32(position)) 获取，剩余值在获取到的位置顺序存储，同样在最后存储位置补0到32字节。</p>
+<p>string public name = &ldquo;knownsecooooooooooooooooooooooooo&rdquo;;</p>
+<p><img src="https://img.bibiqing.com/news/2021/1003/20_l2stqwl6o3.png" alt="深入理解 EVM 存储机制及安全问题"></p>
+<h2 id="安全问题">安全问题</h2>
+<p>前面已经讲到EVM的存储结构及存储机制，现在我们再来探讨其安全问题。</p>
+<h2 id="未初始化变量">未初始化变量</h2>
+<p>漏洞原理：</p>
+<p>在官方手册中提到结构体，数组和映射的局部变量默认是放在 storage 中的，而 solidity 语言中函数中设置的局部变量的默认类型取决于它们本身的类型。</p>
+<p>因此如果在函数内部设置以上 storage 类型变量却没有进行初始化，他们就相当于存储指针指向合约中的其他变量，当我们对其进行改变时改变的就是其指向的变量。漏洞合约，目的修改 owner 为自己地址：</p>
+<p>pragma solidity ^0.4.0;<br>
+contract testContract{<br>
+   bool public unlocked = false;<br>
+   address public owner = 0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c;<br>
+struct Person {<br>
+   bytes32 name;<br>
+   address mappedAddress;<br>
+}<br>
+   function test(bytes32 _name , address  _mappedAddress) public{<br>
+       Person person;<br>
+       person.name = _name;<br>
+       person.mappedAddress = _mappedAddress;<br>
+       require(unlocked);<br>
+  }<br>
+}</p>
+<p>漏洞合约分析：</p>
+<p>可以看到该合约在函数部分创建新的结构体时没有进行初始化，由此我们可以利用该函数进行对owner的修改。不过使用该函数我们还要通过require验证，不过这也不难因为状态变量unlocked也同样在我们可控的范围内。</p>
+<p>具体操作：</p>
+<p>调用test函数分别传入向_name 传入：0x0000000000000000000000000000000000000000000000000000000000000001(真值)</p>
+<p>_mappedAddress 传入：0xfB89eCb0188cb83c220aADDa1468C1635208e821(个人地址)</p>
+<p>传参前：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1003/20_jbopn8t4aj.png" alt="深入理解 EVM 存储机制及安全问题"></p>
+<p>传参后：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1003/20_cs6sws19w5.png" alt="深入理解 EVM 存储机制及安全问题"></p>
+<p>可以看到已经成功更改了地址。</p>
+<h2 id="总结">总结</h2>
+<p>可以看到 EVM 的存储器就是一个 key=&gt;value 的健值数据库，存储的数据可以通过校验和来确保一致。但是其也是和智能合约语言进行交互的，当其中一些规则发生冲突很可能就被别有用心的人用来作恶，所以规范的使用智能合约语言是避开漏洞的必要条件。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/29256/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">闪电网络和雷电网络是什么？有什么关系？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/29254/">
+                <span class="next-text nav-default">数据：以太坊网络当前已销毁近42万枚ETH</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#evm存储结构">EVM存储结构</a></li>
+    <li><a href="#各个存储位置的含义">各个存储位置的含义</a></li>
+    <li><a href="#evm-数据存储概述">EVM 数据存储概述</a>
+      <ul>
+        <li><a href="#状态变量">状态变量</a></li>
+        <li><a href="#结构体">结构体</a></li>
+        <li><a href="#映射map">映射（map）</a></li>
+      </ul>
+    </li>
+    <li><a href="#数组">数组</a>
+      <ul>
+        <li><a href="#定长数组">定长数组</a></li>
+        <li><a href="#可变长度数组">可变长度数组</a></li>
+      </ul>
+    </li>
+    <li><a href="#字节数组和字符串">字节数组和字符串</a></li>
+    <li><a href="#安全问题">安全问题</a></li>
+    <li><a href="#未初始化变量">未初始化变量</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          比特币安全吗？深入探索比特币的安全模型 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="让我们来深入探索比特币为其全节点运营者提供的安全模型。" />
+<meta name="keywords" content="BTC" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/28746/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="比特币安全吗？深入探索比特币的安全模型" />
+<meta property="og:description" content="让我们来深入探索比特币为其全节点运营者提供的安全模型。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/28746/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-17T00:00:00+00:00" />
+
+<meta itemprop="name" content="比特币安全吗？深入探索比特币的安全模型">
+<meta itemprop="description" content="让我们来深入探索比特币为其全节点运营者提供的安全模型。"><meta itemprop="datePublished" content="2021-09-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7467">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="比特币安全吗？深入探索比特币的安全模型"/>
+<meta name="twitter:description" content="让我们来深入探索比特币为其全节点运营者提供的安全模型。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">比特币安全吗？深入探索比特币的安全模型</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-17">
+      2021-09-17
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7467 字 -
+        预计阅读 15 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%AF%94%E7%89%B9%E5%B8%81/"> 比特币 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>人们在讨论不同密码学货币的共识机制时经常会产生争议，主要是因为他们对这些密码学货币用来保护账本历史数据的安全模型缺乏了解（定义）。虽然每个共识机制的安全模型旨在防范各种理论上的攻击，但是了解这些模型的目的非常重要。</p>
+<p><strong>安全模型可以分为两个部分：假设（assumption）和保证（guarantee）。如果用作输入的假设成立，则安全模型输出的保证也应成立。</strong></p>
+<p>让我们来深入探索比特币为其全节点运营者提供的安全模型。</p>
+<h2 id="求真">求真</h2>
+<blockquote>
+<p>“用户间信任需求最小化是比特币的优势之一。我个人甚至认为这是比特币最大的优势。” —— Pieter Wuille</p>
+</blockquote>
+<p>分布式账本旨在提供有序的事件记录，因为在分布式系统中你不能单纯地信任时间戳。</p>
+<p>新的参与者刚加入一个区块链网络时，会从软件硬编码的创世块开始下载所有可获得的区块，然后鉴别整条区块链的有效性。</p>
+<p>比特币安全模型最重要的假设之一是绝大多数矿工都是诚实的 —— 他们在努力保护区块链的安全性，而不是试图破坏它。实际上，纵观比特币的发展史，得益于有效的矿工激励机制，这个假设至今未被打破，虽然已经有人怀疑它能否长期保持。</p>
+<p><strong>有了这个假设作为前提，全节点运营者完全可以确信：</strong></p>
+<ul>
+<li>
+<p>除矿工之外没人能增发比特币，而且比特币的供应量会严格按照发行计划表增加。</p>
+</li>
+<li>
+<p>没有私钥就无法花费对应的比特币。</p>
+</li>
+<li>
+<p>没有人可以重复花费同一笔比特币。</p>
+</li>
+</ul>
+<p><strong>在比特币区块链强有力的保证下，全节点运营者还可以确信以下两点：</strong></p>
+<ul>
+<li>
+<p>任何比特币区块都是在其时间戳的大约两小时内创建的。</p>
+</li>
+<li>
+<p>他们正在同步的是 “真实的” 区块链历史。</p>
+</li>
+</ul>
+<p><strong>从技术层面来讲，比特币区块需要经过大量检查：</strong></p>
+<ul>
+<li>
+<p>所有区块都遵守共识规则：</p>
+</li>
+<li>
+<p>每个区块都与其父块相连</p>
+</li>
+<li>
+<p>每个区块都达到目标难度值，并且有充足的工作量证明</p>
+</li>
+<li>
+<p>区块时间戳位于与上一最新区块之间的时间窗口内</p>
+</li>
+<li>
+<p>默克尔根与区块锁记载的交易相匹配</p>
+</li>
+<li>
+<p>区块大小不超过上限</p>
+</li>
+<li>
+<p>每个区块的第一笔（也只有第一笔）交易是 coinbase 交易</p>
+</li>
+<li>
+<p>Coinbase 输出不超过区块奖励</p>
+</li>
+<li>
+<p>区块内包含的签名操作不超过许可范围</p>
+</li>
+<li>
+<p>所有交易都遵守共识规则：</p>
+</li>
+<li>
+<p>输入值和输出值都是合理的</p>
+</li>
+<li>
+<p>交易只花费未花费输出</p>
+</li>
+<li>
+<p>所有即将花费的输入都有有效签名</p>
+</li>
+<li>
+<p>coinbase 交易创建后的 100 个区块内，该 coinbase 交易的输出无法花费</p>
+</li>
+<li>
+<p>当某笔交易仍处在区块确认的窗口期，其输出就不能花费</p>
+</li>
+<li>
+<p>篇幅有限，其余规则不作赘述</p>
+</li>
+</ul>
+<h2 id="热力学安全性">热力学安全性</h2>
+<p>区块内的交易一经确认无法回滚，除非有人花费大量能源重写这条链。</p>
+<p><strong>只要没有攻击者拥有全网 50% 以上的算力，且诚实的节点可以快速通信，发生交易回滚的概率就会随着交易确认次数呈指数级下降。</strong> 其它类型的攻击（例如，自私挖矿）虽然没有这么高的能耗需求，但是实施起来很难。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/fadr49ei0552jra" alt="2"></p>
+<p>来源：《比特币安全模型回顾》</p>
+<p>从比特币矿工当前的累积工作量来看，攻击者需要计算出将近 10^26 个哈希值，才能从创世块开始构建出一条累积工作量证明更多的链。全节点会将这条链视为 “合法” 的链。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/3gz5ju38entr7gq" alt="3"></p>
+<p>来源：http://bitcoin.sipa.be </p>
+<p>我们来计算一下 51% 攻击的成本：</p>
+<p><strong>一台蚂蚁矿机 S9 的功耗是 0.1 J/GH（10^9 hash）。</strong></p>
+<p><strong>10^26 hash * 0.1 J / 10^9 hash = 10^15 J</strong></p>
+<p><strong>10^15 J = 2,777,777,778 kw/h * \$0.10 kw/h = $277,777,778（重写整条区块链所需的电力成本）</strong></p>
+<p>撰写本文时，一个区块必须达到 253,618,246,641 的目标难度值，这大约需要：</p>
+<p><strong>253,618,246,641 * 2^48 / 65535 = 1.09 * 10^21 hash</strong></p>
+<p><strong>1.09 * 10^21 hash * 0.1 J / 10^9 hash = 1.09 * 10^11 J</strong></p>
+<p><strong>1.09 * 10^11 J = 30,278 kw/h * \$0.10 kw/h = $3,028（创建每个区块所需的电力成本）</strong></p>
+<p><strong>因此，我们可以说比特币具有热力学安全性。</strong></p>
+<p>你可以调整上述计算中的一些变量来降低成本，但我们可以肯定的是，仅重写整条区块链就需要价值数百万美元的电力。然而，在最坏的情况下，拥有如此强大算力的攻击者能够将交易回滚至 2014 年 —— 我们很快就会深入探究其原因。</p>
+<p>另外请注意，购买和运行矿机所需的成本并未考虑在内。</p>
+<h2 id="抗女巫攻击">抗女巫攻击</h2>
+<p>由于比特币协议认为累积工作量证明最多的链才是合法的链（最长链原则是常见的误解），新加入网络的对等节点只需与另一个诚实的对等节点建立连接，就可以找到合法的链。</p>
+<p>这也被称为抗女巫攻击，这意味着攻击者无法通过运行多个不诚实的对等节点来向某个对等节点提供虚假信息。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/v7cbp2iz17emmlp" alt="4"></p>
+<p>上图显示了一个近乎最糟糕的情况：你的节点遭受了大规模女巫攻击，但是依然与一个诚实的节点保持连接，就可以通过这个节点连接至真正的区块链。只要有一个诚实的对等节点将真实的区块链数据传输给你的全节点，你的节点就会识破那些试图欺骗你的女巫攻击者，然后将它们忽略。</p>
+<h2 id="实时共识">实时共识</h2>
+<p>当你的节点同步至区块链顶端时，你就会发现比特币协议通过其它一些有趣的属性来维护全网共识。</p>
+<p>《比特币和其它密码学货币的研究视角及挑战》的作者指出，以下特性对密码学货币的稳定性来说至关重要：</p>
+<p><strong>最终共识</strong> 。在任何时候，所有遵守规则的节点都要就最终的 “合法” 区块链的最新一个区块达成共识。</p>
+<p><strong>指数级收敛</strong> 。深度为 n 的分叉的概率是 O(2−n)。这使得用户坚信他们的交易可以在 “k 次确认” 后得到永久结算。</p>
+<p><strong>活性</strong> 。新区块会不断生成，支付适当交易费的有效交易会在合理时间内被打包上链。</p>
+<p><strong>正确性</strong> 。在累积工作量证明最多的链上，所有区块内包含的交易都是有效的。</p>
+<p><strong>公平性</strong> 。拥有全网总算力 X % 的矿工可以挖出大约 X% 的区块。</p>
+<p><strong>论文作者指出，比特币看起来具备上述特性，至少是在假设大部分矿工都保持诚实的前提下。这就是区块奖励和工作量证明机制想要达到的目的。</strong></p>
+<p>还有许多其它算法可以用来维护分布式系统中的共识，例如：</p>
+<ul>
+<li>
+<p>权益证明（PoS）</p>
+</li>
+<li>
+<p>币龄证明（Proof of Coin Age）</p>
+</li>
+<li>
+<p>质押证明（Proof of Deposit）</p>
+</li>
+<li>
+<p>燃烧证明（Proof of Burn）</p>
+</li>
+<li>
+<p>活动量证明（Proof of Activity）</p>
+</li>
+<li>
+<p>耗时证明（Proof of Elapsed Time）</p>
+</li>
+<li>
+<p>联合共识（Federated Consensus）</p>
+</li>
+<li>
+<p>实用型拜占庭容错（Practical Byzantine Fault Tolerance）</p>
+</li>
+</ul>
+<p>上述算法创建了不同的安全模型 —— 与工作量证明最明显的区别在于，基于这些算法的系统都是以消耗内部资源（币或声誉）而非外部资源（电力）来达成共识的。<strong>受其影响，这些系统对网络中验证者的激励措施和信任需求各不相同，极大地改变了安全模型。</strong></p>
+<h2 id="安全模型误区">安全模型误区</h2>
+<p>一个常见的误区是，比特币有一个明确定义的安全模型。</p>
+<p>事实上，无论是过去还是现在，比特币协议都没有一个正式定义的规范或安全模型。我们能做的最好的事情就是研究系统参与者的动机和行为，以便更好地理解和描述比特币的安全模型。</p>
+<p>尽管如此，经常有人误解了比特币协议的一些特性。</p>
+<p>一些区块链存在很严重的隐患，因为开发者在节点软件中增加了专断设定的已签名检查点，表示 “开发人员已经确认区块 X 位于正确的那条链上”。这是一个极端中心化的单点问题。</p>
+<p>值得一提的是，比特币有 13 个被硬编码的检查点，但是这些检查点并没有像被专断设定的检查点那样改变安全模型。最后一个检查点被添加到了 Bitcoin Core 0.9.3 内，区块高度是 295000 （创建于 2014 年 4 月 9 日）。这个区块的难度值是 6,119,726,089，所需电力成本约为：</p>
+<p>6,119,726,089 * 2^48 / 65535 = 2.62 * 10^19 hash</p>
+<p>2.62 * 10^19 hash * 0.1 J / 10^9 hash = 2.62 * 10^9 J</p>
+<p>2.62 * 10^9 J = 728 kw/h * \$0.10 kw/h = \$73（创建该区块所需的电力成本）</p>
+<p>因此，如果女巫攻击者将一个新加入的节点（需要从头开始进行同步）围住，几乎不需要任何成本就可以在较低的区块高度创建较短的区块链，但是不能超过检查点。</p>
+<p>如果女巫攻击者将一个节点从同步超过区块高度 295,000 的网络分离出来，就能以每个区块 73 美元的成本开始提供虚假区块，至少是在发生难度调整之前。但是，受害节点同步的区块链越长，攻击者创建一条累积工作量证明更多的链所需的成本越高。</p>
+<p>Greg Maxwell 和 Pieter Wuille 都表示，他们希望某天能完全移除检查点。Bitcoin Core 的维护负责人 Wladimir van der Laan 指出，对于那些想要了解比特币安全模型的人来说，检查点是<strong>经常</strong> 产生困惑的根源。</p>
+<p>可以说，位于区块高度 295,000 的检查点意味着，全节点 “相信” Bitcoin Core 开发者所说的 2014 年 4 月 9 日之前的区块都是有效的。但是，全节点依然会检查每个区块头里的默克尔哈希值，也就是说，交易历史的有效性依然受到工作量证明的保护。首次同步历史区块链时，这些旧的检查点可以改善性能（跳过签名验证），尽管 libsecp256k1 的引入让性能差异变得不那么明显。</p>
+<p>检查点存在的目的主要有三个：</p>
+<ol>
+<li>
+<p>防止节点的内存被有效但低工作量证明的区块头占满。</p>
+</li>
+<li>
+<p>跳过早期区块内的签名（提升性能）。</p>
+</li>
+<li>
+<p>估量同步进度。</p>
+</li>
+</ol>
+<p>在撰写这篇文章时，Greg Maxwell 提出使用累积工作量证明检查来代替检查点。一旦节点成功同步了某条包含超过 5.4 * 10^24 次哈希计算工作量的链，累积工作量证明较少的那条链就会被拒绝。这恰好与 2014 年 9 月创建的区块 320,000 的工作量大致相符，这时单个区块的难度值约为 27,000,000,000。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/rk4sh24sly5s9fd" alt="5"></p>
+<p>来源：Blockchain.info</p>
+<p>当难度值为 27,000,000,000 时，挖矿需要计算大约 27,000,000,000 * 2^48 / 65535 = 1.16 * 10^20 次哈希函数。</p>
+<p>1.16 * 10^20 hash * 0.1 J / 10^9 hash = 1.16 * 10^10 J</p>
+<p>1.16 * 10^10 J = 3,222 kw/h * \$0.10 kw/h = \$322（平均创建每个区块所需的电力成本）</p>
+<p>因此，根据提议进行修改后，如果女巫攻击者将一个需要从头开始同步的全新节点完全包围起来，就可以从任一区块开始向这个节点发送虚假的区块数据，而且几乎不需要成本。如果女巫攻击者将一个已经同步超过区块 320,000 的节点完全包围起来，那么从区块 320,000 开始向该节点发送每个虚假区块的成本是 322 美元。</p>
+<p>简而言之，如果一个实体可以完全控制你的节点的网络连接，无论是采用哪种方式对节点的初始同步进行检查，攻击成本都相对较低；如果你的节点的网络连接不受任何实体的控制，就可以轻而易举地忽略来自攻击者的区块。</p>
+<p>另外，每个区块链系统都将创世块硬编码到了节点软件中。你可能会觉得，“共享历史” （即，账本）是一种社会契约 —— 一旦某个区块的历史足够悠久，网络中的所有参与者之间都会达成共识，认为这个区块永远都不会被回滚。当开发者选定一个早期挖出的区块并用它来创建检查点时，更多是作为一种公认的完整性检查，而非对历史的客观描述。</p>
+<p>除了检查点之外，节点如何实现自引导也是一个问题。目前，比特币节点的自引导流程是检查节点是否在本地存储了之前从对等节点那里了解到的数据。如果没有的话，节点将查询一组被硬编码到软件中的 “DNS 种子”。这些种子负责维护一个连接良好的比特币节点的列表，并将这个列表返回给你的节点。</p>
+<p>正如我们可以从代码中看到的那样，Bitcoin Core 0.13 目前使用由 Pieter Wuille、Matt Corallo、Luke Dashjr、Christian Decker、Jeff Garzik 和 Jonas Schnelli 运行的 DNS 种子。任何人都可以使用 Pieter Wuille 的比特币种子生成器软件或 Matt Corallo 的软件来运行 DNS 种子。但是，他们必须说服某个全节点实现的开发者将他们的 DNS 种子主机添加至对方的软件。</p>
+<p>新节点的引导过程仅仅依赖 6 个 DNS 种子，这看似又是一个极端中心化的单点问题。但是别忘了，比特币的安全模型只需要你连接到一个诚实的对等节点，就足以抵御女巫攻击。</p>
+<p>因此，一个新的节点只需能够连接到一个没有遭受攻击的 DNS 种子即可，这个种子会返回诚实节点的 IP 地址。但是，为了防范所有 DNS 节点因某种原因全都无法访问的情况，还有一个备用方案 —— 一个被硬编码到软件中的可靠节点 IP 地址的列表，会随着每个新版本发布而更新。</p>
+<p>在围绕这些初始化参数构建的安全模型下，全节点运营者不需要信任 X 个 DNS 种子或 Y 个 Bitcoin Core 软件开发者会向他们提供真实的数据，只需要相信有 1/X 的 DNS 节点没有遭受攻击，或 1/Y 的 Bitcoin Core 软件开发者会诚实地审查被硬编码的对等节点更改的有效性即可。</p>
+<h2 id="没有绝对安全性">没有绝对安全性</h2>
+<p>从更深层次来看，你在运行一个全节点时，会在一定程度上信任你正在运行的硬件和软件。</p>
+<p>你可以采用多种方法将你的二进制文件的签名与 van der Laan 的进行核对，以此验证软件是否可靠，但是很少会有人愿意惹这个麻烦。至于如何验证硬件的可靠性，这是个棘手的问题。如果你需要一个安全的硬件解决方案，最接近的选择是 ORWL。如果有人试图篡改 ORWL，会触发它的 “自毁” 机制。 </p>
+<p><strong>但是，由于 CPU、RAM 等重要硬件通常都是专有的，你永远也无法 100% 确定它们不会遭到入侵。</strong></p>
+<h2 id="比特币的分权制衡">比特币的分权制衡</h2>
+<p>当你开始研究比特币系统中不同参与者之间的关系时，会发现自己如坠五里雾中。</p>
+<p>运行全节点的目的是保护你的金融主权。这就意味着，一旦你安装并运行了特定版本的软件，即表明你与该软件以及其他所有网络参与者都达成了一项协议 —— 不仅你会遵守该软件的规则，而且其他网络参与者也必须遵守这些规则。</p>
+<p>因此，如果人们想要对软件的规则做出无法向后兼容的更改，你必须运行新版本的软件来表示你明确同意这些规则更改。另一方面，如果是向后兼容的规则更改，即使你不同意，也可以在网络中实行。</p>
+<p>有人高度概括了比特币内部的分权制衡：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/zgd5kybbnwu9ayb" alt="7"></p>
+<p>比特币治理的三大权力部门：</p>
+<ul>
+<li>
+<p>全节点（可以否决矿工和开发者）</p>
+</li>
+<li>
+<p>矿工（可以否决开发者）</p>
+</li>
+<li>
+<p>开发者（可以帮助其他人绕开某些否决）</p>
+</li>
+</ul>
+<p>需要注意的是，全节点软件不会自动更新，这是设计使然。自动更新会导致权力的天平向开发者倾斜，让开发者可以在未经节点和矿工许可的情况下强制更改规则。</p>
+<p>可惜的是，虽然规则更改在技术层面上有可能是向后兼容的，但是多年来的经验告诉我们足够有创意的软分叉也是可以实现违背旧版本规则的更改的。例如，Vitalik Buterin 曾经提过这样一个设想：通过软分叉将比特币的区块时间从 10 分钟缩短到 2 分钟，这必然会加快比特币的发行速度。</p>
+<p>面对不喜欢的软分叉，全节点有一张王牌：利用硬分叉与其他支持软分叉的矿工划清界限。这（在设计上）执行起来很难，而且引发了关于如何衡量共识和找到经济比重高的节点等诸多问题。</p>
+<p>从技术上来说，这种硬分叉可以通过将挖矿算法从双 SHA256 改成另一种哈希函数来实现。一旦成功，所有 SHA256 ASIC 矿机将无法用来挖比特币。因此，节点运营者应该时刻警惕比特币生态中发生的变化，并提醒矿工越权会有被取代的风险。</p>
+<p>许多博弈论都会讨论矿工操作及其对比特币安全性的威胁，我在之前的文章中推测了挖矿生态可能会发生怎样的变化。虽然比特币挖矿的中心化程度不尽如人意，但是迄今为止依然运作良好。这是因为比特币矿工投入了大量资金，他们不会冒着巨大的损失在一个受到所有人监视的系统中作恶。</p>
+<h2 id="spv-安全性">SPV 安全性</h2>
+<p>很多比特币用户使用轻量级客户端而非全节点访问网络，因为前者需要消耗的资源要少得多，但依然能够提供很强的安全性。</p>
+<p>使用简易支付验证（SPV）的客户端会下载整条链上所有区块的区块头的完整副本。这就意味着，自比特币诞生以来，下载和存储需求会随时间的推移呈线性增长。详情见比特币白皮书的第 8 节。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/w3rg0s98o9zytwj" alt="8"></p>
+<p>中本聪在白皮书中写道，SPV 客户端 “无法自行验证交易，但是通过把交易与区块链关联起来，它可以看到网络中的节点已经接受了该交易，随着越来越多区块上链，则进一步证实网络已经接受了该交易”。SPV 假设经过 X 个区块确认后的交易伪造成本极高。</p>
+<p>SPV 看似具备堪比全节点的安全性，但是它引入了额外的假设：只要一个区块的区块头和工作量证明有效，它包含的所有交易也都是有效的。因为 SPV 客户端不会验证本文第 1 节中提到的所有共识规则，所以它们假设响应交易查询请求的节点已经验证过了共识规则。</p>
+<p>另一个较小的安全性差异在于对等节点有可能向你隐瞒信息。如果你运行了一个全节点，对等节点可以向你隐瞒未确认的交易和区块。但是，一旦你从对等节点那里获得了一个区块，就没人可以向你隐瞒这个区块中的任何交易。另一方面，如果你运行的是 SPV 客户端，对等节点有可能向你提供区块头，然后隐瞒对应区块中的交易信息。</p>
+<p>SPV 客户端可以查询某个地址的相关交易。尽管对等节点使用虚假交易来欺骗 SPV 客户端会付出很高的代价（需要挖出一个带有充分 PoW 的区块），但是它们可以谎称 SPV 客户端用来查询交易的布隆过滤器（bloom filter）没有结果。另外还要注意的一点是，由于布隆过滤器的缺陷，SPV 在隐私性上遭受了严重破坏。</p>
+<p>BitcoinJ 在一篇文章中很好地阐述了 SPV 的安全性模型。关于未确认交易，他们指出：</p>
+<blockquote>
+<p>在 SPV 模式下，只要你所连接的节点将某个交易转发给你，你就只能相信这个交易是有效的。如果攻击者能够确保你所连接的节点都是他的，就可以向你发送一个完全无效的交易（花费根本不存在的钱），而你会认可这个交易是有效的。</p>
+</blockquote>
+<p>对于普通用户来说，SPV 的安全性已经 “足够高” 了。尽管如此，我们还可以利用 SPV 欺诈证明对其进行改进。虽然人们已经就欺诈证明进行了一些讨论，但是关于如何将它们构建到比特币协议内的提案尚未实现。</p>
+<h2 id="比特币网络没有-127001"><strong>比特币网络没有 127.0.0.1</strong></h2>
+<p>如果你没有运行全节点（以及实际用它来验证交易），那你至少要在一定程度上信任第三方，这会导致安全性模型产生差异。请注意，这不需要所有用户和企业直接在 Bitcoin Core 的 RPC API 上构建他们的软件。</p>
+<p>一些替代基础设施配置包括但不限于：</p>
+<p>1）使用安卓版比特币钱包、GreenAddress 或 Stash 等移动钱包配置仅查询你自己的全节点的钱包。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/evss9l7mybt84c7" alt="9"></p>
+<p>2）在 SPV 节点库（如 BitcoinJ）上构建应用并将这些应用设置成仅连接你自己的全节点。在 BitcoinJ 中，这可以通过定义你自己的 SeedPeer 并在初始化过程中将其传递给你的 PeerGroup 来实现。通过 libbitcoin，你可以使用该示例定义与特定节点的网络连接。</p>
+<p>3）构建一个兼容 Bitcoin Core 的 JSON-RPC API 的代理服务器。这个 API 不仅会向第三方服务发送一些调用，也会通过调用本地全节点自动验证第三方服务返回的数据。BitGo 的 BitGoD 软件就是一个例子。这种混合模型可以达到两全其美的效果：你可以使用第三方提供的高级功能，同时保留自己的金融主权。</p>
+<h2 id="全节点为自由故">全节点：为自由故</h2>
+<p>显然，运行自己的全节点是最安全的方案，需要的假设也最少。构建一台能够运行可靠全节点的计算机只需几百美元。你不妨算一下这笔账，再决定是否值得付出这些来保护自己的金融主权。</p>
+<p>感谢 Kristov Atlas、Eric Martindale、Andrew Miller 和 Kiara Roble 对本文的审阅和反馈。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/28760/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">OpenSea在Google Play和Apple App Store推出应用程序</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/28743/">
+                <span class="next-text nav-default">创建 ERC20 代币支付拆分智能合约</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#求真">求真</a></li>
+    <li><a href="#热力学安全性">热力学安全性</a></li>
+    <li><a href="#抗女巫攻击">抗女巫攻击</a></li>
+    <li><a href="#实时共识">实时共识</a></li>
+    <li><a href="#安全模型误区">安全模型误区</a></li>
+    <li><a href="#没有绝对安全性">没有绝对安全性</a></li>
+    <li><a href="#比特币的分权制衡">比特币的分权制衡</a></li>
+    <li><a href="#spv-安全性">SPV 安全性</a></li>
+    <li><a href="#比特币网络没有-127001"><strong>比特币网络没有 127.0.0.1</strong></a></li>
+    <li><a href="#全节点为自由故">全节点：为自由故</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

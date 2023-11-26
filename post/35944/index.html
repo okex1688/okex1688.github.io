@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          代币化凭证及可转移性 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本篇文章，我想深入地探讨一下NFT凭证的机制以及它是如何工作的。" />
+<meta name="keywords" content="NFT" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/35944/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="代币化凭证及可转移性" />
+<meta property="og:description" content="本篇文章，我想深入地探讨一下NFT凭证的机制以及它是如何工作的。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/35944/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-26T00:00:00+00:00" />
+
+<meta itemprop="name" content="代币化凭证及可转移性">
+<meta itemprop="description" content="本篇文章，我想深入地探讨一下NFT凭证的机制以及它是如何工作的。"><meta itemprop="datePublished" content="2022-03-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2727">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="代币化凭证及可转移性"/>
+<meta name="twitter:description" content="本篇文章，我想深入地探讨一下NFT凭证的机制以及它是如何工作的。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">代币化凭证及可转移性</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-26">
+      2022-03-26
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2727 字 -
+        预计阅读 6 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>本篇文章，我想深入地探讨一下NFT凭证的机制以及它是如何工作的。</p>
+<p>Web3 用户可以通过参加活动以及参与协议治理来获得相关凭证。</p>
+<p>与其他类型的 NFT 想比，代币化凭证具有不同的价值。它的价值是基于其获得的身份而言。有趣的是，当今绝大多数代币化凭证都是可转让的，因此理论上，你可以将其出售给任何人。这看起来有点自欺欺人，但并不是无稽之谈。</p>
+<h2 id="poap">POAP</h2>
+<p>Web3 中最流行的微认证形式是通过跟踪你出席活动的情况来实现。POAP 是出席证明协议的首字母缩写词，是分配给参加会议、社区电话会议、黑客马拉松和其他线下和虚拟活动的与会者的NFT。</p>
+<p>像 POAP 这类的创新代币最初是来自 NFT 社区。我记得 2019 年 NFT.NYC 和 Consensus 活动尝试使用了代币化门票。随着 NFT 越来越受欢迎，对可以证明“曾参加过该活动”的 纪念型 NFT 的需求也在增长。</p>
+<p>近几个月来，对 POAP 的需求呈爆炸式增长，随着越来越多的 dapp 和 DAO 引入代币化声誉系统，这种趋势将持续下去，而且能够证明“你曾参加过该活动”的代币背后的社交属性也是很有价值的。</p>
+<p>但 POAP 并不能表明你在该活动中具体做了什么。</p>
+<p>参与，尤其是有价值的参与，才真正的有意义。以下是 theGraph 的 NFT 凭证示例，它是一种用于查询去中心化网络（如以太坊和 IPFS）的索引协议。不同的贡献者获得不同的凭证。这种形式的声誉更丰富且更细微。</p>
+<h2 id="可转移性">可转移性</h2>
+<p>关于代币化凭证的另一个问题是它们是否应该可以转让。加密货币和 NFT 是可转让的，但凭证在本质上有所不同。加密货币和 NFT 属于资产。它们可以在不影响价值的情况下进行买卖和转让。事实上，财产的价值只是别人愿意为它付出的代价，实际上需要通过转手以进行价格发现。</p>
+<p>另一方面，凭证是颁发给特定的人的，并且相对于获得它的人而言，其具有的价值最大。比如，我的加利福尼亚州的执业律师执照对我来说具有巨大的价值，但它对其他人的价值为零。</p>
+<p>为了保值，似乎代币化的凭证应该保留在获得它的人手中，并且不可转让。但这可以实现吗？</p>
+<p>2018 年，ERC 1238 被提出，这是一个不可转让代币（又名“徽章”）的标准。奇怪的是，实施了ERC 1238 标准的代币并不多， 因此不可转让代币还没有真正流行起来。</p>
+<p>你加入项目社区电话时而收到的 POAP（出席协议证明），完成了 Rabbithole 任务获得的凭证，甚至是在以太坊上部署智能合约而收到的 ShadowySuperCoder NFT 都是普通的 NFT，可以转让给任何人。</p>
+<p>可转让凭证的另一个很好的例子是Wyre 在 2018 年宣布的 KYC 代币计划。这个想法是，如果你在 Wyre 或其他受监管的平台上完成了 KYC 流程，你可以选择收到一个KYC 代币。KYC 代币将允许你在那些不收集用户身份信息的去中心化交易所进行合规交易。</p>
+<p>从一开始，我就很喜欢这个想法，但我对其机制持怀疑态度。最大的问题还是在于可转让性。如果某人可以将其转让给其他人，那么向其发放KYC代币的意义何在？</p>
+<p>Wyre 的 KYC 代币还存在其他问题，使其难以大规模实施，但这并不是关于合规性的问题。我仍然是这个想法的忠实拥护者，并希望另一个团队能够尝试一下。</p>
+<p>但这引出了一个问题……为什么我们还没有看到更多不可转让的 NFT 凭证的出现？</p>
+<h2 id="多重角色">多重角色</h2>
+<p>“Anon”是社交媒体上的一个匿名账户。人们越来越普遍地使用他们的真实姓名和照片维护一个 Twitter 账户，并以假名（匿名）和头像维护另一个账户。</p>
+<p>9 月，Snoop Dogg 公开宣布他是某专注于 NFT 投资的 @CozomoMedici Twitter 帐户背后的人。现在仍有人怀疑 Snoop 是否真的是 Cozomo，但关键是，人们确实喜欢在线上使用别名。</p>
+<p>说实话，Cozomo 是个很优秀的作家，不一定是 Snoop。</p>
+<p>支持可转让凭证的一个主要论点是人们希望拥有第二或第三个线上角色，而不必担心他们真实角色建立的声誉。</p>
+<p>出于安全原因，我有多个钱包地址（又名财务角色）。最佳做法是将你的数字资产组合分散到多个钱包中。即使我的一个钱包失去访问权限或被黑客入侵，但其他钱包并不会受到影响。根据需要在钱包之间来回传输 NFT 也很方便。</p>
+<p>另一个原因是隐私。我会使用一个钱包地址关联我的真实姓名在Mirror上发表文章，并使用另一个钱包做流动性挖矿。这样，我的金融交易与我的写作是完全分开的。</p>
+<p>正如我在上周的问题中所讨论的一样，隐私将是 Web3 的一个决定性问题，无论是在政治上还是在社会上。</p>
+<h2 id="链上与链下活动">链上与链下活动</h2>
+<p>学历只有在受信任的情况下才有价值。这就是为什么人力资源部门会打电话给你的母校来核实你的学位，或者打电话给以前的雇主来核实你的职位和表现。</p>
+<p>链上活动——比如对治理提案进行投票、部署智能合约或在 Compound 上支付贷款，都很容易得到验证，因为区块链保留着你的地址活动的历史记录。</p>
+<p>链下活动是不同的。</p>
+<p>从建立声誉的角度来看，我们采取的一些最具影响力的行动是在链下完成的。获得在特定领域执业的高级学位或执照是一项物理活动。将其证书带入 Web3 可能很有价值，但它实现起来更困难。</p>
+<p>首先，除非发行者是加密原生的，否则他们可能不会发行代币化凭证。</p>
+<p>其次，你必须信任发行人。</p>
+<p>在高级学位示例中，验证 NFT 学位的人要么需要联系学校确认，要么确认 NFT 是从学校验证的钱包地址发送给个人的。</p>
+<p>这是实物资产难以在区块链上进行代币化的众多原因之一。创建代币很容易。困难的部分是将链上代币与链下资产绑定。</p>
+<h2 id="结尾感言">结尾感言</h2>
+<p>代币空投是新项目对用户进行财务激励的一种流行方式。那么凭证空投呢？一个新项目将代币化凭证空投到钱包地址，这些地址在其他社区或应用程序中拥有类似的凭证。我也一直把这个概念称为“吸血鬼声誉”。虽然听起来过于戏剧化，但很吸引人。</p>
+<p>我想知道一个新的去中心化应用程序是否可以通过向竞争应用程序上的所有超级用户空投同等声誉和代币，并在一夜之间抢占市场份额？</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/35930/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">从500万美金被贱卖到如今价值36亿美元 The Sandbox如何做到的？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/35949/">
+                <span class="next-text nav-default">蒂芙尼以115 ETH购买Rocket Factory的Okapi NFT，进入NFT领域</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#poap">POAP</a></li>
+    <li><a href="#可转移性">可转移性</a></li>
+    <li><a href="#多重角色">多重角色</a></li>
+    <li><a href="#链上与链下活动">链上与链下活动</a></li>
+    <li><a href="#结尾感言">结尾感言</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

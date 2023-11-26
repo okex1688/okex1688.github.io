@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          如何优雅地面对以太坊MEV？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在以太坊现有设计中，矿工拥有选择交易通道，决定交易顺序的权力。MEV指的矿工通过掌握这两个能力提取的总价值。" />
+<meta name="keywords" content="ETH, MEV" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/27842/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="如何优雅地面对以太坊MEV？" />
+<meta property="og:description" content="在以太坊现有设计中，矿工拥有选择交易通道，决定交易顺序的权力。MEV指的矿工通过掌握这两个能力提取的总价值。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/27842/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-26T00:00:00+00:00" />
+
+<meta itemprop="name" content="如何优雅地面对以太坊MEV？">
+<meta itemprop="description" content="在以太坊现有设计中，矿工拥有选择交易通道，决定交易顺序的权力。MEV指的矿工通过掌握这两个能力提取的总价值。"><meta itemprop="datePublished" content="2021-08-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5145">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何优雅地面对以太坊MEV？"/>
+<meta name="twitter:description" content="在以太坊现有设计中，矿工拥有选择交易通道，决定交易顺序的权力。MEV指的矿工通过掌握这两个能力提取的总价值。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">如何优雅地面对以太坊MEV？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-26">
+      2021-08-26
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5145 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>最近这段时间以来，ATA和EDEN的爆拉，关于以太坊的MEV(Miner Extractable Value)话题也继续走红，如何解决这个问题在社区中出现了巨大的争议。那什么是MEV呢？</p>
+<p>在以太坊现有设计中，矿工拥有选择交易通道，决定交易顺序的权力。MEV指的矿工通过掌握这两个能力提取的总价值。随后，一个名为FlashBots的组织现身，开始进行公开的MEV相关研究与开发。MEV拍卖是由Karl Floch、Vitalik、Philip Daian等人，于2020年一月共同提出的解决方法。</p>
+<h2 id="可套利的mev应该存在吗">可套利的MEV应该存在吗？</h2>
+<p>MEV拍卖要拍卖的是矿工的两个能力中的「排序」能力：矿工未来只负责「是否选择交易进入区块」，而不再控制区块内交易顺序的排列。真正解决这个问题的方法不是在鼓励专业Front Run拍卖这个能力，而是应该要设计一个机制「避免」任何人可以任意安排交易顺序。也就是所谓的公平排序问题。</p>
+<p>在Arbitrum的计划中，会在Arbitrum Layer2中引入这样的「公平排序」。实际的细节还没有太明朗，基本会由单一排序者决定所有交易排序。公平排序才是此问题真正的解决之道。除了最新的一些Layer 2解决方案会推出公平排序设计，此外预言机项目比如ChainLink也可以通过中心化的序列角色解决公平的测序问题。</p>
+<p>MEV对以太坊真的那么糟糕吗？这取决于你处于以太坊交易的哪种角色。自2020年1月以来，矿工已从以太坊用户那里“榨取”了近7.5亿美元的价值。由于以太坊虚拟机 (EVM) 内存池设计，MEV类型的价值提取由拥有在区块内组织交易的唯一权力的矿工执行。</p>
+<p><strong>MEV“黑暗森林”带来了两个相互交织的问题：</strong></p>
+<p>1.DeFi用户不断遭受各种类型的MEV问题，例如，即使用户付费执行交易也最终使用户的交易失败的先行攻击。</p>
+<p>2.即使交易试图阻止可能的协议漏洞，它仍然可能导致更大的问题，因为交易本身的存在就向其他人表明了协议的弱点。</p>
+<p><strong>简而言之，以太坊上提交给链的每笔交易都会受到监控，以检查是否有可能利用它。在黑暗森林中，以太坊主流社区用户和矿工之间经常存在对抗关系。</strong> MEV用户最常见的形式是抢先交易。当一方根据有关已确认但尚未执行的交易的信息采取行动并使用此信息预先有利地执行其交易时，就会发生提前交易的情况。</p>
+<p>这可能是非常有益的，因为交易抢跑者可以在资产价格发生重大变化之前执行交易，并从差异中获利。但是它对以太坊的最终影响是更高的Gas价格，但提前运行的MEV对DEX的伤害最大，因为交易者可能会遇到交易失败和交易价格低于初始订单报价的情况。抢先交易主要是发生在以太坊套利机器人的领域。然而，现在的情况是矿工可以直接提前运行区块的交易订单，那么情况就很糟糕了。</p>
+<h2 id="如何解决以太坊的mev问题"><strong>如何解决以太坊的MEV问题？</strong></h2>
+<p>并不是所有的希望都破灭了。 除非以太坊为用户设计弹性组件，否则MEV不会消失。解决这个问题需要关键的基础设施和正确的DeFi工具。目前以太坊向权益证明的过渡是不太可能解决MEV问题的，因为改变以太坊的核心协议需要非常高的共识，这很可能不会发生。 </p>
+<p>但是DApps或用户可以通过多种方式对抗MEV，最现实的方法是拥有一种强制执行批量拍卖的交易机制或者协议。批量拍卖或批量交易是指交易所的订单簿集中处理一个时间范围内的订单，目标是同时执行这一批内的所有交易。这是一种价格发现机制，用于为每个区块以相同的清算价格正确定价代币对。</p>
+<p>在传统市场中，在开市期间使用批量拍卖来处理在非市场时间下的所有订单。在DeFi中，批量拍卖有助于在同一区块中同时执行大量交易。在矿工或验证者拥有重组交易的权力系统中，批量拍卖结算可以剥夺他们的权力。这是因为批量结算迫使矿工不得不执行交易，而不管他们的订单大小如何。在统一清算价格的批量拍卖机制中，交易顺序不能改变价格。 </p>
+<p>通过签名消息提交链下订单是一种新的交易方式，之前并没有被广泛使用。DApp用户无需提交链上订单即可生效。相反，他们可以通过使用订单偏好签署交易来提交链下订单。</p>
+<p>由于订单已下链，交易不会单独发送到内存池，直到它们稍后通过批量拍卖结算交易一次性发送和结算。这意味着它们可以在同一个批次中全部结算，这增加了复制的难度并使交易的重新组织变得无关紧要，因为无论订单如何，所有交易都具有相同的价格。</p>
+<p>同时，链下订单可以允许协议不依赖交易路由，这样即使矿工能够获取签名的消息并试图利用它们，它也与矿工无关。由于协议不会强制用户绑定特定的交易路径，因此它可以专注于获得更好的价格而不是最快地执行交易。 </p>
+<p>具有基于批量拍卖、统一清算价格和需求巧合 (CoW) 的寻价机制的协议可以为其用户提供迄今为止最好的MEV保护水平。（需求巧合指的是一种经济现象，两方各持有对方想要的物品，因此他们可以直接交换这些物品，无需第三方提供流动性来促进交易发生。） </p>
+<p>在更深层次上，这意味着如果协议使用批量拍卖而不是恒定做市商设计，他们可以为用户提供直接基于CoW结算交易的机会。因此，这样的协议可以根据每批收到的不同订单来优化价格，从而始终能够为交易者提供最佳价格，同时保护他们免受MEV的影响。正如我之前提到的，批量拍卖还可以允许协议建立统一的清算价格，这与CoW一起可以帮助用户免受MEV的影响。</p>
+<p>这种保护来自这样的一个事实，因为协议没有匹配外部链上流动性的交易。换句话说，在发生CoW的情况下，该协议不需要针对自动做市商 (AMM) 执行链上交易来使交易具有流动性。此外，如果找不到CoW，批量拍卖中统一的清算价格使拍卖的交易顺序变得无关紧要，因为同一代币对的所有交易获得相同的结算价格，因此消除了MEV参与者有机会通过重组交易来增加价值提取的可能性。 </p>
+<p>更夸张的是，现在出现了一些项目和工具专门用来监控MEV捕捉的机会，并且和合作的矿工共谋分利，一旦矿工根据这些个体提供的信息捕捉到MEV，就会和它们分摊获取的利润。显然这使得以太坊的交易不再纯粹，而是变得更加的投机化。这样的套利只会破坏以太坊网络的效率，最终伤害的是普通用户的利益。</p>
+<h2 id="值得注意的项目对比"><strong>值得注意的项目对比</strong></h2>
+<ul>
+<li><strong>Gnosis Protocol</strong></li>
+</ul>
+<p>Gnosis Protocol利用批量拍卖提供MEV保护，并与跨DEX的流动性来源集成，为交易者提供最优惠的价格。Gnosis V2是以太坊基础设施所需的缺失 DeFi组件。它允许用户享受MEV保护的好处，因为它在构建时考虑了三个重要因素。使它从其他协议中脱颖而出：</p>
+<ol>
+<li>
+<p>访问链上流动性，严格杜绝恶意行为。</p>
+</li>
+<li>
+<p>通过签名消息的链下订单。</p>
+</li>
+<li>
+<p>基于批量拍卖的定价机制，具有统一的清算价格和CoW。</p>
+</li>
+</ol>
+<p>Gnosis V2通过利用其批量拍卖机制，结合链下订单放置和访问以太坊上的链上流动性来解决MEV问题。在GPv2中，当两个交易者各自持有对方想要的资产时，订单可以在他们之间直接结算，无需外部做市商或流动性提供者。这会为交易者带来更好的价格，因为它会降低点差。</p>
+<p>只有无法与其他GPv交易者直接结算的超额订单金额才会发送到基础AMM（自动做市商）。最终，批量拍卖机制在协议上以连续的、重复的批次结算订单，这些批次的大小仅受Gas块的限制。每个批次都强制执行统一的清算价格，这意味着在给定批次内执行的所有订单都会收到与其他订单相同定价的资产。保证他们将获得与其他现有DEX相同或更好的价格。</p>
+<p><strong>GPv2的这些独特设计品质在以下两种情况下都可以为交易者提供MEV保护：</strong></p>
+<p>1）如果GPv2发现CoW，则无需使用其他链上流动性来源结算交易，因为流动性本身就在该批次内。由于无法使用其他机制（例如交易排序）复制交易，因此完全消除了MEV攻击的可能。由于GPv2的统一清算价格，批次内的交易结果不依赖于相对顺序。</p>
+<p>2）如果GPv2没有找到CoW，它就会进入为拍卖结算提供最佳价格的链上流动性池，并且由于Gnosis Protocol V2的求解器强制执行严格的滑点，MEV参与者更难以复制交易，因为交易对他们来说是无利可图的，只有经过身份验证的求解器才能提交批量结算解决方案。</p>
+<ul>
+<li><strong>Automata Network</strong></li>
+</ul>
+<p>Automata Network把MEV机制设计的重心放在了匿名交易上面。Automata认为到完全匿名的设计是唯一的长期解决方案。这确保了没有具有特权访问权限的参与者可以观察并因此影响交易在链上的结算方式。  </p>
+<p>它们设计了一种“传送带”机制确保以先进先出的顺序下单，并使区块生产者无法抢先交易，具体来说：它们将新交易注入Conveyor（传送带） ，由于签名不匹配，任何人都可以检测到绕过Conveyor的插队交易。除非所有区块生产者同时串通审查广播交易，否则是无法删除交易的。同时，用户的数据不会让包括Automata以及节点运营方之内的任何第三方知道。</p>
+<p>本质上来说，它更像是一个隐私交易和匿名投票的工具。Automata Network作为一个中间件层，能快速无缝的链接平台与应用，目标是为整个Web3生态提供隐私服务。此外，相对于Gnosis Protocol，在当前阶段隐私交易并不会成为主流DeFi的第一选择，同时在用户友好体验层面，未来它的集成面也不太可能超过Gnosis Protocol 。</p>
+<ul>
+<li><strong>Eden Network</strong></li>
+</ul>
+<p>Eden Network是一个集成 Flashbots 的抗MEV网络。Flashbots是一个研究和开发组织，成立的初衷是缓解由 “矿工可抽取价值（miner-extractable value, MEV）” 。目前设计的Eden Network的区块结构按交易顺序一共分成四层：Slot Tenant（插槽租户）、Transaction Bundle（交易捆绑包）、Staked EDEN（质押 EDEN 交易）、公共池。</p>
+<p>Eden Network设计的本质是对交易本身加以影响，对终端的个体用户来说其实不友好的。Eden Network的前三个插槽的参与者被称为「插槽租户」。在由Eden Network开采的区块中，插槽租户的交易将被置于最前方。因此本质上并没有摆脱优先排序权的设计。Eden Network已经和多个矿池达成合作，虽然它可以改善MEV的问题，但前提和大矿池或者头部项目建立合作，从而建立自己的生态护城河。本质上是将以太坊的交易复杂化，虽然大型项目比如SUSHI在进行交易时可以不用担心三明治攻击、抢跑交易。但这一切的前提是该区块是经由集成Eden Network的矿池挖取的。</p>
+<p>这种“明公平，暗中介”的做法其实无形中创造了另一个中心化的阻碍。只有质押EDEN的用户才可以获得更快的交易速度，并且质押的代币不会销毁。当然，如果不想加速交易，只想抗MEV，也可以在MetaMask钱包中设置Eden RPC，随后所有的交易将通过Eden私有网络进行广播。这种做法有点类似淘宝商城，虽然初衷是解决中小商家贸易的问题，但无形中自己创造了一个壁垒——支付宝。对于以太坊社区本身高效率和公平化平民化的价值观精神相悖，笔者是不太认同这样的方式。</p>
+<p>当然，Eden Network最近在FTX上市，背后想必有SBF的财力支持，市场表现不会太差。</p>
+<h2 id="总结"><strong>总结</strong></h2>
+<p>整个 MEV 话题一直会是持续的辩论，在下一个阶段会不会更激烈、会不会有人提出新的观点，都是值得大家关注的问题。这是非常高学术性的辩论。在共识层面，以太坊社区陆续也有一些非常亮眼的提案来解决MEV问题，可以说上面的解决方案都是一时之选，未来随着以太坊社区的智慧贡献，MEV势必将在共识层面得到解决。</p>
+<p>MEV对以太坊来说是一个日益严重的问题，但它目前可以得到缓解。笔者认为专注于批量拍卖的协议具有这些特性，可以帮助DeFi自动化做市商对抗MEV。作为投资者，我们需要确保只使用那些将用户的利益放在心上的DApp，并允许他们以更智能、更有效的方式协调交易。</p>
+<p>文 | Punk9527</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/27834/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">企业/机构的比特币持有量增加：加密货币或将在 10 年内与法定货币竞争</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/27811/">
+                <span class="next-text nav-default">社交代币：是团结一心还是乌合之众？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#可套利的mev应该存在吗">可套利的MEV应该存在吗？</a></li>
+    <li><a href="#如何解决以太坊的mev问题"><strong>如何解决以太坊的MEV问题？</strong></a></li>
+    <li><a href="#值得注意的项目对比"><strong>值得注意的项目对比</strong></a></li>
+    <li><a href="#总结"><strong>总结</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

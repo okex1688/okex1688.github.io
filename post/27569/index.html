@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Parallel.life 是一款基于科幻小说的集换式卡牌游戏（TCG），游戏暂未上线，具体游戏机制暂不清楚。" />
+<meta name="keywords" content="游戏, Gamefi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/27569/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色" />
+<meta property="og:description" content="Parallel.life 是一款基于科幻小说的集换式卡牌游戏（TCG），游戏暂未上线，具体游戏机制暂不清楚。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/27569/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-20T00:00:00+00:00" />
+
+<meta itemprop="name" content="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色">
+<meta itemprop="description" content="Parallel.life 是一款基于科幻小说的集换式卡牌游戏（TCG），游戏暂未上线，具体游戏机制暂不清楚。"><meta itemprop="datePublished" content="2021-08-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4646">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"/>
+<meta name="twitter:description" content="Parallel.life 是一款基于科幻小说的集换式卡牌游戏（TCG），游戏暂未上线，具体游戏机制暂不清楚。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-20">
+      2021-08-20
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4646 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>Parallel.life 是一款基于科幻小说的集换式卡牌游戏（TCG），游戏暂未上线，具体游戏机制暂不清楚。代币设计较为独特，一方面是代币 NFT 化，另一方面则是治理权与股权剥离，从这两点来看，项目有自己的新意，具体实现方式则要看后期公布的经济模型，但是要考虑到的风险点则是 NFT 的流动性相对代币来说可能会比较差。团队成员 9 人，其中包括 YouTube 联合创始人 Chad Hurley，项目 NFT 在市场上流通不多，销售数据还不错。</p>
+<h2 id="基本面简介">基本面简介</h2>
+<p><strong>团队：</strong> Parallel 初始团队成员为 8 人，YouTube 联合创始人 Chad Hurley 在 2021 年 3 月宣布成为团队第 9 人，他的推特账户背景图也更换成了 Parallel 的 NFT。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/um848vqj16w4zya" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>图 1 Chad Hurley 推特账号</p>
+<p>已披露的个人信息的还包括设计团队的 Connagh Hawkins，此人为 YouTube 博主转向 Parallel 全职游戏设计师，他的频道【Merchant】订阅人数达 15.7 万，在此之前曾为 Jagex 工作室【编年史：江湖传奇】游戏的 QA 分析师及社区经理，该款游戏受欢迎程度可能仅次于【魔兽世界】。团队其他成员大多背景不明。</p>
+<p><strong>资金：</strong> 一个新出的加密基金 Yunt Capital 曾对该款游戏进行投资，并成为合作伙伴，但是具体金额未披露，该基金目前背景不明。从 NFT 公开销售数据来看，团队目前获资约 266 万美元，详情见下文。</p>
+<h2 id="游戏机制">游戏机制</h2>
+<p>Parallel 是基于科幻小说的 TCG 卡牌游戏，此类游戏是以收集卡牌为基础的，玩家通过购买、收集卡牌，然后根据自己的策略，灵活使用不同的卡牌去构组符合规则的套牌，进行游戏。游戏背景为人类精英基因在向太空迁徙过程中，最终进化为五个种族，即游戏中的五个角色：Earthen、Marcolian、Augencore、Kathari、Shroud，如图 2 所示，每个角色具有不同功能，如表 1 所示。除了以上五种角色，游戏卡中还包括 Universal （万能卡）和 Unknown Origins （用途及功能未知）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/r0r5ah9l2sn0bme" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>图 2 角色与对应星球（Parallel）</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/n13yamnldkpubip" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>表 1 角色与技能</p>
+<p>玩家需要一副包含 40 张卡片的套装进行 1V1 战斗，该套装将由单个 Parallel 游戏卡和万能卡（Universal）组成。游戏当前并未上线，具体游戏规则暂时不明晰，而且现在的 NFT 为α版本，为确保游戏玩法的平衡，以下角色技能暂时不会写入 NFT 中，后续的β及其他版本预计会添加生命值、经验值、体力值等。</p>
+<h2 id="产品">产品</h2>
+<p>Parallel 当前的产品重点为 NFT，每种 NFT 都依据角色特点而创建。当前卡牌数量众多，卡牌类型如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/hogfpqg64j13bos" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>表 2 卡牌分类</p>
+<p>以【The First Son of Mars】卡牌为例，我们可以看到，除了主图案外，该卡牌还包括以下四种元素：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/ur8vfd7mrvw1ja1" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>图 3 The First Son of Mars[SE]</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/qmdyf9dsv3tp676" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<h3 id="实用功能卡">实用功能卡</h3>
+<p>实用功能卡指的是具有可玩性的游戏卡，Parallel 标准游戏卡卡牌稀有度分为 Common、Uncommon、Rare、Legendary、Prime，每种稀有度对应的图文分割线和二维码颜色不同，如图 4 所示，所以，用户在判断卡牌稀有度时主要通过二维码颜色分辨。其中 Prime 卡牌属于非常稀有的，发行版次可能低于 10，因为该卡的功能较为强大，出于游戏公平性考虑，所以该卡被禁止参加排位赛。获得此种卡牌的途径为参加预售，活动赠品或者补充包（类似盲盒）出售随机掉落。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/9f1fsvcikf3rsph" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>图 4 稀有度颜色分类</p>
+<p>除了以上五种稀有度卡牌，还存在一些非标准的稀有度卡牌，例如 SE、PL，这两个版本卡牌与标准卡功能一样，在发行版次或艺术表现形式上略有不同，以图 4 为例。SE 版本二维码颜色为镭射形式，PL 版本二维码颜色为红色。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/67muzu46npi0mnr" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>图 5 GAIA’S CALL 不同版本卡牌</p>
+<h3 id="非实用功能卡">非实用功能卡</h3>
+<p>非实用功能卡包括卡背（Card Back）、概念卡和资产卡（Prime Key、Catalyst Drive），其中概念卡和资产卡的二维码颜色统一为白色。卡背虽然是游戏卡，但是在游戏中并无实用功能，忠实玩家可能会想要选择自己的 Parallel 卡背，或者特殊动画的卡背；概念卡则是作为收藏的艺术品，其价值可能由卡牌制作精美程度或者发行版次决定；资产卡则是较为特殊的一类 NFT，其中 Prime Key 则是治理型 NFT，持有该卡可参与创建提案及投票，或者燃烧 Prime Key，赎回对应比例的 PRIME 代币，燃烧过后的 Prime Key 将变成一张没有任何功能的红色收藏卡，该项目未来的代币经济模型可能将由该卡决定，获取途径为空投、二级市场购买或者补充包购买；Catalyst Drive 需要与 Prime Key 结合使用，总量 150 张，其玩法还要等待官方后续公布，获取途径为二级市场购买或补充包购买。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/qnfz59o2ocovscy" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>图 6 Prime Key、Catalyst Drive</p>
+<p>Parallel 中另一特殊非实用功能卡为 Masterpiece，该卡不带二维码，发行版次仅有 1 张，持有该卡可以获得对应类型卡片（例如标准卡、SE 或者 PL）在二级市场转售时 1% 的版权费，并按季度发放。该卡获取途径为预售、二级市场购买或者补充包购买。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/8thy8lcgddyzh4n" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>图 7 Masterpiece 对应卡牌</p>
+<h3 id="卡牌趣味性">卡牌趣味性</h3>
+<p><img src="https://img.bibiqing.com/news/2021/0820/0h9vqfu52msemps" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<h2 id="发行数据">发行数据</h2>
+<h3 id="发行历史">发行历史</h3>
+<p>Parallel 在 2021 年 3 月 25 日第一次发行 Alpha 卡包，此次预售包含 15 类游戏卡、5 类 Card Back、8 类概念卡，这些游戏卡也被称为 PS15。此次预售约 256 名参与者，共计售出 130 万美元。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/04ffi6ag195s1o5" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>图 8 PS15 初始预售类型</p>
+<p>此后，团队发现这些卡片定价过高，为弥补 PS15 持有者，团队在 5 月份进行了空投补偿计划，此次空投包括 Prime Key、SE 版本游戏卡（含稀有卡）和卡背，详细数据如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/sp2iqwmud92s9uu" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>2021 年 6 月 14 日，Parallel 发布了第一次 Faucet 活动，此次活动发行了 10,000 张【Rug Poll】游戏卡，以及 1 张【Rug Poll】Masterpiece。</p>
+<p>2021 年 7 月 31 日，Parallel 进行了第一次补充包空投（销售），此次空投规格为普通版（4 张 /0.01 ETH）、加强版（3 张 /0.1 ETH）和豪华版（1 张 /0.2 ETH），卡包越贵，获得稀有卡牌的机会越大，而且包括概念卡、Prime Key、Masterpiece、Catalyst Drives，卡包数量共计 13,813 个，最终销售数据如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/u5cjjg8fbhzt8aa" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>图 9 卡包销售情况</p>
+<p>以 Common[SE] 为例，此次卡包中总共包含 15,000，最终发放 12,689 张，2,311 张被退回。所以，此次卡包空投共计发行 49,988 张 NFT，卡包被全部销售出去，累积收到 556.85 ETH，按照 7 月 31 日 1 ETH=$2,440 的价格计算，价值约 136 万美元。</p>
+<p>团队预计在 2021 年 10 月底（或 11 月初）及 2022 年 1 月（待定）进行第三次和第四次 NFT 发行，发行方式均转变为补充包销售。</p>
+<h3 id="二级市场数据">二级市场数据</h3>
+<p>依据 Parallel 当前在 Opensea.io 的销售数据显示，当前 Parallel NFT 持有者人数达 6,000 人次，累积交易量为 13,445 ETH，按照当前 1 ETH=$3,297 的价格计算，价值约 4,433 万美元，位于 Opensea NFT Top 榜单的第 23 位，销售数据较为可观，销售高峰期主要集中在过去一个月。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/e4ebekd8q564lz3" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>图 10 Parallel 过去 30 天二级市场销售历史，数据统计时间为 2021 年 8 月 16 日</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/q0aonygznk1z1lp" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>图 11 不同阶段销售数据对比</p>
+<p>从二级市场的销售数据来看，NFT 的价格与卡牌稀有度、发行版次有较大关系，稀有程度越高、发行版次越少、价格越高，其中一张 Prime 稀有卡【The Priming】最后一次交易历史（2021 年 3 月 27 日）为 26 ETH，最新挂单为 2,000 ETH；Masterpiece 较为早期的交易记录在 1~5 ETH，目前挂单多以 90 ETH 起步；Catalyst Drives 最新成交价（8 月 10 日）为 35 ETH；Prime Key 最新成交价（8 月 10 日）为 7.19 ETH。</p>
+<h2 id="经济模型">经济模型</h2>
+<p>从项目布局（图 12）看，Parallel 是一个以游戏为核心带动的生态链条，比较重要的板块是游戏开发、DAO 治理、代币经济和 NFT 销售，未来可能会衍生皮肤、土地拍卖，动漫、书籍的发售等，但是，现在说这些可能还为时过早。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/oj88ozf6ssubore" alt="研报：简析 NFT 卡牌游戏 Parallel 机制与产品特色"></p>
+<p>图 12 项目布局</p>
+<p><strong>目前比较确定的点是：</strong></p>
+<ol>
+<li>
+<p><strong>持有 Prime Key 即持有代币</strong> ，Prime Key 持有者可以参与 Parallel 的社区治理。Parallel 存在 Paradox 社区投票机制，Prime Key 持有人可以进行提案创建及投票，one key=one vote；Prime Key 持有人也可以选择烧毁该卡片，从而赎回对应比例的 PRIME 代币，而如何平衡治理和股权之间的关系，要看团队后续的手段；首批 Prime Key 总量为 1,500 张，最终流通约 1,000 张，按照二级市场最新成交价格 7.19 ETH 计算，全流通市值约 3,270 万美元。</p>
+</li>
+<li>
+<p>Masterpiece 是 Parallel 中最直接的盈利方式，持有人可获得对应游戏卡（标准卡、SE、PL）在二级市场转售时 1% 的版权费并按季度发放。所以，<strong>其收益可能取决于对应类型游戏卡的发行版次及受欢迎程度</strong> 。另外一点就是，版权费设置为 10%，其中 5% 分配给社区池，4% 分配给开发团队，1% 给 Masterpiece 持有人。</p>
+</li>
+<li>
+<p>Catalyst Drives 需要 Prime Key 激活才能使用，具体玩法还需要等待官方公布，也许就是平衡股权和治理的关键。卡片总量为 150 张，按照二级市场最新成交价 35 ETH 计算，全流通市值约 1,635 万美元。</p>
+</li>
+</ol>
+<p>从经济模型来看，Parallel 当前的产品都由 NFT 实现，包括项目治理，本质上就是代币 NFT 化，而且其治理权与股权是剥离的，而如何平衡两者之间的关系，可能要看 Catalyst Drives 的玩法，所以 Parallel 的代币经济设计有自己的独特性。</p>
+<p>从目前来看，对于该项目而言，Prime Key 可能会是一个比较好的投资途径，但是要考虑的风险点就是 NFT 的流动性可能会相对较差。而且，团队 NFT 发行约七万张，但是目前市场仅流通两百多张，这就意味着多数卡牌可能都还在原始持有人手上，也意味着他们可能会看多这个项目。</p>
+<h2 id="综合评价">综合评价</h2>
+<ol>
+<li>
+<p>从目前披露的信息来看，该项目可能为一款 TCG 卡牌游戏，游戏开发刚刚进行，<strong>游戏机制暂不明晰</strong> ，所以我们无法判断该游戏的可玩性。不过卡牌游戏的参与门槛可能会较高，游戏受众相对较窄，但是这种策略性游戏也相应地会增加用户粘性，游戏生命周期会比较长。而且这款游戏背景设定<strong>具有科幻性、种族特征鲜明，有形成 IP 的潜质。</strong></p>
+</li>
+<li>
+<p>从当前发售的卡牌制作工艺来看，团队美工较为出色，卡牌制作精美，NFT 结合增强现实（AR），一定程度上赋予了卡牌收藏价值；从卡牌设计的复杂程度来看，该款游戏很可能是一款中、大型的游戏，游戏设计的难点在于卡牌玩法之间的平衡与克制。由于团队成员的个人履历未公开，所以我们无从得知其设计团队的水平如何，而从 YouTube 联合创始人的加入与拥护来看，项目团队不会差。</p>
+</li>
+<li>
+<p>Parallel 完整的经济模型还未出来，从当前的公布的信息来看，其代币机制设计具有自己的独特性：首先，治理和股权剥离，如何平衡二者之间的关系可能会是比较重要的事情；其次，Parallel 的另一显著特点就是代币 NFT 化，彰显着项目的新意，但是应当考虑到的一点风险就是 NFT 的流动性相对于代币来说可能会比较差。当然，我们在评估项目的时候，最重要的一点也是要看代币与游戏结合的紧密程度，从而决定代币的价值，对于一个早期项目而言，这一点可能还没办法判断。</p>
+</li>
+<li>
+<p>宣发方面，该项目尚处于早期阶段，项目宣传较少，公开发声地为 YouTube 联合创始人，他的加入使其小范围出圈，但是目前该款游戏只在 NFT 深耕圈子流行，关注的人还较少。</p>
+</li>
+</ol>
+<p>综上来看，Parallel 尚处于早期起步阶段，项目设计有一定的亮点，所以，我们会对该项目保持持续关注。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/27589/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">晚间必读5篇 | 头像NFT为虚拟社交带来身份感</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/27580/">
+                <span class="next-text nav-default">一文读懂混合型智能合约</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本面简介">基本面简介</a></li>
+    <li><a href="#游戏机制">游戏机制</a></li>
+    <li><a href="#产品">产品</a>
+      <ul>
+        <li><a href="#实用功能卡">实用功能卡</a></li>
+        <li><a href="#非实用功能卡">非实用功能卡</a></li>
+        <li><a href="#卡牌趣味性">卡牌趣味性</a></li>
+      </ul>
+    </li>
+    <li><a href="#发行数据">发行数据</a>
+      <ul>
+        <li><a href="#发行历史">发行历史</a></li>
+        <li><a href="#二级市场数据">二级市场数据</a></li>
+      </ul>
+    </li>
+    <li><a href="#经济模型">经济模型</a></li>
+    <li><a href="#综合评价">综合评价</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

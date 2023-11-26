@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一份关于零知识证明的不完整指南：为什么 ZK 如此重要？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="ZK proof 是证明者说服验证者某些陈述是真实的，但除了陈述是真实的之外不透露其他信息的一种方式。" />
+<meta name="keywords" content="零知识证明" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/37076/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？" />
+<meta property="og:description" content="ZK proof 是证明者说服验证者某些陈述是真实的，但除了陈述是真实的之外不透露其他信息的一种方式。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/37076/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-24T00:00:00+00:00" />
+
+<meta itemprop="name" content="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？">
+<meta itemprop="description" content="ZK proof 是证明者说服验证者某些陈述是真实的，但除了陈述是真实的之外不透露其他信息的一种方式。"><meta itemprop="datePublished" content="2022-04-24T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-24T00:00:00+00:00" />
+<meta itemprop="wordCount" content="10682">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"/>
+<meta name="twitter:description" content="ZK proof 是证明者说服验证者某些陈述是真实的，但除了陈述是真实的之外不透露其他信息的一种方式。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一份关于零知识证明的不完整指南：为什么 ZK 如此重要？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-04-24">
+      2022-04-24
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 10682 字 -
+        预计阅读 22 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="关于-zk">关于 ZK</h2>
+<p>用一句话形容零知识（ZK）证明：ZK proof 是证明者说服验证者某些陈述是真实的，但除了陈述是真实的之外不透露其他信息的一种方式。ZK 是为匿名而设计的。想象一下，我们可以证明我们有一个有效的 ID，而无需验证者知道我们的真实姓名或 ID。</p>
+<p>这里有一个更生动的例子。爱丽丝和鲍勃正在玩数独。爱丽丝想向鲍勃展示她找到了答案。但是，她不想透露任何关于答案的信息，因为 Bob 仍在研究它。你将如何设计这个证明？</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_31ltclme08.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>答案很简单。我们把数独写成卡片，面朝下。鲍勃可以随机选择一列、一行或一个块。爱丽丝拿走那一列、那个行或那个块，然后洗牌。Bob 可以通过检查 1-9 的卡片来验证正确性。通过不断地执行这一步，鲍勃可以说爱丽丝知道答案，但鲍勃在验证后不知道答案。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_q0384cq3wn.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>如果您仍然无法理解，请观看此视频。UCLA CS 教授将在五个不同的层次上解释 ZK。你一定会理解它。</p>
+<h2 id="常见的零知识证明系统">常见的零知识证明系统</h2>
+<p>在全面检查 ZK 证明系统之前，请注意 ZK-SNARK 指的是一类方案的名称，而 ZK-STARK 是特定方案的名称。</p>
+<p>让我们从 ZK-SNARK 开始。SNARK 代表简洁的非交互式知识论证。SNARK 不同于其他 ZK 证明系统，因为它的信任设置阶段，“N”代表了：</p>
+<ul>
+<li>
+<p>简洁：证明大小和验证时间小于原始计算（语句）。</p>
+</li>
+<li>
+<p>非交互：证明者和验证者不需要为每一轮来回通信。相反，证明者和验证者需要完成初始设置阶段。即使他们错过了设置阶段，公共验证者也可以稍后加入验证。</p>
+</li>
+<li>
+<p>论据：具有极大计算能力的证明者可以通过生成错误的证明来欺骗验证者。发生这种情况时，公钥/私钥加密也会被破坏。</p>
+</li>
+<li>
+<p>知识：证明者需要知道一些秘密才能进行证明。</p>
+</li>
+</ul>
+<p><strong>ZK-SNARK 的问题在于信任建立阶段</strong> 。信任设置阶段生成一个参考字符串。如果参考字符串泄露，任何人都可以做假证明。此外，在多方之间协调这种信任建立阶段也很复杂。参考字符串只能在一个程序（电路）中使用。因此，不可能让 ZK-SNARK 具有用于一般计算的单一信任设置。另一个问题是参考字符串不可升级。如果我们升级程序，我们需要重新运行信任设置阶段。</p>
+<p>为了解决这个问题，有两种方法：</p>
+<ul>
+<li>
+<p>透明设置：信任设置阶段设置一个 CRS（通用参考字符串）。如果 CRS 泄露，ZK 证明系统不会受到伤害。Fractal、Halo、SuperSonic 和 ZK-STARK 使用这种方法。这种方法的问题是证明的大小可能以 kB 为单位。这对于区块链领域来说太大了。</p>
+</li>
+<li>
+<p>通用设置：设置创建一个秘密参考字符串，但它是结构化的。因此，它不仅可以在一个程序中使用。Marlin、SuperSonic-RSA 和 Plonk 使用这种方法。</p>
+</li>
+</ul>
+<p>业界常用的 ZK 证明系统如下：</p>
+<ul>
+<li>
+<p>Groth16：在 Zcash 中使用。它速度快，证明规模小，验证时间恒定，但信任设置阶段需要为每个程序运行。</p>
+</li>
+<li>
+<p>Sonic：支持通用设置。SRS（结构化参考字符串）与受支持程序的大小成线性关系。证明大小是固定的，但验证成本很高。另一方面，它使一般计算成为可能。</p>
+</li>
+<li>
+<p>分形：允许递归。证明尺寸很大。</p>
+</li>
+<li>
+<p>Halo：支持递归。它并不简洁，因为验证时间是线性的。大多数 ZK 应用程序都基于 Halo2。</p>
+</li>
+<li>
+<p>SuperSonic：第一款实用的透明 ZK-SNARK。</p>
+</li>
+<li>
+<p>Marlin：结构化引用字符串（SRS）；通用且可更新；比 Sonic 更好的证明和变化时间，但比 Groth16 慢。</p>
+</li>
+<li>
+<p>Plonk：通用设置；多方按顺序加入设置阶段。这使许多参与者很容易加入信任设置阶段；PLONK 使用 Kate 承诺而不是多项式承诺（回想一下，ZK-SNARK 的第一步是将计算转换为多项式问题）。Plonk 是现代流行的。许多 ZK 证明系统都基于 Plonk，它们被命名为 Plonkish。</p>
+</li>
+</ul>
+<p>这是基于这项研究的基准。CRS 是通用参考字符串。SRS 是在信任建立阶段生成的结构引用字符串。证明大小决定了基础层的存储成本——证明者和验证者的运行时间会影响计算资源。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_hhr179y2cm.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_17sqiqg7cb.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>来源：比较通用 zk-SNARKs</p>
+<p>您可以在以下研究中找到更多基准：</p>
+<ul>
+<li>
+<p>使用 isekai 对零知识证明进行基准测试</p>
+</li>
+<li>
+<p>零知识证明：STARKs vs SNARKs</p>
+</li>
+<li>
+<p>社区提案：（零知识）证明系统的基准框架</p>
+</li>
+<li>
+<p>不同 zk-SNARK 的比较</p>
+</li>
+</ul>
+<p>总结一下，如果你看到一个新的零知识证明系统，你应该关心什么数字？</p>
+<ul>
+<li>
+<p>1 tx 和 10 txs 的证明时间</p>
+</li>
+<li>
+<p>1 tx 和 10 txs 的验证时间</p>
+</li>
+<li>
+<p>1 tx 和 10 txs 的证明大小</p>
+</li>
+<li>
+<p>可信设置阶段</p>
+</li>
+<li>
+<p>参考字符串大小</p>
+</li>
+<li>
+<p>CRS（通用参考字符串）支持</p>
+</li>
+<li>
+<p>可升级</p>
+</li>
+<li>
+<p>SRS（结构化参考字符串）支持</p>
+</li>
+<li>
+<p>递归支持</p>
+</li>
+<li>
+<p>后量子安全</p>
+</li>
+<li>
+<p>密码学假设</p>
+</li>
+</ul>
+<p>ZK 是近几年来应用的。ZK 的两个主要论点是 rollup，它提高了计算效率和隐私。对于私人观点，这是直观的，因为 ZK 除了语句本身之外，不与验证者共享任何知识。Rollup 论点在很大程度上依赖于 ZK 的两个特征：简洁和递归。简洁的特性有助于验证者节省许多计算资源，而不是重新运行整个程序。递归特性有助于节省存储空间。通过递归，区块链可以保持固定的大小。这也有利于去中心化，因为微小的区块链节点不需要高端硬件。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_ruvf8g5v0i.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<h2 id="零知识zk应用开发">零知识（ZK）应用开发</h2>
+<p>独立开发 ZK 应用，开发者需要具备以下研发技能：</p>
+<ul>
+<li>
+<p>算术技能的算法和低级优化。开发人员需要这种技能来解决有限域算术、多项式承诺和椭圆曲线中的问题。</p>
+</li>
+<li>
+<p>有关 ZK 证明系统（如 ZK-SNARK、Plonkish 和信任设置过程）的密码学知识。开发者需要选择合适的零知识证明系统，他们可能需要对其进行定制。</p>
+</li>
+<li>
+<p>电路编程技巧。开发人员需要为一些密码学原语（例如 Merkle Trees 和 Hash）开发约束。</p>
+</li>
+<li>
+<p>应用程序和加密协议开发。</p>
+</li>
+</ul>
+<p>有效的开发工具不仅可以加快开发过程，还可以降低复杂性。例如，像 Circom 这样的工具负责处理低级代数和证明系统。开发人员可以忽略代数和 ZK 证明系统，而专注于编程和应用程序开发。</p>
+<h2 id="什么是-rollup">什么是 rollup</h2>
+<p><strong>机制</strong></p>
+<p>rollup 的概念很简单。由于链上计算是扩展的，因此 rollup 将计算置于链下，并且只将结果存储在链上。</p>
+<p>Merkle 树的状态根存储在 rollup 合约中。根可以用来验证叶子的存在。智能合约知道如何用信息批量更新状态，状态根切换到新的状态根。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_9gammgwjok.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_i789thihce.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：rollup 指南不完整 (vitalik.ca)</p>
+<p>ZK rollup 批量使用 ZK proof 来验证新的状态根是否正确。ZK 证明可以用来验证批量执行 txs 后，我们可以批量获取新的状态根。验证者无需执行即可验证计算的正确性，验证者甚至不会知道执行了什么。简洁的特性有助于 ZKRU（ZK rollup）规模化。</p>
+<p>Optimistic Rollup 不如 ZKRU 完美。例如，由于依赖欺诈证明，ORU 的 TPS 较少，提款期较长。因此，一些 ORU 正在将 ZK 集成到他们的解决方案中。通过这种方式，他们可以提高 TPS 并缩短提款期。例如，他们可以将 ZK 添加到状态转换中，以缩短防欺诈时间。</p>
+<p><strong>角色</strong></p>
+<p>rollup 中包含三个角色：</p>
+<ul>
+<li>
+<p>用户：用户在 Layer2 上提交 txs。他们将资产存入 Layer2。</p>
+</li>
+<li>
+<p>Rollup 运营方：Rollup 运营方使网络保持运行。他们生成证明、执行 txs、将 txs 分批并挑战欺诈证明。</p>
+</li>
+<li>
+<p>基础层：这一层保证了 Layer2 的安全，是共识所在。Layer2 最常见的基础层是以太坊</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_0zq3auohrr.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：从第一原理理解 Rollup 经济学</p>
+<p><strong>经济结构</strong></p>
+<p>对于 Layer2 的经济来说，最重要的是成本和收入。</p>
+<p>对于 Layer2，我们可以将成本分解为以下内容：</p>
+<ul>
+<li>
+<p>证明成本（对于第 2 层）</p>
+</li>
+<li>
+<p>状态转换</p>
+</li>
+<li>
+<p>基础层 Tx 成本</p>
+</li>
+<li>
+<p>基础层的数据成本</p>
+</li>
+</ul>
+<p>网络的一项主要成本是数据存储。此图表说明了数据的存储方式。首先，用户将数据 (txs) 发送给汇总运营商。然后汇总操作员将大量数据（txs）打包成批次并发布到基础层。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_yqn0s1oz2y.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：从第一原理理解 Rollup 经济学</p>
+<p>此图表说明了 Rollup 为基础层支付的费用及其收入。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_2fnslg3nmh.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：L2 Fees.info，2022 年 3 月 28 日</p>
+<p>Layer2 的共同收入是费用和 MEV 价值。费用因网络状态而异，MEV 因用户的交易而异。此外，Layer2 可能会发行新的代币。代币将成为 Rollup 运营商的奖励。</p>
+<p><strong>常见的 ZK Rollup</strong></p>
+<p>此图显示了不同 Layer2 的现状。Arbitrum 主导着整个市场。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_l7sps7rv6g.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>来源：https://l2 beat.com/2022 年 3 月 28 日</p>
+<p>该图说明了不同链使用的不同技术。这是一个简短的解释：</p>
+<ul>
+<li>状态验证</li>
+</ul>
+<ol>
+<li>
+<p>欺诈证明：欺诈证明允许白名单中的参与者观察链来证明状态是不正确的。</p>
+</li>
+<li>
+<p>ZK 证明 (ST)：ZK-STARKS 是确保状态正确性的零知识证明。</p>
+</li>
+<li>
+<p>INT：交互式证明（INT）需要随着时间的推移进行多次交易才能解决。</p>
+</li>
+<li>
+<p>SN：仅需要信任设置 Exits：从网络中退出需要经过一段时间才能受到质疑。Internet 网络状态未选中。</p>
+</li>
+<li>
+<p>1 R：单轮证明（1 R）只需要单笔交易即可解决。</p>
+</li>
+</ol>
+<ul>
+<li>数据可用性</li>
+</ul>
+<ol>
+<li>
+<p>链上：证明构建所需的所有数据都在链上发布。</p>
+</li>
+<li>
+<p>外部 DAC：证明构建完全依赖于未在链上发布的数据。存在一个数据可用性委员会 (DAC)，其任务是保护和提供数据。</p>
+</li>
+<li>
+<p>外部：证明构建完全依赖于未在链上发布的数据。</p>
+</li>
+</ol>
+<ul>
+<li>可升级性</li>
+</ul>
+<ol>
+<li>
+<p>是：保护系统的代码可以任意更改，恕不另行通知。</p>
+</li>
+<li>
+<p>21 天或无延迟：有 21 天的延迟，除非它被 9/15 安全理事会多重签名覆盖。</p>
+</li>
+</ol>
+<ul>
+<li>定序器（Sequencer）故障</li>
+</ul>
+<ol>
+<li>
+<p>使用 L1 进行交易：用户能够通过 L1 提交交易并强制将其包含在 L2 上。</p>
+</li>
+<li>
+<p>强制交易/退出到 L1：用户可以通过 L1 提交请求来强制定序器包含交易或提款交易。用户需要通过系统外的方式寻找交易对手方。如果定序器出现故障，用户可以使用退出舱口提取资金。</p>
+</li>
+<li>
+<p>强制退出到 L1：用户可以通过 L1 提交请求来强制排序器包含他们的提款交易。如果定序器出现故障，用户可以使用退出舱口提取资金。</p>
+</li>
+<li>
+<p>提议区块（ZK）：用户需要运行自己的节点并使用它来提议包含其他审查交易的新区块。提出新区块需要创建计算量非常大的 ZK 证明。</p>
+</li>
+<li>
+<p>退出到 L1：用户只能提交 L1 提款请求。之后，用户带着他们的资金退出系统。</p>
+</li>
+</ol>
+<ul>
+<li>验证失败：</li>
+</ul>
+<ol>
+<li>
+<p>逃生舱（MP）：用户可以通过提交资金的默克尔证明来不信任地退出他们的抵押品。头寸将使用最后一批状态更新的平均价格平仓。</p>
+</li>
+<li>
+<p>提议区块：用户需要运行自己的节点并使用它来提议新区块以替换验证者。</p>
+</li>
+</ol>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_vppikogn18.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_lhoyvr1bew.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>来源：https://l2 beat.com/2022 年 3 月 28 日</p>
+<p>以下是 Ethhub 上列出的 ZKRU 的优缺点：</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>
+<p>减少每次用户转移的费用。</p>
+</li>
+<li>
+<p>比 Optimistic Rollup 和 Plasma 更快。</p>
+</li>
+<li>
+<p>区块将在一个鼓励去中心化的并行计算模型中计算。</p>
+</li>
+<li>
+<p>每个事务中包含的更少数据增加了第 2 层的吞吐量和可扩展性。</p>
+</li>
+<li>
+<p>它不需要像 Optimistic Rollup 这样的欺诈游戏验证，它可以将提款延迟最多两周。</p>
+</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>
+<p>计算零知识证明的难度将需要数据优化以获得最大吞吐量。</p>
+</li>
+<li>
+<p>ZK Rollup 的初始设置促进了中心化方案（请参阅安全注意事项）。</p>
+</li>
+<li>
+<p>安全方案假定了某种程度的无法验证的信任。</p>
+</li>
+<li>
+<p>量子计算对破解区块链构成威胁。</p>
+</li>
+</ul>
+<p>目前，大多数可用的 ZK Layer2 仅具有有限的功能，例如支付。ZKSync 是 Gitcoin 使用的一种支付层。还有启用了自定义 VM 的 ZK Layer2。这些自定义 VM 与 EVM 不兼容，例如 (StarkEx + Cairo, zkSync 1.0 + Zinc)。</p>
+<p>ZKEVM 是所有 ZKRU 的下一个里程碑。ZKEVM 解决方案分为三个级别：</p>
+<ul>
+<li>
+<p>共识层面：现阶段，ZKEVM 相当于以太坊上的 EVM。它为以太坊上的状态根生成证明。</p>
+</li>
+<li>
+<p>字节码层面：ZK 证明系统在这个 ZKEVM 中发挥着重要作用。在这个阶段，ZKEVM 生成的状态根与以太坊 EVM 不兼容。Hermez 的 Scroll 采用了这种方法。</p>
+</li>
+<li>
+<p>语言层面：在这种状态下，没有真正的 ZKEVM。转译器将 Solidity 转换为与 EVM 完全不同的 ZK 友好型 VM。zkSync 和 Starkware 采用这种方法。</p>
+</li>
+</ul>
+<p>在以太坊路线图‌中，以太坊将集成共识级别的 ZKEVM。</p>
+<p>来自 EF 的 Justin Drake 预计会在 2022 年看到字节码级别的 ZKEVM，例如 Hermez 或 Scroll，但有一些限制：</p>
+<ul>
+<li>
+<p>与以太坊当前的 gas 限制相比，其 gas 限制较小。</p>
+</li>
+<li>
+<p>由于计算困难，中心化证明者。用户可能会在 2023 年开始使用 GPU 运行他们的证明器，到 2024 年，SNARK 证明 ASIC。硬件的发展将从 CPU、GPU、FPGA 转向 ASIC。</p>
+</li>
+<li>
+<p>由于开发的复杂性，会存在错误。</p>
+</li>
+</ul>
+<p>为了进一步降低成本，一些 ZKRU 正在实施 Volition，改变它们的基础层。他们计划将数据存储在链下或链上。</p>
+<p>市场上有 16 个 ZKRU，其中 7 个已经发布了代币。总市值为 $150 亿，约占整个加密市场的 0.67%。</p>
+<p><strong>Polygon</strong></p>
+<p>Polygon 目前在 4 个 ZK 产品上工作：</p>
+<ul>
+<li>
+<p>Miden‌：拥有 1000+ TPS 的实验通用计算 ZKRU；15 分钟退出；5 秒出块时间；支持隐私。</p>
+</li>
+<li>
+<p>Nightfall‌：Nightfall 是一个启用 ZK 以提供私人交易的 ORU。大约 9000 gas/tx 和 110 TPS。它是为安永设计的。</p>
+</li>
+<li>
+<p>Hermez‌：与 EVM 兼容的 ZKRU；2000 TPS。该网络目前处于活动状态。每批次的平均 txs 为 1。每日 tx 数量几乎为零（数据来自资源管理器）。</p>
+</li>
+<li>
+<p>Zero‌：启用递归的通用计算 ZKRU；0.17 秒生成证明；45 kb 证明大小；一个账户只占用 5 个比特。</p>
+</li>
+</ul>
+<p><strong>zkSync</strong></p>
+<p>zkSync‌ 于 2019 年 12 月启动。zkSync 是由 Matter Labs 构建的 ZKRU。它基于 Plonk 和可信赖的。目前，它支持支付功能和有限的智能合约功能，使用定制的编程语言 Zinc。</p>
+<p>zkSync 2.0 测试网于 2 月上线，特色 ZKEVM。Matter Labs 将大部分 OPCODE 制成电路以实现 EVM 兼容性。目前，它不支持 ADDMOD、SMOD、MULMOD、EXP、CREATE2 和 KECCAK256。在这种方法中，Solidity 将成为一等公民。</p>
+<p>zkSync 2.0 中的 gas 将根据当前的 Layer1 gas 价格（Layer1 上的数据存储成本）和 ZK 证明生成成本而波动。</p>
+<p>为了进一步提高 TPS 并降低成本，zkSync 将推出 ZKPorter。用户可以选择将他们的账户数据存储在 ZKPorter 上，这比基础层的成本要低得多。如果一个账户存储在 ZK Porter 上，它的所有 tx 只能存储在 ZKPorter 上。它们不能存储在以太坊上。ZKPorter 将由 zkSync 代币持有者保护。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_e88a42paiz.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_l0a95a0g04.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：Dune，2022 年 3 月 28 日</p>
+<p><strong>Starkware</strong></p>
+<p>Starkware 由 Zcash 的核心团队成员于 2018 年 5 月启动。</p>
+<p>Starkware 有两种解决方案：StarkEx、StarkNet。</p>
+<p>StarkEx 是一个 SaaS，为 dYdX、DeverseFi、Immutable、Sorare 等项目设计 ZKRU。dYdX 相当成功。以下是一些关于 dYdX 的指标。它每周有大约 4,000 名活跃交易者。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_rae2jn5pin.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_s6j4r36bti.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>来源：Layer 2 公共仪表板・Metabase (dydx.exchange)</p>
+<p>StarkNet 是无需许可的版本。StarkNet 不兼容 EVM。它使用 Cairo 编写智能合约。</p>
+<p>Starkware 也在开发 ZKEVM。但是，他们有不同的方法。他们使用 Warp 将 Solidity 编写的智能合约转译到 StarkNet 上的 Cairo。这种方法不如 zkSync。</p>
+<p>与 EVM 兼容的 StarkNet Alpha 版于 2021 年 11 月推出。目前，每日交易数为 1033（数据来自 Explorer）。</p>
+<p>同样，Starkware 也在研究链下存储。用户可以选择在以太坊或链下处理他们的交易。</p>
+<p><strong>路印（Loopring）</strong></p>
+<p>Loopring 是一个 ZKRU DEX，支持低费用的现货交易，具有 2000 TPS。</p>
+<p>Loopring 于 2018 年发行了其代币 LRC。目前，Loopring 的市值为 13 亿美元。Loopring 共有 65000 用户，每天增加 167 个独立用户，每天有 10896 笔交易（数据来自浏览器‌）。</p>
+<p>dYdX 是 Loopring 的强大竞争对手。未来，当 ZKEVM 流行起来时，会有更多的竞争者加入这个市场，因为在 ZKEVM 上的开发比开发新的 Layer2 DEX 更快。</p>
+<h2 id="当前状态">当前状态</h2>
+<p>区块链空间已进入多链时代。不同的链有不同的重点，各有特点，不光是纸上谈兵。我们在过去看到了许多具有高 TPS 的新链。现在，这些链拥有强大的生态系统和特色应用。由于开发工具，创建具有高 TPS 的新链比以前更容易。因此，现在我们更强调特色应用程序，而不是纸质数字。</p>
+<p>Moonbeam 就是一个很好的例子。它具有某种类似 Polkadot 的基础层 和高 TPS。这看起来与大多数 Layer2 相似。在发布之前，moonbeam 与许多项目合作，比如寿司。它以完整的生态系统启动，如顶级 DEX、借贷和跨链桥，但缺乏重点和特色应用程序。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_s7crtlgdz2.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：Defillama，2022 年 3 月 29 日</p>
+<p>因此，layer2 需要具有与其他高 TPS 链竞争的特性。在 layer2 生态系统中会有几个潜在的机会：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_r3211tubb9.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：Defillama dYdX，2022 年 3 月 29 日</p>
+<ol>
+<li>
+<p>利用 Layer2 的高吞吐量和较低费用的应用程序。一个例子是 dYdX。作为 DEX，它提供了类似 CEX 的体验。</p>
+</li>
+<li>
+<p>由于所有 Layer2 都使用相同的基础层，因此构建跨 layer2 应用程序会更安全。例如，聚合 layer2 之间的碎片化流动性。Starkware 提出 dAMM 来解决这个问题。dAMM 允许 layer1 LP 向 layer2 交易者公开。</p>
+</li>
+<li>
+<p>开发工具包，帮助开发者快速构建应用特定的 layer2。这可能看起来像 Polkadot Substrate 和 Cosmos SDK。这个想法是，如果应用程序变得更大，它将在基础层消耗更多资源。为了降低计算成本，它要么构建它的链，移动到 layer2，要么构建它的 layer2。我们看到 Axie Infinity 面临同样的问题。当时，建链是唯一的解决方案。但是，一条分离的链是孤立的，无法从基础层生态系统中受益。迁移到 layer2 看起来不错，但不够灵活。该应用程序面临与基础层相同的约束。因此，最有希望的解决方案是拥有它的 layer2。如果跨 Layer2 方便并且与基础层很好地集成，那么应用程序不会因为离开基础层而失去任何东西。</p>
+</li>
+<li>
+<p>更好地与基础层集成。用户感觉不到 layer2 和基础层有什么区别。这包括资产桥和协议通信。</p>
+</li>
+<li>
+<p>不同种类的虚拟机。更强大的 ZKEVM 或 ZKWASM。</p>
+</li>
+<li>
+<p>Layer2 在其他链上。不同的链有不同的集中度。ZKRU 也向他们承诺。ZK Link 团队已在 Solana 中实施 Groth16。Solana 专注于吸收传统金融机构。这些机构需要 ZK 来保护其客户的隐私。</p>
+</li>
+<li>
+<p>ZK 桥。几乎所有的桥梁都不是无需信任的。对于网络参与者，我们至少需要信任某个人，比如预言机。虽然网络参与者有存款，但很难计算削减条件。理想的无信任桥是 ZK 桥。轻客户端捕获区块并生成证明。这样，我们就不需要相信神谕所说的了。由于 SNARK，我们可以以很小的成本验证证明。当前的问题是如何在 ZK 电路中构建区块验证器。此外，可扩展性很糟糕。轻客户端与区块链共识相结合。因此开发者需要为不同的链构建不同的电路。</p>
+</li>
+<li>
+<p>将 ZK 算法商业化。有许多针对专业问题的商业化算法，例如用于线性规划的高级求解器和 Microsoft 的 GPT-3。但是，如果 ZK 是高度专业的，并且只有选定的开发人员才能做到这一点，那么就有商业化算法的空间。目前，大多数 ZK 从业者都受过高等教育并拥有 CS 博士学位，数学或密码学学位。</p>
+</li>
+<li>
+<p>芯片和云计算。如果更多的用户迁移到 ZKRU，那么对计算能力的需求就会越来越大。节点运营商需要更多的计算能力来竞争打包交易，这是有利可图的。在以太坊路线图中，以太坊将集成 ZKEVM，这意味着以太坊矿工也需要计算 ZK 证明。专用芯片可以赋予节点运营商更多的计算能力和更低的功耗。云计算可以让更多用户访问 ZKRU 节点运营。这种对专用芯片和云计算不断增长的需求可能与我们在以太坊采矿业中看到的相似。矿工首先使用 CPU 和 GPU。然后他们改用专用的 FPGA 和 ASIC。云挖矿在以太坊和比特币挖矿行业已经存在很长时间了。另一个例子是人工智能芯片。现在每部 iPhone 都有专用的 AI 芯片。如果 ZK 是隐私的新标准技术，那么每部 iPhone 都会有 SNARK ASIC。</p>
+</li>
+<li>
+<p>递归启用 ZKRU。区块链需要平衡安全性、去中心化和 TPS。区块链大小在这里起着重要作用。在传统区块链中，更大的区块链意味着中心化，因为节点需要先进的硬件。然而，更小的区块链意味着更低的 TPS。很难平衡 TPS 和去中心化。现在递归将改变这一点。递归可以在不损害 TPS 的情况下最小化区块链大小。</p>
+</li>
+</ol>
+<h2 id="隐私">隐私</h2>
+<p>ZK 已经在许多隐私项目中使用。例如，Tornado cash、Zcash、黑暗森林。</p>
+<p>隐私项目分为三个阶段：</p>
+<ol>
+<li>
+<p>交易隐私：用户可以隐藏他们的交易</p>
+</li>
+<li>
+<p>一般计算隐私：目前以太坊上的所有计算过程都是公开的。任何人都可以看到输入、输出和状态转换。</p>
+</li>
+<li>
+<p>函数隐私：有时函数的名称会泄露信息。例如，mint () 通常表示铸造代币。</p>
+</li>
+</ol>
+<p>隐私项目的总市值约为 100 亿美元，约占整个加密市场的 0.45%。每日交易量约为 $10 亿美元。</p>
+<p><strong>Tornado Cash</strong></p>
+<p>Tornado Cash 是一种基于智能合约的隐私交易工具。它用于隐藏现金流。它现在支持 Ethereum、BSC、Polygon、Optimism、Arbitrum、Gnosis 和 Avalanche。</p>
+<p>为了可用性，它实现了隐私。充值、等待、提现，用户可以拿到干净的钱。</p>
+<p>ZK 用于用户的存款和取款过程。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_simcdd1rw5.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_bg1i4kllgm.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：Dune，2022 年 3 月 28 日</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_wl8bl7uo1y.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：Trading View 2022 年 3 月 28 日</p>
+<p><strong>Zcash</strong></p>
+<p>Zcash 是使用 zk-SNARK 实现私密交易的区块链。与 Tornado Cash 不同，Zcash 自定义区块链以实现隐私交易。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_z1gdnb56jg.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：2022 年 3 月 28 日 Zcash 交易图表</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_w08oojp7uv.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：Trading View 2022 年 3 月 28 日</p>
+<p><strong>Zecrey</strong></p>
+<p>Zecrey 是一款支持 Ethereum、Polygon、BSC、Near 和 Avalanche 的隐私支付应用程序。它处于隐私的第一层，交易隐私。Zecrey 提供了一个浏览器钱包来帮助用户私下转移和交换代币。要私下交换和转移，用户需要将代币存入由 Plonk 提供支持的 Zecrey layer2。layer2 中发生的一切都可以是私有的。Zecrey layer2 也支持跨链交换。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_vnfpnszug8.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：Zecrey</p>
+<p>目前，Zecrey 每天大约有 10 笔交易（数据来自资源管理器）</p>
+<p><strong>Suterusu</strong></p>
+<p>Suterusu 是一款支持 Ethereum、BSC、Fantom 和 Polygon 的私人支付应用程序。它使用 layer2 来保护用户的交易隐私。它还有一个跨链桥，可以在 ETH 和 BSC 之间转移 $SUTER。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_95tr6ph87e.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：Suterusu</p>
+<p>Suterusu 共有 15000 位用户和 24000 美元存款。用户增量停滞不前。它的市值约为 1000 万美元。</p>
+<p><strong>黑暗森林</strong></p>
+<p>黑暗森林是一款 MMO。玩家需要向其他星球发送能量来占领它们。行星的位置是保密的。玩家需要自己找到这些行星（哈希碰撞）。ZK 用于证明位置相关的操作：</p>
+<ul>
+<li>
+<p><strong>行星初始化</strong></p>
+</li>
+<li>
+<p><strong>行星资源运动</strong></p>
+</li>
+</ul>
+<p>v0.6 第一轮，1700 名玩家加入游戏，700 人进入下一轮。在这一轮中，玩家完成了 200 万笔交易，花费了大约 1.5 万亿的 gas。假设它在以太坊上，按 80 gwei 的价格。所以总 gas 将花费 120 ETH。</p>
+<p><strong>Stealth AirDrop</strong></p>
+<p>Stealth AirDrop 允许用户匿名获得空投。用户首先使用他们的空投钱包来生成证明。然后他们可以使用其他钱包来获取带有证明的空投代币。</p>
+<p>A16 z 也实现了类似的东西 a16z/zkp-merkle-airdrop-contracts‌ (GitHub.com)。</p>
+<p>这个例子展示了 ZK 在投票中的应用。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_t5edrc2z0i.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：nalinbhardwaj/stealthdrop：使用 ZK-SNARKs 的匿名空投（GitHub.com）</p>
+<p><strong>zkProof of Buffiness</strong></p>
+<p>该项目在 ETHDanver 上亮相。用户可以生成 ZK 证明来证明他们有一个 buffiness，而不需要透露除用户的 Buffiness 之外的任何关于他们自己的信息。</p>
+<p>这是 ZK 在 Identity 中的一个应用。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_d9dvdbshih.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>来源：zkPoB</p>
+<p><strong>总结起来</strong></p>
+<ol>
+<li>
+<p>小型隐私市场。隐私项目很早就开始了。Zcash 始于 2016 年。然而，整个隐私市场仅占整个加密市场的 0.45%。</p>
+</li>
+<li>
+<p>受益于更高的隐私标准。用户在不牺牲可用性的情况下追求更强大的隐私保护。尤其是在手机行业，谷歌和苹果正在推动更严格的隐私标准。欧盟提出了保护消费者隐私的法规。像 let&rsquo;s encrypt 这样提供 SSL 证书的基础设施公司可以从中受益。未来，ZK 可能会被这些大公司采用，ZK 基础设施将有巨大的机会。</p>
+</li>
+<li>
+<p>吸引机构的必备品。大型机构有责任保护客户的隐私，一些区块链正试图加入这些大型机构。对于这种情况，ZK 将是必须的。</p>
+</li>
+<li>
+<p>受益于 DAO 治理和身份。匿名是民主治理的一个重要方面。ZK 可以授权隐私保护治理，让参与者自己做出决定，而不会被其他人的决定分散注意力。身份也可以从隐私中受益。用户可以在不显示实际地址的情况下透露其身份。</p>
+</li>
+<li>
+<p>忽略零知识，关注产品可用性。ZK 可以更好地保护隐私，但一个产品并不是 ZK 的全部。ZK 更注重技术，我们需要强调产品的可用性。通常更多的隐私意味着糟糕的可用性，但可用性是最关键的兼容性。因此，更多地关注可用性、市场和团队。</p>
+</li>
+</ol>
+<h2 id="其他有趣的项目">其他有趣的项目</h2>
+<p><strong>ZKRepel</strong></p>
+<p>ZKRepel 出现在第 13 轮 Gitcoin 捐赠计划 GR13 并获得了 5000 美元。这是 ZK 生态的在线游乐场。开发人员无需设置本地开发环境，即可在 ZKRepel 中快速编写和测试电路。它类似于混音。</p>
+<p>我们看到了从本地开发到基于云的开发的范式转变。有 Codesandbox、Codepen、Codespaces 等著名产品。有了这些产品，开发人员可以随时随地持续工作，快速搭建新的开发环境。开发环境作为基础设施是当今大趋势。这是 GitHub 提出的，GitHub 用 Codespaces 实践了它。</p>
+<p>没有关于 ZK 开发者的明确统计数据。但是，从 GitHub 上的数据来看，它比 Solidity 开发者少 500 多倍。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_dulaibheje.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：ZKRepel</p>
+<p><strong>查找更多 ZK 项目</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/20_s6oq0f00m7.png" alt="一份关于零知识证明的不完整指南：为什么 ZK 如此重要？"></p>
+<p>资料来源：如何资助你的 ZK 项目？</p>
+<p>这里有一些专注于 ZK 项目的 VC 或赠款：</p>
+<ul>
+<li>
+<p>ZKTech Gitcoin Grants‌：Gitcoin 第一轮在 19 个项目中匹配 10 万美元。</p>
+</li>
+<li>
+<p>0 xPARC 捐赠计划‌：支持以太坊和其他去中心化平台上的应用程序级创新。</p>
+</li>
+<li>
+<p>zkDAO‌：新推出的 2 亿美元资金，由 zkSync 和 BitDAO 支持，以支持 zkSync 生态系统。2 亿美元中的 7.5% 将用于赠款。</p>
+</li>
+<li>
+<p>Polygon 零知识基金</p>
+</li>
+<li>
+<p>Aztec Grants‌：目前专注于桥梁、工具和分析。</p>
+</li>
+<li>
+<p>Harmony ZK Fund：用于 ZK 和隐私研究的 1000 万美元基金。</p>
+</li>
+<li>
+<p>ZK Validator‌：专注于 ZK 的基金。主要投资者包括 Aztec、Penumbra、Ironfish、Anoma、zkSync、Aleo、Diversfi</p>
+</li>
+<li>
+<p>Aleo 的 ZPrice‌</p>
+</li>
+</ul>
+<h2 id="结论">结论</h2>
+<p>ZK 是一项非常有前途的技术，可以将不可能的事情变为可能。近年来，这里发生了很多突破。这些突破，如更强的性能、可升级性和无需信任设置，将 ZK 推向了应用阶段。因此，如果我们要查看 ZK 项目，我们需要关心这些理论数字：</p>
+<ul>
+<li>
+<p>证明时间</p>
+</li>
+<li>
+<p>验证者时间</p>
+</li>
+<li>
+<p>证明大小</p>
+</li>
+<li>
+<p>可信设置阶段</p>
+</li>
+<li>
+<p>参考字符串大小</p>
+</li>
+<li>
+<p>CRS（通用参考字符串）支持</p>
+</li>
+<li>
+<p>可升级的 SRS（结构化参考字符串）支持</p>
+</li>
+<li>
+<p>递归支持</p>
+</li>
+<li>
+<p>后量子安全</p>
+</li>
+<li>
+<p>密码学假设</p>
+</li>
+</ul>
+<p>ZKEVM 是 ZKRU 的下一个里程碑。ZKEVM 分为三个阶段：</p>
+<ul>
+<li>
+<p>共识层面</p>
+</li>
+<li>
+<p>字节码层面</p>
+</li>
+<li>
+<p>开发语言层面</p>
+</li>
+</ul>
+<p>ZK 刚刚进入应用阶段。生态系统仍然是空的。并非 ZK 的每一个特性都被很好地使用并应用于新产品。人们仍然可以从这一前沿理论中获得灵感。以下方向最能从 ZK 技术中受益：</p>
+<ul>
+<li>
+<p>需要高 TPS 和低费用的应用</p>
+</li>
+<li>
+<p>跨二层通信协议/应用</p>
+</li>
+<li>
+<p>Layer2 中的聚合碎片流动性</p>
+</li>
+<li>
+<p>开发套件/框架</p>
+</li>
+<li>
+<p>基于云的开发工具</p>
+</li>
+<li>
+<p>具有独特功能的跨 Layer2 的 Layer1 应用程序</p>
+</li>
+<li>
+<p>不同的 zkVM</p>
+</li>
+<li>
+<p>中控桥</p>
+</li>
+<li>
+<p>在其他链上应用 ZK</p>
+</li>
+<li>
+<p>启用递归的 Layer2</p>
+</li>
+<li>
+<p>ZK 在 DAO 和社区治理中</p>
+</li>
+<li>
+<p>将 ZK 算法商业化</p>
+</li>
+<li>
+<p>芯片和云计算</p>
+</li>
+<li>
+<p>ZKRU 中的递归</p>
+</li>
+</ul>
+<p>应用 ZK 有两个主要论点：Rollup 和 隐私。Rollup 比隐私更有希望。隐私没有意义，因为它被设计为透明的。隐私文化与透明精神背道而驰。此外，隐私可能存在合规问题。Web2 时代，我们看不到隐私应用的繁荣。在同一品类中，顶级产品并没有高度关注隐私，尽管越来越多的机构改进了他们的隐私保护。隐私确实需要权衡。大多数时候是可用性，这是用户的关键。</p>
+<p>在查看 ZK 应用程序时，以下几点很重要：</p>
+<ul>
+<li>
+<p>ZK 是一个花哨的术语。没有 ZK，真正的产品是否仍然具有竞争力并且具有良好的用户体验。</p>
+</li>
+<li>
+<p>ZK 很复杂，对开发速度造成了额外的负担。</p>
+</li>
+<li>
+<p>ZK 使 DAO 治理和身份受益</p>
+</li>
+<li>
+<p>ZK 将帮助机构上链</p>
+</li>
+</ul>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/37058/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">我昨天去逛了一下元宇宙里面的TX淮海</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/37046/">
+                <span class="next-text nav-default">应用区块链技术 雄安新区17万建设者享受“穿透式”工资发放</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#关于-zk">关于 ZK</a></li>
+    <li><a href="#常见的零知识证明系统">常见的零知识证明系统</a></li>
+    <li><a href="#零知识zk应用开发">零知识（ZK）应用开发</a></li>
+    <li><a href="#什么是-rollup">什么是 rollup</a></li>
+    <li><a href="#当前状态">当前状态</a></li>
+    <li><a href="#隐私">隐私</a></li>
+    <li><a href="#其他有趣的项目">其他有趣的项目</a></li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

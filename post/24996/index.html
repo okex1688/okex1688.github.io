@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文梳理DeFi固定利率项目的机制 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Defi世界的发展过程中，通过固定利率产品去吸纳大体量的资金是defi发展的必由之路。" />
+<meta name="keywords" content="DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/24996/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文梳理DeFi固定利率项目的机制" />
+<meta property="og:description" content="Defi世界的发展过程中，通过固定利率产品去吸纳大体量的资金是defi发展的必由之路。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/24996/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-28T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文梳理DeFi固定利率项目的机制">
+<meta itemprop="description" content="Defi世界的发展过程中，通过固定利率产品去吸纳大体量的资金是defi发展的必由之路。"><meta itemprop="datePublished" content="2021-06-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6788">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文梳理DeFi固定利率项目的机制"/>
+<meta name="twitter:description" content="Defi世界的发展过程中，通过固定利率产品去吸纳大体量的资金是defi发展的必由之路。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文梳理DeFi固定利率项目的机制</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-28">
+      2021-06-28
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6788 字 -
+        预计阅读 14 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>固定利率贷款是传统金融中最常见的贷款类型，固定利率（fixed rate）允许参与者锁定一个预先确定的利率，而不必承受利率波动的风险。相较于传统金融，Defi里的固定利率项目更具有效率性、流动性、透明度和可访问性上的优势。而Defi世界的发展过程中，通过固定利率产品去吸纳大体量的资金是defi发展的必由之路。</p>
+<p>目前，除了AAVE的稳定利率借款之外，还有不少协议以不同形式为用户提供固定利率服务：这里包括并不限于</p>
+<p><strong>零息债券项目</strong> （Yield Protocol、Hifi、Notional）、</p>
+<p><strong>收益代币化项目</strong> （Swivel、Element Finance、Pendle）以及</p>
+<p><strong>收益分级类项目</strong> （Barnbridge Finance、Horizon Finance）。</p>
+<p><strong>零息债券项目</strong></p>
+<p>在传统金融领域，零息债券是一种债券工具，它的交易价格会低于面值，到期后会按票面价格对持有人支付本息。而目前零息债券的固定利率项目是基于抵押-锁仓-赎回的最基础的固定利率项目。</p>
+<p><strong>Yield</strong></p>
+<p>Yield可以看作是基于MakerDao的固定利率协议，它将以yToken（比如yDAI）的形式发行零息债券，用户可以通过存放ETH等抵押品来铸造yfToken。而借款人和放贷人可以通过yfToken直接实现借贷。</p>
+<p>实现形式如下：借款方如果想借出DAI，需要抵押ETH，系统自动铸成yfDAI（这一步在用户界面上不会出现），并将yfDAI兑换成DAI给到放贷方。这里yfDAI的利率会根据市场价格上下浮动。<strong>其中yfDAI和DAI的折价就是借款方所要支付的利息。</strong> 放贷方则可以存入 DAI 来折价获得 yfDAI，<strong>折价部分就是到期收益率。</strong> 放贷方购买时可以选择不同的期限，不同的期限收益率不同。到期之后可以使用 yfDAI 1:1 兑回 DAI。流程可以简化成以下：</p>
+<p>借款人A</p>
+<p>1. 存入抵押物ETH</p>
+<p>2. 铸成yfDAI</p>
+<p>3. 将yfDAI锁进智能合约中，根据不同的期数兑换回DAI</p>
+<p>因为折价，所兑换成的DAI的数量将少于yfDAI</p>
+<p>４.　到期偿还了DAI后，赎回抵押的ETH</p>
+<p>放贷人Ｂ</p>
+<p>１.　将DAI存入智能合约中，换成yfDAI</p>
+<p>因为折价，yfDAI的数量大于DAI</p>
+<p>２.　到期后，将yfDAI１：１兑换成DAI</p>
+<p>Yield可以看作是简易版固定利率协议，操作界面简单，提供的功能也较为基础。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0628/3_amzndkwnns.png" alt="一文梳理DeFi固定利率项目的机制"></p>
+<blockquote>
+<p>项目进度：Yield Protocol 1 月 26 日在推特更新了关于协议的 最新进展，YieldSpace v2 池可以为降低gas费</p>
+<p>总锁仓量：2.3million</p>
+<p>运营数据：Twitter-7.1K；Discord-0.81K</p>
+<p>背后资本：种子轮-Paradigm Capital，私募轮-Paradigm 领投，Framework Ventures、Symbolic Capital Partners、CMS Holdings、Variant 和 DeFi Alliance 参投</p>
+<p>治理代币：无</p>
+</blockquote>
+<p><strong>Mainframe（Hifi）</strong></p>
+<p>Mainframe可以看作是升级版Yield，借贷机制基本不变，只不过针对借贷方、出借方以及LP的功能更为多元化了。Mainframe 体系由出借人、借款人、担保池、赎回池四部分组成。实现机制简化如下：</p>
+<p>借款人Brad：</p>
+<p>１. 存入抵押物ETH</p>
+<p>２. 铸成yDAI</p>
+<p>３. 将yDAI卖给放贷人，换成DAI</p>
+<p>此处有折价，因此收到的DAI将比yDAI少</p>
+<p>４. 到期偿还DAI后，赎回抵押的ETH</p>
+<p>放贷人Lucy：</p>
+<p>１．将DAI借给借款人，换成yDAI</p>
+<p>因为有折价，所换成的yDAI将比DAI多</p>
+<p>２.到期将yDAI放回赎回池，销毁yDAI换成DAI</p>
+<p>担保人Grace</p>
+<p>１. 将资金注入到担保池内赚取池子中靠闪电贷获得的收益</p>
+<p><img src="https://img.bibiqing.com/news/2021/0628/3_9jm1dt8ngr.png" alt="一文梳理DeFi固定利率项目的机制"></p>
+<p>Hifi和Yield的不同之处在于，Yield 的yfDAI 是系统通过池子自动卖出，而Hifi是将ydai是直接卖给了出借人。因此存在的问题是：当出借人购买需求不足时，交易是无法成交的；借款人可能需要折价才能贷款，需要付出更高的借贷成本。</p>
+<p>在基本的借贷服务之上，用户还可以充当担保人的角色，将资金注入到担保池内赚取清算收益。借款人抵押的资产将会被用于闪电贷赚取收益，收益也会注入担保池。另外，担保池还支持 cToken 和 aToken 注入，这为 Compound 和 Aave 这两个平台的用户提供了额外的收入渠道。</p>
+<blockquote>
+<p>项目进度：项目原名为Mainframe，今年2月改名为Hifi；目前将继续使用MFT 代币，在公布新代币经济模型之后会进行代币迁移，已经在主网上公开测试</p>
+<p>总锁仓量：无数据</p>
+<p>运营数据：Twitter-33.9K；Discord-6.1K</p>
+<p>背后资本：种子轮-IOSG Ventures、AU21 Capital、Struck Capital Crypto等参投</p>
+<p>治理代币：MFT</p>
+</blockquote>
+<p><strong>Notional</strong></p>
+<p>在Notional中，用户可以提供DAI/USDC来获得稳定利率；也可以使用WBTC/WETH/USDC/ETH作为抵押物，来以固定利率借出DAI/USDC。</p>
+<p>Notional的借贷机制和Yield、Hifi无明显不同。它的亮点在LP方面。LP在贷方穿仓时可以用折扣价买入贷方抵押物帮助贷方进行提前还款从而降低风险。 </p>
+<p><img src="https://img.bibiqing.com/news/2021/0628/3_udjg5sktno.png" alt="一文梳理DeFi固定利率项目的机制"></p>
+<blockquote>
+<p>项目进度：2021年1月主网上线，目前尚未发币，预计在v2版本中推出</p>
+<p>总锁仓量：17Million USD</p>
+<p>运营数据：Twitter-4.1K；Discord-1.4K</p>
+<p>背后资本：种子轮-Coinbase、aparafi capital、nascent等参投</p>
+<p>治理代币：无</p>
+</blockquote>
+<p>**<strong>高阶总结：</strong> ** **<strong>零息债券这类固定利率借贷协议已经较为饱和，同质化比较严重，创新性稍显不足。</strong> **</p>
+<p><strong>收益代币化产品</strong></p>
+<p>相较于零息债券这种普通的锁定资产获得收益的defi玩法，收益代币化产品则大大增加了资金效率。以Pendle为例，当资产受时间影响价格产生剧烈波动时，储蓄者可以将这类资产的储蓄利率（即收益）提前卖掉。而买家则可以在无需购买底层资产对这些收益率进行对冲，以更有效的资本方式获得汇率波动的风险敞口。以Element Finance为例，卖家即借款者在不牺牲利率的前提下，可以获得更大的灵活性以及节约时间成本。而买家则可以以折扣价买到底层资产，一举两得。</p>
+<p><strong>Swivel</strong></p>
+<p>用户通过Swivel协议间接存款到compound或aave等protocol中，Swivel的智能合约将生成zcb erc-20的token（ZCB-zero coupon bond，相交v1中的nft目前已变成ft）及由compound生成的cUSDC（代表未来收益的代币，相交v1中的nft直接变成了ft）。采用去中心化的orderbook形式来降低低流动性时的滑点、单笔交易产生的息差及资本效率问题。</p>
+<p>具体实现方式： </p>
+<p>下述用1000usdc，市场利率5%作为案例</p>
+<p>固定利率方进入：年初在市面上付出1000usdc，得到1000个zcUSDC+来自浮动方的50 USDC</p>
+<p>浮动利率方进入：年初在市面上付50usdc，得到1000个nUSDC</p>
+<p>固定利率方结算：年末清算，付出1000个zcUSDC，得到1000个usdc</p>
+<p>浮动利率方结算：年末清算，付出1000个nUSDC，得到1000个nUSDC所代表的的利率（收益结算：年末总体收益-年初的50刀）</p>
+<p><img src="https://img.bibiqing.com/news/2021/0628/3_znjzr0s8s1.png" alt="一文梳理DeFi固定利率项目的机制"></p>
+<blockquote>
+<p>项目进度：21年5月9日测试网已上线，主网预计21年7月底上线</p>
+<p>总锁仓量：orderbook模式无tvl概念</p>
+<p>运营数据：Twitter-3.1K；Discord-1.2K</p>
+<p>背后资本：种子轮-Multicoin和Electric领投，CMS, Divergence, Defiance, DefiAlliance, CMT, Alex Pack, Ash Egan, Stani Kulechov等参投</p>
+<p>治理代币：SWIV</p>
+</blockquote>
+<p><strong>Pendle</strong></p>
+<p>用户将Aave、Compound等存款协议中的存款凭证锁定在Pendle的智能合约中，得到OT（Ownership Token 代表用户抵押物的求偿权）与XYT（代表未来收益的代币）。出售方可在DEX中卖出XYT，从而锁定收益，实现固定利率存款；或者可以放入流动性池子提供流动性赚取PENDL。而买入方则对应使用较小的本金购买了该XYT对应OT未来一定期限的收益权。</p>
+<p>同时，Pendle对于AMM的改进是它的重大创新。Pendle设计的AMM适用于所有具有时间衰减特性的资产。最初，当池子创建时，AMM曲线类似于Uniswap的常数乘积曲线。然而，当后续的交换发生时，AMM曲线会在平衡点处移动，并根据时间衰减进行调整。 </p>
+<p>具体实现方式：</p>
+<p>放贷人A</p>
+<p>１.　将Aave、Compound等存款协议中的存款凭证（即ａtoken）锁定在智能合约中</p>
+<p>２.　铸造成OT和XYT</p>
+<p>３（ａ）可以在DEX中卖出XYT，获得固定收益</p>
+<p>３（ｂ）可以做LP赚取pendle代币收益</p>
+<p>交易者/投资者B</p>
+<p>１.　可以买入XYT，由于利率波动，可以对XYT进行套利</p>
+<p><img src="https://img.bibiqing.com/news/2021/0628/3_rujlyotevz.png" alt="一文梳理DeFi固定利率项目的机制"></p>
+<p>Pendle真正意义上并不算是固定利率协议。因为XYT以及pendle代币价格会产生波动，放贷人的收益也是无法预计的，而利率波动大小（即XYT币价）也决定了交易者是否有空间进行套利。</p>
+<blockquote>
+<p>项目进度：2021年6月17日主网上线</p>
+<p>总锁仓量：5.2 Million USD</p>
+<p>运营数据：Twitter-5.4K；Discord-3.4K</p>
+<p>背后资本：种子轮-Mechanism Capital、HashKey Capital、CMS、DeFi Alliance、imToken、Crypto.com Capital、Spartan Group等参投</p>
+<p>治理代币：PENDLE</p>
+</blockquote>
+<p><strong>Element Finance</strong></p>
+<p>Element Finance是将基础资产（即ETH、BTC以及USDC）划分成两个部分——主体代币PT（Principle Token）以及收益代币YT（yield token）。假设放贷人在将一些ETH存入Element并接收新创建的ptETH和ytETH。那么，现在他可以将本金和收益作为两个不同的代币PT和YT进行控制。又假设他决定立即出售PT但持有YT，所铸PT兑换成的底层资产将变少（例如，在0天到期时1 ETH = 0.9 ptETH），而持有的YT仍在生息。而此时，放贷人可以将换得的底层资产再次进行运作。</p>
+<p>以上操作总结如下：</p>
+<p>放贷人A</p>
+<p>１.ETH存入Element，接收ptETH和ytETH。</p>
+<p>２.持有ytETH，从ETH获得收益。</p>
+<p>３.以折扣价出售ptETH，获得ETH。</p>
+<p>如果想要更高的ETH收益。</p>
+<p>那么重复 1 2 3 4 5</p>
+<p>借贷人B</p>
+<p>以折扣价买入ptETH</p>
+<p>到期以后将ptETH以１：１兑换成ETH</p>
+<p><img src="https://img.bibiqing.com/news/2021/0628/3_enff9nh4ss.png" alt="一文梳理DeFi固定利率项目的机制"></p>
+<p>当放贷人出卖PT时，买方可以到期时换回等值的底层资产，赚取其中的差价。对于放贷人来说，即时出卖PT可以增加资本效率；且循环借出PT可以为利率加上杠杆。不过，放贷人需要承担对赌风险，即卖出PT的折价是否能覆盖加了杠杆的利率。放贷人另一个风险是如果无借款方接盘，放贷人只能让利去卖出PT。在资产价格波动大的时候，放贷人还需要手动地调整PT价格，以防科学家套利。而对于借款方来说，可以收获折扣价的底层资产。总结来说：放贷人循环操作需要玩家具备专业水准，其次循环借贷需要放贷人承担对赌风险，循环借贷不一定是最赚钱的操作。</p>
+<blockquote>
+<p>项目进度：5月9日测试网已上线</p>
+<p>总锁仓量：83 Million USD（测试网）</p>
+<p>运营数据：Twitter-8.1K；Discord-3.6K</p>
+<p>背后资本：种子轮-A16z, Placeholder, SV Angel, A.Capital，Scalar Capital, Robot Ventures, AAVE, Balancer等参投</p>
+<p>治理代币：无</p>
+</blockquote>
+<p><strong>高阶点评</strong> ：目前的收益代币化类项目在市场资本效率及模式设计上略有不同，其中Swivel使用订单簿模式为所有市场参与者（流动性提供者和接受者）提供可定制性和高资本效率；Pendle 使用了时间折旧的息票 AMM帮助流动性提供者避免了theta 衰减；Element 使用了时间增值的零息代币 AMM帮助流动性提供者绕开theta，整体上互操作性更强且代币传输成本更低</p>
+<p><strong>收益分级类产品</strong></p>
+<p>收益分级类产品则是将收益分为固定收益（fixed rate）和浮动收益（float rate）：固定收益收益少风险少，浮动收益收益大风险大。</p>
+<p><strong>Barnbridge</strong></p>
+<p>BarnBridge 是一个通过将收益率及波动率分层来代币化风险的跨平台协议。使用固定收益率和波动率分层对产品风险进行代币化，其原生代币为 BOND。该项目计划推出包括基于以太坊上、由 DeFi 收益担保的定息和浮息产品「智能收益债券」以及可对冲任何 ERC20 代币的市场价格波动的衍生工具「智能 Alpha 债券」。</p>
+<p>Barnbridge通过引入Compound/AAVE/Cream/AAVE Polygon这四个池子，通过稳定币锁仓进行挖矿。而锁仓的利率分为两个等级——Junior和Senior。对比下来，Junior的利率更高，同时挖Bond代币的APR也更高。因此，Barnbridge类似于针对稳定币的收益聚合器。下图可以看出Compund池中的USDC在不同的月份里，利率是不同的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0628/3_5tavcbuyw9.png" alt="一文梳理DeFi固定利率项目的机制"></p>
+<blockquote>
+<p>项目进度：2020年10月份开启锁仓/LP挖矿</p>
+<p>总锁仓量：24 Million USD</p>
+<p>运营数据：Twitter-18.4K；Discord-5.8K</p>
+<p>背后资本：种子轮-Fourth Revolution Capital、ParaFi Capital等参投</p>
+<p>治理代币：BOND</p>
+</blockquote>
+<p><strong>Horizon Finance</strong></p>
+<p>Horizon Finance 的第一个版本中将采用无需抵押的模式，参与者可作为两种角色参与收益。一是成为浮动利率参与者，即利率卖方；二是参与拍卖，即利率买方。</p>
+<p>浮动利率参与者可将货币P投入池子中铸造不同利率的 Horizon 代币，在预定义的拍卖参数范围中拍卖。其中，货币P可以是任意可产生收入流的代币。参与者选择固定收益上限（也可以选择浮动），然后铸造代币（例如，在 X 到 Y 的区块上，对 yUSD 设置 9％的投标上限），供利率买方投标。资金池的收入分发将在固定利率空间内，从低到高进行分配，多余的收入就会进入浮动资金池。同时，为促进用户积极参与铸造，Horizon 的资金池将退还铸造代币的所有 Gas 费成本，而加入现有代币池的成本较低，因此用户需自行支付 Gas 费。</p>
+<p>通过在 Horizon 进行交易，用户将能够积极竞争以胜过普遍回报收益率，或者采取更被动的方法获得满意的固定利率。</p>
+<p>其目标是建立不需要过度抵押的平台，避免参与者无常损失，并消除由于过多的无资金固定负债而导致协议崩溃的风险，同时建立准确的加权市场利率均值。</p>
+<blockquote>
+<p>项目进度：2021年三月正式推出 Beta 测试版，主网还未上线</p>
+<p>总锁仓量：NA</p>
+<p>运营数据：Twitter-3.5K；Discord-3.6K</p>
+<p>背后资本：种子轮-Framework Ventures、DeFianc Capital、Mechanical Capital、Spartan Group、Alameda Research、NGC等参投</p>
+<p>治理代币：无</p>
+</blockquote>
+<p>高阶总结：yield trenching类项目总体上对浮动和固定利率方都要求锁仓，故整体资金利用效率相对较低，在irs发展的早期是nice to have但必要性较为一般的项目类别。</p>
+<p><strong>竞争优劣势评估</strong></p>
+<p>那么，如何评估这些固定利率项目的优势呢？针对于非专业Defi玩家，显然零息债券的项目更容易上手：用户界面更为友好，以及借贷利率更为清晰.</p>
+<p>而收益代币化项目虽然在原有的借贷协议上加入了创新，提高了借贷双方的资金利用率以及节约了时间成本；但是因为机制比较复杂以及可变因素比较多，收益率难以计算，因此更适用于专业的defi玩家。至于收益分级类项目将浮动利率和固定利率区分开来，通过两种用户的对冲来平衡收益，本身就是一种零和游戏。</p>
+<p>总的来说，目前大部分固定利率协议的TVL都不高，此类项目需要从大的借贷协议中引流，是建立在主流的defi协议之上的。就竞争形式而言，头部Defi项目的浮动利率更为引人注目：在人们还没有意识到浮动利率和固定利率的区别时，他们更愿意去往流量更多的地方。</p>
+<p>但当固定利率这个概念更加深入人心时，该赛道有望在熊市以及下一个牛市爆发。理由如下：因为熊市行情趋于稳定，投资者才更愿意以固定的利率赚取稳稳的幸福。而下一个牛市，随着更多大资金的机构入场，固定利率市场更有可能成为中流砥柱，为更多追求资产回报稳定以及借贷成本稳定的玩家亲睐。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25005/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">雅虎财经专访SBF如何看比特币后市发展：机构资金仍在缓慢流入市场</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/24963/">
+                <span class="next-text nav-default">亿万富翁萨利纳斯希望建立墨西哥第一家接受比特币的银行</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

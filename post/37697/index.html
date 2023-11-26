@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Delphi 万字详述 L1 公链估值方法论 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="通过 Rollup 支付租金给 L1，可能是使 L1 原生资产收益最大化的途径。" />
+<meta name="keywords" content="跨链" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/37697/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Delphi 万字详述 L1 公链估值方法论" />
+<meta property="og:description" content="通过 Rollup 支付租金给 L1，可能是使 L1 原生资产收益最大化的途径。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/37697/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-11T00:00:00+00:00" />
+
+<meta itemprop="name" content="Delphi 万字详述 L1 公链估值方法论">
+<meta itemprop="description" content="通过 Rollup 支付租金给 L1，可能是使 L1 原生资产收益最大化的途径。"><meta itemprop="datePublished" content="2022-05-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-11T00:00:00+00:00" />
+<meta itemprop="wordCount" content="11257">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Delphi 万字详述 L1 公链估值方法论"/>
+<meta name="twitter:description" content="通过 Rollup 支付租金给 L1，可能是使 L1 原生资产收益最大化的途径。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Delphi 万字详述 L1 公链估值方法论</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-05-11">
+      2022-05-11
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 11257 字 -
+        预计阅读 23 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<blockquote>
+<p>通过 Rollup 支付租金给 L1，可能是使 L1 原生资产收益最大化的途径。</p>
+</blockquote>
+<h2 id="主要观点">主要观点</h2>
+<ul>
+<li>
+<p>传统资产一般分为三类 &ndash; 资本资产、消耗性/可转换性资产、价值储存资产。加密货币提供了独特的功能，可以将三者结合起来。</p>
+</li>
+<li>
+<p>从网络费用和 MEV 中捕获价值产生强大了的代币经济，这直接为原生资产带来了非常可观的实际收益。</p>
+</li>
+<li>
+<p>在获得长期收益的同时，必须保证不增加用户交易成本（网络扩展是必须的）。单片式区块链可能无法达到捕获大部分收入所需的规模。</p>
+</li>
+<li>
+<p>诸如 Avalanche 和 Cosmos 这样的多链生态系统可以达到很大的规模。然而，这种零散的安全模式本质上难以反哺基础层资产。</p>
+</li>
+<li>
+<p>我们相信，通过 Rollup 支付租金给 L1，可能是使 L1 原生资产收益最大化的途径。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_8we66v48qu.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>合并后的以太坊与 Luna 名义收益率和实际收益率对比图</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_i90syaogth.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>L1 近六个月价格表现</p>
+<p>如果问银行家，苹果公司是如何估值的？你得到的答案或多或少都与现金流折现、市盈率等有关。但如果要问加密货币专业人士，他们如何估值 ETH？事实上，问他们为什么代币有价值？加密货币是真的货币吗？还是商品、股票或者债券？你会得到不同的答案。</p>
+<p>那么，到底如何对代币进行估值？一些企业估值工具可能对你最喜爱的 DEX 相当有效。但是如果代币包括治理和财务控制的权益，估值就会变得困难。看看 「Curve Wars」，就知道治理的价值可能有多大。优先考虑早期创业公司的增长指标，将 DCF（现金流贴现） 应用于更成熟的现金流协议，这听起来更加合理。</p>
+<p>当我们引入原生 L1 代币时，情况会变得扑朔迷离。治理权？不太可能。为持有者带来收入？ 不一定。具体而言，PoW 网络中矿工拿走了区块奖励、交易费和 MEV 的利润；比特币和以太坊都完全采用链下治理。BTC 和 ETH 长期以来一直主导加密市场，这些事情很重要，但它显示了一个更大的图景。</p>
+<p>以 Solana 为例，代币持有者通过质押直接获取网络价值。用 Anatoly 的话说，Solana 是一个信息总线。除了你的质押让你有权利获得 MEV 之外，SOL 只是 「防止信息总线中的垃圾邮件的东西，仅此而已」，在此之外的任何价值都不得而知。那么，SOL 的价值是否应该等于其未来预期 MEV 的净现值？即使在最积极的预测中，SOL 的市值也会被削减。</p>
+<p>为了简单起见，本报告在论述时主要采用 ETH 和 SOL，它们分别代表：</p>
+<p><strong>ETH - 试图获取可持续价值的公链，即持续推升代币价值对网络发展至关重要的一类公链；</strong>  </p>
+<p><strong>SOL - 试图最小化从用户那里提取费用和价值的公链，这类公链的发展状况与代币价格的相关性较低。</strong></p>
+<p>之所以以 SOL 为例，是因为 Anatoly 已经对其做出了详尽且清晰的阐述，这是展开一场健康的辩论的大前提。尽管我不同意他的许多论点，但我会尊重论证这个问题的过程。</p>
+<h2 id="为什么代币会有价值">为什么代币会有价值？</h2>
+<p>关于公允价值，Robert Greer 在其 1997 年的论文 「到底什么是资产类别？」中提供了一个有用的框架。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_mo65sbk2f6.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>资产类别</p>
+<p>L1 加密货币是第一个显示出所有三者特征的资产。</p>
+<h3 id="资本资产为质押者和持有者持续带来实际收益">资本资产：为质押者和持有者持续带来实际收益</h3>
+<p>有人称它为无限期债券，也有人称它为股息股票，无论你怎么称呼它，核心就是收益。 在法定货币负实际（通胀调整后）收益率的背景下，资本资产颇受追捧。 当其他条件相同时，投资者希望获得正的实际收益率（例如质押ETH）而不是严重的负收益率（例如美国国债）。</p>
+<ul>
+<li>
+<p>ETH 质押 &ndash; 未来的现金流是以通缩货币 ETH 的形式发放（这使实际收益率更有吸引力） </p>
+</li>
+<li>
+<p>美国国债 &ndash; 未来的现金流在你收到它那一刻就会因为通胀而贬值</p>
+</li>
+</ul>
+<p>然而对 ETH 而言，如果你以美元计价你的回报，那么你的收益率就会受到 ETH/USD 波动的影响；如果你以 ETH 计价，你会很高兴地积累起通缩资产。这是一个观念问题，也是至关重要的：以太坊需说服持有者以 ETH 计价的他们投资（就像我们今天以美元计价一样）。</p>
+<p>这里强调的是实际收益率（相对于名义收益率而言）。那么，我们如何让收益变得可持续？质押奖励由三部分组成。</p>
+<p><strong>通胀区块奖励</strong></p>
+<p>区块奖励会增加名义收益率，但它没有增加股权证明的价值。质押者只是从持有者手中获得奖励。关于以太坊合并的炒作，主要围绕区块奖励的大量减少 &ndash; 对矿工的补贴是昂贵的，而且会导致整个代币生态系统的价值流失。</p>
+<p><strong>MEV</strong> </p>
+<p>MEV 加强了安全预算并提高了实际收益率。在一个有效市场中（在 Flashbots 等项目的帮助下），搜索者最终应该将 MEV 的全部价值作为支付给验证者的费用。</p>
+<p>不过，用户不会为了三明治攻击而左右排队。实用主义要求尽可能减少剥削性 MEV，然后将剩余部分社会化（例如，给质押者或公共产品资金）。 Avalanche 的 Snowman++ 是最近的一个旨在减少 MEV 的协议级别更新的示例。</p>
+<p>在某些情况下，Flashbots 在 2021 年将以太坊 MEV 限制在 5亿美元的左右范围。从 8 月 1 日到 12 月 31 日，以太坊、BSC、Avalanche 和 Polygon 的 MEV 分别至少为 1.795 亿美元、3479 万美元、1884 万美元和 1100 万美元。要知道，这些都是极端的下限估计，甚至没有跟踪 MEV 的主要类别，如三明治攻击，闪存贷款和清算，真正的范围仍然是个谜。</p>
+<p>合并后，MEV 将累积到 ETH 质押者而不是矿工。通过 Flashbots（它使 MEV 在验证者之间社会化），搜索者现在可以通过高额的 Gas 费用间接支付列入交易的费用，或者他们可以将费用设置为零，直接向矿工 / 验证者提供回报。</p>
+<p>合并后，MEV 将在以太坊中扮演比以往任何时候都更重要的角色，因为它在验证者奖励中的份额越来越大。下面的预测来自于 Justin Drake：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_1d5qvepsgt.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>预测以太坊验证者奖励构成</p>
+<p><strong>交易手续费</strong></p>
+<p>交易费用应归于质押者或销毁（使所有持有人受益）。 在任何一种情况下，它们都直接改善了整体代币经济。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_599hfrq5jq.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>公链名义收益率和实际收益率对比图，合并后的以太坊合及 Luna 独树一帜</p>
+<p><strong>净代币价值捕获 = (已质押比例 x 实际质押收益率) - (未质押比例 x 通胀率)</strong></p>
+<p>名义收益率是标题利率，实际收益率是扣除代币燃烧后的通货膨胀。</p>
+<p>然后，该公式捕获所有代币持有者的加权平均实际收益率，其中包括质押者和非质押者。 前半部分衡量了质押者的实际收益，后半部分衡量未质押持有人的实际收益率。</p>
+<p>实际质押收益来自于交易费用、验证者获取的 MEV，以及代币燃烧（这也有利于所有持有者）。</p>
+<p>请注意，这不会像使用简单的价值捕获模型（例如费用减去发行）那样惩罚高 PoS 通胀。 留在协议中的通胀区块奖励只是将价值从持有者转移到质押者。 更高的通货膨胀率会改变我个人的机会成本和是否下注的决定。 但是，它实际上并没有说明整个代币本身的价值捕获。 你只是在判断是否有利于质押者或其他持有者。 无论哪种方式，价值捕获都是中性的，区别在于对哪一方参与者有利。</p>
+<p>这类似于决定是烧掉费用还是将其交给验证者。 在这种情况下，价值都会被捕获，你只是决定它对谁更有利。</p>
+<p>如果你打算购买代币进行长期投资，那么你在逻辑上会愿意将代币质押。 因此，更高的区块奖励不应直接损害任何估值方法。 流动性质押衍生品的成熟也将使质押更加无处不在。 大多数 L1 已经将大部分供应代币质押（由于显而易见的原因，ETH 目前是异常值），并且随着时间的推移，这应该还会增加。 试想，如果 100% 的代币被质押，我真的不在乎通货膨胀率是 5% 还是 10%。 这一切都只是价值移动，而我是收支平衡的。</p>
+<p>然而，这个指标确实反映了一个事实，PoW 区块奖励确实会稀释所有持有者手中的代币价值。作为一个 BTC 持有者，我其实根本不会直接关心网络费用是否高，因为我无法通过质押来捕获它们。BTC 没有捕获到任何上涨的机会。因此，在通货膨胀下，BTC 的实际收益率将永远是负的。</p>
+<p>尽管这里没有直接指责高通胀 PoS 的价值捕获，但我仍然相信相对较低的通胀率对于货币稳定和溢价是有益的。 如果这些 L1 希望有朝一日从「投机性投资」转变为真正的「金钱」（成为价值尺度和交易媒介），那么高通胀率是站不住脚的。 即使它不直接损害估值，它也会导致价格不稳定，并使用户难以使用手头的资产用于消费。</p>
+<p>这里考虑燃烧后通胀净值很重要，特别是几个最大的 L1，如 Ethereum、Avalanche 和 Solana 都在实施燃烧。虽然 Solana 烧掉了所有费用的一半（另一半给了验证者），但考虑到费用很少，它的影响并不大。</p>
+<p>以太坊之外，Avalanche 是唯一有意义的链上费用燃烧。在过去的 30 天里，它每天燃烧超过 1 万枚 AVAX。这足以抵消每年约 1% 的通货膨胀，我在上图中已经将其净值计算出来。</p>
+<p>然而，最近所有Avalanche活动的大部分实际上来自一个游戏 Crabada，该游戏即将转移到它自己的子网，而且它目前的许多用户似乎是机器人，因此，对数据要多加注意。</p>
+<p>Avalanche的C-Chain 实现了与 EIP-1559 类似的机制，基本费用烧掉，小费归矿工。然而，为了比较的一致性，我们使用了燃烧前的通胀率 5.8%，同时也不包括其他正在分配的激励措施对通货膨胀的影响，例如在 Aave 上。当考虑到诸如此类的特异性因素时，通货膨胀的情况就变得扑朔迷离。通过奖励发放的通胀部分将直接使 AVAX 持有者手中的价值流失，因为它没有通过质押奖励循环到代币上。</p>
+<p>合并后的 ETH 和 LUNA 在价值捕获上具备独特优势。其他生态相对平稳，收益本质上是一种税收，从持有者口袋里转移到质押者口袋。AVAX 紧随其后，但重要的是要考虑上述缓解因素。</p>
+<p>EIP-1559 燃烧抵消了部分通货膨胀，以太坊合并后，矿工补贴消失，ETH 将变成通缩资产。此外，优先费用和 MEV 收益将归验证者所有。</p>
+<p>在合并时，ETH 的质押率可能会相当低，由此，质押收益率将会非常高。然后收益率将在合并后被稀释回落，假设在稍长时间的预测中，质押比例上升到三分之一左右。</p>
+<p>Terra 的机制很特别，LUNA 有多个质押收益来源：</p>
+<ol>
+<li>
+<p>Gas 费 - 交易会产生少量的 Gas 费，这笔收入对 Terra 来说非常小。</p>
+</li>
+<li>
+<p>稳定费税 - 在 1 月之前对所有稳定币交易收取费用，每笔交易费用上限为 1 SDT，仅占整体收益的一小部分。在 172 号提案中，稳定费税 被设定为零。</p>
+</li>
+<li>
+<p>市场交易 - 这是获取收益的主要方式。</p>
+</li>
+</ol>
+<p>当使用 Terra Station 的交易功能，在 Terra 稳定币之间或是它们与 LUNA 之间进行交换时，Terra 就会收取一定的费用。(Terra Station 还集成了 Astroport 和 Terraswap，不包这笔费，但你使用的是它们各自的 LP 和费用，而不是 Terra 的市场功能。) </p>
+<p>费用会流入预言机奖励池，并被分配给验证者（作为提供汇率数据的回报）。验证者然后在两年内以质押奖励的形式将这些费用分配给委托者。</p>
+<p>这些费用以两种形式的一种出现：</p>
+<ul>
+<li>
+<p>托宾税 - Terra 稳定币之间交易的固定费用，大多数时候设定为 35 bps</p>
+</li>
+<li>
+<p>价差费 - 在 LUNA 和任何 Terra 稳定币之间交换的费用。设置为最低 50bps，但在波动时期可以提高，以维持 Terra 池和 LUNA 池的法定值之间的恒定乘积，来保持稳定性。</p>
+</li>
+</ul>
+<p>上图显示 LUNA 的通货膨胀率为 0%（没有通胀的区块奖励）。但是，这忽视了LUNA 通货紧缩的事实。考虑到铸币税燃烧会打破上图，并且由于通货紧缩率可能会波动，因此很难进行比较。</p>
+<p>在 2021 年底 Columbus-5 升级之前，用于铸造 UST 的 LUNA 的一部分被送到一个社区基金，以资助 Terra 生态系统的发展，一部分被奖励给验证者，其余的被燃烧。在 Columbus-5 之后，当新的 UST 被铸造时，对应的 LUNA 被全部燃烧。因此，每铸造 1 美元的 UST，就有 1 美元的 LUNA 被销毁。</p>
+<p>请注意，目前的 LUNA 质押收益率还包括之前从预言机奖励池中获得的海量奖励（在 Columbus-5 之前）。这是因为奖励会累积到奖励池中，然后随着时间的推移按照一定方式分配给质押者。Columbus-5 会随着时间的推移降低质押收益率，这一价值仍然通过燃烧铸币税来持续捕获（没有将其作为通货紧缩列入图表）。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_02zsiyh0ti.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p> L1 费用排行榜</p>
+<p>LUNA 几乎所有的收入都来自于原生稳定币交易市场。这为其他 L1 提供了一个启示 &ndash; 在内部实施原生稳定币机制可以提供有意义的有机收入。注意这与 Near 最近推出的 USN 形成鲜明对比，后者由独立的 DAO Decentral Bank 管理。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_7nsau018os.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>以太坊的价格与销售比率（P/S）一直领先（完全稀释的市值除以年化总收入）</p>
+<p>除了在一段较短的时间内 Fantom 超过以太坊，以太坊在P/S方面一直处于领先地位。BNB Chain和Fantom紧随其后，Avalanche也是有力竞争者。</p>
+<p>P/S的高低象征着真实需求的多少，但是如果孤立地对其过分解读也是不合理的，同时要考虑增长因素。例如，Fantom和BNB有较低的P/S，但是没有创新催化剂，增速不高。虽然AVAX的交易价格高，但他们有更强的增长前景。</p>
+<p>下图显示了L1所面临的困境。以太坊使用起来很昂贵，Solana 很便宜，其余的则介于两者之间。替代链之所以受到关注，主要是因为它们可以提供比以太坊便宜得多的费用。然而，他们最终需要在不增加用户交易费用的情况下扩大吞吐量以捕获更多价值（说起来容易做起来难），否则他们就会面临失去用户的风险。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_ale26k5ims.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p> L1 平均交易费用（总收入除以日交易数量）</p>
+<p><strong>消耗性 / 可转换资产 GAS</strong></p>
+<p>加密货币是一种商品。对于以太坊而言，ETH 代币就是让公链不停运转引擎。更多的网络交易用户需要购买很多ETH来支付Gas费。</p>
+<p>这种模式在 Rollup 上发生了改变，在L2用户可以选择其它代币支付Gas费。结果是，L2用户增长带来的对ETH的需求增长小于L1。</p>
+<p>尽管如此，Rollup 仍将处理转换，并以ETH的形式向主链支付租金。以太坊将从托管大量数据的Rollup中分得一杯羹，同时也将协调结算和转账。</p>
+<p>这与 Avalanche 等缺乏共享安全和结算的多链单体生态系统形成鲜明对比，新的子网可以用他们选择的原生代币支付 Gas。但是，子网必须启动自己的验证器集，所以费用将支付给子网验证器（而不是主网的 AVAX 验证器）。对 AVAX 的潜在好处是，新的子网必须通过质押至少 2000 个 AVAX 来验证主网。Emin 最近提出了想法：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_58jtbno5zw.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>首先，数千个子网每个都有大约 100 个验证器，这不是一个「保守」的估计。即使在任何合理时间段内有 100 个子网也是一个大胆的假设。</p>
+<p>每个子网有 100 个验证器，这与 Avalanche 文档中对子网的建议形成鲜明对比，「为了网络安全和稳定，我们建议每个子网在最小的生产设置中使用 5 个验证器（每个位于不同区域），10 个验证器应该足以平衡安全、稳定和未来的需求。」在长尾子网中拥有 100 个验证器是不现实的。</p>
+<p>它还假设每个子网验证器都是一个全新的 AVAX 验证器（带来 2000 AVAX 新的市场购买压力）。实际上，许多人可能是今天被锁定的现有 Avalanche 主网质押者。预计整个生态系统中会出现类似的区块生产实体。结果，2000 AVAX新购买压力荡然无存。来自子网的额质押需求将微不足道。</p>
+<p>Emin 还辩称：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_ev9132cna4.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>AVAX 被子网上的验证者「需求」的假设似乎不太可能。例如，DFK 子网仅使用 JEWEL 作为 Gas，这些费用中的一部分被燃烧，另一部分支付给子网验证者。子网以这种方式捕获价值，符合自身利益。它无需向 Avalanche 支付租金。充其量，为了方便起见，有用户意识的子网可以允许以几种不同的代币支付 Gas（在这种情况下，AVAX 肯定是一种选择）。</p>
+<p>最大的因素是将价值捕获回 AVAX，而子网基本上不会这样做。子网费用由其自己的验证者承担。只有当子网出于某种原因要求用 AVAX 支付 Gas 并销毁它时，它才会直接有益于 AVAX（这似乎不太可能）。</p>
+<p>即使在牛市情况下，很长一段时间内有更多 AVAX 参与质押，这也类似于 Polkadot 模型，其中 DOT 被锁定以确保平行链安全。锁定更多供应并没有什么坏处，但这并不能使 AVAX 成为更具生产力的资产，生产力来自额外的收益获取。但与Rollup不同，子网在这里毫无用处。</p>
+<p>Dankrad 去年发表了一篇文章，描述了为什么生产性资产（固定供应是不够的）是长期价值储存的优越形式。这应该不难理解，因为我们今天已经看到了这一点。你想在很长一段时间内存入黄金或标准普尔 500 指数吗？最好的长期价值存储需要不仅仅是一块坚固的岩石，还需要在长期内获得有意义的价值。</p>
+<p>子网将推动令人兴奋的创新活动，但收益将不成比例地归属于接收交易费用和代币销毁的子网代币，而不是 AVAX。随着 Cosmos 生态系统的发展，这种情况看起来更接近于 ATOM 上所发生的事情，而不是以太坊 Rollup。</p>
+<p>在所示的非以太坊链中，Avalanche 拥有最清晰的扩容路线图，因为它跨越了许多链（子网），这同样适用于 Cosmos。但是，这种方法破坏了安全性，并且本质上主链代币无法捕获大部分价值捕。</p>
+<h2 id="价值存储资产----货币溢价">价值存储资产 &ndash; 货币溢价</h2>
+<p>「加密货币」通常不是一个恰当的词，但有时并非如此。那么我们神奇的互联网货币真的可以变成货币吗？价值存储？交易媒介？只要看看 ETH 的「超音速货币」meme，你就会发现至少要努力实现这一目标。</p>
+<p>如果我们正在建设整个数字经济体系和国家，那么将他们的代币视为真正的钱也是有道理的。</p>
+<p>资产价格 = 可量化的功利价值（例如，贴现的未来现金流） +/- 一些投机或货币溢价。只要美元的主导地位不动摇，并且你可以将这些现金存放在某个地方以赚取收益（国债），它就会一直是全球储备资产（拥有最高的货币溢价）。</p>
+<p>同样地，一个加密货币投资者希望看到的是：</p>
+<ul>
+<li>
+<p>强大的经济体系：哪个 L1 上经济活动最活跃？大多数用户想在哪里花钱？</p>
+</li>
+<li>
+<p>平衡预算：是在赤字运行并通胀货币，还是获得了足够的收入？</p>
+</li>
+<li>
+<p>正的实际收益率 &ndash; 与当今任何国家一样，更高的实际收益率会吸引资本流入并强化货币。</p>
+</li>
+</ul>
+<p>美元是全球贸易的首选交易媒介。不妨看看石油美元体系对美国的好处。它促使美元成为全球储备 &ndash; 出口商收到美元付款，进口商需要美元储备来购买石油。随着 ICO 的繁荣而产生的，ETH 成为一种报价货币的趋势。随着最近 NFT 的繁荣，增强了它报价货币的功能。无论你想参与最热门的 ICO 还是 NFT 交易，你都需要 ETH。当人们开始完全用 ETH 来计价他们的财富时，这些影响就像滚雪球一样越来越大。</p>
+<p>美元是全球贸易的首选交易媒介。看看石油美元体系对美国的好处，它推动了美元的全球储备——出口商收到美元付款，进口商需要美元储备来购买石油。</p>
+<p>ETH 作为报价货币的萌芽随着 ICO 的繁荣而出现。随着最近的 NFT 繁荣，这种情况进一步得到加强。无论你是想参与最热门的 ICO 还是 NFT 发行，你都需要 ETH。当人们开始用 ETH 计价他们的财富时，这些影响就会产生雪球效应。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_ktku2pdfnh.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>但是，如果 ETH 的唯一作用是作为一种你只想消费的流通货币（如美元），那么它就不会具有今天的价值。美国大型投资者并不持有实际现金，他们拥有收益率较高的美元投资，如国债。你钱包里的 ETH 是以太坊生态系统的美元，质押的 ETH 是美国国债，是整个经济的基准无风险利率。而且，以太坊拥有更可持续的经济学（即通货紧缩 + 实际质押收益率与通胀率远远超过令人难以置信的低美国国债收益率）。</p>
+<p> 更不用说加密原生的独特创新，例如流动性质押代币（如 stETH）让你有额外的蛋糕可以吃——流动性、收益以及将资产叠加在积木上的能力。</p>
+<p>ETH 将货币面额与有吸引力的投资（通货紧缩 + 收益）相结合的能力是一个很好的基准，这是基金经理要击败的新标准普尔 500 指数。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_c9646lsje2.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>经济多元化也增加了经济实力的稳定性。仅依赖少数几个应用程序会带来重大风险，Terra 和 Near 的情况最为明显，尽管 Near 仍处于发展其 TVL 的早期阶段。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_pbu4ik8itn.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>L1 中 DeFi TVL 的多元化（Terra 和 Near 保持高度中心化）</p>
+<h2 id="引擎盖下是什么">引擎盖下是什么</h2>
+<p>如果以太坊的扩容路线图失败，持有ETH的需求和兴趣将会大大降低。。如果美国预算平衡，但其 GDP 下滑，美元就不会再是全球储备资产。</p>
+<p>没有土地和资源就无法建立一个国家，没有区块空间就无法建立一个加密货币经济体。高昂的使用成本会驱使增量客户转向更便宜的替代品，做大蛋糕需要增加吞吐量，同时降低个人用户交易成本。区块空间的需求是相当有弹性的，扩容可以支持新的用例并吸引新用户。</p>
+<p>无需过多地重复我们最近的细分报告，已实现的 TPS 一般在两位数（以太坊）到 Solana 低于 1,000 的范围中，远低于我们通常看到的营销数字。 Avalanche 称其当前事务吞吐量相对于其他 L1 是「无限 TPS (包含子网)」。虽然理论上是正确的，但关键是我们看到许多声称的 TPS 根本毫无根据。</p>
+<p>Dragonfly 最近进行了一项测试，将多个L1链的最大 AMM 交易吞吐量根据统一基准进行比较：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_02mt2qh2dp.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>Dragonfly’s AMM 测试</p>
+<p>以太坊的增量是存在的，但它与我们经常看到的疯狂的 TPS 数字相去甚远，即使是 Solana 也只有每秒 273.3 次的交易。请注意，与其他链不同，Solana 内部共识信息使用交易占据了 TPS 的 80%。另外，这个测试只测试了 Solana 的单线程执行。这并没有体现出 Solana 的关键优势 &ndash; 利用多核的并行交易处理。然而，这是一个现实的基准，因为每当 Solana 出现网络拥堵问题时，起因往往来自一个热门市场（例如，Raydium IDO）。 基于这一点，吞吐量成为单核执行的瓶颈。</p>
+<p>许多链都需要指数级的扩展。 这种认识已经深入人心——Cosmos zones 正在获得牵引力，Avalanche 正在推出新的子网，而以太坊和 Celestia 则瞄准Rollup。</p>
+<h2 id="矛盾的愿景">矛盾的愿景</h2>
+<p>这里显示的指标对于诊断这些网络状态具有重要价值。虽然短期的价值很难把握，但重要的是了解价值创造的长期动态。</p>
+<p>让我们将两种极端方法当作案例研究。</p>
+<h3 id="solana-的愿景">Solana 的愿景 </h3>
+<p>Solana 的目标不是简单地推高原生代币价格。 SOL 的声称价值只是未来 MEV 现金流的净贴现值。</p>
+<p>贴现率将围绕持有 SOL 风险调整后的资本成本来决定，此时验证者将质押以换取获取 MEV 的权利。符合 SOL 当前市值所需的未来 MEV 数量相当大，在任何情况下，它们都需要实现几个数量级的扩展。</p>
+<p>有效市场中的网络交易费用应以验证者的运营成本结算：</p>
+<p><strong>累计费用 = 带宽成本 + 硬件成本 + SOL 投票交易费用</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_pb7ntp1cys.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>MEV 将有效地支付你的资本支出（质押 SOL），而费用需要支付你的运营支出（带宽、硬件和投票交易）。</p>
+<p>超出此范围的任何交易费用都将被视为从用户那里榨取的，代表着验证者的利润。 在这种情况下，理论上应该出现竞争对手并削弱网络，最终达到零利润。 如果事实证明以接近零的成本向世界提供这项服务是可行的，那将是一个令人向往的愿景。 但它确实提出了我们在研究中讨论的价值捕获问题。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_63s4bc2q10.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<h3 id="以太坊的愿景">以太坊的愿景</h3>
+<p>以太坊社区为赋予 ETH 超越最低效用的价值做出了重大努力。他们希望投资者购买、持有和质押 ETH，因为它是一种极具吸引力的资本资产。同时，它是大型流动资产，你可以安全地用它来计价你的财富，它的质押回报将作为新兴加密货币经济的基准无风险利率。获取最大价值的关键是构建有吸引力的货币政策（如 EIP-1559），使原生资产获得货币溢价。</p>
+<h3 id="代币价格重要吗">代币价格重要吗？</h3>
+<p>好的，所以我们已经确定了两个模型。 为代币注入价值，使其成为对持有者有吸引力资产，或者以最基本的成本运行网络，让市场计算出代币的价值。 如果这个数字非常低，那也没办法。</p>
+<p>但是第二种方式就足够了吗？ 网络关心用户数量上不去吗？ 还是 ETH最大主义者只是坐在那里急着要燃烧代币？</p>
+<p>正如 Anatoly 所提到的，你需要交易费来防止「垃圾邮件」，防止网络受到 DOS 攻击， 但真正的原因是为了最大化攻击网络所需成本。 所有其他的花里胡哨都是可选项，这些代币需要存在于权益证明系统中的根本原因是为了抵抗女巫攻击。</p>
+<p>这就是为什么在交易费和 MEV 之间很难平衡的原因。它们是代币持有人的可持续收益来源，但如果不加控制，它们就会榨取用户价值，使用户流失。你可以拥有世界上最通缩的货币，但如果没有人使用你的区块链，就会毫无价值。</p>
+<p>反过来说，你可能每天结算数万亿美元的价值，因为大家都喜欢你廉价的费用。但是，如果这个高价值的网络是由低价值的质押资产来保证的（因为没有人愿意持有你垄断的资金），那么你就有很大的安全隐患，容易受到攻击。未来的增长预期可能在短期内吸引投机性质押，以支撑当前的市值规模。但是，更大数量级的质押价值将意味着吸引大量长期的粘性资本。</p>
+<p>质押的金额对安全有多大影响？以 Solana 为例，「安全」是由摧毁所有复制链的成本来定义的，因为那是真正无法摧毁的。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_s7whabspki.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>Solana 「去中心化」的目标（这对抗审查和活跃度很重要）是为了最大化中本聪系数（停止网络所需的串通验证者数量）。从理论上讲，提高中本聪系数会提高网络防御能力。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_cdjrebkqac.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>中本聪系数可能是一万亿，但如果他们的累计质押是 1 美元，这将毫无意义。这是一个极端的例子，单独看验证者的数量意义不大，特别是假设一个大型的攻击者将自己伪装在许多实体后面，这在逻辑上是可行的。一个高的中本聪系数有助于防御攻击者破坏许多分布式节点，但它对防止经济攻击毫无作用。在这方面，Solana 最大限度地提高中本聪系数，同时也需要关注代币价值捕获。</p>
+<p>这尤其令人担忧，因为 Solana 没有能力应对这种攻击。任何人都可以完全验证 Solana，但这需要 99% 的用户永远无法做到的大量资金和努力。以太坊或 Celestia 等网络允许日常用户享有全节点安全性（资本和硬件要求低），更有能力处理 51% 攻击并从中恢复。加密保证总是优于加密经济保证。如果所有的轻客户端都知道不接受被攻击的无效链，就可以大大减轻可能造成的损害。</p>
+<p>Anatoly 经常说，Solana 被优化是为了「阻止核战争中的第一次打击」（通过最大化中本聪系数和实时审查阻力来防止多数攻击），而以太坊被优化是用于「收拾残局」。一个常人难以企及的质押价值与防止罢工的中本系数一样重要。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_mjyz45es13.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>这里的争论可能归结为：即使网络市值较低，攻击它也很难使个人获利。似乎不太可能有人会试图花费数百亿美元来攻击区块链，以期快速赚钱并侥幸逃脱。 更有可能是国家行为者采取行动来制裁一个全球重要的网络，用相对而言较低的经济成本造成的重大损害。 在这一点上，它可能会归结为与社区完全不同的观点：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_84ykzid6ie.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>Anatoly明确表示：「如果你在美国、欧洲或中国没有遇到麻烦，那没关系，其他都不重要。如果你遇到其中一个问题，那么没有什么可以帮助ni。所以这就是我不担心这些攻击的原因。我只是不在乎。」</p>
+<p>因此，如果巨额市值保护你免受的唯一攻击是国家行为者，那何必呢？只需承认存在威胁，然后忽略它并构建你能做的最好的机制，Solana 正在努力做到这一点。</p>
+<p>如果我们真的在这些网络之上建设法国的未来，我希望得到最有力的保证，甚至能抗衡国家行为者。为全球经济建立一个具有系统重要性的网络似乎是不负责任的，因为敌对政府很容易对其进行攻击，经济和网络战越来越成为首选的进攻方法。这些系统的设计必须使这些攻击的成本达到数万亿美元，已达到无懈可击的程度。</p>
+<h2 id="模块式与单片式的价值获取">模块式与单片式的价值获取</h2>
+<p>以太坊需要网络价值快速增长，以确保整个系统的安全性。</p>
+<p>回到多链单片系统，就会明白为什么巨额代币价格不是必须的。AVAX 的价格不会从其子网生态系统的增长那里直接受益，它也并不真的需要。他的基本设计愿景并没有提供共享安全性，无需以多链系统中最大资产的价格来跟踪周围生态系统的增长。</p>
+<p>单片链在获取费用方面天生就处于劣势，因为它们的上限为：</p>
+<p><strong>费用 = 吞吐量 x 用户将为单片链交易支付的价值</strong></p>
+<p>模块化的数据可用性、共识和结算层（如以太坊）将捕获更多的价值。它们的上限为：</p>
+<p><strong>费用 = 吞吐量 x 用户将为所有交易支付的价值</strong></p>
+<p>这是未来收费收入预测的关键点。</p>
+<p>与单个用户愿意为 Avalanche C- Chain 上的交易支付的费用相比，rollup 将在单笔交易中向以太坊支付巨额费用以确保可能包含上千笔用户交易的 rollup 区块安全。此外，安全地扩展数据可用性层（如 Celestia 或以太坊的设计）在技术上是可行的。与单体链相比，现在已经最大化了等式的两个部分。</p>
+<p>Rollup 基础层资产需要注意的一个重要负外部是 MEV 提取。个人用户最终可能都会离开以太坊 L1，随着这种情况的发生，MEV 的获取将逐渐转移到 Rollup 区块生产者。这种转变将与支付给 L1 的Rollup费用大规模增加相吻合。纯粹的数据可用性和共识层，如 Celestia 和 Polygon Avail，从一开始就不会获取 MEV，它们只能依靠交易费用。</p>
+<p>如果 L1 的加密货币经济体想要达到具有全球重要性的规模，那么可持续的价值捕获对其长期健康发展至关重要。</p>
+<p>设计上最安全的模块化基础层（数据可用性、共识和结算）将获得任何单一链的最大价值，因为它们可以扩展得最远，其区块空间最有价值。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_0fi70cfkrs.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0511/5_y6vw32yd0q.png" alt="Delphi 万字详述 L1 公链估值方法论"></p>
+<p>L1 代币价值获取</p>
+<p>撰文：Jon Charbonneau</p>
+<p>编译：Aididiao</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/37712/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">DAO、邓巴数和网络效应以及治理应该注意什么</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/37717/">
+                <span class="next-text nav-default">Meta正与Polygon合作以进军Web3</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#主要观点">主要观点</a></li>
+    <li><a href="#为什么代币会有价值">为什么代币会有价值？</a>
+      <ul>
+        <li><a href="#资本资产为质押者和持有者持续带来实际收益">资本资产：为质押者和持有者持续带来实际收益</a></li>
+      </ul>
+    </li>
+    <li><a href="#价值存储资产----货币溢价">价值存储资产 &ndash; 货币溢价</a></li>
+    <li><a href="#引擎盖下是什么">引擎盖下是什么</a></li>
+    <li><a href="#矛盾的愿景">矛盾的愿景</a>
+      <ul>
+        <li><a href="#solana-的愿景">Solana 的愿景 </a></li>
+        <li><a href="#以太坊的愿景">以太坊的愿景</a></li>
+        <li><a href="#代币价格重要吗">代币价格重要吗？</a></li>
+      </ul>
+    </li>
+    <li><a href="#模块式与单片式的价值获取">模块式与单片式的价值获取</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          以太坊日食攻击的底层逻辑以及叔块机制 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="日食攻击如何工作？叔块奖励如何运作？" />
+<meta name="keywords" content="以太坊2.0" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/24922/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="以太坊日食攻击的底层逻辑以及叔块机制" />
+<meta property="og:description" content="日食攻击如何工作？叔块奖励如何运作？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/24922/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-26T00:00:00+00:00" />
+
+<meta itemprop="name" content="以太坊日食攻击的底层逻辑以及叔块机制">
+<meta itemprop="description" content="日食攻击如何工作？叔块奖励如何运作？"><meta itemprop="datePublished" content="2021-06-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3888">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="以太坊日食攻击的底层逻辑以及叔块机制"/>
+<meta name="twitter:description" content="日食攻击如何工作？叔块奖励如何运作？"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">以太坊日食攻击的底层逻辑以及叔块机制</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-26">
+      2021-06-26
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3888 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>区块链是一种去中心化协议，它将数据库分布在其网络中的多个节点上，为过去、当前和未来的交易建立共识机制。区块链中的数据结构表示为区块。</p>
+<p>在去中心化的区块链网络中，参与者同意什么是正确的，而不是中央权威。区块链也是透明和不可变的，所有网络参与者都可以看到网络上发生的事情，除非通过商定的机制，否则交易日期无法更改。</p>
+<h3 id="比特币区块链中的区块类型">比特币区块链中的区块类型</h3>
+<ul>
+<li>创世区块</li>
+</ul>
+<p>创世区块是任何区块链的第一个区块，该区块是系统的基本起点，并与所有未来的交易相关联。世界上第一个创世区块是由中本聪创建的，并以此创造了比特币。</p>
+<p>创世区块的存在使区块链能够通过允许新创建的区块与以前的区块相关联来生成其交易历史。此外，创世区块在同步网络节点方面具有重要作用——它们的数据库中必须具有相同的创世区块。这确保了区块链的分布式交易簿对每个人都是相同的，从而提供了安全性。</p>
+<ul>
+<li>主链区块</li>
+</ul>
+<p>主链区块是所有经过验证并包含在区块链中的区块。为了实现这一点，区块必须通过一个节点解决其分配的加密难题来获得网络的同意。一旦网络达成共识，区块就会包含在区块链中，并由所有节点传播。这样，该网络的每个节点都有新的区块，并作为它的验证点。</p>
+<p>每个有效区块都包含一系列与该区块一起验证的交易。例如，在比特币中，每个有效区块平均承载2100笔交易。确认有效区块中的每笔交易。</p>
+<p>所有有效区块继续确认之前的交易，完全保护网络上的所有区块和交易。当然，每个有效区块包括允许验证的数据结构。该结构包括区块的哈希值、时间戳、nuncio和区块交易数据。搜索候选解决方案的过程称为挖矿，参与节点称为矿工。每个为区块的加密难题生成有效解决方案的矿工都成为领导者，并被允许确定未确认的交易集，然后将这些附加到区块链。</p>
+<ul>
+<li>孤立区块</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0626/5_2d0s3wpb3v.png" alt="以太坊"></p>
+<p>孤立区块或陈旧区块是不属于区块链的有效区块。当两个矿工几乎同时验证区块时，或者当具有足够哈希能力的攻击者试图逆转交易时，可以创建这些数据。在这些情况下，网络共识协议将发挥作用，以决定哪些区块将被包含在区块链中，哪些区块将被孤立。</p>
+<p>实际上，区块链网络被编程为始终支持最长的区块链。也就是说，它会选择包含更多信息或处理过交易的区块。在比特币区块链中，孤立区块被丢弃，矿工所做的工作是无用的。</p>
+<p>此外，正是由于这种类型的区块，大多数交易所和一些钱包会在提供资金之前自动等待额外的确认。他们通过计算您正在接收的交易和当前块之间开采了多少块来做到这一点。</p>
+<p>&gt;eth.getBlock(blockNumber)}&gt;eth.syncing.highestBlock-eth.getTransaction(““).blockNumber</p>
+<h3 id="区块是如何验证的">区块是如何验证的？</h3>
+<p><img src="https://img.bibiqing.com/news/2021/0626/5_hfsfvwt4dq.png" alt="以太坊"></p>
+<p>区块链系统使用Merkle树数据结构运行，这使得它们（在理论上）不可变。Merkle树是RalphMerkle在1979年申请专利的，在加密学中被广泛使用。Merkle树是验证共享数据未更改、损坏或更改的基本方法，并且非常适合区块链，因为它是轻量级的。例如，由于比特币的Merkle树结构，用户的移动钱包不需要下载所有的比特币交易来验证它们。</p>
+<p>给区块中的每笔交易对应于Merkle树中的一个叶子，通过散列单笔交易从这些叶子递归构建。</p>
+<p>交易对（叶子）被哈希以创建可能对应于区块链网络中的交易的其他叶子节点。尽管可以从大量交易中创建Merkle树，但Merkle根始终对应一个32字节或256位的字符串（例如SHA256哈希算法总是输出32字节的固定长度，无论输入中的大小）。通过这种方式，我们可以使用小至32字节的数据来验证多达数千笔交易。</p>
+<p>根据案例，任何更改，无论多么微小，都会阻止Merkle根的验证，并使区块链的部分或全部历史失效。</p>
+<h3 id="以太坊区块链中的区块类型">以太坊区块链中的区块类型</h3>
+<p>以太坊与比特币的不同之处在于是它具有更快的区块创建机制，旨在加快交易过程。但是，当区块生成之间的时间间隔很短（大约15秒）时，会创建大量的孤立区块，因为将所有这些区块都包含在区块链中是低效的。</p>
+<p>这导致了矿工浪费时间在区块上工作而得不到报酬的问题。为了解决这个问题，以太坊的开发者推出了GHOST协议。</p>
+<p>GHOST代表Greedy Heaviest Observed Subtree，概念很简单。它奖励验证孤立区块的矿工，尽管其奖励低于标准区块。为了释放奖励，该区块必须被主链中的区块或叔块引用。</p>
+<p>该机制的另一个优点是解决了网络中心化的问题。当区块被快速创建时，大型矿池很容易垄断区块验证，从而导致较小的竞争对手创建无穷无尽的孤块区块。</p>
+<p>以太坊区块链中有两种类型的区块：</p>
+<ol>
+<li>
+<p>主链区块是包含在以太坊区块链中的区块。发现它的矿工将获得奖励。</p>
+</li>
+<li>
+<p>叔块是经过身份验证但未包含在主链中的区块。矿工为此获得的奖励低于有效区块。</p>
+</li>
+</ol>
+<p>想象一下，世界不同地区的两个矿工同时挖出同一个区块。然后他们在网络中传播他们的区块。这可能会在区块链中造成的分歧，因此必须选择一个，而较大的区块将永远获胜。未选中的区块成为孤立区块（在比特币中）或叔块（在以太坊中）。与比特币不同，以太坊矿工挖矿将获得整个区块的1/8奖励。</p>
+<h3 id="叔块奖励如何运作">叔块奖励如何运作？</h3>
+<p>主链区块的矿工可以参考叔块，当他们这样做时，额外的奖励分配给主链区块的矿工和叔块的矿工。主链中包含的每个区块最多可以引用两个叔块，并为每个引用的叔块提供1/32的完整区块奖励。然而，支付给叔块矿工的奖励会随着时间的推移而减少。</p>
+<p>通过保证对否则会浪费的计算工作进行补偿，并通过使奖励随着时间的推移而减少，竞争链上的矿工有动力重新加入主链。这些叔块有助于区块链安全，也降低了51%的攻击概率。</p>
+<p>在以太坊矿池中，可以通过多种方式进行分布：</p>
+<ul>
+<li>按比例支付计划</li>
+</ul>
+<p>在这个简单的方案中，矿工将根据在矿池发现的两个区块之间的时间间隔内提交的代币数量获得相应的奖励。因此，区块奖励B根据他们各自提交的代币数量在资金池中的N个矿工之间进行分配。</p>
+<ul>
+<li>按最后N股支付(PPLNS)</li>
+</ul>
+<p>PPLNS计划按照最近提交的N股成比例分配奖励。</p>
+<ul>
+<li>基于队列的支付方案</li>
+</ul>
+<p>Ethpool3是第一个引入基于队列的奖励机制的以太坊矿池。在该计划下，矿工为提交给矿池运营商的每份代币累积信用。每当矿池挖出一个完整的区块时，区块奖励就会分配给矿池中累积信用余额最高的矿工。然后，顶级矿工将其信用余额重置为他们自己与矿池中第二高信用余额之间的差额。</p>
+<p>引用关系创建了额外的薄荷奖励，普通区块所有者的完整区块奖励的1/32和叔块的 (8-i)/8。根据引用的块高度，变量 i的范围从 1到6 。</p>
+<p>除了完善区块链的结构外，以太坊还有另外两项安全改进。一种是随机打破平局规则。一个节点不接受第一个接收的链，而是在所有接收到的相同长度的链中随机选择一个链。数γ不再固定，等于竞争链数的倒数。另一个目的是赦免叔块挖矿的策略。</p>
+<h3 id="叔块和日食攻击">叔块和日食攻击</h3>
+<p>日食攻击如何工作？</p>
+<p>日食攻击要求攻击者控制主机节点的僵尸网络（每个节点都有自己的IP地址），并找出受害者的相邻节点，基本上是通过反复试验。实现这一目标所需的努力取决于网络的规模和性质，但如果成功，在受害者注销并重新加入网络后，攻击者将控制所有受害者的连接节点。</p>
+<p>在这种情况下，存在三个参与者——攻击者、受害者和诚实节点。如果受害者找到一个区块，攻击者就不会将该区块传播到网络。如果攻击者发现了一个区块，他们就会与受害者分享。通过这种方式，攻击者为自己和被遮蔽的节点创建了一个私有区块链。</p>
+<p>通过这样做，攻击者可以获得比诚实挖矿多96.4%的收益。日食攻击是可能的，因为在去中心化网络中，一个节点无法同时连接到网络上的所有其他节点。相反，为了提高效率，给定节点将连接到一组选定的其他节点，而这些节点又连接到自己的选定组。因此，仅使用两台具有唯一IP地址的机器就可以发起日食攻击。</p>
+<p>以太坊依赖于基于名为Kademlia的协议的结构化网络，该协议旨在让节点更有效地连接到其他节点。通过使用密钥生成算法，攻击者可以非常迅速地创建无限数量的节点ID（点对点网络上的标识符）。更糟糕的是，攻击者甚至可能以一种比随机节点ID更吸引受害者的方式创建节点ID，基本上把受害者吸引到这些节点ID上。</p>
+<p>以太坊有三个特征可能使其容易受到日食攻击。首先，快速创建区块会产生无穷无尽的松散区块，通过增加以太坊的供应量间接侵犯了诚实矿工的利益。其次，叔块机制意味着节点可以从这些区块中获利。第三，以太坊增强的节点连接性为攻击者提供了动力。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/24927/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">以太坊基金会第六次Reddit AMA：涉及状态管理、无状态性、经济机制等</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/24935/">
+                <span class="next-text nav-default">资产管理公司从CME比特币期货空头转为多头</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#比特币区块链中的区块类型">比特币区块链中的区块类型</a></li>
+        <li><a href="#区块是如何验证的">区块是如何验证的？</a></li>
+        <li><a href="#以太坊区块链中的区块类型">以太坊区块链中的区块类型</a></li>
+        <li><a href="#叔块奖励如何运作">叔块奖励如何运作？</a></li>
+        <li><a href="#叔块和日食攻击">叔块和日食攻击</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

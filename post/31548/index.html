@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          MEV的定义究竟是什么？Flashbots进行了详细解释 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="从激动人心的 Twitter 话题到学术研究论文，MEV 现象已成为加密货币讨论的核心。然而，奇怪的是，对于 MEV 的正式定义并没有达成一致。" />
+<meta name="keywords" content="Flashbots" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/31548/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="MEV的定义究竟是什么？Flashbots进行了详细解释" />
+<meta property="og:description" content="从激动人心的 Twitter 话题到学术研究论文，MEV 现象已成为加密货币讨论的核心。然而，奇怪的是，对于 MEV 的正式定义并没有达成一致。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/31548/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-12-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-06T00:00:00+00:00" />
+
+<meta itemprop="name" content="MEV的定义究竟是什么？Flashbots进行了详细解释">
+<meta itemprop="description" content="从激动人心的 Twitter 话题到学术研究论文，MEV 现象已成为加密货币讨论的核心。然而，奇怪的是，对于 MEV 的正式定义并没有达成一致。"><meta itemprop="datePublished" content="2021-12-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-12-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4724">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MEV的定义究竟是什么？Flashbots进行了详细解释"/>
+<meta name="twitter:description" content="从激动人心的 Twitter 话题到学术研究论文，MEV 现象已成为加密货币讨论的核心。然而，奇怪的是，对于 MEV 的正式定义并没有达成一致。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">MEV的定义究竟是什么？Flashbots进行了详细解释</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-12-06">
+      2021-12-06
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4724 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>自从 Daian 等人在 2019 年的 Flashboys 2.0‌ 论文中引入矿工可提取价值（MEV）（也就是现在的最大可提取价值）以来，关于MEV的讨论已经很多。特别是，Flashbots Auction的推出推动了当今跨越各种区块链和中心化交易所的十亿美元经济。从激动人心的 Twitter 话题到学术研究论文，MEV 现象已成为加密货币讨论的核心。然而，奇怪的是，对于 MEV 的正式定义并没有达成一致。</p>
+<p>虽然有些人可能会争辩说，在大多数情况下，广泛共享的、直观的 MEV 概念就足够了，但我们认为，适当的正式化对于建立可以进行复杂理论化的基础至关重要。正如 Tim Roughgarden 在最近一次关于构建 DeFi 理论的演讲中所说的那样，在“简单”和后来的“困难”定理之前，第一步是要有定义和基本词汇。此外，正如最近的公开讨论所证明的那样，有些人声称套利不是 MEV，甚至可能是我们根本不共享 MEV 的直观概念！一个统一正式的 MEV 定义肯定会有所帮助。</p>
+<p>然而，事实证明，以稳健、通用的方式正式化 MEV 并非易事。在这篇文章中，我们探讨了在尝试提出这样一个定义时遇到的一些困难。我们首先回顾一些现有的正式化，指出它们的一些问题，并继续寻求对其中一些进行修正。虽然我们提出了改进其中一些问题的新定义，但我们的主要贡献在于突出了所涉及的许多微妙之处，为未来围绕 MEV 的工作采用更系统的方法铺平了道路。</p>
+<h2 id="当前-mev-定义"><strong>当前 MEV 定义</strong></h2>
+<p>最初的 Flashboys 论文将 MEV 定义为“在给定时间范围内，以太坊矿工可以从交易操纵中提取的总量，其中可能包括多个区块的交易价值”，但没有尝试正式定义。最近，广泛采用的工作定义类似于：</p>
+<p>MEV 是区块提议者可以通过重新排序、审查或插入交易而无需许可地提取的价值。</p>
+<p>也许最接近正式化的定义是最近的 Clockwork Finance 论文中通过以下两个表达式给出的定义：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1206/26_mr5u8jwupb.png" alt="MEV的定义究竟是什么？Flashbots进行了详细解释"></p>
+<p>和：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1206/26_iumtm14das.png" alt="MEV的定义究竟是什么？Flashbots进行了详细解释"></p>
+<p>这里，EV 是在给定一组有效区块序列 B 的情况下，玩家 p 在状态 s 中可提取的价值，(B1 ,&hellip;,Bn ) 就是这样的一个序列，而 b(p,Sk ) 是玩家 p 的余额在将区块 (B1 ,&hellip;,Bk ) 应用于 s 后的状态。k-MEV 是处于状态 s 的玩家 p 作为区块提议者的 k-最大可提取值，其中 validBlocksk 是 p 可以创建的 k 个区块的所有有效区块序列的集合，而单区块 MEV 仅为 1-MEV。</p>
+<p>为了记数简单性，这些表达式与论文中的表达式略有调整，但在其他方面是等效的。特别是，我们考虑玩家的余额而不是账户（省略玩家控制的账户的总和），并删除对链的原生资产的显式引用；稍后我们将回到这一点。</p>
+<p>我们将使用 MEV 的这个定义作为起点，并注意到大多数其他论文提供了面临相同限制的类似定义，或者根本不提供正式定义。</p>
+<h2 id="现存的限制"><strong>现存的限制</strong></h2>
+<p>我们首先注意到上述表达式中的一个致命缺陷：最大可提取值（MEV）取决于玩家 p！这意味着如果 p 有一些待处理的空投领取，他们的 MEV 将大于没有的玩家。虽然这对于可提取值可能有意义，但它肯定与“无许可提取”价值的想法不一致。</p>
+<p>仔细检查后，并不完全清楚“玩家”的概念实际上指的是什么。我们可以确定至少三个相互交织的含义：i) 作为交易签名者的玩家，拥有余额和控制账户，ii) 作为协议游戏中的参与者，拥有（或缺乏）区块提议权，以及 iii) 网络意义上的玩家 ，受延迟影响并拥有独特内存池视图的节点运营商。</p>
+<p>虽然后一种含义可能不适用于这个公式，但含义 i) 和 ii) 有点混淆：p 在谈论 (1) 中的余额时肯定指的是 i)，但在从（1）到（2），我们还赋予了 p 区块提议权，符合含义 ii)。我们认为 MEV 的正确定义应该独立于 i) 意义上的玩家，也就是说，它不应该依赖于特定的签约权。关于 ii)，我们将定义给定区块提议权限的 MEV。这有效地将问题一方面解耦为价值提取，另一方面获得排序权，这在考虑提取成本、网络安全等时可能会很有用。</p>
+<p>上述定义的其他注意事项是对多区块 MEV 的处理（与上述 i) 和 ii) 含义的纠缠有关）、因撤回交易而产生的费用的遗漏，以及试图将 MEV 推广到跨域设置时区块概念的不足。在接下来的内容中，我们尝试修补定义以在可能的情况下解决其中的一些问题，并讨论我们在此过程中发现的一些其他困难。</p>
+<h2 id="修补-mev"><strong>修补 MEV</strong></h2>
+<p>如上所述，首要任务是提出一个真正无需许可的 MEV 定义。我们将在可提取值的定义中保留玩家依赖性，但在移动到 MEV 时摆脱它。我们在这里注意到，我们在上面 i) 的意义上使用 player，赋予它对 EV 和 MEV 的完整区块排序权限。我们提出以下建议：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1206/26_46buewjnae.png" alt="MEV的定义究竟是什么？Flashbots进行了详细解释"></p>
+<p>这里的第一个表达式与 (1) 非常相似，但我们删除了对有效区块序列集的依赖，这是隐式的，我们只考虑单个块（稍后会详细介绍）。这里的validBlocks(p)是p可以提出的有效区块的集合（validBlocks1 (p,s)之前，为了简洁省略了区块的数量和状态依赖）。B(s) 反过来表示通过在状态 s 之上应用区块 B 获得的状态。</p>
+<p>在表达式 (4) 中，我们获得了 MEV 的定义，根据需要，该定义独立于玩家（表示 P 玩家集）。虽然在最大可提取值的定义中找到最小值可能有悖常理，但这个最小值只是编码了提取应该是无许可的想法。EV 已经负责最大化，无需许可即可提取的价值是特权最低的参与者可以从网络中获取的价值（同样，假设他们拥有区块提议权）。</p>
+<p>然而，这个定义引出了一个问题，当挖矿需要前期资本时会发生什么？定义 (2) 没有这个问题，因为它对玩家有明确的依赖，但是现在删除了它，我们需要考虑到某些 MEV 可能只能在某些初始资本水平下才能提取。然而，我们注意到 gas 费用不是这里要求的一部分，因为提议者可以随意排序“免费”交易，因此即使没有初始资本，通常 MEV 也可能大于零。</p>
+<p>尽管如此，我们希望明确对资本的依赖，因为许多 MEV 机会都依赖于它。我们写（使用（3）中的EV）：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1206/26_93qlgrfqwz.png" alt="MEV的定义究竟是什么？Flashbots进行了详细解释"></p>
+<p>这个定义告诉我们，状态 s 中初始资本 K 的最大可提取价值是任何至少拥有该数量初始资本的玩家可以提取的价值。</p>
+<p>我们考虑的下一步是内存池中的交易会发生什么。在上面我们考虑了“有效区块”，但至关重要的是，这些可以包含已撤回的交易，即支付费用，但不修改状态。这是一个棘手的问题，因为它涉及上面的含义 iii) 对玩家来说，因为内存池的不同视图会产生不同的有效区块集。虽然在实践中提取 MEV 的搜索者不断在内存池中寻找机会，但交易最终需要包含在一个区块中以修改状态并产生机会，因此如果我们在有效交易方面不失一般性只考虑状态变化，而不是更一般的有效块概念。在这种情况下，我们确实丢失了作为 MEV 来源的撤回交易，因此我们可以尝试修改我们的公式以包含依赖于玩家的内存池的视图，但这会混淆 i) 和 iii) 的含义，并且我们会遇到最小化过度玩家时的麻烦。考虑到内存池架构仅针对某些领域，这也会限制表达式的泛化性。因此，我们明确排除了作为 MEV 来源的撤回交易，但请注意，它们是排序器带回的收入的一部分，并有助于 MEV 提取的负外部性，如可提取价值成本‌所量化。</p>
+<p>省略撤回交易使我们能够走得更远，超越区块的概念，这将使我们能够在更一般的领域（如中心化交易所）中考虑 MEV。我们将可提取价值的定义重写为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1206/26_89af48plpv.png" alt="MEV的定义究竟是什么？Flashbots进行了详细解释"></p>
+<p>这里，S 是所有状态的集合，符号 Sap S&rsquo; 表示状态 S&rsquo; 可以通过玩家 p 的某个动作或动作序列 ap 从状态 s 到达。与上面的等式 (5) 一起，我们获得了可以轻松推广到跨域情况的定义（见下文），并解决了我们在定义 (1) 和 (2) 中遇到的大多数问题。</p>
+<h2 id="悬而未决的问题和扩展"><strong>悬而未决的问题和扩展</strong></h2>
+<p>在修补 MEV 定义时，我们转向了单区块，彻底解决了多区块 MEV 的问题。事实上，我们最新的表达式 (5) 和 (6) 会自动考虑到这一点，因为通过根据状态而不是区块来表达 EV，这些公式适用于提议者拥有排序权的任何时期。现在的问题成为如何获得这些订购权的方法之一。为了干净利落地做到这一点，我们需要归因于不同事件的概率（比如产生单个区块、两个连续区块等），这样我们就可以得出总 MEV 的预期值。然而，这超出了 MEV 形式化的范围，因为一旦定义了足够的集成，就可以简单地插入表达式 (5)。</p>
+<p>我们顺便提到的另一个话题是跨域 MEV。在一个不同链（或更一般的域）有自己的状态更新机制，但通过其状态中的依赖关系有效链接的世界中（想想 L1 存款在处理时会影响 L2 余额），我们希望找到 MEV，它只能是通过对多个域中的状态变化进行排序来提取。我们在状态方面的表述适用于这种扩展，但需要注意的是，不同的域具有不同的本地资产，我们需要考虑到这一点。我们不会在这里详细介绍，但是可以通过引入定价功能来解决这个问题，以便从一个域转换到另一个域。首先近似，我们可以取一个定价函数 pi→j 从域 i 的本地资产到域 j 的资产，并要求 pj→i =1/pi→j 。更现实的是，我们预计价格是许多因素的玩家依赖函数，如不同域的不同资产数量、域的信任假设等。</p>
+<p>我们注意到，自始至终，我们都将 EV 和 MEV 视为玩家的收入，从未考虑过成本。这与我们对具有给定订购权的玩家的定义相吻合，因为获得这些权利可以说是 MEV 提取中成本最高的组成部分（尽管考虑到订购问题是一个 NP 完全背包问题，计算成本可能并不重要）。无论如何，将 MEV 仅视为收入组成部分并单独考虑提取成本似乎更清晰。就像在多区块设置中一样，我们可以定义一个概率集成来获得排序权，并考虑与每个概率分布相关的成本。然而，更棘手的是，排序权限通常以每个域的特征为单位授予（例如，提议一个区块），而成本通常表示为费率（每单位时间）。因此，虽然 MEV 通常以区块形式出现，但生产这些区块的成本将以时间单位表示，并且它们之间的关系的细节将因每个域而异。每个域如何实现最终确定对于建立这种关系也至关重要（也许 1 年前有一个很好的 MEV 机会，但重新组织链以获得它的成本会令人望而却步），所以我们不期望有一种 MEV 的通用公式来适应它。</p>
+<p>最后，我们只考虑了“确定的”MEV，用状态改变后增加的余额来表达它（MEV 为正）。这不足以描述更一般的“概率 MEV”概念，在这种概念中，玩家愿意承担风险以期获得以后的回报。这方面的例子是在预期价格上涨时买断新的代币清单，或者抢跑 NFT 出价。很可能这些机会中的大部分都可以通过合并定价函数来描述，我们期待看到朝这个方向发展的工作。</p>
+<h2 id="结论"><strong>结论</strong></h2>
+<p>MEV兴起需要一种一致的正式方法来解锁正确的理论（例如，以智能合约系统的 MEV 暴露的自动审计为例，与上面引用的 Clockwork Finance 论文中的工作一致）。然而，正式化 MEV 涉及大量的技术细节，这些技术细节通常会为了完整性而权衡通用性（例如是否包括撤回交易的情况）。在这里，我们为参与者的概念提供了明确的含义，这使我们将获得排序权的问题与价值提取的问题分开，使我们能够在定义 MEV 时具有很大的普遍性。我们的公式 (5) 和 (6) 提供了一个一致的、易于推广的定义，可以用于多领域世界。我们还强调了在实现 MEV 的正式定义时面临的许多问题，我们希望这些问题能够更系统地处理该主题。</p>
+<p>来源：Flashbots</p>
+<p>感谢 Phil Daian、Alex Obadia 和 Mahimna Kelkar 就该主题进行了大量讨论。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/31530/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">MetaMask 当之无愧的加密英雄</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/31533/">
+                <span class="next-text nav-default">Web3是互联网复兴还是骗局？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#当前-mev-定义"><strong>当前 MEV 定义</strong></a></li>
+    <li><a href="#现存的限制"><strong>现存的限制</strong></a></li>
+    <li><a href="#修补-mev"><strong>修补 MEV</strong></a></li>
+    <li><a href="#悬而未决的问题和扩展"><strong>悬而未决的问题和扩展</strong></a></li>
+    <li><a href="#结论"><strong>结论</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

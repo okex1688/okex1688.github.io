@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Vitalik：区块链可扩展性的限制 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="事实证明，无论是否使用分片，都有重要且非常微妙的技术因素限制了区块链的可扩展性。" />
+
+  <meta name="keywords" content="区块大全, 区块链, 区块链资讯, 区块链快讯, 区块链新闻, 比特币行情" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/23695/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Vitalik：区块链可扩展性的限制" />
+<meta property="og:description" content="事实证明，无论是否使用分片，都有重要且非常微妙的技术因素限制了区块链的可扩展性。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/23695/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-05T00:00:00+00:00" />
+
+<meta itemprop="name" content="Vitalik：区块链可扩展性的限制">
+<meta itemprop="description" content="事实证明，无论是否使用分片，都有重要且非常微妙的技术因素限制了区块链的可扩展性。"><meta itemprop="datePublished" content="2021-06-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6906">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vitalik：区块链可扩展性的限制"/>
+<meta name="twitter:description" content="事实证明，无论是否使用分片，都有重要且非常微妙的技术因素限制了区块链的可扩展性。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Vitalik：区块链可扩展性的限制</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-05">
+      2021-06-05
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6906 字 -
+        预计阅读 14 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><em>文章来源：</em><a href="https://mp.weixin.qq.com/s/ck4hQV1pVepvarvh8-vT9g">ETH中文站</a></p>
+<p><em>稿源 | vitalik.ca</em></p>
+<p><em>作者 | Vitalik Buterin</em></p>
+<p>感谢Felix Lange, Martin Swende, Marius van der Wijden 和 Mark Tyneway的反馈和校对。</p>
+<p>我们能将区块链的可扩展性提升到多少？是否真的能像 Elon Musk 所说的那样“区块时间加速十倍，区块大小增长十倍并且手续费降低一百倍”，而不会导致极度中心化并违背区块链的本质属性？如果答案是否定的，那我们能达到什么程度？改变公式算法会怎样？更重要的是，如果引入类似 ZK-SNARK 或分片的功能会怎样？一个分片型的区块链在理论上能够不断添加分片，那么是否真的可以这么做呢？</p>
+<p>事实证明，无论是否使用分片，都有重要且非常微妙的技术因素限制了区块链的可扩展性。许多情况都有解决方案，但是即使有了解决方案，也存在局限性。这篇文章将探讨其中的许多问题。</p>
+<p>如果只是简单地拔高参数，问题似乎就能得到解决。但是我们会因此付出什么代价？</p>
+<p><img src="https://img.bibiqing.com/news/2021/0605/9_ydkhisszlo.png" alt="Vitalik：区块链可扩展性的限制"></p>
+<h2 id="普通用户能够运行节点对于区块链的去中心化至关重要"><strong>普通用户能够运行节点对于区块链的去中心化至关重要</strong></h2>
+<p>想象一下凌晨两点多，你接到了一个紧急呼叫，来自世界另一端帮你运行矿池 (质押池) 的人。从大约 14 分钟前开始，你的池子和其他几个人从链中分离了出来，而网络仍然维持着 79% 的算力。根据你的节点，多数链的区块是无效的。这时出现了余额错误：区块似乎错误地将 450 万枚额外代币分配给了一个未知地址。</p>
+<p>一小时后，你和其他两个同样遭遇意外的小矿池参与者、一些区块浏览器和交易所方在一个聊天室中，看见有人贴出了一条推特的链接，开头写着“宣布新的链上可持续协议开发基金”。</p>
+<p>到了早上，相关讨论广泛散布在推特以及一个不审查内容的社区论坛上。但那时 450 万枚代币中的很大一部分已经在链上转换为其他资产，并且进行了数十亿美元的 defi 交易。79％的共识节点，以及所有主要的区块链浏览器和轻钱包的端点都遵循了这条新链。也许新的开发者基金将为某些开发提供资金，或者也许所有这些都被领先的矿池、交易所及其裙带所吞并。但是无论结果如何，该基金实际上都成为了既成事实，普通用户无法反抗。</p>
+<p>或许还有这么一部主题电影。或许会由 MolochDAO 或其他组织进行资助。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0605/9_zskmrtfnss.png" alt="Vitalik：区块链可扩展性的限制"></p>
+<p>这种情形会发生在你的区块链中吗？你所在区块链社区的精英，包括矿池、区块浏览器和托管节点，可能协调得很好，他们很可能都在同一个 telegram 频道和微信群中。如果他们真的想出于利益突然对协议规则进行修改，那么他们可能具备这种能力。以太坊区块链在十小时内完全解决了共识失败，如果是只有一个客户端实现的区块链，并且只需要将代码更改部署到几十个节点，那么可以更快地协调客户端代码的更改。能够抵御这种社会性协作攻击的唯一可靠方式是“被动防御”，而这种力量来自去一个中心化的群体：用户。</p>
+<p>想象一下，如果用户运行区块链的验证节点 (无论是直接验证还是其他间接技术)，并自动拒绝违反协议规则的区块，即使超过 90% 的矿工或质押者支持这些区块，故事会如何发展。</p>
+<p>如果每个用户都运行一个验证节点，那么攻击很快就会失败：有些矿池和交易所会进行分叉，并且在整个过程中看起来很愚蠢。但是即使只有一些用户运行验证节点，攻击者也无法大获全胜。相反，攻击会导致混乱，不同用户会看到不同的区块链版本。最坏情况下，随之而来的市场恐慌和可能持续的链分叉将大幅减少攻击者的利润。对如此旷日持久的冲突进行应对的想法本身就可以阻止大多数攻击。</p>
+<p>Hasu 关于这一点的看法：</p>
+<p>“我们要明确一件事，我们之所以能够抵御恶意的协议更改，是因为拥有用户验证区块链的文化，而不是因为 PoW 或 PoS。”</p>
+<p><img src="https://img.bibiqing.com/news/2021/0605/9_v4616b56ah.png" alt="Vitalik：区块链可扩展性的限制"></p>
+<p>假设你的社区有 37 个节点运行者，以及 80000 名被动监听者，对签名和区块头进行检查，那么攻击者就获胜了。如果每个人都运行节点的话，攻击者就会失败。我们不清楚针对协同攻击的启动群体免疫的确切阈值是多少，但有一点是绝对清楚的：好的节点越多，恶意的节点就越少，而且我们所需的数量肯定不止于几百几千个。</p>
+<h2 id="那么全节点工作的上限是什么"><strong>那么全节点工作的上限是什么？</strong></h2>
+<p>为了使得有尽可能多的用户能够运行全节点，我们会将注意力集中在普通消费级硬件上。即使能够轻松购买到专用硬件，这能够降低一些全节点的门槛，但事实上对可扩展性的提升并不如我们想象的那般。</p>
+<p>全节点处理大量交易的能力主要受限于三个方面：</p>
+<ul>
+<li><strong>算力：</strong> 在保证安全的前提下，我们能划分多少 CPU 来运行节点？</li>
+<li><strong>带宽：</strong> 基于当前的网络连接，一个区块能包含多少字节？</li>
+<li><strong>存储：</strong> 我们能要求用户使用多大的空间来进行存储？此外，其读取速度应该达到多少？(即，HDD 足够吗？还是说我们需要 SSD？)</li>
+</ul>
+<p><strong>许多使用“简单”技术对区块链进行大幅扩容的错误看法都源自于对这些数字过于乐观的估计。</strong> 我们可以依次来讨论这三个因素：</p>
+<p><strong>算力</strong></p>
+<ul>
+<li>错误答案：100% 的 CPU 应该用于区块验证</li>
+<li>正确答案：约 5-10% 的 CPU 可以用于区块验证</li>
+</ul>
+<p>限制之所以这么低的四个主要原因如下：</p>
+<ul>
+<li>我们需要一个安全边界来覆盖 DoS 攻击的可能性 (攻击者利用代码弱点制造的交易需要比常规交易更长的处理时间)</li>
+<li>节点需要在离线之后能够与区块链同步。如果我掉线一分钟，那我应该要能够在几秒钟之内完成同步</li>
+<li>运行节点不应该很快地耗尽电池，也不应该拖慢其他应用的运行速度</li>
+<li>节点也有其他非区块生产的工作要进行，大多数是验证以及对 p2p 网络中输入的交易和请求做出响应</li>
+</ul>
+<p>请注意，直到最近大多数针对“为什么只需要 5-10%？”这一点的解释都侧重于另一个不同的问题：因为 PoW 出块时间不定，验证区块需要很长时间，会增加同时创建多个区块的风险。这个问题有很多修复方法，例如 Bitcoin NG，或使用 PoS 权益证明。但这些并没有解决其他四个问题，因此它们并没有如许多人所料在可扩展性方面获得巨大进展。</p>
+<p>并行性也不是灵丹妙药。通常，即使是看似单线程区块链的客户端也已经并行化了：签名可以由一个线程验证，而执行由其他线程完成，并且有一个单独的线程在后台处理交易池逻辑。而且所有线程的使用率越接近 100%，运行节点的能源消耗就越多，针对 DoS 的安全系数就越低。</p>
+<p><strong>带宽</strong></p>
+<ul>
+<li>错误答案：如果没 2-3 秒都产生 10 MB 的区块，那么大多数用户的网络都大于 10 MB/秒，他们当然都能处理这些区块</li>
+<li>正确答案：或许我们能在每 12 秒处理 1-5 MB 的区块，但这依然很难</li>
+</ul>
+<p>如今，我们经常听到关于互联网连接可以提供多少带宽的广为传播的统计数据：100 Mbps 甚至 1 Gbps 的数字很常见。但是由于以下几个原因，宣称的带宽与预期实际带宽之间存在很大差异：</p>
+<ol>
+<li>“Mbps”是指“每秒数百万 bits”；一个 bit 是一个字节的 1/8，因此我们需要将宣称的 bit 数除以 8 以获得字节数。</li>
+<li>网络运营商，就像其他公司一样，经常编造谎言。</li>
+<li>总是有多个应用使用同一个网络连接，所以节点无法独占整个带宽。</li>
+<li>P2P 网络不可避免地会引入开销：节点通常最终会多次下载和重新上传同一个块 (更不用说交易在被打包进区块之前还要通过 mempool 进行广播)。</li>
+</ol>
+<p>当 Starkware 在 2019 年进行一项实验时，他们在交易数据 gas 成本降低后首次发布了 500 kB 的区块，一些节点实际上无法处理这种大小的区块。处理大区块的能力已经并将持续得到改善。但是无论我们做什么，我们仍然无法获取以 MB/秒为单位的平均带宽，说服自己我们可以接受 1 秒的延迟，并且有能力处理那种大小的区块。</p>
+<p><strong>存储</strong></p>
+<ul>
+<li>错误答案：10 TB</li>
+<li>正确答案：512 GB</li>
+</ul>
+<p>正如大家可能猜到的，这里的主要论点与其他地方相同：理论与实践之间的差异。理论上，我们可以在亚马逊上购买 8 TB 固态驱动 (确实需要 SSD 或 NVME；HDD 对于区块链状态存储来说太慢了)。实际上，我用来写这篇博文的笔记本电脑有 512 GB，如果你让人们去购买硬件，许多人就会变得懒惰 (或者他们无法负担 800 美元的 8 TB SSD) 并使用中心化服务。即使可以将区块链装到某个存储设备上，大量活动也可以快速地耗尽磁盘并迫使你购入新磁盘。</p>
+<p>一群区块链协议研究员对每个人的磁盘空间进行了调查。我知道样本量很小，但仍然&hellip;</p>
+<p><img src="https://img.bibiqing.com/news/2021/0605/9_2lahcyba06.png" alt="Vitalik：区块链可扩展性的限制"></p>
+<p>此外，存储大小决定了新节点能够上线并开始参与网络所需的时间。现有节点必须存储的任何数据都是新节点必须下载的数据。这个初始同步时间 (和带宽) 也是用户能够运行节点的主要障碍。在写这篇博文时，同步一个新的 geth 节点花了我大约 15 个小时。如果以太坊的使用量增加 10 倍，那么同步一个新的 geth 节点将至少需要一周时间，而且更有可能导致节点的互联网连接受到限制。这在攻击期间更为重要，当用户之前未运行节点时对攻击做出成功响应需要用户启用新节点。</p>
+<p><strong>交互效应</strong></p>
+<p>此外，这三类成本之间存在交互效应。由于数据库在内部使用树结构来存储和检索数据，因此从数据库中获取数据的成本随着数据库大小的对数而增加。事实上，因为顶级 (或前几级) 可以缓存在 RAM 中，所以磁盘访问成本与数据库大小成正比，是 RAM 中缓存数据大小的倍数。</p>
+<p>不要从字面上理解这个图，不同的数据库以不同的方式工作，通常内存中的部分只是一个单独 (但很大) 的层 (参见 leveldb 中使用的 LSM 树)。但基本原理是一样的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0605/9_1o6wysj7lc.png" alt="Vitalik：区块链可扩展性的限制"></p>
+<p>例如，如果缓存为 4 GB，并且我们假设数据库的每一层比上一层大 4 倍，那么以太坊当前的 ~64 GB 状态将需要 ~2 次访问。但是如果状态大小增加 4 倍到 ~256 GB，那么这将增加到 ~3 次访问。因此，gas 上限增加 4 倍实际上可以转化为区块验证时间增加约 6 倍。这种影响可能会更大：硬盘在已满状态下比空闲时需要花更长时间来读写。</p>
+<h2 id="这对以太坊来说意味着什么"><strong>这对以太坊来说意味着什么？</strong></h2>
+<p>现在在以太坊区块链中，运行一个节点对许多用户来说已经是一项挑战，尽管至少使用常规硬件仍然是可能的 (我写这篇文章时刚刚在我的笔记本电脑上同步了一个节点！)。因此，我们即将遭遇瓶颈。<strong>核心开发者最关心的问题是存储大小。</strong> 因此，目前在解决计算和数据瓶颈方面的巨大努力，甚至对共识算法的改变，都不太可能带来 gas limit 的大幅提升。即使解决了以太坊最大的 DoS 弱点，也只能将 gas limit 提高 20%。</p>
+<p>对于存储大小的问题，唯一解决方案是无状态和状态逾期。无状态使得节点群能够在不维护永久存储的情况下进行验证。状态逾期会使最近未访问过的状态失活，用户需要手动提供证明来更新。这两条路径已经研究了很长时间，并且已经开始了关于无状态的概念验证实现。这两项改进相结合可以大大缓解这些担忧，并为显著提升 gas limit 开辟空间。<strong>但即使在实施无状态和状态逾期之后，gas limit 也可能只会安全地提升约 3 倍，直到其他限制开始发挥作用。</strong></p>
+<p>另一个可能的中期解决方案使使用 ZK-SNARKs 来验证交易。ZK-SNARKs 能够保证普通用户无需个人存储状态或是验证区块，即使他们仍然需要下载区块中的所有数据来抵御数据不可用攻击。另外，即使攻击者不能强行提交无效区块，但是如果运行一个共识节点的难度过高，依然会有协调审查攻击的风险。因此，ZK-SNARKs 不能无限地提升节点能力，但是仍然能够对其进行大幅提升 (或许是 1-2 个数量级)。一些区块链在 layer1 上探索该形式，以太坊则通过 layer2 协议 (也叫 ZK rollups) 来获益，例如 zksync, Loopring 和 Starknet。</p>
+<h2 id="分片之后又会如何"><strong>分片之后又会如何？</strong></h2>
+<p><strong>分片从根本上解决了上述限制，因为它将区块链上包含的数据与单个节点需要处理和存储的数据解耦了。</strong> 节点验证区块不是通过亲自下载和执行，而是使用先进的数学和密码学技术来间接验证区块。</p>
+<p>因此，分片区块链可以安全地拥有非分片区块链无法实现的非常高水平的吞吐量。这确实需要大量的密码学技术来有效替代朴素完整验证，以拒绝无效区块，但这是可以做到的：该理论已经具备了基础，并且基于草案规范的概念验证已经在进行中。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0605/9_7gs9e4wud8.jpg" alt="Vitalik：区块链可扩展性的限制"></p>
+<p>以太坊计划采用<strong>二次方分片 (quadratic sharding)</strong> ，其中总可扩展性受到以下事实的限制：节点必须能够同时处理单个分片和信标链，而信标链必须为每个分片执行一些固定的管理工作。如果分片太大，节点就不能再处理单个分片，如果分片太多，节点就不能再处理信标链。这两个约束的乘积构成了上限。</p>
+<p>可以想象，通过三次方分片甚至指数分片，我们可以走得更远。在这样的设计中，数据可用性采样肯定会变得更加复杂，但这是可以实现的。但以太坊并没有超越二次方，原因在于，从交易分片到交易分片的分片所获得的额外可扩展性收益实际上无法在其他风险程度可接受的前提下实现。</p>
+<p>那么这些风险是什么呢？</p>
+<h2 id="最低用户数量"><strong>最低用户数量</strong></h2>
+<p>可以想象，只要有一个用户愿意参与，非分片区块链就可以运行。但分片区块链并非如此：单个节点无法处理整条链，因此需要足够的节点以共同处理区块链。如果每个节点可以处理 50 TPS，而链可以处理 10000 TPS，那么链至少需要 200 个节点才能存续。如果链在任何时候都少于 200 个节点，那可能会出现节点无法再保持同步，或者节点停止检测无效区块，或者还可能会发生许多其他坏事，具体取决于节点软件的设置。</p>
+<p>在实践中，由于需要冗余 (包括数据可用性采样)，安全的最低数量比简单的“链 TPS 除以节点 TPS”高几倍，对于上面的例子，我们将其设置位 1000 个节点。</p>
+<p>如果分片区块链的容量增加 10 倍，则最低用户数也增加 10 倍。现在大家可能会问：为什么我们不从较低的容量开始，当用户很多时再增加，因为这是我们的实际需要，用户数量回落再降低容量？</p>
+<p>这里有几个问题：</p>
+<ol>
+<li>区块链本身无法可靠地检测到其上有多少唯一用户，因此需要某种治理来检测和设置分片数量。对容量限制的治理很容易成为分裂和冲突的根源。</li>
+<li>如果许多用户突然同时意外掉线怎么办？</li>
+<li>增加启动分叉所需的最低用户数量，使得防御恶意控制更加艰难。</li>
+</ol>
+<p>最低用户数为 1,000，这几乎可以说是没问题的。另一方面，最低用户数设为 100 万，这肯定是不行。即使最低用户数为 10,000 也可以说开始变得有风险。<strong>因此，似乎很难证明超过几百个分片的分片区块链是合理的。</strong></p>
+<h2 id="历史可检索性"><strong>历史可检索性</strong></h2>
+<p>用户真正珍视的区块链重要属性是<strong>永久性</strong> 。当公司破产或是维护该生态系统不再产生利益时，存储在服务器上的数字资产将在 10 年内不再存在。而以太坊上的 NFT 是永久的。</p>
+<p>是的，到 2372 年人们仍能够下载并查阅你的加密猫。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0605/9_nuikgls2sa.png" alt="Vitalik：区块链可扩展性的限制"></p>
+<p>但是一旦区块链的容量过高，存储所有这些数据就会变得更加困难，直到某时出现巨大风险，某些历史数据最终将……没人存储。</p>
+<p>要量化这种风险很容易。以区块链的数据容量 (MB/sec) 为单位，乘以 ~30 得到每年存储的数据量 (TB)。当前的分片计划的数据容量约为 1.3 MB/秒，因此约为 40 TB/年。如果增加 10 倍，则为 400 TB/年。如果我们不仅希望可以访问数据，而且是以一种便捷的方式，我们还需要元数据 (例如解压缩汇总交易)，因此每年达到 4 PB，或十年后达到 40 PB。Internet Archive (互联网档案馆) 使用 50 PB。所以这可以说是分片区块链的安全大小上限。</p>
+<p>因此，看起来在这两个维度上，<strong>以太坊分片设计实际上已经非常接近合理的最大安全值。</strong> 常数可以增加一点，但不能增加太多。</p>
+<h2 id="结语"><strong>结语</strong></h2>
+<p>尝试扩容区块链的方法有两种：<strong>基础的技术改进和简单地提升参数。</strong> 首先，提升参数听起来很有吸引力：如果您是在餐纸上进行数学运算，这就很容易让自己相信消费级笔记本电脑每秒可以处理数千笔交易，不需要 ZK-SNARK、rollups 或分片。不幸的是，有很多微妙的理由可以解释为什么这种方法是有根本缺陷的。</p>
+<p>运行区块链节点的计算机无法使用 100％的 CPU 来验证区块链；他们需要很大的安全边际来抵抗意外的 DoS 攻击，他们需要备用容量来执行诸如在内存池中处理交易之类的任务，并且用户不希望在计算机上运行节点的时候无法同时用于任何其他应用。带宽也会受限：10 MB/s 的连接并不意味着每秒可以处理 10 MB 的区块！也许每 12 秒才能处理 1-5 MB 的块。存储也是一样，提高运行节点的硬件要求并且限制专门的节点运行者并不是解决方案。<strong>对于去中心化的区块链而言，普通用户能够运行节点并形成一种文化，即运行节点是一种普遍行为，这一点至关重要。</strong></p>
+<p>然而，基础的技术改进是可行的。当前，<strong>以太坊的主要瓶颈是存储大小，而无状态性和状态逾期可以解决该问题，</strong> 并使其能够最多增长约 3 倍，但不能再多，因为我们希望运行节点比当前更容易。<strong>采用分片的区块链可以进一步扩展，</strong> 因为分片区块链中的单个节点不需要处理每笔交易。但即使是分片区块链，容量也有局限性：随着容量的增加，最低安全用户数增加，归档区块链的成本 (以及如果没有人归档链，数据存在丢失的风险) 就会上升。但是我们不必过于担心：这些限制足以我们在保证区块链完全安全性的同时每秒处理一百万笔交易以上。但是要在不损害区块链最宝贵的去中心化特性的前提下实现这一点，我们需要付出更多努力。</p>
+<p>原文链接：https://vitalik.ca/general/2021/05/23/scaling.html</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/23692/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">SUP已完成五月回购销毁计划 | 项目周报（第195期）</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/23680/">
+                <span class="next-text nav-default">俄罗斯官员：新加密税法将在秋季获得采用</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#普通用户能够运行节点对于区块链的去中心化至关重要"><strong>普通用户能够运行节点对于区块链的去中心化至关重要</strong></a></li>
+    <li><a href="#那么全节点工作的上限是什么"><strong>那么全节点工作的上限是什么？</strong></a></li>
+    <li><a href="#这对以太坊来说意味着什么"><strong>这对以太坊来说意味着什么？</strong></a></li>
+    <li><a href="#分片之后又会如何"><strong>分片之后又会如何？</strong></a></li>
+    <li><a href="#最低用户数量"><strong>最低用户数量</strong></a></li>
+    <li><a href="#历史可检索性"><strong>历史可检索性</strong></a></li>
+    <li><a href="#结语"><strong>结语</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

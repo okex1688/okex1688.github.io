@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          理解 DAO 的多层结构和扩展方式 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="随着规模的扩大，自发的演变出来多层分形结构，这种结构和公司中的科层制一样，意在解决扩展性问题，但又和科层制有本质区别。" />
+<meta name="keywords" content="DAO" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38667/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="理解 DAO 的多层结构和扩展方式" />
+<meta property="og:description" content="随着规模的扩大，自发的演变出来多层分形结构，这种结构和公司中的科层制一样，意在解决扩展性问题，但又和科层制有本质区别。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38667/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-07T00:00:00+00:00" />
+
+<meta itemprop="name" content="理解 DAO 的多层结构和扩展方式">
+<meta itemprop="description" content="随着规模的扩大，自发的演变出来多层分形结构，这种结构和公司中的科层制一样，意在解决扩展性问题，但又和科层制有本质区别。"><meta itemprop="datePublished" content="2022-06-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5474">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="理解 DAO 的多层结构和扩展方式"/>
+<meta name="twitter:description" content="随着规模的扩大，自发的演变出来多层分形结构，这种结构和公司中的科层制一样，意在解决扩展性问题，但又和科层制有本质区别。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">理解 DAO 的多层结构和扩展方式</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-07">
+      2022-06-07
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5474 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>上一篇我们提到 DAO 作为一种进化型组织，随着规模的扩大，自发的演变出来多层分形结构，这种结构和公司中的科层制一样，意在解决扩展性问题，但又和科层制有本质区别。本篇我们将进一步探讨DAO的多层结构。</p>
+<p>去年，我们看到了 DAO 活动的爆炸式增长，无论是管理的资金还是参与的成员都增加了数十倍。当前以 DAO 形式管理的资金总额达 98 亿美元，管理资金超过 100 万美元以上的 DAO 组织达 80 个（DeepDAO, 2022）。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0607/22_vjbu65zfz7.png" alt="理解 DAO 的多层结构和扩展方式"></p>
+<p>(来源：https://deepdao.io/organizations )</p>
+<p>然而，随着时间的推移，DAO 的发展开始面临可扩展性问题：</p>
+<p>其一，DAO 以民主参与作为最基本的原则，但是当 DAO 当中的参与者越来越多，事务越来越多的时候，会陷入「所有人必须一起决定所有事」的困境。许多DAO成员对各种投票决策变的疲于应付，而且没有足够的背景信息来做出明智的决定，最终导致参与率的低下与中心化的倾向。</p>
+<p>其二，DAO 当中自然演化出各个不同的项目小组，所有的小组的行为都需要 DAO 的资金支持，于是陷入「所有事必须由所有人决定」的困境。各小组涉及资金的决策都要试图说服多数 DAO 的投票者，各项目发起人和 DAO 的投票者之间需要大量的沟通和反复拉扯，这使得 DAO 低效且缺乏灵活性。</p>
+<p>于是，在一些治理框架的帮助下，DAO演化出多层模型来应对挑战。支持多层模型的治理框架包括 Moloch V2 和 Orca。</p>
+<p>**<strong>DAO-Pod 结构</strong> **</p>
+<p>Moloch V2、Orca 不约而同的选择为 DAO 构建一个次级子组。DAO 将一部分资金和一组特定的权力委托给一个受信任的小团队，以相对自主的行事。这样一个受信任的小团队，在 Moloch V2 中被称为 Minion，在 Orca 中则被称为 Pod。尽管称呼不同，但其形式都是一个多签钱包。该多签钱包由 DAO 成员投票拨付资金并任命多签委员会。在本文中统一将其称为 Pod 。</p>
+<p>DAO 本身也是一个多签钱包，但是 DAO 有自己完整的治理层，通过自己的治理通证和治理规则，独立的完成治理过程，而 Pod 没有治理通证， 其治理依赖于多签委员会和相对简单的权重和阈值规则。最重要的是，Pod 的治理受到母 DAO 的约束。</p>
+<p><strong>我们将 DAO 与 Pod 的关系提炼为「约束性委托」。</strong></p>
+<p>Pod 受到母 DAO 的委托，成为一个相对独立的财务主体，可以进行以下操作</p>
+<ul>
+<li>
+<p>独立管理和操作 Pod 中资金，可用于对外的投资、捐赠、Swap、服务采购等；</p>
+</li>
+<li>
+<p>发起 Coodinape 轮次 （一种用来分配报酬的 DAO 工具），或通过其他方式，向贡献者进行内部薪酬分配；</p>
+</li>
+<li>
+<p>Pod 金库也可以用于收款，但所收款项和金库存款一体，依旧归属于母DAO。</p>
+</li>
+</ul>
+<p>与此同时，Pod 受到母 DAO 的一系列约束，包括：</p>
+<ul>
+<li>
+<p>Pod 金库的所有权归母 DAO 所有，多签委员会仅作为授权的管理者；</p>
+</li>
+<li>
+<p>Pod 无法擅自变更多签委员会成员及各自的多签权重，也无法变更多签规则，这些权力归属于母 DAO；</p>
+</li>
+<li>
+<p>母 DAO 有权撤回 Pod 的资金，并注销 Pod；</p>
+</li>
+<li>
+<p>母 DAO 可能会为 Pod 的资金支付设定某些限制，以降低资金风险，例如单笔限额、日限额、付款黑白名单等。</p>
+</li>
+</ul>
+<p>约束性委托结构中，约束和委托缺一不可，委托是指给 Pod 的充分授权，约束则规定了授权的边界。该结构让 DAO 跳出了前述的「所有人必须决定所有事」和「所有事都得所有人决定」的两大困局。其优势包括：</p>
+<p>‍</p>
+<ul>
+<li>
+<p>通过授权给 Pod，DAO 的治理压力大幅减小，可以让 DAO 成员的投票精力集中在核心的关键事务上；</p>
+</li>
+<li>
+<p>通过任命多签委员会，可以让专业的人来决定专业的事，创建 Pod，委托出去的不光是资金管理权，而是一定范围内事务的决定权；</p>
+</li>
+<li>
+<p>通过划分 Pod，让各个规模较小，配合默契的精悍小团队掌握 DAO 的一部分资源，从而实现快速决策，快速行动，让 DAO 的基层获得了堪比于中心化组织的执行力；</p>
+</li>
+<li>
+<p>通过向 Pod 存入资金，方便 DAO 进行预算管理；</p>
+</li>
+<li>
+<p>通过建立一个临时 Pod，并选出管理员，可以方便 DAO 执行时间敏感的动作，例如对外的资产交换和资产竞买。</p>
+</li>
+</ul>
+<p>一个去中心化的最高决策层 + 多个掌握部分资源、可以快速行动的执行小组，是 DAO 的优化形态，让 DAO 可以保持民主原则的同时，也保持敏捷。</p>
+<p>与此同时，创建 Pod 并存入资产，相当于创建了一个新的资产包。DAO 可以 将 Pod 直接作为一项资产，对外进行交换、转让、抵押等操作。</p>
+<p>**<strong>从双层到多层</strong> **</p>
+<p>至此，我们所谈论的，是 DAO 和 Pod 组织的双层结构，事实上，DAO 和 Pod 自身都可以是多层的，二者组成的是一个无限多层体系。</p>
+<p>大多数的 DAO 都是一种类国家实体，不从属于任何司法辖区，某种程度上拥有自己的独立「主权」，对自身内部的一切事务有最终决定权。但是如果一个 DAO 持有另一个 DAO 的绝大多数甚至全部治理通证，在治理投票中，拥有决定性影响力时，那么就会存在事实上的从属关系。</p>
+<p>而母 DAO 直接创建的 Pod 也并非 DAO 当中的最小单元，Pod 还可以创建并管理自己的 Pod，技术上可以实现 Pod 的无限分层。这就像「沙粒悖论」，你可以找到世界上最小的一粒沙子，但是你永远可以把它击碎为更多的更小的沙子，对于 Pod 而言，不存在普朗克尺度。</p>
+<p>因此，一个多层级的 DAO 体系，可能会是这样的形态：<strong>DAO 中有 DAO，Pod 中有 Pod。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0607/22_bjejy53644.png" alt="理解 DAO 的多层结构和扩展方式"></p>
+<p>**<strong>Pod 向 DAO的「进阶」</strong> **</p>
+<p>从形式上，Pod 和 DAO 的唯一区别，便是 Pod 没有自己的治理通证。如果 Pod 获得母 DAO 的授权，发行了自己的治理通证，此时的 Pod 就不再是一个 Pod，将拥有自己的独立「主权」，成为了一个DAO。相对应的，该 Pod 对母 DAO 的从属关系演变为了一个 DAO 对另一个 DAO 的投资关系。这种情形，我们可以把母 DAO 理解为一个孵化器，Pod 相当于被孵化的项目，当孵化成熟之后，Pod 便可以「自立门户」，成为一个新的 DAO。例如，YGG DAO 的印度分部 indiGG 的发展远远快于其他分部，于是 indiGG 开始独立运行，发行了自己的 Token，并与 YGG DAO 形成投资关系，成为类似于“子公司”的结构。</p>
+<p>**<strong>独立 Pod</strong> **</p>
+<p>在上文所述中，似乎包含了一种假设，Pod 必须由 DAO 创建，且一定从属于某个 DAO，但我们认为 Pod 的概念不应局限于此，Pod 的本质是一个多签钱包，我们反过来也可以认为，一个多签钱包就是一个 Pod 。如果你用 Gnosis Safe 创建了一个多签钱包，就可以理解为你创建了一个 Pod。事实上，Orca 当中的 Pod 金库正是使用 Gnosis Safe 作为内核构建的。</p>
+<p>我们发现，DAO 的雏形往往是一个群聊 + 一个多签地址。几个成员觉得一个事情很酷，然后创建一个多签地址，发个愿景，开始筹集资金。在 DAO 的雏形期，创始成员们往往不想把事情做的太重，创建复杂的治理层也不是当务之急，一个多签地址往往就能解决问题。一些知名的 DAO，例如 Constitution DAO、FreeDAO、PleasrDAO，最早都是从一个简单的倡议开始，用多签地址筹集资金，然后演化为 DAO 的。受过互联网思维磨砺的 DAO 弄潮儿们喜欢轻装上阵、小步快跑。</p>
+<p>随着实践的进行，项目可能因为失败而归于沉寂，也可能因为成功而吸纳更多的参与者。如果项目成功，总会在某一个时刻，多签钱包不再能协调众多的参与者，构建完整的治理层变得有必要。受惠于加密产品的可组合性，你并不需要创建一个新的 DAO，并把资金转移过去，而是可以将一个 Gnosis Safe 多签地址直接升级为 DAO，也就是说你把一个独立的 Pod 升级为 DAO。</p>
+<p>**<strong>多层结构：让 DAO 组织更像生命</strong> **</p>
+<p>由 Pod 和 DAO 构成的多层结构，始终会根据业务需求而演化，就像生命随环境变化而演化。在一个 DAO 当中，无法有效达成业务目标的 Pod 将被撤销，而成功的 Pod 则被保留，甚至进一步演化出多层 Pod 结构，直到可以脱离母体，成为一个新的 DAO ，新的 DAO 逐步独立发展，抑或是与原有的母 DAO 组合为更大的有机体——我们可以称之为 DAO 群落。</p>
+<p>与科层制的僵化等级设置不同，DAO 的多层结构始终处于流变之中，且演化是自下而上的，层级结构根据情景出现和消散，自组织，自适应。在科层制中，下级对上级负责，一级对一级负责，而在 DAO 当中，上级对下级授权，一级对一级授权，科层制是个控制体系，而 DAO 是个授权体系。在授权体系内，每一个层级都有充分的自主权，层层控制式的管理结构被分布式权限和集体的智慧所取代。</p>
+<p>多层结构赋予 DAO 几乎无限的扩展性，而且创造了一种自然进化型的组织形态。尽管传统组织不乏探索进化型组织形态的努力，但是传统组织受限于信息的不透明，管控始终重于授权。反观 DAO 组织，作为加密技术的原生组织形态，财务透明是其根本特性，这使得监督和追溯变得更加简单，即便组织资源被分散控制在各小组手里，也不必过多担心欺诈舞弊行为。我们相信，DAO（或者DAO 群落）的扩展性会远超传统科层制组织，抵达人类大规模协作的新边界。正如 BitDAO 创始人 Ben Zhou 所说：“如果我们想把我们的业务从数十亿变成万亿，我们不能以公司形式存在，而是以‘社会现象形式’存在。”</p>
+<p><img src="https://img.bibiqing.com/news/2022/0607/22_ynvshijprs.png" alt="理解 DAO 的多层结构和扩展方式"></p>
+<p>多层结构的意义不止于赋予 DAO 扩展性，而且能够让 DAO 更好的实现去中心化。如果 DAO 需要通过治理投票来决定众多的事务，那么过多的治理事务会带来参与度的下降，因为参与者们无法在治理事务中投入足够的时间，通过授权给 Pod，DAO把那些高频的日常决策剥离出来，节约了治理参与者的思维带宽，让他们可以更积极的参与到 DAO 的核心事务的治理中来。</p>
+<p>**<strong>激活「小队」的力量</strong> **</p>
+<p>我们发现，在社会协作中，一个最基本的协作单元，往往不是个人，也不是结构庞杂的大组织，而是一个相对扁平、密切协作的小团队。这样的团队有其规模限制，不是邓巴数，而是一个更小的规模，在「小队理论」中认为是12个人以内，相当于一个足球队的规模。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0607/22_zyfbfy65mk.png" alt="理解 DAO 的多层结构和扩展方式"></p>
+<p>动漫《海贼王》中的草帽一伙，有9名成员</p>
+<p>想象一下，一次头脑风暴、或是一个能让所有人畅所欲言的会议的理想规模。规模过小，势能不足，规模过大，则容易分化为多个小组，抑或演变为一对多的沟通格局。超过12人的规模，意味着超过一个 Team Leader 的管理幅度，可能需要分层管理，对于 DAO 中的小组而言，超过12人，可能导致 Coordinape 式的互相评价系统失效。</p>
+<p>在小队内部，有着畅通的沟通环境，有着自然形成的团队规范，有着清晰的集体记忆，小队成员之间相互充分了解，甚至有着不必沟通的默契。小队内部的协作不是松散的，而是紧密的。一个更大的组织网络可能围绕着一个小队，使其边界模糊、看起来规模更大，但对于核心小队来说，始终存在一个无形的圈子，分割着内外亲疏的界限。</p>
+<p>古往今来，大到改朝换代的军事政变、小到开发一个互联网产品，其核心都是由一个密切协作的小队完成的。在一个成功的小队当中，每个人都能找到自己能发挥价值的位置。</p>
+<p>Pod 赋予一个小队适当的财务资源，和一定的独立自主权，将进一步激发小队的创造力和执行力，小队将不需要通过层层审批的方式向上申请资源，从而找到更多的「创业感」。小队可以关照到小队中的每一个人，因此小队当中的个体也将感受到更大程度的尊重、自由与归属感，更好的投入到价值创造中。</p>
+<p>**<strong>催化 DAO 2 DAO 的协作</strong> **</p>
+<p>一个 DAO 不是一个孤岛，而是要参与到广泛协作和高频互动的 DAO 网络当中去。DAO 与 DAO 最基本的互动形式便是财务互动。有的财务互动要涉及 DAO 财库中较大份额的资产操作，往往需要 DAO 的所有者们投票决议，但是更多的财务互动往往涉及的资金份额不大，但相对高频，而且可能需要谈判代表的大量沟通工作。显然后一类财务互动并不适合动用投票决议，通过授权给一个 Pod  来完成是更合适的，对于每一项涉及较小资金的财务互动的 D2D 合作，我们都可以建立一个临时 Pod 来管理。</p>
+<p>此外，正如我们前文所提到的，Pod 本身就是 DAO 的一个资产包，通过向 Pod 中注入不同类型的资产，可以实现资产打包的效果，「交易 Pod 」可以起到「交易 Pod 中的资产」等效的作用，而且相比直接交易资产要大幅度节约 Gas。与此同时，DAO 可以将自己的 Pod 有偿或是无偿的转交给另一个 DAO，也可以用自己的 Pod 与其他 DAO 的 Pod 进行交换，实现业务的组合与嫁接。</p>
+<p>**<strong>小结：</strong> **</p>
+<p>以上，我们从多个角度去洞察 Pod 这样一个独特概念：</p>
+<ul>
+<li>
+<p>从技术视角上看，Pod 无非是一个多签钱包，可以从属于某个 DAO 或者另一个 Pod，也可以独立存在，Pod 可以通过创建治理层升级为 DAO；</p>
+</li>
+<li>
+<p>从组织视角看，Pod 是一个组织单元，基层的 Pod 往往是一个密切协作的小队，个体在当中能充分发挥其才能；</p>
+</li>
+<li>
+<p>从金融层面看，Pod 是一组被打包的资产，可用于交换、转让和抵押，将资产打包成 Pod 简化了多元资产的交易过程，节约了Gas费用；</p>
+</li>
+<li>
+<p>从业务视角看，Pod 是 DAO 旗下的一个项目，或是业务单元，可能是临时的，也可能是长期存续的。</p>
+</li>
+</ul>
+<p>不同视角的观察，让我们对 Pod 有了更深入的解读，和更多应用场景的挖掘。</p>
+<p>与此同时，我们看到 DAO-Pod 的关系本质为「约束性委托」，并且看到了 DAO-Pod 结构无限延展和自然流变的特性。我们发现，DAO-Pod 结构不止为 DAO 实现了巨大的扩展性，也让 DAO 真正成为进化型组织。我们相信 DAO-Pod 结构会成为 DAO 的新范式，由 DAO 和 Pod 组成的多层的、分形的、流变的结构将是 DAO 的未来。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38642/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">金色早报 | 香港证监会提醒投资者注意NFT相关风险</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38651/">
+                <span class="next-text nav-default">流动性挖矿两周年 早期DeFi项目的发展现状如何？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

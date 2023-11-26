@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          paradigm研究合伙人复盘etherscan零日漏洞 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="“如果你在etherscan中找到一个0day（零日）漏洞，你会怎么做？我决定构建一个‘弹球机‘。" />
+<meta name="keywords" content="零日漏洞" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/30770/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="paradigm研究合伙人复盘etherscan零日漏洞" />
+<meta property="og:description" content="“如果你在etherscan中找到一个0day（零日）漏洞，你会怎么做？我决定构建一个‘弹球机‘。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/30770/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-11-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-12T00:00:00+00:00" />
+
+<meta itemprop="name" content="paradigm研究合伙人复盘etherscan零日漏洞">
+<meta itemprop="description" content="“如果你在etherscan中找到一个0day（零日）漏洞，你会怎么做？我决定构建一个‘弹球机‘。"><meta itemprop="datePublished" content="2021-11-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-11-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4539">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="paradigm研究合伙人复盘etherscan零日漏洞"/>
+<meta name="twitter:description" content="“如果你在etherscan中找到一个0day（零日）漏洞，你会怎么做？我决定构建一个‘弹球机‘。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">paradigm研究合伙人复盘etherscan零日漏洞</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-11-12">
+      2021-11-12
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4539 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>“如果你在etherscan中找到一个0day（零日）漏洞，你会怎么做？我决定构建一个‘弹球机‘。&quot; ——paradigm研究合伙人samczsun</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/qnndgeazylfntcw" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<p>注：原文作者是samczsun。</p>
+<p><strong>我喜欢挑战假设。</strong></p>
+<p>我喜欢尝试做不可能的事情，找到别人错过的东西，用他们从未见过的事来使他们震惊。去年的时候，我根据一个非常费解的Solidity漏洞为Paradigm CTF 2021 编写了一个挑战。虽然公开披露了一种变体，但我找到的漏洞从未真正被讨论过。结果，几乎所有尝试过挑战它的人，都被它看似不可能的性质所难倒。</p>
+<p>几周前，我们正在讨论关于Paradigm CTF 2022的计划，当时Georgios在推特上发布了一条难题推文，我认为在启动电话会议的同一天发布一个挑战会非常酷。然而，这不可能只是一次老掉牙的挑战。我想从这个世界得到一些东西，一些没有人会看到的东西，一些超越人们想象极限的东西。我想编写第一个利用0day（零日）漏洞的以太坊 CTF 挑战。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/oqhbq44ny4ejyrq" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<h2 id="如何制造0day零日漏洞">如何制造0day（零日）漏洞</h2>
+<p>作为安全研究人员，为了优化我们的时间，我们会做出一些基本假设。一是我们正在阅读的源代码确实产生了我们正在分析的合约。当然，只有当我们从可信的地方读取源代码时，这种假设才成立，比如说Etherscan。因此，如果我能找到一种方法让Etherscan错误地验证某些东西，我就能够围绕它设计出一个真正迂回的谜题。</p>
+<p>为了找出如何利用Etherscan的合约验证系统，我必须验证一些合约。我在Ropsten测试网部署了一些合约来折腾并尝试验证它们。很快，我就看到了下面的界面。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/7krlv153mt8c06w" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<p>我选择了正确的设置并进入下一页。在这里，我被要求提供我的合约源代码。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/0lyr4flztfa5r52" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<p>我输入了源代码并单击了验证按钮，果然，我的源代码现在附在了我的合约上。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/hq85us7lhmy9m4c" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<p>既然我知道了事情是如何运作的，我就可以开始戏弄验证过程了。我尝试的第一件事是部署一个新的合约，将<code>foo</code>更改为<code>bar</code>，并用原始源代码验证该合约。毫不奇怪的是，Etherscan拒绝验证我的合约。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/yzwdssezmlaqh4w" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<p>然而，当我手动比较两个字节码输出时，我注意到一些奇怪的事情。合约字节码应该是十六进制的，但显然有一些并非是十六进制的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/spsmwtisn1numms" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<p>我知道Solidity会将合约元数据附加到部署的字节码中，但我从未真正考虑过它是如何影响合约验证的。显然，Etherscan 正在扫描元数据的字节码，然后用一个标记替换它，“这个区域中的任何东西都可以不同，我们仍然会认为它是相同的字节码。”</p>
+<p>对于潜在的0day（零日）漏洞，这似乎是一个很有希望的线索。如果我可以欺骗 Etherscan 将非元数据解释为元数据，那么我将能够在标记为 {ipfs} 的区域中调整我部署的字节码，同时仍然让它验证为合法的字节码。</p>
+<p>我能想到的在创建事务中包含一些任意字节码的最简单方法，是将它们编码为构造函数参数。Solidity 通过将 ABI 编码形式直接附加到创建交易数据上来对构造函数参数进行编码。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/ffzbjligcsmsyr2" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<p>然而，Etherscan太聪明了，它将构造函数参数排除在任何类型的元数据嗅探之外。你可以看到构造函数参数是斜体的，以表明它们与代码本身是分开的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/bq3ap5v6tctdjnd" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<p>这意味着我需要以某种方式欺骗 Solidity 编译器，使其发出我控制的字节序列，以便使其类似于嵌入的元数据。然而，这似乎是一个很难去解决的问题，因为如果没有一些严重的编译器争论，我几乎无法控制Solidity选择使用的操作码或字节，之后源代码看起来会非常可疑。</p>
+<p>我考虑了一会儿这个问题，直到我意识到：导致Solidity发出（几乎）任意字节实际上是非常容易的。以下代码将导致 Solidity 发出 32 个字节的 0xAA。</p>
+<p>bytes32 value = 0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa;</p>
+<p>受到鼓舞，我很快写了一个小合约，它将推送一系列常量，以便 Solidity 会发出与嵌入的元数据完全相似的字节码。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/lvezdlguzqael2z" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<p>令我高兴的是，Etherscan 在我的合约中间标记了IPFS 哈希的存在。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/38gwtmffjbzdh9l" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<p>我快速复制了预期的字节码，并用一些随机字节替换了 IPFS 哈希，然后部署了生成的合约。果然，Etherscan 像往常一样考虑了不同的字节业务，并允许我的合约得到验证。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/zi7mq3uzssiyzzt" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<p>有了这个合约，源代码建议在调用 example() 时应该返回一个简单的字节对象。 但是，如果你真的尝试调用它，就会发生这种情况。</p>
+<blockquote>
+<p>$ seth call 0x3cd2138cabfb03c8ed9687561a0ef5c9a153923f &rsquo;example()&rsquo;<br>
+seth-rpc: {&ldquo;id&rdquo;:1,&ldquo;jsonrpc&rdquo;:&ldquo;2.0&rdquo;,&ldquo;method&rdquo;:&ldquo;eth_call&rdquo;,&ldquo;params&rdquo;:[{&ldquo;data&rdquo;:&ldquo;0x54353f2f&rdquo;,&ldquo;to&rdquo;:&ldquo;0x3CD2138CAbfB03c8eD9687561a0ef5C9a153923f&rdquo;},&ldquo;latest&rdquo;]}<br>
+seth-rpc: error:   code       -32000<br>
+seth-rpc: error:   message    stack underflow (5 &lt;=&gt; 16)</p>
+</blockquote>
+<p>我在 Etherscan 中成功发现了一个0day（零日）漏洞，现在我可以验证行为与源代码建议完全不同的合约。而现在，我只需要围绕它设计一个解密游戏。</p>
+<h2 id="一个错误的开始">一个错误的开始</h2>
+<p>显然，这个解密游戏将围绕这样一个想法，即 Etherscan 上看到的源代码并不意味着合约的实际行为方式。我还想确保玩家不能简单地直接重放交易，因此解决方案必须是每个地址唯一的。最好的方法显然是要求签名。</p>
+<p>但是在什么情况下会要求玩家签署一些数据呢？我的第一个设计是一个具有单一公开函数的简单puzzle。玩家将使用一些输入调用该函数，对数据进行签名以证明他们提出了解决方案，如果输入通过了所有各种检查，那么他们将被标记为solver。然而，当我在接下来的几个小时内充实这个设计时，我很快就对事情的结果感到不满意了，它开始变得非常笨重和不优雅，我无法忍受在一个设计如此糟糕的puzzle上毁掉如此棒的0day（零日）漏洞想法。</p>
+<p>不得不承认，我无法在周五前完成这件事，于是我决定睡一觉。</p>
+<h2 id="pinball弹球难题">Pinball弹球难题</h2>
+<p>周末我继续尝试迭代我的初始设计，但没有取得更多的进展。就好像我现在的方法碰壁了，尽管我不想承认，但我知道如果我想要我满意的东西，我可能不得不重新开始。</p>
+<p>最终，我发现自己从第一原理重新审视了这个问题。我想要的是一个解密游戏，玩家必须在其中完成各种知识检查。但是，我没有要求完成知识检查本身就是获胜的条件，相反，这可能是允许玩家选择的众多路径之一。也许玩家可以在整个puzzle中累积分数，利用这个漏洞可以获得某种奖励。赢的条件只是最高的分数，因此间接鼓励使用漏洞。</p>
+<p>我回想起我去年设计的一个挑战，Lockbox‌，它迫使玩家构建一个单一的数据块，以满足六个不同合约的要求。合约会对相同的字节应用不同的约束，迫使玩家在构建有效载荷的方式上变得聪明。我意识到我想在这里做一些类似的事情，我会要求玩家提交一个单一的数据blob，我会根据满足特定要求的某些数据部分来奖励分数。</p>
+<p>正是在这一点上，我意识到我基本上是在描述 pinboooll‌，这是我在 DEFCON CTF 2020 决赛期间面临的一个挑战。pinboooll 的噱头是当你执行二进制文件时，执行会在控制流图上反弹，就像一个球在弹球机中反弹一样。通过正确构造输入，你将能够找到特定的代码部分并获得分数。当然，也有一个漏洞，但坦率地说，我已经忘记了它是什么，我也不打算再去寻找它。除此之外，我已经有了自己想要利用的漏洞。</p>
+<p>由于我在处理的是一个运行当中的零日漏洞，我决定要尽快解决这个难题。最后，我花了几个小时让自己重新认识pinboooll的工作原理，并花了几天时间将其重新实现。这就解决了puzzle的支架问题，现在我只需要集成这个漏洞。</p>
+<h2 id="武装化一个零日漏洞">武装化一个零日漏洞</h2>
+<p>我让 Solidity 输出正确字节的方法一直是只加载几个常量，并让 Solidity 发出相应的 PUSH 指令。然而，这样的任意常数可能是一个巨大的危险信号，我想要一些能更好地融入其中的东西。 我还必须加载一行中的所有常量，这在实际代码中很难解释。</p>
+<p>因为我真的只需要硬编码两个神奇的字节序列（0xa264&hellip;1220 和 0x6473&hellip;0033），所以我决定看看是否可以在它们之间夹入代码，而不是第三个常量。在已部署的合约中，我只需要用一些其他指令替换夹在中间的代码。</p>
+<blockquote>
+<p>address a = 0xa264&hellip;1220;<br>
+uint x = 1 + 1 + 1 + &hellip; + 1;<br>
+address b = 0x6473&hellip;0033;</p>
+</blockquote>
+<p>经过一些实验，我发现这是可能的，但前提是启用了优化器。否则，Solidity 会发出过多的值清理代码。 这是可以接受的，所以我继续改进代码本身。</p>
+<p>我只能在两个地址内修改代码，但是在最后看到一个悬空的地址会很奇怪，所以我决定在条件语句中使用它们。我还必须证明第二个条件的必要性，所以最后我投了一点分数奖励。我做了第一次有条件的检查，检查tx.origin是否匹配了硬编码的值，以给人们一个最初的印象，即没有必要进一步追求这个代码路径。</p>
+<blockquote>
+<p>if (tx.origin != 0x13378bd7CacfCAb2909Fa2646970667358221220) return true;<br>
+state.rand = 0x40;<br>
+state.location = 0x60;<br>
+if (msg.sender != 0x64736F6c6343A0FB380033c82951b4126BD95042) return true;<br>
+state.baseScore += 1500;</p>
+</blockquote>
+<p>现在源代码都准备好了，我必须编写实际的后门。我的后门需要验证玩家是否正确触发了漏洞利用，如果他们没有正确触发，则不给出任何提示就失败，如果他们成功触发，则奖励他们。我想确保漏洞不会被轻易重放，所以我决定只要求玩家签署自己的地址，并在交易中提交签名。为了增加乐趣，我决定要求签名位于交易数据中的偏移量0x44处，球通常会从这里开始。这将需要玩家了解 ABI 编码的工作原理，并手动将球数据重新定位到其他地方。</p>
+<p>但是，在这里我遇到了一个大问题：根本不可能将所有这些逻辑都放入 31 字节的手写汇编中。幸运的是，经过一番考虑，我意识到我还有另外 31 个字节可以使用。毕竟，真正嵌入的元数据包含了另一个 Etherscan 也会忽略的 IPFS 哈希。</p>
+<p>在打了一些代码高尔夫之后，我抵达了一个可以工作的后门。在第一个 IPFS 哈希中，我会立即弹出刚刚推送的地址，然后跳转到第二个 IPFS 哈希。在那里，我会哈希调用方，并部分设置memory/堆栈以调用 ecrecover。然后我会跳回第一个 IPFS 哈希，在那里我完成设置堆栈并执行调用。最后，我将分数乘数设置为等于 <code>(msg.sender == ecrecover()) * 0x40 + 1</code>，这意味着不需要额外的分支。</p>
+<p>在把后门编码成一定大小后，我在推特上发布了我的Rinkeby地址，以便从水龙头处获取一些测试网ETH，然后向任何观看这条推文的人暗示可能会发生一些事情。接着，我部署了合约并对其进行了验证。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/5nmri8ypove650f" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<p>现在剩下要做的，就是等待有缘人发现隐藏在视线中的后门。</p>
+<p>注：截至发稿时，来自Rocket Pool的软件开发者Kane Wallmann已经解出了这个谜题，具体过程在这里：https://medium.com/@kanewallmann_71759/an-untrustworthy-pinball-machine-d9dcd07882c</p>
+<p>此外，Etherscan开发者Caleb Lau也已经修复了该漏洞。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1112/h4is11cu61r9hzb" alt="paradigm研究合伙人复盘etherscan零日漏洞"></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/30764/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Maker x Aave：解决 DeFi 中的可变利率</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/30776/">
+                <span class="next-text nav-default">Reddit宣布入局NFT领域 或联合Arbitrium推出自己的NFT平台</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#如何制造0day零日漏洞">如何制造0day（零日）漏洞</a></li>
+    <li><a href="#一个错误的开始">一个错误的开始</a></li>
+    <li><a href="#pinball弹球难题">Pinball弹球难题</a></li>
+    <li><a href="#武装化一个零日漏洞">武装化一个零日漏洞</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

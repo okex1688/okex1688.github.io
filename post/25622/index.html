@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          万字详解DAO的定义、优势以及潜在风险 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="当我们看待DAO的时候，需要将其与传统的治理框架对比着看。" />
+<meta name="keywords" content="DAO" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25622/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="万字详解DAO的定义、优势以及潜在风险" />
+<meta property="og:description" content="当我们看待DAO的时候，需要将其与传统的治理框架对比着看。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25622/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-10T00:00:00+00:00" />
+
+<meta itemprop="name" content="万字详解DAO的定义、优势以及潜在风险">
+<meta itemprop="description" content="当我们看待DAO的时候，需要将其与传统的治理框架对比着看。"><meta itemprop="datePublished" content="2021-07-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="11707">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="万字详解DAO的定义、优势以及潜在风险"/>
+<meta name="twitter:description" content="当我们看待DAO的时候，需要将其与传统的治理框架对比着看。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">万字详解DAO的定义、优势以及潜在风险</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-10">
+      2021-07-10
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 11707 字 -
+        预计阅读 24 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>当我们看待DAO的时候，需要将其与传统的治理框架对比着看。这篇论文谈及治理机制时涉及了美公司法，美公司法倡导“赋权法”（enabling approach)，即允许美企在一定程度上进行公司自治（privately-order)。这种公司自治与基于区块链治理的理念不谋而合。 </p>
+<p>本文涉及了不少有关公司法的理论知识以美国商法。请耐心看完。</p>
+<p>（本文来源于本杰明·卡多佐法学院，由法学博士Aaron Wright撰写，分布式资本有匪翻译。）</p>
+<p>区块链世界里不仅只有钱。加密世界的现代炼金术士激励了一批技术专家重新思考金融和商业世界的运作方式。这些技术专家的目标不仅仅是支付系统和其他金融工具。基于区块链的生态预示着未来世界的发展趋势：<strong>线上群体将以跨距离、用假名的形式进行协调合作，且合作或完全依赖于软件。</strong></p>
+<p>这种新合作形态正迅速成为焦点，技术专家称其为“去中心化自治组织”，即DAO组织。</p>
+<p><strong>1. DAO</strong> 不是由董事会或经营者管理的，而是<strong>通过</strong> <strong>民主的、高度参与的过程或算法来管理的</strong> 。</p>
+<p>2. <strong>DAO</strong> 不在一个或少数几个司法管辖区内运作，而是寻求在<strong>全球范围</strong> 内扩展。DAO将数千（而非几万或者几十万）的成员聚集在一起，无论他们的地理位置、背景或信仰如何。</p>
+<p>3. <strong>DAO</strong> 通常试图避免书面协议或其他形式的法律手续，组织成员反而<strong>使用软件和代码来管理事务</strong> 。</p>
+<p>至少与现有法律实体相比，DAO具有一定的运营效率。目前管理5亿多美元资产的组织正在使用它，这表明法律制度应采取措施适应其增长和发展。DAO能够快速汇集和部署资本，并以低成本和精简的数字投票方案实施；而DAO内部控制既可以保护成员资产，也可减少对欺诈以及滥用职权的监督。</p>
+<p>然而，DAO并非没有挑战。对理想DAO的设计仍在探索之中，这一过程暴露了具有挑战性的治理问题，这些问题可能最终阻碍DAO的发展和壮大。DAO没有得到正式承认，也不适用于现有的商业协会；这使得DAO很难与传统商业实体互动，并给组织成员带来个人风险。在某些情况下，DAO的权益可能难以分类，这在涉及证券法时会引起监管部门的担忧。</p>
+<p>本文探讨了DAO的性质，并重点介绍了国家和监管机构可以在几个方面调整现有法律制度以适应DAO。第二部分概述了DAO的定义及其好处，其中分类法可以帮助理解DAO的不同变体。第三部分描述了DAO当前面临的挑战，并概述了采用DAO潜在方法。</p>
+<h2 id="dao的定义和潜在好处"><strong>DAO的定义和潜在好处</strong></h2>
+<p>几千年来，为了应对不同历史时期的商业挑战，各式各样的组织层出不穷。例如，罗马人设计了各种商业实体（如societas peculium和societas publicanorum），通过推行分润和有限责任，使得当事人能够在履行国家契约的同时从事一系列商业活动。在中世纪，意大利人开创了有限合伙制的早期版本，为海上贸易融资。16世纪（也就是大航海时代），随着欧洲以更全球化的形式运作之时，股份制公司在英国和荷兰焕发生机。从1811年开始（即工业时代），现代公司推动了美国的崛起。当时纽约政府赋予私营部门在没有批准的情况下，拥有自行组建公司结构的能力。而近几十年来，1970年代动荡的能源市场使有限责任公司起死回生，让大型国企与中东石油供应商周旋时，拥有探索国际石油和天然气市场的机会。</p>
+<p>随着我们的世界越来越数字化，开发者继续寻求通过区块链技术和智能合约来进行团队决策、资本积累和资本部署。这些被称为DAO的数字原生组织，至少在其创造者看来，有望能成为互联网时代的主要组织结构。</p>
+<h2 id="dao的简介"><strong>DAO的简介</strong></h2>
+<p>DAO被认为可以解决软件开发人员所面临的棘手问题，即如何管理开源代码技术，这种技术在设计上涉及高度自治的软件。这些问题首先出现在区块链生态系统中，但随着开源技术发展和自动化软件的日益渗透，DAO可能会从区块链领域扩展到其他行业。</p>
+<p><strong>对DAO的定义仍在不断演变，但以当前的形式，<strong>DAO指的是支持区块链、智能合约和数字资产在互联网上运作的组织</strong> ，并从诞生之日起就具备在全球扩展的能力。目前，DAO因其原生数字化、易于加入和全球化的特性，被寄希望于构建在现有法律实体上并予以改进。</strong></p>
+<p>智能合约是管理成员间交易的粘合剂。智能合约定义了防篡改的规则，帮助组织系统性地运作。由于这些特点，DAO在一定程度上不同于今天的企业和公司，后者依赖成文法并通常以书面文件来界定组织的尺度和界限。</p>
+<p>对于许多DAO的成员来说，智能合约法则至高无上。他们相信代码即法律。代码组建了难以更改规则的内聚网络，并建立了规定了与DAO交互或参与DAO的标准和程序。</p>
+<p>基于这些特性，区块链技术可以创建成员间点对点协作的组织；如有需要，成员们还可以无需依赖中心化实体或中介交易价值。受开源协作的启发，DAO用协议和系统将人们联系在一起，实现共同的社会或经济使命。</p>
+<p>DAO最基础的功能是依靠智能合约赋予人们直接或间接控制或运用组织资产的能力。智能合约和底层区块链跟踪组织成员，而成员身份除了购买以外，也可以作为奖励（通常以代币形式）分配给用户，以换取资金、用例或资源。其次，成员身份赋予参与者特定的权利：有些DAO赋予成员分润的权益，而有些DAO提供访问、管理或转移资源或服务的权益，人们还可以凭借成员身份参与决策。</p>
+<p>DAO往往在几个关键方面不同于现有的组织结构。首先，DAO通常缺乏正式的管理者，其DAO成员之间隐含的关系非受托人关系，而是成员之间的平等关系。第二，DAO的成员身份不一定是持久的，可能是暂时的。成员可以在有限的时间内加入组织，也可以由于缺乏兴趣、更好的机会或其他原因退出DAO。</p>
+<p>DAO治理较少以等级制度实现，通常更依赖于团队共识。这些新组织不一定依赖董事会或首席执行官；相反，越来越多的DAO是通过分布式共识管理的，使用智能合约来收集成员的投票或偏好（即<strong>参与式DAO</strong> ）。第二个更为新兴的DAO阵营（即<strong>算法DAO</strong> ），其目标是在本质上完全算法化，底层智能合约可以控制DAO的全部功能。DAO的生态系统的可视化图如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0710/15_5o4bsjmww8.png" alt="万字详解DAO的定义、优势以及潜在风险"></p>
+<p>算法DAO完全遵从软件来协调社会交互，例如比特币、以太坊和其他基于去中心化的区块链协议。参与式DAO正被用于传统的商业活动（如风险资本融资）；并被探索用以管理运行在以太坊上智能合约的开源技术。</p>
+<p>参与式DAO的后一种形式也许是最重要的。因为智能合约本质上一旦部署到区块链，就很难修改和改变。智能合约是防篡改的、自治的，这会带来监管方面的挑战，使得软件用户在出现技术或监管问题时难以修改。</p>
+<p>参与式DAO有助于减少更为自治的智能合约的不利因素。通过DAO，初始开发者可以将正在进行的决策转移到该软件的用户和支持者中。这些DAO的成员通常有权设置底层智能合约所需的参数，还可以更新智能合约本身。治理决策是通过投票发生的，而投票权重通过分发给用户、开发者以及投资者的代币来衡量。</p>
+<p>这些<strong>参与式DAO组织</strong> <strong>预示着未来开源技术将由其用户或代币持有者管理</strong> ，他们将致力于持续发展基于智能合约的底层技术。这些治理代币对于开发者有所制约，阻止开发者对用户不利。</p>
+<p><strong>B. 已知DAO的好处</strong></p>
+<p>早期例子表明，DAO在几个方面可能具有操作优势，至少与现有的法律组织结构相比如此。参与者只需在手机或区块链钱包上点击几下，便可向DAO贡献数字资产，并作为成员加入。得益于区块链技术，资产转移只需几秒钟（甚至几毫秒）。数字资产可在区块链网络中畅通无阻地转移，无需金融机构层层审核，而是通过验证器向底层数据添加区块。</p>
+<p>由于这些特点，DAO使不同的人群能够通过互联网汇集资本，其融资能力与ICO旗鼓相当。从2016年末到2018年中，企业家通过代币销售筹集了数十亿美元，用于开发新的软件应用程序、网络和平台。这些相同的功能在DAO中得到了体现。与为单个项目融资不同，DAO是被用来汇集资金并从事风险投资或其他形式的投资活动的。</p>
+<p>DAO还通过算法系统部署投票方案以简化群体决策**。** DAO参与者可以签署链上交易并记录链上投票，而投票权重则是通过资本占比、所有权或治理代币进行评估的。通过链上投票，DAO成员可以以加密方式验证成员投票的结果。DAO会对组织成员（甚至可能是公众）开放公共审计，确保遵守决策程序，并减少潜在的误判投票。智能合约还提供了代理投票，降低了传统代理投票的成本，减少了征求成员反馈和意见的成本。</p>
+<p>DAO的影响是广泛的。首先，由于其决策过程更加透明、安全和自治，<strong>DAO有望比现有的法律实体反应更为迅速</strong> <strong>。</strong> 通过链上投票和记录，参与式DAO实现了具有高度透明的投票程序，同时也避免了有争议的决策、欺诈行为并减少低级错误。</p>
+<p>第二，因其数字化特性**，参与式DAO的投票机制是简化的，成本低。** 投票不再需要纸质邮件或安全的电子代理服务。因此，基于DAO的投票通常是持续进行的，而不仅仅是在预定时间内进行的。与中心化管理者相比，DAO成员在经济上可以在组织管理中担任重要角色。因此，成员的参与与投入可以掌控DAO的发展方向。</p>
+<p>第三，<strong>参与性DAO</strong> <strong>将众多利益相关者的信息和反馈纳入进来</strong> 。事实上，技术人员希望让更多人参与DAO相关的决策，从而消除对一个或多个中央管理者的需求。如果这种方法有效，可能会对公司治理的基本原则提出质疑——即将管理权分配给董事会等重要职位。</p>
+<p>举例来说，DAO通常在成员之间划分职责并部署智能合约代码，使任何DAO相关的事务在未经多方明确批准的情况下无法处理。从这个意义上说，区块链的不可篡改性使组织无法控制规则的制定，任何内部人士也无法修改、逃避或妥协于规则。目前参与式DAO也需要正式投票，以确定资金是否可以用于某特定目的。任何DAO成员或个人，除非是参与决策过程的唯一成员，否则不能单方面转移资金或骗取组织资产。</p>
+<p>也有其他DAO让成员控制存放在组织中的资产。最近推出的DAO越来越多，它们为会员提供了智能合约执行机制，让成员只需轻轻一点就可以取回资金。如果某个成员不再服务于DAO，他们可以收回所有或部分贡献的资产。这一被技术专家称为“怒退”的行为，保障了成员的下行风险，并一定程度上控制了任何一笔存入DAO的资金。成员有权用投票决定是否部署资本，如果他们不同意组织的决定，也可以撤回这些资产。</p>
+<p>DAO目的是即使成员不知道组织内部的现有关系，也能培养更强大的信任。这种互不认识的关系反过来可能产生竞争优势并创造更多财富。</p>
+<p><strong>C.DAO和传统治理</strong></p>
+<p>DAO运营方面的优势预示着<strong>组织将更多地依赖公司自治、事前治理的机制，而较少依赖事后监督和执行</strong> 。这一趋势早在传统治理领域开始发展了。股东和公司董事会越来越希望通过内部规章制度来安排大公司的治理，而公开交易的有限合伙企业和有限责任公司则靠更加复杂的经营协议来安排公司治理。因这些协议消除了受托义务（fiduciary duty），有利于公司根据具体情况作出详细规定（例如批准涉及利益冲突的交易）。</p>
+<p>(受托义务：受托人要全心全意代表委托人的利益，就像对待自己的利益一样，并对委托人负起法律责任。)</p>
+<p>因代码事前做出了成员之间合作的详细规定，智能合约可以以更确定的方式构建组织。区块链的不可篡改性这时候起着控制层的作用。智能合约代替了事前治理，各方将减少在监督和执行方面的投入。由于各方以自身利益为出发点的可能性较小，基于区块链的治理可以减少不确定性，增加组织内部的信任。</p>
+<p>如果具备DAO功能的软件发挥预期的功能，那么创建的复杂性和成本可能会随着时间的推移而降低。随着越来越多的人尝试这些新的组织形式，各种专业的（经过审查的）智能合同可能会出现；而DAO会如雨后春笋般崛起，协调越来越多的市场和非市场活动。</p>
+<p>如果创建和部署DAO的成本降低，DAO（至少在理论上）可以协调越来越多人的操作。这并不奇怪。正如罗纳德·科斯（Ronald Coase）所认知的那样，技术进步“如电话和电报，它们倾向于从空间上降低组织的成本、增加公司的规模”，特别是“技术引领管理的变革”下。<strong>目前主导经济格局的中央集权和等级制组织最终可能让位于DAO，而DAO主要由具有共同目标的松散成员组成，由智能合约进行协调。</strong></p>
+<h2 id="美国法律之下的dao的合法问题"><strong>美国法律之下的DAO的合法问题</strong></h2>
+<p>如若DAO获得广泛应用，则需要克服各种各样的法律挑战和限制。</p>
+<p>A.分布式治理的风险——需要团队共识成本，激励成员参与意愿</p>
+<p>传统上，对商业组织的治理是通过“董事会”进行的，而公司的管理文件、相关附带协议，以及交易所的上市标准都是由法律规定的。而目前DAO组织实际只是将治理存储在了智能合约上。链上治理的影响并不局限于对现有组织形式的渐进式改进，针对特定功能采用区块链技术。它更是带来了DAO，它将区块链技术和智能合约作为其主要或唯一的治理来源。</p>
+<p>从公司法的角度来看，基于区块链的治理的出现意义重大。智能合约有望清除横亘在个性化治理前的障碍。链上投票机制使更多的人参与决策成为可能，至少比麻烦且昂贵地收集和核实选票系统好。基于智能合约的投票协议使得一些企业能够在股东之间实行个性化的决策权分配。</p>
+<p>即使避免中心化管理者专权，DAO仍然必须应对与治理相关的挑战。而且，鉴于DAO尚处于起步阶段，DAO的最优治理结构的形态还远未确定。智能合约可以提供一定的运营效率，但不能减少其社会和政治层面。人类并非完全理性，也并非无所不知，这些限制了DAO成员的治理能力。</p>
+<p>这些风险在参与式DAO中显得尤为突出。即使智能合约简化了决策程序，达成团队共识的成本仍然存在，这反过来可能会挫伤参与式DAO的行动能力。虽然区块链技术可以加速民主进程并削减其成本，但通过分布式共识进行直接投票可能很难实现，因为它需要人们持续不断地参与和关注组织的活动。对许多人来说，为做出明智决定而收集信息可能过于耗时和复杂。因此出现了这样一个问题，即DAO与等级更高的组织相比是否效率相当？持续的投票所造成的社会摩擦最终可能会限制组织产生社会和经济收益的能力。</p>
+<p>为了解决这些问题，参与式DAO已经在试验不同类型的投票机制，以鼓励成员参与与治理相关的决策。例如，为了奖励DAO成员的长期参与，一些DAO根据成员支持某一提案的时长为其投票分配更多权重。其他方法包括二次投票（与采用多数原则的投票方式不同），根据成员对给定结果的支付意愿来评估群体共识。未来DAO甚至可以探索预测市场的方向，来减少相关决策的摩擦，以期遏制潜在的选民冷漠问题。</p>
+<p>由于这些风险，一些技术专家倾向于让DAO完全通过算法进行管理。虽然表面上很吸引人，但即使如此，DAO也没有完全消除治理决策这一步骤。这种DAO隐晦地要求成员同意并遵守底层代码所定义的严格规则。因此，选择是否参与DAO本身就成为了治理决策。</p>
+<p>虽然与更具算法性的DAO交互，其简单性和易用性具有一定的吸引力，但它仍然表现出一定程度的脆弱性。如果构建DAO的底层软件包含错误或其他漏洞，DAO成员的选择极其有限：他们要么停止参与DAO，要么修改DAO软件并建立DAO“分叉”，让其他人将注意力和潜在资产转移到新的DAO上。</p>
+<p>对于算法DAO，决策仍然存在。当群体共识不是通过投票达成的，而是对于代码的简单使用实现的，那么治理决策通常在底层软件出现问题出现泡沫。在危急时刻，成员必须选择支持哪种软件。如果不可预见的问题对DAO造成冲击，DAO可能会遇到致命的问题，从而无法长期生存。这些风险尤其存在于较小规模的DAO上。如果没有明路指引，那么较小的DAO可能会解散，而成员也会丢失所有积累的价值。</p>
+<p>B.有限责任制——DAO无法享受有限责任和法人资格的好处</p>
+<p>除了治理问题之外，DAO并没有得到任何正式的法律认可。这让DAO成员背负了潜在的责任，使成员承担组织的责任和义务。DAO也仍然游离在传统体系之外，这限制了它们与更传统的合法企业进行交互的能力。</p>
+<p>无论是公司还是有限责任公司，创建法人实体的长期好处之一是能够保护组织所有者的个人资产免受债权人的侵害。因为法律制度并不承认些组织架构，DAO默认无法享受这些好处。</p>
+<p>例如，在美国，以盈利为目的而成立的DAO很可能被视为“<strong>普通合伙企业</strong> ”。因此，如果该组织损害第三方或无力对债权人偿付，<strong>DAO则无法保护成员的资产</strong> 。如果此类DAO被定性为普通合伙企业，DAO可能难以吸引成员，尤其是那些拥有大量资产的成员。因为担心其资产面临风险，大型企业、机构投资者和其他受监管的商业实体可能不愿意投资或以其他方式支持DAO。</p>
+<p>例如，在美国，以盈利为目的而成立的DAO很可能被视为“<strong>普通合伙企业</strong> ”。因此，如果该组织损害第三方或无力对债权人偿付，<strong>DAO则无法保护成员的资产</strong> 。如果此类DAO被定性为普通合伙企业，DAO可能难以吸引成员，尤其是那些拥有大量资产的成员。因为担心其资产面临风险，大型企业、机构投资者和其他受监管的商业实体可能不愿意投资或以其他方式支持DAO。</p>
+<p>然而，州法律已经在努力让传统商业实体适应DAO。佛蒙特州议会两院都通过了该州有限责任公司法的修正案，允许有限责任公司将自己定义为“基于区块链的有限责任公司”。该立法特别授权这些企业“通过区块链技术实现全部或部分治理”。换句话说，它特别授权成立一家有限责任公司，用“区块链技术”替代传统的治理工具。</p>
+<p>有人可能会说，这种立法最多澄清一些已确定事物的地位。可以说，目前的有限责任公司法不会禁止基于代码的经营协议。即便如此，立法上对区块链治理的认可确实赋予了它一些合法性，并为相关人员指明道路，让他们同时受益于法人资格和有限责任。随着区块链企业变得越来越主流，同时兼有有限责任和法人资格将对企业家和投资者变得更加重要。</p>
+<p>其实，美国法律普遍支持这种做法。很大程度上，美国商法反映了<strong>赋权法</strong> （enabling approach)，<strong>使企业有很大的空间自行组织他们的商业事务</strong> 。管理公司和其他商业协会的现行法规主要由“违约”条款组成，它们仅在当事方未能“选择退出”和执行其他规则时适用。强制法尽管并非闻所未闻，但并不是美国商业法的惯例。而少数强制法往往可以通过精心策划或选择不同的实体来避免。尽管赋权法主导了美国公司法几十年，但情况并非总是如此。历史上美国商业法仍残留有被删除或废弃的强制法。其中历史背景不再赘述。</p>
+<p>赋权法不仅得到了实施，它还有理论支持。这些公司契约论者认为，公司和其他法律实体本质上是契约制的，只不过是“公司创立时各种资源之间确立权利和义务的一纸文书”。所谓法规只是形式合同，允许组织者采用“现成”的合同条款，从而节省谈判以及起草定制合同所涉及的费用。</p>
+<p>然而，合同不仅仅是描述性的。它告知了“现成”合同的内容，以及当事方能够偏离这些合同的程度。由于国家提供的现成合同主要是作为降低交易成本的工具，公司契约论者认为：这些合同应主要由“多数”违约规则组成，这些规则“反映了大多数知情人士最常选择的条款。正如Easterbrook和Fischel所说，“人们之所以答应协商的条件是，对每一个意外事件进行公平交易的成本足够低。”</p>
+<p>”因为这些法规是大多数人（但不是所有人）希望遵守的，那些偏爱其他条款的当事人也应该能够在无第三方效应或市场失灵的情况下采用自己喜欢的条款。按照法律学和经济学的说法，强制法也许会效率低下，但也允许当事人选择自己喜欢的规则，而不是遵从相关法规中的规则。</p>
+<p>（这里是公司契约论和强制法论的battle。公司契约法在理论上大大支持了美国各州主张的赋权法，让公司自己内部建立章程，而非完全依靠标准合同范式。而强制法论则考虑到了更多元化人群的需要——如上市公司股民，通过强制执行一些条款，来保护这些人的利益。）</p>
+<p>由此，事前公司自治的观点（pro-private ordering）产生了重大影响，特别是在有限责任公司等非法人商业实体领域。尽管这些治理结构时一直被认为具有相当大的灵活性，特拉华州立法机构仍于2004年修订了有限责任公司和有限合伙法：其中说明该州的法律有利于合同自由的条款，并明确允许免除信托义务。通过这项立法，特拉华州立法机构强烈而明确地表示倾向于公司自治。DAO在支持公司自治的概念上与美国公司法的总体目标保持一致。</p>
+<p>从公司契约论来看，这可能会对传统商业协会的持续效用产生影响。如果链上治理能够降低公司自治的成本，那么企业可能不需要依赖现成的合同。有些企业的组织者似乎已经觉得没有必要构建一个正式的法律实体。链上治理很可能最终减少（甚至可能取代）传统商业实体的治理方式。</p>
+<p>然而，我们却忽略了商业实体形成的其他原因。现成的法律法规是原因之一。即使在不需要治理规则的情况下，组建实体也是一种确保有限责任、分割资产和享受独立法人身份的方式（例如，能够以实体的名义进行起诉）。即使出于治理目的组建商业实体显得没有必要，也不能排除其他原因，特别是有限责任制和法人资格的便利性。为了使基于区块链的治理成为主流，参与者需要一条明确的有限责任制道路。合同对手需要确定他们与谁交易、交易内容以及哪些资产可用于履行合同义务。从政策角度来看，重要的问题似乎是立法者应多大程度上能接受链上治理替代传统治理。</p>
+<p>关于将链上治理与传统商业实体相结合，早期努力者还提出了进一步的问题。传统的公司治理中包含了各种各样的机制来填补“合同”中的“空白”。信托义务是其中之一。公司契约论者眼中，信托义务是处理不可能完成契约的务实方式。在所有情况下，信托义务都提供了事后强制执行的一般原则，而不是事先规定受托人的义务。当法律决策者被要求确定某一特定行为是否违反了公司董事的忠诚义务时，他们都引用“信托义务”的条款。当涉及商业协会时，围绕公司自治的辩论主要集中在是否要修改或取消强制性补充。如上所述，当涉及非商业协会时，公司自治的倡导者实质上赢得了这场辩论，并在放宽公司信托义务方面取得了进展。但是，即使对于非社会实体而言，诚信和公平交易的义务这类强制性补充仍有必要。</p>
+<p>是否具有持续填补法律漏洞的机制是DAO提出的问题之一。由于<strong>参与式DAO</strong> 的各方目前基于代码的机制安排事务，需要一定程度上<strong>依赖于开放式标准和修补性条例</strong> ，才能提供整个DAO的治理方案。而这些传统标准与DAO的架构不太吻合，或者用自然语言合同来补充智能合同显然不太合适。</p>
+<p>虽然将传统法律文件纳入DAO有一定的吸引力，但也有不利因素。首先，使用法律文本来描述智能合约的基本机制会产生潜在的模糊性。这种误译创造了成员之间的争议，并迫使法院评估代码或自然语言条款哪个应占主导地位。其次，法律协议增加了创建DAO的成本，降低了潜在效率。DAO的成员本打算使用智能合约作为管理事务的主要手段，现在还需建立法律实体以区分法律上的默认规则。聘请律师或其他法律服务机构则与DAO的理念背道而驰。</p>
+<h2 id="dao的权益代币"><strong>DAO的权益代币</strong></h2>
+<p>DAO面临的其他挑战源于将权益表现为通证代币。DAO通过低成本和全球可访问的智能合约，开始尝试公司自治。</p>
+<p>参与式DAO通常以基于区块链的“代币”及智能合约来证明。个人既可以购买代币，也可以通过贡献（如算力）收获奖励。通过智能合约，代币可以与其持有者的特定权利相关联，例如获得DAO部分收入的权利或使用组织提供的网络、软件或其他服务的权益。DAO代币也越来越多地被设计为代币持有者通过投票对底层软件管理的权益。</p>
+<p>通常情况下，公司公募时会发行几种常见形式的证券，如普通股、优先股、债券或可转债，它们通常被理解为债券、股权或两者的混合体。然而，现在企业也有能力以新颖的方式向公众出售与权益相结合的代币。经济权利、参与权利、治理权利和效用权利都可以与代币相关联，然后以类似于首次公开募股的方式出售给公众。</p>
+<p>近年来ICO的爆炸式增长证明了区块链企业销售代币融资的能力，但从监管角度来看，仍存在许多不确定性。这些代币是否都属于证券，仍然不明朗。美国证交会一位前任主席表示，在他看来，很多代币都属于证券。此外，即使这些代币是证券，出于监管目的，它们的分类也不明确。例如，代币与涉及投资和消费的利益都相关联，可以赋予持有人使用特定平台或网络的权利，也可以让持有人通过二级市场上转售产生经济收益。</p>
+<p>这可能有多种原因。作为例子，参考1934证券法第12节（G）和基于区块链的代币应用。根据第12（g）条，如果一家公司拥有超过1000万美元资产和一类由2000人或500名非合格投资者“记录在案”的权益性证券，则该公司必须在美国证券交易委员会注册，并遵守持续披露的要求。</p>
+<p>可以清楚的是，区块链企业能够轻而易举地积累超过1000万美元资产。因为大多数代币出售后，立即被众多购买者（当然是500多名未经认可的投资者）持有。如果区块链企业出售构成权益证券的数字代币，第12（g）节可能要求该企业在早期阶段进行注册。当然，如果区块链企业仅仅出售数字化的传统证券，这个问题很容易解决。但是，当企业发行非传统权益代币（例如治理代币）时，首先不清楚它们是否是证券；如果是，则不清楚它们是否是权益证券。如果说有什么区别的话，这种类型的权益看起来更像是债券或商品，而不是股票；但又和两者不完全相像。</p>
+<p>事实上，DAO之所以令人信服是拥有与治理相关的代币，而这些资产不被定义为证券或债券。当涉及上市公司时（拥有诸多不同的利益相关者），最明显的反对意见之一是公司治理条款是在不经协商的情况下，各方只能做出是或否的选择；大多数利益相关者对其内容没有任何实质性了解。在这种情况下，投资者脆弱性是一个长期存在的论点，强制法旨在保护投资者免受片面条款的侵害。而公司契约论驳斥了强制法论，指出市场对治理条款有定价的能力。资本市场的信息效率意味着投资者有失有得，同时不会被强加不公平或片面的条款，因为这些条款会被计入公司的成本。然而，事实是市场对治理条款无定价能力，因为市场可以显示出不同程度的信息效率。</p>
+<p>就DAO来说，治理代币为市场提供了一种为治理条款定价的方式。因此，在传统契约论之下公司自治的合理程度仍然是开放性问题。市场的信息效率是信息成本的函数；当信息成本较高时，市场的效率可能较低。当信息易于获取和处理时，市场的信息效率可能会更高。当然，对于那些“代币化”的传统证券，有充分的理由认为市场将能够对这些条款进行定价，前提是将反映治理条款的代码“翻译”成通俗易懂以及用于购买决策的格式。与他们的模拟对手相比，在这里信息成本应相对较低。但前提是购买者能够相信，基于区块链的治理是对传统治理条款的准确映射，这些条款只是从运营协议以及其他管理文件中转移过来的。</p>
+<p>然而，考虑到非传统协议是否定义为“证券”还未可知，由于市场参与者将更难确定代码的含义以及公司自治的价值，信息成本可能会大大提高。由于这些工具与模拟资产没有直接关联，购买者将无法依赖先前积累的经验和信息，将被迫（1）确定代码的含义，以及（2）其定价的意义。随着信息成本的增加，与市场信息效率相关的问题随之而来，这就进一步引发了对公司自治的实际适用程度的质疑。</p>
+<p>显然，现在就数字代币市场的信息效率如何得出结论还为时过早。然而，考虑到信息成本、市场效率和公司自治之间的关系，应适当阐明这些涉及到DAO治理代币的本质。</p>
+<h2 id="结尾"><strong>结尾</strong></h2>
+<p>该技术的一些用例与现有政策和法律框架是一致的。正如本文所讨论的，DAO正变得越来越重要。早期迹象表明，基于区块链的治理将对企业的治理方式产生重大影响，既可以数字化传统治理机制，也可以提供全新的组织方式。因此，有一种强有力的论据表明美商界需适应基于区块链的治理，并探索它们在传统商业机构的限制内运作的可能性。基于单一股东公司和单一成员有限责任公司出现的频率，资产分割、有限责任和其他独立法人的便利条件也是建立企业实体的原因。因此，希望链上治理的企业家和组织者仍需确保其企业的独立合法存在。诚然，DAO的出现和扩张将迎来挑战，因为它与传统商业法和以此为核心的组织形式相交叉，但人们不应误认为DAO是敌视传统法律体系的。相反，当区块链被视为一种允许各方自治的工具时，它与美国商业法所倡导的“赋权法”的一致性就显而易见了。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25618/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">天桥资本以太坊基金已正式启动</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25628/">
+                <span class="next-text nav-default">新闻周刊 | 国务院：推进科普与区块链技术深度融合</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#dao的定义和潜在好处"><strong>DAO的定义和潜在好处</strong></a></li>
+    <li><a href="#dao的简介"><strong>DAO的简介</strong></a></li>
+    <li><a href="#美国法律之下的dao的合法问题"><strong>美国法律之下的DAO的合法问题</strong></a></li>
+    <li><a href="#dao的权益代币"><strong>DAO的权益代币</strong></a></li>
+    <li><a href="#结尾"><strong>结尾</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

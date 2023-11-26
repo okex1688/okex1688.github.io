@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          当你在进行跨链时 资产真的转移了么？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文将从更底层的跨链基本逻辑讲起，对跨链资产铸造的整个过程进行梳理，以便读者能够更好地评估跨链资产的真正风险，选择更加适合自己的跨链工具。" />
+<meta name="keywords" content="跨链" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/34442/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="当你在进行跨链时 资产真的转移了么？" />
+<meta property="og:description" content="本文将从更底层的跨链基本逻辑讲起，对跨链资产铸造的整个过程进行梳理，以便读者能够更好地评估跨链资产的真正风险，选择更加适合自己的跨链工具。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/34442/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-21T00:00:00+00:00" />
+
+<meta itemprop="name" content="当你在进行跨链时 资产真的转移了么？">
+<meta itemprop="description" content="本文将从更底层的跨链基本逻辑讲起，对跨链资产铸造的整个过程进行梳理，以便读者能够更好地评估跨链资产的真正风险，选择更加适合自己的跨链工具。"><meta itemprop="datePublished" content="2022-02-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4388">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="当你在进行跨链时 资产真的转移了么？"/>
+<meta name="twitter:description" content="本文将从更底层的跨链基本逻辑讲起，对跨链资产铸造的整个过程进行梳理，以便读者能够更好地评估跨链资产的真正风险，选择更加适合自己的跨链工具。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">当你在进行跨链时 资产真的转移了么？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-02-21">
+      2022-02-21
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4388 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>随着越来越多新公链的上线，用户进行资产跨链的需求也同步增长。这种趋势在带火了一众跨链桥项目后，经由各种跨链桥铸造的资产数量也急剧增长。</p>
+<p>随着跨链资产获得更广泛的使用，与之相关的问题也越来越多。比如，我们如何评估一个跨链资产的安全性？某些新公链中的 USDC 和以太坊中的 USDC 是一回事吗？为什么有些平台平台上会存在 ceUSDC、anyUSDC、madUSDC 甚至 USDC.e 等等不同格式的稳定币，而在其他平台中却只有一种 USDC？当一个跨链桥被攻击后，如何判断我持有的跨链资产是否受到波及？</p>
+<p>带着这些问题，本文将从更底层的跨链基本逻辑讲起，对跨链资产铸造的整个过程进行梳理，以便读者能够更好地评估跨链资产的真正风险，选择更加适合自己的跨链工具。</p>
+<p>因此在文章的最开始，我们先来简单讨论一下资产是如何被定义的。</p>
+<h3 id="如何定义一个资产">如何定义一个资产？</h3>
+<p>定义资产的手段主要有两种，一种是通过物理性质进行定义，比如在古代社会常用的实物黄金及贵金属货币。但是到了现代社会，无论是货币还是股票、债券等金融资产，其定义方式已经基本脱离了物理属性的限制，改为通过更加抽象的由会计账簿定义资产的模式。</p>
+<p>如我们日常生活中使用的银行存款，便是由一国银行系统的资产负债表所定义。只要银行的报表中有登记你的账户余额，则你的存款便必然存在。</p>
+<p>与存款类似，比特币这类加密货币同样由会计账簿所定义。唯一不同的，是比特币采用了更加集中的账簿登记模式（没写错，是更集中了）。所有的比特币只由一套唯一的账簿所记录，且全世界只有唯一的版本（最长链共识）。这个统一且不可篡改的会计账簿便是我们所说的区块链。</p>
+<p>人们常说的区块链的去中心化，其实只体现在账本的记录与保管过程中实现了社区更广泛的参与。但从定义资产所涉及的账本数量来说，区块链相比传统的银行账簿登记系统，无疑是一种集中化程度更高，且更加高效（不需要多个记账主体间频繁对账）的账簿登记方式。</p>
+<h3 id="资产真的能够跨链吗">资产真的能够跨链吗？</h3>
+<p>上文提到，每一条区块链，其实都是一个独立的可以定义各自原生资产的会计账本。但在有些时候，人们希望资产能够脱离定义他们的原始账本，进而在不同的记账体系中自由流转。</p>
+<p>比如跨境汇款（跨不同银行体系账本）、发行稳定币（由银行账本跨到区块链账本）或向交易平台充值（由区块链账本跨到交易平台的账本）等等。所有这些跨账本转移资产的操作，构成了广义上的跨链。</p>
+<p>但问题是，既然资产的存在与否由定义他的原始账本所决定，那么理论上任何资产都无法脱离原始账本而独立存在。也就是说，真正意义上的资产跨链在理论上就不可能发生。</p>
+<p>就像实物黄金并不能真的钻进你的银行账户里一样，比特币也无法脱离定义比特币的区块链而独立存在。因此，人们常说的资产跨链，其实跨链的并非资产本身，而是资产所代表的价值。</p>
+<p>所以，资产跨链本质上是跨越不同记账体系的价值转移过程。不过为了表述方便，我们在后文中依然将这种价值跨账本转移的过程，简称为「资产跨链」。</p>
+<p>那么下一个问题便是，如何才能跨越不同记账体系进行价值转移？</p>
+<h3 id="资产跨链的两种基本模式">资产跨链的两种基本模式</h3>
+<h4 id="1-锁定铸造模型">1. 锁定铸造模型</h4>
+<p>锁定铸造模型是资产跨链最基本的模型。早在金属货币时代，人们便使用锁定铸造模型，通过在金铺锁定黄金，同时铸造发行更易携带流通的黄金可赎回凭证（后来演化为纸币）进行日常交易。</p>
+<p>在这个过程中，金铺便相当于跨链桥，金铺的保险柜等同于在转出链锁定资产的智能合约，而纸币便是跨链桥在新链发行的跨链资产。</p>
+<p>与之类似，在真正的区块链跨链活动中，目前依然使用着几乎完全相同的锁定铸造逻辑。跨链桥在原链锁定资产，并在转入链发行原链资产的「可赎回凭证」，也就是跨链资产，进而完成资产价值的跨链转移。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/21_vsf7fwegqd.png" alt="当你在进行跨链时 资产真的转移了么？"></p>
+<p>跨出链 A 侧锁定原始资产，跨入链 B 侧发行原始资产的可赎回凭证</p>
+<p>目前所有存在的跨链（跨账本）资产，基本上都是由不同跨链中介发行的原始资产的「可赎回凭证」。包括你充值进交易平台的余额，跨国持有的美元外汇，在各种公链平台中交易的比特币锚定币，甚至通过锁定 ETH 而收到的 WETH 等等都属于广义的跨链资产。</p>
+<p>这种模式唯一的缺陷是，采用这种模型的跨链中介往往在效率和成本上难以达到用户的要求。因此，这类跨链桥往往只会链接少数公链（如以太坊到新链）以便向新链引入主流跨链资产。而这种跨链桥也往往由新链官方支持或直接开发，因此这类桥也常常被称为官方桥。</p>
+<p>但对于普通用户来说，提高跨链的交易效率并降低成本才是他们更为关心的问题。因此，采用双向资金池模型的第三方桥便应运而生。</p>
+<h4 id="2-双向资金池模型">2. 双向资金池模型</h4>
+<p>双向资金池模型理解起来也并不困难。由于官方桥的主要效率瓶颈来源于锁定铸造过程，那么只要能够绕开这个机制，跨链的效率便可以极大提升。</p>
+<p>因此，这些第三方桥选择预先在桥的两侧设立资金池，一侧汇集大量原链的原始资产，一侧汇集已经由官方桥发行好的跨链资产。</p>
+<p>用户在通过第三方桥进行跨链的时候，只需要在一侧存入原始资产，并在另一侧直接取出已经提前由官方桥铸造好的跨链资产，便可以即时的完成跨链工作。只要这种第三方桥的转出与转入金额在运行过程中大致相等，该模型便可以稳定运行。</p>
+<p>唯一的限制是，双向资金池模型需要利用官方桥已经发行的跨链资产，因此只有等待官方桥建立后才能部署。</p>
+<h3 id="影响跨链资产安全的因素有哪些">影响跨链资产安全的因素有哪些？</h3>
+<p>上文提到，跨链资产是由跨链桥发行的原始资产的可赎回凭证。而每经过一次锁定铸造过程，资产的风险便会增加一层。</p>
+<p>我们以目前发行在 Moonbeam 上的 anyUSDC 为例，其资产的发行总共需要经历三个阶段：</p>
+<p>1. 美国银行系统发行 USD；</p>
+<p>2. 稳定币发行商 Circle 锁定 USD，并在以太坊中发行 USDC；</p>
+<p>3. 跨链桥 Anyswap（现 Multichain）在以太坊锁定 USDC，并在新链发行 anyUSDC；</p>
+<p>因此，anyUSDC 安全性也就等于这三者安全性的乘积，用公式可以表示如下：</p>
+<p><strong>安全性 (anyUSDC)= 安全性 (美元)* 安全性 (Circle)* 安全性 (Anyswap)</strong></p>
+<p>也就是说，这三者中只要任意一个出现问题，比如美国银行系统崩溃、Circle 卷款跑路或 Anyswap 被攻击，都将直接影响 anyUSDC 的内在价值。因此一个资产经历的锁定铸造过程越多（名称里的前后缀越多），其本身所承载的风险也就越高。</p>
+<p>因此，作为跨链资产初始发行方的跨链桥，也就成为了决定跨链资产安全与否的核心节点。</p>
+<p>目前跨链桥被攻击的方式主要有两类。还是以金铺举例，一是金铺锁定的黄金直接被盗（PolyNetwork 被攻击的模式），另一类则是金铺发行的可赎回凭证被黑客伪造，使得黑客可以用这些伪造的凭证先人一步赎回金库里的黄金（Wormhole 被攻击的模式）。</p>
+<p>但无论如何，一个资产的安全性，几乎完全由其发行方所决定。对于跨链资产来说，决定它们安全与否的，便是发行它们的跨链桥。</p>
+<h3 id="一条新链如何才能更好的发行跨链资产">一条新链如何才能更好的发行跨链资产？</h3>
+<p>补充完必要的知识，我们就能更好地理解许多新公链中混乱的跨链资产现状是如何产生的了。</p>
+<p>我们首先看下 Moonbeam 上的交易平台 Zenlink 中包含的跨链资产种类。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/21_twr99qwy9g.png" alt="当你在进行跨链时 资产真的转移了么？"></p>
+<p>可以看出，在 Moonbeam 这条新公链中，跨链资产的原始发行方至少有三个不同的跨链桥。以 USDC 为例，分别由三个桥独立发行了三种跨链资产，他们分别是：ceUSDC、anyUSDC 与 madUSDC。</p>
+<p>可以看出，Zenlink 官方并没有指定唯一的官方桥，而是接受了所有标准的跨链资产供用户自由选择。同时，由于在 Moonbeam 中并没有哪个跨链资产取得绝对的优势地位，因此其他第三方桥也开始转而采用锁定铸造模型发行自己的跨链资产。</p>
+<p>这种开放且自由竞争的方式虽然更符合区块链精神，但对于一个新建立的 DEX 来说，无疑也会引起很大程度的流动性割裂问题，用户体验并不友好。</p>
+<p>然而与 Zenlink 不同的是，同样部署在 Moonbeam 之上的 StellaSwap 与 Beamswap，其交易界面中却默认只有一种 USDC。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/21_d373cwj63w.png" alt="当你在进行跨链时 资产真的转移了么？"></p>
+<p>经过测试我们发现，该 USDC 并非是由 Circle 官方直接发行的稳定币。其背后所对应的资产，其实就是在 Zenlink 中显示的 anyUSDC。也就是说，虽然 Moonbeam 上还没有原生的 USDC，但项目方为了减少用户的困惑，直接在前端改了个更加好记的名字拿来充数了。</p>
+<p>这种方式虽然统一了流动性，但这种由项目方人为指定跨链资产标准的方式，其实并不符合去中心化精神。尤其是直接将 anyUSDC 在前端改名成 USDC，会给用户制造一种这就是由 Circle 官方直接发行的错觉。导致其忽略 Anyswap（现 Multichain）跨链桥可能给用户资产安全带来的风险。</p>
+<p>所以在跨链资产的初始发行中，究竟是人为选择单一的跨链桥作为发行主体，还是允许不同跨链资产的自由竞争，其实也是一个两难的取舍问题。正如以太坊中存在各种版本的比特币锚定币一样，只要还没有一个桥取得跨链资产发行的市场垄断地位，那么这种混乱与割裂就会一直存在。</p>
+<p>但无论如何，尽量保持跨链资产名称的完整，不要有意或无意地误导用户，还是各个项目方有必要保持的基本原则。</p>
+<h4 id="文章的最后我们再对本文的核心内容进行一下总结">文章的最后，我们再对本文的核心内容进行一下总结：</h4>
+<p>1. 采用锁定铸造模式构建的跨链桥，是区块链世界中重要的资产发行主体。与发行 USDT 的 Tether 公司类似，他们从来就不是简单的通道，而是跨链资产的重要发行方。一旦这些桥被攻破，则其发行的资产可能瞬间归零，因此这些桥的安全性至关重要。</p>
+<p>2. 采用双向资金池模式构建的跨链桥，经营的也不是简单的通道业务，而是流动性缓解业务。其资金池的安全性一般不会直接影响使用跨链桥跨链的用户，但资金池被盗却会直接使得 LP 遭受损失。</p>
+<p>3. 目前跨链资产的混乱现状很大程度上源自对跨链资产命名的随意简化。除了 StellaSwap 直接在前端将 anyUSDC 改成 USDC 外，类似的例子还包括 Near 中显示的 ETH，其实是由 nETH（n 代表官方彩虹桥）简化而来。以及 Cosmos 生态中通过不同路径跨链得来的 ATOM，本质上也不是一回事。 </p>
+<p>所以不要简单的被资产名称所误导，保持对跨链资产发行方安全性的关注，或许将成为未来所有加密投资者一个必备的功课。</p>
+<p>撰文：0x76@BlockBeats</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/34463/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">大神Ansem长文展望加密市场2022年</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/34436/">
+                <span class="next-text nav-default">多地提案追踪：积极探讨如何把握元宇宙发展之道</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#如何定义一个资产">如何定义一个资产？</a></li>
+        <li><a href="#资产真的能够跨链吗">资产真的能够跨链吗？</a></li>
+        <li><a href="#资产跨链的两种基本模式">资产跨链的两种基本模式</a></li>
+        <li><a href="#影响跨链资产安全的因素有哪些">影响跨链资产安全的因素有哪些？</a></li>
+        <li><a href="#一条新链如何才能更好的发行跨链资产">一条新链如何才能更好的发行跨链资产？</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

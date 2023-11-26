@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          为什么 DeFi 必须选择 AMM 而不是订单薄？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="​关于AMM与订单薄的讨论众多，但似乎很少有人意识到，AMM与订单薄之间的争论远不只是金融交易业务上的技术选择。" />
+<meta name="keywords" content="AMM, DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39591/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="为什么 DeFi 必须选择 AMM 而不是订单薄？" />
+<meta property="og:description" content="​关于AMM与订单薄的讨论众多，但似乎很少有人意识到，AMM与订单薄之间的争论远不只是金融交易业务上的技术选择。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39591/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-29T00:00:00+00:00" />
+
+<meta itemprop="name" content="为什么 DeFi 必须选择 AMM 而不是订单薄？">
+<meta itemprop="description" content="​关于AMM与订单薄的讨论众多，但似乎很少有人意识到，AMM与订单薄之间的争论远不只是金融交易业务上的技术选择。"><meta itemprop="datePublished" content="2022-06-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2879">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="为什么 DeFi 必须选择 AMM 而不是订单薄？"/>
+<meta name="twitter:description" content="​关于AMM与订单薄的讨论众多，但似乎很少有人意识到，AMM与订单薄之间的争论远不只是金融交易业务上的技术选择。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">为什么 DeFi 必须选择 AMM 而不是订单薄？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-29">
+      2022-06-29
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2879 字 -
+        预计阅读 6 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>作者：张曦</p>
+<p>关于AMM与订单薄的讨论众多，其中大部分都集中在技术部分：资金效率、价格发现等。但似乎很少有人意识到，AMM与订单薄之间的争论远不只是金融交易业务上的技术选择。订单薄是一种技术，为“金融贵族”（也就是华尔街）所采用，用来统治和扩大他们的金融帝国。相比之下，AMM是民有、民治、民享的金融技术!</p>
+<p>让我们来看看三种交易所的交易场景，它们用不同方式提供流动性。</p>
+<h3 id="传统方式-"><strong>传统方式</strong> <strong>：</strong></h3>
+<p>这在传统金融中很常见：交易所交易的流动性通常由特权阶级提供，也就是所谓的指定做市商。特权阶级通常持有做市商牌照，以此名义与交易所密切联系。因为拥有牌照，他们通常能享受一系列特权和优势：</p>
+<p>1.信息上：他们能够更能有深度地查看订单薄（尽管大部分人只能看到买入价1和卖入价1，如果想要看到更多需要额外付费）。</p>
+<p>2.技术上：他们可以在延迟极低的服务器上运行自己的交易程序（所谓的co-location“托管”），以领先于其他大多数人。</p>
+<p>3.财务上：他们的交易成本通常大大低于普通人的成本（有时甚至是负数）。</p>
+<h3 id="加密货币-中心化-交易所"><strong>加密货币</strong> <strong>中心化</strong> <strong>交易所：</strong></h3>
+<p>虽然许多中心化的加密货币交易所仍然遵循华尔街的老传统，但也有一些新变化。例如，Bitmex将交易双方区分为两方：挂单方与吃单方。吃单方支付吃单费（如0.075%），而挂单方则收到部分费用（如0.01%）作为“挂单返佣”。</p>
+<p>此外，每个人都可以看到Bitmex上的整个订单簿。Bitmex本质上降低了身份门槛，使做市业务大幅民主化。因此，任何向订单簿报价的人都是做市业务的一部分，从而分享其利润。到目前为止，情况有了一定程度的改善：俱乐部的大门现在向大街上的人敞开，然而，你是否能加入聚会，将取决于你的舞技如何。在Bitmex上做市并不容易，事实上，它远远超出了普通人的能力。</p>
+<h3 id="defi-amm--去中心化自动做市商---"><strong>DeFi</strong>  <strong>AMM</strong> <strong>（</strong> <strong>去中心化自动做市商</strong> <strong>）</strong>  <strong>:</strong></h3>
+<p>AMM 几乎已经完全移除了提供交易流动性的门槛，你不需要是专业的专家，更不用是一名“贵族”。你需要掌握的唯一技能就是运行web3钱包，比如Metamask，</p>
+<p>AMM前所未有地使普罗大众可以参与到商业交易的流动性提供中，比如现货交易领域的Uniswap, Curve, Balancer, DODO, Sushiswap, 也比如衍生品交易领域的Deri, Perp, GMX。</p>
+<p>让我总结一下为交易提供流动性的要求：</p>
+<ul>
+<li>
+<p>在传统金融中，你既要有特权，又要有技术。</p>
+</li>
+<li>
+<p>在一些中心化加密交易所，你不需要有特权，但你需要有技术。</p>
+</li>
+<li>
+<p>在基于AMM的去中心化交易所，你不需要有特权，也不需要有技术。</p>
+</li>
+</ul>
+<p>在案例1中，由于特权与技术门槛，一些公司垄断了行业。这些“印钞机”一般的行业赚得盆满钵满，进一步加固其垄断地位。从根本上，他们成为了金融贵族阶级。</p>
+<p>在案例2中，尽管特权门槛被移除，但是仍旧是案例1中的那一群人在进行商业运作。如果你了解加密做市商中的大型玩家，你就会知道我是什么意思。毕竟，他们已经这样做了几十年。即使没有特权门槛，他们技术优势仍然使他们处于明显的有利地位。这种技能优势基于订单簿的玩法。这就是为什么订单簿这项技术被旧“金融贵族”（也就是华尔街）采用，以统治旧有土地上的金融帝国，将其扩展到加密货币的新领域。</p>
+<p>在案例3中，通常人们只需点击几下就可以为任何交易对象提供流动性。这个程序几乎不需要任何做市商的专业知识，它确实为普通人打开了大门。</p>
+<p>由USDC_ETH池在Uniswap第3代上产生的费率。</p>
+<p>任何人都能够参与到流动性提供中，分享这些费率，而无需做市商技能。（至2022年6月25日从<a href="http://info.uniswap.org">info.uniswap.org</a>获取的截图）</p>
+<p>简而言之，AMM是民有、民治、民享的金融技术!</p>
+<h3 id="那么-defi-中的订单薄呢-"><strong>那么</strong> <strong>DeFi</strong> <strong>中的订单薄呢</strong> <strong>？</strong></h3>
+<p>目前，为交易提供流动性的主要方式是AMM。然而，也有采用订单薄机制的DeFi 平台，其中dYdX就是一个领先的例子。事实上，他们中的大多数都是假的 DeFi。这种平台上的交易通常发生在他们自己的专用服务器（或AWS服务器）上，只是通过一些 “L2技术”连接到区块链网络。通过一些L2技术把中心服务器上运行的撮合引擎连接到以太坊上，并不能让其具有去中心化的特点。采用dYdX 第4代计划宣布的所谓“独立区块链”（或应用链）也不是去中心化。</p>
+<p>尽管采用独立的区块链可能会使它更加去中心化，因为“每个验证者将运行一个内存中的订单簿”，但这并没有改变交易（订单撮合）在链下服务器上进行的事实。验证者的作用只是为了确保交易的合法性。这种平台几乎缺乏DeFi项目所具有的所有优势：可组合性、透明度和可交互性。</p>
+<p>而且最重要的是，这样的平台通常是由同一批华尔街的交易员统治的，这还是他们的老本行。换句话说，这种平台只不过是旧“金融贵族”（也就是华尔街）的扩张。只要看看谁在为dYdX做市，你就知道答案了。在dYdX迁移到第4代版本之后，情况也会完全一样。</p>
+<p>请注意，这不意味着被项目比如dYdX采用的半中心化方式是无用的。采用这种方式的平台也可以很优秀，比如Bitmex, Binance, FTX等，只是他们并不是DeFi。(当然想成为优秀的平台，你并不一定需要是Defi）。这些平台以及中心化的交易所，通常能比AMM更好地提供高频交易（这是基本的机构需求）</p>
+<p>然而，除了缺乏DeFi的典型优势外，他们也无法像DeFi解决方案一样运作——为大街上的人打开做市商俱乐部的大门，让他们参与并分享利润。由于dYdX交易量巨大，它每天都为其做市商产生巨大利润。</p>
+<p>但这与贵族俱乐部之外的你我毫无关系。与dYdX形成对比的一个很好例子是Deri Protocol，它采用了AMM交易模式：任何人都可以为衍生品交易提供流动性，分享利润，而无需掌握复杂的衍生品技能。</p>
+<p>自2022年1月以来，Deri协议主池的LP净值增长显示了任何人都可以分享衍生品做市的利润。(截图取自info.deri.io，截至2022-6-25)</p>
+<p>这就是为什么DeFi必须选择AMM而不是订单簿作为做市的范式。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39590/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">晚间必读5篇 | 加密熊市应该掌握的十条生存法则</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39539/">
+                <span class="next-text nav-default">稳定币风险状况：USDT 和 USDC 安全吗？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#传统方式-"><strong>传统方式</strong> <strong>：</strong></a></li>
+        <li><a href="#加密货币-中心化-交易所"><strong>加密货币</strong> <strong>中心化</strong> <strong>交易所：</strong></a></li>
+        <li><a href="#defi-amm--去中心化自动做市商---"><strong>DeFi</strong>  <strong>AMM</strong> <strong>（</strong> <strong>去中心化自动做市商</strong> <strong>）</strong>  <strong>:</strong></a></li>
+        <li><a href="#那么-defi-中的订单薄呢-"><strong>那么</strong> <strong>DeFi</strong> <strong>中的订单薄呢</strong> <strong>？</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

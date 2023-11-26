@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          金色学院前沿课第六讲: 零知识证明:潜力与价值 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在本节课中，你所有关于零知识证明的问题都将得到解答，我们从例子出发，讲解什么是零知识证明以及零知识证明如何被用于SK-SNARK和PLONK协议中。" />
+<meta name="keywords" content="金色学院" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/36704/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="金色学院前沿课第六讲: 零知识证明:潜力与价值" />
+<meta property="og:description" content="在本节课中，你所有关于零知识证明的问题都将得到解答，我们从例子出发，讲解什么是零知识证明以及零知识证明如何被用于SK-SNARK和PLONK协议中。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/36704/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-15T00:00:00+00:00" />
+
+<meta itemprop="name" content="金色学院前沿课第六讲: 零知识证明:潜力与价值">
+<meta itemprop="description" content="在本节课中，你所有关于零知识证明的问题都将得到解答，我们从例子出发，讲解什么是零知识证明以及零知识证明如何被用于SK-SNARK和PLONK协议中。"><meta itemprop="datePublished" content="2022-04-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-15T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6760">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="金色学院前沿课第六讲: 零知识证明:潜力与价值"/>
+<meta name="twitter:description" content="在本节课中，你所有关于零知识证明的问题都将得到解答，我们从例子出发，讲解什么是零知识证明以及零知识证明如何被用于SK-SNARK和PLONK协议中。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">金色学院前沿课第六讲: 零知识证明:潜力与价值</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-04-15">
+      2022-04-15
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6760 字 -
+        预计阅读 14 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>本课主题：</strong> 零知识证明:潜力与价值</p>
+<p><strong>课程介绍：</strong> 也许你曾经听说过ZK Proof或零知识证明。但是，你好像从来没搞清楚它是什么？在本节课中，你所有关于零知识证明的问题都将得到解答，我们从例子出发，讲解什么是零知识证明以及零知识证明如何被用于SK-SNARK和PLONK协议中。</p>
+<p><strong>课程大纲：</strong></p>
+<p>1. 什么是零知识证明ZKPs</p>
+<p>2. 举例说明零知识工作原理及特征</p>
+<p>3. ZKP在区块链中发挥何种优势</p>
+<p>4. 分析零知识证明在未来有何前景</p>
+<p><strong>导师简介：</strong></p>
+<p>王泽华</p>
+<p>加拿大UBC大学客座教授、博士、博导；加拿大Verilog Solutions Inc.创始人；加拿大英属哥伦比亚大学客座教授；以太坊基金会合作伙伴。</p>
+<p>王泽华博士，Verilog Solution安全审计公司创始人。加拿大UBC大学电子与计算机工程系客座教授，博士生导师。参与创办的UBC大学区块链研究生项目2021年排名加拿大第一。他在UBC开设的区块链核心课程包括区块链基础和区块链软件工程，每年培养上百名Web3行业从业者。王泽华博士2009年毕业于武汉大学软件工程专业，2016年获得UBC大学博士学位，其任职首席科学家的RightMesh项目在2018年获得加拿大总理特鲁多表彰。2019年回UBC任教，2021年创办Verilog Solutions Inc. 区块链安全审计公司，目前是多家公链生态和风投基金的官方合作伙伴。</p>
+<p><strong>课程内容</strong> <strong>：</strong></p>
+<p>大家好非常感谢金色财经的邀请，今天为大家带来了零知识证明的潜力与价值系列讲座。</p>
+<p>1. <strong>什么是零知识证明</strong></p>
+<p>首先，什么是零知识证明？零知识证明有的时候指的是零知识证明本身，泛指一切可以不需要泄露任何有用信息即可以证明我知道这些知识的方法。同时零知识证明有的时候也可以用来指代零知识证明实现的算法和协议。这里有必要指出的是零知识证明实质上是一种涉及两方和更多方的协议及两方和更多方完成一项任务所需采取的一系列步骤证明者向验证者证明并使其相信自己知道或拥有某一消息但证明过程不能向验证者泄露任何关于被证明消息的信息。最后一点，零知识证明也可以用来指代零知识证明过程中交互的消息。虽然拥有知识和信息的一方即证明方不需要告诉被要求相信的一方（即，验证方）这些信息本身但是验证方需要和证明方产生交互才能达到信任证明方的目的。这些交互的消息有时候也会被称为零知识证明。</p>
+<p>所以我们在说零知识证明的时候，根据语境的不同强调的侧重点也不同。有的时候我们说的是零知识证明的算法，有的时候我们说的是零知识证明在验证过程中交互的消息。但是无论怎样，我们都需要了解零知识证明是如何工作的，我们需要掌握的是零知识证明是如何可以达到不告知对方有用信息的情况下达到向对方证明我知道这些信息的目的的。</p>
+<p>为了讲清楚零知识证明我们需要从一个计算机科学里面的基本概念讲起这个概念就是P问题和NP问题。P问题指的是在多项式时间内可以解决和验证的问题，NP问题是指在多项式时间内可以验证但是目前为止找不到多项式时间内完成的解决方法的问题。现在计算机科学领域普遍认为P问题不等于NP问题。我们比较感兴趣的是这种NP问题，也就是说给定一个问题，并且给出这个问题的一个解答，人们很容易在多项式时间内判别这个解答是不是正确的。但是想找到一个正确的解，很难在多项式时间内实现。</p>
+<p>这里我们可以想几个例子，什么样的问题是我们所感兴趣的NP问题呢？比如，分解由两个很大的质数相乘得到的合数。我们想要分解这样一个很大的合数需要耗费很多的计算资源，但是给出了其中的一个质因数我们就可以很容易的得到其他一个。而且验证一个解非常容易，只要将这两个质数相乘看看是不是等于这样个比较大的合数就可以了。另外一个NP问题比如说，三色问题。三色问题指的是在一个有点和边连接的图中，如何将网络中的点着色，使得有公共边的结点颜色互不相同。如果我们知道一个解，我们很容易去验证它是不是对的，但是找到一个这样正确的解需要花费很长时间。另外，比如说四色问题，如何给地图填色使得相邻的州或者相邻的国家颜色不同。如果我们知道一个解，我们很容易去验证它是不是对的，但是找到一个这样的解需要耗费很长的计算时间。</p>
+<p>在知道了NP问题的基本概念之后，我们就可以开始梳理零知识证明的脉络了。首先零知识证明是一套基于数学的程式化的算法，这种程式化的算法可以很容易用计算机帮助我们实现我们的目。我们需要构建一个NP问题，而且这个NP问题的答案就是我们的知识。我们想要证明我们知道这个知识，但是不想告诉别人这个知识究竟是什么。同时，我们也不能直接就把这个NP问题告诉别人，因为如果直接把这个问题告诉别人，就意味着除了告诉别人真正的答案和知识，没有别的方法证明我知道这个知识，也就无法做到零知识证明了。</p>
+<p>那怎么办呢？我不能告诉你这个NP问题本身，我更不能告诉你这个NP问题的答案。我们需要做的，首先是把我的这个NP问题的解，带入到我的NP问题当中，并把原来的NP问题转换成等式的形式。再把这个等式的形式转化为另一个维度下的另一个NP问题，这个转化后的新的NP问题会被分解成比较方便验证的形式。这样做的目的是，别人可以验证的是这个新的NP问题，这个新的NP问题是原NP问题将解代入后的一种变化形式。别人知道的是，只有在知道原问题的解的情况下才能完成这种变化，那他就会相信我知道原问题的解了。</p>
+<p>有点绕，但是我们来整理一下思路。就是我有一个知识，我构造出来一个NP问题使得我这个知识就是我这个NP问题的解。但是你可以检验的不是这个NP问题或者这个NP问题的解本身，而是在拥有解的一方将解带入这个原NP问题并转化后的另一个问题的完备性。因为你知道，倘若这个人没有解的话这种转化是不可能完成，当通过一系列消息交互对这个转换后的问题的完备性进行考验之后，你就可以相信这个人是有原NP问题的解的。</p>
+<p>2. <strong>举例说明零知识工作原理及特征</strong></p>
+<p>下面我们举例说明零知识证明的工作原理及特征。首先我们要知道的是。在数字货币和区块链中，所有的信息都是数。这个数可以很大，可以有成百上千位。这些数可以被连接成更大的数，也可以被切割成很多稍微小一些的数，用来传达不同的意义。这些字段可以是钱包地址，可以是金额，可以是交易的签名，等等。所有的这些信息都是数，很大很大的数。但是本质上跟我们接触到的正常的数没有任何差别。 </p>
+<p>我也可以把一则消息数字化，比如我可以把一段英文字符完全转换成很大很大的一个数，这个数就是我们NP问题的解。</p>
+<p>我们上面说的三色和四色问题虽然说也是NP问题，但是他们不适用于我们想要实现零知识证明的NP问题。是因为我们很难将解带入三色和四色问题并且把这个NP问题转换到另外一个维度上。我们想要的问题是那种可以直接用等式表达其正确性的。这样的问题比如说求解高维度下的多项式，这个多项式可以是成百上千次方，甚至是百万次方级别的多项式。求解这样一个百万次方的多项式或者说方程，是很困难的。但是我们很容易去验证一个解。比如说一个数是不是这个一元n次方程的解，我们只需要把这个解代入到原方程当中看它等式两边是不是相等就可以了。我们接下来用一个例子来讲为什么求解一元N次方程是一个好的NP原问题，那我们也会讲到多项式方程把解代入其中之后如何转换成另一个维度下的另一个问题，而且这种转换后的NP问题如何可以用于被校验。</p>
+<p>再次想要重申的是，在区块链和数字货币的世界里，所有的信息都是数。和我们平时说的13579、24680，没有任何区别。在我们的这个例子中为了方便表达，我们用一个比较小的数X=2做例子，这个2就是我们想要证明的知识，就是说我们不想告诉别人我们知道这个数是2，我们也想让别人相信我知道这个数是2。</p>
+<p>现在我们需要构建一个多项式方程而这个多项式方程的解就是2, 我们这里用到的是x^2+2x+1=9。 在实际系统中这个值可以是一个非常非常大的数，有成百上千位。而这个多项式也可以是百万次方级别的一元N次方程。 </p>
+<p>方便的同学可以把这个多项式写在纸上：x^2+2x+1=9。大家可以看到x=2就是它的解。如果不做任何转换我除了告诉你这个解好像没有别的方式让你相信我。我们需要完成一种转化，达到我不告诉你解等于2，也能证明我知道这个解。实际系统中的多项式很复杂，我们需要借助计算机完成。但是想让计算机帮我们转换转化，我们就需要一用一套简单的计算逻辑。计算机需要把上面的多项式打开，每个步骤只干一件事，并引入额外的临时中间变量存中间的结果。所以，我们可以把x的平方转化为x乘以x， 2x其实就是2乘以x，前两项的相加我们把这两项的中间结果分别定义为t1和t2，所以前两项的相加结果就是t1加t2，我们再把这个结果定义为中间变量t3。 t3再加上1，就是我们最后的输出结果。具体说来，我们现在应该有四个等式，t1=x*x， t2=2*x， t3=t1+t2，out= t3+1。这个里面的常量包括1和2，因为他们是线性关系我们只保留1，再把x，t1，t2，t3，out全部提取出来变成一个向量。也就是说一个常量1是第1个元素，未知数x是第2个元素，多项式的输出output是第3个元素，中间变量t1，t2，t3分别是第4，5，6个元素。这样的话我们就把这样一个具有6个元素的向量定义成我们这个系统的solution。也就是解。那其实我们对应的解应该是 （1,2,9,4,4,8），也就是说如果我知道x=2, 那么就很容易构建出来这六个元素组成的向量是（1,2,9,4,4,8）。为了方便表述，我们后面把这个向量成为解向量。</p>
+<p>现在我们分别要把t1=x*x， t2=2*x， t3=t1+t2，和out= t3+1写成解向量表达的形式。我们可以用点乘，也就是内积，的形式将需要的元素过滤出来。我们构建一个向量（0,0,0,1,0,0），这里面唯一一个1对应的是t1在解向量中的位置，再构建向量（0,1,0,0,0,0），这里面的1对应的x在解向量中位置，这样，t1=x*x，就可以写成一个解向量的向量内积t1，等于包含有解向量的第二个向量内积x，乘以包含有解向量的第三个向量内积x。这部分在后续的文字版中会加上插图方便听众理解。我们用相同的方式，可以把t2=2*x写成一个包含有解向量的向量内积t2等于两个包含有解向量的向量内积结果相乘的形式，同理t3=t1+t2可以写成解向量的一个向量内积t3等于一个解向量的向量内积乘以1，而这个1其实也是一个解向量的向量内积。这个包含解向量的向量内积等式同样可以用于表达最后一个等式，就是out= t3+1。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0415/26_rhrs0po9ou.png" alt="9xjL6YqgzAH5Wv65vdownzf9GLGznM4wgull9TE4.png" title="5852840"></p>
+<p>我们发现，我们已经把一个简单的数字2，变成了一个向量解，而且，这个向量解在经过我们上面的一连串算法变换之后，变成了由四个方程约束的向量解。现在如果我告诉别人这四个约束方程的话，也不能完全达到零知识证明的目的，因为向量解里面包含了我们的真实解x=2。那么怎么办呢，我们一定要继续对这四个约束方程在进行变化。</p>
+<p>这四个约束方程，其实可以大致写成C=A x B的形式，这样的等式有4个。其中每一个中的C，A，B，都对应一个6个元素的常向量，就是我们上面使用的通过内积过滤所需元素的向量。对应于等式左边，我们把这4个用过内积过滤元素的向量写成按行排列的矩阵，就得到了一个4行6列的矩阵，对应于等式右边的A和B，同样每一个A或者B我们也有4个常向量用于过滤元素，同样可以写成一个4行6列的矩阵。所以，我们有三个4行6列的矩阵，分别对应于C，A，和B。为了进一步变换，我们现在将C，A，和B这样的4行6列的矩阵，按照列向量处理。对应于C的第1列，我们有（0,0,0,0），第二列也是（0,0,0,0），第三列是（0,0,0,1），第四列是（1,0,0,0），第五列是（0,1,0,0），第六列是（0,0,1,0）。同样对于A和B也是分解成列向量。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0415/26_eg8h6nm8fs.png" alt="PoP4gjXeM3ryXEOB5PPixaTNKwnGMXTqiLac36po.png" title="5852841"></p>
+<p>我们用拉格朗日插值法对于每一个这样的列向量，把每个元素的位置，即n=1,2,3,4作为输入，得到每一列的解析式。比如，对应于C矩阵的第三列，我们有f(1)=0, f(2)=0, f(3)=0, f(4)=1。使用拉格朗日差值法，我们可以得到第三列的解析式：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0415/26_d5aw26npz6.png" alt="nvRDUGIeQvwc6w4tOUIhdADeE2d9JrjDK74XWqTd.png" title="5852847"></p>
+<p>所以我们把C，按列的方向，分别写成<img src="https://img.bibiqing.com/news/2022/0415/26_yqahflnmrf.png" alt="iSKAKPg3d8nu8OoQDXdGBLSSFDAvZ5upj7PIWUxu.png" title="5852848">6个关于n的三次方解析式。同理A和B矩阵也可以分别写成6个关于n的三次方解析式。我们把这六个解析式写成列的形式，即每个矩阵现在被转化成了一个6x1的列向量，其中每个列向量的每个元素是一个n的三次多项式。此时，我们已经把原问题转化成了另一个维度的问题。我们用C矩阵对应的列向量的转置乘以我们的解向量（其结果应该是一个n的三次多项式）应该等于A矩阵对应的列向量的转置乘以我们的解向量，再乘以B矩阵对应的列向量的转置乘以我们的解向量，其结果应该是一个n的6次多项式。上面的等式，应该是在n=1, 2, 3, 4时都成立。把右边挪到左边变做减法，我们得到了一个三次多项式减六次多项式等于0的形式，并且要求该六次多项式等于0，在n=1,2,3,4时都成立。</p>
+<p>要求该六次多项式等于0，在n=1,2,3,4时都成立，其实就是意味着（n−1）（n−2）（n−3）（n−4）是它的子因式，我们把（n−1）（n−2）（n−3）（n−4）定义为Z（n），上面的六次多项式定义为P（n），我们可以求出另外一个子因式，应该是n的2次方多项式，把它定义为H（n）。为了证明我知道原多项式的解向量，此时只需将P（n）与H（n） 发给检验者，检验者使用Z（n）×H（n） 检查是否与P（n）相等，即可判断我是否有正确的解向量。</p>
+<p>整个过程中，我们先构建了一个x的二次方程，将x=2扩展成解向量，并用了4个向量方程约束解向量，再把约束方程的参数以矩阵列的形式转化到另外一个维度成为n的多项式，并用因式分解的形式完成对n的多项式的验证。可以看到，如果我们不知道解x=2，是无法完成这样的转化的。一旦验证者验证了这样的转化是正确的，那么就可以在不知道x=2的情况向，相信我知道正确的答案。</p>
+<p>3. <strong>ZKP在区块链中发挥何种优势</strong></p>
+<p>隐私保护是ZKP在区块链中的最大优势。前面已经提到过，在区块链的世界里，所有的信息都可以表示成数字。类似的，区块链中的状态转换也可以用数字的拼接和分割表示不同的意义。说的直白一些，就是区块链的状态，包括各个钱包地址或者智能合约地址上的状态转换，都可以通过编码数字化。虽然这个数字化的结果是个很大的数，但是也可以构建出一个高阶多项式，使得这个数字就是他的解，之后通过我们前面讲的方法，构建出零知识证明。这样，我们可以将区块链上的交易信息隐藏起来，达到隐私保护的目的。</p>
+<p>更进一步，我们可以把一连串的交易打包，只记录这一连串的交易对区块链造成的影响，即增量更新。这种增量更新也可以数字化成一组编码。那么用同样的方式，可以达到将一连串交易打包成零知识证明。这也就是zkrollup的最基本的原理了。</p>
+<p>4. <strong>分析零知识证明在未来有何前景</strong></p>
+<p>正如上面讲到的那样，使用零知识证明，不仅可以隐藏信息增加现有区块链上交易的私密性，同时可以将交易打包增加吞吐量。所以，使用零知识证明相关的技术，将毫无引文催生新的生态和在其上发展的应用。这对DeFi、GameFi、以及未来的元宇宙都具有很实际的意义。比如，一个人和智能合约交互的地址将是不可见的，或者一些交易记录可以被隐藏。但是我还是可以相信当前的区块链状态是正确的，是可以被验证为真实和正确的。同时可以预见的是，对于黑客来讲，最终他们的资金来源和流向将变的更加困难。可也会增加项目方和广大用户对区块链安全团队的需求和对智能合约安全性提出更高的要求。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/36719/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">金色晚报 | 4月15日晚间重要动态一览</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/36687/">
+                <span class="next-text nav-default">金色早报 | SBF提出推文上链等多条建议以去中心化Twitter</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

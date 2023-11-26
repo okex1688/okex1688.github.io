@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Layer2扩容存误区 重新定义可扩展性 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="让我们看看如何定义可扩展性，为了实现它需要进行的权衡，以及为什么Validity Rollups是最终极的可扩展性解决方案。" />
+<meta name="keywords" content="Layer 2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/31542/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Layer2扩容存误区 重新定义可扩展性" />
+<meta property="og:description" content="让我们看看如何定义可扩展性，为了实现它需要进行的权衡，以及为什么Validity Rollups是最终极的可扩展性解决方案。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/31542/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-12-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-06T00:00:00+00:00" />
+
+<meta itemprop="name" content="Layer2扩容存误区 重新定义可扩展性">
+<meta itemprop="description" content="让我们看看如何定义可扩展性，为了实现它需要进行的权衡，以及为什么Validity Rollups是最终极的可扩展性解决方案。"><meta itemprop="datePublished" content="2021-12-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-12-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4634">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Layer2扩容存误区 重新定义可扩展性"/>
+<meta name="twitter:description" content="让我们看看如何定义可扩展性，为了实现它需要进行的权衡，以及为什么Validity Rollups是最终极的可扩展性解决方案。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Layer2扩容存误区 重新定义可扩展性</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-12-06">
+      2021-12-06
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4634 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>许多克服区块链可扩展性的方案都错误地聚焦在增加吞吐量，然而，这忽视了吞吐量对节点的影响：为了处理区块和存储网络历史，升级硬件需求会越来越强烈，进而阻碍了一个网络的去中心化。</p>
+<p>区块链可扩展性一直是一个热门话题。几乎每一个区块链网络把TPS(每秒交易量)作为一个卖点，然而，TPS不是一个对比不同区块链网络的有效指标，会给评估不同区块链之间的相对性能带来挑战。此外，高TPS通常会带来高成本，由此就引发一个问题：这些网络实际上真的可以扩展，或者说它们仅仅增加了它们的吞吐量？</p>
+<p>为了回答这个问题，让我们看看如何定义可扩展性，为了实现它需要进行的权衡，以及为什么Validity Rollups是最终极的可扩展性解决方案。</p>
+<p><strong>并非所有的交易都是相同的</strong></p>
+<p>首先，我们需要声明我们的主张，简便的TPS指标不是一个精确的衡量可扩展性的标准。</p>
+<p>为了对节点执行交易进行补偿，同时也为了阻止用户通过发送不必要的交易攻击网络，区块链会根据链上的计算负担按比例收取费用。以太坊网络中，计算负担的复杂性用gas费用来衡量。因为gas是一个针对交易复杂性非常简便的度量，这个术语也将在本文中用于非以太坊的区块链，即使它一般特定于以太坊的。</p>
+<p>交易在复杂性上有巨大的不同，因此，消耗的gas也是不同的。比特币是最早实行无需信任的点对点交易，但是只支持基本的比特币脚本。这些地址与地址之间简单的转移只使用很少的gas。相反，像以太坊或者Solana这样的智能合约链支持虚拟机和图灵完备编程语言，能够实现更加复杂的交易。因而，像Uniswap这类dApps需要更多的gas费。</p>
+<p>这也是为什么比较不同区块链TPS没有意义，我们应该比较的是计算能力或者说是吞吐量。</p>
+<p>所有的区块链有可变的区块大小和区块时间，它们决定了每个块可以处理多少计算单元以及添加新区块的速度。这两个变量决定了一个区块链的吞吐量。</p>
+<p>什么限制了可扩展性</p>
+<p>区块链发展方向是实现最大化的去中心化、包容性的网络。在实现这一目标过程中，会受制于两个基本的属性：硬件、状态。</p>
+<p><strong>硬件要求</strong></p>
+<p>一个去中心化的区块链网络由网络中最弱的节点验证这个区块链和保持状态的能力决定的。因此，运行一个节点成本（硬件、带宽、存储）应该尽可能地降低，以使尽可能多的人成为去信任网络无需许可的参与者。</p>
+<p><strong>状态增长</strong></p>
+<p>状态的增长是指区块链增长的速度。一个区块链在每单位时间允许越多的吞吐，这个区块链增长的就越快。全节点存储网络历史，同时它们也必须能够验证网络状态。通过使用树状等高效结构，以太坊的网络状态被储存和引用。随着状态增长，新的“叶子”和“分枝”被添加进去，使得其执行特定的行为时会更加复杂和消耗更多的时间。随着链的规模增长，节点在最坏情况下的执行会变得更糟糕，从而导致验证新块的时间不断增加。随着时间的增加，这也增加了全节点同步所需要的总时间。</p>
+<p><strong>增加吞吐量的不利影响</strong></p>
+<p><strong>节点数</strong></p>
+<p>运行节点的最低要求和节点数：</p>
+<p>比特币：350GB硬盘空间、5 Mbit/s 连接、、1GB RAM、CPU &gt; 1 Ghz。节点数：~10,000</p>
+<p>Ethereum²：500GB+ SSD 磁盘空间，25 Mbit/s 连接，4-8GB RAM，CPU 2-4 核。节点数：~6,000</p>
+<p>Solana³：1.5TB+ SSD 磁盘空间，300 Mbit/s 连接，128GB RAM CPU 12+ 核。节点数：~1,200</p>
+<p>可以发现，一个区块链吞吐量所需要的节点的CPU、带宽和存储要求越高，该区块链网络上能够参与的节点就越少，从而导致去中心化和包容性就越弱。</p>
+<p><strong>同步全节点需要的时间</strong></p>
+<p>当第一次运行一个全节点时，它需要同步所有的现有节点，下载并验证从创始区块到链前端的网络状态。这个过程应该尽可能的快速和高效，以允许任何人作为这个无需许可的协议的参与者。</p>
+<p>以Jameson Lopp的2020年比特币节点和2021年节点同步测试为参照，表1中对比了比特币、以太坊、Solana在普通消费级电脑上同步一个全节点所需要的时间。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1206/19_3r10ob268h.png" alt="Layer2扩容存误区 重新定义可扩展性"></p>
+<p>表1 区块链吞吐和节点同步比较</p>
+<p>表1呈现了增加吞吐量会导致更长的同步时间，因为更多的数据需要被处理和存储。</p>
+<p>虽然区块链可以通过不断改进节点软件以缓解不断增长的区块链挑战，比如降低磁盘的占用空间、更快的同步速度、更强的崩溃恢复能力、某些组建的模块化等等，但是很显然节点无法跟上吞吐量增加的步伐。</p>
+<p>可扩展性应该如何被定义</p>
+<p>可扩展性是区块链领域最被误解的术语。虽然增加吞吐量是可取的，但是这只是该难题的一部分。</p>
+<p>可扩展性意味着在相同的硬件上进行更多的交易。因此，可扩展性可以分为两大类：排序可扩展性、验证可扩展性。</p>
+<p><strong>排序可扩展性</strong></p>
+<p>排序描述了网络中对交易进行排序和处理的行为。如前所述，任何区块链可以增加区块空间和缩短出块时间来小幅增加吞吐量，一直到这种方法对区块链去中心化产生显著的影响。但是，调整这些简单的参数提供的改进是有限的。理论上，以太坊虚拟机能够实现高达2000TPS，但是长期而言，还不能满足区块空间的需求。</p>
+<p>为了扩展排序，Solana做了一些令人印象深刻的创新：利用了可并行化的执行环境和巧妙的共识机制，从而实现了更加高效的吞吐量。不过，尽管它有所提升，但这种方式既不充分，也不可扩展。随着Solana增加了自身的吞吐量，运行节点和处理交易的硬件成本也在增加。</p>
+<p><strong>验证可扩展性</strong></p>
+<p>验证扩展性描述了增加吞吐量而不用持续增加硬件成本的节点负担的方法。具体来说，它指的是像Validity proofs（有效性证明）的密码学创新。它们是 Validity Rollups（有效性汇总）可以可持续扩展一个区块链的原因。</p>
+<p><strong>什么是 Validity Rollup？</strong></p>
+<p>Validity Rollups（也称“ZK-Rollup”）把计算和状态存储迁移到链下，但是把一小部分的确定的数据放到链上。区块链底层上，有一个智能合约维护Rollup的状态根。在Rollup上，一批高度压缩的交易和当前的状态根一起被发送到链下证明者（Prover）。这个证明者计算交易，对结果和新的状态根产生一个有效性证明，并且把它发送到链上的验证者。这个验证者验证有效性证明，维护Rollup状态的智能合约把由证明者提供的证明信息更新到新的状态。</p>
+<p>Validity Rollups如何在硬件要求相同的情况下实现可扩展？</p>
+<p>即使证明者确实需要高端的硬件，它们也不会影响一个区块链的去中心化；因为，交易的有效性被数学可验证的证明保证。</p>
+<p>重要的是验证证明的要求。因为参与的数据被高度压缩并且很大程度上通过计算抽象出来，它对底层区块链节点的影响是很小的。</p>
+<p>验证者（以太坊节点）不需要高端的硬件，批次（把交易集中在一起）的大小不会增加硬件需求。仅仅状态转换和小部分的数据响应需要被节点处理和存储。这允许了所有的以太坊节点通过现有的硬件验证Validity Rollup的批次。</p>
+<p><strong>交易越多，价格越便宜</strong></p>
+<p>一般来说，区块链上的交易越多，对于每个人来说就越贵。因为，随着区块空间被填满，用户需要在一个自由市场中出价高于他人，才能使得其交易被包含进区块。</p>
+<p>对一个Validity Rollup来说，这样的情况是相反的。在以太坊上验证一批交易是有一定的成本。随着一个批次内的交易量增长，验证该批次的成本以指数形式缓慢降低。也就是说，增加更多的交易到一个批次会实现更便宜的交易费用，即使该批次的验证费用在增加。Validity Rollups希望在一个批次里面有尽可能多的交易，这样，验证费用可以由所有的交易者分摊。随着批次内规模无限增长，每一次交易费无限接近于零。在Validity Rollup上越多的交易，对每个人来说，就越便宜。</p>
+<p>dYdX是由Validity Rollup提供支持的dAPP，经常会看到一个批次内有超过12000笔交易。可以把Validity Rollup和在主网上相同交易量的gas消耗进行对比，就可以看出降低成本的好处。</p>
+<p><strong>在以太坊主网上处理dYdX一次交易：200，000gas</strong></p>
+<p><strong>在StarkEx上处理dYdX一次交易：&lt;500gas</strong></p>
+<p>从另外一个视角看：Validity Rollups的主要成本与同一批次内部的用户数量呈现线性关系。</p>
+<p>为什么 Optimistic Rollups不像人们想象中那样提供可扩展性</p>
+<p>理论上，Optimistic Rollups提供和Validity Rollups一样提供几乎一样的可扩展性优势。但是，有一个重要的区别：Optimistic Rollups对平均情况进行优化，然而，Validity Rollups对最差的情况进行优化。因为区块链系统在不稳定的环境下运行，针对最差情况进行优化是仅有的方式实现安全性。</p>
+<p>在Optimistic Rollup最差的环境中，欺诈验证者不会检查用户交易。所以，为了对抗欺诈，用户需要同步一个以太坊全节点，一个L2全节点，并且需要自己计算可疑交易。</p>
+<p>在Validity Rollup最差环境中，一个用户将仅需要同步一个以太坊全节点来验证有效性证明（validity proof），为自己节省了计算负担。</p>
+<p>和Validity Rollups不同，Optimistic Rollups的成本随着交易量成线性关系，而不是用户数量，这会让它们会更贵。</p>
+<p><strong>难题的最后一部分——无需许可的获取Rollup 状态</strong></p>
+<p>为了保证交易的有效性，用户仅需要运行一个以太坊节点。然而，用户和开发者因为各种目的想要查看和运行Rollup的状态和运行情况。一个索引L2节点可以完美满足这一需求。它不仅允许用户看到网络中的交易，而且，还是生态系统基础设施运行所必需的关键基础设施。像The Graph、Alchemy、 Infura等索引器，像 Chainlink等预言机，像区块链浏览器，所有这些都是全部由一个无需许可的、索引L2节点支持。</p>
+<p><strong>结论</strong></p>
+<p>许多克服区块链可扩展性的方案都错误地聚焦在增加吞吐量，然而，这忽视了吞吐量对节点的影响：<strong>为了处理区块和存储网络历史，升级硬件需求会越来越强烈，进而阻碍了一个网络的去中心化</strong> 。</p>
+<p>随着加密学Validity-proof的出现，一个区块链能够实现真正的可扩展性，不会因为每次升级的成本给节点带来负担，允许更加广泛的去中心化。对于相同的硬件，现在可以使用更强大、更复杂的计算进行更多交易，从而在此过程中扭转费用市场的困境。Validity Rollup 上的活动越多，它就越便宜。</p>
+<p>文/StarkWare 翻译/Jack Yang</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/31518/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Free Ross DAO 已筹集约420万美元</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/31540/">
+                <span class="next-text nav-default">Messari 2022年加密行业深度研报（二）</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

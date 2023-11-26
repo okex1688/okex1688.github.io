@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          深入了解波卡跨共识消息 XCM（2） - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Parity 联合创始人 Rob Habermeier 分享了 XCM 如何允许平行链相互通信。" />
+<meta name="keywords" content="Polkadot" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38822/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="深入了解波卡跨共识消息 XCM（2）" />
+<meta property="og:description" content="Parity 联合创始人 Rob Habermeier 分享了 XCM 如何允许平行链相互通信。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38822/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-10T00:00:00+00:00" />
+
+<meta itemprop="name" content="深入了解波卡跨共识消息 XCM（2）">
+<meta itemprop="description" content="Parity 联合创始人 Rob Habermeier 分享了 XCM 如何允许平行链相互通信。"><meta itemprop="datePublished" content="2022-06-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5543">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="深入了解波卡跨共识消息 XCM（2）"/>
+<meta name="twitter:description" content="Parity 联合创始人 Rob Habermeier 分享了 XCM 如何允许平行链相互通信。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">深入了解波卡跨共识消息 XCM（2）</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-10">
+      2022-06-10
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5543 字 -
+        预计阅读 12 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>在近期的 Zero Knowledge 播客节目中，Parity 联合创始人 Rob Habermeier 分享了 XCM 如何允许平行链相互通信。本文是该播客的第二部分。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>有个概念叫碎片化。例如，如果在两条链之间，你用了多个桥去连接相同资产，这些资产在某一端是合成的，那么如果你有多个版本的桥接资产，就可能会导致碎片化。这样可能会出现有趣的套利机会，但我认为这也削弱了很多东西。你们有一个储备的概念，是不是说在 Statemine 上可能会有 USDC，然后其他链可以直接通过 XCM 使用它，而不是通过其他桥，这有点像是网络中的规范 USDC。你们是这样设想的吗？</p>
+<p><strong>Rob：</strong></p>
+<p>是的，差不多。我们以 USDC 作为例子，各条链获得的本质上是 Statemine 上对 USDC 的声明，那么你就不需要有 USDC 的各种包装过的（Wrapped）版本，只需要把 Statemine 作为 USDC 代币的可信储备。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>但是如果有其他桥存在，也还是会遇到同样的问题。就像如果你用另一个桥桥接来自以太坊的 USDC，你又有它的 Statemine 版本，两种 USDC 都来了，那么你在平行链 X、Y、Z 上还是会有同样的碎片。</p>
+<p><strong>Rob：</strong></p>
+<p>我猜是会有这种情况的。这是市场需要处理的问题。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>如果你有多个枢纽，会出现问题吗？就像你在 Statemine 中有某种规范的资产，它会移动到平行链 A，然后使用 XCM 将它更进一步移动到另一条链。这些枢纽是否造成了一些问题，还是说它总是以某种方式指向原始来源？</p>
+<p><strong>Rob：</strong></p>
+<p>是的。这种应用的工作方式是，你总是会接触到 Statemine/Statemint 链的基础。所以任何枢纽实际上都是接到储备资产然后再出去的，而不是从一条链直接接到另一条。传送不是这么运作的，但在储备资产转移中是这样的。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>好的。而且你提到了可信传送者，这是否意味着平行链本身是受信任的，是不是你将一些平行链列入传送白名单，但可能还有其他你未列入白名单的平行链仍在传送东西，你只是不认可而已。我其实不明白你如何让它可信。</p>
+<p><strong>Rob：</strong></p>
+<p>好吧，举例来说，在 Polkadot 和 Kusama 生态系统中，DOT 和 KSM 的可信传送者链是我们所说的系统级公共利益链，例如 Statemint/Statemine，所以只有它们是 Polkdadot 治理信任的可以正确地铸造和销毁 DOT/KSM 的链。</p>
+<p>你或许可以建立某种侧通道或其他方法，XCM 的其他功能之一是你可以从一个链到另一个链进行任意函数调用，所以你可以想象两条链建立一个协议，他们通过这个协议铸造/销毁彼此的代币。这取决于生态平行链的治理，治理可以决定他们信任哪些其他生态来正确铸造和销毁他们的代币。这就是我说的 “可信” 的意思，也就是除非通过了发行链的治理的同意，否则不允许这样做。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>我不明白这个过程发生在哪里。这个规则是内置在 XCM 中的吗？比如它说这些平行链可以做出这个选择，或者是说平行链本身可以决定这个，并排除其他链。而且我不明白他们如何排除其他链。</p>
+<p><strong>Rob：</strong></p>
+<p>这主要取决于代币的分类是什么。因为代币，例如平行链上的一些代币，通常用于发行链上的某种服务或流程。重要的是，你在另一条链上拥有的代币，是通过一系列操作，对存储在发行链上的那些服务或基础资产的有效声明。为此，对于发行链，最终必须将外链代币识别为自己的。那么，如果是通过储备的方法，那么它总是跟踪余额并确切地知道每个其他链有多少。如果是传送，比如某个链来找我说，“我有一千个你的代币，我想传送过来”。你没有权力这样做，我不认这些代币。这意味着存在于另一条链上的代币实际上毫无价值，它们其实并不对应于对服务或资产的声明。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>但你们怎么阻止这种情况呢？我是在想，如果它是一个智能合约平行链，并且可以创建一个智能合约，这就像充当桥的一侧。可能这就是我理解错了的地方，我一直认为它像智能合约一样，在另一边也有一个智能合约，两者可以互相交谈，但实际上可能 XCM 的运作方式不同？是不是我对传送者的工作方式理解错了？</p>
+<p><strong>Rob：</strong></p>
+<p>首先，你可以在 XCM 上构建任何类型的协议，因为它支持任何图灵完备的函数调用。它能做的一件事就是支持费用支付机制，就像在其他链上支付 gas 费一样。但说到储备资产和传送资产，在 XCM 中什么是优先的。我们用 Substrate 处理链设计的方式是模块化，你有不同的组件，比如一个智能合约执行组件、一个治理组件等，打包在一起就形成了你的链，而其中一个组件就是 XCM 执行器。</p>
+<p>XCM 实际上是一种编程语言，它不是图灵完备的编程语言，但的确是一种编程语言。还有一个跨共识虚拟机 XCVM，来执行这些指令。当你让一条用 Substrate 编写的链使用 XCM 时，你所做的是将 XCVM 连接到你的链，并使其成为你的链的一部分。你说 “这是处理传入 XCM 指令的东西，它会执行其他链给它的命令”，然后我会继续传递其中的一些内容。就像对于这个函数调用，你可能会创建某种自定义适配，比如 “将函数调用视为智能合约调用”，或者你可能会说 “将它们视为买单”/“将它们视为卖单” 等等。所以它是可插拔的，你可以将自己的逻辑插入其中，你可以将这种基础级别的虚拟机引入你的链中。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>XCM 或 XCVM 是否内置有白名单和黑名单，它是否已经决定了 “这是一个平行链，这是一个原生平行链代币，它们被允许存在于这些地方”。我觉得应该不是吧，我想象它应该是更无需许可的？有点像每个链都可以决定他们觉得谁是值得信赖的传送者。我只是不明白为什么你无法将这些代币注入到这个新的平行链中，具体是如何防范的？因为它似乎是无需许可的。</p>
+<p><strong>Rob：</strong></p>
+<p>这是一个很好的问题。它是关于一条链如何引用和识别另一条链的解决方法。所以有一个来源的概念，即消息的发起者。如果你只看一个智能合约系统，来源就是它的账户。在以太坊上，它们被称为 20 字节十六进制字符串，要么是公钥的哈希，要么是一堆合约创建参数的哈希。那么现在，当你谈论从其他链接收消息时，你需要知道从哪个链，以及从该链上的哪个账户接收消息，这就是你进行许可的方式。如果你收到一条消息，你将验证某些来源来做不同的事情。</p>
+<p>来源系统的工作方式有点像文件路径或 URL。有一种通用的来源，有点像是整个世界。然后你在其中有共识机制，比如 Polkdadot 或 Kusama，就像主权区域。然后下面有平行链，再下面有账户。在链如何确定它们自己的来源上，是比较灵活的，比如它们链上的来源有什么，取决于它们自己。你可以让智能合约成为链的有效来源，因为这只是他们自己的链的一个子来源。XCMP 的职责之一是维护来源 —— 某条消息来自平行链 A，并通过 XCMP 发送给平行链 B，平行链 B 接收数据和消息的来源。</p>
+<p>你也可以有相对来源。比如我要提到我的邻居，我不需要说哪个国家、哪个城镇、哪个邮编，我只用说 “就是住在和我隔了三个房子的 Joe”。所以你可以对来源做同样的事情，即相对来源，比如 “这是来自你影响范围内的平行链 X”。</p>
+<p>说回到链实际上如何禁止传送，本质上他们可以做的是他们可以配置允许哪些来源将资产传送给他们。所以我会说 “我相信 Joe 会在他那边销毁代币并将它们发送给我”。但是，如果我从 Bob、Alice 或 Eve 那里收到一条消息，上面写着 “嘿，我这边已经销毁了代币了，快把这笔记到你的账户上”。我会说 “我从来没有把我家的钥匙给过你们啊，你谁啊？”</p>
+<p>Joe 没有权力给 Alice、Bob 或 Eve 我的钥匙。这种许可是不可传递的，因为最终这些代币必须在我的链上可回收。现在 Joe 可以做一些傻事儿，所以 Joe 有能力在他那边销毁和铸造代币。他可以创建一个系统，在这个系统之上还有更多的代币和衍生品，允许其他链参与，但这是 Joe 的事儿。如果我们觉得 Joe 没有能力在这方面做得很好，那么我们一开始就不应该赋予他铸造和销毁代币的能力。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>但是，万一 Joe 真的做得很差，衍生品脱离了他的控制，这些衍生品到处都是了。是不是像另一条链可以去领取衍生品，然后拿回你这边说 “这是从 Joe 那里拿的”，会不会有这种互相关联的来源？原平行链真的能够识别出这个来源是恶意的吗？或者说它会接受吗？比如它是基于衍生品的衍生品，是合成的资产，但它来自 Joe 那里。</p>
+<p><strong>Rob：</strong></p>
+<p>我觉得你的问题可能是，他们可以欺骗 Joe 去做错事吗？因为其实如果有人来找我说，“嘿，我有你代币的衍生代币，请把你的代币记入我的地址”。我不会照做的，因为那是不同的代币。所以他们只能去欺骗 Joe 用这些衍生品做错事。但是你其实可以有其他防御措施，比如最早就跟踪代币的总发行量，保证它永远不会超发，不会有无限印钞的情况。</p>
+<p>如果你使用基于传送的系统的话，一旦这个东西进入更广的、复杂的、图灵完备的生态，你无法一直跟踪到谁在哪里 claim 了什么东西。这就是为什么传送应该只在极少数情况下使用，默认的做法应该是始终保持储备余额。平行链可能会成为它自己的代币的储备链，这是我们看到在兴起的模式；对于在其他链上发行的、不是该链的主要代币的二级代币，你可以使用 Statemint 或 Statemine，或者用智能合约来储备自己链的资产。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>我在想是否有像 ERC-20 这样的东西，是不是有 XCM-20？</p>
+<p><strong>Rob：</strong></p>
+<p>有 XC-20。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>如果这些现有的平行链上有类似 ERC-20 的东西怎么办？所以对平行链来说，它们有自己的储备和基础代币。但是，如果你在它之上构建东西，这是否会产生更多问题？还是说储备金仍然可以存在于部署它的第一条链上？</p>
+<p><strong>Rob：</strong></p>
+<p>这其实是一个设计决策，取决于智能合约的开发者。但我们看到一些标准已经开始出现，比如 ERC-20 加上额外的东西，这对于让代币与 XCM 环境和跨链原生类型更兼容是必要的。但任何方法都有优点和缺点。如果你使用智能合约作为储备金，你最终可能会为 gas 支付更多费用。而如果你有一个专门用于储备的链，储备操作会相对便宜，但它们存在于代币的实际逻辑之外的其他地方。所以这些是跨链 App 开发者必须做出的决定。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>我在努力地去跟上你的思路。可能是我之前做了太多采访了，我总是想像它像桥一样，就像从 A 点到 B 点，但在波卡中它是与整个共识捆绑在一起的，不仅仅是一条消息，不仅仅是一个代币转移。你能帮我梳理一下，消息是如何从一侧到另一侧，然后返回的吗？</p>
+<p><strong>Rob：</strong></p>
+<p>这是我们区分消息传递层和消息本身的原因之一。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>顺便说一句，我知道我一直都混淆了 XCM 和 XCMP，我得对听众说抱歉。</p>
+<p><strong>Rob：</strong></p>
+<p>这就是为什么我们在考虑改掉这个名字。这就是为什么做出这些决定很重要的原因，因为无论何时你对任何东西进行工程设计，都会用到黑箱。你需要了解你的工具，它们的作用，而不一定要了解它们如何工作的所有复杂细节。</p>
+<p>从开发应用的人的角度来看，一条消息具体是如何传递的并不重要，你只关心它是否到达，它到达的速度，以及你必须为此支付多少费用。而这些东西都抽象到了 XCMP 协议中，我们保证消息确实会到达。除了在某些极端情况平行链出现故障的情况下，比如平行链的租约结束了且不再续租，或者他们关闭了通道，那么在最后的一些消息可能会被丢弃。但在大多数情况下，只要两条链都启动了并且通道仍然打开，那么消息就会到达，并且会在几个区块内到达。</p>
+<p>所以你可以有任何类型的确认或回调或任何你需要在协议之上构建的东西。所以关于 XCM 的一个很酷的地方是，正如我所提到的，它是一种编程语言，所以你可以写 If-Then，或者 If-Then-Else ，即我会尝试做这件事，然后如果它成功了，我会做另一件事，也就是发回一条消息。或者你可以做 Else，即如果它失败了，那么就做另一件事。你可以将这些需要在某些远程链上执行的长条件指令序列串在一起。所以本质上就像你正在对另一条链进行编程来做某些事情，并且可以在此之上构建一堆更复杂的协议。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>哇，那是不是意味着你不必在两端都编程了？我显然还是习惯用智能合约的模式思考，是不是类似于你有一个智能合约平台，你已经创建了一个合约，它与 XCMP 交互。你可以在这个里面编程，让它在另一条链上做某件事，但你不用在另一套链上部署什么东西。你是不是也可以仅使用这套编程语言去另一条链上做一些事情，并带回你需要的任何东西。</p>
+<p><strong>Rob：</strong></p>
+<p>你可以用它来做很多事情，现在它还不是图灵完备的。造成这种情况的原因之一是费用支付，因为这样你就可以提前预测，你实际上需要向另一条链支付多少，才能执行你发送的所有指令，但你可以构建仅使用 XCM 的多功能应用程序。</p>
+<p><strong>AnnaRose：</strong></p>
+<p>无需在另一条链上部署某些东西。</p>
+<p><strong>Rob：</strong></p>
+<p>对。我的意思是，这就是它的目的，因为如果我们看看我们的设计理念，我们不希望每条链都有智能合约。那么你需要有方法，去在不是智能合约平台的链上执行条件逻辑。</p>
+<p>对于本身就是智能合约平台的链，你可能有不太复杂的 XCM 程序来与它们互操作，因为逻辑可以由你在接收链上发送消息的智能合约处理。但对于那些只是做基本的事情的链，你可以利用 XCM 来实现与那些确实有条件的链的更复杂的交互。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38803/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">三星资产管理将于6月23日在港交所上市其区块链ETF</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38820/">
+                <span class="next-text nav-default">什么是 DAO 中的成员身份？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

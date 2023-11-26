@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          金色观察｜RSS3项目实现的基础：RFC3986统一资源识别符 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="RSS3是在这个基础上作出的一些开发实践以在web3领域应用。" />
+<meta name="keywords" content="Web 3.0, RSS3" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/37711/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="金色观察｜RSS3项目实现的基础：RFC3986统一资源识别符" />
+<meta property="og:description" content="RSS3是在这个基础上作出的一些开发实践以在web3领域应用。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/37711/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-11T00:00:00+00:00" />
+
+<meta itemprop="name" content="金色观察｜RSS3项目实现的基础：RFC3986统一资源识别符">
+<meta itemprop="description" content="RSS3是在这个基础上作出的一些开发实践以在web3领域应用。"><meta itemprop="datePublished" content="2022-05-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-11T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5980">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="金色观察｜RSS3项目实现的基础：RFC3986统一资源识别符"/>
+<meta name="twitter:description" content="RSS3是在这个基础上作出的一些开发实践以在web3领域应用。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">金色观察｜RSS3项目实现的基础：RFC3986统一资源识别符</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-05-11">
+      2022-05-11
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5980 字 -
+        预计阅读 12 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>RSS3被web3领域视为一个很有前景的项目，近期，我一直在体验web3应用，想试着去找到web3核心要素的一些定义范式，恰巧在看RSS3时，发现了我想找的一个协议，可以定义为数据规范协议，协议为RFC3986统一资源识别符，也可以理解为一个通用语法。</p>
+<p>其文档原文3w余字，不易阅读，因此我把文档做了大量删改，为理解web3的数据格式，做一个范例。</p>
+<p>要知晓的是，该规范是互联网信息标准，出现应用时间很早，RSS3是在这个基础上作出的一些开发实践以在web3领域应用。</p>
+<h2 id="rss3">RSS3</h2>
+<p>RSS3是一个开放的信息联合协议，旨在支持Web3中高效和分散的信息分发。它定义了信息呈现和通信的格式，其他使用方可以轻松地以统一的格式访问各种内容源，而无需大量的兼容逻辑。</p>
+<p>在RSS3协议里将信息分为四种类型：配置文件、链接、资产、注释</p>
+<p>RSS3应用程序使用RSS3SDK以RSS3协议定义的格式访问和发布数据，RSS3 SDK从RSS3网络获取数据并将数据发布到RSS3支持的网络，RSS3 Network从各种RSS3 Supported Networks爬取数据，将数据缓存到自己的高效数据库中，做一些预处理，例如应用人工智能推荐算法，提供搜索功能。</p>
+<p>在这样的产品设计里，其最原始的数据规范，是对网络传输数据进行一些细节的定义来完成的，定义了数据，就完成了基础的数据可用性部分。上层应用就可以更轻松实现，让我们来看这个协议：RFC3986统一资源识别符。经过删改后的内容，笔者力求达到简略了解互联网数据处理的一些相关要求。</p>
+<h2 id="rfc3986统一资源识别符">RFC3986:统一资源识别符</h2>
+<p>本规范源自RFC2396[RFC2396]、RFC1808[RFC1808]和RFC1738[RFC1738]，还包含更新（与更正）用于主机语法中的IPv6文字。</p>
+<p>统一资源标识符(URI)是一个紧凑的序列标识抽象或表示物理资源的字符，提供了一个简单且可扩展的用于识别资源的方法。规范定义了通用URI语法和相对形式的URI引用的过程解析，以及使用URI的指南和安全注意事项。</p>
+<p>URI语法则定义了一个语法超集，有效的URI允许实现公共组件解析，实现在非特定方案要求的情况下使用URI引用每个可能的标识符，规范没有定义URI的生成语法。</p>
+<p>统一资源标识符(URI)语义来源于World Wide引入的概念Web全球信息倡议，语法旨在满足“Internet功能性建议”中列出的资源定位器[RFC1736]和统一资源名称功能的要求[RFC1737]。</p>
+<p>本文档废弃了[RFC2396]，合并了“统一资源定位器”[RFC1738]和“相对统一资源定位器”[RFC1808]以便为所有URI定义一个单一的通用语法。废弃[RFC2732]，引入了IPv6地址的语法。</p>
+<h2 id="uri的特点">URI的特点</h2>
+<p>均匀性</p>
+<p>它允许不同类型的资源在同一上下文中使用相同的资源标识符，即使在用于访问这些资源的机制可能不同。</p>
+<p>它允许对常见句进行统一的语义解释完成对跨不同类型资源标识符的约定。</p>
+<p>它允许引入新类型的资源标识符，而不会干扰现有标识符的使用方式。</p>
+<p>它允许标识符在许多不同的上下文中重复使用，从而允许新的应用程序或协议利用现有的、大量且广泛使用的资源标识符集。</p>
+<p>资源</p>
+<p>“资源”一词在一般意义上指任何可能由URI标识的内容。熟悉的例子包括电子文档、图像、信息源、服务和其他的资源集。资源不一定通过互联网访问。同样地，抽象概念也可以是资源，例如运算符和数学方程的操作数，关系的类型（例如，“父母”或“员工”），或数值（例如，零，一，无穷大）。</p>
+<p>标识符</p>
+<p>标识符体现了对所需信息区分并从其范围内的所有其他事物中识别出的内容鉴别过程。但这些定义不应该被误认为是标识符的定义或体现所引用内容的身份，在许多情况下，URI用于表示资源，但不表示可以被访问。同样，标识的“一个”资源可能本质上不是单数的（例如，一个资源可能是一个命名集或一个随时间变化的映射）。</p>
+<p>URI具有全局范围，并且无论何种情况都被用来一致地解释上下文，尽管这种解释的结果可能在与最终用户的上下文相关。例如，“http://localhost/”对该引用的每个用户都有相同的解释，即使与“localhost”对应的网络接口可能是不同的用户，这代表：解释与访问无关。</p>
+<p>通用语法</p>
+<p>URI语法是一种联合且可扩展的命名系统，其中每个方案的规范可以进一步限制使用该方案的标识符的语法和语义。</p>
+<p>URI引用使用独立解析机制，通过该机制，协议和数据使用URI引用的格式可以参考这个规范的所有允许语法范围来定义URI，还包括那些尚未定义的方案。</p>
+<p>通用URI语法的解析器可以将任何URI引用解析为其主要组成部分。方案确定后，进一步</p>
+<p>可以对组件执行特定于方案的解析。换句话说，URI通用语法是所有URI语法的超集</p>
+<h2 id="uriurl和urn">URI、URL和URN</h2>
+<p>URI可以进一步分类为定位符、名称或两者。</p>
+<p>“统一资源定位器”（URL）指的是URI的子集。除了识别资源之外，还提供了一种通过描述资源的访问机制来定位资源的方法（例如，它的网络“位置”）。</p>
+<p>“统一资源名称”(URN)曾用于指代在资源不复存在或变为不可用情况下仍保持全局唯一属性的任何其他URI。</p>
+<p>URI是来自非常有限的集合：拉丁字母、数字、和一些特殊字符。</p>
+<p>URI可以用多种形式表示方式；例如，纸上的墨水、屏幕上的像素或一系列字符编码八位字节。URI的解释仅取决于使用的字符。在本地或区域环境中，随着技术的进步，用户能够使用更广泛的字符。</p>
+<h2 id="识别与交互分离">识别与交互分离</h2>
+<p>对URI的一个常见误解是它们仅用于引用到可访问的资源。URI本身只提供鉴别，不保证访问资源URI的存在暗示。相反，任何相关的URI引用由协议元素定义，例如数据格式属性或它出现的自然语言文本。</p>
+<p>给定一个URI，系统可能会尝试在资源上执行各种操作，可能以“访问”“更新”、“替换”或“查找属性”等词为特征。这样的操作是由使用URI的协议定义。</p>
+<h2 id="分层标识符">分层标识符</h2>
+<p>URI语法是分层组织的，组件重要性从左到右递减的顺序排列。</p>
+<p>通用语法使用斜杠(&quot;/&quot;)、问号(&quot;?&quot;)和数字符号（“#”）字符来分隔组件，对通用解析器的层次解释很重要，除了此类的可读性标识符一致使用熟悉的语法，跨命名方案的层次结构的统一表示允许相对于该层次结构进行的独立于方案的引用。</p>
+<p>通常情况下，一组或“树”形状的文档已经构建服务于一个共同目的，这些文档中绝大多数的URI引用指向树中的资源而不是在它之外。位于特定位置的文档站点更有可能引用该站点上的其他资源而不是远程站点的资源。URI的引用允许文档树部分独立于其位置和访问方案。</p>
+<h2 id="语法符号">语法符号</h2>
+<p>使用ABNF[RFC2234]的表示法，包括以下核心ABNF语法规则：</p>
+<p>ALPHA（字母）、CR（回车）、DIGIT（十进制数字）、DQUOTE（双引号）、HEXDIG（十六进制位）、LF（换行）和SP（空格）等。</p>
+<p>URI语法提供了一种编码数据的方法，大概是为了为了将资源标识为字符序列。URI反过来，字符经常被编码为八位字节以进行传输或演示。</p>
+<p>ABNF表示法将其终端值定义为非负数，基于US-ASCII编码字符集的整数（代码点）[ASCII]。因为URI是一个字符序列，所以我们必须反转该关系以便理解URI语法。因此，ABNF使用的整数值必须映射回US-ASCII对应字符以完成语法规则。</p>
+<h2 id="保留字符">保留字符</h2>
+<p>URI包括各项分隔的组件和子组件“保留”的字符。</p>
+<p>保留字符的目的是提供一组分隔符与URI中的其他数据区分开的字符。保留字符的子集（gen-delims）用作通用URI组件的分隔符。一种组件的ABNF语法规则不会使用reserved或gen-delims直接命名，相反，每个语法规则都列出了字符允许在该组件内（即，不定界），其他子组件可以由URI方案的规范定义。</p>
+<h2 id="无保留字符">无保留字符</h2>
+<p>URI中允许但没有保留字符的字符，包括大写和小写字母、十进制数字、连字符、句点、下划线和波浪号。</p>
+<p>未保留=ALPHA/DIGIT/&quot;-&quot;/&quot;.&quot;/“_”/“~”</p>
+<p>将非保留字符替换为不同的URI，但其相应的百分比编码的US-ASCII八位字节是等效的：它们识别相同的资源。为了一致性，在ALPHA范围内的百分比编码八位字节(%41-%5A和%61-%7A)、DIGIT(%30-%39)、连字符(%2D)、句点(%2E)、URI不应创建下划线(%5F)或波浪号(%7E)生产者，当在URI中找到时，应将其解码为URI规范器对应的未保留字符。</p>
+<h2 id="识别数据">识别数据</h2>
+<p>URI字符为每个URI提供标识数据组件，作为识别的系统外部接口。</p>
+<p>URIs的生产和传输：本地名称和数据编码，公共接口编码、URI字符编码、数据格式编码和协议编码。</p>
+<p>本地名称（例如文件系统名称）存储在本地字符编码。URI生成应用程序（例如，源服务器）通常使用本地编码作为基础产生有意义的名字。URI生产者将转换本地编码为适合公共接口的编码，并且然后将公共接口编码转换为受限集URI字符（保留、未保留和百分比编码）。</p>
+<p>反过来，这些字符被编码为八位字节以用作数据格式（例如，文档字符集）中的引用等数据格式通常随后被编码以传输互联网协议。</p>
+<p>在某些情况下，URI组件和识别它所代表的数据要直接比字符编码翻译少得多。</p>
+<h2 id="语法组件">语法组件</h2>
+<p>通用URI语法由一个分层序列组成，有方案、权限、路径、查询和分段。</p>
+<p>方案和路径组件是必需的，尽管路径可能是空（无字符）。当权限存在时，路径必须可以为空或以斜杠（“/”）字符开头。什么时候权限不存在，路径不能以两个斜杠开头人物（”//”）。这些限制导致五种不同的ABNF路径规则，其中只有一个匹配任何给定的URI引用。</p>
+<h2 id="方案">方案</h2>
+<p>每个URI都以一个方案名称开头，该方案名称引用了一个规范在该方案中分配标识符。</p>
+<p>方案名称由一系列以a开头的字符组成字母，后跟字母、数字和加号的任意组合(&quot;+&quot;)、句点(&quot;.&quot;)或连字符(&quot;-&quot;)。</p>
+<p>方案=ALPHA*(ALPHA/DIGIT/&quot;+&quot;/&quot;-&quot;/&quot;.&quot;)</p>
+<h2 id="权限">权限</h2>
+<p>许多URI方案包括用于命名的分层元素权限，以便管理由URI的其余部分委托给该机构。通用语法提供了一个通用的基于注册名称或服务器地址，以及可选的端口和用户信息。</p>
+<p>权限组件前面有一个双斜杠（“//”），并且是以下一个斜杠(&quot;/&quot;)、问号(&quot;?&quot;)或数字结尾符号（“#”）字符，或在URI的末尾。</p>
+<p>权限=[用户信息“@”]主机[“：”端口]</p>
+<h2 id="主机">主机</h2>
+<p>权限的主机子组件由IP文字标识封装在方括号中。在许多情况下，主机语法仅用于创建和部署的现有注册流程DNS，从而获得一个全球唯一的名称，无需花费部署另一个注册表。</p>
+<p>主机=IP字段/IPv4address/reg-name</p>
+<p>IP字段=“[”（IPv6地址/IPvFuture）“]”</p>
+<p>IPvFuture=&ldquo;v&quot;1*HEXDIG&rdquo;.&ldquo;1*(未保留/子分隔符/&rdquo;:&quot;)</p>
+<h2 id="查询">查询</h2>
+<p>查询组件包含非分层数据，以及路径组件中的数据，用于识别URI方案和命名机构范围内的资源。</p>
+<p>查询组件由问题表示标记(&quot;?&quot;)字符并以数字符号(&quot;#&quot;)字符结尾。</p>
+<p>查询=*(pchar/&quot;/&quot;/&quot;?&quot;)</p>
+<h2 id="用法">用法</h2>
+<p>当应用程序引用一个URI时，它们并不总是使用由“URI”语法规则定义的完整引用形式。保存空间和利用分层局部性，许多互联网协议元素和媒体类型格式允许缩写URI，而其他人将语法限制为特定形式的URI。</p>
+<h2 id="建立基础uri">建立基础URI</h2>
+<p>除了仅片段引用，基本URI是已知需要的。解析器必须建立一个基本URI。基础URI必须符合<absolute-URI>语法规则。</p>
+<p>基本URI可以通过以下四种方式之一建立</p>
+<p>嵌入在内容中的基本URI</p>
+<p>封装实体的基础URI</p>
+<p>用于检索实体的URI</p>
+<p>默认基础URI（取决于应用程序）</p>
+<h2 id="规范化和比较">规范化和比较</h2>
+<p>URI上最常见的操作是简单的比较：在不使用URI的情况下确定两个URI是否等价访问他们各自的资源。在比较URI之前通常进行广泛的规范化。URI比较是为了某些特定目的而执行。</p>
+<p>等价</p>
+<p>因为URI的存在是为了识别资源，所以当他们识别相同的资源时被认为是等效的。然而，这个等价的定义没有太大的实际用途，因为是没有办法比较两个资源的，除非它完全了解或控制它们。</p>
+<p>即使可以确定两个URI是等价的，URI比较不足以确定两个URI识别不同的资源。</p>
+<h2 id="基于语法的规范化">基于语法的规范化</h2>
+<p>基于语法的规范化包括以下技术案例归一化、百分比编码归一化和去除点段。</p>
+<h2 id="安全注意事项">安全注意事项</h2>
+<p>URI本身并不构成安全威胁。但是URI通常用于提供一组紧凑的指令以访问</p>
+<p>网络资源，必须注意在URI中正确解释数据，以防止该数据导致意外访问，避免包含不应公开的数据文本。</p>
+<h2 id="敏感信息">敏感信息</h2>
+<p>URI生产者不应提供包含用户名或旨在保密的密码。URI经常由浏览器显示，存储在明文书签中，并由用户代理历史和中间应用程序（代理）。</p>
+<h2 id="语义攻击">语义攻击</h2>
+<p>因为userinfo子组件很少使用，出现在权限组件中的主机，可以用来构造一个URI来误导用户信任，例如</p>
+<p><a href="ftp://cnn.example.com">ftp://cnn.example.com</a>&amp;story=break_news@10.0.0.1/top_story.htm</p>
+<p>可能会导致用户假设主机是“cnn.example.com”，而它实际上是'10.0.0.1&rsquo;。一个误导性的URI，可能是对用户的攻击，这攻击的是用户先入为主的概念。关于软件本身，可以通过区分URI的各个组成部分来避免此类攻击。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/37695/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">金色观察｜Coinbase Q1亏损4.3亿美元 对2022展望基本不变</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/37709/">
+                <span class="next-text nav-default">金色观察｜Terra 尘埃未落定</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rss3">RSS3</a></li>
+    <li><a href="#rfc3986统一资源识别符">RFC3986:统一资源识别符</a></li>
+    <li><a href="#uri的特点">URI的特点</a></li>
+    <li><a href="#uriurl和urn">URI、URL和URN</a></li>
+    <li><a href="#识别与交互分离">识别与交互分离</a></li>
+    <li><a href="#分层标识符">分层标识符</a></li>
+    <li><a href="#语法符号">语法符号</a></li>
+    <li><a href="#保留字符">保留字符</a></li>
+    <li><a href="#无保留字符">无保留字符</a></li>
+    <li><a href="#识别数据">识别数据</a></li>
+    <li><a href="#语法组件">语法组件</a></li>
+    <li><a href="#方案">方案</a></li>
+    <li><a href="#权限">权限</a></li>
+    <li><a href="#主机">主机</a></li>
+    <li><a href="#查询">查询</a></li>
+    <li><a href="#用法">用法</a></li>
+    <li><a href="#建立基础uri">建立基础URI</a></li>
+    <li><a href="#规范化和比较">规范化和比较</a></li>
+    <li><a href="#基于语法的规范化">基于语法的规范化</a></li>
+    <li><a href="#安全注意事项">安全注意事项</a></li>
+    <li><a href="#敏感信息">敏感信息</a></li>
+    <li><a href="#语义攻击">语义攻击</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

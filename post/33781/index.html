@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          首发 | Solana跨链桥虫洞事件分析 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="2月3日凌晨，Solana跨链桥项目虫洞（Wormhole）遭受攻击。攻击者成功铸造了12万枚wETH，价值约3.2亿美元。本文将为你详细揭露攻击流程及防范措施" />
+<meta name="keywords" content="SOLANA" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/33781/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="首发 | Solana跨链桥虫洞事件分析" />
+<meta property="og:description" content="2月3日凌晨，Solana跨链桥项目虫洞（Wormhole）遭受攻击。攻击者成功铸造了12万枚wETH，价值约3.2亿美元。本文将为你详细揭露攻击流程及防范措施" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/33781/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-04T00:00:00+00:00" />
+
+<meta itemprop="name" content="首发 | Solana跨链桥虫洞事件分析">
+<meta itemprop="description" content="2月3日凌晨，Solana跨链桥项目虫洞（Wormhole）遭受攻击。攻击者成功铸造了12万枚wETH，价值约3.2亿美元。本文将为你详细揭露攻击流程及防范措施"><meta itemprop="datePublished" content="2022-02-04T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-04T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2620">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="首发 | Solana跨链桥虫洞事件分析"/>
+<meta name="twitter:description" content="2月3日凌晨，Solana跨链桥项目虫洞（Wormhole）遭受攻击。攻击者成功铸造了12万枚wETH，价值约3.2亿美元。本文将为你详细揭露攻击流程及防范措施"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">首发 | Solana跨链桥虫洞事件分析</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-02-04">
+      2022-02-04
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2620 字 -
+        预计阅读 6 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><img src="https://img.jinse.com/5779825_image3.png" alt="1643944922029809.jpg"></p>
+<p>北京时间2022年2月3日凌晨1点58分，Solana跨链桥项目虫洞（Wormhole）遭受攻击者发起的攻击。黑客绕过了 Solana 上的Wormhole Bridge验证过程，并为自己铸造了Wormhole ETH (wETH)。</p>
+<p>此次事件中，攻击者通过注入一个欺骗性的 sysvar 帐户绕过了系统验证步骤，并成功生成了一条恶意“消息”，指定要铸造12万枚wETH。最后，攻击者通过使用恶意“消息”调用了“complete_wrapped”函数，成功铸造了12万枚wETH，价值约3.2亿美元。</p>
+<p>该事件造成的损失金额之大，令其成为了DeFi史上第二大黑客攻击事件。</p>
+<h2 id="虫洞wormhole简介">虫洞（Wormhole）简介</h2>
+<p>虫洞（Wormhole），又称爱因斯坦－罗森桥，也译作蛀孔。是宇宙中可能存在的连接两个不同时空的狭窄隧道。</p>
+<p>言归正传，其实Solana的跨链桥虫洞协议（Wormhole Protocal），确有虫洞在科学乃至科幻小说里相同的意思和定位。</p>
+<p>虫洞可连接两个不同时空的隧道，从而节约时间进行“传送”。而Solana的跨链桥虫洞协议（Wormhole Protocal），是连接以太坊的桥。简单来说，它帮助我们节约了交易的时间和周期，避开以太坊的拥堵从而体验到Solana的快速交易。</p>
+<h2 id="漏洞利用交易">漏洞利用交易</h2>
+<p>铸币12万枚Wormhole ETH: </p>
+<p><a href="https://solscan.io/tx/2zCz2GgSoSS68eNJENWrYB48dMM1zmH8SZkgYneVDv2G4gRsVfwu5rNXtK5BKFxn7fSqX9BvrBc1rdPAeBEcD6Es">https://solscan.io/tx/2zCz2GgSoSS68eNJENWrYB48dMM1zmH8SZkgYneVDv2G4gRsVfwu5rNXtK5BKFxn7fSqX9BvrBc1rdPAeBEcD6Es</a> </p>
+<p>将代币转到以太坊: </p>
+<p><a href="https://etherscan.io/address/0x629e7da20197a5429d30da36e77d06cdf796b71a#internaltx">https://etherscan.io/address/0x629e7da20197a5429d30da36e77d06cdf796b71a#internaltx</a> </p>
+<h2 id="漏洞攻击流程">漏洞攻击流程</h2>
+<p>步骤一：攻击者使用假 sysvar account调用“verify_signatures”函数：https://solscan.io/tx/25Zu1L2Q9uk998d5GMnX43t9u9eVBKvbVtgHndkc2GmUFed8Pu73LGW6hiDsmGXHykKUTLkvUdh4yXPdL3Jo4wVS①以伪造的“sysvar account”作为参数调用的“verify_signatures”函数：</p>
+<p><img src="https://img.jinse.com/5779838_image3.png" alt="yYPHTzCxVxfAkinZCOORwJTaq7UMGbpX6DQxDpIy.jpeg"></p>
+<p>相比之下，以下截图是以真实的“sysvar account”作为参数的“verify_signatures”函数：</p>
+<p><img src="https://img.jinse.com/5779839_image3.png" alt="z4g2cgqYIPSwgyJOmwY6uVxqkfWm3Z1T8RBq65Mv.jpeg"></p>
+<p>② “verify_signatures”函数从 sysvar (L92) 加载当前指令。</p>
+<p><img src="https://img.jinse.com/5779840_image3.png" alt="EgKsGsmEfuvf1GaXlU9s25xG8iwwEwUY1HDNYskY.jpeg"></p>
+<p>③ 然而，函数“load_current_index”并不能验证“sysvar account”是否真的是“system sysvar”。由于从“sysvar”中检索到的当前指令（L92）是由攻击者控制的，因此它可以顺利通过以下验证过程。</p>
+<p>步骤二：攻击者随后使用上一步验证的签名调用“post_vaa”函数，并创建一个恶意消息帐户，声明要铸造12万枚wETH：https://solscan.io/tx/2SohoVoPDSdzgsGCgKQPByKQkLAXHrYmvtE7EEqwKi3qUBTGDDJ7DcfYS7YJC2f8xwKVVa6SFUpH5MZ5xcyn1BCK</p>
+<p><img src="https://img.jinse.com/5779841_image3.png" alt="n54boeJn4FGmNrMN0BhC4hBUEwFibCjA56r7FHxn.jpeg"></p>
+<p>① Account2 是通过“verify_signatures”指令生成的签名集。② Account3 是将在“complete_wrapped”函数中使用的消息帐户。</p>
+<p>步骤三：攻击者调用“complete_wrapped”函数读取恶意消息账户中的数据并铸造 12万枚wETH：https://solscan.io/tx/2zCz2GgSoSS68eNJENWrYB48dMM1zmH8SZkgYneVDv2G4gRsVfwu5rNXtK5BKFxn7fSqX9BvrBc1rdPAeBEcD6Es</p>
+<p><img src="https://img.jinse.com/5779842_image3.png" alt="G3AM4Sae4GtVHYMUDEq7NpDoDq11nT8viiSlP75t.jpeg"></p>
+<p>① Account3 是“post_vaa”函数生成的消息账户。</p>
+<p>② Account6 是“收件人”地址，用于接收铸造的Wormhole ETH。③ Account9 是 Wormhole ETH 的铸币机构，是一个 PDA（程序派生地址）。这就是为什么在签名验证通过后，攻击者可以直接铸造代币。</p>
+<p>步骤四：部分铸造的 wETH 被转移到以太坊，其余的被交换到 USDC 和 SOL：</p>
+<ul>
+<li>
+<p><a href="https://solscan.io/tx/j3jUDG43di8Dsg7Q3jQhstamtBovu1GLqnDJ7yNvM3r4pnK9e7uqgt9uBobCjT5S1BKhZZFQNQwDxypEYqLknec">https://solscan.io/tx/j3jUDG43di8Dsg7Q3jQhstamtBovu1GLqnDJ7yNvM3r4pnK9e7uqgt9uBobCjT5S1BKhZZFQNQwDxypEYqLknec</a></p>
+</li>
+<li>
+<p><a href="https://solscan.io/tx/5UaqPus91wvAzKNve6L8YAHsESomZQ7GWi37gPFyzTHcXNMZA641bb8m8txo7bS7A5cAnzKDKYyiKcQC8GgDcAuf">https://solscan.io/tx/5UaqPus91wvAzKNve6L8YAHsESomZQ7GWi37gPFyzTHcXNMZA641bb8m8txo7bS7A5cAnzKDKYyiKcQC8GgDcAuf</a></p>
+</li>
+<li>
+<p><a href="https://solscan.io/tx/3AugXqrXunBa96YfqENhPBiWZWpnSnJdqAHS64qcHTVU9KtfGon8cN9cUuXsDmBobBBXjYUtuRxnYxgERS42nh6G">https://solscan.io/tx/3AugXqrXunBa96YfqENhPBiWZWpnSnJdqAHS64qcHTVU9KtfGon8cN9cUuXsDmBobBBXjYUtuRxnYxgERS42nh6G</a></p>
+</li>
+<li>
+<p><a href="https://solscan.io/tx/2SndtH3tU4j6v14HJzEde3d3dnpdHqTPn4VnvhTj4zKLo26H5kmtCwjn2nANfjXNVbmFsyEGtD4Jte25azsPwaRk">https://solscan.io/tx/2SndtH3tU4j6v14HJzEde3d3dnpdHqTPn4VnvhTj4zKLo26H5kmtCwjn2nANfjXNVbmFsyEGtD4Jte25azsPwaRk</a></p>
+</li>
+</ul>
+<h2 id="合约漏洞分析">合约漏洞分析</h2>
+<p>这个漏洞的根本原因是在验证签名过程（“verify_signatures”）中，程序使用了一个在Solana更新至1.8.0时即被废弃的“load_current_index”函数。该函数不会验证输入的“sysvar account”是否真的是“system sysvar”，从而攻击者可以趁机伪造这个关键帐户。</p>
+<p><img src="https://img.jinse.com/5779843_image3.png" alt="nGrJm2RC6CjnCXCh8x84pUP8XLBjxJoaBpLq70c0.jpeg"> </p>
+<p>为了防止将来此类问题的发生，必须检查并验证函数使用的所有帐户。特别是在该案例中，由于部分检查过程依赖于外部调用，而外部调用的可靠性被过度信任，从而引入了风险。</p>
+<h2 id="总结">总结</h2>
+<p>目前，Wormhole团队已修复漏洞并已恢复网络。在此，CertiK给开发者提出如下几点建议：</p>
+<ul>
+<li>
+<p>开发者在使用外部依赖的函数时，需要对这个函数有足够的了解。</p>
+</li>
+<li>
+<p>随时关注外部依赖代码库的重要更新，在有重大版本变动时及时对自己的代码库做出相应的调整。</p>
+</li>
+<li>
+<p>当代码版本更新时，也需及时进行全面审计，并将审计后的代码及时更新到已部署上链的代码中。</p>
+</li>
+</ul>
+<p>农历破五将至，希望大家“破五穷”。同时也希望每一个项目在经过严格的审计之后上线部署从而获得更高的安全性并减少财产损失的可能。好运从新的一年起开始不断“循环”；安全从严格的审计开始，每个项目都有更好的“开端”！</p>
+<p>迄今为止，CertiK已获得了2500家企业客户的认可，保护了超过3110亿美元的数字资免受损失。欢迎点击CertiK公众号底部对话框，留言免费获取咨询及报价！</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/33780/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">如何让你的NFT项目成为一个IP宇宙</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/33786/">
+                <span class="next-text nav-default">孙宇晨出手亿金：买下了“在虚空中晃着的《鼻子》</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#虫洞wormhole简介">虫洞（Wormhole）简介</a></li>
+    <li><a href="#漏洞利用交易">漏洞利用交易</a></li>
+    <li><a href="#漏洞攻击流程">漏洞攻击流程</a></li>
+    <li><a href="#合约漏洞分析">合约漏洞分析</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

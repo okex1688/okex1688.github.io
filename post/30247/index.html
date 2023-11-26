@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Layer2 Rollup方案的MEV防范技术解析 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="以技术视角，进一步探寻Layer2上Rollup方案的MEV防范问题。" />
+<meta name="keywords" content="Layer 2, Arbitrum" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/30247/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Layer2 Rollup方案的MEV防范技术解析" />
+<meta property="og:description" content="以技术视角，进一步探寻Layer2上Rollup方案的MEV防范问题。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/30247/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-10-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-29T00:00:00+00:00" />
+
+<meta itemprop="name" content="Layer2 Rollup方案的MEV防范技术解析">
+<meta itemprop="description" content="以技术视角，进一步探寻Layer2上Rollup方案的MEV防范问题。"><meta itemprop="datePublished" content="2021-10-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3277">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Layer2 Rollup方案的MEV防范技术解析"/>
+<meta name="twitter:description" content="以技术视角，进一步探寻Layer2上Rollup方案的MEV防范问题。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Layer2 Rollup方案的MEV防范技术解析</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-10-29">
+      2021-10-29
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3277 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>本周，我们以技术视角，进一步探寻Layer2上Rollup方案的MEV防范问题。</p>
+<p>区块链的公平性、透明性与可验证性是其受到广泛信任的基础，然而这样的特性也给整个生态带来了不小的麻烦。其中，MEV（矿工可提取价值/最大可提取价值）就是隐藏的黑暗森林。每一笔交易背后都可能有它的身影。在DeFi领域中，MEV通常分为三类：</p>
+<ol>
+<li>
+<p><strong>良性MEV</strong> ，主要发生在套利交易与清算中。在套利交易中，比如某个用户发起一笔较大数额的交易，产生了一定的套利空间，此时套利机器人进行套利交易，将价格拉至正常水平，在此过程中，机器人从中获取了利润，但用户利益没有被损害；在清算业务中，当抵押物价值降低时，如果没有补足差价或者出售资产，就会触发清算，清算人可以以低于市场价3%-5%的价格获取抵押资产。</p>
+</li>
+<li>
+<p><strong>不良MEV</strong> ，主要发生在三明治交易与机器人套利中。在三明治交易中，比如某个用户想要发起一笔1000 A代币兑换1000 B代币，机器人监听到这笔交易后先发起一笔同样的交易，使得该用户可能仅兑换得980 B代币，之后机器人再将980 B代币兑换为1020 A代币，赚取差价；在抢先交易中，套利机器人看到可套利交易后以更高的手续费提交，从而抢先交易获取差价。</p>
+</li>
+<li>
+<p>灾难性MEV，指对区块链共识造成威胁和损害，在区块奖励远小于MEV奖励的情况下，矿工很有可能在损害共识的情况下获取MEV利润，从而破坏区块链共识。</p>
+</li>
+</ol>
+<p>缓解MEV的方案有很多，上一节我们提到了拥抱MEV与消灭MEV的方案，然而在Layer2方案中，主流的项目是如何解决MEV问题的呢？我们重点介绍Optimism和Arbitrum使用的抗MEV方案。</p>
+<h2 id="optimismrollupmeva方案">Optimism Rollup——MEVA方案</h2>
+<p><strong>MEVA（MEV Auction）方案</strong> ，该方案最早于2020年初由Karl Floersch提出，巧合的是，Karl Floersch也是optimism的CTO。</p>
+<p>MEVA的基本思想是将矿工的两大核心权力进行拆分，即挖矿和定序。矿工（Validator）依然保有原先的挖矿权力，或者说是交易抉择权力。但是一旦确定了交易，就无法对其进行排序，排序权力由定序器（Sequencer）决定。</p>
+<p>从本质上来说，MEVA的观念是：与其消除MEV，不如拍卖排序交易的权力，让拍卖中的赢家任意排序交易，获得最大收益。这种措施从某种程度上能够降低竞价导致的网络拥堵，但无法避免不良MEV给用户甚至网络带来的损失。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/11_vofueyff9n.png" alt="Layer2 Rollup方案的MEV防范技术解析"></p>
+<p>为什么说这种MEVA方案会给用户带来损失甚至威胁网络安全呢？</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/11_wiwzpuenyr.png" alt="Layer2 Rollup方案的MEV防范技术解析"></p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/11_wiwzpuenyr.png" alt="Layer2 Rollup方案的MEV防范技术解析"></p>
+<p>让我们思考一个问题，矿工加入网络进行挖矿的原因是什么？当然是为了收益。那么当收益降低之后，ROI下降，矿工数量也会降低，参与者数量减少，区块链网络安全性变弱，整个区块链网络的价值会下跌。所以，不管怎么样，我们需要假设矿工收益不变。</p>
+<p>假设矿工每个区块能收获N个币，其中包括挖矿奖励、交易费和MEV，同样假设每个区块的MEV价值为M个币。那么为了保持矿工收益不变，我们有如下可选项：</p>
+<ol>
+<li>
+<p>将M个币的MEV价值给其他人，让普通用户给矿工支付N个币；</p>
+</li>
+<li>
+<p>将M个币的MEV价值仍然留给矿工，让普通用户给矿工支付N-M个币。</p>
+</li>
+</ol>
+<p>第一种方案是拍卖方案，第二种方案是普通方案。对于拍卖方案而言，普通用户需要承担不该承担的MEV损失，来弥补矿工缺失的币。而这M个币的收益只是给到了一个非常“富有”的拍卖者。MEVA提案建议一次拍卖一整天的交易排序权，这恰恰给了赢家绝对的垄断排序权，赢家有巨大的权力能在这样的时间窗口内任意推迟、重组和审查交易。这样更加中心化的控制会使得网络遭受难以预估的损失。</p>
+<h2 id="arbitrum-rollupfss方案">Arbitrum Rollup——FSS方案</h2>
+<p><strong>FSS(Fair Sequencing Service)</strong> 是由Chainlink提出的MEV防范方案。简而言之，FSS让用户首先将交易发送至专门的智能合约SCON中。Oracle网络观察内存池中的这些交易，按照其到达内存池的时间（或其他特定的顺序）进行排序，排序完成后再将其转发给SCON，如下图所示。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/11_g3l7rp2qme.png" alt="Layer2 Rollup方案的MEV防范技术解析"></p>
+<p>具体而言，首先如何实现排序的公平性？关于拜占庭容错共识的研究已经持续了几十年，但仿佛大家都忽略了“排序公平性”问题。Kelkar等人近期在研究中首次给共识加入了“排序公平性”的维度，大致目标为：如果大部分节点先收到交易T1,再收到交易T2。那么交易T1不能排在T2后面，这种协议被称为Aequitas。目前该协议运行代价很高。但未来具有非常大的实用价值。FSS在执行交易排序是就支持Aequitas。当然它还可以支持更简单的方案，例如它可以直接将交易加密，节点只有在排序后才能使用门限签名来解密。</p>
+<p>FSS框架中交易的生命周期是怎样的呢？首先用户需要将交易发送到SCON合约的内存池中，之后预言机代替SCON合约来获取交易池中的数据，并根据交易到达内存池的时间进行排序，最后排好序发送给SCON合约。这种方案的优势如下：</p>
+<ul>
+<li>
+<p>兼容性较高：用户无需适配预言机网络，直接传输至区块链节点即可</p>
+</li>
+<li>
+<p>Gas费低：预言机网络可以批量打包发送交易给区块链，用户无需单独上链，Gas费较低</p>
+</li>
+</ul>
+<p>但Arbitrum仍然需要依赖外在的Oracle Network来提供服务,Oracle Network的激励方案不确定。</p>
+<h2 id="eigennetworktee方案">EigenNetwork——TEE方案</h2>
+<p>EigenNetwork从公平定序器和隐私mempool两方面，在缓解MEV问题上做了双重保证。</p>
+<p>Eigen Network同样依赖Layer2 Sequencer来完成定序，但与其他方案不同的是，Eigen Network将Sequencer放在Eigen Node中的EigenTEE中执行，这要求所有的定序器必须按照给定的定序代码进行定序，定序的过程不允许被任意更改。一旦定序器将批量交易发布到Layer1,交易顺序就得到了确认，这就是Eigen Network的公平定序器。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1029/11_15gseshb1a.png" alt="Layer2 Rollup方案的MEV防范技术解析"></p>
+<p>与此同时，Eigen Network支持交易的加密再广播，保证mempool的隐私性，Sequencer无法直接进行获取MEV信息。用户可以根据需要使用合适的解决方案。</p>
+<p>EigenNetwork的抗MEV方案从某种程度上来说以最低的代价缓解了MEV，没有引入存在风险的MEVA方案，也没有使用复杂的Oracle Network方案，而是将Sequencer天然集成到Eigen Node中，是最简单且可靠的方式之一。</p>
+<p>Eigen Network 是Layer2上第一个端到端的隐私计算网络。</p>
+<p>基于TEE等隐私计算技术与Layer2 计算能力无限扩展，Eigen能解决目前面临的两方面问题：1）由区块链天然数据公开性导致的链上数据隐私泄漏问题；2）ETH扩展性不足导致的高昂手续费问题。除此之外，Eigen还将改革现有链上数据资产流通生产关系，从应用场景到技术栈考虑个体的隐私保护，成为对开发者友好且切实可行的隐私保护基础设施，为Web2到Web3的转换贡献力量。</p>
+<p>参考资料：</p>
+<p><a href="https://medium.com/offchainlabs/mev-auctions-considered-harmful-fa72f61a40ea">https://medium.com/offchainlabs/mev-auctions-considered-harmful-fa72f61a40ea</a></p>
+<p><a href="https://ethresear.ch/t/mev-auction-auctioning-transaction-ordering-rights-as-a-solution-to-miner-extractable-value/6788">https://ethresear.ch/t/mev-auction-auctioning-transaction-ordering-rights-as-a-solution-to-miner-extractable-value/6788</a></p>
+<p><a href="https://blog.chain.link/chainlink-fair-sequencing-services-enabling-a-provably-fair-defi-ecosystem/">https://blog.chain.link/chainlink-fair-sequencing-services-enabling-a-provably-fair-defi-ecosystem/</a></p>
+<p><a href="https://link.zhihu.com/?target=https%3A//eprint.iacr.org/2020/269">https://link.zhihu.com/?target=https%3A//eprint.iacr.org/2020/269</a></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/30236/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Facebook将公司名称更改为“META”</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/30238/">
+                <span class="next-text nav-default">MicroStrategy在第三季度增持近9000枚比特币</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#optimismrollupmeva方案">Optimism Rollup——MEVA方案</a></li>
+    <li><a href="#arbitrum-rollupfss方案">Arbitrum Rollup——FSS方案</a></li>
+    <li><a href="#eigennetworktee方案">EigenNetwork——TEE方案</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

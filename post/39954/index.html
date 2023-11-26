@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          详解“后以太坊时代”The Merge的共识机制 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="许多PoS协议已经存在，但以太坊正在建立一个新的质量标准。" />
+<meta name="keywords" content="ETC" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39954/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="详解“后以太坊时代”The Merge的共识机制" />
+<meta property="og:description" content="许多PoS协议已经存在，但以太坊正在建立一个新的质量标准。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39954/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="详解“后以太坊时代”The Merge的共识机制">
+<meta itemprop="description" content="许多PoS协议已经存在，但以太坊正在建立一个新的质量标准。"><meta itemprop="datePublished" content="2022-07-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-07-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7655">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="详解“后以太坊时代”The Merge的共识机制"/>
+<meta name="twitter:description" content="许多PoS协议已经存在，但以太坊正在建立一个新的质量标准。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">详解“后以太坊时代”The Merge的共识机制</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-07-08">
+      2022-07-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7655 字 -
+        预计阅读 16 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h1 id="来源老雅痞"><strong>来源：老雅痞</strong></h1>
+<h1 id="作者foobar"><strong>作者：foobar</strong></h1>
+<p>在这篇文章中，我们将深入探讨：</p>
+<ul>
+<li>
+<p>以太坊的PoS共识模型的详细描述</p>
+</li>
+<li>
+<p>以太坊PoS如何从恶意攻击中恢复</p>
+</li>
+<li>
+<p>驳斥常见的反PoS论点</p>
+</li>
+<li>
+<p>讨论流动质押或运行你自己的节点的实用性</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0708/20_0v6knya3ps.png" alt="ciclFrcqzKFn7Rs2FPxw3YRgwgUGUQWNjTKrlb5K.png" title="6279657"></p>
+<p>信标链的当前状态。按计划每 12 秒生成一次块。在 <a href="https://beaconcha.in">https://beaconcha.in</a> 可查看实时数据</p>
+<h3 id="共识机制pos-pow-poa"><strong>共识机制：PoS, PoW, PoA</strong></h3>
+<p>共识机制定义了一个由节点组成的分布式网络如何决定网络的当前状态，哪些区块在链上，以何种顺序存在。区块生产是一个一般的术语，描述了谁扫描mempool以拾取待处理的交易，将它们排序为区块，并将新区块附加到现有的区块链上。三类常见的共识机制是权益证明、工作证明和授权证明。</p>
+<ol>
+<li>
+<p>PoW（比特币）将区块生产权交给使用最多计算能力的人。该协议定义了一个单向的计算量大的哈希函数，如SHA-256，然后矿工们竞争找到一个输入，该输入被哈希成一个有许多前导零的输出。</p>
+</li>
+<li>
+<p>PoA（Binance智能链）是一种白名单机制，它将区块生产权交给几个白名单节点。这是你典型的许可区块链，仅此而已。</p>
+</li>
+<li>
+<p>PoS (Ethereum, soon™)将区块生产权交给锁定其原生代币的人，与他们的质押数量成正比。</p>
+</li>
+<li>
+<p><img src="https://img.bibiqing.com/news/2022/0708/20_c5a5kq2s5f.png" alt="VkDGWxazU3aKwMAm7TIGfIYHd43KJr5tZZQTpTnA.png" title="6279658"></p>
+</li>
+</ol>
+<h3 id="以太坊实施"><strong>以太坊实施</strong></h3>
+<p>以太坊的PoS实现已经被大众嘲笑了大半年了，但随着信标链连续运行了18个月，并在测试网上成功进行了实时合并，该实现看起来已经基本定型。我将专注于PoS链如何在其稳定状态下运行的具体细节，而不是迷失在合并的实施细节中。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0708/20_86tzpugpqj.png" alt="DL3hnsQZwtsx6jY3Gb2MOgK7WY50llzIfz7mnyOn.png" title="6279659"></p>
+<p>另一个著名的权衡三角形。选择两个，或者在中间的某个地方找到自己。</p>
+<p>信标链上有大约40万个验证器，你可以在这里跟踪实时统计和区块。一个验证器指的是在主网的信标链存款合约中的32个伦理的具体存款；一个用户可以运行多个验证器。今天没有启用解冻提款，在合并时也不会启用，但在之后的上海硬分叉更新中会启用。每12秒出现一个时段，随机选择一个验证者在该时段内提交一个区块。一个epochs由32个时段组成（或6.4分钟）。如果一个验证者处于离线状态，并且没有在其时段内提出区块，那么该时段就会被留空。因此，以太坊的区块时间将从平均区块时间为13秒的泊松分布（Poisson分布，是一种统计与概率学里常见到的离散概率分布，由法国数学家西莫恩·德尼·泊松Siméon-Denis Poisson在1838年时发表），转变为刚好12秒的偶尔空槽。每个epochs内的第一个区块被视为检查点区块。</p>
+<p>如果每个时段只有一个验证者提出一个区块，那么其余的验证者在等待轮到自己时做什么呢？他们创建证明，这是签名的投票，描述他们认为链的当前头是什么，以及与父检查点区块的链接。由于证明是由特定的验证者加密签名的，如果验证者含糊其辞，或在同一高度为两个区块投票，他们可以被追究责任。400,000个证明的通信和存储开销是非常高的，所以在每个epochs内，每个验证者只被分配到一个槽中进行验证。每个槽的验证者被分配到委员会，这是最小尺寸为128的进一步分组。聚合器然后使用BLS聚合将来自多个验证者的签名结合起来，然后只将摘要数据存储到区块中。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0708/20_uegs6rambm.png" alt="XNl53WGzyVmDJr5tDyCc1TeRfkbOlGNa9GOBeMJB.png" title="6279660"></p>
+<p>验证者证明如何聚合并最终包含在块中的技术概述。</p>
+<p>Epochs是由32个槽位组成的小组，它们经过三个阶段：提议、论证、最终确定。一旦超级多数，或三分之二的当前验证者，证明了一个epochs，它就可以前进。证明与成对的检查点区块相联系，一个来自前一个epochs，一个来自当前epochs。我们用一对源块和目标块来表示。一个区块由一个验证者提出，当超多数的证明将其标记为头时，它被认为是合理的。当超级多数的验证者将一个合理的epochs标记为前epochs时，它被认为是最终确定的。因此，一个epochs通常在一个epochs后被最终确定（或6分钟）。</p>
+<p>当交易无法在不消耗大量ETH的情况下重新聚合时，交易就被最终确定了。由于三分之二的验证者已经证明了最终的区块，为了在同一高度创建一个不同的最终epochs，三分之二的验证者也需要证明一个相同高度的独立区块。因此，至少有三分之一的验证者会被证明是含糊其辞。等价交换的惩罚方式是砍掉验证者的全部赌注，所以攻击者必须承诺摧毁至少三分之一的所有赌注ETH。即使在今天低迷的价格下，重新组织一个最终区块的成本也是几十亿美元。</p>
+<p>恶意行为者也可以通过扣留证明来阻止最终结果，这样就永远无法达到超级多数。当链上有4个epochs或更多的时间未能最终完成时，不活跃的验证者会受到不活跃泄漏的惩罚。这将慢慢地烧掉离线验证者的余额，直到在线验证者再次拥有超级多数并能恢复有效性。证明奖励被暂停，直到链上的人再次开始敲定，以使审查和DoS攻击更加昂贵。</p>
+<h3 id="质押需要积极努力"><strong>质押需要积极努力</strong></h3>
+<p>许多人对staking有一个扭曲的印象，因为这个词在DeFi和NFT中被广泛使用。在许多这样的协议中，”质押 “意味着将代币存入托管合约，从而减少卖方的流动性，同时代币被动地坐在那里。没有下行风险，也没有主动参与，只是对时间偏好低的人进行贿赂。</p>
+<p>要绝对清楚，这些游戏不是我们所讨论的内容。真正的协议级别的质押意味着进入一个有涨有跌的承诺，需要持续积极参与提出新的区块和证明别人创造的区块。这意味着你可以因为诚实地参与高正常运行时间而得到奖励，或者你可以因为离线或支持恶意分叉而损失金钱。这些规则不是由中心化的一方任性地应用的；它们事先清楚地定义，并深深地建立在去中心化协议本身。</p>
+<p>有两个关键的等价交换规则，验证者必须遵循，取自Gasper的论文：</p>
+<ol>
+<li>
+<p>双重投票：没有验证者为同一目标区块做出两个不同的证明。</p>
+</li>
+<li>
+<p>包围投票：任何验证者都不能对前一个验证进行包围或被包围的验证。</p>
+</li>
+</ol>
+<p><img src="https://img.bibiqing.com/news/2022/0708/20_mlc1bnh5ns.png" alt="详解“后以太坊时代”The Merge的共识机制"></p>
+<p>直接取自 Gasper 论文的 Slashing 条件</p>
+<p>诚实的共识层客户端被编程为明确地从不这样做，所以一个正常的诚实用户不应该担心这些机制的启动。然而，它们提供了对恶意验证者的重要保护，并优雅地解决了无风险的问题。</p>
+<p>虽然砍价只适用于行为错误，但对于不作为的错误也有较小的惩罚，称为不活动泄漏。诚实的用户应该特别注意他们的验证器的正常运行时间，因为一个离线的验证器比没有更糟糕。如果超过1/3的验证器是离线的，那么区块就不能最终完成，而且这些离线的节点实际上是通过假装网络分区的存在来建立他们自己的影子分叉，这也是可信的。停机惩罚对于避免这种情况非常重要。</p>
+<h3 id="以太坊对破坏性的少数群体有自我修复的能力"><strong>以太坊对破坏性的少数群体有自我修复的能力</strong></h3>
+<p>等价删除、不活动泄漏和用户激活的软分叉的组合具有强大的冲击力。等价删除处理安全错误，不活动泄漏处理有效性错误，而UASFs甚至让诚实的少数人从恶意的超级多数中恢复。</p>
+<p>等分是指验证器在同一高度上对两个不同的区块进行验证，这有可能会产生平行分叉和最终的重分。这是 “无利害关系 “问题的一个关键因素，即建立在所有可能的分叉上，因为这对他们没有任何好处。通过收集签名证明，网络监督员可以证明这种情况的发生，并削减等价交换者的股份。</p>
+<p>不活动的泄露是指验证者未能提供证明。这不能被证明是恶意的，因为验证者可能意外地掉线了，但这对网络是有害的。</p>
+<p>用户激活的软分叉是指一个验证者的子集认为主线忽略了他们和他们的交易，所以他们联合起来形成自己的区块生产分叉。</p>
+<p>让我们走过几个理论场景，其中一个恶意验证者的子集想要审查交易，例如那些来自FATF黑名单国家的交易。在不同的所有权门槛下，它将如何发展？</p>
+<h3 id="少数人的懒惰审查制度"><strong>少数人的懒惰审查制度</strong></h3>
+<p>一个拥有10%质押的鲸鱼想对交易进行审查。他拒绝将被列入黑名单的交易纳入他提议的区块。这些交易会被纳入其他90%的区块中。鲸鱼赚的钱略少，因为他绕过了某些高收入的mempool交易。</p>
+<h3 id="少数人的积极审查制度"><strong>少数人的积极审查制度</strong></h3>
+<p>拥有10%质押的鲸鱼拒绝在他的区块提案中包括被列入黑名单的交易，也拒绝对包括这些交易的其他区块进行证明。区块继续最终确定，因为超级多数的证明支持诚实的区块。鲸鱼在较低的交易贿赂和错过的证明奖励上都是亏损的。</p>
+<h3 id="少数人的懒惰审查制度-1"><strong>少数人的懒惰审查制度</strong></h3>
+<p>一个拥有40%总股份的鲸鱼想要审查交易，但证明别人提出的诚实区块。这与少数派懒惰审查的情况相同。</p>
+<h3 id="少数派积极的审查制度"><strong>少数派积极的审查制度</strong></h3>
+<p>一个总股份为40%的鲸鱼集团想要审查交易，并拒绝证明诚实的区块。区块停止敲定，因为不再有一个诚实的超级多数。链会分叉成两个子链，就像有一个干净的网络分区一样。诚实的验证者会看到两个分叉，但会建立在诚实的分叉上，因为它在LMD-GHOST分叉选择规则中具有更大的权重。审查验证者也会看到这两个分叉，但会手动覆盖LMD-GHOST分叉选择规则，并选择在审查链上继续，假装他们不知道诚实链。</p>
+<p>在诚实链上，一旦区块停止最终确定，不活动泄漏就会启动。这意味着所有审查验证者都会显示为离线，因为他们拒绝证明诚实区块。审查验证人的股权会慢慢被烧毁，直到他们的有效余额下降到足够低，以至于他们被从验证人集合中移除。在这个时候，诚实的验证者现在有一个超级多数，区块又开始最终确定。</p>
+<p>请注意，这并不要求硬分叉。现有的削价惩罚和不活动泄漏会逐渐将恶意或离线验证者从集合中移除，其余的验证者可以重新获得超级多数，而不需要任何链上的停机。</p>
+<h3 id="用户激活的软分叉来自恶意的超级多数"><strong>用户激活的软分叉来自恶意的超级多数</strong></h3>
+<p>我们已经看到，即使诚实的验证者没有超级多数，通过提出诚实的区块，而审查的验证者拒绝证明，审查的验证者将被迫离开验证者集合。如果诚实的验证者拥有次多数，而审查性验证者拥有超级多数，会发生什么？</p>
+<p>有趣的是，其机制几乎是相同的 一个关键的区别是，诚实的验证者必须明确地联合起来承认彼此的证明，并推翻分叉选择规则，但除此之外，他们可以形成自己的子链，恶意的超级多数会慢慢地从验证者集合中流失，直到诚实的次多数再次获得超级多数。</p>
+<p>同样，值得注意的是，没有明确的协议层面的变化，以明确地从特定的用户那里硬分叉代币，正如我们在The DAO的2016年漏洞中看到的那样。相反，它是等价物削减和不活动泄漏的组合，这意味着不在同一链上建立的验证者会逐渐失去他们的股份。这是一个相当优雅的机制，允许诚实的少数人从恶意的多数人那里恢复。</p>
+<h3 id="以太坊可能的改进"><strong>以太坊可能的改进</strong></h3>
+<p>当然，Ethereum PoS有几个方面需要进一步改进。比如说：</p>
+<ul>
+<li>
+<p>单槽确定性是指将确定性的时间从 2 个 epoch（64 个区块）减少到 1 个区块</p>
+</li>
+<li>
+<p>减少质押所需的最低金额将使家庭质押对于没有 32 eth 的用户更可行</p>
+</li>
+<li>
+<p>当提前知道区块提议者的地址时，单一的秘密领导人选举将最大限度地减少针对区块提议者的潜在 DoS 攻击</p>
+</li>
+<li>
+<p>在构建区块时，提议者和构建者分离，这将使单个家庭权益持有者很容易达到与大型操作相同的最高收益。</p>
+</li>
+</ul>
+<h3 id="顶级误解"><strong>顶级误解</strong></h3>
+<h4 id="pos链上治理"><strong>PoS=链上治理</strong></h4>
+<p>以太坊没有链上治理（即使PoS协议的一个子集有）。就像比特币全节点让矿工诚实地生产符合状态转换功能的有效区块一样，以太坊全节点让验证者诚实地生产符合状态转换功能的有效区块。即使是超级多数的恶意验证者也不能欺骗一个诚实的全节点。</p>
+<p>共识机制是一种向链上添加新交易的方式，而不是任意胁迫区块链状态的权力。状态转换规则被编码到协议本身，除非社会层硬性规定，否则是不可侵犯的。比特币的状态转换不变量之一是UTXO输出之和必须等于输入；以太坊的状态转换不变量之一是一个账户只能移动自己的ETH。只要非验证者在网络上运行自己的节点来验证诚实的状态转换，矿工和铸币商都不能打破这些规则，即使有超级多数的支持。</p>
+<h4 id="pos中央银行"><strong>PoS=中央银行</strong></h4>
+<p>不清楚人们这样说是什么意思。我最好的猜测是指中央计划对货币供应量和利率等宏观经济因素的操纵。如上所述，验证者没有能力改变状态转换功能，而且以太坊的机制变化提前几个月，甚至几年就在公开场合大量讨论。治理是在社会层的链外，而不是在链上。验证者在这里没有权力。</p>
+<h4 id="pos--廉价gas的扩展"><strong>PoS = 廉价gas的扩展</strong></h4>
+<p>这是假的。gas费反映了区块空间的供应和需求。改变共识机制并不能增加区块空间的供应，但分片可以。分区原本是以太坊路线图的一个重要部分，但已经被取消了优先级，在合并后相当长一段时间内才会发生。请看proto-danksharding说明，跟踪数据可用性分片计划的当前状态。</p>
+<h4 id="pos富人更富pow平等主义"><strong>PoS=富人更富，PoW=平等主义</strong></h4>
+<p>CPU、GPU和ASIC在数学竞赛中搅动，以最快速度找到哈希预映射，这种想法有一种平等主义的优雅。有主权的个人，即运行家用游戏电脑的个人可以与民族国家竞争，以获得6.25个新造的BTC的权利。</p>
+<p>不幸的是，ASIC供应链很容易被进出口法规控制，更不用说对台湾的危险依赖了。对廉价、丰富能源的需求是另一个弱点，它禁止个人运行谨慎的采矿设置。而且由于我们还没有进入后稀缺的乌托邦，你需要预付资金来购买采矿机。更糟糕的是，技术进步意味着矿工需要不断升级他们的设备以保持竞争力，这意味着如果情况恶化，对供应链的依赖是一个持续的薄弱点。</p>
+<p>PoW可以被认为是PoS的一个具体实例，用户用赌注购买矿机，然后争夺区块提议权。你的赌注本金可以在任何时候提取，但其价值遵循与你的计算机芯片的当前市场价值相对应的衰减曲线。在PoW和PoS中，对前期资本的需求是相同的，关键的区别在于，在PoW中，资本是通过计算机芯片供应链强制进行的，而在PoS中，它可以是纯粹的抵押。</p>
+<h4 id="pos一无所获"><strong>PoS=一无所获</strong></h4>
+<p>PoS通过增加对同时建立在两个父区块上的验证者的惩罚来解决一无所获的问题。</p>
+<h4 id="pos没有强迫性的卖家"><strong>PoS=没有强迫性的卖家</strong></h4>
+<p>许多人指出PoW矿工的利润微薄，并将其与铸币商产生的丰厚收益相比较。然而，市场是有效的，没有免费的午餐。对于投机者来说，看起来是免费的钱，实际上是一个巨大的资本机会成本，他们选择将资金投入ETH，而不是成千上万的其他投资机会，并有本金贬值的真正风险。导致BTC挖矿相对于其他投资机会利润微薄的市场动态，也适用于ETH定投相对于其他投资机会的微薄利润。</p>
+<h4 id="pos--中央银行将购买所有的代币"><strong>PoS = 中央银行将购买所有的代币</strong></h4>
+<p>这往往来自于那些从未尝试过大规模移动订单簿的人。当然，你不可能以当前的现货价格购买所有的供应，就像你不可能以当前的现货价格购买所有的ASIC一样。随着需求的增加，价格会以高度凸出的方式上升。</p>
+<h4 id="pos信任集中式服务器以获得canonical链"><strong>PoS=信任集中式服务器以获得Canonical链</strong></h4>
+<p>推荐大家阅读Vitalik关于 “弱主观性 “的文章，以及EF的描述。当一个节点第一次上线时，它必须有一些参考框架来知道如何引导自己。这不是PoS特有的问题；即使是一个比特币完整的节点也需要知道哪个客户端软件是有效的，哪个IP可以引导它的历史，等等。PoS在这里只增加了少量的额外信任假设。</p>
+<h4 id="pos--没有真正的资源消耗"><strong>PoS = 没有真正的资源消耗</strong></h4>
+<p>在那些将 “现实世界 “的联系视为能够赋予数字资产合法性的唯一属性的人和那些将 “现实世界 “的联系视为在构建自给自足的系统时需要避免的危险依赖的人之间，存在着一种迷人的心理分歧。</p>
+<h4 id="pos糟糕的复杂性"><strong>PoS=糟糕的复杂性</strong></h4>
+<p>今天的实现当然是相当冒险的理解，有新的词汇和分布式系统的先决条件的先决条件需要摸索。然而，在深入研究了所有的移动部件之后，没有什么感觉是多余的，而且还在积极努力，尽可能地简化。现代社会是建立在一系列逐渐复杂的抽象之上的；如果因为最初的不可控性而丢弃这些抽象，就会放弃大规模的创新。</p>
+<h3 id="现实的担忧"><strong>现实的担忧</strong></h3>
+<h4 id="流动性和非流动性的质押保管人cartels"><strong>流动性（和非流动性）的质押保管人Cartels</strong></h4>
+<p>虽然以太坊在协议层没有委托PoS，但应用层的替代品已经出现了。Lido引领着质押份额，其次是少数中心化交易所。用户不需要运行自己的验证器，而是将ETH发送给这些盯盘商，并收到代币化的盯盘衍生品，如stETH。然后，这些质押提供者通常可以完全控制验证器的运行方式。托管人拥有巨大的投票控制权是最有可能被监管部门抓住的途径。至少最近他们都在把赌博客户的资金洗到杠杆游戏中，所以最后剩下的钱只有那些实行自我托管的人。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0708/20_1eliw73hyl.png" alt="SJFfQQBwLMVVac2vOaYSMSIZ8JM0drsHyFXhf2cs.png" title="6279661"></p>
+<p>信标链存款的来源</p>
+<h4 id="现实世界的资产代币化使得分叉变得很困难"><strong>现实世界的资产代币化使得分叉变得很困难</strong></h4>
+<p>当一种资产不是因为链上机制而持有其挂钩，而是因为链外1:1的可赎回性，在一个中心化的发行方，发行方选择一个规范的链来兑现赎回和创造。今天最好的例子是稳定币，如USDC或USDT，但未来几年肯定会有更多的代币化RWAs出现。MakerDAO正在领导许多探索性的工作。</p>
+<h4 id="任何资源证明都是中心化的"><strong>任何资源证明都是中心化的</strong></h4>
+<p>没有偶尔的再分配或革命，金钱和资源倾向于积累到少数人手中。令人难以置信的技术基础创造的隐性个人影响力在经验上加剧了幂律动态。因此，虽然 PoS 是比 PoW 更清晰的抽象，但两种共识机制都将阻止世界大部分地区参与。以目前的盲目者状态，很难想象在更公平的参与下可能会出现哪些替代共识机制，但不要排除它。</p>
+<h4 id="这对你意味着什么"><strong>这对你意味着什么？</strong></h4>
+<p>最后一节是关于实际问题。如果你对质押自己的ETH感兴趣，年收益率估计在5-15%之间，这取决于有多少人加入和MEV的贿赂程度。现在可以做一个有趣的 “持有至到期 “的交易，许多流动的质押衍生品的交易价格低于其最终可赎回的1ETH的价值。为什么会出现这种情况？很多人都在做杠杆stETH/ETH交易，希望提高他们的收益率，但由于取款要到合并后的上海硬分叉才能启用，流动性需求来了，没有足够的买家。你应该知道，流动性的质押衍生品绝不是与ETH的价值 “挂钩”，只是在到期时它们应该可以1：1赎回。但是，愿意承担未知期限风险的勇敢的买家有机会获得健康的回报。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0708/20_erh8ueqegh.png" alt="A8SOWSDLlWASsEhHjZxc0zNHefZdWEBRxzf13kbY.png" title="6279673"></p>
+<p>过去三个月波动的 stETH/ETH 价格</p>
+<p>这是奇怪的建议，因为整篇文章都在敲打避免恶意串通的能力，现在我们描述了如何将资金引向托管衍生品。但如果让人们以1:1的比例进入锁仓，却不知道他们可以通过承担期限+治理+智能合约的风险并从过度杠杆化的基金中挖出廉价的代币来获得报酬，那就是失职了。</p>
+<p>如果你对运行你自己的验证器节点感兴趣，这里有一个很好的单独盯盘的演练指南（https://ethereum.org/en/staking/solo/）。</p>
+<h3 id="总结"><strong>总结</strong></h3>
+<p>许多PoS协议已经存在，但以太坊正在建立一个新的质量标准。重点是支持广泛的验证器集，明确的削价惩罚，在有效性和安全性之间的明确权衡，以及维护多个软件客户端的痛苦的前期工作。这个系统并不完美，但它是我们拥有的最优雅的创新之一。希望这个解释能帮助你理解所有的活动部件是如何组合在一起的。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39937/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">无限扩容叙事下 NEAR 如何建设开发者与应用生态？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39968/">
+                <span class="next-text nav-default">行业警钟：3万元就能买一个数字藏品交易平台</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#共识机制pos-pow-poa"><strong>共识机制：PoS, PoW, PoA</strong></a></li>
+        <li><a href="#以太坊实施"><strong>以太坊实施</strong></a></li>
+        <li><a href="#质押需要积极努力"><strong>质押需要积极努力</strong></a></li>
+        <li><a href="#以太坊对破坏性的少数群体有自我修复的能力"><strong>以太坊对破坏性的少数群体有自我修复的能力</strong></a></li>
+        <li><a href="#少数人的懒惰审查制度"><strong>少数人的懒惰审查制度</strong></a></li>
+        <li><a href="#少数人的积极审查制度"><strong>少数人的积极审查制度</strong></a></li>
+        <li><a href="#少数人的懒惰审查制度-1"><strong>少数人的懒惰审查制度</strong></a></li>
+        <li><a href="#少数派积极的审查制度"><strong>少数派积极的审查制度</strong></a></li>
+        <li><a href="#用户激活的软分叉来自恶意的超级多数"><strong>用户激活的软分叉来自恶意的超级多数</strong></a></li>
+        <li><a href="#以太坊可能的改进"><strong>以太坊可能的改进</strong></a></li>
+        <li><a href="#顶级误解"><strong>顶级误解</strong></a></li>
+        <li><a href="#现实的担忧"><strong>现实的担忧</strong></a></li>
+        <li><a href="#总结"><strong>总结</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

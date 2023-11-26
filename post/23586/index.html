@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          干货 | 创世文档：Adam Back 如何设计出比特币的引擎 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="没有Hashcash ，可能至今也不会出现一个 去中心化 的数字现金系统。" />
+
+  <meta name="keywords" content="区块大全, 区块链, 区块链资讯, 区块链快讯, 区块链新闻, 比特币行情" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/23586/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="干货 | 创世文档：Adam Back 如何设计出比特币的引擎" />
+<meta property="og:description" content="没有Hashcash ，可能至今也不会出现一个 去中心化 的数字现金系统。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/23586/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-03T00:00:00+00:00" />
+
+<meta itemprop="name" content="干货 | 创世文档：Adam Back 如何设计出比特币的引擎">
+<meta itemprop="description" content="没有Hashcash ，可能至今也不会出现一个 去中心化 的数字现金系统。"><meta itemprop="datePublished" content="2021-06-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5000">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="干货 | 创世文档：Adam Back 如何设计出比特币的引擎"/>
+<meta name="twitter:description" content="没有Hashcash ，可能至今也不会出现一个 去中心化 的数字现金系统。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">干货 | 创世文档：Adam Back 如何设计出比特币的引擎</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-03">
+      2021-06-03
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5000 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><img src="https://img.bibiqing.com/news/2021/0603/16_ytr71bhp1k.png" alt="干货 | 创世文档：Adam Back 如何设计出比特币的引擎"></p>
+<blockquote>
+<p>[公告] hach cash 邮票实现</p>
+</blockquote>
+<p>时值 1997 年 3 月 28 日，密码朋克邮件列表的 2000 多个订阅者收到了一封邮件，开头就是上面那句引文。发送者是一位 26 岁的英国人，埃克塞特大学（University of Exeter）的博士后。这个年轻的密码学家在邮件组里用名 Adam Back 博士，也是邮件组的高产贡献者。这份邮件所包含的讲解和简单实现，作者命名为 “基于部分哈希碰撞的邮费方案” —— 其实就相当于用在电子邮件上的邮票，只不过其基础是一种漂亮的密码学方案。</p>
+<p>“使用部分哈希值（partial hashes）的理由是，其计算成本可以任意调高”，Back 写道，“但即刻可以验证”。关于这个系统的优点，他就是这么解释的。</p>
+<p>当年的密码学家现在成了 Blockstream 公司的 CEO，但那封邮件在当时并没产生多大反响：只有一个读者回了信，而且讨论的是选择哈希算法的技术问题。但是，Hashcash 背后的技术 —— 工作量证明 —— 却塑造了它诞生之后十多年的数字货币研究。</p>
+<h2 id="以任务处理施加代价打击垃圾邮件"><strong>“以任务处理施加代价，打击垃圾邮件”</strong></h2>
+<p>Back 的 Hashcash 并不是同类方案的开创者。</p>
+<p>早在 1990 年代早期，互联网的前景，尤其是电子邮件系统的优点，对有所关注的技术人员来说已经显而易见。但是，当时的互联网先驱们，也意识到了电子邮件系统有自己的问题。</p>
+<p>“尤其是，发送电子邮件很简单、成本也很低，而且你还可以向许多人发送同样的消息，那一定会招致滥用”，IBM 的研究员 Cynthia Dwork 博士和 Moni Naor 博士在他们发表于 1992 年的白皮书中这么解释。该白皮书名为 “以任务处理施加代价，打击垃圾邮件”。</p>
+<p>确实，随着电子邮件的流行，垃圾邮件也层出不穷。</p>
+<p>需要一个解决的办法，早期的互联网用户都同意 —— 而其中一种就是 Dwork 和 Naor 的论文所提供的。</p>
+<p>他们俩的方案是：发送电子邮件的人，每逢发送一份邮件，都要在邮件中附加一些数据。这些数据需是一个数学问题的解，而且每封邮件提出的问题都是独一无二的。具体来说，Dwork 和 Naor 提出了三种可用于此场景的候选谜题形式，全都基于公钥密码学和签名方案。</p>
+<p>要给电子邮件添加一个解并不难，理想情况下只需一台普通计算机的处理能力，算个几秒钟就行，而且接收方是很容易能检查出其有效性的。有趣的地方就在这里：对发广告的、搞诈骗的和黑客来说，即使一封邮件只需一点点处理能力，也会累积出高昂的成本，因为他们都想一次性发送几千乃至几百万条消息。理论上来说，滥发消息的成本可以非常高昂，贵到无利可图。</p>
+<p>“主要想法就是让用户计算一个难度适中而不棘手的函数，然后才能获得资源的访问权，由此防止滥用”，Dwork 和 Naor 这么解释。</p>
+<p>虽然 Dwork 和 Naor 没有发明这个术语，但他们所提议的这类解决方案，后来以 “工作量证明” 之名为人所知。用户必须出示他们的计算机工作的结果，以此证明他们花费了真实世界的资源。</p>
+<p>多么漂亮的方案，可惜可能过于超前。这套方案仅仅在一小圈计算机科学家内部流传，从来没得到广泛的关注。</p>
+<h2 id="adam-back-和密码朋克"><strong>Adam Back 和密码朋克</strong></h2>
+<p>就在 Dwork 和 Naor 出版他们白皮书的同一时间，一群带有自由意志主义（Libertarian）倾向的隐私权运动人士也开始意识到了互联网的强大潜力。这群拥有同样意识形态的人开始形成了一个邮件组，专门探讨加强隐私的技术。跟 Dwork 和 Naor 一样，这些 “密码朋克” —— 这是后来人给他们的称呼 —— 利用更新的密码学来实现他们的目标。</p>
+<p>几年后，Adam Back —— 他在 1996 年取得博士学位 —— 在这个邮件组中成了最活跃的参与者之一，有时候一个月就能发几十封邮件。跟其他密码朋克一样，他也对诸如隐私权、言论自由 和自由意志主义在内的话题充满激情，而且他还参与到了如 “匿名中转商”、加密文件系统、电子现金（由 David Chaum 博士发明）等话题的技术讨论中。</p>
+<p>但有一段时间，Back 最为人知的事迹可能是印制和贩卖 “军火” 上衣：就是印有加密技术协议的 T 恤衫，意在指出美国政府把 Phil Zimmermann 的 PGP（Pretty Good Privacy）加密程序按出口管制法律中的 “军火” 条例来管制的荒谬之处。你要是穿上 Back 的衣服，穿越国境离开美国，那你可就成了一个 “军火出口商” 了。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0603/16_aml4mnj3fs.png" alt="干货 | 创世文档：Adam Back 如何设计出比特币的引擎"></p>
+<p>跟大多数人一样，Back 没有注意到 Dwork 和 Naor 的工作量证明提议。但在 1990 年代中期，他也一直在思考用类似的方法来对抗垃圾邮件，有时候会在密码朋克邮件组里 “高调” 发言。</p>
+<p>比如，在给转寄商增加更多隐私的上下文里，Back 会这么评论：“使用 PGP 协议附带的一个好处是，PFP 加密方法会给滥发消息的人施加一些开销 —— 他每秒能加密的消息，应该比能用来塞爆一个 T3 链接所需的数量要少”。这多么像 Dwork 和 Naor 的想法啊。</p>
+<p>密码朋克的邮件组在五年内迅速壮大。一开始它只是一小群在旧金山湾区开办创业公司的人的在线讨论平台，后来成了一个小型的互联网现象，有几千个订阅者 —— 而且经常邮件会多到看不过来。</p>
+<p>正是在这个时期 —— 1997 年，邮件组人数接近峰值的时间 —— Back 提出了他的 Hashcash。</p>
+<h2 id="hashcash"><strong>Hashcash</strong></h2>
+<p>Hashcah 类似于 Dwork 和 Naor 的防滥发方案，目的也是一样的，但 Back 提出了一些额外的用途，比如抵抗滥用匿名中转商。但就像这个名字暗示的那样，Hashcash 的基础跟 Dwork 和 Naor 所用的不是同一套，它基于哈希算法。</p>
+<p>哈希算法是一种密码学工具，它可以接受任意数据 —— 无论是一个字母还是一整本书 —— 作为输入，然后输出一个长度确定的、看起来毫无规律的数字。</p>
+<p>举个例子，“This is a sentence” 这个句子的 SHA-256 哈希值，是如下的十六进制数字：</p>
+<p><img src="https://appserversrc.8btc.com/FmOcyIJPlC7fc_oaBRhYP_nQRUlQ.png" alt="干货 | 创世文档：Adam Back 如何设计出比特币的引擎"></p>
+<p>“转换” 为常规的十进制数字为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0603/16_9aifiwtpql.png" alt="干货 | 创世文档：Adam Back 如何设计出比特币的引擎"></p>
+<p>二进制形式则是：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0603/16_bmmrfsn6lb.png" alt="干货 | 创世文档：Adam Back 如何设计出比特币的引擎"></p>
+<p>但是，“This, is a sentence” 的 SHA-256 哈希值，却是：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0603/16_dk18k3tb5c.png" alt="干货 | 创世文档：Adam Back 如何设计出比特币的引擎"></p>
+<p>如你所见，仅仅只是插入一个标点，产生的哈希值也会完全不同。而且，重要的是，两个句子的哈希值都是完全无法预测的；即使你知道了第一个句子的哈希值，也无法从中推导出第二个句子的哈希值。要想知道，唯一的办法就是实际运行哈希计算。</p>
+<p>Hashcash 很聪明地运用了这种数学工具。</p>
+<p>在 Hashcash 中，邮件的元数据（如 “发送者地址”、“收件人地址”、发送时间，等）都被形式化为一个协议。此外，电子邮件的发送者必须给这部分元数据加入一个随机数字，称作 “nonce”。所有这些元数据，包括这个 “nonce”，（输入哈希函数后）可得出一个哈希值，这个哈希值看起来也会跟上面所示的随机数一样，毫无章法。</p>
+<p>奥妙之处在于：不是随便什么哈希值都可以算作 “有效的”。哈希值的二进制形式，必须以预定数量的 “0” 开头，才算有效；比如说，要有 20 个 “0” 开头。发送者就要找出某个 nonce，使得哈希值的开头要有 20 个 “0”，才行。但是，他是没法预先知道哪个 nonce 能做到这一点的。</p>
+<p>因此，要想得出这样的有效的哈希值，发送者只有一种办法：试错（也即 “蛮力计算”）。他只能不断尝试不同的 nonce，直到找出一个有效的组合。否则，TA 的邮件就会被收件人的邮件客户端拒绝。就像 Dwork and Naor 的方案，Hashcash 也要求付出计算资源：这是一种工作量证明系统。</p>
+<p>“如果邮件没有附带 20 位的哈希值 …… 你的程序就会弹出一条声明，解释发邮件需要付邮费，以及哪里能获得合适的软件”，Back 在密码朋克邮件组里这么解释，“这可以让滥发邮件的人一夜之间破产，因为 100 0000 x 20 = 100 MIP 年，比他们的计算能力要大得多”。</p>
+<p>值得注意的是，Back 的工作量证明系统比起 Dwork 和 Naor 的要更随机。他们俩的方案只要求解出一个谜题，这意味着一台更快的计算机总是解得更快些（比起条件更差的计算机）。但从统计上来看，Hashcash 中更慢的计算机也有几率会更快找出正确的解。</p>
+<p>（打个比方，如果某人跑得比别人快，在短跑比赛中 TA 每次都能赢。但如果某人只是买了更多的彩票，其他人也总有几率能比他中得多 —— 只是不那么经常能中奖而已。）</p>
+<h2 id="数字世界的稀缺性"><strong>数字世界的稀缺性</strong></h2>
+<p>与 Dwork 和 Naor 的提案命运相似，Hashcash 从未获得很大的进展。Back 在 2002 年的白皮书中详细讲解了 Hashcash。Apache 的开源 SpamAssassin（垃圾邮件过滤）平台实现了它，而微软也在一种不兼容的 “电子邮件邮戳” 格式中利用了工作量证明的想法。而 Back 和其他学者，连年致力于为这个解决方案提出不同的应用，但都没有得到多少关注。对大多数潜在应用来说，缺乏网络效应使他们难以启动。</p>
+<p>但是，Dwork 和 Naor、Back（的独立研究），都确实创造了一些东西。数字化的产品最强大的特性之一便是它们很容易就能被复制，而工作量证明本质上是第一种不依赖于中心的虚拟稀缺性概念：它将电子数据与真实世界、有限的计算资源绑定在了一起。</p>
+<p>而稀缺性，毫无疑问，是货币的前提。实际上，Back 在他的密码朋克邮件发言和白皮书中，都特别明确地将 Hashcash 放在货币的类别中，与当时世界上唯一一种数字现金（Chaum 的 DigiCash）相对照。</p>
+<p>“在 digicash 获得广泛使用前，Hashcash 也许能提供一种临时措施”，Back 在邮件组中说，“Hashcash 是自由的，你只需在你的电脑上消耗一些计算，就能得到它。这符合自由表达的网络文化，经济拮据的人也能和百万富翁、退休政府官员等等平等对话。（而且）如果 digicash 出了问题（被接管或者要求保管用户的身份信息），Hashcash 也能提供一种控制垃圾邮件的后备方案。”</p>
+<p>但是，除开这个名字，Hashcash 并不能很好地担当一种成熟的现金（Dwork 和 Naor 的提议当然也不行）。也许更重要的是，接收者 “收到” 的工作量证明，对他来说没有任何用处。不像货币，你可以花在别的地方。此外，因为计算机的性能日益提高，相同的时间里，它们可以生成越来越多的证明 —— Hashcash 会遭遇超级通胀。</p>
+<p>撇开其它所有，工作量证明所提供的，乃是数字货币研究的一个全新的基础。后来的大多数重要的数字货币方案，都建立在 Hashcash 之上，一般来说都是让工作量证明得以重用（Hal Finney 的 “可重用的工作量证明（PROW）” 即是最明显的例子）。</p>
+<h2 id="比特币"><strong>比特币</strong></h2>
+<p>当然，最终来说，工作量证明成了比特币的基石，而 Hashcash 也是比特币白皮书中为数不多的引用之一。</p>
+<p>然而，比特币对 Hashcash（或者说其变种）的利用方式迥异于此前其他人所提出的。不像 Hashcash 和其他基于 Hashcash 的方案，工作量证明自身所提供的稀缺性，在比特币中并没有直接被用作货币。实际上，Hashcash 被用来创造一种竞赛：无论哪个矿工最先制造出了一个有效的工作量证明 —— 也即一个比特币交易块的哈希值 —— TA 就决定了哪些交易是下一批得到处理的。至少在理论上，大家都是平等竞赛的：很像彩票，即使是小矿工，也有概率成为在某个位点上第一个制造出有效工作量的人。</p>
+<p>进一步地，每当一个区块被挖出，它就确认了一批交易，这些交易不太可能被撤销。攻击者必须证明自己做了跟先被挖出的那个区块（的出块者）至少同样多的工作量，而这个量值会随着后续区块的出现而不断累加，在正常情况下，这个难度会呈指数上升。因此，欺骗所需花费的真实世界资源，一般都会大于欺骗所能获得的潜在获利。比特币交易的接收者，也因此有了信心，自己收到的钱不会凭空消失。</p>
+<p>这种运用 Hashcash 的方式可谓一箭双雕：既用去中心化的方式解决了 “多重支付问题”，又提供了一种方式，让新币可以没有中心化的发行者又能进入流通。</p>
+<p>Hashcash 并没有成为第一个电子现金系统 —— Ecash 已经占得先机，而工作量证明自身也不能实际用作货币。但没有它，可能至今也不会出现一个 <em>去中心化</em> 的数字现金系统。</p>
+<p>（完）</p>
+<p>（文内有许多超链接，可点击左下 ”阅读原文“ 从 EthFans 网站上获取）</p>
+<p><strong>原文链接:</strong></p>
+<p><a href="https://bitcoinmagazine.com/technical/genesis-files-hashcash-or-how-adam-back-designed-bitcoins-motor-block">https://bitcoinmagazine.com/technical/genesis-files-hashcash-or-how-adam-back-designed-bitcoins-motor-block</a></p>
+<p><strong>作者:</strong>  Aaron Van Wirdum</p>
+<p><strong>翻译:</strong>  阿剑</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/23557/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">分析 | 从6个链上数据看比特币未来走势</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/23535/">
+                <span class="next-text nav-default">高盛：加密货币难以替代黄金的地位 或许它更类似铜</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#以任务处理施加代价打击垃圾邮件"><strong>“以任务处理施加代价，打击垃圾邮件”</strong></a></li>
+    <li><a href="#adam-back-和密码朋克"><strong>Adam Back 和密码朋克</strong></a></li>
+    <li><a href="#hashcash"><strong>Hashcash</strong></a></li>
+    <li><a href="#数字世界的稀缺性"><strong>数字世界的稀缺性</strong></a></li>
+    <li><a href="#比特币"><strong>比特币</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

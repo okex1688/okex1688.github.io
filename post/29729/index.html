@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Mirror 向公众开放内容发布和 web3 工具套件 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文整合了两篇关于 Mirror 的文章，一篇介绍了它的核心原则和开发进度，另一篇总体介绍了它的 web3 工具。" />
+<meta name="keywords" content="Mirror" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/29729/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Mirror 向公众开放内容发布和 web3 工具套件" />
+<meta property="og:description" content="本文整合了两篇关于 Mirror 的文章，一篇介绍了它的核心原则和开发进度，另一篇总体介绍了它的 web3 工具。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/29729/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-10-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-15T00:00:00+00:00" />
+
+<meta itemprop="name" content="Mirror 向公众开放内容发布和 web3 工具套件">
+<meta itemprop="description" content="本文整合了两篇关于 Mirror 的文章，一篇介绍了它的核心原则和开发进度，另一篇总体介绍了它的 web3 工具。"><meta itemprop="datePublished" content="2021-10-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-15T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3436">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mirror 向公众开放内容发布和 web3 工具套件"/>
+<meta name="twitter:description" content="本文整合了两篇关于 Mirror 的文章，一篇介绍了它的核心原则和开发进度，另一篇总体介绍了它的 web3 工具。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Mirror 向公众开放内容发布和 web3 工具套件</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-10-15">
+      2021-10-15
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3436 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>译者注：在 Mirror 对公众开放后，ECN 也开启了在 web3 做内容发布的体验。本文整合了两篇关于 Mirror 的文章，一篇介绍了它的核心原则和开发进度，另一篇总体介绍了它的 web3 工具。希望能藉此打开读者对建在以太坊上的 web3 世界的想象。</p>
+<p><strong>Mirror 对所有人开放内容发布</strong></p>
+<p><strong>连接你的钱包，马上开启去中心化的博客</strong></p>
+<p><strong>去年 12 月，Mirror 推出了它的第一个产品：一个去中心化的内容发布协议。</strong> 在过去一年里，我们还推出了众筹 (crowdfunding)、竞拍 (aution)、NFT Editions 和 分享收益 (splits) 这些工具和治理产品。Mirror 已经从一个作者工具发展成一个用于社区和 DAO 的全栈 web3 创意套件。</p>
+<p>我们比以往任何时候都更相信，每个创意项目都是从一个故事开始的。我们的目标是让 Mirror 成为与世界分享你的故事，并围绕它建立一个参与度高的社区的最佳场所，它由世界级的加密原生工具提供支持。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1015/24_kd0l4wz9pe.png" alt="Mirror 向公众开放内容发布和 web3 工具套件"></p>
+<p><strong>我们向任何拥有以太坊地址的人开放 Mirror 上的去中心化内容发布功能。任何人连上了钱包就可以开始写作了。</strong></p>
+<p>为什么去中心化内容发布很重要？我们相信指导 Mirror 发展的核心原则可以回答这个问题：</p>
+<p><strong>身份和数据为用户所有</strong></p>
+<p><strong>当你使用 Mirror 时，你用你的 Ethereum 钱包而不是用户名和密码登录。</strong> 这意味着你的账户由你拥有，建在公开的区块链上而不是中心化的数据库。所有在 Mirror 上发布的数据都由用户进行加密签名，存储在永久去中心化的存储器 (Arweave) 上。这意味着数据不会被有问题的服务供应商或有恶意的一方破坏或修改。永久存储意味着你不需要依靠 Mirror 团队来确保你的内容的持久性或完整性。最重要的是，加密安全性和永久数据确保用户可以放心退出平台，如果该平台不再满足他们的需求或与他们的需求不符。</p>
+<p><strong>加密货币轨道开启新的商业模式</strong></p>
+<p>线上发布推动大规模互动，但其难以实现可持续地盈利也是一直众所周知的。因为 Mirror 是建在以太坊上的，它原生地支持围绕代币和 NFT 的新的加密货币原生商业模式。例如，Mirror 上的文章可以被铸造为 Entry Editions，使得它们可以以不同价位作为收藏品，同时内容仍然可以被所有人访问。Entry Edition 让作者可以在不设置收费墙的情况下将他们的作品货币化。在 Mirror，我们坚信高质量、受欢迎的内容是非常有价值的，而早期的 Entry Editions 实验已经验证了这个理论。</p>
+<p><strong>每个 DAO 都需要一个家</strong></p>
+<p>如果 DAO 在现实世界没有信用卡，它要如何启动一个网站或访问云服务提供商呢？很多 DAO 拥有充满活力的社区和大量的资金，但它们并没有被 web2 的创意和开发工具生态认可为一流的实体。每个加密货币原生实体都需要一个网站，而 Mirror 让任何 DAO 都可以拥有一个有多签钱包功能的网站，以此开启与世界分享它们的故事的旅程。从某种意义上说，Mirror 将一个 web3 实体桥接进入 web2 的想法传播模式。这对 DAO 的成功至关重要，因为大多数的读者仍然在使用像 Twitter 这样的 web2 平台。今天 Mirror 为 web3 实体间的合作发布提供原生支持了。</p>
+<p><strong>创新，无需许可</strong></p>
+<p>因为 Mirror 上的发布是以一个开放的协议作为基础的，它的数据是存储在区块链上的。开发者不需要许可就可以扩展系统，在那些数据上构建。尽管距离创建世界级的文档工具、API 和开发者库方面还有很多工作要做，但已经有令人振奋的社区项目在 Mirror 上构建了，例如 Mirror Latest、RSS3 和 Yup。</p>
+<p><strong>没有打折扣的用户体验</strong></p>
+<p>加密货币为创作者和社区提供了强大的经济工具，但我们不认为这应该带来额外的复杂性或糟糕的用户体验。Mirror 客户端的架构提供了一个快速且美观的界面，它由 Next.js 提供静态渲染网站，还有一个高性能的 API。尽管在 Mirror 上发文和编辑的感觉是即时的，但数据是在后台异步提交到永久的去中心化存储器的。尽管我们认为 Mirror 客户端是最易于入门的，用户总是可以选择创建自己的前端或使用不同的客户端，因为在 Mirror 上的数据和身份确实是公开和中性的。</p>
+<p>在接下来的几周里，我们将继续开放经济上的板块，并对内容发布体验进行频繁更新，例如：</p>
+<ul>
+<li>
+<p><strong>编辑器更新：</strong> 我们的用户把 Mirror 称为 &ldquo;web3 版的 Notion&rdquo;，在上面你可以轻松把经济参与嵌入你的叙述中。我们计划提升编辑器的丰富度，并支持更多参与你的社区的方式。</p>
+</li>
+<li>
+<p><strong>ENS 名称+ slug 支持：</strong> 现在的 URL 很长，且包含难以阅读的哈希值。我们正在增加对使用你的 ENS 名称和自定义 entry slug 的支持，这样你的文章地址就会 像这样：https://mirror.xyz/vitalik.eth/on-quadratic-funding。</p>
+</li>
+<li>
+<p><strong>订阅：</strong> 订阅量是内容发布实体的筹码。非常多的社区成员希望可以有邮件发送和访问内容的代币门槛功能。我们目前还没有明确的计划，但这是我们会考虑的问题。</p>
+</li>
+<li>
+<p><strong>推送和发现：</strong> 给 Mirror 上的每个用户和项目一个美观的主页，并让其他人发现他们的作品。</p>
+</li>
+<li>
+<p><strong>自定义日期：</strong> 这会使得人们可以把其他平台的文章迁移到 Mirror， 同时保持它的发布时间记录。</p>
+</li>
+</ul>
+<p><strong>关于 Mirror 成员的说明</strong></p>
+<p>随着Mirror工具的开放，任何人都可以使用，这个里程碑是一个重新定义社区成员意义的机会。通过 $WRITE RACE 获得的会员资格正演变成代表未来在 Mirror 协议和 DAO 里的决策权和权益。而且，只有烧毁了 $WRITE 的 Mirror 成员才可以获得标志着会员地位的子域名。我们将在未来几个月内详细地阐述 Mirror 会员资格的完整含义。</p>
+<p>我们正在开启一个新的时代——互联网服务是社区所有的，用户可以控制他们的数据和身份。</p>
+<p><strong>Mirror 的 Web3工具套件对所有人开放</strong></p>
+<p><strong>连接你的钱包即可马上开始构建 web3 项目</strong></p>
+<p>今天，我们要对公众开放 Mirror 的经济和治理套件，包括Editions、分享收益、代币竞赛 (token race) 和 竞拍。</p>
+<p>在过去几个月，人们需要赚取和烧毁一个 $WRITE 代币，才能获得 Mirror 的 web3 创意套件的全部权限。今后，任何人都可以连接他们的钱包，讲述他们的故事，发起众筹，出售 NFT edition，与合作者分享收益，创建一个代币化的治理游戏，并竞拍 NFT。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1015/24_5tgghmurbb.png" alt="Mirror 向公众开放内容发布和 web3 工具套件"></p>
+<p>Mirror正在不断发展，以支持创作者、社区和 DAO 的整个生命周期。我们相信，做到这一点的最佳方法是开放所有的工具给任何人使用。</p>
+<p>今天，Mirror 的 web3 工具套件包括：</p>
+<ul>
+<li>
+<p><strong>内容发布：</strong> 开设一个博客，上面的文章是永久存储在去中心化的网络上，并由你的私钥授权。作者们通过 web3 商业模式将他们的内容货币化，在单篇博客文章上赚取价值数千美元的 ETH。</p>
+</li>
+<li>
+<p><strong>众筹：</strong> 通过向贡献者发行代币和 NFT 以换取 ETH 来启动社区资金库。我们已经帮助电影制片人、作家、音乐家、电子竞技队、资助型 DAO、媒体型 DAO 和 集体型 DAO 开启他们的社区。</p>
+</li>
+<li>
+<p><strong>NFT Editions</strong> ：通过以固定价格出售固定数量的 NFT，建立你的社区。我们的成员已经使用过 editions 来支持开源项目、为阿富汗的救济工作捐款、提供即将出版书籍的提前阅读，以及在现实世界铸造体验的门票出售。</p>
+</li>
+<li>
+<p><strong>分享收益：</strong> 与合作者和其他社区间分享收益。成员们已经使用 Splits 在项目的核心贡献者间、一篇论文的共同作者间、以及慈善捐款间分享 NFT 收益。</p>
+</li>
+<li>
+<p><strong>代币竞赛：</strong> 发起一个有趣且具社会性的社区治理提案。加入成为 DAO 成员、集体决定要收集哪些 NFT，以及在社区讨论中决定应该涵盖哪些主题。你的社区还可以用 NFT 来投票。</p>
+</li>
+<li>
+<p><strong>竞拍：</strong> 向你的社区中最大的哪些收藏家出售 1/1 的 NFT，发现你项目的超级粉丝。成员有试过对研究报告、资助公告和音乐进行竞拍。</p>
+</li>
+</ul>
+<p>在未来几个月里，我们将扩大工具包，以支持会员制的基元、强大的治理功能、自定义 NFT 投放、社区仪表盘、web3 个人资料页面和其他高影响力的领域。我们的使命是，通过让下一百名创作者加入启动 DAO、建立社区和用新式的 web3 商业模式谋生，让加密货币领域走向主流。</p>
+<p>来源 | dev.mirror.xyz</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/29733/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">MicroStrategy投资BTC已获得约35.4亿美元的收益</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/29722/">
+                <span class="next-text nav-default">Q3区块链游戏行业全景：玩赚强势驱动 链游热度持续</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

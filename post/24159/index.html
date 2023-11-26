@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          观点：解读抗 MEV 型 DEX 领域的创新实验 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="我想讨论一下在这个领域走在探索前线的 3 个创新性 DEX 聚合器，它们是 ArcherSwap、CowSwap 和 MistX——我称之为「抗 MEV 型 DEX」。" />
+<meta name="keywords" content="以太坊, MEV" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/24159/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="观点：解读抗 MEV 型 DEX 领域的创新实验" />
+<meta property="og:description" content="我想讨论一下在这个领域走在探索前线的 3 个创新性 DEX 聚合器，它们是 ArcherSwap、CowSwap 和 MistX——我称之为「抗 MEV 型 DEX」。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/24159/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-12T00:00:00+00:00" />
+
+<meta itemprop="name" content="观点：解读抗 MEV 型 DEX 领域的创新实验">
+<meta itemprop="description" content="我想讨论一下在这个领域走在探索前线的 3 个创新性 DEX 聚合器，它们是 ArcherSwap、CowSwap 和 MistX——我称之为「抗 MEV 型 DEX」。"><meta itemprop="datePublished" content="2021-06-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3324">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="观点：解读抗 MEV 型 DEX 领域的创新实验"/>
+<meta name="twitter:description" content="我想讨论一下在这个领域走在探索前线的 3 个创新性 DEX 聚合器，它们是 ArcherSwap、CowSwap 和 MistX——我称之为「抗 MEV 型 DEX」。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">观点：解读抗 MEV 型 DEX 领域的创新实验</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-12">
+      2021-06-12
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3324 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E8%A7%82%E7%82%B9/"> 观点 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>去年夏天 DeFi 进入爆发式增长时，我们见证了许多 DEX 聚合器，如 1inch、 Matcha、 ParaSwap 等，它们在我们的日常交易生活中发挥了重要作用，让我们在加密交易中获得更好的价格、支付更低的费用成本。</p>
+<p>顺便说一句，我一直有一个观点：<strong>工具类加密资产的价值天花板低于基础设施类加密资产，因为工具类加密资产的价值依赖于进化能力，来证明其不可替代性——而这很难做到。</strong> 此外，它们主要建立在基础设施类加密资产之上，例如交易聚合器之于 DEX、利率协议之于货币市场。</p>
+<p>寻找到可以成长为基础设施的产品真的很难，更容易失败，也正是因此，研究工具类加密资产的创新也有很多乐趣。</p>
+<p>一年过去了，DEX 聚合器发展到更强大和更全面的阶段，正考虑解决 《以太坊是黑暗森林》 一文中提到的 MEV （矿工可提取价值）、Gas 费用和滑点等问题。</p>
+<p>今天在这篇文章中，<strong>我想讨论一下在这个领域走在探索前线的 3 个创新性 DEX 聚合器，它们是 ArcherSwap、CowSwap 和 MistX——我称之为「抗 MEV 型 DEX」。</strong></p>
+<h2 id="本人亲测的交易案例">本人亲测的交易案例</h2>
+<h3 id="archerswap">ArcherSwap</h3>
+<p>正像 这篇博客 中提到的：「Archer Swap 为交易者在 Uniswap 和 SushiSwap 上的大额兑换提供绝对最优的价格，同时不必担心被抢先交易机器人截胡。」这些功能的实现依赖于 Archer Relayer。</p>
+<p>Archer Relayer 与矿工合作，为他们寻找最有价值的交易，并让他们将交易提交给以太坊主网。此外它可以使交易者受益，交易者只需要向矿工支付一些小费，Archer Relayer 将帮助交易者绕过公共内存池来结算交易。</p>
+<p>以这一交易为 例：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/iuwpahvdspe7mlu" alt="1"></p>
+<p>例子：ArcherSwap 上的一笔交易</p>
+<p>我花了 0.2 WETH 交换到 1.418 AAVE。流程是，首先将 0.2 WETH 转入 Archer Router 地址，然后将 0.0639 ETH 从这一地址转入 ArcherSwap TipJar 合约，支付给矿工（UU 矿池）作为小费。然后将 Archer Router 地址路由到 Uniswap。</p>
+<p>因此，我可以绕过公共矿池来完成这笔交易，Gas 费用为 0，但支付给矿工非常高的小费（自动设置）。</p>
+<p>在 ArcherSwap 交互界面上，我们也可以选择开启 / 关闭手动小费设置，并自行输入小费金额。但是如果小费不够，矿工就不会愿意打包你的交易。</p>
+<p>另外，ETH 必须先发送到 ArcherSwap 合约的设计，可能会导致一些中心化问题。交易能否成功很大程度上取决于合约的质量。我的朋友 Blanker 已经在他的 Twitter 中描述了他们合约中的一些错误，导致他们的合约中留下了一些无法转出的代币。</p>
+<h3 id="cowswap">CowSwap</h3>
+<p>CowSwap 由 Gnosis 团队开发的 Gnosis Protocol V2 (GPv2) 支持，该技术提供了抗 MEV 保护。GPv2 为「需求的巧合（CoWs）」进行了优化，这种巧合可以解释为：「一种经济现象，即两方各持有对方想要的物品，因此他们可以直接交换这些物品。」</p>
+<p>也就是说，CowSwap 首先在链下为交易者匹配订单，如果没有找到其他的需求交易，则将交易提交到链上给其他 DEX。</p>
+<p>CowSwap 引入了「Solver」概念来实现这个功能。鼓励 Solver 相互竞争，为交易者提供最佳的订单结算，以换取每批的奖励。用户提交交易订单带有一定程度的灵活性，因为 Solver 需要找到解决它们的最佳方式。</p>
+<p>由于交易可以在链下结算，CowSwap 不需要链上的外部流动性，从而降低了交易成本。 CowSwap 将使用统一的价格来结算同一批次的所有订单，称为批量拍卖机制。</p>
+<p>在确认掉期之前，你需要签署一条包含卖出 / 买入类型、数量、到期日等信息的消息，以允许 CowSwap 将您的订单移至链下。 然后「Solver」开始寻找是否有适合你的 CoWs。</p>
+<p>以这笔交易为 例</p>
+<p>你会发现交易记录在 Gnosis 协议浏览器中。 并且点击 Transaction Hash，其实可以看到 交易明细。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/i7veru710ys8eub" alt="2"></p>
+<p>例子：这笔交易中找到了 CoWs</p>
+<p>这笔交易找到了 CoWs，在链下进行了交易处理，而无需路由到 Uniswap。因此，在你的地址中找不到这一交易，实际是由他们的合约进行了这一交易的结算。</p>
+<p>另一个 例子，查看一下 交易明细。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/pg127qdlbt96rn6" alt="3"></p>
+<p>  例子：这一交易中没有找到 CoWs </p>
+<p>这一交易中没有找到 CoWs，Gnosis 从 0.2 WETH 中扣除了合约费用和交易费用 0.005 WETH，将该交易路由到 Uniswap V2 协议。</p>
+<h3 id="mistx">MistX</h3>
+<p>MistX 是 Alchemist 团队开发的一个项目，它的工作原理与 ArcherSwap 非常相似。此外，bloXroute 团队开发的一个名为 BackRunMe 的项目也以类似的方式运行。</p>
+<p>ArcherSwap 与 FlashBots 兼容，MistX 则直接使用 FlashBots，而 BackRunMe 由 bloXroute 支持。FlashBots、bloXroute 和其他类似工具都被用来作为搜索者向 ETH 主网提交交易。</p>
+<p>老实说，MistX 的 UI 看起来完全是 ArcherSwap 的复制。但是 MistX 交换路由的逻辑与 ArcherSwap 相比有较大提升。因为它跳过了必须将 ETH 发送到 ArcherSwap 合约的第一步，这可能会导致一些中心化问题。</p>
+<p>虽然 MistX 和 ArcherSwap 都可以自动调整给矿工的小费金额，但 MistX 表现更好，小费给的更智能。</p>
+<p>以下面这笔 交易 为例：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/4lca3ttjsl2wlkf" alt="4"></p>
+<p>例子：MistX 上的一笔交易 </p>
+<p>我花了 0.2 WETH 交换到 1.43 AAVE。过程是，0.00516 WETH 以小费支付到矿工地址（Ethermine），0.000271WETH 以小费支付到 MistX 地址。然后 MistX 路由器地址被路由到 Uniswap V2。因此，MistX 绕过以太坊的公共内存池，在 Flashbot 的私有内存池中以捆绑包的形式专门发布交易。</p>
+<p>仅供参考：Hasu 在 这篇 文章中对 MistX 上的交易进行了非常详细的分析。</p>
+<h2 id="三个项目的功能对比">三个项目的功能对比</h2>
+<p>我画了一张表格，将抗 MEV 型 DEX 的核心特征记录下来，让读者更好地了解它们的异同。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0612/ymgbcffj8j0ajwp" alt="5"></p>
+<p>功能对比 </p>
+<h2 id="费用--收入结构无需花费-gas">费用 / 收入结构：无需花费 Gas？</h2>
+<p>这些产品的费用结构相当模糊。也许这些项目不想予以清晰呈现，是因为交易者只关心总交易效率。</p>
+<p>但是当我尝试了每个产品后，我得出两个一般性结论和一些详细解释：</p>
+<ul>
+<li>
+<p>这些项目的收入主要来自交易资金或矿工小费。</p>
+</li>
+<li>
+<p>天下没有免费的午餐。 无需 Gas 费用是因为用其他方式支付了 Gas。</p>
+</li>
+</ul>
+<p>ArcherSwap 不收取 Gas 费，因为它包含在矿工小费中。矿工小费可以调整，但通常对小额交易不友好。ArcherSwap 能够从矿工小费中提取一些费用作为收入，但看起来他们目前还没有收取费用。交易者还需要支付 Uniswap/SushiSwap 交易费用。</p>
+<p>CowSwap 的费用 / 收入结构最为模糊，因为它可以链下结算。</p>
+<p>我和 CowSwap 团队在推特上有过交流，依据我们的交流，我得出如下结论：</p>
+<p><strong>1- 交易费：如果 CoW 出现，链下结算，因此无交易费；如果 CoW 没有出现，交易费根据其路由的去中心化交易所收取。交易费会算入显示在前端的估价中。</strong></p>
+<p><strong>2- Gas 费：Solver 会估算结算你链上交易的 gas 成本，向你收取其中的 40%，另外 60% 由 CowSwap 补贴。</strong></p>
+<p><strong>3- 协议费：目前不收取。</strong></p>
+<p>不过我认为，依赖链上 gas fee 的估算来决定用户该支付多少的做法不完全透明，也不够去中心化。我宁愿他们直接收取协议费。</p>
+<p>MistX 实际上与矿工分享了小费，这可以在交易细节中看到，无论交易金额大小，它都会收取总小费的 5% 左右。（上例中 0.0002717 ETH/0.005435 ETH=5%）。交易者还需要支付 Uniswap/SushiSwap 交易费用。</p>
+<h2 id="总结">总结</h2>
+<p>我们必须尊重这些项目的创新，让我们看到更多处理抗 MEV 问题的可能性，一些大额交易确实对这类项目有需求。</p>
+<p>但所有这些项目都处于早期阶段，需要升级的东西很多。有时我们普通交易者在这些聚合器中进行交易时需要注意「隐形消费」。老实说，当 Gas 价格较低时，大型 DEX 和低滑点设定的效率可能更高。</p>
+<p>还有，这些产品背后的 Flashbots、bloXroute 等工具，是帮助我们安全穿越以太坊黑暗森林的出色基础设施，在许多 DeFi 产品中有着广阔的应用场景。</p>
+<p>撰文：蔡彦（llamacorn），NGC Ventures 董事总经理</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/24180/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">杠杆持有11万枚比特币的公司 有没有被清算的风险？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/24152/">
+                <span class="next-text nav-default">技术周刊｜Kusama将于6月15日开启平行链插槽拍卖</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#本人亲测的交易案例">本人亲测的交易案例</a>
+      <ul>
+        <li><a href="#archerswap">ArcherSwap</a></li>
+        <li><a href="#cowswap">CowSwap</a></li>
+        <li><a href="#mistx">MistX</a></li>
+      </ul>
+    </li>
+    <li><a href="#三个项目的功能对比">三个项目的功能对比</a></li>
+    <li><a href="#费用--收入结构无需花费-gas">费用 / 收入结构：无需花费 Gas？</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

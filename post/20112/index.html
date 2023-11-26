@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          浅谈涉及暗网的比特币转账追踪 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文简要介绍了比特币的转账追踪，着重讨论了暗网中的比特币账户地址与实体关联的相关问题，这或许能为监管机构提供一点参考。" />
+<meta name="keywords" content="比特币, 暗网" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/20112/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="浅谈涉及暗网的比特币转账追踪" />
+<meta property="og:description" content="本文简要介绍了比特币的转账追踪，着重讨论了暗网中的比特币账户地址与实体关联的相关问题，这或许能为监管机构提供一点参考。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/20112/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-09T00:00:00+00:00" />
+
+<meta itemprop="name" content="浅谈涉及暗网的比特币转账追踪">
+<meta itemprop="description" content="本文简要介绍了比特币的转账追踪，着重讨论了暗网中的比特币账户地址与实体关联的相关问题，这或许能为监管机构提供一点参考。"><meta itemprop="datePublished" content="2021-04-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-09T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8722">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="浅谈涉及暗网的比特币转账追踪"/>
+<meta name="twitter:description" content="本文简要介绍了比特币的转账追踪，着重讨论了暗网中的比特币账户地址与实体关联的相关问题，这或许能为监管机构提供一点参考。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">浅谈涉及暗网的比特币转账追踪</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-04-09">
+      2021-04-09
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8722 字 -
+        预计阅读 18 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%AF%94%E7%89%B9%E5%B8%81/"> 比特币 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>在比特币的转账追踪中，不仅仅需要根据链上数据对转账链条进行审计，更重要的是将转账路线上的各地址与实体相关联。本文先介绍一些相关的基本概念，再对此问题开展进一步的讨论，并着重介绍了暗网中的比特币账户地址与实体关联的相关问题。</p>
+<p><strong>一、简述比特币的找零机制[1]-[3]</strong></p>
+<p>比特币系统是没有余额的概念的，它使用的是UTXO模型（Unspent Transaction Outputs，未使用过的交易输出），在交易过程中经常说的钱包余额，实际上是一个钱包地址的UTXO集合。</p>
+<p>当你“支付”比特币，并创建一次交易时，你必须将你支付地址上可供支付的金额（来自该地址之前交易的输出）作为新交易的输入。这样的地址可能不止一个，你的比特币钱包会暗自寻找你钱包中所有可供支付的输出金额（可能来自于不同地址），并把它们加在一起显示为钱包可用余额。</p>
+<p>比特币客户端一开始只产生100个该客户专属地址的私钥（称为私钥池），在创建找零地址时会优先使用这100个地址中的某一个，但当这些地址都被使用之后，100个以外新的找零地址就会被创建。</p>
+<p>比特币在交易时会把消费时所用的地址（消费地址）的余额置零。当需付的金额小于可用余额时，交易信息中必须告诉比特币网络零钱将被发送至的地址，即“找零地址”。找零地址可能是也可能不是原先消费时所用的地址。除此之外消费地址所留下的剩余款项为本次交易的手续费，手续费没有输出地址，它将奖励给将本次交易记账成功的矿工。</p>
+<p>以A将比特币转账给B为例，若我们自行选择支付后的找零地址，那么一次转账可出现以下两种情况：</p>
+<p>1、将原先发送的地址设置为找零地址</p>
+<p>将零钱返回原先的地址，这样可明显看出A为交易的支付方。若A的身份成为众所周知的对象时，B的身份也有可能被推断出来。</p>
+<p>因此，这样虽然方便了A的管理，但却可能会造成A的隐私性降低，一定程度上还可能会影响到B的匿名性。</p>
+<p>2、将找零地址更改为新生成的地址C</p>
+<p>如果没有进一步的信息，此时其他人所能知道的是，有一个交易拆分了地址A的余额至地址B和C。而地址B或C的主人可能是也可能不是A。由于新地址C的加入，让整个交易的真相变得更加扑朔离迷：哪一个地址代表着被支付方，哪一个地址代表着找回的零钱呢？</p>
+<p>当所有各方都将零钱发送至新创建的地址时，要想将个人身份与地址相联系就必须收集更多的信息，并耗费更多的资源。</p>
+<p><strong>二、比特币转账追踪的一些基本概念[4]-[5]</strong></p>
+<p><strong>（一）面向账户地址和面向资金流法</strong></p>
+<p>交易数据分析主要有面向账户地址和面向资金流两种方法。</p>
+<p>面向账户地址的方法针对单一账户地址的收支情况进行分析统计。单纯采取面向账户地址方法的研究方式并不可取，原因有以下三点：第一，账户地址之间的转账关系无法揭示账户地址在资金流中起到的作用；第二，比特币用户可能同时持有多个账户地址，如果账户地址之间不存在转账关系，那么这种研究方式就无法收到成效；第三，一个账户地址可能与数量众多的账户地址进行过交易，会导致统计展示效果不佳的问题。</p>
+<p>因此，应选择针对交易资金流进行挖掘，建立交易资金流追踪溯源路线，以追踪溯源路线上的资金流向为主，结合账户地址交易收支情况，对资金流路线上参与交易的账户地址进行分析研究。</p>
+<p><strong>（二）跳板地址和锚地址</strong></p>
+<p>文献[4]定义了跳板地址和锚地址。</p>
+<p>跳板地址指用户或组织使用的，有极少交易次数、用于资金转移的账户地址。跳板地址一般具备以下特征：</p>
+<p>1、账户地址留存余额等于0或约等于0；</p>
+<p>2、与资金流路线上其他账户地址相比活跃度低，参与交易数量少；</p>
+<p>3、账户地址的连入度与连出度，即收款次数和付款次数大致相等。</p>
+<p>而锚地址是指资金流路线中持有大部分分拆资金、节点度高、交易频率高的账户地址。</p>
+<p>由于锚地址的节点度和交易频率较高，代表着锚地址被使用的频率较高，故可将锚地址作为可疑账户地址聚类中具有代表性的“锚”进行实体关系关联、去匿名化等操作，通过确定锚地址所有者的性质，确定整个可疑账户地址聚类的性质。</p>
+<p>根据锚地址特征，使用PageRank算法用于可疑账户地址聚类中锚地址的提取。PageRank算法针对网页内容链接度计算一个网页被访问概率的做法，可用于解决类似的可疑账户地址聚类中高节点度锚地址的发现问题。</p>
+<p><strong>（三）资金分拆行为</strong></p>
+<p>资金分拆行为指将单笔大额资金分拆成多份小额资金，再汇聚至一个账户地址的交易模式，具体存在以下特征：</p>
+<p>1、资金流追踪溯源路线上存在多个出入度相等的跳板地址；</p>
+<p>2、在大额资金分拆的资金流追踪溯源路线中，分拆出的每笔资金金额相近，由跳板地址在一段时间内短暂持有；</p>
+<p>3、多笔分拆资金通过多输入交易转化为一笔资金，输出至同一个账户地址；</p>
+<p>4、多笔分拆资金的输出账户地址节点度高于资金流路线上其他账户地址。</p>
+<p><strong>（四）数字货币洗钱</strong></p>
+<p>数字货币可能是犯罪分子购买或偷盗而来的，洗钱者需要隐匿此行为留下的审计线索。以偷盗数字货币为例，犯罪分子会先将偷来的数字货币（如比特币）转到由洗钱者拥有的地址上，但这个地址仍然不够干净，因为它和受害者的地址有明显联系。</p>
+<p>洗钱者再使用混币服务将自己主要币种的交易地址和混币服务池中的临时地址做互换以对抗交易图谱分析，这样便可以在不暴露自己的前提下巧妙地消除钱包地址间的审计线索。</p>
+<p>这里的混币是指在一个交易中包含大量的输入和输出，将交易信息混乱打散，从而加大找出输入与输出之间关联性的难度。为了避免被跟踪监测，洗钱者一般都会采取混币操作。</p>
+<p>最后，将洗“白”的数字货币整合进主流的交易所、OTC等数字货币金融体系；或将其兑换为法币后再转至指定银行账户；或将其转入冷钱包中，这样就可以随时将冷钱包中的数字货币方便地发送给任何人了。</p>
+<p><strong>三、通过链上数据追踪比特币的转账</strong></p>
+<p>可采用Bitcoin Core客户端作为数据来源，由该客户端连接至其他运行该客户端的可信节点，进行交易数据的同步；也可通过各比特币区块浏览器的API来获取转账数据，然后对其进行分析。由于互联网上存在着大量的这类文章，本文就不再赘述了。</p>
+<p>需要注意的是，交易所的个人账户有一个比特币存款地址，当比特币存入该地址后再提币转出交易所时，一般不是从这个存款地址中转出，而是从交易所的其他陌生地址转出，且这个/这些陌生地址（可能是一个钱包的多个UTXO）还可能同时转出多个用户的比特币，这使得整个转账链条难以审计和追踪。</p>
+<p>在比特币的转账追踪中，更重要的是将转账路线上的各地址与实体相关联，下面将着重对此进行介绍。</p>
+<p><strong>四、账户地址与实体相关联</strong></p>
+<p><strong>（一）进行账户地址实体关联的一般方法[4]</strong></p>
+<p>在比特币交易数据分析领域，由于个人或组织可同时持有和使用多个账户地址，故使用实体概念替代了易与账户地址产生混淆的传统“用户”概念，来定义使用比特币的个人或组织。将账户地址与实体建立关联关系，是比特币账户地址去匿名化的核心工作。</p>
+<p>可疑账户地址聚类中的锚地址的活跃度高，因此在未知锚地址所属实体身份信息的前提下，可利用社会工程学、转账关系挖掘等方式，获取锚地址与实体的关联关系：</p>
+<p>1、社会工程学方式：比特币交易伴随着人的自然行为，如购买商品、请求捐赠等，因此实体与账户地址关系的非蓄意泄露是不可避免的。可由各比特币论坛中的讨论帖、论坛用户个性签名、社交网络等信息源，收集账户地址的信息标签。这也是各大数字货币交易所的标签服务的业务思路。</p>
+<p>2、转账关系挖掘方式：此方式源自传统经济犯罪案件的侦查思路。在账户地址A的转账记录中，如果出现与账户地址B的频繁交易来往，可认为两账户地址存在强关联性。此时账户地址A可继承账户地址B与实体的关联关系。</p>
+<p>因此，可针对社交网络和数字货币论坛、社区等进行相关的信息监控工作，定时收集处理潜在的账户地址标签，从而完成账户地址实体信息的关联，作为数字货币转账追踪的数据支撑。</p>
+<p>账户地址实体关联在“明网”中的讨论和实践较多，故本文将简要介绍在“暗网”中账户地址的实体关联问题。</p>
+<p><strong>（二）暗网中账户地址与实体相关联</strong></p>
+<p>1、暗网技术简介[6]-[8]</p>
+<p>目前最为流行的暗网技术分别为Tor、Freenet和I2P，暗网中的绝大部分内容都集中在这三类暗网中。</p>
+<p>（1）Tor</p>
+<p>Tor的全称是“The Second Generation Onion Router”，是目前应用最为广泛的匿名通信系统之一，以志愿者提供洋葱路由器作为中继节点的方式广泛地部署在万维网中。Tor是一种基于虚链路的低时延匿名通信系统，由第一代洋葱路由系统改进而来。第二代洋葱路由网络除了可以防窃听和网络流量分析等攻击，还具有前向安全、延迟小、多请求共享链路、分布式目录服务器等特点。</p>
+<p>洋葱网络由许多洋葱路由器组成，用户在接入洋葱网络前，需要在本地安装洋葱代理，代理会在洋葱网络中随机选择n个洋葱路由器作为转发节点，并建立通信路径传输数据。数据在被转发前会被中继节点以通信路径的反向顺序逐层加密n层，进入洋葱网络后，数据包经过每个中继节点时会被该节点解密，获得下一个中继节点的IP地址再继续向前传输，到达最后一跳节点时，数据包以明文形式传输至用户。对于用户来说，只知道数据是由Tor网络最后一跳节点传输而来，并不知道真正的数据发送者。</p>
+<p>与之相同，转发数据包从目的节点回传的时候，会按照顺序被层层加密，即每次传送到一个洋葱路由器时就被加密一次，直到最终到达用户的洋葱代理，洋葱代理会对该数据包进行层层解密，然后以明文形式发送给用户的应用程序。经过上述层层加解密的操作，每个洋葱路由器只知道通信路径中与自己相邻的前一跳和后一跳节点信息，因此服务的匿名性可以得到保证。</p>
+<p>（2）Freenet</p>
+<p>Freenet是一个分布式匿名信息存储和检索系统，作为最早被使用的主流暗网之一，Freenet相对于其他暗网拥有更快的速度和稳定性。</p>
+<p>Freenet是一个独立的网络，用户可以通过Freenet匿名的分享文件、浏览和发布“Freesite”（只能在Freenet网络中访问的网站）、在论坛中发帖，不用担心被审查。Freenet不是代理服务器，并不能像Tor一样允许匿名地访问网络。由于没有中央服务器，Freenet 的工作方式有了很大的不同：Freesite不支持Javascript，服务器端脚本等。</p>
+<p>Freenet 是去中心化的，很难被攻击，并且其节点之间的通信是加密的，因此要了解谁在请求某些信息以及请求的内容是什么，是极其困难的。因此Freenet可以在用户上传、请求和搜索资源时保障其匿名性。</p>
+<p>（3）I2P</p>
+<p>I2P是一种基于P2P的匿名通信系统，其上运行着多种的安全匿名程序，支持的应用包括匿名的Web浏览、博客、电子邮件、在线聊天、文件分享等。与其他匿名访问工具不同的是，I2P 通过不同的隧道将中间节点和目标节点分隔出来，即某个节点运行了I2P并不是一个秘密，秘密的是节点用户通过I2P匿名网络发送了什么消息，消息发送给了谁。</p>
+<p>I2P匿名的核心是大蒜路由（一种洋葱路由的变体），通过将多个消息层层加密、打包，经过传输隧道层层解密后到达目标节点。I2P与Tor 最主要的区别在于通信信道的设计不同：Tor使用的是单条可双向传输的通信信道进行传输，而 I2P使用多条单向传输的隧道，根据其作用是接受/发送消息分为输入/输出隧道。另外，Tor网络拥有自建的基于目录服务的中心节点，以此来管理整个Tor网络，而I2P采用完全分布式的架构。</p>
+<p>（4）上述三者的优势</p>
+<p>Tor的优势有：拥有大量用户群体，在学术界和黑客群体中被关注较多；解决了一些I2P尚未解决的网络规模问题；有可观的资金、有更多的开发者来支持技术的发展；采用高性能的节点构建链路，提供高带宽和低时延，访问速度快。</p>
+<p>Freenet的优势有：分布式的数据存储方式，允许用户在任何时候从原节点和多个备份节点取回数据（即使原节点离线）；合理、高效的数据分散机制。</p>
+<p>I2P的优势有：完全的分布式和自组织；使用多条单向链路传输数据；节点选择通过不断分析和比较节点的性能，而不是依据节点自称的性能；匿名网络较小，没有被大量封锁或拒绝服务；支持TCP和UDP传输。</p>
+<p>综上所述，Tor作为开发较早的匿名通信工具，它的知名度较高，使用群体较为广泛；Freenet合理地分配了数据仓库，并且支持离线下载；I2P使用的匿名技术较为复杂，匿名性较高。</p>
+<p>由于Tor的使用较为广泛，下面我们主要对其进行一些分析。</p>
+<p>2、Tor匿名网络的域名收集[9]</p>
+<p>由于暗网的隐蔽性、匿名性和监管难度大等特点，给网络的监控和分析带来了很大的困难。面临的主要困难大致有以下三个方面：第一，访问暗网的速度受到限制。由于访问暗网需要特殊软件Tor，而Tor的连接过程需要进行加密和解密，这导致访问暗网速度非常缓慢。第二，隐藏服务地址难以收集。为了躲避追踪，隐藏服务提供商通常会在短时间内维护其服务状态，导致隐藏服务地址经常改变，数量不确定且生命周期短暂；第三，暗网具有匿名性，传统网络调查技术无法追踪暗网中用户的IP地址与真实身份。</p>
+<p>隐藏服务地址非常重要，对地址的获取是成功访问暗网的第一步。为了使用程序来进行一些自动化分析，我们使用Onionscan来获取隐藏服务地址等信息。Onionscan由Sarah Jamie Lewis开发，是用go语言编写的，它是一个强大的开源暗网情报检测工具，可以帮助执法人员检测和追踪暗网，也可以帮助隐藏服务运营商发现安全问题。</p>
+<p>3、寻找托管隐藏服务的服务器IP地址[10]-[11]</p>
+<p>Tor匿名网络中的隐藏服务同样容易受到黑客攻击，配置不当的服务也会暴露服务器IP地址等信息。尽管找到托管隐藏服务的服务器IP地址与寻找比特币账户地址实体之间没有太大的关系，但多了解一些信息依然有利于比特币的转账追踪。</p>
+<p>（1）SSH协议与SSH密钥指纹</p>
+<p>SSH协议是Secure Shell的缩写，它是一种专门为远程登录会话和其他网络服务提供安全保障的协议。SSH协议可以有效地防止远程管理过程中的信息泄漏问题。在传统网络服务与用户的交互过程中，它们通常会在网络上以明文的形式传送口令和数据，而黑客就可以截获这些数据。再加上这些网络服务所使用的安全验证机制中也存在严重的问题，所以它们往往很容易受到中间人（MITM）攻击。通过使用SSH，你可以对所有需要传输的数据进行加密处理。这样一来，“中间人攻击”这种手段就不可能实现了，而且也能够有效地防止DNS欺骗和IP欺骗。</p>
+<p>为了有效地避免中间人攻击，管理员在通过SSH远程连接主机的时候，SSH会生成主机指纹并请求保存。服务器的管理员可以将SSH密钥指纹发送给客户端，来帮助客户端在首次登录时验证服务器的真实性。在首次连接成功之后，主机每次都会验证客户端发送的SSH密钥是否与服务器端保存的相匹配。</p>
+<p>简而言之，SSH密钥指纹就是一串能够代表服务器公共密钥的字符序列。你可以用它来识别服务器和设备身份的真实性。</p>
+<p>（2）寻找托管隐藏服务的服务器IP地址</p>
+<p>上文提到的OnionScan能够从启用了SSH协议的暗网隐藏服务中收集SSH密钥指纹，然后我们通过Shodan搜索引擎的API来搜索这些密钥指纹，看看在“明网”中是否有相匹配的SSH密钥指纹存在，即查看通过普通网络连接访问到的服务器（“明网”中的服务器）在与暗网隐藏服务交互时，是否使用的是同样的SSH密钥。</p>
+<p>如果确实存在这种情况，则说明某台服务器同时托管了“暗网网站”和“明网网站”，这样便可映射出暗网隐藏服务、明网中的网站以及各个IP地址之间的关系。而文献[12]提供了一些避免上述情况被探测到的技巧。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0409/16_u72dyr3ysw.png" alt="7OcXbjE1S0OTg4XGT9gFXqipzym1joNWheMZmK47.jpeg"></p>
+<p>由上图可知，运行程序后我们发现了一些提供隐藏服务的服务器IP地址，它们分别位于法国、德国和荷兰。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0409/16_o6i41vs9ko.png" alt="kpHhPElOheNVAHyo6hhWESy0cGJJ0wZ8Mh4AhKy9.jpeg"></p>
+<p>由上图可知，在某台服务器上提供了3个隐藏服务，对应了3个暗网网站。</p>
+<p>4、使用暗网爬虫收集情报[9]</p>
+<p>当使用Tor浏览器去访问网络时，用户可以使用Tor来避免网站跟踪他们的IP地址。在正常情况下，网络流量将通过至少3个不同的中继器：入口节点/路由器（Entry guard）、中继节点/路由器（Middle relay）、出口节点/路由器（Exit Node）。下图为访问某暗网论坛时，主机与该论坛之间的网络链路：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0409/16_p5un9m4wbo.png" alt="Js8OGUosUpWuB4eUQhXQ4bH8vaj6Rimac0nTlTI8.jpeg"></p>
+<p>可以发现，在连接的中继回路的第一个IP地址总是相同的。这是Tor的正常操作。连接的中继回路中的第一个节点通常被称为“入口节点/路由器”。它是一个快速且稳定的节点，并且将会在我们的中继回路中维持两到三个月，用来抵挡破解匿名攻击。其余的中继会在我们每次访问新网站时改变，这些中继会一起提供完整的隐私保护。</p>
+<p>在这里，我们使用爬虫来进行暗网的情报收集。在一般爬虫程序的开头加入几行代码，同时保持Tor浏览器的开启，根据上文所收集的Tor匿名网络的域名，就能自动抓取这些网站的数据了。</p>
+<p>下图显示了使用爬虫程序抓取某暗网论坛数据时主机对外所显示的IP地址。可见我们的公网IP已变为某个Tor匿名网络的出口节点的IP，其地址位于德国柏林：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0409/16_gz0nl0akoi.png" alt="ENKvGOqvUahOsZoETjQPa7SWRpYOf1BpuG5WnSqh.jpeg"></p>
+<p>针对不同的暗网数据类型，如暗网市场、暗网论坛，应设计不同的爬虫框架。</p>
+<p>在比特币转账追踪中，若某个比特币地址在暗网中（如论坛）也出现了，那么我们就可以根据它所在页面的信息来为它打上标签，并进一步根据相关信息尝试将该比特币地址与实体相关联，这就涉及到了暗网的情报分析。</p>
+<p>5、对所收集的暗网情报进行分析[9],[13]</p>
+<p>首先，对主体文本数据进行有效性判断。</p>
+<p>在获取的正文文本中，有些文本是无效的，会增加工作量并妨碍文本分类的速度，因此如下的文本应标记成无效隐藏服务：（1）网页正文文本内容过短，很难对网页隐藏服务进行区分类别，应视为无效文本；（2）隐藏服务内容是网页服务器的默认启动页，无法区分暗网隐藏服务内容的默认启动页也视为无效；（3）网页已经无法打开的更不可能作为文本分类的依据。</p>
+<p>其次，对数据内容进行处理。</p>
+<p>为了躲避执法人员的调查与追踪，暗网数据内容存在着单词拼写错误、标点符号杂乱、非英文的标准字符多以及大小写混乱等问题，这些问题严重影响分类准确率。因此需要对数据内容进行相应的处理。</p>
+<p>例如，使用Python的langdetect来识别正文语言，大多数隐藏的网页使用英语进行交流，有些则使用俄语或德语以及汉语，这里主要对英文网站进行分析；使用BeautifulSoup来删除复杂的非标准的特征字符；使用正则表达式来删除没有价值的简单标点符号；使用pyenchant来对英文单词进行拼写纠错；使用nltk库的SnowballStemmer提取英文词干；使用nltk库的WordNetLemmatizer进行英文词性还原；以及进行大小写转换，去掉像“in”、“an”等没有实际意义的助词、介词等，只保留对分类具有帮助的动词和名词。</p>
+<p>最后，采用常用的算法对数据内容进行分类。</p>
+<p>可使用KNN、支持向量机、随机森林或朴素贝叶斯等方法对数据内容进行分类。不过，现有分类方法的精确度与准确度都不高，还需要对分类方法进行进一步的研究与改进。因此，根据前期筛选和分类情况，有时依然需要人工的介入。</p>
+<p>在分析的过程中，同时需要对发布内容的用户进行记录，并按照上述分类情况更新其对应的标签等信息。</p>
+<p>这样，在比特币的转账追踪中便可获得更多的信息，将转账路线上的各比特币地址与实体进行更深入的关联，使得实体的画像更加清晰。</p>
+<p><strong>五、小结</strong></p>
+<p>本文简要介绍了比特币的转账追踪，着重讨论了暗网中的比特币账户地址与实体关联的相关问题，这或许能为监管机构提供一点参考。</p>
+<p>由于暗网环境的复杂性，为了避免计算机受到恶意攻击，不建议非专业人士在暗网中进行相关的操作。</p>
+<p>发布方：XBITRUST &amp; Paiclub Capital</p>
+<p>作者：苏文杰</p>
+<p><strong>参考文献</strong></p>
+<p>[1] 中科链安安全实验室. 比特币交易追踪溯源技术介绍. Freebuf. <a href="https://www.freebuf.com/articles/blockchain-articles/203127.html">https://www.freebuf.com/articles/blockchain-articles/203127.html</a></p>
+<p>[2] 猋焱. 详解比特币的找零机制. 百度经验. <a href="https://jingyan.baidu.com/article/19192ad84bcd54e53e570729.html">https://jingyan.baidu.com/article/19192ad84bcd54e53e570729.html</a></p>
+<p>[3] 程序新视界. 浅析比特币的找零机制. CSDN. <a href="https://blog.csdn.net/wo541075754/article/details/53560061">https://blog.csdn.net/wo541075754/article/details/53560061</a></p>
+<p>[4] 蔡霖翔. 区块链数字货币资金流追溯研究. 中国人民公安大学硕士学位论文, 2019. 20-43</p>
+<p>[5] 苏文杰. XBITRUST &amp; Paiclub Capital. 在暗夜中游荡——洗钱与数字货币. 金色财经. <a href="https://www.jinse.com/news/blockchain/697215.html">https://www.jinse.com/news/blockchain/697215.html</a></p>
+<p>[6] 杨溢. 基于Tor的暗网空间资源探测技术研究. 上海交通大学硕士学位论文, 2018. 5</p>
+<p>[7] 郭晗. 基于Freenet的暗网空间资源探测技术研究. 上海交通大学硕士学位论文, 2018. 8</p>
+<p>[8] 曹旭. 基于I2P的暗网空间资源探测技术研究. 上海交通大学硕士学位论文, 2018. 6</p>
+<p>[9] 杨丽娜. 暗网威胁情报分析与研究. 齐鲁工业大学硕士学位论文, 2020. 1-41</p>
+<p>[10] Sarah Jamie Lewis. OnionScan Report: This One Weird Trick Can Reveal Information from 25% of the Dark Web. mascherari.press. <a href="https://mascherari.press/onionscan-report-this-one-weird-trick-can-reveal-information-from-25-of-the-dark-web-2/">https://mascherari.press/onionscan-report-this-one-weird-trick-can-reveal-information-from-25-of-the-dark-web-2/</a></p>
+<p>[11] Justin. 如何在暗网中收集公开情报资源（下集）. WisFree译. 安全客. <a href="https://www.anquanke.com/post/id/84383">https://www.anquanke.com/post/id/84383</a></p>
+<p>[12] Sarah Jamie Lewis. Thwarting Identity Correlation Attacks. mascherari.press. <a href="https://mascherari.press/thwarting-identity-correlation-attacks/">https://mascherari.press/thwarting-identity-correlation-attacks/</a></p>
+<p>[13] 于焕焕. 基于机器学习的暗网威胁情报分析. 齐鲁工业大学硕士学位论文, 2020. 4-34</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/20147/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">批量交易所败北「投机大国」，韩国泡菜溢价信号显现</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/20086/">
+                <span class="next-text nav-default">区块链行业和加密资产领域风险投资Top 10</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

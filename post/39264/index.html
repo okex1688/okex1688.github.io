@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          区块链TPS的扩展性探索：为什么说BBP技术带来卓越的性能改变？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="与以太坊上的协议相比，带有预验证机制的隐形区块传播（BBP）可以在不影响安全性的情况下，将区块传播速度提高。" />
+<meta name="keywords" content="TPS, LayerZero, Layer 2, BBP" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39264/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="区块链TPS的扩展性探索：为什么说BBP技术带来卓越的性能改变？" />
+<meta property="og:description" content="与以太坊上的协议相比，带有预验证机制的隐形区块传播（BBP）可以在不影响安全性的情况下，将区块传播速度提高。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39264/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-22T00:00:00+00:00" />
+
+<meta itemprop="name" content="区块链TPS的扩展性探索：为什么说BBP技术带来卓越的性能改变？">
+<meta itemprop="description" content="与以太坊上的协议相比，带有预验证机制的隐形区块传播（BBP）可以在不影响安全性的情况下，将区块传播速度提高。"><meta itemprop="datePublished" content="2022-06-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2883">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="区块链TPS的扩展性探索：为什么说BBP技术带来卓越的性能改变？"/>
+<meta name="twitter:description" content="与以太坊上的协议相比，带有预验证机制的隐形区块传播（BBP）可以在不影响安全性的情况下，将区块传播速度提高。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">区块链TPS的扩展性探索：为什么说BBP技术带来卓越的性能改变？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-22">
+      2022-06-22
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2883 字 -
+        预计阅读 6 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>区块链在元宇宙和web3世界中是操作系统一样的基础设施，其性能决定了未来数字经济的发展历程。现阶段，区块链普遍存在着交易数据处理能力较弱的问题。这使得比特币和以太坊的性能无法与中心化系统相抗衡，从根本上制约了区块链上诸多应用的开展。因此增强区块链的可扩展性，也就是实现更高的交易数据处理速度（TPS）刻不容缓。</p>
+<h2 id="着眼0层的隐形区块传播bbp技术">着眼0层的隐形区块传播BBP技术</h2>
+<p>为了实现更高效的区块链交易数据处理，不断有人提出区块链扩展容量解决方案。目前的扩容方案百花齐放。</p>
+<p>业界一般将区块链系统的六个层次数据层、网络层、共识层、激励层、合约层和应用层划入三个Layer，由底到顶分别为Layer 0（L0）、Layer 1（L1 ）和Layer 2（L2）。Layer 0又称网络传输层，主要涉及区块链和传统网络之间的结合问题。当前主流扩容方案大多从L1层和L2层着眼，鲜有通过改进L0层（网络层）成功扩容的案例。</p>
+<p>Layer 1扩容方案又称链上扩容，指在区块链基层协议上实现的扩容解决方案。Layer 2扩容方案又称链下扩容，指不改变区块链底层协议和基础规则，通过状态通道、侧链等方案提高交易处理速度。但是这些扩容方案无一列外的都以牺牲安全性为代价，也就是区块链CAP理论的限制。</p>
+<p>而今年4月，来自深圳大学、香港中文大学的区块链研究团队提出了一种全新的L0层区块传播与验证技术，即隐形区块传播（Bodyless Block Propagation, BBP）技术，不需要传输区块且不损失安全性，突破了CAP理论。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0622/25_bywwdjwwou.png" alt="JVXVZhAudYWRjMHxLSZG6H0XLtH5ElCkLaA35nEH.png" title="6245612"></p>
+<p>（公开在康奈尔大学在线学术网站arXiv上的论文信息）</p>
+<p>该论文的作者们注意到，在当前的公链中，交易都存在重复传输和串行验证的问题。交易的重复传输是说，交易本身会单独在全网广播传输一次；交易被打包进区块后，又会随着区块一起在全网广播传输一次。交易的串行验证是说，交易打包进区块后并在全网广播，各验证节点收到该区块后再进行验证。由于这些问题的存在，区块包含交易越多，其在网络中传播和验证的速度就越慢，这就极大制约了区块链的TPS。BBP要实现的就是通过消除区块中的交易数量对于传播时间的制约以及减少区块验证时间来提高TPS。</p>
+<p>具体而言，BBP技术只在节点之间传输区块头，各节点对新区块的交易进行预测和提前打包、提前验证，这样区块在传播过程中对新区块的验证就只是将预先计算的全局状态和嵌入在区块头中的全局状态进行一个简单的比较确认即可。因此，不管每个区块中的交易量有多大，其传播时间和验证时间都只是一个区块头的时间（固定的），不再受到交易数量的制约，每个区块也能容纳下任意多数量的交易。同时，BBP技术利用了除出块节点外，其他节点也在进行出块计算的原理，将区块传播和区块验证从串行关系转向并行关系。于是，BBP从基础协议设计上来消除区块中交易数量对于传播时间的制约以及减少区块验证时间，彻彻底底地提高TPS，释放区块链的性能。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0622/25_oql5dadvqt.png" alt="fGdmVIZn1pYbnpoqJtjHb3y9DSQM2sYSMXzuvEjt.png" title="6245613"></p>
+<p>（传统区块链中交易传播、验证和BBP中的交易传播、验证方案比较）</p>
+<h2 id="bbp性能扩展突进但挑战犹存">BBP性能扩展突进但挑战犹存</h2>
+<p>不过，要实现上述技术目标也并不容易，要同时兼顾很多方面的考虑和解决若干技术挑战：</p>
+<p>1、如何确保在预打包一个区块体前，所有节点的预测都是大致相同的。由于去中心化的区块链节点之间没有假定信任（presumed-trust），因此原则上节点可以根据自己的喜好选择交易并将其封存在区块中。在以太坊中，节点通常会选择交易后将其排序并打包到区块中，使GAS收益达到最大化。为了使分散的去信任节点做出的决策达到一致，新方案必须要能起到激励节点的作用，通过遵循共同的规则预先打包几乎完全一样的区块体。  </p>
+<p>2、如果节点预测的交易略有不同，又该如何协调成一致。由于区块链是在去中心化的 P2P 网络上运行的，因此不同节点上的交易很可能是不同的。因此，即使所有节点都遵循相同的规则来选择交易并预先打包成区块体，这些区块体也可能是不同的。值得注意的是，在以太坊中，区块体中单个交易的差异或是打包顺序的差异都可能导致区块头中验证摘要信息的不同。当节点选择的交易以及排序略有不同时，一旦在区块到达时需要重新排序并重新验证所有的交易，BBP就会失效。因此，新方案要能在新区块到达之前就能使不同节点做出的交易预测达到一致。</p>
+<p>3、如何在预验证过程中处理一些尚未得到的信息。由于在新区块到达之前，用于验证区块的一些信息可能还无法知晓，因此区块就无法执行完整的预验证。例如，某些交易可能会涉及到与矿工相关的Coinbase地址，但在每个节点的预验证过程中却无法事先知道哪些矿工最后会成功。因此，为了能够保证整个流程的一致性并且使TPS最高效，BBP的预验证过程还必须要能解决此类交易中产生的难题。</p>
+<p>BBP技术的提出者对如何解决上述技术问题给出了当前的方案（具体可详见论文：https://arxiv.org/abs/2204.08769），并在大规模区块链网络上对BBP进行了实验。结果表明，BBP的区块全网传播时间比以太坊（在可以支持最大交易数量时）减少了 4 倍。</p>
+<p><strong>结语：</strong> 当前，区块链网络中的区块传播与验证时间制约了TPS性能。此外，由于许多提高TPS的解决方案是以降低安全性为代价，因此如何在TPS和安全性之间做出平衡也是急需解决的一大难题。与以太坊上的协议相比，带有预验证机制的隐形区块传播（BBP）可以在不影响安全性的情况下，将区块传播速度提高。更重要的是，BBP的区块传播时间几乎与区块中的交易数量无关。因此，TPS将不再受到区块传播的制约。实际上，在实施BBP时，相当于只插入了一个预打包的区块体模块和一个预验证模块作为对交易池的扩展，因此BBP与其它下层和上层的区块链技术是完全兼容的。最后，实验结果也证实了BBP在TPS的扩展性方面具有相当卓越的性能。因此，我们对于BBP在真实区块链系统中的表现抱有极大的期待。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39256/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">纳粹狗哨？种族歧视？BAYC该如何回应舆论风暴？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39265/">
+                <span class="next-text nav-default">去中心化NFT交易协议将击败OpenSea</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#着眼0层的隐形区块传播bbp技术">着眼0层的隐形区块传播BBP技术</a></li>
+    <li><a href="#bbp性能扩展突进但挑战犹存">BBP性能扩展突进但挑战犹存</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

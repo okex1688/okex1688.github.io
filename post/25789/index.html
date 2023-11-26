@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          DeFi与现实的融合 Maple、TrueFi、Goldfinch如何实现非足额抵押借贷 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在Compound与Aave中存款可获得对应的cToken和aToken，可直接用cToken和aToken抵押借贷。" />
+<meta name="keywords" content="DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25789/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="DeFi与现实的融合 Maple、TrueFi、Goldfinch如何实现非足额抵押借贷" />
+<meta property="og:description" content="在Compound与Aave中存款可获得对应的cToken和aToken，可直接用cToken和aToken抵押借贷。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25789/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-14T00:00:00+00:00" />
+
+<meta itemprop="name" content="DeFi与现实的融合 Maple、TrueFi、Goldfinch如何实现非足额抵押借贷">
+<meta itemprop="description" content="在Compound与Aave中存款可获得对应的cToken和aToken，可直接用cToken和aToken抵押借贷。"><meta itemprop="datePublished" content="2021-07-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4756">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DeFi与现实的融合 Maple、TrueFi、Goldfinch如何实现非足额抵押借贷"/>
+<meta name="twitter:description" content="在Compound与Aave中存款可获得对应的cToken和aToken，可直接用cToken和aToken抵押借贷。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">DeFi与现实的融合 Maple、TrueFi、Goldfinch如何实现非足额抵押借贷</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-14">
+      2021-07-14
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4756 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>因为区块链透明、公开、不可篡改等特点，智能合约能实现传统金融中很多难以实现的功能，Compound、Aave这一批最老的DeFi项目通过流动性挖矿完成了用户与资金的积累。截至7月13日，当前Aave中的总存款已经达到165亿美元，Compound中的总存款也有130亿美元。</p>
+<p>在Compound与Aave中存款可获得对应的cToken和aToken，可直接用cToken和aToken抵押借贷。对应到传统金融中，这就相当于用银行存单进行贷款，但传统金融中银行存单质押贷款的使用范围有限。</p>
+<p>区块链崇尚“代码即法律”，给我们带来便利性的同时，也牺牲了一些功能。在借贷中，超额抵押大大限制了资金效率，且面临着潜在的被清算风险。单纯的DeFi创新越来越困难，而与传统手段相结合的应用越来越多，其中就包括非足额抵押。下面将对一些具有代表性的非足额抵押协议进行介绍。</p>
+<p>Maple：非足额抵押借贷新秀，引入代理人机制</p>
+<p>Maple是一个去中心化的企业信用市场，通过提供抵押不足的贷款来让参与各方获利。流动性提供者可将本金存入Maple，并经由具有特定策略的资金池，借给需要资金的优质加密货币机构。而机构可以通过声誉获得抵押不足的贷款，不用担心爆仓风险，大大提高资金利用率。</p>
+<p>Maple的运作方式与Enzyme这样的基金管理协议类似，代理人（Pool Delegates）创建并积极管理资金池，决定将资金出借给哪一些机构；流动性提供者（Liquidity Providers）提供流动性，获得存款和治理代币奖励。此外还有质押者（Stakers）提供保险服务，借款人（Borrowers）在与代理人达成一致后可获得借款。Maple代币（MPL）在协议管理中发挥着重要作用，如参与治理、分享收益、提供保险、进行清算等，可通过治理决定哪一些资金池能够被列入白名单。为了理解他们各自在非足额抵押协议中起的作用，下面将详细介绍Maple中几类角色的分工。</p>
+<p><strong>代理人</strong></p>
+<p>Maple围绕代理人的策略创建流动池，并提供借贷服务。代理人一般是可靠的资产管理人，需要经过Maple治理的批准，在被列入白名单后才能上线对应的资金池。代理人发起并管理流动性池，各自制定自己的投资策略和承销流程，以确定信誉良好的借款人。</p>
+<p>代理人的主要工作包括：创建并管理流动池、评估新借款人、同意条款和资金池贷款、管理流动池中的余额、协助特别清算。代理人也因此获得收益，在赚取绩效费的同时增加他们的资产管理规模，并从设立费（1%）与持续费用中分享收益。</p>
+<p><strong>流动性提供者</strong></p>
+<p>流动性提供者（Liquidity Providers）向资金池提供流动性，以便有机会赚取固定利息以及MPL挖矿奖励。流动性提供者并不需要参与流动池的管理，代理人会公布相应资金池的策略，只需选择相应的资金池参与即可。</p>
+<p>与去中心化借贷不同，Maple提供的是固定时间和固定利率的贷款，因此流动性提供者的资金赎回也有限制。当前的质押期限为180天，这段时间被称为预冷却期，之后还有10天的冷却期，此后才允许赎回本金。流动性提供者的利息收入和MPL代币奖励可以随时提取，并进行复投。</p>
+<p><strong>借款人</strong></p>
+<p>Maple可以给借款人提供高效、透明的链上融资方案，借款人利用声誉进行抵押不足的借款，而不用担心清算和追加保证金的风险。借款人包括对冲基金、自营交易员、做市商、交易所、中心化贷款人、加密货币矿工等。</p>
+<p>与仅在链上进行的匿名借款不同，Maple中的借款不仅会对借款人进行尽职调查，还会签署相应的法律文书。借款人如果违约，遭受的不仅是声誉上的损失，还将承担法律责任。</p>
+<p><strong>质押者</strong></p>
+<p>MPL代币的持有者有机会向流动池质押代币提供违约保险，来获取流动池的利息收入。</p>
+<p>质押者可以将MPL和USDC按1:1的比例在Balancer上提供流动性，并获取Balancer的流动性代币（BPT），将BPT质押到对应的资金池中即可获得持续的利息收入。</p>
+<p>与Maple中稳定币的流动性提供者一样，质押到资金池中的BPT也不能随时取出，有180天的预冷静期和10天的冷静期。</p>
+<p>可以看出，Maple通过代理人创建一定的策略，并以去中心化的方式从流动性提供者处筹集资金，再以较低的抵押率出借给机构投资者，依赖于代理人的专业技能。与只靠智能合约运行的DeFi协议不同，Maple还需要和借款人签署法律协议，这也基本代表着非足额抵押的共性。</p>
+<p>当前Maple中只有两个资金池，分别由Orthogonal Trading和Maven 11管理。两个资金池中一共有5870万USDC的资金，Maven 11 - USDC 01池刚刚建立，Orthogonal Trading已经借出2500万USDC，稳定币存款收益率高达40%。两者的最低抵押品比例均为0，代理人通过如何管理杠杆、流动性风险、操作风险控制、管理层经验、资产负债表实力、财务表现等维度对借款人进行声誉评估。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0714/9_bl658tl9mz.png" alt="DeFi与现实的融合 Maple、TrueFi、Goldfinch如何实现非足额抵押借贷"></p>
+<p><strong>TrueFi：老牌稳定币团队，治理简单</strong></p>
+<p>TrueFi由TUSD团队（TrustToken）在2020年11月推出，同样采用的固定期限和固定利率贷款。TrueFi可以让借款人在无需抵押的情况下筹集资金，同时资金提供方也能获得较高的收益。TrueFi中各个角色的分工明确，出借人将稳定币等资产存入出借池中，获得收益；借款人发起借款申请，经过信用审批后取出借款；TRU质押者投票决定是否将资金出借给对应的借款申请人。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0714/9_4bvp9baup7.png" alt="DeFi与现实的融合 Maple、TrueFi、Goldfinch如何实现非足额抵押借贷"></p>
+<p>TrueFi V3制定了一套信用评分模型，可以给出一个客观的评分，满分为255分，基础分为0分。评分参考了公司背景、还款历史、运营和交易历史、管理的资产等指标。所有TRU代币的质押者均可参与决定是否通过某一笔借款，也无需其它角色来制定策略。投票通过需要支持率达到80%以上，且参与投票的TRU代币不低于1500万枚。</p>
+<p>TrueFi还有一套法律框架，在借款人无视声誉造成的影响下拒不还款时，还将面临法律诉讼。</p>
+<p>当前TrueFi中总共发起的借款大约为2.2亿美元，其中已经已经偿还1.19亿美元，平均借款金额约511万美元，平均借款周期为52天，总共创造了173万美元的利息收入。</p>
+<p>从借款页面可以看到，TrueFi的借款人包括Amber Group、Alameda Research、Poloniex等。其中，Alameda Research借款次数较多，共有8笔借款已经归还，另有一笔借款正在审查中。</p>
+<p><strong>Goldfinch：理想远大，风险控制难</strong></p>
+<p>从当前的情况来看，Maple和TrueFi都瞄准机构市场，机构的资产更加充裕、违约风险小、借款数量大，因此对这些借款机构进行尽职调查所带来的价值更高。</p>
+<p>而Goldfinch则将目光瞄向了发展中国家，想要解决长尾用户的借贷问题。银行不认识借款人，承销费用很高，可能因此而切断长尾用户。例如，一位波哥大的用户想要为手下步行送货的人购买摩托车提供资金，但没有资本，银行也不愿意为其提供贷款。</p>
+<p>Goldfinch通过分散承销流程，使用去中心化的方式允许所有人以当前银行无法提供的方式放贷。世界上有无数能够识别和评估新的信贷来源的人，如果可以消除银行的管理费用，并让全世界人民集体判断，那么这一方向将具有巨大的潜力。</p>
+<p>从Goldfinch获得贷款无需任何抵押，随着项目的发展，Goldfinch将建立去中心化网络，以允许所有人提出和评估贷款申请，支持越来越长尾的出借人，直至所有人都可以通过Goldfinch出借资金。</p>
+<p>可以看到，在决定对哪些人进行放贷上，Maple仅由代理人决定，TrueFi由TRU的持币者抵押投票决定，Goldfinch在当前并未打算发行治理代币的情况下，在让尽可能多的人参与到决策中来，具备信贷评估能力的人现在可以申请加入Goldfinch的支持者计划。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0714/9_1gsjje61rv.png" alt="DeFi与现实的融合 Maple、TrueFi、Goldfinch如何实现非足额抵押借贷"></p>
+<p>Goldfinch创始人来自Coinbase，也获得了Coinbase、a16z等的投资。截至7月1日，已向印度、印度尼西亚、墨西哥、尼日利亚和越南在内的国家提供了450万美元的贷款。</p>
+<p>yborrow.finance：依赖他人授权担保</p>
+<p>yborrow是由Aave发布的信用授权产品。在Aave中存款后会获得相应的aToken，aToken可用作抵押品借出另一种资产。但有些用户可能不会去借款，只是在其中存入资金获得利息。</p>
+<p>Aave创建的这一款信用授权产品允许存款人将自己没有使用的aToken授权给他人，让其他人在没有抵押品的情况下能够获得贷款，也可选择将信用额度授权给预定义函数的智能合约。</p>
+<p>在Aave的首笔信用授权贷款中，去中心化交易所DeversiFi获得了贷款。DeversiFi与Karen还通过OpenLaw签署了贷款协议，这一自动化法律协议将基于以太坊的智能合约嵌入到法律协议中，以减少法律文件带来的歧义。</p>
+<p><strong>Wing：个人额度低</strong></p>
+<p>Wing是一个以信用为基础的跨链DeFi平台，其中的Inclusive Pool可以进行信用贷款。用户需要先完成KYC验证，获得一个借款上限，基本限额在20-400美元之间，可以通过连接OScore来增加限额。</p>
+<p>当前Inclusive Pool中包含pDAI、pUSDC、pUSDT三种跨链资产，每一种资产的限额均为50万美元，但目前每种资产的总存款都只有5万美元，且无人从中借出资产。</p>
+<p><strong>非足额抵押借贷的优与劣</strong></p>
+<ol>
+<li>
+<p>非足额抵押借贷资本效率高，无爆仓风险，抵押率最低为0，而完全依赖链上去中心化运行的MakerDAO需要150%以上的抵押率，却还面临清算风险。</p>
+</li>
+<li>
+<p>链上资金筹集、贷款与链下尽职调查、协议签署相结合，若借款人违约，可以通过法律途径维权。</p>
+</li>
+<li>
+<p>可以将借贷与保险结合，如Maple中的质押者，这可能发展出一个新的方向。</p>
+</li>
+<li>
+<p>需要有相应的评估体系，协议可能自建评估体系，也可以将资金交由专人管理。</p>
+</li>
+<li>
+<p>出借人可能面临本金损失的风险，如借款人可能因经营不善而最终破产。</p>
+</li>
+<li>
+<p>对参与者有限制，并非所有人都能从中借款。</p>
+</li>
+<li>
+<p>存款人可能会丧失资金的流动性，不能随时赎回。</p>
+</li>
+</ol>
+<p><strong>小结</strong></p>
+<p>非足额抵押借贷是一种资金利用率更高的借贷方式，无清算风险，与超额抵押相比，更需要对风险进行控制，声誉越好的人越有可能借到资金。现有的非足额抵押借贷协议通常都会和借款人签署法律协议，在资产受到损失的情况下可通过法律维权，是DeFi与现实的融合。</p>
+<p>当前的非足额抵押的借款方主要还是面向机构投资者，他们借款数额大，管理者进行尽职调查所带来的收益更高，如Maple和TrueFi。瞄准下沉市场的Goldfinch愿景更加远大，但风险控制的难度更高。</p>
+<p>文 | 蒋海波 编辑 | Tong</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25840/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">DeFi借贷：必须知道的三大风险</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25817/">
+                <span class="next-text nav-default">DeFi与现实风控结合 非足额抵押协议受追捧</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

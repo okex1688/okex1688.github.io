@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Wei Dai：为什么隐私是公有链大规模采用的最后障碍之一 如何实现链上隐私？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="这篇文章阐述了公有链（又称去中心化账本、加密货币和Web3）背景下的隐私状况。" />
+<meta name="keywords" content="公链, 隐私" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/34361/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Wei Dai：为什么隐私是公有链大规模采用的最后障碍之一 如何实现链上隐私？" />
+<meta property="og:description" content="这篇文章阐述了公有链（又称去中心化账本、加密货币和Web3）背景下的隐私状况。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/34361/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-18T00:00:00+00:00" />
+
+<meta itemprop="name" content="Wei Dai：为什么隐私是公有链大规模采用的最后障碍之一 如何实现链上隐私？">
+<meta itemprop="description" content="这篇文章阐述了公有链（又称去中心化账本、加密货币和Web3）背景下的隐私状况。"><meta itemprop="datePublished" content="2022-02-18T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-18T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7989">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Wei Dai：为什么隐私是公有链大规模采用的最后障碍之一 如何实现链上隐私？"/>
+<meta name="twitter:description" content="这篇文章阐述了公有链（又称去中心化账本、加密货币和Web3）背景下的隐私状况。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Wei Dai：为什么隐私是公有链大规模采用的最后障碍之一 如何实现链上隐私？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-02-18">
+      2022-02-18
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7989 字 -
+        预计阅读 16 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><em>这篇文章阐述了公有链（又称去中心化账本、加密货币和Web3）背景下的隐私状况。第一部分的内容涉及到了为什么隐私是区块链广泛采用的关键障碍，以及隐私的不同方面是什么。第二部分内容调查了三种不同的隐私处理方法：通过零知识证明，仅以匿名为目标，以及通过一种称为MOCCA的新的抽象概念。</em></p>
+<h2 id="第一部分为什么以及什么是公有链的隐私属性">第一部分：为什么，以及什么是公有链的隐私属性？</h2>
+<p><strong>隐私——区块链大规模采用的最后障碍</strong></p>
+<p>由于现代金融系统运行良好，我们不必担心日常交易的安全或隐私问题。当你在超市购物，通过支票支付房租，或者在银行办理短期贷款时，你不必担心你的交易被非相关方进行公开审查。在现代银行和信用卡网络中，交易细节（大部分情况下）停留在相关的金融中介机构和当局内。（理想情况下）用户不必担心他们的敏感信息会被泄露给公众，而当局可以（大部分情况下）追踪非法活动。</p>
+<p>不幸的是，今天在流行的区块链上进行的交易就不是这样的。尽管区块链技术有望实现当前金融生态系统的去中心化和民主化，但大多数系统甚至未能满足我们所期望的最基本的隐私水平。你购买披萨的交易记录可能会被永久记录下来，你的所有交易都可以在Etherscan上被轻易的公开访问。虽然现在有一些以隐私为重点的项目，但由于在功能和易用性方面的不对等，使它们目前还没有得到充分利用。这标志着隐私是大规模采用区块链技术的关键障碍之一。</p>
+<p>公有链环境中的隐私属性不是一个全有或全无的功能。相反，它是一个复杂和多维的问题，在浏览时需要谨慎。让我们首先需要深入了解哪些类型的隐私属性与区块链应用有关。</p>
+<p><strong>隐私的特征轴</strong></p>
+<p><strong>轴A：匿名性和保密性。</strong> 广义上讲，金融交易的隐私有两种类型：<em>匿名性_和_保密性</em>。当一个非营利组织收到匿名捐款时，他们没有获得任何关于捐赠者的信息（匿名性），但他们知道收到的捐款金额。当你在药店结账时，你的购买记录是_保密的_——你身后的人不知道你可能开的是什么药，以及这些药的价格，但他们知道你在买药。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0218/20_c2fgvs8s9u.png" alt="Wei Dai：为什么隐私是公有链大规模采用的最后障碍之一 如何实现链上隐私？"></p>
+<p><strong>匿名性：</strong> 人们能知道我是交易的发起人么？<br>
+<strong>保密性：</strong> 人们能知道我交易的内容么？</p>
+<p><strong>轴B：链上应用与中介应用。</strong> 区块链和加密货币的基础理论之一是能够在_没有_可信的中介机构的情况下进行金融交易。跟随比特币的脚步，几乎所有的加密货币都允许没有中介的直接支付。以太坊等智能合约平台更进一步，它们使支付以外的金融交易可以在没有中介的情况下进行，如交易和借贷。在这篇文章中，我们用_链上_一词来描述功能和应用，如支付、交易、借贷，用户_可以_直接作为一个共识节点的运行者来使用。（提醒一下：用户通常不运行自己的共识节点。例如，Web3钱包的第三方RPC端点提供者在实践中应被视为中介机构）。链上应用的一些例子包括比特币和Zcash的支付，Uniswap的交易，以及Compound的借贷。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0218/20_64c8dzkt3y.png" alt="Wei Dai：为什么隐私是公有链大规模采用的最后障碍之一 如何实现链上隐私？"></p>
+<p>不幸的是，中介机构在生态系统中仍然是无处不在的。像Coinbase这样的交易所是他们所提供服务的中介——用户需要将资产存入这些交易所进行交易。甚至一些“去中心化”的协议也依赖于中心化运营的中介机构。例如，dYdX和DiversiFi都有中心化交易所运营商。这与Uniswap等链上对应协议不同，它们不需要与共识网络之外的服务器互动。与Coinbase相比，dYdX和DiversiFi的特点是消除了资金安全所需的信任。相反，用户需要信任密码学和代码，特别是STARKs，以保证其资金的安全。支付通道网络（如闪电网络）和roll-ups（如Arbitrum、Optimism、Aztec和Scroll）是另外两类中介应用。虽然目前大多数中介都是中心化的，但它们可以被设计成去中心化的，这对roll-ups应用来说是特别理想的，因为它们直接与侧链竞争。例如，Zk-roll-ups可以有一个具有某种形式的共识机制的roll-up sequencers网络，有效地使roll-up成为一条链。</p>
+<p>上述两种区块链应用的分类为我们提供了一个额外的轴来考虑隐私问题：链上隐私与来自中介机构的隐私。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0218/20_vr2l7wspft.png" alt="Wei Dai：为什么隐私是公有链大规模采用的最后障碍之一 如何实现链上隐私？"></p>
+<p><strong>链上隐私</strong>  <strong>:</strong>  我的信息是否被永久地记录在链上？</p>
+<p><strong>来自中介的隐私:</strong>  我的信息是否被披露给我委托代表我行事的实体（想想你的银行、Coinbase和1inch这样的交易聚合商）？</p>
+<p><strong>把这些轴放在一起。</strong> 通过结合两个隐私特征轴，我们得到了区块链应用的四个隐私概念：匿名性和保密性之间，以及链上与中介之间。下面是一个表格，列出了每个类别的一个隐私问题。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0218/20_mmp9djh3nj.png" alt="表中展示了每个隐私类别的问题"></p>
+<p>表中展示了每个隐私类别的问题</p>
+<p><strong>链上：</strong></p>
+<ul>
+<li>
+<p><strong>匿名性：</strong> 我在Uniswap上的交易是否可以与我在链上进行的其他活动联系起来，例如NFT交易？</p>
+</li>
+<li>
+<p><strong>保密性：</strong> 我在链上的交易总额是公开信息吗？</p>
+</li>
+</ul>
+<p><strong>来自中介机构：</strong></p>
+<ul>
+<li>
+<p><strong>匿名性：</strong> 交易所运营商（Coinbase、dYdX等）能否根据谁在交易而阻止交易？</p>
+</li>
+<li>
+<p><strong>保密性：</strong> 交易所运营商（Coinbase、dYdX等）可以看到并记录交易细节吗？</p>
+</li>
+</ul>
+<p>当然，对于上述任何一个问题，答案是你的信息被永久地记录在链上并传输给中介机构。有了这样的认识，我们现在就可以深入了解链上和中介区块链应用的隐私是什么。</p>
+<p>_免责声明1：_虽然大多数应用程序声称是去中心化的，但链上智能合约的开发和访问往往是非常中心化的。例如，一个编码错误往往可以导致数百万美元的漏洞，而去中心化交易所（DEX）交易往往要经过数量不断减少的矿池，这些矿池利用用户的交易为自己牟利（这被称为MEV，即矿工可提取价值）。我们在此不进一步阐述这些问题，因为我们的重点是隐私问题。</p>
+<p>_免责声明2：_我们不会深入触及隐私的一个重要维度是隐私、监管和合规之间的相互作用。金融中介机构在许多情况下都有法律义务，不仅要了解他们的客户（KYC），还要记录和报告某些金融交易。反洗钱（AML）是其中的主要目标之一。例如，加密货币的透明度最近帮助司法部追回了2016年Bitfinex黑客事件中被盗的价值36亿美元的资金。我们不会触及监管和合规问题，而是在本文中只从技术和理论层面关注隐私问题。</p>
+<h2 id="第二部分如何构建保护隐私的区块链应用">第二部分：如何构建保护隐私的区块链应用</h2>
+<p>让我们先来看看支付，因为它们大多是解决了隐私问题，而且不需要中介机构。Zcash和Monero是两个同时提供匿名性和保密性的大市值加密货币。它们分别依靠零知识证明和环形签名来提供不同程度的匿名性和保密性。我们还有其他建立隐私支付的方法，这些方法更有效，但需要互动，如Mimblewimble，或不需要不断扩大的UTXO集，如Quisquis和Anonymous Zether。</p>
+<p>然而，在支付之外，情况就不那么清楚了。例如，支付之外最成功的应用之一是在去中心化金融（DeFi）领域。但目前我们仍然不知道或没有广泛建立DeFi应用的隐私技术。</p>
+<p>为了全面的对这个问题进行推理，我们首先需要有一个良好的理论模型来谈论链上应用。一般的链上应用可以被建模为迭代计算，由一个过渡函数_f_指定，它为每个起始状态_st_和输入计算_（st′，输出）_← <em>f（st，输入）</em>。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0218/20_91su3i13cv.png" alt="Wei Dai：为什么隐私是公有链大规模采用的最后障碍之一 如何实现链上隐私？"></p>
+<p>用户可以在将交易提交给共识节点进行处理之前，将其构建为输入。为了在这个过程中保护用户的隐私，我们需要在不透露用户身份和输入的情况下进行计算。有三种方法：（1）将计算推到链下，（2）保持计算透明但隐藏发起人的身份，以及（3）对加密的输入进行同态计算，输出透明。</p>
+<p><strong>通过ZKP实现链外计算的隐私性</strong></p>
+<p>零知识证明（ZKP）是20世纪80年代末理论计算机科学和密码学领域的一个重要发展（本讲义第1章给出了一个很好的调查）。区块链环境中使用的特殊形式的零知识证明（ZKP）在学术上通常被称为NIZK，即非交互式零知识。当证明是简洁的，它们通常被称为SNARG（或SNARK），或简洁的非交互式论证（知识）。其他感兴趣的特征是_透明性_（STARKs）和_普遍性_，这使得证明系统可以用于没有可信设置的多个通路，或者使用一个普遍的可信设置。</p>
+<p>ZKP在公共区块链上的核心应用是执行可验证的、<strong>链下</strong> 计算的能力。通常情况下，验证者是终端用户（在ZK应用平台的情况下）或中介（ZK roll-up），而验证者是区块链，即验证者集。使用ZKP进行一般计算的一个直接方法是直接证明状态转换的正确性。详细说来，用户在链下证明，对于一个特定的链上状态_st_，用户有一个输入，当应用于检查状态_st_时，会产生一个具有某种输出的新状态_st′_，然后共识节点在覆盖旧状态之前验证提议的状态转换的有效性。这是Mina Snapps和Aleo等ZK应用平台采取的方法，这两个平台的灵感来自Zexe的学术工作。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0218/20_mpkr9l0kqb.png" alt="Wei Dai：为什么隐私是公有链大规模采用的最后障碍之一 如何实现链上隐私？"></p>
+<p>透明链上应用与上述架构的关键区别在于，前者天真地认为，一个更新（st′，输出，π）只对用户用于生成更新的应用状态_st_有效。如果多个用户在没有协调的情况下与同一个应用程序互动，这将导致 “竞赛条件（race condition）”。为了详细说明这个概念，假设有两个有效的事务针对同一个链上状态_st0_进行构建，分别将其更新为_st1_和_st2_。当第一个交易被记录在链上时，链上状态被更新为_st1_。因此，第二笔交易是使用新的状态_st1_，而不是_st0_来验证的，这很可能导致其无效。</p>
+<p>值得注意的是，人们可以通过将应用状态分割成独立的部分或完全消除共享链上状态来绕过这个竞赛条件。这使得这些ZK-应用平台非常适合不需要用户之间共享状态的特定应用（例如ZKPass），但对于大多数需要这些共享状态的链上应用，特别是像恒定功能做市商（CFMMs）这样的链上DeFi协议，就不是那么合适了。对于这些应用来说，由于竞赛条件的问题，在整个应用状态转换中使用ZKPs有点像 “狗熊掰棒子 ”的解决方案。然而，有一个解决方法，那就是增加一个中介或交易运营商，使应用状态对运营商来说是私有的，而不是在所有用户之间共享。不幸的是，如果不采用本文后面讨论的其他解决方案，就没有已知的办法从这些中介那里隐藏交易信息。总而言之，ZK应用平台上的交易所，如Aleo和Mina，实现了以下隐私特性。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0218/20_os8nidjj15.png" alt="表中详细列出了可在Mina和Aleo等ZK应用平台上建立的交易所的隐私特性"></p>
+<p>表中详细列出了可在Mina和Aleo等ZK应用平台上建立的交易所的隐私特性</p>
+<p><strong>链上</strong>  <strong>：</strong></p>
+<ul>
+<li>
+<p><strong>匿名性：</strong> 是</p>
+</li>
+<li>
+<p><strong>保密性：</strong> 是</p>
+</li>
+</ul>
+<p><strong>来自中介机构：</strong></p>
+<ul>
+<li>
+<p><strong>匿名性：</strong> 是</p>
+</li>
+<li>
+<p><strong>保密性：</strong> 否</p>
+</li>
+</ul>
+<h2 id="透明链上计算的匿名性">透明链上计算的匿名性</h2>
+<p>为链上应用添加保密性是很难的。如果我们不试图提供保密性，而只想提供匿名性呢？使用现有的工具已经可以做到这一点：使用CoinJoin和Tornado Cash等tumbler和混合器（mixer），人们可以资助新的伪匿名地址以获得匿名性。不幸的是，这些工具的选择性质意味着它们更多地被恶意用户而不是合法用户所利用。例如，CoinJoin被Colonial Pipeline勒索软件使用，而Tornado Cash经常被用来资助匿名地址，以帮助DeFi黑客。</p>
+<p>有两个项目试图在透明的智能合约平台上建立默认的匿名性。第一个是Aztec Connect，这是一个新兴的以太坊的“zkzk-rollup”，它在与支持的第一层应用程序进行交易时，提供交易匿名性。roll-up合约代表第二层用户（其身份在链上和roll-up供应商处都是隐藏的）与第一层DeFi协议互动，为这些第二层用户提供匿名性。</p>
+<p>第二个是FLAX的学术工作。它提出重新设计一个类似以太坊的智能合约平台，以支持终端用户的内置匿名性。在核心方面，FLAX提出了一个匿名版本的ERC20代币标准，允许_匿名_和_原子化_的代币使用授权。有趣的是，实现这些 “匿名ERC20”不需要新的加密技术。人们可以在代币合约内使用之前提到的任何隐私支付计划中的相同技术，如Zcash、Monero或Zether。</p>
+<p>下面是一个表格，概述了上面讨论的解决方案的隐私特征。我们在这里省略了中介一栏，因为没有涉及到中介，除了Aztec Connect，它有可能提供来自中介（roll-up供应商）的匿名性，这取决于去中心化的程度和这些供应商的确切行为。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0218/20_w48ztje5uh.png" alt="表中详细列出了tubler、混合器、Aztec Connect和FLAX的隐私特征"></p>
+<p>表中详细列出了tubler、混合器、Aztec Connect和FLAX的隐私特征</p>
+<p><strong>链上：</strong></p>
+<ul>
+<li>
+<p><strong>匿名性：</strong> 是（在tumblers和mixers的情况下是可选，在Aztec Connect和FLAX的情况下默认）。</p>
+</li>
+<li>
+<p><strong>保密性：</strong> 否</p>
+</li>
+</ul>
+<h3 id="通过mocca进行链上计算的隐私性">通过MOCCA进行链上计算的隐私性</h3>
+<p>如果我们可以加密链上的应用程序状态和用户输入，但仍然能够对其进行计算，甚至得出公共的未加密的输出信息，那样会发生什么？让我们把这样一种理想的功能称为神奇的链上保密计算设备（MOCCA）。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0218/20_4dtkr4dm7d.png" alt="Wei Dai：为什么隐私是公有链大规模采用的最后障碍之一 如何实现链上隐私？"></p>
+<p>直观地说，MOCCA为状态转换函数_f提_供了可能的最佳隐私。它们可以在链上计算，给定必要的加密输入，并且计算应该产生一个加密的和更新的状态，以及一些透明的输出值。具体来说，程序的状态和输入被加密到链上，这样一来，唯一可以进行的共识操作就是计算状态的转换，这意味着只有应用意图的信息被解密并变得透明。暂时假设我们有这样一个魔盒，那么就很容易复制链上应用程序的功能，同时提供隐私属性。因为应用设计者可以设计他们的应用，只发布相关的信息作为透明的输出，如现货价格或储备金额。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0218/20_hm7nnf29b6.png" alt="Wei Dai：为什么隐私是公有链大规模采用的最后障碍之一 如何实现链上隐私？"></p>
+<p>有两种方法来构建MOCCA，通过可信的硬件和通过密码学。在任何一种情况下，我们都可以希望实现没有中介的保护隐私的去中心化应用，并具有以下特性。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0218/20_zs7uhtwdsy.png" alt="表中详细列出了来自MOCCA的应用的隐私特性"></p>
+<p>表中详细列出了来自MOCCA的应用的隐私特性</p>
+<p><strong>链上：</strong></p>
+<ul>
+<li>
+<p><strong>匿名性：</strong> 是</p>
+</li>
+<li>
+<p><strong>保密性：</strong> 是（确切的隐私取决于应用的设计）</p>
+</li>
+</ul>
+<p><strong>来自可信硬件的MOCCA。</strong> 第一个解决方案是利用可信的执行环境，特别是Intel SGX。这是在Ekiden的学术工作中首次描述，也是Oasis和Secret Network采取的方法。已经有一些应用程序在这些平台上运行，如Secret Swap。然而，众所周知，Intel SGX是有缺陷的。</p>
+<p><strong>来自密码学的MOCCA。</strong> 我们可以只用密码学来构建图灵完备的MOCCA么？事实证明，答案是肯定的，而且密码学家已经发现了这个难题的所有个别部分。</p>
+<p>拼图的第一块是阈值密钥（threshold key）的生成和重新共享。我们知道如何在节点加入和离开时在动态共识集中生成和管理Shamir秘密共享（secret share），即使是大型共识集。这些允许“n”个共识节点中的任何数量的“t”采取行动，就像他们一起是公钥加密方案或签名方案的密钥持有人一样。这些进展被提出来，分别是为了防止前面的运行（例如Ferveo）和构建简洁的轻客户端（例如链-密钥密码学）。</p>
+<p><strong>加法（Additive）MOCCA和交易所。</strong> 拼图的第二块是阈值同态加密。著名的和已部署的公钥加密方案，如ElGamal和Paillier都是加法同态的，并支持Shamir秘密共享作为密钥。利用它们，我们可以建立支持加法的MOCCA。</p>
+<p>事实证明，我们已经可以使用只支持加法的MOCCA建立链上交易所（特别是恒定函数做市商，或CFMMs）。这是Penumbra的天才观察，它利用ElGamal加密的加法同态性来汇总交易，并通过阈值解密来揭示一批交易的净额。这以差异隐私的形式提供了交易的保密性。</p>
+<p><strong>来自阈值FHE的图灵完备的MOCCA。</strong> 为了实现更普遍的计算的MOCCA，我们当然需要完全同态加密（FHE）。自2009年Genry首次构建FHE以来，FHE方案的效率在过去十年中在理论上和实践上都有了稳步的提高，并有可能继续提高（例如，通过挖矿硬件加速）。然而，FHE本身并不是全部的解决方案，因为持有解密密钥仍然使任何一方能够获得在相应的加密密钥下曾经发布到链上的所有信息。这就是以前在区块链环境中部署FHE的努力，如NuCypher和smartFHE在提供保护隐私的链上应用方面的不足之处。</p>
+<p>幸运的是，我们知道如何构建具有阈值解密的FHE方案，其中解密密钥是Shamir秘密共享的。具体来说，每个共识节点可以独立地对_加密_的程序状态和输入进行计算，得出加密的新程序状态和加密的输出。最重要的是，为了释放透明的输出，共识节点可以通过一轮通信对加密的输出进行_阈值解密_。这里的阈值属性保证，只要在阈值以下的验证者是恶意的（在任何时代），那么只有预期的信息（即透明输出）被释放，而输入和程序状态永远不会被解密。</p>
+<p>结合上述内容，我们可以为一般的图灵完备的状态转换函数建立一个纯粹依靠密码学的MOCCA，当然这其中还需要修改许多技术细节。（据我所知，区块链环境中阈值FHE的这种确切用法还没有在其他地方说明。如果能指出我所遗漏的先前的工作，我将不胜感激）</p>
+<h2 id="总结">总结</h2>
+<p>隐私是公有链大规模采用的最后障碍之一。隐私可以分为两个特征轴：<em>匿名性与保密性</em>，<em>链上隐私与来自中介的隐私</em>。有三类方法来实现隐私。</p>
+<p>首先，使用零知识（ZK）证明（特别是STARKs或通用SNARKs），我们可以通过将计算转移到链下的中介机构来实现链上匿名和链上保密，从而牺牲来自中介机构的隐私（例如Mina Snapps和Aleo）。</p>
+<p>其次，在不依赖中介的情况下，我们可以将匿名性（不含保密性）添加到现有的链上应用生态系统中，而无需对应用设计进行重大改变（例如CoinJoin、Tornado Cash、Aztec Connect和FLAX）。</p>
+<p>最后，本文提出了一个被称为MOCCA的抽象概念，即神奇的链上保密计算设备，它可以对加密数据进行计算并发布透明的输出。MOCCA可以用来构建通用的链上匿名和保密应用，而不需要中介。MOCCA可以从可信的执行环境（Oasis和Secret Network）或依靠“区块链的阈值密码学”来构建。具体来说，阈值加法同态加密（ElGamal）可用于构建加法MOCCA，以实现具有匿名和保密性（不同的隐私属性）的链上交易所（Penumbra）；阈值完全同态加密（FHE）可用于构建通用的MOCCA，以实现任何保护隐私的链上应用（在这篇文章中提出）。</p>
+<p>ZK方法目前在业界受到的关注最多。然而，我认为，更多的注意力应该放在第二和第三种方法上。将易于使用的匿名性添加到当前的智能合约架构中，是隐私和功能之间的一个很好的中间点（应该有人建立FLAX！）。此外，我们应该促进对阈值FHE的长期研究和开发工作，以支持一般的隐私保护应用。这些方法也不是排他性的，我们可以有支持所有三种计算类型的应用平台：透明的链上、隐私的链下（ZKPs）和“不透明的”链上（MOCCAs）。如果你对上述任何一项感兴趣，请与我联系。</p>
+<h2 id="致谢">致谢</h2>
+<p>非常感谢Alex Evans和Guillermo Angeris提出的有益的编辑意见。感谢Adrian Brink创造了“不透明（opaque）”一词来描述加密数据的链上计算。</p>
+<p>原文链接：https://wdai.us/posts/navigating-privacy/</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/34330/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Web3防骗须知：Discord安全指南</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/34334/">
+                <span class="next-text nav-default">拜登预计将于下周发布关于加密货币和CBDC的行政命令</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#第一部分为什么以及什么是公有链的隐私属性">第一部分：为什么，以及什么是公有链的隐私属性？</a></li>
+    <li><a href="#第二部分如何构建保护隐私的区块链应用">第二部分：如何构建保护隐私的区块链应用</a></li>
+    <li><a href="#透明链上计算的匿名性">透明链上计算的匿名性</a>
+      <ul>
+        <li><a href="#通过mocca进行链上计算的隐私性">通过MOCCA进行链上计算的隐私性</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#致谢">致谢</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

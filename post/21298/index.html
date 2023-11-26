@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          DeFi新金融（二）：超额抵押与资产映射 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文分析了比特币核心价值锚、超额抵押和合成资产是如何支撑DeFi世界的" />
+<meta name="keywords" content="金融, DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/21298/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="DeFi新金融（二）：超额抵押与资产映射" />
+<meta property="og:description" content="本文分析了比特币核心价值锚、超额抵押和合成资产是如何支撑DeFi世界的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/21298/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-25T00:00:00+00:00" />
+
+<meta itemprop="name" content="DeFi新金融（二）：超额抵押与资产映射">
+<meta itemprop="description" content="本文分析了比特币核心价值锚、超额抵押和合成资产是如何支撑DeFi世界的"><meta itemprop="datePublished" content="2021-04-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-25T00:00:00+00:00" />
+<meta itemprop="wordCount" content="10975">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DeFi新金融（二）：超额抵押与资产映射"/>
+<meta name="twitter:description" content="本文分析了比特币核心价值锚、超额抵押和合成资产是如何支撑DeFi世界的"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">DeFi新金融（二）：超额抵押与资产映射</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-04-25">
+      2021-04-25
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 10975 字 -
+        预计阅读 22 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>摘要</strong></p>
+<p>**<strong>市场对</strong> <strong>DeFi</strong> <strong>生态这样的新生事物有诸多疑惑，尤其是完全去中心化的系统，该如何理解相关代币的价值支撑？</strong> <strong>DeFi</strong> <strong>与传统市场是怎样的消长变化？本文开创性地进行分析总结，指出：</strong> **</p>
+<p>1）比特币作为加密货币市场（尤其是DeFi）的核心价值锚，从而支撑起加密货币市场的价值（就像央行和政府支撑现实市场经济信用一样）；2）DeFi生态的核心机制是通过超额抵押，实现价值传递，将资产价值映射到新生的代币符号上；3）DeFi利用区块链的低成本、快清算、高效率，可以实现传统金融市场无法比拟的金融效率，更高的收益率和更快速的生态演进将对传统金融市场带来更多启发；4）合成资产（资产映射）作为沟通DeFi和传统市场的桥梁，将推进两者的融合。</p>
+<p>**<strong>比特币作为加密货币世界的绝对核心，未来的潜力不仅限于</strong> <strong>“数字黄金”，而是加密货币市场的价值之锚。</strong> ** 比特币以其总量恒定、便于交易携带、不可造假等特点，逐步为投资者所接受，演变为加密世界的“数字黄金”。包括近两年崛起的DeFi市场，无论是基于以太坊、币安智能链（BSC）或其他公链的DeFi项目，表面上其生态的信用基础来自于公链的基础货币ETH和BNB等，我们不否认Gas费对现金流的正向贡献，但穷根究底，DeFi市场的价值之锚就在于比特币。</p>
+<p>**<strong>DeFi</strong> <strong>市场中最常见的运作机制是通过超额抵押（或者是足额抵押）将资产价值传递到代币上。</strong> ** 这种模式从本质上来说就是通过智能合约抵押资产，从而使其平台具备实现信用传递的机制能力。这点与银行准备金类似，只不过现实社会的银行准备金率低于100%，并非超额抵押。本文分析了MakerDAO（美元到DAI代币）、RenBTC（BTC到RenBTC代币）和Mirror股票映射（特斯拉股票到mTSLA代币）等案例，论证了超额抵押作为信用传递机制，为各类DeFi平台新生代币赋予了原资产的价值。</p>
+<p>**<strong>合成资产将作为桥梁，加速推进</strong> <strong>De</strong> ** **<strong>F</strong> ** **<strong>i</strong> <strong>与传统金融市场的融合。</strong> ** 加密货币市场与现实世界的融合是行业发展的大趋势，目前DeFi市场还停留在虚拟世界之间的资产转换阶段，但最终一定会向传统金融、实体经济进行渗透。比特币作为加密货币市场的核心价值锚支撑着加密市场，而稳定币和其他资产映射（比如股票通证等合成资产），将作为连接现实世界与加密货币世界的桥梁。可以想象这样的场景，稳定币将成为现实社会货币体系中重要的一环，现实世界的利率将对加密货币市场产生影响，反过来，加密货币市场的资产将通过合成资产反作用于现实世界。未来原始资产和合成资产之间将存在着复杂的关系——即，合成资产可能对传统资本市场（甚至其他商品市场）存在反作用。</p>
+<p>**<strong>风险提示</strong> ** **<strong>：</strong> ** 区块链商业模式落地不及预期；监管政策的不确定性。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_5uo5bgue1k.png" alt="NiQvIcaKv2FAhsV9wYpv3SpN88miJlxyHVIhYm1E.png" title="5066456"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_5b19lw674l.png" alt="kBvoj2BGNHkm2176YPlkzCfsuXBB58b9cqQbput7.png" title="5066457"></p>
+<p><strong>一、核心观点</strong></p>
+<p><strong>1</strong> <strong>.1</strong>  <strong>本文核心观点和内容</strong></p>
+<p>市场对DeFi生态这样的新生事物有诸多疑惑，尤其是完全去中心化的系统，该如何理解相关代币的价值支撑？DeFi与传统市场是怎样的消长变化？本文分析了MakerDAO（美元到DAI代币）、RenBTC（BTC到RenBTC代币）和Mirror股票映射（特斯拉股票到mTSLA代币）等案例，开创性地进行分析总结：</p>
+<p>1）比特币作为加密货币市场（尤其是DeFi）的核心价值锚，支撑着加密货币市场的基础价值；</p>
+<p>2）DeFi生态的核心机制是通过超额抵押，实现价值传递，将资产价值映射到新生的代币符号上；</p>
+<p>3）DeFi利用区块链的低成本、快清算、高效率，可以实现超越传统金融市场的创新和效率，更高的收益率和更快速的生态演进将对传统金融市场带来更多启发；</p>
+<p>4）合成资产（资产映射）作为沟通DeFi和传统市场的桥梁，将推进两者的融合。</p>
+<p><strong>二、</strong> <strong>DeFi崛起的根基：比特币是核心价值锚、合成资产是链接传统世界的桥梁</strong></p>
+<p><strong>2.1</strong>  <strong>比特币是加密货币市场的核心价值锚</strong></p>
+<p>**<strong>比特币作为加密货币世界的绝对核心，未来的潜力不仅限于</strong> <strong>“数字黄金”，而是加密货币市场的价值之锚。</strong> ** 比特币以其总量恒定、便于交易携带、不可造假等特点，逐步为投资者所接受，演变为加密世界的“数字黄金”。包括近两年崛起的DeFi市场，无论是基于以太坊、币安智能链（BSC）或其他公链的DeFi项目，表面上其生态的信用基础来自于公链的基础货币ETH和BNB等，但穷根究底，DeFi市场的价值之锚就在于比特币。截至2021年4月17日，根据defillama数据显示，DeFi市场总锁仓资产达到1200亿美元，而1月初的数据是200亿美元，而2019年初的规模才不足2.8亿美元，成长速度迅猛。而根据coinmarketcap数据，同期加密货币市场的总规模2.2万亿美元。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_nfo0oii0w0.png" alt="DeFi新金融（二）：超额抵押与资产映射"></p>
+<p>在加密货币市场，以下三个事实是无法忽视的：</p>
+<p>1） 比特币市值2018年以来在加密货币总市值占比区间为50-70%；</p>
+<p>2） 比特币价格作为绝大部分币种的风向标；</p>
+<p>3） DeFi生态的信用基础本质上来自于比特币。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_ri2nd96fhs.png" alt="cIO7T8xhbbd2hPrgeJE5ZLnJ4VJWD8USCJma21cO.png" title="5066461"></p>
+<p>关于上述第三点，参与过DeFi挖矿的都知道，挖矿所得新矿币本质上在矿工眼中是缺乏价值支持的（矿币是这个“项目平台”的资产凭证，代表收益权或者治理权，这种对应机制类似股票）；甚至矿币往往被认为是某种程度上的“空气”，所以挖到矿币第一时间卖（swap）成USDT/ETH等有价值的币种是一部分矿工的需求。就算是所谓的长期主义者，在DeFi生态中，之所以相信凭空产生的矿币，是因为这个矿币能够兑换（swap）成USDT/ETH等更有价值的品种。后面会分析MakerDAO如何充当DeFi市场的央行，而其“货币”DAI的价值来源于ETH的超额抵押，因此，基于以太坊生态的DeFi市场价值之锚就是ETH，而更进一步深究，USDT/ETH的价值根源在比特币，如果比特币的价值得不到市场认可，则其他币种的价值会在这之前受到怀疑。所以，从这个意义上讲，比特币是DeFi市场之锚，甚至是整个加密货币市场的锚，并非言过其实。事实上，随着跨链技术的演进，未来将会更多地将比特币的价值跨接关联到其他链上（如现在的renBTC），成为直接的价值之锚。</p>
+<p>虚拟世界的信用传递机制无疑就是智能合约，尤其对于当下最为火爆的DeFi市场，其核心就是将BTC（继而是ETH、USDT等）的信用传递到各类矿币，否则这些币只是空气符号，毫无价值支撑。</p>
+<p><strong><strong>2.2</strong></strong>  **<strong>合成资产（资产映射）充当了</strong> <strong>De</strong> ** **<strong>F</strong> ** **<strong>i</strong> <strong>与传统金融融合的桥梁</strong> **</p>
+<p>加密货币市场与现实世界的融合是行业发展的大趋势，目前DeFi市场还停留在虚拟世界之间的资产转换阶段，但最终或将向传统金融、实体经济进行渗透。比特币作为加密货币市场的核心价值锚支撑这加密货币市场，而稳定币和其他资产映射（比如股票通证等合成资产），将作为连接现实世界与加密货币世界的桥梁。</p>
+<p>可以想象这样的场景，稳定币将成为现实社会货币体系中重要的一环，现实世界的利率将对加密货币市场产生影响，反过来，加密货币市场的资产将通过合成资产反作用现实世界金融资产。在未来，一只股票、基金、衍生品甚至其他资产，都有望以Token形式作为价值表达。投资者将不会局限于传统金融市场投资方式，一个资产，必然会有币的形式存在。就像美元在加密货币市场中以USDT、USDC等美元稳定币的形式存在一样，传统股票在加密货币市场可以映射为股票代币（股票通证）。当加密货币市场的资金流量与传统金融市场相当、甚至是超越传统市场，那么定价权或将发生转移。</p>
+<p><strong>可以这样说：</strong></p>
+<p>1） 传统世界，央行（政府）支撑了整个经济市场的信用，法币作为重要的通货工具和经济条件手段；、</p>
+<p>2） 加密货币世界，比特币支撑了各类加密货币的信用，即比特币是加密货币市场的核心价值根基；</p>
+<p>3） 合成资产，尤其是稳定币（稳定币也是一种合成资产）作为沟通两个平行世界的桥梁，未来将推动两者加速融合，互相影响，两个世界的关联桥梁就在于稳定币与合成资产；</p>
+<p>4） 未来的监管，不排除一些国家央行直接控制稳定币和合成资产的发行与市场利率。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_6pf9dngft7.png" alt="1RslKZfHfHh6ngZE4bjCTvc8kroo8uqZz3S0oIOa.png" title="5066464"></p>
+<p><strong>未来的监管，不排除一些国家央行直接控制稳定币和合成资产的发行与市场利率。</strong></p>
+<p><strong>三、</strong> <strong>DeFi超额抵押——对传统资产映射上链的启示</strong></p>
+<p>DeFi市场中最常见的运作方式是通过超额抵押（或者是足额抵押）将资产价值传递到代币上。这种模式从本质上来说就是通过系统平台抵押资产，从而使其平台具备实现信用传递的机制能力。这点与银行准备金类似，只不过现实社会的银行准备金率低于100%，并非超额抵押。</p>
+<p>穿透各类DeFi系统的本质，我们可以抽象如下的判断：</p>
+<p>1） MakerDAO这类在DeFi系统里的稳定币铸造系统本质上是超额抵押资产进行信用传递——将美元的价值传递到DAI等稳定币，USDT也是利用足额抵押的机制（通过Tether公司的“足额抵押”），只不过DAI是去中心化系统，而USDT是中心化系统；</p>
+<p>2） RenProtocol与WBTC这类跨链资产锚定系统本质上是通过超额抵押BTC资产，建立信用传递传递机制，将BTC的价值锚定到以太坊链上，即将BTC的价值传递到RenBTC和WBTC等以太坊链上的代币符号上，而Ren是去中心化系统，WBTC是中心化系统；</p>
+<p>3） 可以更抽象地说，UNISWAP这类基于AMM（自动化做市）机制的DEX系统，与传统交易所要全额托管用户资产的模式不同，DEX之所以能够为用户提供资产交易服务，其本质是通过足额的资产抵押（LP Token的锁仓资产）为用户交易提供足够的深度和流动性服务，换句话说，DEX系统的锁仓资产值就像准备金一样，为用户交易兑换提供的信用传递（所以用户不至于担心系统穿仓问题）。</p>
+<p><strong><strong>3.1</strong></strong>   **<strong>M</strong> ** **<strong>aker</strong> ** **<strong>DAO</strong> ** **<strong>超额抵押的启示：</strong> <strong>De</strong> ** **<strong>F</strong> ** **<strong>i</strong> <strong>市场的信用传递机器</strong> **</p>
+<p>MakerDao发起于2014年，是基于以太坊的去中心化自治组织（DAO ，Decentralized Autonomous Organization，去中心化的自治组织），要产品包括自动化抵押贷款平台，同时也是稳定币DAI供者，其目标是建立在以太坊上的去中心化的衍生金融体系——可以类比为以太坊金融生态的“央行”。DAI额抵押的稳定币项目。目前是以太坊上规模最大的DeFi应用。MakerDao采用了双币模式，其通过智能合约实现自动化抵押并生成稳定币Dai，而生态同时拥有另一种权益代币和管理型代币 MKR。通过双币机制，MakerDAO使得整个去中心化的质押贷款体系以及社区化自治组织得以成功运转。</p>
+<p>MakerDao并非横空出世，在此之前BTS（比特股）社区已经就相关超额抵押机制做过尝试，并开启了交易运转，MakerDao则是更进一步的升级迭代。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_7wb4v1ushg.png" alt="DeFi新金融（二）：超额抵押与资产映射"></p>
+<p>MakerDAO信用传递机制使得Dai稳定币与美元价值进行1：1挂钩。DAI虽然也存在价格波动，但在2017年发行之后，逐渐成长为最为用户接受、体量最大的去中心化稳定币。截止2021年4月1日，Dai代币的总发行量已超过30亿枚。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_wcrpchkfos.png" alt="3r6wl7kzkrEY2XdM3iUBSEXXYTHxNY99TqhhOhIV.png" title="5066467">和USDT、USDC等其它中心化稳定币通过等额法币储备来发行稳定币不同的是，Dai通过超额抵押加密货币资产而获得价值支持。前者每1美元的中心化稳定币都有1美元的法币储备作为支撑（由发行公司储备资产），而1美元Dai代币需要通过抵押超过1美元市值的加密货币资产而生成。<img src="https://img.bibiqing.com/news/2021/0425/8_c5micj87z9.png" alt="8TWihsFtixoizQT0TJXa2nf9h0aD5MbfFiWf6szM.png" title="5066468">Dai代币相比于中心化稳定币的另一大优势是高度的透明性和合约自动化，因为所有的抵押和稳定币生成都由智能合约实现，所有用户可以随时查看Dai的生成量以及背后抵押品的实时价值。如果抵押资产价格上升，Dai的价值担保将会变得更加充足。反之如果抵押资产价格下降到清算线时，合约会自动触发并启动清算流程进行担保品拍卖，用户可以参与清算抵押不足的资产，并且获得3%的无风险收益。并且Maker协议为了面对在资产价值波动较大的情况时可能出现的各种问题，为清算流程补充了反向担保品拍卖、Maker缓冲金、盈余拍卖等机制，进一步确保了Dai价值的偿付性。</p>
+<p><img src="https://img.jinse.com/5066432_image3.png" alt="DeFi新金融（二）：超额抵押与资产映射"></p>
+<p>Dai本身不是一个固定汇率的货币，因此无法实现与美元价值直接挂钩，所以Dai价值的稳定性是通过一套目标价格变化率反馈机制（TRFM）而实现的。机制中最重要的一环为Dai存款利率（DSR），所有的Dai持有者可以通过将Dai锁入DSR合约自动获取储蓄收益，并且该合约不对存款量以及存款时间设置任何要求，用户可以即存即取。当 Dai 的价格偏离目标价格时，MKR 持有者可以通过投票更改 DSR 来维护价格的稳定性。如当Dai价格超过1美元时，可以通过降低DSR以减少Dai需求量，进而降低Dai价值直到目标价格1美元。反之当Dai价格低于1美元时，即可通过增加DSR来增加Dai持有者收益以增加需求量，进而将 Dai 的市场价格增至 1 美元的目标价格。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_ca4s12dy9k.png" alt="DeFi新金融（二）：超额抵押与资产映射"></p>
+<p>RenVM 实现去中心托管的方式是将 BTC 存储在一个由去中心化节点（ Darknode）组成的网络上，会通过一种安全多方计算算法使用 ECDSA 私钥生成并签署数据，其中使用使用的 ECDSA 私钥是完全私密的，甚至对节点本身同样保密。一旦 RenVM 收到 BTC ，就会立即以 1:1 的比例铸造出代表 BTC 的 ERC20 代币，Darknode作为网络的支持者会获得每笔托管资金0.1%的手续费。同样的在用户赎回BTC的过程中，RenVM也会收取0.1%的手续费。这一激励机制也是支持REN Protocol运转并且保护网络的安全性的最重要一环，只要RenVm的去中心化网络还能运转，任何用户都可以随心所欲的使用他们的 BTC 来生成 renBTC或者销毁他们的 renBTC 来取回 BTC，并且自由的在以太坊上使用renBTC。运行Darknode的要求是抵押10万枚REN代币作为保证金，通过虚拟专用服务器（VPS）运行Darknode软件，才可以成为Darknode节点，获得RenVM收取的手续费分成。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_np0h9meqjr.png" alt="vI76fwUDi2x7o5NHwSzPFs0CSKd8XbAd4YNtPRdG.png" title="5066474"></p>
+<p>Ren系统并非将BTC所有权转移到以太坊链上，而是将BTC的使用权或者收益权等部分权益传递到以太坊链上，拥有renBTC并非等于拥有相应锁定的BTC所有权，而只是收益权、使用权等部分权利——使用权这部分类似于融券卖空，即借用锁定的BTC，生成renBTC进行卖空，这一点与Mirror系统的合成股票资产是一样的。</p>
+<p>需要注意的是：Ren系统利用协议来控制锁仓比特币的私钥的方式是有外部风险的，就像比特币节点并非绝对安全一样（只不过PoW机制使得攻击成本过高，得不偿失），Ren的Darknode节点同样面临外部攻击的可能。攻击可以是外部的黑客对节点软硬件的攻击，也可以是Ren系统的链上治理攻击——即单方面通过收集Ren筹码，进行恶意链上治理，比如恶意增发renBTC或者干脆恶意关闭节点硬件。换句话说，Darknode节点在物理上的安全壁垒如果不能像银行IDC数据中心的安全壁垒一样，那么为了获取或者毁灭节点内锁定的BTC而进行外部物理攻击的成本也许并不高，Darknode节点如果被单方面大量持有Ren代币的节点进行治理攻击，就像资本市场恶意收购一样，通过控制股权和投票权来恶意破坏公司正常经营。</p>
+<p>Darknode节点安全壁垒的本质是：攻击Darknode节点的成本就是节点的安全壁垒，而Darknode节点并没有像比特币PoW那样的去中心化共识，所以安全壁垒并不像比特币网络本身那样高。因此，Darknode节点需要抵押10万枚Ren代币可以理解为节点设立安全壁垒——而确保节点内比特币资产安全的最高价值基本上就取决于节点的安全壁垒。从这个意义上说，这与超额（足额）抵押系统的本质是一样，就是通过抵押资产来为信用传递机制建立安全壁垒（MakerDAO不能发行超过抵押资产值的DAI），确保机制在安全壁垒之下可靠运转。</p>
+<p>虽然表明上RenProtocol在铸造RenBTC的时候并未进行超额抵押——节点只是抵押了等额的BTC，而考虑到节点的运转需要相应数量的Ren代币来作为安全壁垒的一部分，因此从这个意义上讲，RenProtocol依然是一种超额抵押机制。</p>
+<p><img src="https://img.jinse.com/5066478_image3.png" alt="5Z5hsqqh9dgC8Cdf4fTC2Rz5kkl4hP4XLW8VXMJI.png" title="5066478"></p>
+<p>**<strong>3.3</strong> **  **<strong>Mirror</strong> ** **<strong>如何实现股票到代币的映射？</strong> **</p>
+<p>上线于2020年12月4日的Mirror Protocol是一个可追踪股票、期货、交易所交易基金和其他传统金融资产价格的合成资产（Mirrored Assets，MmAssets）铸造平台——甚至可以讲加密货币映射到平台铸造代币的代币，MIR（Mirror Token）为平台的治理代币。用户可以通过超额抵押UST（TerraUSD，锚定美元）或者已有的mAssets合成mAssets，不同的mAsset将会与不同的股票、期货、基金等资产的价格对应。赎回时，需要用户通过Mirror平台销毁铸造时产生的 mAssets，智能合约会收取一部分手续费并返还给用户铸造时抵押的 UST 或 mAssets。</p>
+<p>简单说，Mirror就是将传统金融市场（或者加密市场）的资产合成为Token的形式，映射到加密货币世界。比如，可以在Mirror平台上铸造特拉斯的股票通证——mTSLA，也可以讲ETH代币映射到Mirror平台——铸造mETH代币。实际上用户获得mAssets并不等同于购买了相对应的金融资产，所以也不存在股票分红等收益——但由于价格跟金融资产关联、且有抵押物支撑合成资产的价值，所以可以理解为合成资产可以获得对应金融资产的部分收益权，也可以将其类比为金融资产的期货（不可交割）。</p>
+<p>目前平台已经上线21种合成资产，包括特斯拉、苹果等股票和BNB、ETH等主流加密货币资产，其中交易量最大的是特拉斯股票代币，24小时交易量为325万美元，此币种交易池流动性超过7000万美元，Mirror平台总流动性已经超过10亿美元。</p>
+<p>    <img src="https://img.bibiqing.com/news/2021/0425/8_s6yso2l96m.png" alt="DeFi新金融（二）：超额抵押与资产映射"></p>
+<p>接下来的问题是：Mirror平台上的个股价格是如何锚定真实现货市场？这就需要用到预言机机制，通过程序算法来链接两个市场的价格。</p>
+<p>原始金融资产的市场中价格数据会通过Band Protocol的预言机反映在区块链上，并决定了用户通过超额抵押铸造mAssets资产时的价格，而不同的mAssets的抵押率也是不同的，一般为200%-350%。当mAssets被铸造出来后，其价格完全由链上的交易市场决定，所以mAssets的价格与原始资产之间会有价差存在。为了使两者价格产生关联，Mirror会通过铸币清算机制与套利者机制来保持mAsset价格与金融资产价格软挂钩。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_ul8o74hlag.png" alt="ooVlJVQV4rvSgP3r3xbddfndaxs72hwhYcCpczpg.png" title="5066484"></p>
+<p><strong>四、</strong> <strong>DeFi的低成本、快清算、高效率将对传统金融的启发</strong></p>
+<p><strong>4.1</strong>  <strong>De</strong> <strong>F</strong> **<strong>i VS.</strong> <strong>传统金融（以闪电贷为例）</strong> **</p>
+<p>Fabian Schär 发表在美联储圣路易斯联储官网的研究报告认为：“DeFi可以提高金融基础设施的效率、透明度和可及性。此外，该系统的可组合性允许任何人将多个应用程序和协议组合起来，从而创建新的、令人兴奋的服务。”其中主要包括以下特点：</p>
+<p>**<strong><img src="https://img.bibiqing.com/news/2021/0425/8_cc1ulq4hdf.png" alt="cmLuJvA2rv1qrLlSQLFEPniRtaTDi0sELPmJPO2P.png" title="5066490"></strong> **</p>
+<p>DeFi之所以能够拥有这些特点，部分原因是区块链底层代码的特性决定的，因此，DeFi相对于传统金融来说，具有低成本、快清算、高效率的特点。而最能提现这些特点的应用便是闪电贷，这是在传统金融世界完全不存在的事物。</p>
+<p>闪电贷（Flash Loan）是一个原生的DeFi新产物，可以理解为极速贷款。用户只需要在同一笔以太坊交易中完成借贷、套利、偿还并支付一笔手续费，那么借款人无需抵押任何资产即可实现借贷，从而极大提高了资金利用率。</p>
+<p><strong>闪电贷如果用传统金融的案例可以这样比喻：</strong></p>
+<p><strong>你向银行申请一笔大额的信用贷款，一般情况下银行的无抵押贷款是无法给很高的授信的，你向银行这样解释：我拿这一笔钱去股票或者期货市场做一把套利（不考虑T+1），如果赚到钱，当天就连本带息还给银行；如果我套利失败、亏损了，那么我会要求交易所将我的套利交易作废、账本回滚，然后银行也就当没有借这笔钱，银行、借款人和交易所之间就等于没有发生过任何交易。</strong></p>
+<p>**<strong>上述情形在传统资本市场当然是无法想象的，但是在</strong> <strong>De</strong> ** **<strong>F</strong> ** **<strong>i</strong> <strong>世界里，这完全是可实现，可谓巨大的金融创新，充分体现了</strong> <strong>De</strong> ** **<strong>F</strong> ** **<strong>i</strong> <strong>（区块链）在低成本、快清算、高效率特点，这对传统金融来说，可谓是降维打击。</strong> **</p>
+<p>具体来说，在一个以太坊交易中，不仅仅可以执行代币转账，还可以进行 50 个转账操作或其他合约操作，通过调用智能合约中的功能函数，执行多项复杂功能——也就是说，一笔基于以太坊的交易可以融合一系列复杂交易：将借款、套利、偿还等一系列交易操作融合到一起。Flash Loan 中所有操作都在一个区块时间中完成，按照现在的以太坊的出块速度，也就是 13 秒——核心并非是13秒，而是这一系列的交易要能够最终盈利并偿还，如果没有做到这一点，这笔交易就不会被打包写入区块，相当于借款人借款、套利（失败）这些操作并不是有效交易，只是临时状态。因此，用户必须通过编程将需要执行的所有步骤形成一项智能合约交易并完成借贷、使用和偿还的三个步骤。但是目前用户也可以通过如FURUCOMBO这一类第三方项目，对闪电贷完成更简易的插件性编程，无需实际编写代码完成智能合约的设计，最终实现闪电贷需要的全套操作。</p>
+<p>具体的套利流程如下图所示（利用FURUCOMBO平台），目前Kyberswap平台上的价格情况1 DAI = 0.9927 sUSD，而Uniswap上 1 DAI = 0.8057 sUSD，用户发现这两个平台的DAI-sUSD交易对价格存在较大的套利空间，即可通过FURUCOMBO的界面，设计套利过程。包括：1、从AAVE借贷平台的闪电贷功能借出100 DAI；2、通过Uniswap将100 DAI兑换成约122 个sUSD代币；3、通过Kyberswap平台将sUSD代币兑换成约122 DAI代币；4、偿还从AAVE借出的100 DAI代币以及手续费0.09 DAI；5、整个利用闪电贷的套利流程在一个以太坊交易内完成，并获利约22 DAI。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_ptecgaib7o.png" alt="ft3hRcxC4vFXraE1EYNPLbKGDyreQz2s0AAmUL7a.png" title="5066503"></p>
+<p>如果在这一笔以太坊交易内借贷的资金没有得到偿还，那么整笔借贷交易不会被打包进入区块中，相当于借贷并没有实际发生，所以借贷方的资金不会受任何影响——中间的借贷和套利过程只是临时状态，并未被矿工打包确认。基于闪电贷的特性和时效要求，目前其最广泛的应用是套利交易。套利者无需自身使用资产进行套利操作，只需要通过闪电贷获得所需的资金量完成套利交易，并及时偿还借贷的资金。这极大的降低了套利者的准入门槛，因为理论上任何一个人都可以成为套利者，并且拥有没有上限的套利资金进行操作。</p>
+<p><strong>上述案例在传统金融视角下几乎是不可能的，不同平台（比如银行、证交所）之间的清算通道并不能串行打通，是独立的，而且传统金融机构账户的交易确认和清算机制跟区块链记账完全不同，很难存在闪电贷这类临时状态的交易情况发生。</strong></p>
+<p>**<strong>因此，</strong> <strong>De</strong> ** **<strong>Fi</strong> <strong>并非简单的将传统金融体系</strong> <strong>“</strong> <strong>区块链化，其生态的工作模型和经济模式存在根</strong> ** **<strong>本</strong> ** **<strong>的不同。而低成本、快清算和高效率对用户的吸引力是非常强的</strong> ** **<strong>。目前</strong> <strong>De</strong> ** **<strong>F</strong> ** **<strong>i</strong> <strong>生态处于快速发展阶段，存在着严重的供给不足，加之项目问世会对用户补贴，所以且目前来看，</strong> <strong>De</strong> ** **<strong>F</strong> ** **<strong>i</strong> <strong>生态系统存在传统金融无法理解的极高收益率。</strong> **</p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_apq87y38ru.png" alt="su9mnRjoLbqXBjFvSmEHhiJgLQgHxqLUkEnSkYHs.png" title="5066504"></p>
+<p>**<strong>4.2</strong> ** **<strong>合成资产对传统资本市场的反作用</strong> **</p>
+<p>**<strong>从本质上来说，在某条链上，凡是对应或映射到链外资产的代币，都属于合成资产</strong> <strong>/</strong> <strong>资产映射的范围。这些资产可以是传统金融资产、其他资产甚至是比特币等其他链上的加密货币：</strong> **</p>
+<p><strong>1） 映射到比特币的典型是以太坊链上的RenBTC、mirror系统的mBTC等；</strong></p>
+<p><strong>2） 映射到美元的是USDT、DAI等各类稳定币；</strong></p>
+<p><strong>3） 映射到股票的是mTSLA（mirror平台）等；</strong></p>
+<p><strong>4） 映射到各类艺术品、收藏品的是相应的NFT；</strong></p>
+<p><strong>5） 可以简单这样类比，CME的比特币期货相当于比特币是资产映射（映射到传统资本市场），因为存在交割机制，所以比特币期货的价格跟比特币原始资产价格之间也存在强制关联。</strong></p>
+<p>**<strong>因此，与原始资产和合成资产之间就存在着复杂的关系</strong> <strong>——原始资产和合成资产所在的市场就会相关影响。也就是说，合成资产可能对传统资本市场（甚至其他商品市场）存在这反作用，包括：</strong> **</p>
+<p><strong>1） 当合成资产的交易量足够大，对原始资产市场的价格就会有反作用，甚至合成资产会起主导作用，这从CME（芝加哥交易所）和加密货币交易所之间的价格影响可见一斑；</strong></p>
+<p><strong>2） 加密货币市场的合成资产是7*24小时全天候交易，因此，对于股票等原始资产收市时间，合成资产的价格变化可能反过来对原始资产市场价格产生影响；</strong></p>
+<p><strong>3） 对于一些利好消息的兑现，加密货币合成资产可能在原始资产市场未开市期间就兑现了价格利好，存在着一定的套利空间。</strong></p>
+<p>**<strong>这里举一个例子，</strong> <strong>C</strong> ** **<strong>ME</strong> ** **<strong>的比特币期货相当于是将加密货币市场的比特币映射到传统金融市场，加密货币市场经常会出现的情况是</strong> <strong>C</strong> ** **<strong>ME</strong> ** **<strong>收盘（尤其是周末）期间，加密货币市场交易所（如</strong> ** **<strong>C</strong> ** **<strong>oinbase</strong> <strong>、币安等）的交易会价格会出现与</strong> <strong>C</strong> ** **<strong>ME</strong> ** **<strong>产生缺口（注意，加密货币交易所由于是连续交易，没有缺口），这种缺口在</strong> <strong>C</strong> ** **<strong>ME</strong> ** **<strong>开盘后经常回补缺口。这就是一个映射资产对原始资产价格产生反作用的案例。我们相信，随着加密货币市场映射资产交易的活跃，其会对原始市场资产价格产生反作用。</strong> **</p>
+<p><img src="https://img.bibiqing.com/news/2021/0425/8_gbwqb9p5vs.png" alt="DeFi新金融（二）：超额抵押与资产映射"></p>
+<p>面对更为庞大的传统市场，DeFi不仅是争夺传统市场的资金流量，而是进一步与传统市场加速融合，而沟通两者的桥梁就是合成资产。未来，会有越来越多的传统资产以加密货币的形式存在，而两者之间的互信作用将影响着市场价格。</p>
+<p>**<strong>目前看来，</strong> <strong>DeFi</strong> <strong>的资金量相比传统金融市场属九牛一毛，但迅猛发展的势头及快速的升级迭代值得重视，机会永远与风险相伴，美联储近期亦就</strong> <strong>DeFi</strong> <strong>的发展在官网发布相关研究文章（详见国盛区块链研究院译作《美联储全景解读</strong>  <strong>DeFi</strong>  <strong>的颠覆力量》），就其中的模块构建、机会与风险进行了阐述。我们相信，随着</strong> <strong>De</strong> ** **<strong>F</strong> ** **<strong>i</strong> <strong>的合规化，政府监管、货币政策和经济调控都将与加密市场越发息息相关，直至加密货币和传统市场逐步融合。</strong> **</p>
+<p><strong>风险提示</strong></p>
+<p><strong>区块链商业模式落地不及预期：</strong> 基于区块链的DeFi是全新是市场组织模式，相关项目处于发展初期，存在商业模式落地不及预期的风险。</p>
+<p><strong>监管政策的不确定性：</strong> 加密货币和DeFi在实际运行过程中涉及到多项金融监管政策，目前各国监管政策还处于研究和探索阶段，并没有一个成熟的监管模式，所以行业面临监管政策不确定性的风险。</p>
+<p>本文节选自国盛证券研究所已于2021年4月23日发布的报告《国盛区块链|DeFi新金融（二）：超额抵押与资产映射》，具体内容请详见相关报告。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/21307/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">400亿元“币圈第一大案”背后，虚拟货币成跨境洗钱“新通道”</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/21292/">
+                <span class="next-text nav-default">Gavin Wood发布平行链上线清单 拍卖如何兼顾收益与流动性？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          从第一原理理解Rollup经济学 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Rollup 是一种令人惊叹的原语。Rollup 将成为以太坊未来扩容的首选方案 ，并为以太坊上的操作提供广阔的设计空间。" />
+<meta name="keywords" content="Rollup" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/35075/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="从第一原理理解Rollup经济学" />
+<meta property="og:description" content="Rollup 是一种令人惊叹的原语。Rollup 将成为以太坊未来扩容的首选方案 ，并为以太坊上的操作提供广阔的设计空间。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/35075/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-07T00:00:00+00:00" />
+
+<meta itemprop="name" content="从第一原理理解Rollup经济学">
+<meta itemprop="description" content="Rollup 是一种令人惊叹的原语。Rollup 将成为以太坊未来扩容的首选方案 ，并为以太坊上的操作提供广阔的设计空间。"><meta itemprop="datePublished" content="2022-03-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6929">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="从第一原理理解Rollup经济学"/>
+<meta name="twitter:description" content="Rollup 是一种令人惊叹的原语。Rollup 将成为以太坊未来扩容的首选方案 ，并为以太坊上的操作提供广阔的设计空间。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">从第一原理理解Rollup经济学</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-07">
+      2022-03-07
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6929 字 -
+        预计阅读 14 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原文标题：《Understanding rollup economics from first principles》</p>
+<p>Rollup 是一种令人惊叹的原语。Rollup 将成为以太坊未来扩容的首选方案 ，并为以太坊上的操作提供广阔的设计空间。</p>
+<p>总的来说，rollup 扩展了它们所建基的协议，并保留了协议的大部分属性。在整个过程中最重要的是保证链下执行的正确性，以及执行背后的数据可用性。而如何实现这两点取决于设计者。</p>
+<p>最近我开始对从经济学的角度理解 rollup 感兴趣。这不仅仅是一个理论上的问题。基础层 (L1) 的费用很高，我们应该积极地提供一些空间，以便用户在此处可以支付得起交易费用。更好的经济学意味着更合理的定价，用户也会更满意。</p>
+<p>那我们应该如何具体思考 rollup 的经济学？本文将首先确定 rollup 系统中的各部分，它们的角色和职责。接着梳理出 rollup 系统中的各种开销、收益与费用，从而给我们提供一些线索如何探索这个广泛的设计空间。</p>
+<h3 id="rollup-游戏中的角色">Rollup 游戏中的角色</h3>
+<p>简单来说，我们将理想化地分为三个角色：</p>
+<p><strong>用户</strong> ：用户可以在 L2 网络上发送交易，和在 L1 上一样。他们在 L2 上持有资产，并且与部署在 rollup 上的合约进行交互。</p>
+<p><strong>Rollup 运行者</strong> ：这个角色包含了许多其他角色。Rollup 运行者代表着处理 L2 网络交易需要用到的所有基础设施。我们现在有发布交易批次 (batches) 的定序者、发布断言 (assertions) 的执行者、提出欺诈证明 (fraud proofs) 的挑战者、计算有效性证明 (validity proofs) 的证明者&hellip;</p>
+<p><strong>基础层</strong> ：为 rollup 发布的数据提供安全性的协议。这样的协议可以只需保证数据可用性而不需要结算功能 (比如，部署在其执行层上的「模板 template」桥接合约)，但也可以是像以太坊这样的通用结算引擎。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0307/9_r90v8ez7f2.png" alt="从第一原理理解Rollup经济学"></p>
+<p>这三个角色的运作：用户在 L2 进行交易，运行者连接用户和基础层 (数据最终发布在基础层上)。</p>
+<h3 id="rollup-的开销">Rollup 的开销</h3>
+<p>在本文中，我们从「系统」的角度看待 rollup，主要关注其开销、收益和费用。运行一个系统会产生开销，这就像「能量库」(energy sinks)，价值从系统内部流向外部。另一方面，系统也会获得收益，这就是「能量源」(energy sources)，价值从系统外部流向内部。</p>
+<p>费用则在「能量源」和「能量库」之间架起了桥梁，在系统的各个组件之间转移价值，以便每个组件正确地履行其功能。</p>
+<p>比如，在之前我写的一篇关于 EIP-1559 的文章中，我解释了如何分解用户支付的交易费用：</p>
+<p>- 打包交易的部分费用归运行者所有：在 PoW 基础层的情况下，矿工费是对矿工的补偿，以对冲增加的叔块风险。这笔费用覆盖了运行者发布区块的开销，使他们成为网络的一部分。而这也是当前你在发送交易时默认按 1 或 2 Gwei 来支付费用。</p>
+<p>- 其余的费用支付用于使得其交易优先被打包进区块链，即拥堵定价 (pricing congestion)。这个费用使网络和遭受拥堵情况的用户在系统中激励相容。这就是在正常情况下 L1 的 basefee 的作用。</p>
+<p>好消息是，我们将使用一些相同的思路来理解 rollup 的开销。EIP-1559 的开销只涉及两部分：用户和基础层。由于 rollup 和 EIP-1559 两者的架构不同，而运行者位于用户和基础层之间，那么我们必须将运行者的开销与基础层的开销分开。这一点我们在下文中展开讨论：</p>
+<h4 id="l2-运行者的开销l2-operator-costs">L2 运行者的开销（L2 operator costs）</h4>
+<p>Rollup 必须找到愿意花费计算资源来处理 rollup 数据的运行者，如维护一个交易池、对交易 batch 进行排序、计算状态根/状态差异/有效性证明等等。这是一种有形的开销，用来量化运行者运行基础设施所需要的花费。</p>
+<h4 id="l1-数据发布的开销l1-data-publication-costs">L1 数据发布的开销（L1 data publication costs）</h4>
+<p>花一些时间研究数据发布的开销是值得的，因为这确实是 rollup 经济中的新开销类型。一旦运行者收集了足够大的交易集，他们就需要在基础层上发布该交易集的压缩信息。</p>
+<p>目前，这个过程还没能以一种特别优雅的方式完成：数据仅简单地作为「CALLDATA」发布，这是一种允许发送者添加一个任意的字节序列交易属性。</p>
+<p>通常，CALLDATA 包含被交易调用的智能合约方法的引用，以及该方法的输入参数。这样理解可能会有帮助：rollup 运行者把代表压缩交易的字节块作为输入参数来调用 L1「rollup 链「智能合约的一些」registerCompressedData」方法。这里是 Optimism 的「Canonical 交易链」合约的一个例子。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0307/9_gpmkjzdked.png" alt="image"></p>
+<p>用户发送交易，运行者压缩这些交易并将其发布至基础层的 rollup 链智能合约中</p>
+<p>发布数据的开销是由基础层产生的。为了在以太坊上发布数据，目前数据的市场价格由 EIP-1559 控制，其中 CALLDATA 的每个非零字节消耗 16 gas，而每个零字节消耗 4 gas。</p>
+<p>有了多维度 EIP-1559（在 Vitalik 写的简单的《Sharding-format blob-carrying transactions（用于分片的携有 blob 的交易类型）》中有实例），CALLDATA 的价格可以在它自己的 EIP-1559 市场中确定，将数据市场与传统的执行市场分开定价。</p>
+<p>在这个 Dune analytics dashboard 中，我试着整理由几个主要 rollup 发布的数据。我不确定我是否捕获了完整的信息，尤其是 zk-rollup 的。如果你发现了一些对不上的地方，请告诉我！:)</p>
+<p>还可以参考 Aditi 最近发布的文章 Ethereum Rollup Call Data 定价分析 和L2fees.info</p>
+<h4 id="l2-拥堵开销l2-congestion-costs">L2 拥堵开销（L2 congestion costs）</h4>
+<p>还有第三个，更无形的开销。只要 rollup 区块空间的供应不能满足现有的需求，稀缺资源就必须被分配。在一个由对时间不敏感的用户组成的球形奶牛世界中，用户只需排队等待。拥堵的系统不会造成价值损失。但是当用户因等待产生成本时，他们应该会想要尽可能地减少交易延迟。对于排在队列后面的用户，他们福利的减少对整个 rollup 系统来说是增加了的开销。</p>
+<p>依赖费用市场来执行这种分配是典型的 (至少在以太坊世界中是如此)，使得这种开销显现出来 [1]。没有一个费用市场或者某种形式的拥堵定价，用户要么「用时间支付」(交易被延迟打包)、在链下贿赂区块提议者以打包其交易、或重复发送他们的交易以保证其中一笔交易会被选中打包。在所有这些情况下，用户都是通过耗费资源来防止拥堵造成的效用损失。</p>
+<h3 id="rollup-收益">Rollup 收益</h3>
+<p>现在我们已经清楚 rollup 的开销了，我们将尝试分析系统收益。在这里，我们区分两种主要资源：交易价值和 Token 发放。</p>
+<h4 id="交易价值">交易价值</h4>
+<p>用户从 rollup 上的交易获得价值而不是其他地方，因此准备为他们获得的服务支付费用。这里的价值是指用户从他们的交易被打包到 rollup 上获得效用 (utility)。如果交易被打包我能获得 50 美元的效用，我愿意支付这个金额，让我的交易被打包。</p>
+<p>如果我们最终支付了 2 美元，我的盈余是 48 美元。但从 rollup 系统的角度，无论是谁获得 2 美元的收益，最初流入的价值都是 50 美元。</p>
+<p>第二，只要交易包含正的 MEV，例如在有些 DEX 上可被三明治夹击的兑换交易，这个概念也会被添加到我们的交易价值概念中。在这一点上，谁获得这个价值不重要，无论是定序者提取这个价值，用户对交易进行三明治夹击，还是其他。这里唯一重要的是我们的最初交易给这整个系统带来的价值比最初这个用户从这笔交易中获得的价值更大。这样，我们得出：</p>
+<p>交易价值 = 用户价值 + MEV</p>
+<h4 id="token-发放">Token 发放</h4>
+<p>收益的第二个来源是「Token 发放」。在基础层上，出块者获得的收益是新铸造的 Token，增发出块者帮助维护的网络的原生加密资产。这些收益抵消他们的基础设施开销，只要他们这样做是有利可图的，就会有越来越多的出块者加入。</p>
+<p>假设 rollup 能够铸造它们自己的 Token，且这个 Token 价值不为零。rollup 可以通过发放新 Token 支付其部分运作，以履行其职责。这里的模型比较模糊，有不同方式将收入来源用于 rollup 开销。现在，我们只考虑发行有价值的 Token 是可能的，且通过这样做可以给系统带来更多价值。</p>
+<h3 id="传递责任rollup-版本">传递责任：rollup 版本</h3>
+<p>综上所述，一个 rollup 系统包括三个相关方：用户、rollup 运行者和基础层。运行这个系统会产生三种类型的开销：运行成本、在基础层发布数据的开销和拥堵开销。这个系统以两种形式获得收入：交易价值和 Token 发放。</p>
+<p>现在剩下的就是匹配谁支付什么，以及什么时候支付的游戏。有些配对是很容易处理的。运行者必须向基础层支付 L1 数据发布的费用。他们必须在他们发布数据的那一刻就支付，而且按照基础层的报价来支付。[2]</p>
+<p>当在费用市场里费用的定价是动态的，L2 拥堵的开销也是即时的。用户观察 rollup 区块空间当前的需求，并基于可用供应调整他们的费用。例如，rollup 可能想在它们的网络上部署 EIP-1559 式的市场机制来管理 L2 交易的打包。然后 L2 基本费用可以让用户轻松预估当前的 L2 拥堵开销。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0307/9_ds23hma4my.png" alt="image"></p>
+<p>上图是系统的全貌，流入代表收益 (交易价值+Token 发放)，流出代表开销 (L2 运行者开销、L1 数据发布开销和拥堵开销)。费用在不同相关方间转移价值。</p>
+<h4 id="预算平衡传递责任的限制">预算平衡：传递责任的限制</h4>
+<p>让我们给我们的系统添加一个新的限制——运行者预算平衡。我们假设 rollup 运行者不能亏损运营，也就是说他们的收益必须至少要等于或大于他们的开销。</p>
+<p>这个假设可能并不总是成立，然而在我看来，如果我们关心的是在未来运营者集是否足够去中心化和开放，这是至关重要的。</p>
+<p>运行者如果是需要亏本运营的，这会把资本较少的参与者挤出市场，且使得运行者集的规模非常受限。[3] 一个小型的运行者集会削弱抗审查的保证，在最坏的情况下，用户会被迫在基础层打包他们的交易，必须支付高额费用。</p>
+<p>Token 发放作为一个松弛变量迟早会被派上用场，以保证预算平衡。每当运行者「太无利可图」时，他们就会离开这个系统，这会增加剩余运行者的发放份额，直到再次达至平衡。同样，当运行者「收益太高」时，就会有新加入者来争相分一杯羹，直到运行者再次达到预算平衡。</p>
+<h4 id="在延迟支付的情况下维持运行者预算平衡">在延迟支付的情况下维持运行者预算平衡</h4>
+<p>在预算平衡的规则下，我们必须考虑运行者维持非负的平衡。他们的主要流出，即 L1 数据发布是可变的，且其费用收取与他们的主要流入 (即交易费) 是分开的。</p>
+<p>我们假设运行者对他们的 L2 运行开销是完全了解的，并在交易时向用户报出确切价格（类似于他们认知中的叔块率与其对应的用于补偿的矿工费用）。但是，他们应该如何为用户提供最终的 L1 数据发布开销报价，延迟一点实现？</p>
+<p>今天，rollup 应用启发式方法来避免 L1 数据发布开销可变性带来的风险。一种情况是，rollup 观察当前 L1 的基本费用 (感谢 EIP-3198！) 并把费用往高报了一点，作为额外缓冲，即在一开始的时候对用户超额收费，以防后来运行者在发布数据时需要支付更多。另一种情况是，按 L1 基本费用的流动平均值函数来向用户收取费用，以拉平长期的波动。</p>
+<p>在我看来，合理的解决方案是调用衍生品，即简单的 L1 基本费用期货合约。在交易时间，用户被收取一笔费用，用于锁定以未来的价格支付在基础层发布数据的开销。通过减少悲观 (pessimistic) 超额支付，余额会发回给用户。关于这种衍生品的最佳设计，目前的研究还没有定论。</p>
+<blockquote>
+<p>（译者注：Pessimistic Approach 是并发控制算法的一种方法，即如果在未来的某个时间点上存在冲突，该事务会被延迟。它锁定数据库的记录以进行更新访问，其他用户只能以只读方式访问记录或必须等待记录被「解锁」。来源)</p>
+</blockquote>
+<p><img src="https://img.bibiqing.com/news/2022/0307/9_1oak34oh4i.png" alt="image"></p>
+<p>用户在交易时给运行者支付费用，但运行者必须按照基础层的报价支付数据发布费用，而这不是固定的。</p>
+<h4 id="拥堵费用怎么处理">拥堵费用怎么处理？</h4>
+<p>假设用户交易时 rollup 能完美地对拥堵费用进行定价，那么现在就会产生拥堵费用形式的收益。今天，在以太坊基础层上，这些费用会被烧毁。这样做的首要原因是与激励相容：如果拥堵费用返回到出块者手里，协议的基本费用报价就不再有约束力，破坏了 EIP-1559 的目的。但是<a href="https://twitter.com/barnabemonnot/status/1423144246949814275">烧毁基本费用不是保持激励相容性的唯一选择</a>。</p>
+<p>有人提议把所有的&quot;rollup 废气&quot;，即由经济外部性 (例如拥堵或 MEV) 引起的费用，都用于公共物品的资助。[4] 这不是一个坏的解决方案。城市里的拥堵定价通常会被指定用于改善公共交通系统，也就是说，这些钱是用于补偿负外部性的，当这些外部性被进行相应的定价，会带来这些收益。</p>
+<p>请注意，我其实悄悄把 MEV 加进来了&hellip; 为什么我们应该像拥堵费用那样思考 MEV？首先，因为 MEV 与拥堵一样是外部性。发出一笔携有 MEV 的交易这样的简单举动对那些想要捕获的人来说创造了正外部性。[5]</p>
+<p>外部性是「没有得到匹配的价值」，也就是说，它们产生于一些用报酬来平衡有用工作的原始经济活动 (例如，用户给 L2 运行者支付开销；运行者支付 L1 发布开销)，但在这个过程中它们产生或破坏一些额外价值。</p>
+<p>这在MEV 竞拍的概念里得到最清晰的说明，在这种设计中，运行者基于他们能从打包区块提取多少价值去竞争对一个区块的打包权。</p>
+<p>这个价值隐含着拥堵开销，用户通过互相竞争出价来表现。更明显的是 MEV 本身，这会是运行者要竞争获得的。</p>
+<p>再次，假设不允许运行者在亏损的情况下运营，他们的出价必须反映他们从区块提取价值的真实能力，即运行者会对他们的交易批次中对用户费用的总和加上他们从这个交易批次里提取的 MEV 进行出价。</p>
+<p>同时，假设所有的运行者都必须支付等额的 L2 运行者开销，而 L1 的数据发布开销则精确地向用户收取，我们会得出：</p>
+<p><strong>用户费用</strong>  = L1 数据发布费用 + L2 运行者费用 + L2 拥堵费用</p>
+<p><strong>运行者开销</strong>  = L2 运行者开销 + L1 数据发布开销</p>
+<p><strong>运行者收益</strong>  = 用户费用 + MEV</p>
+<p><strong>运行者利润</strong>  <strong>= 运行者收益 - 运行者开销</strong>  = L2 拥堵费用 + MEV</p>
+<p>在运行者在一个有效市场中竞争，以赢得提议区块的权利的环境里，运行者必须同时为他们的整个利润出价，即在他们的交易批次中的拥堵费用和可得的 MEV。[6] 这是系统隐含的价值：</p>
+<p>第一项来自用户为了免受拥堵带来的损失而支付的费用，第二项来自初始交易造成的涟漪效应。这些价值从一开始就不属于任何人，它们为什么不能被捕获和再分配呢？</p>
+<p><img src="https://img.bibiqing.com/news/2022/0307/9_wrcva9mwk3.png" alt="image"></p>
+<p>用户愿意为打包支付高达其交易价值的费用。外部性用虚线矩形表示。</p>
+<h3 id="探索-rollup-经济学">探索 rollup 经济学</h3>
+<p>这篇文章做了很多假设。例如，我假设「运行者预算平衡」，因为我相信社区应该以批判的眼光看待处于亏损状态的运行者所运行的 rollup，它们有可能还不适合去中心化。Token 发放有助于重新建立预算平衡，尽管这依赖于一个外生的价格信号 (Token 价值) 来协调运行者激励。</p>
+<p>在这种观点下，运行者更偏向于尽可能准确地对他们可以定价的东西定价，即他们的 L2 运行者开销和 L1 数据发布成本。这就避免了未来收益的错配，运行者会期望更高的 Token 价格来支付他们的运营。[7]</p>
+<p>但这并不是在倡导一种特定形式的  rollup  经济学。设计空间仍然是宽广的。探索 L2 运行者开销发现更多我们还未探索的复杂性，例如，市场机构支持一个去中心化的基础设施以生成用于 zk-rollup 的有效性证明。</p>
+<p>专注于 rollup 上特定类型的用户 (例如，从 L2 到 L1 或跨 L2 桥接的快速提款服务) 还会发现用户需求的不同面向。在清楚了开销、收益和费用的概念后，希望现在能更容易分析出 rollup 应该实现什么样的结果和商业目标，以及实现这些目标的手段。</p>
+<p><strong>其他资源</strong></p>
+<p>John Adler 的「Wait, it&rsquo;s all resource pricing?」(此处是幻灯片和视频) 给出了 L2 运行者开销，执行与数据可用性开销分离的背景。</p>
+<p>Patrick McCorry, Chris Buckland, Bennet Yee, Dawn Song, SoK: Validating Bridges as a Scaling Solution for Blockchains</p>
+<p>非常感谢 Anders Elowsson、Vitalik Buterin、Fred Lacs 和 Alex Obadia 非常多有用的意见。</p>
+<p>[1] Vitalik 还认为，这种开销是区块空间提供者的机会成本。在这种解读中，如果你的交易被打包了，你应该至少向提供者支付他们本来可以从打包其他交易中获取的收益。[2] 这意味着我们可以进一步解锁我们的模型。数据发布开销是通过对基础层的拥堵情况预测和来报价的，这就与基础层的运行者，即出块者一起形成一个整体。[3] rollup 运行者集的中心化可能并不如基础层的出块者集中心化般糟糕，但对 rollup 网络去中心化权衡的评估留待未来进行。[4] 在撰写时，甚至那些错配的费用，例如那些从用户收取的用于支付数据发布开销的费用，都用作一些公共物品募资，像  Optimism 发起的追溯性公共物品募资计划。</p>
+<p>[5] 有趣的是，gas 价格竞拍这种用于捕获正外部性的竞争却对整个网络创造了负外部性，使得网络必须处理更严重的拥堵。</p>
+<p>[6] 请注意，在有些运行者可以获得私人交易订单流，或参与跨领域 MEV (致敬 Alex Obadia！) 的情况里，失效效率不再是一个公平的假设。在后一种情况里，在跨域提取者中的市场效率可以在单域构建者竞拍中重建市场效率。</p>
+<p>[7] 顺便说一下，这种模式并不可怕！这主要是矿工一直以来的运作模式。然而，我们必须记住，任何由运行者承担的额外风险都是中心化的压力，除非有可用的风险管理的原语，如衍生品。即使有这样的选择来对冲风险，开展良好业务的所需知识可能门槛很高，这会使的技术水平不高的运行者望而却步。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/35061/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">波卡插槽拍卖后 波卡生态项目正在做哪些探索？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/35090/">
+                <span class="next-text nav-default">风投机构Griffin Gaming Partners为其游戏基金募资7.5亿美元</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#rollup-游戏中的角色">Rollup 游戏中的角色</a></li>
+        <li><a href="#rollup-的开销">Rollup 的开销</a></li>
+        <li><a href="#rollup-收益">Rollup 收益</a></li>
+        <li><a href="#传递责任rollup-版本">传递责任：rollup 版本</a></li>
+        <li><a href="#探索-rollup-经济学">探索 rollup 经济学</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

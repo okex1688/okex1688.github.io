@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          闪电网络的历史：从头脑风暴到测试版本（上） - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="几周以前，第一个闪电网络实现 lnd 已经正式推出 beta 版。第二个实现 eclair 在上周发布，第三个实现 c-lightning 也快要来了。" />
+<meta name="keywords" content="Lightning" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/26986/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="闪电网络的历史：从头脑风暴到测试版本（上）" />
+<meta property="og:description" content="几周以前，第一个闪电网络实现 lnd 已经正式推出 beta 版。第二个实现 eclair 在上周发布，第三个实现 c-lightning 也快要来了。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/26986/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="闪电网络的历史：从头脑风暴到测试版本（上）">
+<meta itemprop="description" content="几周以前，第一个闪电网络实现 lnd 已经正式推出 beta 版。第二个实现 eclair 在上周发布，第三个实现 c-lightning 也快要来了。"><meta itemprop="datePublished" content="2021-08-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3900">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="闪电网络的历史：从头脑风暴到测试版本（上）"/>
+<meta name="twitter:description" content="几周以前，第一个闪电网络实现 lnd 已经正式推出 beta 版。第二个实现 eclair 在上周发布，第三个实现 c-lightning 也快要来了。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">闪电网络的历史：从头脑风暴到测试版本（上）</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-08">
+      2021-08-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3900 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>几周以前，第一个闪电网络实现 lnd 已经正式推出 beta 版。第二个实现 eclair 在上周发布，第三个实现 c-lightning 也快要来了。因此，这个在比特币上实现便宜和即时支付的覆盖层网络，已被大部分其开发者认为可以安全地用在比特币主网上了：这是这项技术在经年开发之后的一个重大里程碑。</p>
+<p>这个故事，说起来可就长了。</p>
+<h2 id="第一串火花"><strong>第一串火花</strong></h2>
+<p>闪电网络在观念上的起源最早可以追溯到比特币本身。</p>
+<p>闪电网络用到的第一个概念叫做 “支付通道”。而支付通道本质上就是两个比特币用户之间的比特币余额；而且只需要他们彼此知道就好，其他人既不需要知道，也不需要关心他们相互之间的关系。重要的是，他们彼此的余额无需任何链上的比特币交易就能更新；而且 A 的余额增加，就意味着 B 的余额减少同样的数量。</p>
+<p>在他们完成交易，心满意足之后，他们只需在网络中广播一笔交易就可以结算他们的支付通道：这一笔交易会基于他们的通道余额，给双方分发应得的数额。对于他们双方来说，这也意味着通道的更新（“链下交易”）相对更便宜，因为不需要付矿工手续费，而且也更快，因为不需要区块链的确认。</p>
+<p>这个观念，整体上可以说跟中本聪在 2009 年放出的比特币软件一样早。Bitcoin 0.1 就包含了一个代码草稿，是允许用户在交易被网络确认之前更新这笔交易的：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0808/4jdgwja9j4d9j2w" alt="闪电网络的历史：从头脑风暴到测试版本（上）"></p>
+<p>Bitcoin 0.1 包含的支付通道草稿</p>
+<p>虽然这份代码很粗糙，中本聪后来在跟 bitcoinj 开发者私聊时 Mike Hearn 讲了更多支付通道如何工作的细节。</p>
+<p>几年以后（2013 年），Hearn 在比特币开发邮件组中公开了中本聪对支付通道的解释：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0808/f4i9l1yfnn8g9hr" alt="闪电网络的历史：从头脑风暴到测试版本（上）"></p>
+<p>中本聪对支付通道原理的解释，曝光自 Mike Hearn</p>
+<h2 id="第一个支付通道"><strong>第一个支付通道</strong></h2>
+<p>虽然支付通道作为一个概念，可以说与比特币同样久远，中本聪的设计是不够安全的。更重要的是，支付通道中的一个用户可以跟矿工合起伙来让区块链确认一个旧的交易，从而获得比自己该得的数量更多的比特币（比如刚给对方支付完，又把旧的交易上链）。</p>
+<p>这个问题的第一个解决方案出现在 2011 年（在中本聪离开比特币项目之后）。Bitcointalk 论坛用户 “hashcoin” 构想了一种双层的支付通道 hashcoin，需要用户交换部分签名的多签名事务，以及与这些多签名事务相互依赖的时间锁事务。如果一个参与者消失了了，另一方可以在等待一段时间后拿走通道中的所有资金。不过，这一设计的缺陷在于，这种支付通道是单向的。Alice 可以给 Bob 支付任意次，但 Bob 没法用同一个通道给 Alice 支付。</p>
+<p>另一个类似于 hashcoin 的想法在 2013 年早期浮出水面，而这一次它不再只是想想而已。在这一年的 4 月份，Jeremy Spilman 在比特币开发邮件组中描述了一个支付通道的概念。他甚至写了一份概念验证代码。这个设计又由 Mike Hearn 调整过，后来成为 Bitcoin Core 软件贡献者、Blockstream 公司联合创始人和 Chaincode Labs 开发者的 Matt Corallo 在 2013 中段把它从概念变成了 bitcoinj 上可以工作的代码。</p>
+<p>又过了一年，Alex Akselrod（现在是 Lightning Labs 的工程师）首次提出了双向的支付通道。Alice 可以给 Bob 支付任意多次，而 Bob 也可以使用递减的时间锁，在同一个通道中给 Alice 支付 —— 只不过次数是有限的。不过，不像单向的支付通道，这个解决方案从来没被代码实现过。</p>
+<p><strong>第一个支付网络概念</strong></p>
+<p>在第一个支付通道的概念出现的同一时间，其他人 —— 包括 Bitcoin Core 开发者 Peter Todd 和 Gavin Andresen —— 也在思考离链的支付网络。如果 Alice 可以通过链下的交易给 Bob 支付，而 Bob 可以通过一笔链下的交易给 Carol 支付，那么 Alice 也应该能通过 Bob 给 Carol 支付、无需让交易上链才对。</p>
+<p>Corné Plooy（现在是一个闪电网络的开发者，在荷兰的比特币交易所 BL3P）也一直在研究比特币的支付层，根源于他在 2011 年提出的一个初步想法。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0808/j5zgtndtkkhoftp" alt="闪电网络的历史：从头脑风暴到测试版本（上）"></p>
+<p> Plooy 的支付层层的一个早期图示，后来成了闪电网络的前身 Amiko Pay</p>
+<p>在 Bitcoin Core 的开发者和未来 Blockstream 公司的 CTO Gregory Maxwell，以及 Ripple 创始人 Ryan Fugger（和其他人）的建议之下，这个想法 经过 了 多年 的发展，变成了比特币和原初的 Ripple 基础的集合体，并产生出了一个 Plooy 叫做 “Amiko Pay” 的系统。Amiko Pay 更早的草稿没有用到支付通道的，因此需要为这个系统注入信任：如果某个用户拒绝与另一个用户结算余额，后者没有任何办法。</p>
+<p>一个使用了支付通道的早期支付网络构想由数学家、后来成为 Bitcoin emBassy TLV 合伙人的 Meni Rosenfeld 在 2012 年提出。在 Bitcointalk 论坛上，Rosenfeld 描述了一个（按照上面的例子） 由支付处理商替代 Bob ，服务于 Alice 和 Carol 的例子。这个支付处理商，反过来，也跟其他的支付处理商开设了支付通道，所以整个支付通道网络是一个车轮模型。 </p>
+<p>这种解决方案在过去几年中出现了很多次。例如，Bitcoin Core 的贡献者 Peter Todd 就曾在 2014 年在比特币开发者邮件组中提出过这种概念。与此同时，支付处理商 BitPay 也在 2015 年初公开了一份有关类似的通道内支付方案（“Impulse”）的白皮书。而一个相似的解决方案也由瑞典的创业公司 Strawpay 实现了出来，叫做 Stroem（或者 Ström），就在几乎同一时间 —— 但这些进展都没有造成很大影响。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0808/qw9kvaksfs69yyt" alt="闪电网络的历史：从头脑风暴到测试版本（上）"></p>
+<p>现已倒闭的 Strawpay 小额支付公司的 Logo</p>
+<p>一个更早的、建立免信任的支付通道网络的尝试，来自 Alex Akselrod。他在 2013 年提出了一个草案，在 2014 年这份草案转化为一份概念验证代码。Akselrod 的解决方案花了很大力气，在理论上解决了这个问题。但在实践中，问题依旧。比如说，如果一笔支付在路由过程中失败了，用户没有任何追索权，只有等支付通道的时间锁解除后资金释放，而这可能要经历几个月的时间。</p>
+<p>与此同时，到了 2015 年，Plooy 的 Amiko Pay 已经进化到了可以免信任工作的地步。不过，他的设计需要对比特币协议进行相对深远的更改，以至于需要回滚特定类型的交易。虽然在技术上是可以做到的，但这样对比特币的更改会不会被接受，并不那么显然。</p>
+<p>这一年的年底，来自苏黎世联邦理工学院（ETH Zurich）的研究员、Christian Decker 博士（现已入职 Blockstream）和 Roger Wattenhofer 在他们的白皮书“A Fast and Scalable Payment Network with Bitcoin Duplex Microayment Channels” 中提出了另一种覆盖层网络设计。他们的解决方案重度依赖于时间锁来作为通道有效性的“倒计时装置”，以及一种叫做 “无效树” 的密码学技巧来作废陈旧的通道交易。</p>
+<p>Akselrod 的解决方案、Amiko Pay 后来的草案，还有 Duplex 小额支付通道（DMC）都在某些方面类似于闪电网络，也都可以在不同的假设（取舍）下正常工作。如果闪电网络没有发明，这里的任何一个方案都有可能成为比特币扩展层的基础。</p>
+<p>但是，历史没有如果，闪电网络横空出世。</p>
+<p><strong>闪电网络</strong></p>
+<p>支付通道和网络设计演化了多年之后，终于在 2015 年初集齐了所有的拼图。</p>
+<p>智能合约交易平台 Mirror 的 CTO Thaddeus “Tadge” Dryja 和 Joseph Poon 一起撰写了一份名为 “The Bitcoin Lightning Network: Scalable Off-Chain Instant Payments” 的白皮书，在 2015 年的 2 月首次出版。</p>
+<p>事实证明，它扭转了乾坤。</p>
+<p>闪电网络白皮书提出了多种解决方案，来实现一个完全免信任的支付通道网络：任何人，只要想欺诈，就要冒着失去自己在通道中所有余额的风险；而且传递支付交易的中介也别想偷走一分钱。此外，这个解决方案只需对比特币协议做相对较少的变更，并且承诺比已经有的其它方案更灵活、对用户更友好。</p>
+<p>这个白皮书所描述的关键创新是 “Poon-Dryja 通道”。跟早期的其它支付通道设计一样，Poon-Dryja 通道也依赖于参与者交换部分签名且未广播至全网的交易。但与前辈们不同的是，这种新的通道还需要额外的一步：双方需要不断交换秘密数值；这一设计使得通道可以在任意 “方向” 上更新。Alixe 可以给 Bob 支付任意次，而 Bob 也可以在同一个通道中给 Alice 支付任意次。</p>
+<p>此外，闪电网络还利用了 哈希时间锁合约（HTLC）。这个概念一般认为是 Tier Nolan 提出的，设计初衷是用于跨区块链交易；举个例子，用于免信任地互换比特币和莱特币。在闪电网络中，这种工具用于把多个支付通道串联起来。</p>
+<p>Poon 和 Dryja 在 2015 年 2 月的旧金山比特币开发者研讨会（Bitcoin Devs Seminar）上首次展示了他们的构想。</p>
+<p>在这之后的几个月，整个 2015 年的春天和夏天，比特币的扩展问题和区块大小上限的分歧演变成了公开的争执。在这种危机气氛中，人们在 2015 年底召开了连续两场大会：9 月份召开了 Scaling Bitcoin Montreal，10 月份是 Scaling Bitcoin Hong Kong。在蒙特利尔，Poon 和 Dryja 再次登台演讲，并且 Poon 和 Dryja 都在香港作了第二次更深入的演讲。</p>
+<p>就在香港的大会之后，Gregory Maxwell 在比特币开发者邮件组中提出了一份扩展方案路线图。这张路线图突出地包括了闪电网络。它获得了比特币技术社区大部分人的支持，并且变成了 Bitcoin Core 项目在事实上的路线图。</p>
+<p>如果人们原本对闪电网络的期待还不够高，这下就完全够了。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/26976/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">区块链技术在银行业探索实践：各行应用的情况</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/26985/">
+                <span class="next-text nav-default">闪电网络的历史：从头脑风暴到测试版本（下）</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#第一串火花"><strong>第一串火花</strong></a></li>
+    <li><a href="#第一个支付通道"><strong>第一个支付通道</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

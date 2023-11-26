@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          10分钟读懂 L2 可扩展性解决方案Arbitrum - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Arbitrum 网络全面易懂的技术总结" />
+<meta name="keywords" content="Layer 2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/24967/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="10分钟读懂 L2 可扩展性解决方案Arbitrum" />
+<meta property="og:description" content="Arbitrum 网络全面易懂的技术总结" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/24967/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-28T00:00:00+00:00" />
+
+<meta itemprop="name" content="10分钟读懂 L2 可扩展性解决方案Arbitrum">
+<meta itemprop="description" content="Arbitrum 网络全面易懂的技术总结"><meta itemprop="datePublished" content="2021-06-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4487">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="10分钟读懂 L2 可扩展性解决方案Arbitrum"/>
+<meta name="twitter:description" content="Arbitrum 网络全面易懂的技术总结"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">10分钟读懂 L2 可扩展性解决方案Arbitrum</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-28">
+      2021-06-28
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4487 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>下个月，Tracer 将在 Arbitrum 上部署其永续掉期产品。本文将帮助你深入理解 Arbitrum 背后的机制，以便你在 L2 环境中通过 Tracer 交易时获得更好的体验。</p>
+<h2 id="架构摘要"><strong>架构摘要</strong></h2>
+<ul>
+<li>
+<p>由于 Arbitrum 是针对以太坊 L1 的 L2 可扩展性方案，Arbitrum 的架构有部分在 L1 上，有部分在 L2 上。</p>
+</li>
+<li>
+<p>Arbitrum 在 L1 上的组件是 EthBridge，由一组以太坊合约构成。</p>
+</li>
+<li>
+<p>EthBridge 负责对 Arbitrum Rollup 协议进行仲裁，以及维护 Arbitrum rollup 在以太坊链上的收件箱和发件箱。</p>
+</li>
+<li>
+<p>用户、L1 合约和全节点可以通过以太坊链上的收件箱和发件箱将其交易发送至 Arbitrum 链，并观察这些交易的结果。</p>
+</li>
+<li>
+<p>Arbitrum 虚拟机（AVM）是 EthBridge 提供的功能，是 L1 和 L2 之间的网关。</p>
+</li>
+<li>
+<p>AVM 能够读取输入，并基于这些输入执行计算，从而产生输出。</p>
+</li>
+<li>
+<p>ArbOS 运行在 AVM 上，确保智能合约在 Arbitrum 链上执行。</p>
+</li>
+<li>
+<p>ArbOS 完全存在于 L2 上，并像在以太坊上一样运行 EVM 合约。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0628/1_ndf0z8gsgz.png" alt="10分钟读懂 L2 可扩展性解决方案Arbitrum"></p>
+<p>- Arbitrum 架构图 -</p>
+<h2 id="arbitrum-rollup-协议"><strong>Arbitrum Rollup 协议</strong></h2>
+<ul>
+<li>
+<p>收件箱内消息的顺序决定了交易的结果。</p>
+</li>
+<li>
+<p>因此，任何查看收件箱的人都能知道交易的结果，只要亲自执行这些交易即可。</p>
+</li>
+<li>
+<p>Arbitrum Rollup 协议负责确认已经发生的交易的结果。</p>
+</li>
+<li>
+<p>参与协议的用户被称为验证者；如果验证者在质押合约中存入 ETH，就会变成质押者，可以给 Arbitrum 链上的区块押注。</p>
+</li>
+<li>
+<p>成为验证者和质押者都无需经过许可。</p>
+</li>
+<li>
+<p>在安全性方面，只需要一个诚实的验证者来确保 Arbitrum 链正确执行。</p>
+</li>
+<li>
+<p>这使得 Arbitrum 链具备与以太坊链相同程度的免信任性。</p>
+</li>
+<li>
+<p>Arbitrum 假设至少有一位验证者是诚实的。</p>
+</li>
+<li>
+<p>Arbitrum Rollup 协议作用于 Arbitrum Rollup 链。后者是一条由 Rollup 区块组成的链，独立于以太坊链。</p>
+</li>
+<li>
+<p>验证者的职责是提议新的区块并将其添加到 Arbitrum 链上。</p>
+</li>
+<li>
+<p>每个被提议的区块最终都会被协议确认或拒绝。</p>
+</li>
+<li>
+<p>每个区块都包含多个字段。除了区块号字段之外，每个字段的数据都是区块提议者的断言，但不一定是正确的。</p>
+</li>
+<li>
+<p>如果有任何断言字段不正确，协议最终会拒绝该区块。</p>
+</li>
+<li>
+<p>凡是被提议的区块都有确认期限。</p>
+</li>
+<li>
+<p>反对某个区块的验证者应提议正确的区块。成功提交欺诈证明的诚实验证者会获得奖励。</p>
+</li>
+</ul>
+<p><strong>质押</strong></p>
+<ul>
+<li>
+<p>要想将某个 Rollup 区块添加到链上，质押者必须押注该区块。</p>
+</li>
+<li>
+<p>质押是无需许可的，任何人都可以押注任意区块。</p>
+</li>
+<li>
+<p>一旦你押注某个区块，在该区块被确认之前无法取回押金。</p>
+</li>
+<li>
+<p>一旦你押注某个区块，即表明你认定这个区块是正确的，<strong>且</strong> 认定最新确认区块到你所押注的区块这段链上的每个区块都是正确的。</p>
+</li>
+<li>
+<p>如果你押注的区块不正确，或最新确认区块到你所押注的区块这段链上的某个区块不正确，你的押金就会被罚没。</p>
+</li>
+<li>
+<p>如果你不想押注某个区块，你可以押注最新被确认区块。</p>
+</li>
+<li>
+<p>如果你押注了某个区块，可将押注延伸至跟在该区块之后的任何区块。</p>
+</li>
+<li>
+<p>所需质押量是动态的。</p>
+</li>
+<li>
+<p>Arbitrum 链上有一个指定的基础质押量参数，在大多数情况下都会用到。</p>
+</li>
+<li>
+<p>为了防止攻击者不惜牺牲押注也要拖慢网络的情况，质押量会乘以一个随超时时间呈指数级增长的因子（超时时间从第一个未确定区块的截止时间算起）。</p>
+</li>
+<li>
+<p>这是为了增加这类攻击在攻击期间的成本。</p>
+</li>
+<li>
+<p>这种质押翻倍是暂时的，只会在 Arbitrum 链的区块确认进程缓慢时发生。</p>
+</li>
+</ul>
+<p><strong>挑战协议</strong></p>
+<ul>
+<li>
+<p>当两个质押者押注不同的区块且这两个区块之间没有继承关系时，他们会在某个区块上产生分歧，从而引发挑战。</p>
+</li>
+<li>
+<p>挑战主要发生在 Arbitrum 链上，由 L1 合约裁决。</p>
+</li>
+<li>
+<p>挑战包括一个在 L2 上进行的交互型多轮切分游戏和一个在 L1 上执行的单步证明。</p>
+</li>
+<li>
+<p>如果有质押者对某个区块提出争议，提议该区块的质押者将作为 “被告” 捍卫自己的断言。</p>
+</li>
+<li>
+<p>“被告” 质押者声称，以上一个区块为起点，在虚拟机执行 N 个指令之后，上一个区块的状态将推进至其所提议的区块的状态。</p>
+</li>
+<li>
+<p>在切分游戏中，作为 “被告” 的质押者（Alice）为先手，将 N 个指令切分成 K 段，每段的大小是 N/K。</p>
+</li>
+<li>
+<p>请注意，每段 Arbgas 消耗量相等，但步骤数量上不一定相等。</p>
+</li>
+<li>
+<p>还要注意的是，每段都有一个起点和一个终点（这点并不重要，但是有助于我们理解下一点）。</p>
+</li>
+<li>
+<p>作为 “原告” 的质押者（Bob）同样将 N 个指令切分成 K 段（每段的大小是 N/K），并将它们与 Alice 的切分段一一对应，发现其中一个切分段的终点与 Alice 的不同。</p>
+</li>
+<li>
+<p>Bob 实际上是在找出他不认同的切分段。</p>
+</li>
+<li>
+<p>接着，Bob 会执行 Alice 最初的操作，将有争议的切分段（大小为 N/K）再切分成 K 个子段，然后将这个切分段连同子段一起发送给 Alice。</p>
+</li>
+<li>
+<p>Alice 执行 Bob 最初的操作，找到终点不同的那个子段。</p>
+</li>
+<li>
+<p>切分流程继续下去，直到 Alice 和 Bob 找到他们产生分歧的那一个指令为止。</p>
+</li>
+<li>
+<p>这个指令被发送给 L1 合约，并由后者执行它，然后决定这场争议的 “胜诉方”。</p>
+</li>
+<li>
+<p>“败诉方” 将失去质押物，一部分质押物将被销毁（防止攻击者对冲押注），其余则奖励给诚实的 “胜诉方”。</p>
+</li>
+<li>
+<p>在整个切分流程中，作为裁决方的 L1 合约不知道任何关于指令的信息，只负责核实双方是否遵循游戏规则。</p>
+</li>
+<li>
+<p>在争议期间，其他所有验证者都能在争议敲定之前自行断定争议的结果，这就意味着会发生软分叉，且验证者可以继续在正确的链上提交 Rollup 区块。</p>
+</li>
+<li>
+<p>挑战期有一个强制的期限，即，每个质押者大约一周时间。</p>
+</li>
+<li>
+<p>每个质押者必须在一周的限期内完成自己的任务，否则就会 “败诉”。</p>
+</li>
+<li>
+<p>就像棋赛计时器那样。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0628/1_ubfggu2t8s.png" alt="10分钟读懂 L2 可扩展性解决方案Arbitrum"></p>
+<p>- 上图显示了两位质押者在争议期间进行的多轮交互式切分游戏。实际上，有争议的断言包含的指令远比上图所示的更多，因此游戏的轮次也更多，但原理是一样的 -</p>
+<p><strong>验证者</strong></p>
+<ul>
+<li>
+<p>验证者是 Arbitrum 链上的节点，负责监控该 Rollup 协议的活动并推进整条链的状态。</p>
+</li>
+<li>
+<p>并非所有节点都是验证者。</p>
+</li>
+<li>
+<p>Offchain Labs 预期验证者会采取主动、防守或观望策略；协议不会强制他们采取哪种策略。</p>
+</li>
+<li>
+<p>“主动型验证者” 会通过提议新的区块来持续推进链的状态。每条链上只需要一位诚实的主动型验证者；主动型验证者的数量增加并不会提高整条链的效率。</p>
+</li>
+<li>
+<p>“防守型验证者” 监控 Arbitrum 协议，只在发现不诚实行为时采取行动：要么自己提议一个正确的区块，要么押注其他验证者提议的正确的区块。</p>
+</li>
+<li>
+<p>“观望型验证者” 虽然也像防守型验证者那样监控 Arbitrum 协议，但是就算发现了不诚实行为，他们也不会提议或押注正确的区块，只会向其他验证者发出告警。</p>
+</li>
+<li>
+<p>Offchain labs 会在他们的旗舰 Arbitrum 链上运行主动型验证者节点。</p>
+</li>
+<li>
+<p>大多数时候，防守型验证者和观望型验证者不需要做任何事，因此攻击者永远不知道有多少防守型验证者。</p>
+</li>
+<li>
+<p>虽然任何人都能成为验证者，但是根据预期，选择成为验证者的主要是那些在链上质押了大量资产的人，或他们雇佣的人。</p>
+</li>
+</ul>
+<h2 id="全节点"><strong>全节点</strong></h2>
+<ul>
+<li>
+<p>Arbitrum 链上的全节点与以太坊上的全节点作用相同，负责追踪链的状态，让其他人与这条链交互。</p>
+</li>
+<li>
+<p>全节点内置 AVM 模拟器。因此，在全节点看来，Arbitrum 链就是根据输入计算输出而已，无需了解实际的 rollup协议。</p>
+</li>
+<li>
+<p>全节点可以充当链上聚合器，帮助用户提高成本效率。</p>
+</li>
+<li>
+<p>Arbitrum 还通过某个设施从用户处收集费用来补偿全节点充当聚合器的成本。</p>
+</li>
+<li>
+<p>全节点还可以通过压缩交易来进一步降低 L1 调用数据成本。</p>
+</li>
+<li>
+<p>全节点将被压缩的交易提交至收件箱，arbOS 收到该交易后会对其进行解压缩。</p>
+</li>
+<li>
+<p>全节点通常会将压缩和聚合合二为一，即，提交一批经过压缩的交易至收件箱。</p>
+</li>
+</ul>
+<h2 id="定序器模式"><strong>定序器模式</strong></h2>
+<ul>
+<li>
+<p>当 Arbitrum 链启动时，我们可以选择是否启用定序器。</p>
+</li>
+<li>
+<p>定序器是拥有决定收件箱中交易排序特权的全节点。</p>
+</li>
+<li>
+<p>该特权可以让定序器即时保证交易的结果。</p>
+</li>
+<li>
+<p>如果 Arbitrum 链启用定序器，收件箱会分成两部分：</p>
+</li>
+<li>
+<p>第一个收件箱会正常运行，仿佛定序器不存在一样，即，节点可以向该收件箱发送带有区块号和时间戳标记的消息。</p>
+</li>
+<li>
+<p>第二个收件箱将由定序器控制，只有定序器可以向该收件箱发送消息。</p>
+</li>
+<li>
+<p>在向收件箱发送消息时，定序器可以指定用来标记消息的区块号和时间戳。</p>
+</li>
+<li>
+<p>这包括到指定增量区块为止的（过去的区块的）区块号和时间戳和增量秒数（过去的时间）。</p>
+</li>
+<li>
+<p>这些增量值通常相当于现实世界里的 10 分钟左右。</p>
+</li>
+<li>
+<p>当 arbOS 查看收件箱时，会收到带有最低区块号的消息。这个区块号要么是普通收件箱的区块号，要么是定序器收件箱的区块号。</p>
+</li>
+<li>
+<p>定序器可以回溯的区块数量取决于需要在以太坊上敲定 arbitrum 区块所需的确认区块数量。</p>
+</li>
+<li>
+<p>如果arbitrum 在以太坊上达成终局性需要等待 X 个区块，那么定序器就要回溯 X 个区块，以确定自己当前打包的交易会紧跟着哪些交易得到处理</p>
+</li>
+<li>
+<p>当定序器模式在 Arbitrum 链上启用时，提交至定序器的交易会比没有定序器的情况提前 x 个区块敲定，但是提交至普通收件箱的交易会比没有定序器的情况落后 x 个区块敲定。</p>
+</li>
+<li>
+<p>由于即时确定和 5 分钟确定与 5 分钟确定和 10 分钟确定之间存在很大差异，这是一种正向权衡。</p>
+</li>
+<li>
+<p>但是，恶意定序器能够在一定程度上利用这些特权。</p>
+</li>
+<li>
+<p>恶意定序器可以通过不把用户的交易放入定序器收件箱来审查它们，迫使用户在发现自己被审查后发送相同的交易到普通收件箱。</p>
+</li>
+<li>
+<p>定序器还可以抢跑用户的交易。</p>
+</li>
+<li>
+<p>初始 Arbitrum 链将启用由 Offchain Labs 运行的定序器。</p>
+</li>
+<li>
+<p>Cornell Tech 团队在开发去中心化的公允定序器算法方面已经取得了一些成果，只需要再完成一些研究工作就可以应用到 Arbitrum 的长期解决方案中。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0628/1_y799bv1e7i.png" alt="10分钟读懂 L2 可扩展性解决方案Arbitrum"></p>
+<p>- 收件箱在定序器模式 开启/未开启 时的差异 -</p>
+<h2 id="arbgas--费用"><strong>ArbGas / 费用</strong></h2>
+<ul>
+<li>
+<p>ArbGas 的原理与以太坊 gas 相似，用来衡量 Arbitrum 链上的计算成本。</p>
+</li>
+<li>
+<p>但是，Arbitrum 链上不设硬性 ArbGas 上限，而且 ArbGas 的消耗速度比以太坊 gas 快得多。</p>
+</li>
+<li>
+<p>ArbGas 的一个关键作用是预测验证计算结果所需的时长。</p>
+</li>
+<li>
+<p>每个 Rollup 区块内都包含一个关于 ArbGas 消耗总量的声明，也就是说当前区块内的声明和前一个区块内的声明之差理应是当前区块的 ArbGas 消耗量的有效指标。</p>
+</li>
+<li>
+<p>因此，在检查区块有效性时，验证者可以将这一差值设成 gas 上限，如果这么多ArbGas 在区块执行完之前耗尽，就可以确定该区块是无效的，并成功挑战它。</p>
+</li>
+<li>
+<p>因为这些交易的数据最终需要上链，用户需要支付费用。</p>
+</li>
+<li>
+<p>如果该用户将交易发送给聚合器，部分费用会自动支付给聚合器作为补偿。</p>
+</li>
+<li>
+<p>剩余费用将进入网络的费用池，用来支付保障整条链安全运行的服务费。</p>
+</li>
+<li>
+<p>费用包含 L2 交易、L1 调用数据、计算和存储成本。</p>
+</li>
+<li>
+<p>费用以 ETH 的形式支付。</p>
+</li>
+</ul>
+<h2 id="结论"><strong>结论</strong></h2>
+<ul>
+<li>
+<p>Arbitrum 是 Offchain Labs 开发的 L2 可扩展性解决方案：采用多轮交互式挑战协议的 Optimistic Rollup。</p>
+</li>
+<li>
+<p>旗舰级 Arbitrum 链已于 5 月 28 日面向开发者开放。一旦这条链上运行的项目到达阈值，就会向用户开放。</p>
+</li>
+<li>
+<p>从用户的角度来看，Arbitrum 链的交互体验与以太坊并无差别。</p>
+</li>
+</ul>
+<p>下个月，Tracer 将在 Arbitrum 主网上部署 Perpetual Swaps，欢迎关注 Tracer 的 Twitter，并加入Discord。</p>
+<p>如果你想更深入了解 Arbitrum，请参阅这篇文档。</p>
+<p>原文链接:</p>
+<p><a href="https://tracer.finance/radar/arbitrum-in-under-10/">https://tracer.finance/radar/arbitrum-in-under-10/</a></p>
+<p>作者: Nick Crow</p>
+<p>翻译&amp;校对: 闵敏 &amp; 阿剑</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25054/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">专访A16Z合伙人：我们玩的是长期游戏 22亿美元加密基金将聚焦三个领域</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/24979/">
+                <span class="next-text nav-default">45天市值跌去95% “天王&#34;Dfinity怎么了？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#架构摘要"><strong>架构摘要</strong></a></li>
+    <li><a href="#arbitrum-rollup-协议"><strong>Arbitrum Rollup 协议</strong></a></li>
+    <li><a href="#全节点"><strong>全节点</strong></a></li>
+    <li><a href="#定序器模式"><strong>定序器模式</strong></a></li>
+    <li><a href="#arbgas--费用"><strong>ArbGas / 费用</strong></a></li>
+    <li><a href="#结论"><strong>结论</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

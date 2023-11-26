@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          详解Cosmos跨链桥Gravity Bridge工作原理与发展现状 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="引力（Gravity）是宇宙的基本力量，它使所有行星在可组合宇宙的轨道上对齐。" />
+<meta name="keywords" content="COSMOS" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/35337/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="详解Cosmos跨链桥Gravity Bridge工作原理与发展现状" />
+<meta property="og:description" content="引力（Gravity）是宇宙的基本力量，它使所有行星在可组合宇宙的轨道上对齐。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/35337/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-13T00:00:00+00:00" />
+
+<meta itemprop="name" content="详解Cosmos跨链桥Gravity Bridge工作原理与发展现状">
+<meta itemprop="description" content="引力（Gravity）是宇宙的基本力量，它使所有行星在可组合宇宙的轨道上对齐。"><meta itemprop="datePublished" content="2022-03-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-13T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3739">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="详解Cosmos跨链桥Gravity Bridge工作原理与发展现状"/>
+<meta name="twitter:description" content="引力（Gravity）是宇宙的基本力量，它使所有行星在可组合宇宙的轨道上对齐。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">详解Cosmos跨链桥Gravity Bridge工作原理与发展现状</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-13">
+      2022-03-13
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3739 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原标题：《Everything You Need to Know About the Gravity Bridge Chain》</p>
+<p>引力（Gravity）是宇宙的基本力量，它使所有行星在可组合宇宙的轨道上对齐。和引力一样，Gravity Bridge 旨在通过简单的无需信任和可互操作的设计将以太坊生态系统的流动性汇集到 Cosmos 生态系统中。</p>
+<p>互操作性和真实性是 Cosmos 和区块链互联网的精神，正是这些非常核心的价值主张将通过 Gravity Bridge 推动生态系统进入 Cosmos DeFi 时代！</p>
+<p><strong>迄今为止的Gravity Bridge里程碑</strong></p>
+<hr>
+<p>Gravity Bridge 最近宣布了几个激动人心的里程碑：</p>
+<ul>
+<li>
+<p>在启用跨区块链通信 (IBC)（Cosmos 互操作性标准）的几周内，Gravity Bridge 进入 mapofzones.com 上的前 15 个 Cosmos 链，拥有 32 个通道对不同的 Cosmos区块链开放</p>
+</li>
+<li>
+<p>Cosmos NFT 平台 Stargaze 正在与 Gravity Bridge 合作，将 NFT 从以太坊发送到 Cosmos</p>
+</li>
+<li>
+<p>ATOM 质押者和 OSMO 社区池的初始空投帮助开始向社区分发 GRAV（Gravity Bridge 的原生代币）</p>
+</li>
+<li>
+<p>Gravity Grants提议通过治理将 GRAV 代币分发给构建有利于 Cosmos 生态系统的桥梁工具和其他基础设施的团队</p>
+</li>
+<li>
+<p>Cosmos Hub 和其他几个 Cosmos 链（Stargaze、Nym、Comdex、CertiK 和 Chihuahua）连接到以太坊生态系统</p>
+</li>
+<li>
+<p>你现在可以将 ATOM 与以太坊 DeFi 一起使用</p>
+</li>
+</ul>
+<h2 id="什么是gravity-bridge">什么是Gravity Bridge？</h2>
+<p>Gravity Bridge区块链是以太坊和 Cosmos 生态系统之间的无需信任的中立桥梁。使用 Cosmos SDK 构建，它使用验证器集来签署交易，而不是多重签名或许可的参与者集。</p>
+<p>这里的中立性意味着 Gravity 社区的全部重点是提供尽可能有效和安全的桥梁，而不是本地链上的 DeFi 应用程序。这种中立性汇总了来自多个区块链和来源的交易量，从而提高了效率并降低了成本。对桥的所有控制完全由 Gravity Bridge 验证器集处理。</p>
+<p><strong>最好的功能：</strong></p>
+<p>Gravity Bridge 协议是一种极其简单的跨链桥设计，专注于通过消除设计复杂性来提供更好的安全性。</p>
+<ul>
+<li>
+<p><strong>高度去中心化：</strong> 所有资金都由验证人直接控制（目前有 140 个）</p>
+</li>
+<li>
+<p><strong>安全且抗审查：</strong> 高级罚没可确保验证者无法签署或提交未经共识同意的桥接消息</p>
+</li>
+<li>
+<p><strong>为 Cosmos 构建：</strong> 专为 Cosmos 生态系统构建，作为具有无许可前端的中立平台</p>
+</li>
+<li>
+<p><strong>Gas 效率：</strong>  Rollup 式批量交易可将个人用户的 Gas 成本降低高达 96%</p>
+</li>
+<li>
+<p><strong>快速且可靠：</strong> 强大的中继奖励系统与降低的 gas 成本相结合，通过去中心化、自筹资金的中继社区创造了极其快速和可靠的传输</p>
+</li>
+</ul>
+<h2 id="gravity-bridge的工作原理">Gravity Bridge的工作原理</h2>
+<p>与 IBC 与具有最终性的 Cosmos 链一起使用不同，Gravity Bridge 在 EVM 区块链之间转移资产，如 Ethereum 和 ERC-20s、Polygon 等。 Gravity Bridge 有两个定义的组件：</p>
+<ol>
+<li>
+<p>以太坊上的 Solidity 合约</p>
+</li>
+<li>
+<p>Gravity Bridge区块链上的 Cosmos SDK 模块</p>
+</li>
+</ol>
+<p>Gravity Bridge 的工作方式类似于所有跨链桥的工作方式：将本地代币锁定在桥的一侧，并在另一侧铸造该代币的包装代币。然后，用户使用此包装代币，然后将其返回到桥接器并兑换为另一条链上的本地资产。</p>
+<p>对于往返以太坊的桥梁，最关键的组件是 Solidity 合约。它保存通过桥发送的本地资产。</p>
+<p>Gravity.sol是由 Althea 团队开发的 Solidity 合约，为以太坊上的 Gravity Bridge 持有资金。与其他桥梁设计的流行趋势相比，只有 580 行代码，Gravity.sol 紧凑且易于查看。它已经过三个独立团队（Informal、Least Authority和Code4rena）的审计，并且不可升级，这意味着审计人员发现它不能被任何恶意行为者篡改，并且不包含任何类型的受信任方。</p>
+<p><strong>存款：</strong></p>
+<p>将资产从以太坊存入 Gravity Bridge 是无需许可且不受审查的。每个验证者都证明了以太坊上发生的每个存款事件。当一个事件被超过 2/3 的验证者集证明时，就会铸造出包装的代币。验证者必须按顺序提交所有证明。</p>
+<p><strong>提款：</strong></p>
+<p>Gravity Bridge 批量提取交易，将多个SendToEth消息放在一个单独的批次中。这就像以太坊上的Rollup：在单个共享上下文中执行许多事务比单独执行要高效得多。</p>
+<p>这个过程提供了巨大的效率提升，gas成本降低了 96%。</p>
+<p>例如，如果 ERC20 交易的发送成本为 20 美元，那么在批量交易中将代币从 Gravity Bridge 转移到以太坊只需 4 美元，这将分布在批量中的所有单个交易中，用户支付的费用不到 1 美元。</p>
+<p>批处理的第二个优点是抗审查性，因为 Gravity Bridge 协议本身定义了每个批次的交易，然后要求验证者产生有效的签名。验证者不可能避免签署特定交易或中继者避免中继它。</p>
+<p><strong>罚款和安全性：</strong></p>
+<p>为确保 Gravity Bridge区块链共识仍然控制桥及其持有的资产，Gravity Bridge 协议制定了几条规则：</p>
+<ul>
+<li>
+<p>该协议生成验证者接下来应该签署哪些消息</p>
+</li>
+<li>
+<p>提交签名后，它们将作为共识的一部分进行验证，如果验证者未签署正确的消息，则将被拒绝</p>
+</li>
+<li>
+<p>如果验证者在罚没期内没有产生正确的签名，他们将被罚没并踢出Gravity Bridge验证器集（也将它们从桥的以太坊一侧移除）</p>
+</li>
+<li>
+<p>任何人都可以通过非协议消息提交签名证据来削减验证者</p>
+</li>
+</ul>
+<p>Gravity Bridge 签名的基于证据的罚款使得验证者很难串通从桥上窃取资金。在这样做的过程中，他们冒着任何一个叛逃者在努力收集所需签名的同时被罚款的风险。</p>
+<h2 id="如何使用gravity-bridge">如何使用Gravity Bridge</h2>
+<p>Gravity Bridge 拥有无需许可的前端，多个团队已经构建了用于将资产发送到 Cosmos 或将 Cosmos 资产发送到以太坊的用户界面。你目前可以使用桥接器在 Cosmos 和 EVM 生态系统之间发送：</p>
+<ul>
+<li>
+<p>Spacestation.zone</p>
+</li>
+<li>
+<p>Blockscape</p>
+</li>
+</ul>
+<p>如果你想开始使用 Gravity，可以在此处找到易于使用的说明：</p>
+<p>教程：通过 IBC 向 Osmosis 发送 Gravity Bridge 代币（Gravitons）</p>
+<p>教程文档：桥接代币和使用 Gravity Bridge</p>
+<p>支持尽可能多的资产的提案正在进行中，Cosmos Gravity Bridge 已经有一些很棒的项目集成，包括：</p>
+<ul>
+<li>
+<p>ATOM</p>
+</li>
+<li>
+<p>HUAHUA</p>
+</li>
+<li>
+<p>NYM</p>
+</li>
+<li>
+<p>PERSISTENCE</p>
+</li>
+<li>
+<p>STARS</p>
+</li>
+<li>
+<p>COMDEX</p>
+</li>
+</ul>
+<h2 id="gravity-bridge背后的团队">Gravity Bridge背后的团队</h2>
+<p>与普遍的看法相反，Gravity Bridge 没有从 Cosmos Hub 提案中获得资金，而是由 Althea 团队在 Interchain Foundation、Peggy JV 和其他人的支持下建造和主要资助的，但作为 Cosmos 社区的一部分有着悠久的历史这反映在将 9% 的初始代币分配给 Cosmos 核心实体上：</p>
+<p>Core 生态系统 总计 9.000%</p>
+<p>Interchain Foundation &amp; Cosmos Hub 社区池 154,000,000 7.000%</p>
+<p>Peggy JV. 22,000,000 1.000%</p>
+<p>Ignite（原 Tendermint） 22,000,000 1.000%</p>
+<p>GRAV 代币分配</p>
+<hr>
+<p>最初的创世发行说明了该桥的多个资金和开发来源（开发支持和团队），包括按价值顺序排列的 Althea 贡献、Peggy JV 和众包资金，以及来自跨链基金会 (ICF) 的赠款。Genesis 还支持强大的开发团队和生态系统一致性。早期的 Althea 支持者和团队分配代表了近 50 个不同的实体和个人，他们分享了多年来建立使这座桥栩栩如生所需的人才和代码的鲜血、汗水和泪水，他们将在未来支持这座桥.</p>
+<p>Gravity Bridge 也作为一个开源模块存在，已经并将继续使生态系统中的许多其他 Cosmos 链受益。</p>
+<p>GRAV 由 Gravity 基金会铸造和授予，之前没有任何 GRAV 代币的销售或来自 ATOM 社区池的贡献。7% 的代币分配给了跨链基金会，用于资助和协调 Gravity Bridge 技术的部分开发。ICF 将 110,000,000 个 grav 代币（占总创世的 5%）奉献给 Cosmos Hub 社区池。</p>
+<p>在跨链账户启动并将它们发送到 Cosmos Hub 社区池之前，ICF 将把代币委托给在 Gravity 链上运行的 Cosmos Hub 的验证者。这将有助于确保与 ATOM 一致的 Gravity 链继续邀请 Cosmos Hub 验证者进一步参与通往采用跨链安全的 Gravity Bridge 的道路。如果拟是希望 Gravity Bridge Chain 采用跨链安全性的 ATOM 持有者，请考虑委托给 Cosmos Hub 验证人。</p>
+<p>除验证器外，所有创世代币都采用 4 年锁定时间表：锁定一年，其余 3 年增量释放。 </p>
+<h2 id="gravity-可持续性和cosmos增长">Gravity 可持续性和Cosmos增长</h2>
+<p>与 dApp 或 DEX 链不同，Gravity 是基础设施。就像渡槽、下水道、道路或桥梁一样，它们必须持续多年，可靠地提供“正常工作”的服务。因此，在考虑分发时，利益相关者应该随着时间的推移与这种使用保持一致，而不仅仅是“一劳永逸”的空投。Gravity Bridge 从最初的种子空投开始，并建议随着时间的推移将 GRAV 分发给构建和维护桥梁的用户和团队。</p>
+<p>为此，另外 50% 的创世代币被分配到创世社区池中，以便在未来几年内进行分配，以激励增长并支持这一关键基础设施的维护和健康。</p>
+<p>一旦社区池分发完毕，桥的利益相关者将是一个分散的开发者和桥维护者池、ATOM 和其他 Cosmos 生态系统持有者、Cosmos 核心实体和桥的用户。</p>
+<h2 id="下一步是什么">下一步是什么？</h2>
+<ul>
+<li>
+<p>初始种子空投：已完成</p>
+</li>
+<li>
+<p>Beta NFT 支持已完成</p>
+</li>
+<li>
+<p>初始Gravity拨款提案：2022 年 3 月上旬</p>
+</li>
+<li>
+<p>Gravity增长的形成：2022年3月上旬</p>
+</li>
+<li>
+<p>Mercury 更新 2022 年 3 月</p>
+</li>
+<li>
+<p>其他 DEX 的流动性挖矿奖励（待定）</p>
+</li>
+<li>
+<p>额外的 EVM 链集成 (TBA)</p>
+</li>
+</ul>
+<p>流入 Cosmos 生态系统的稳定币和流动性将为 Cosmos DeFi 火上浇油。开放互操作性和新的流动性来源，将为去中心化应用程序和 DeFi 蓬勃发展的 Cosmos 生态系统带来新的参与。Cosmos DeFi 时代已经来临！</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/35358/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">乌克兰谈判代表：认为未来几天与俄罗斯的谈判可能会有结果</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/35356/">
+                <span class="next-text nav-default">项目周刊｜比特币与贵金属相关性创7个月以来新低</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是gravity-bridge">什么是Gravity Bridge？</a></li>
+    <li><a href="#gravity-bridge的工作原理">Gravity Bridge的工作原理</a></li>
+    <li><a href="#如何使用gravity-bridge">如何使用Gravity Bridge</a></li>
+    <li><a href="#gravity-bridge背后的团队">Gravity Bridge背后的团队</a></li>
+    <li><a href="#gravity-可持续性和cosmos增长">Gravity 可持续性和Cosmos增长</a></li>
+    <li><a href="#下一步是什么">下一步是什么？</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

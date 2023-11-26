@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Chainlink发布跨链互操作性协议（CCIP）实现去中心化跨链消息传递和通证转移 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在这样的多链世界中，用户要能在一个应用中无缝使用各条区块链上独特的功能和资产，这将极大推动跨链智能合约的开发。" />
+<meta name="keywords" content="ChainLink" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/26983/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Chainlink发布跨链互操作性协议（CCIP）实现去中心化跨链消息传递和通证转移" />
+<meta property="og:description" content="在这样的多链世界中，用户要能在一个应用中无缝使用各条区块链上独特的功能和资产，这将极大推动跨链智能合约的开发。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/26983/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="Chainlink发布跨链互操作性协议（CCIP）实现去中心化跨链消息传递和通证转移">
+<meta itemprop="description" content="在这样的多链世界中，用户要能在一个应用中无缝使用各条区块链上独特的功能和资产，这将极大推动跨链智能合约的开发。"><meta itemprop="datePublished" content="2021-08-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4999">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Chainlink发布跨链互操作性协议（CCIP）实现去中心化跨链消息传递和通证转移"/>
+<meta name="twitter:description" content="在这样的多链世界中，用户要能在一个应用中无缝使用各条区块链上独特的功能和资产，这将极大推动跨链智能合约的开发。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Chainlink发布跨链互操作性协议（CCIP）实现去中心化跨链消息传递和通证转移</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-08">
+      2021-08-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4999 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>如今，独立的区块链层出不穷，每条区块链都有自己的优势和地域市场，这一趋势推动了多链生态愈发壮大。在这样的多链世界中，用户要能在一个应用中无缝使用各条区块链上独特的功能和资产，这将极大推动跨链智能合约的开发。当去中心化预言机服务出现并连通链下数据和安全的链下计算资源时，也同样推动了DeFi、NFT和链上游戏经济的蓬勃发展。</p>
+<p>然而众所周知，由于现有跨链基础架构存在瓶颈，因此开发跨链应用非常困难。其一，通证桥和消息传递协议解决方案高度分化，大多数都仅服务于某两条链之间的应用。另外，许多通证桥都比较中心化，安全性较弱，而且也缺少透明或可靠的节点运营商，因此推高了终端用户的成本和处理时间。这些限制和漏洞导致了价值几千亿美元的用户资金损失，并阻碍了跨链创新。</p>
+<p>为了应对区块链生态对跨链解决方案与日俱增的需求，我们很高兴地宣布发布跨链互操作性协议（下文简称CCIP）。CCIP是跨链通信新的开源标准，目的是在几百个公链和私有链网络之间建立通用的连接，让本来孤立的通证在所有链上生态之间流通，并实现跨链应用。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0808/18_bq390ri6cs.png" alt="Chainlink发布跨链互操作性协议（CCIP）实现去中心化跨链消息传递和通证转移"></p>
+<p>CCIP为智能合约开发者提供了具有计算能力的通用基础架构，能够跨越各个区块链网络传输数据和智能合约指令。CCIP将成为各种跨链服务的底层协议，其中包括Chainlink的可编程通证桥，用户可以将通证安全高效地转移到任何区块链网络中，并具有可扩展性。</p>
+<p>这个跨链互操作性协议凝聚了我们团队在安全跨链技术领域多年的研究和开发成果，这项工作一直可以追溯到最初的Chainlink 1.0白皮书。CCIP由Chainlink Labs首席科学家Ari Juels、Chainlink Labs工程技术VP Ben Chan（注：Ben也是以太坊上最主流的跨链WBTC的架构师）以及Chainlink Labs团队中众多世界顶尖的研究者共同研发。 </p>
+<p>本文将阐述Chainlink为何要为区块链行业开发通用的跨链通信协议，CCIP如何集成至多层技术栈中，以及CCIP如何解锁各项新的服务并推动跨链混合型智能合约的开发。</p>
+<h2 id="chainlink为何要开发通用跨链基础架构"><strong>Chainlink为何要开发通用跨链基础架构？</strong></h2>
+<p>要开发安全高效的跨链技术并跨越所有区块链网络实现通证转移和通用消息传递并非一件容易的事。不过，Chainlink之前发布的基础架构一直都运行得非常稳定，生态也在不断发展壮大，再加上在跨链技术实现了一定突破创新，因此Chainlink成为了开发跨链通信开源标准的不二人选。</p>
+<h2 id="拥有成熟节点运营商的去中心化网络"><strong>拥有成熟节点运营商的去中心化网络</strong></h2>
+<p>跨链桥本质上是一个节点委员会，所有节点一起证明一条链上的信息，并通过门限加密签名的方式传递到另一条链上。Chainlink网络中的独立节点数量是行业中最多的，节点具有抗女巫攻击能力，可靠且可验证。这些节点由全球顶尖的DevOps团队和基础架构提供商负责运行。Chainlink的节点网络不断扩张，目前发布了多个预言机服务，为智能合约生态保障了超过300亿美元的价值，之后将升级至Chainlink链下报告协议（OCR），进一步扩张规模。</p>
+<p>Chainlink OCR 1.0是安全高效的链下数据聚合计算协议，已经大规模平稳运行了一段时间，没出过任何意外。Chainlink OCR成功将预言机报告的链上gas价格降低了90%。OCR 2.0将在这个基础上继续发力，实现更高效且复杂的链下计算，以建立高级的跨链能力。CCIP将在其协议栈中利用OCR 2.0，将签名报告的委员会节点数量扩展至几百个，以此提升被锁定资金的安全性，并为用户维持较高的成本效益。CCIP既拥有全世界数量最庞大的安全节点池，又升级了链下计算能力，因此将在防篡改性和性能上达到非常高的水平。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0808/18_hsr0k4i1ek.png" alt="Chainlink发布跨链互操作性协议（CCIP）实现去中心化跨链消息传递和通证转移"></p>
+<p>Chainlink OCR 2.0在链下聚合节点的响应数据，并在一笔交易中将预言机报告提交到链上</p>
+<h2 id="反欺诈网络"><strong>反欺诈网络</strong></h2>
+<p>安全和防欺诈都是跨链服务在保障高价值合约时最关键的要素。因此，CCIP将引入区块链行业前所未有的风险管理系统，名为“反欺诈网络”。反欺诈网络由多个去中心化预言机网络组成，唯一的目的是监控CCIP服务是否出现可能导致资金损失的恶意行为。值得一提的是，这个反欺诈网络中的节点委员会与他们负责在CCIP中监控的节点委员会完全没有任何关联。因此，反欺诈监控和跨链服务是完全独立开来的。</p>
+<p>反欺诈网络作为一个验证层，在系统运行正常的时候定期会提交心跳检查。如果反欺诈网络停止发送心跳消息，或节点注意到任何恶意行为，就会自动触发紧急关停机制，停止某一跨链服务。关停跨链服务可以有效保护用户资金不受潜在黑天鹅事件的影响。反欺诈网络最初将由优质的Chainlink节点组成，这些节点与他们所保护的CCIP服务没有任何关联；之后，通过CCIP服务保障高额价值的dApp也可以加入到网络中，为用户提供更有效的防欺诈保护。</p>
+<p>反欺诈网络采用去中心化的风险管理和反欺诈监测模式，这也是高价值智能合约常用的模式。反欺诈网络建立了一个相互制衡的机制，将责任分开，并在最大程度上降低任何一组节点对CCIP服务运行的控制权，因此彻底颠覆了跨链基础架构的风险管理模式。值得一提的是，这个网络还可以在未来添加AI等新模块，以增强监测技术，并实现扩展和升级</p>
+<p><img src="https://img.bibiqing.com/news/2021/0808/18_ilf88ehrmj.png" alt="Chainlink发布跨链互操作性协议（CCIP）实现去中心化跨链消息传递和通证转移"></p>
+<p>反欺诈网络对CCIP服务进行监控，以甄别并解决任何潜在的问题</p>
+<h2 id="跨区块链提供强大的生态支持"><strong>跨区块链提供强大的生态支持</strong></h2>
+<p>跨链系统能产生大规模网络效应时才是最有价值的。产生网络效应意味着用户资金会更加安全，通证流动性会更高，用户体验更简便，开发者能获得更好的文档和工具，并且无论通证资产原生于哪条区块链都有机会获得更多收入。Chainlink目前已接入了一百多条区块链，并且许多区块链和layer-2解决方案都已在主网集成Chainlink，因此是非常理想且中立的跨链通信基础架构。</p>
+<p>Chainlink不仅是接入顶尖区块链数量最多的预言机解决方案，还驱动着大量dApp在这些区块链上运行。Chainlink已经接入了顶尖的借贷、保险和其他DeFi协议，并通过开源开发和Chainlink社区激励计划加速链上应用。多个区块链合作伙伴和应用都表达过希望使用Chainlink预言机展开跨链活动，因此首要任务就是为整个智能合约行业提供非常安全可靠且性能优越的通用跨链解决方案。</p>
+<h2 id="跨链技术栈的定义"><strong>跨链技术栈的定义</strong></h2>
+<p>跨链互操作性协议（CCIP）属于开源技术栈的一部分，而开源技术栈将为用户提供创新的链上服务，其中包括Chainlink可编程通证桥、其他各类桥接方案、以及跨所有区块链网络开发跨链应用的工具。技术栈的每一层对于多链生态的发展都至关重要。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0808/18_rwro3gfs6u.png" alt="Chainlink发布跨链互操作性协议（CCIP）实现去中心化跨链消息传递和通证转移"></p>
+<p>跨链互操作性协议（CCIP）是开源技术栈的一部分，支持跨链数据和资产转</p>
+<h2 id="用户接口"><strong>用户接口</strong></h2>
+<p>技术栈最上层是用户接口，用户可以接入Chainlink可编程通证桥或其他桥接方案，并跨不同区块链环境传输通证。值得一提的是，新老生态都可以通过无须许可的方式部署自己的接口。这其中包括已经发布的钱包、聚合器、应用、交易平台以及一系列面向用户提供多链生态入口的服务。接口层由社区共同推动开发，可以让基于CCIP协议开发的解决方案在可访问性、抗审查性和创新性方面独具优势。</p>
+<h2 id="可编程通证桥"><strong>可编程通证桥</strong></h2>
+<p>可编程通证桥是基于CCIP实现的参考桥接方案，开发者可以开发跨链解决方案，将通证在任何区块链之间无缝安全地转移。这是一个统一的桥接系统，各个区块链之间的通证桥由独特的节点委员会保障安全，以实现分布式安全，并使用路由合约维持通用的互操作性。可编程通证桥将支持现有的通证标准，也就是说已经流通的资产可以立刻在不同的智能合约生态中使用。除了优质的节点运营商和去中心化的架构之外，还会设置其他额外的安全保障，比如基于时间的流量限制，以最大程度上规避黑天鹅事件中的下行风险，参数可以由更大规模的DON负责管理。</p>
+<p>可编程通证桥具有计算功能，用户和智能合约不仅可以发送通证，还可以发送命令到通证桥，并运行自定义逻辑，确定与其他区块链的交互方式。用户不用了解如何使用其他区块链，而是只需要向通证桥发送指令，说明与其他区块链的交互方式即可。通证桥将自动跨链转移通证，并在一笔原子交易中将通证部署到目标区块链上的智能合约中。因此，用户可以留在原来的区块链上，并同时享受其他区块链智能合约生态所具有的功能。可编程通证桥激活了全新的混合型智能合约应用场景，其中包括跨链收益聚合器和抵押贷款等。这里要特别指出的是，可编程通证桥只是Chainlink Labs开发的其中一个参考实现，而任何独立的开发团队都可以轻松开发第三方桥接应用，并充分利用CCIP在安全和功能性上的优势。</p>
+<h2 id="跨链互操作性协议ccip"><strong>跨链互操作性协议（CCIP）</strong></h2>
+<p>CCIP是一个开源标准，任何区块链上的智能合约之间都可以双向发送并接收数据包。该协议本质上具有通用性，可以将智能合约发送的任何类型的数据发送到其他区块链。通用的跨链互操作性将为开发者提供一个简单的框架，不用花时间研究复杂的底层协议，就可以直接开发跨链应用。</p>
+<p>所有基于CCIP开发的应用，包括可编程通证桥、其他跨链桥以及跨链dApp，都可以利用反诈骗网络的安全机制，自动监测并处理恶意行为。我们还在研究深度防御策略，希望在未来可以部署。深度防御策略包括可信执行环境、秘钥管理的硬件安全模块以及基于staking的加密经济安全等。</p>
+<h2 id="网络基础架构"><strong>网络基础架构</strong></h2>
+<p>Chainlink的跨链技术栈将由去中心化网络支撑，网络由声誉非常高的独立节点运营商组成。Chainlink节点将运行OCR 2.0客户端，在链下针对跨链交易达成共识，并保障安全和成本效益。OCR 2.0消除了所有单点故障，并可以在不大幅提升链上gas成本的前提下将网络扩展至几百个独立节点。重要的是，报告将包含每个响应预言机节点的签名，可以对每个节点问责，记录也可以为信任最小化技术提供必要输入。</p>
+<h2 id="celsius采用跨链互操作性协议保障跨链收益"><strong>Celsius采用跨链互操作性协议保障跨链收益</strong></h2>
+<p>随着智能合约生态越来越朝着多链生态发展，中心化金融（CeFi）平台也迫切需要采用跨链技术，在多个区块链上为用户实现DeFi收益。随着CeFi以及各种其他接口越来越重视Aave等DeFi协议，这也推动了整个多链生态不断向前发展。Celcius是市场领先的CeFi平台，数字资产价值超过160亿美元，用户数量超过80万人。平台目前计划采用跨链互操作性协议（CCIP）生成收益，让任何区块链网络都可以访问安全锁定在平台上的资产。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0808/18_z10s12h3s3.png" alt="Chainlink发布跨链互操作性协议（CCIP）实现去中心化跨链消息传递和通证转移"></p>
+<p>CCIP简化了通证跨链转移的技术流程，为用户资金提供了更强大的安全保障，并为用户最大化DeFi收益机会。因此，Celcius将为DeFi未来不断向多链生态发展提前做好准备，并同时仍为用户提供无忧的用户体验。</p>
+<h2 id="跨链应用无缝接入所有区块链"><strong>跨链应用无缝接入所有区块链</strong></h2>
+<p>CCIP的推出是为了快速推动应用开发者在区块链上的创新。开发者将可以打造出全新的跨链应用，在所有区块链上同时使用通证，并利用每个区块链或应用/资产的独特优势。</p>
+<p>这将激活一些列全新的跨链应用场景，比如一个跨链协议可以利用一条区块链上可扩展的计算能力、第二条区块链上的通证多元性、第三条区块链上的存储能力以及第四条区块链上的结算安全性，最终打造出一个功能强大的混合型智能合约应用。未来将有无限可能，我们很高兴在不久的将来能为区块链行业带来初步落地。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/26975/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">A16z的创始人马克安德森：比特币网络正反馈循环的潜力</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/26977/">
+                <span class="next-text nav-default">DeFi周刊 | DeFi币种普涨 总市值达到1060亿美元</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#chainlink为何要开发通用跨链基础架构"><strong>Chainlink为何要开发通用跨链基础架构？</strong></a></li>
+    <li><a href="#拥有成熟节点运营商的去中心化网络"><strong>拥有成熟节点运营商的去中心化网络</strong></a></li>
+    <li><a href="#反欺诈网络"><strong>反欺诈网络</strong></a></li>
+    <li><a href="#跨区块链提供强大的生态支持"><strong>跨区块链提供强大的生态支持</strong></a></li>
+    <li><a href="#跨链技术栈的定义"><strong>跨链技术栈的定义</strong></a></li>
+    <li><a href="#用户接口"><strong>用户接口</strong></a></li>
+    <li><a href="#可编程通证桥"><strong>可编程通证桥</strong></a></li>
+    <li><a href="#跨链互操作性协议ccip"><strong>跨链互操作性协议（CCIP）</strong></a></li>
+    <li><a href="#网络基础架构"><strong>网络基础架构</strong></a></li>
+    <li><a href="#celsius采用跨链互操作性协议保障跨链收益"><strong>Celsius采用跨链互操作性协议保障跨链收益</strong></a></li>
+    <li><a href="#跨链应用无缝接入所有区块链"><strong>跨链应用无缝接入所有区块链</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

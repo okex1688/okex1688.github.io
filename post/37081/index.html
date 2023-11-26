@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="今天我们所讲的业务逻辑相关问题和代码规范性相关问题，也是智能合约里面常见的问题类型。" />
+<meta name="keywords" content="Web 3.0" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/37081/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？" />
+<meta property="og:description" content="今天我们所讲的业务逻辑相关问题和代码规范性相关问题，也是智能合约里面常见的问题类型。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/37081/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-24T00:00:00+00:00" />
+
+<meta itemprop="name" content="疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？">
+<meta itemprop="description" content="今天我们所讲的业务逻辑相关问题和代码规范性相关问题，也是智能合约里面常见的问题类型。"><meta itemprop="datePublished" content="2022-04-24T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-24T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2599">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？"/>
+<meta name="twitter:description" content="今天我们所讲的业务逻辑相关问题和代码规范性相关问题，也是智能合约里面常见的问题类型。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-04-24">
+      2022-04-24
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2599 字 -
+        预计阅读 6 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>最近一段时间，Web3.0不断“刷屏”，NFT疯狂“出圈”，有人撸空投，有人搞收藏，有人说，NFT的爆炸性增长正在推动Web 3.0的发展。</p>
+<p>Web1.0 到 Web2.0 实现了内容的消费者向内容生产者的转变，其本质是进行了一次从物理世界向网络世界的平行时空的大迁徙，当我们畅谈 Web3.0 的发展时，不得不进一步提到关于<strong>区块链</strong> ，因为区块链的去中心化、去信任和防篡改的特性很好的对标了 Web3.0 的目标——<strong>创造新一代互联网，让每个用户掌握自己的数据、身份和命运。</strong></p>
+<p>Web3.0基于区块链而存在，承诺将隐私和数字身份还给用户，同时由于NFT等的应用，实现了新的互动水平。<strong>但我们更需要的是Web3.0热潮下NFT的诸多“危险”与“隐患”，最近NFT领域随处可见的“黑客事件”也证明了我们需要将“安全”放在第一位。</strong></p>
+<h2 id="近期发生了哪些nft-合约安全事件"><strong>近期发生了哪些</strong>NFT** 合约安全事件？**</h2>
+<p>4月21日，<strong>NBA的NFT项目合约遭受攻击，攻击者利用了签名未验证，在合约代码中，vData memory参数info在传入函数中未进行验证导致签名可复用，攻击者可以通过使用其他人的签名来进行Mint，</strong> 导致项目方被疯狂“薅羊毛”。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/5_s9czjladtu.png" alt="疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/5_vwuzsfnps3.png" alt="疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？"></p>
+<p>而在4月23日，NFT项目Akutar惊现低级漏洞，它的<strong>AkuAuction合约由于智能合约本身漏洞，导致11539ETH（价值约3400万美元）被锁死在合约中。</strong> 经成都链安技术团队分析，发现Akutar项目的智能合约包含2个漏洞：</p>
+<p>第一个合约漏洞在processRefunds中，设计者根据refundProgress计数器进行循环退款，而如果有攻击者此时在fallback中进行revert则会导致后面的人都无法进行退款，这个漏洞被人在链上证明但没有进行攻击利用。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/5_bkkntety4t.png" alt="疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？"></p>
+<p>第二个漏洞在claimProjectFunds中，require语句（refundProgress &gt; = totalBids）的totalBids变量应该是bidIndex，这个漏洞使得该判断条件永远失败，导致无法执行后续的提款操作。最终，导致项目方11539ETH(价值约3400万美元)被锁定无法提取。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/5_fuwe4butv8.png" alt="疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？"></p>
+<p>可见<strong>关注NFT合约风险，变得越来越紧迫。</strong></p>
+<h2 id="nft合约问题包括哪些"><strong>NFT合约问题包括哪些？</strong></h2>
+<p>根据NFTSCAN数据显示，目前全球NFT项目已接近七万个，而且数据还在持续增长中。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/5_oys0uzwto4.png" alt="疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？"></p>
+<p>数据来源：NFTSCAN（统计时间：2022.4.25 18:00）</p>
+<p><strong>NFT作为Web3.0的底座，它的安全问题对行业发展同样重要，为了护航</strong>Web3.0** 的安全生态，成都链安通过智能合约形式化验证工具链必验对上千个NFT项目进行漏洞扫描，发现NFT常见的合约问题还包括以下几类：**</p>
+<p><strong>业务逻辑相关问题：</strong></p>
+<p>此类问题可能直接导致合约的业务逻辑出错。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/5_owgs54rgjk.png" alt="疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？"></p>
+<p><strong>漏洞描述：</strong> chapterAuctionMinted的值永远为初始值，但是在此处使用的判断条件中，使用了该值进行条件检查。如果在开发期间使用【链必验】扫描后，开发者可根据扫描结果判断是否是相关逻辑缺失（可能导致NFT超量发放等业务逻辑安全问题），亦或是冗余代码。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/5_3g0fihakmc.png" alt="疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？"></p>
+<p><strong>漏洞描述：</strong> 未检测返回值。在NFT项目中，经常存在有偿铸币的功能，调用者需要将作为铸币手续费的ERC20代币发送到NFT铸币合约中，然后NFT铸币合约为其铸造对应数量的NFT代币。但是部分ERC20合约存在假充值的问题，即转账失败不抛出异常而是返回false，这样就会导致一个问题，攻击者可以利用这点，在未支付手续费的情况下，铸造任意数量的NFT。开发者应根据VaaS扫描结果的建议，检查transferFrom操作的返回值或者使用safeTransferFrom函数进行ERC20代币转账。</p>
+<p><strong>代码规范相关问题</strong></p>
+<p>此类问题可能不会直接造成业务逻辑出错，但是会影响代码的可读性，造成合约调用时有多余的gas消耗等。同时不规范的代码也容易导致编写时逻辑混乱，有隐藏的逻辑错误的概率更高。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/5_dkr7uywwn7.png" alt="疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？"></p>
+<p><strong>漏洞描述：</strong> 此处循环的结束条件为curr&gt;=0,而curr为uint导致curr&gt;=0恒满足。此处会导致循环无法正常结束。【链必验】在扫描中会对这类结果为定值的条件进行告警，用户可以通过提示确认此处逻辑，对条件进行删除或修改。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0424/5_9v2lu2p47z.png" alt="疯狂“出圈”和刷屏之后 Web3.0热潮下的NFT安全如何保证？"></p>
+<p><strong>漏洞描述：</strong> 此处event中将string类型的数据标记了indexed，该写法会导致在事件结果中无法直接获得对应的string结果。建议用户参考【链必验】的提示，仅使用indexed修饰固定长度的变量。</p>
+<p>研究发现，大多数的NFT合约都没有进行过专业的安全审计，这就存在很大的安全隐患，容易导致攻击事件的发生，造成资产的损失。所以NFT智能合约开发者应具备基本的安全开发意识，了解智能合约开发应注意的安全问题；此外，在合约设计和实现时，注意代码实现的正确性。<strong>我们建议开发</strong> <strong>完成后，可使用【链必验】对项目进行安全检测。项目上线前，可选择安全审计，规避安全风险。</strong></p>
+<p>安全，是区块链技术能够得以长足发展的重要保证，守护Web3.0的安全也变得愈发重要。今天我们所讲的业务逻辑相关问题和代码规范性相关问题，也是智能合约里面常见的问题类型 ，<strong>后续我们将继续推出NFT相关安全文章，请大家持续关注我们</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/37048/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">邓建鹏：“元宇宙”背后的监管空白 如何填补？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/37055/">
+                <span class="next-text nav-default">服装巨头进军元宇宙 网友：不就是QQ秀？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#近期发生了哪些nft-合约安全事件"><strong>近期发生了哪些</strong>NFT** 合约安全事件？**</a></li>
+    <li><a href="#nft合约问题包括哪些"><strong>NFT合约问题包括哪些？</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

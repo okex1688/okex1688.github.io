@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="写在前面：Reflexer是一个旨在打造第一个只支持ETH的去中心化，非挂钩稳定资产RAI的平台。RAI可以作为其他De..." />
+<meta name="keywords" content="undefined" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/20277/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策" />
+<meta property="og:description" content="写在前面：Reflexer是一个旨在打造第一个只支持ETH的去中心化，非挂钩稳定资产RAI的平台。RAI可以作为其他De..." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/20277/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-12T00:00:00+00:00" />
+
+<meta itemprop="name" content="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策">
+<meta itemprop="description" content="写在前面：Reflexer是一个旨在打造第一个只支持ETH的去中心化，非挂钩稳定资产RAI的平台。RAI可以作为其他De..."><meta itemprop="datePublished" content="2021-04-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7175">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策"/>
+<meta name="twitter:description" content="写在前面：Reflexer是一个旨在打造第一个只支持ETH的去中心化，非挂钩稳定资产RAI的平台。RAI可以作为其他De..."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-04-12">
+      2021-04-12
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7175 字 -
+        预计阅读 15 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%94%BF%E7%AD%96/"> 政策 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<blockquote>
+<p>写在前面：从与美元挂钩的稳定币到近期火热的算法稳定币Fei，“稳定”资产还可以有新的玩法吗？来看看Reflexer是如何将PID控制理论应用于加密货币政策的吧。注：Reflexer是一个旨在打造第一个只支持ETH的去中心化，非挂钩稳定资产RAI的平台。RAI可以作为其他DeFi协议的更 &ldquo;稳定 &ldquo;的抵押品（与ETH或BTC相比），或作为内含利率的稳定资产。值得注意的是，官方指出，RAI并不属于稳定币 ，其背后的系统也只关心市场价格尽可能地接近赎回价格。PID控制，是最早发展起来的控制策略之一，由于其算法简单、鲁棒性好和可靠性高，被广泛应用于工业过程控制，至今仍有90%左右的控制回路具有PID结构。简单的说，根据给定值和实际输出值构成控制偏差，将偏差按比例、积分和微分通过线性组合构成控制量，对被控对象进行控制。</p>
+</blockquote>
+<p>以下为全文翻译：</p>
+<p>这篇作品深入探讨了BlockScience团队与Reflexer实验室合作开展的工程设计工作，重点是在2021年2月17日主网启动前对RAI系统进行参数化。涵盖概念包括PID控制器、治理面、不确定性下的参数选择、控制器压力测试和安全系统推出。</p>
+<h2 id="前言"><strong>前言</strong></h2>
+<p>web3领域已经成为了许多方向快速进行金融实验的基础。许多项目都在为其代币寻求价格稳定（任何有用的货币都应该如此），并且经常以不同的方式进行。从外部货币挂钩到重定价机制，有许多关于 &ldquo;稳定 &ldquo;的尝试，但RAI是第一个使用既有控制理论走向反思性（或自我反思性）稳定价格的代币系统的此类代币。与现有的与法币挂钩的系统相比，RAI可以 &ldquo;减震ETH&rdquo;，因为稳定控制器可以减弱基础资产引起的价格波动，而不需要明确的挂钩。</p>
+<p>更具体地说，通过在系统设计中利用比例-积分-微分控制器（PID）控制器，RAI可以为以太坊DeFi生态系统提供一种不与任何外部资产挂钩的低波动性储备资产。在各种设备中部署PID控制器的现有工程实践深度为我们提供了坚实的工程基础，因而我们可以从中考虑RAI的设计。</p>
+<h2 id="复杂的系统"><strong>复杂的系统</strong></h2>
+<p>优化复杂的系统基础设施以平衡多个利益相关者的需求是工程设计的一项壮举。它需要对系统目标、约束条件和利益相关者需求的理解，以及对所涉及的权衡进行全面分析。建模和仿真的工具，如cadCAD，可以很好地帮助我们管理复杂性和平衡优化，以确保首选结果。</p>
+<p>这就需要我们深刻理解系统目标以及实现这些目标需要应用的机制所涉及的参数。在本节中，我们将研究RAI系统的各种目标，以及涉及哪些参数，包括受控和不受控。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/21_z48v4fc8s1.png" alt="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策"></p>
+<p>RAI分析仪表盘向最终用户展示相关的系统指标。这些同样的指标通过cadCAD模型为设计提供了信息，甚至在RAI系统存在之前，就已经对它们进行了测量。</p>
+<h3 id="目标"><strong>目标</strong></h3>
+<p>RAI生态系统的目标是工程设计过程的首要考虑因素。系统目标保证了cadCAD仿真参数及指标与总体目标的一致性。RAI项目的系统目标包括：</p>
+<ul>
+<li>在不假设赎回价格挂钩的情况下，平滑二级市场的价格变动。</li>
+<li>在一系列外生冲击下，控制器的稳定性。</li>
+<li>如果二级市场违反流动性要求，可平和地启动和关闭赎回价格调整（机制）。</li>
+</ul>
+<p>系统设计的下一步是确定参数，这些参数可分为两类：一类是在系统控制下的参数（受控参数），另一类是无法控制的参数（环境参数）。</p>
+<p>受控参数规定了系统设计者可以选择的关键特性，以实现系统目标。RAI项目控制参数包括:</p>
+<ul>
+<li>控制器专用参数</li>
+<li>债务市场具体参数</li>
+<li>定价预言机参数</li>
+</ul>
+<p>环境参数规定了系统的外部特征，也影响系统目标的实现。RAI项目的环境参数包括：</p>
+<ul>
+<li>ETH价格</li>
+<li>二级市场的 &ldquo;外部 &ldquo;交易需求（不包括因市价与赎回价错位而产生的 &ldquo;内部 &ldquo;交易需求）。</li>
+</ul>
+<p>此外，衡量这些目标实现情况的指标也很重要。我们可以在给定环境参数下，根据反映系统目标的KPI汇总来选择控制参数。RAI项目针对每个系统目标的KPI包括：</p>
+<ul>
+<li>响应性目标：合理的套利器和控制器对不同环境参数脉冲的响应时间。</li>
+<li>波动性目标：二级市场价格变化的统计离散性。</li>
+<li>稳定性目标：测量稳定与不稳定路径在模拟中的相对频率。</li>
+<li>流动性目标：二级市场滑点的可控性。</li>
+</ul>
+<h2 id="治理面"><strong>治理面</strong></h2>
+<p>加密经济系统和控制系统有一个共同的现象，就是有一组由人类设定的参数，在系统动态中编码权衡决策。在加密经济系统中，我们把受到人类监督的参数称为治理面。</p>
+<p>明确治理面很重要，而且在可能的情况下，重要的是，调整这种参数的效果相对直接。通常情况下，治理的概念被用作一个笼统的概念，假设人类将拥有专门知识、规程和协调，以就未来对这些参数的更改达成一致。</p>
+<p>在实践中，目标是保持较小的治理面，以减少治理行动的频率和复杂性。此外，前期基于模型的系统工程工作可以帮助确定初始参数，以制定推出计划和(或)最大限度地减少未来变化的规模。</p>
+<h2 id="了解并选择控制器类型"><strong>了解并选择控制器类型</strong></h2>
+<p>RAI是一种创新的加密经济系统，它使用PID控制器的变体作为维持市场价格稳定的手段。PID控制器是最常见的一类控制器。它利用比例(P)、积分(I)和微分(D)来影响时间序列的未来值。</p>
+<p>PID控制器的一个强大特点是，即使在没有预测的情况下，它也能不断地适应，因为误差的增加往往会使它的适应强度更高。具体来说，P是对眼前测量的一种理解，而I是对过去的理解，D则是与未来的预期变化有关。</p>
+<p>对于D而言，通过外推预期变化，有可能降低无噪声(理想化)稳态误差率，但代价是对突发变动的敏感性。一般来说，微分对市场价格中经常出现的噪声和波动测量很敏感。在经济环境中，D可能成为攻击向量。</p>
+<p>鉴于这些考虑，（我们）决定将分析重点放在P和I上，并将D设为零。下文将简要介绍用于评价启动时RAI参数备选方案的分析种类。</p>
+<h3 id="探索p和pi变量为rai启动进行预调"><strong>探索P和PI变量，为RAI启动进行预调</strong></h3>
+<p>迄今为止，RAI仅为了响应动态的简单性而使用P（Kp）；然而，由于已知比例控制器会受到稳态误差的影响，因此也需要包括一个积分项。虽然积分控制器可以有效地处理稳态误差，但它们很容易受到wind-up（饱和）的影响，即积分项的累积会导致控制动作的偏差。为了应对这种情况，我们还必须考虑一种抗wind-up（饱和）机制。因此，积分泄漏率被纳入我们的参数选择空间。</p>
+<h3 id="恶意鲸鱼测试"><strong>恶意鲸鱼测试</strong></h3>
+<p>如果不了解大型代币持有者（&lsquo;鲸鱼&rsquo;）的潜在影响，任何关于价格稳定性的实验都是不完整的。在下面的场景中，我们将设想一个名为&rsquo;白鲸&rsquo;的恶意鲸鱼购买了大部分的RAI供应，并利用它强行将RAI的市场价格保持在一个恒定的水平。</p>
+<p>在下面的例子中，我们考虑了5种可供选择的控制器类型的变量（正Ki与负Ki，泄露积分器与非泄露积分器，以及零Ki），并验证了在合理选择参数的情况下，长期来看，鲸鱼是可能会输给控制器的。</p>
+<p>第一个可视化是看如果白鲸保持市场价格不变，赎回价格会发生什么。从下图1中可以看到，在所有测试的方案上，除了Ki为负且无泄漏项的方案外，赎回价格在2周的时间内都会趋于零，这就意味着该参数化选择不可行。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/21_9at6fo049b.png" alt="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策"></p>
+<p>图1</p>
+<p>相对于比例控制，具有正Ki项的PI控制器加速了白鲸诱导的市场暴跌。负Ki项的PI控制器可以缓冲崩溃，使系统恢复。然而，泄漏项是至关重要的，因为如果让积分项压倒比例项，就等于控制器向攻击者投降&ndash;这是我们不能容忍的。幸运的是，在泄漏积分项和比例项之间的关系上有一个分析边界，能够确保这种情况不会发生。</p>
+<p>在RAI经济动态的背景下，这种情况是如何发生的？发生这种情况的原因是控制器会根据市场价格自动调整赎回率。</p>
+<p>当选择比例控制器(仅Kp)或带有泄露积分项的PI控制器(Kp &amp; Ki)时，稳态动态能包括恒定的负赎回率，着是我们在RAI生态系统中的目标。值得注意的是，如果我们排除泄漏，积分项就会产生反作用的加速效应。在Ki为正的情况下，赎回率会向负方向加速，而在Ki为负的情况下，赎回率会向正方向加速。这两种PI（无泄漏）情况都不是特别理想的情况。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/21_a6wqsh1u4g.png" alt="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策"></p>
+<p>在没有泄漏项的情况下，加入积分项有可能使RAI系统不可持续，因为很明显，它允许对用户进行经济剥削，或者由于越来越大的负利率而使代币越来越无法使用。考虑到鲸鱼攻击是真实存在的问题，这一分析表明，只有在包含抗windup（饱和）泄漏机制的情况下，P控制器是可行的，PI控制器是可行的。</p>
+<h3 id="稳态误差测试"><strong>稳态误差测试</strong></h3>
+<p>RAI的另一个关注点是稳态误差；具体来说，系统有可能在没有缩小赎回价格与市场价格之间的预期差距的情况下实现某种程度的价格稳定。事实上，在控制设计空间中引入积分项的唯一原因是为了帮助消除稳态误差。稳态误差问题往往是在存在噪声或冲击的情况下产生的。</p>
+<p>在下图3中，市场按照马丁格尔过程演变。我们观察到，Ki项往往会对赎回率产生偏差（见下图），这种偏差可能很小，但随着时间的推移，将导致赎回价格的巨大差异。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/21_8ddiidelca.png" alt="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策"></p>
+<p>图3. 即使参数选择得当，每小时兑换率的变化幅度很小（&lt;5e-9），但随着时间的推移，仍会导致较大的累积误差。</p>
+<p>在图4中，我们可以看到累积误差随时间的变化。无泄漏的正Ki倾向于增加绝对误差(较大幅度的负误差)，而无泄漏的负Ki倾向于减少绝对误差(较小幅度的负误差)，两者都是相对于P控制器测量的。负Ki无泄漏的PI控制器实现了最小的绝对误差，但由于上面讨论的恶意鲸鱼攻击，我们已经排除了该设计。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/21_orfaw9sqmh.png" alt="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策"></p>
+<p>图4</p>
+<p>在我们的例子中，相对于仅有P的控制器，加入泄露积分项的好处很小，因此需要进一步的调整，以便在稳态误差的基础上有意义地区分这两种选择。就目前而言，这意味着加入I项所增加的复杂性在短期内并不能被系统稳定性的好处所证明，在实施之前还需要在这个方向上进行更多的研究。</p>
+<p>另一个重要的观察是赎回价格的失控趋势。比例控制器和有抗windup（饱和）的PI控制器能够实现控制，而没有抗windup（报个）的PI控制器则会失控。负Ki项会导致赎回价格发散（跑偏到无穷大），而正Ki项会导致赎回价格收敛到0。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/21_wh6zr8mi2j.png" alt="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策"></p>
+<p>图5.非泄漏的PI控制器会在赎回价格上产生漂移，即使累积价格误差的大小仍然是有界的。</p>
+<h2 id="不确定性下多维系统的参数选择"><strong>不确定性下多维系统的参数选择</strong></h2>
+<p>在对控制参数进行迭代的同时，还要对RAI系统和交互作用的大量数据和复杂性进行科学分析，这就需要使用新的科学方法。</p>
+<p>上面的简单模型只考虑了P(I)的控制逻辑，下面用于分析的模型则包括了该背RAI的抵押债务头寸以及作为RAI二级市场(和价格传感器)的流动性池服务</p>
+<p>为此，BlockScience开发了 &ldquo;不确定性下的参数选择 &ldquo;方法，以实现数据驱动的知情决策。这篇关于 &ldquo;<a href="https://medium.com/block-science/how-to-perform-parameter-selection-under-uncertainty-976931ba7e5d">在不确定性下执行参数选择</a> &ldquo;的文章对它以及相关步骤和挑战进行了简要描述。</p>
+<h3 id="rai参数选择"><strong>RAI参数选择</strong></h3>
+<p>在下面一节中，我们将提供一些非详尽的例子，说明在更广泛的RAI系统模型上运行的一些计算实验，其中包括SAFEs系统和流动性池（ETH/RAI Uniswap实例）。</p>
+<h3 id="场景测试"><strong>场景测试</strong></h3>
+<p>我们的工作流程规定了一些测试场景，以将系统目标与可测量的KPI，以及最终与选定的控制参数联系起来。所执行的场景包括：</p>
+<ol>
+<li>&ldquo;合理性检验&rdquo;，以确保系统的Plant表现符合预期；这将考虑控制器关闭的情况，唯一的不确定性来源是ETH价格的变动。</li>
+<li>冲击检验，即引入外生过程的预设变化，衡量系统的反应能力，以及</li>
+<li>轨迹抽样，即蒙特卡洛在许多随机过程实现上运行，在各种环境条件下对反映系统目标的关键绩效指标进行测量和评价。</li>
+</ol>
+<h4 id="合理性检验测试"><strong>&ldquo;合理性检验 &ldquo;测试</strong></h4>
+<p>要测试的基线场景是债务和二级市场系统在没有控制器的情况下自行运行。这种测试是为了确保 &ldquo;Plant &ldquo;模型在使用它来评估控制器之前正常工作。</p>
+<p>这个合理性检验通过固定赎回价格来复制&rsquo;挂钩到法币&rsquo;的控制器。在这种情况下，系统应该达到一种状态，即ETH的价格变动会被&rsquo;传递&rsquo;到市场价格上，而赎回价格固定在其初始条件下（这种情况下，RAI是Reflexer在发布时设定的值，3.14美元/RAI）。 &ldquo;合理性检验 &ldquo;的结果见下图6。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/21_m172jcshev.png" alt="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策"></p>
+<p>图6：在PID控制器关闭的情况下，将生成的ETH价格信号引入模型，在RAI的市场价格上产生相应的变动。</p>
+<p>如图6所示，在控制器关闭的情况下，ETH价格产生的变动会在RAI的市场价格中产生相应的变动，并有轻微的向上漂移（具体到ETH价格的冲击过程实现）。观察到的动态与同类系统（如单一抵押品DAI）中的动态相似。</p>
+<h4 id="冲击测试的攻击和失效模式"><strong>冲击测试的攻击和失效模式</strong></h4>
+<p>与任何综合系统设计一样，我们需要了解我们系统的局限性，以及在什么情况下会出现故障。冲击测试从实现外部过程的一次性变化开始，例如ETH的价格，并检查由此产生的对系统动态的影响。冲击测试对于选择能保持系统稳定的参数范围特别有用，即保持价格和代币余额不至于跑到无穷大或为零。</p>
+<p>下面是一个例子，比如，两周后ETH价格突然下跌30%。我们可以看到，在Kp=2e-07和5e-09的情况下，对PI变量的影响是失控的，而那些由参数建议给出的值则保持稳定和有界。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/21_sn2bibsmtc.png" alt="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策"></p>
+<p>图7：2周后ETH价格阶梯变化下赎回价格与市场价格的冲击分析。绿色为泄露PI控制器的可行参数范围，红色为失败模式的例子。</p>
+<h3 id="建议参数范围"><strong>建议参数范围</strong></h3>
+<p>基于不确定性工作流程下的参数选择，我们确定P控制器是最简单和最安全的网络启动配置，并进一步观察到，如果我们希望进一步减少稳态误差，可以添加一个积分，但只有当泄漏项被包括在内，并进一步满足条件Kp &gt; -Ki /(1 - �)，其中α是泄漏积分参数使才可以。</p>
+<p>下图8是使用参数值取自推荐范围的模拟示例，其中比例项为正，积分项为负，表现出稳定性&ndash;控制器的作用是减弱外生随机过程的变化，如ETH价格。在这种情况下，Kp项比Ki项强3个数量级以上，积分项每期泄漏1/1000的值。由此产生的系统在稳态时的表现与纯P控制器相当（如下图所示），但如果出现稳态误差，则有额外的能力来消除它们。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/21_dcrtjnjmr5.png" alt="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策"></p>
+<p>图8：赎回价格与ETH价格的比较，使用推荐参数的实现。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/21_549fk9pmht.png" alt="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策"></p>
+<p>图9：模拟RAI流动资金余额与RAI债务余额的实现情况</p>
+<h2 id="逐步推出"><strong>逐步推出</strong></h2>
+<p>在创建和部署新的金融系统时，我们需要进行渐进式的测试和推广，以确保系统安全，然后再向更多用户和更多资本开放。</p>
+<p>2020年10月，ProtoRAI(PRAI)进行了一个激励性的主网测试，以低债务上限的方式启动，用于测试系统行为，并为更大规模的正式RAI系统启动提供参考。这里的目的是在全面部署之前，观察小规模低质押的情况。</p>
+<p>RAI网络于2021年2月17日上线，初始配置只有比例控制器Kp项。该系统表现出预期的行为，与我们在比例控制器情况下预期的结果一致。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/21_ghnysbugv4.png" alt="DeFi新玩法丨看Reflexer如何将PID控制理论应用于加密货币政策"></p>
+<p>截至2021年4月2日，每个RAI分析仪表盘的价格</p>
+<p>继续监测实时数据，并将其与系统模型相结合，将揭示是否值得纳入综合控制项Ki及其泄漏的 &ldquo;抗饱和 &ldquo;机制。这将增加系统的复杂性，但也可以确保长期的可持续性，从而在RAI系统的生命周期内促进治理最小化。</p>
+<h2 id="治理最小化"><strong>治理最小化</strong></h2>
+<p>试图通过忽略治理面来实现治理最小化，就好比上了一辆自动驾驶汽车，却无法指示汽车导航，让它带你到哪里去。</p>
+<p>在实践中，治理最小化首先要有一个定义明确的治理面，然后是关于谁、何时以及如何改变参数的明确程序。成功的治理最小化意味着做出更少、更小、更明确的改变，并减少业务开销。</p>
+<p>参数完全不耦合的情况很少；更多的时候，适当的值是相互关联的，就像我们看到的Kp、Ki和α（泄露积分参数）。模型在监测系统健康方面发挥着重要的作用，因为它们可以帮助抑制为了治理行动而采取的治理行动，这实际上是将系统置于风险之中，同时反过来帮助确定何时需要采取行动，有足够的预警来规划、测试和执行有效的干预措施。</p>
+<h2 id="下一步"><strong>下一步</strong></h2>
+<p>鉴于我们已经有了RAI动态和主网发布的全功能模型，我们接下来要扩大现有模型的规模，使其与实时数据相结合，为持续监测提供信息。此后还要作出决定，要从冲击和事件中学习，以提高我们对周围复杂的新动态的理解。</p>
+<h2 id="结论"><strong>结论</strong></h2>
+<p>在这篇文章中，我们总结了RAI稳定性控制器的参数选择的工程工作，旨在进一步教育和告知以太坊社区关于计算机辅助设计在复杂系统中的重要性。</p>
+<p>通过介绍PID控制器的概念和它在RAI生态系统中的参数化，以及对系统进行电池冲击和灵敏度测试以了解系统的响应情况，我们更好地了解了RAI如何应对系统控制之外的各种攻击和外生冲击。</p>
+<p>最终，Reflexer团队的目标是提供一种低波动性、最小化治理、稳定价格的资产，供以太坊生态系统使用。尽管存在不确定性，但只要有严格的控制理论基础，这些特性就可以变得可靠。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/20246/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Dapp行业报告：2021年第一季度概述</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/20300/">
+                <span class="next-text nav-default">ETC Group将在德意志交易所的XETRA平台上市莱特币ETP</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言"><strong>前言</strong></a></li>
+    <li><a href="#复杂的系统"><strong>复杂的系统</strong></a>
+      <ul>
+        <li><a href="#目标"><strong>目标</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#治理面"><strong>治理面</strong></a></li>
+    <li><a href="#了解并选择控制器类型"><strong>了解并选择控制器类型</strong></a>
+      <ul>
+        <li><a href="#探索p和pi变量为rai启动进行预调"><strong>探索P和PI变量，为RAI启动进行预调</strong></a></li>
+        <li><a href="#恶意鲸鱼测试"><strong>恶意鲸鱼测试</strong></a></li>
+        <li><a href="#稳态误差测试"><strong>稳态误差测试</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#不确定性下多维系统的参数选择"><strong>不确定性下多维系统的参数选择</strong></a>
+      <ul>
+        <li><a href="#rai参数选择"><strong>RAI参数选择</strong></a></li>
+        <li><a href="#场景测试"><strong>场景测试</strong></a></li>
+        <li><a href="#建议参数范围"><strong>建议参数范围</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#逐步推出"><strong>逐步推出</strong></a></li>
+    <li><a href="#治理最小化"><strong>治理最小化</strong></a></li>
+    <li><a href="#下一步"><strong>下一步</strong></a></li>
+    <li><a href="#结论"><strong>结论</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Chia最新耕种池协议全解析 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文详细介绍了Chia耕种池协议的设计原则、运行机制及技术背景，以及一系列相关Q&amp;A" />
+<meta name="keywords" content="项目, Chia" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/23622/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Chia最新耕种池协议全解析" />
+<meta property="og:description" content="本文详细介绍了Chia耕种池协议的设计原则、运行机制及技术背景，以及一系列相关Q&amp;amp;A" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/23622/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-04T00:00:00+00:00" />
+
+<meta itemprop="name" content="Chia最新耕种池协议全解析">
+<meta itemprop="description" content="本文详细介绍了Chia耕种池协议的设计原则、运行机制及技术背景，以及一系列相关Q&amp;amp;A"><meta itemprop="datePublished" content="2021-06-04T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-04T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5051">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Chia最新耕种池协议全解析"/>
+<meta name="twitter:description" content="本文详细介绍了Chia耕种池协议的设计原则、运行机制及技术背景，以及一系列相关Q&amp;amp;A"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Chia最新耕种池协议全解析</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-04">
+      2021-06-04
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5051 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>在Chia官方今日举行的视频会议“Chia Pools for Pool Operators”上，创始人Bram Cohen与其团队成员共同分享了Chia耕种池协议相关的最新信息及进展，详细介绍了Chia耕种池协议的设计原则、运行机制及技术背景，并再次确认官方耕种池协议将很快上线。<strong>以下内容由“蓝贝壳云储”整理自会议信息，具体内容请以Chia官方为准。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0604/5_saodpaqcym.png" alt="Chia最新耕种池协议全解析"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0604/5_1b6ja83c44.png" alt="Chia最新耕种池协议全解析"></p>
+<p>Chia团队不希望其相关“耕种池”产生一家独大的局面，即便在某些情况下这种局面已经形成，他们也会保证这些大型耕种池无法作恶。（“耕种池”相当于其它区块链项目的“矿池”，Chia官方将其获取区块奖励的过程称为“耕种farming”，对应其他项目的“挖矿mining”）</p>
+<p>Chia团队中的耕种池协议程序负责人之一Mariano S.表示，在大多数工作量证明机制（Proof of Work）下的矿池协议中，矿池会去创建区块，矿工则会去进行哈希碰撞，<strong>“区块的创建”直接关联于“代币奖励的发放”，这样的机制下矿池会拥有极大的控制权。</strong></p>
+<p>而Chia的耕种池协议中，<strong>“区块的创建”与“耕种池协议”之间是完全分离的，耕种池只负责“代币奖励的发放”。</strong> 它收集农民farmer（相当于其它区块链项目中的“矿工miner”这一角色）的全部代币奖励，并按比例将它们分配给这些农民。这些农民可以运行他们自己的全节点（full node），也可以将自己连接至第三方并代理他们去为自己运行全节点。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0604/5_v3bu73q8nw.png" alt="Chia最新耕种池协议全解析"></p>
+<p><strong>Chia耕种池设计中的基本原则</strong></p>
+<p><strong>为农民保障安全</strong> ：农民无需信任耕种池，农民也绝不需要向耕种池上传他们的私钥，这些私钥全部都保存在本地。</p>
+<p>由于在工作量证明机制中的矿池不涉及到私钥，矿工只需不断进行哈希碰撞并将其提交，以此赢取奖励，矿工需将自身算力投入矿池，所以其中不存在作弊行为。然而在Chia的空间证明机制（Proof of Space）中由于涉及到私钥去创造签名，其农民并不与耕种池进行绑定，因此理论上农民在可以赢取Chia的同时又去对另一方进行签名，出现多挖作弊的行为。为避免这种作弊行为的发生并确保其安全性，Chia的耕种池协议相对于普通的矿池协议会更复杂也更难于建设。</p>
+<p><strong>为耕种池保障安全</strong> ：P图（Plots）以加密的形式与相关智能合约进行绑定，而该合约指向某一特定耕种池，由此便可以防止农民作弊。1.75/.25奖励分割机制（创建区块所获得的2个Chia代币中，1.75个代币流入耕种池继而按比例分配给所有农民，剩余0.25个代币则直接奖励给赢得了那一区块的农民）也会有效抵御耕种池之间的攻击行为。</p>
+<p>在目前的版本中，P图里加密存储了公钥。团队曾试图将耕种池地址加密存储至P图中，以此防止农民的多挖作弊行为，然而这种做法会让农民无法更换耕种池，一旦P盘完成，他们就只能固定加入某一特定耕种池中，这不仅非常不方便，而且还会导致耕种池趋向中心化。最终团队决定使用智能合约去绑定耕种池地址，从而有效解决了上述问题。</p>
+<p><strong>区块创建更为去中心化</strong> ：农民们可以选择运行自己的全节点，从而助力去中心化，也可以选择代理耕种池为自己运行全节点。</p>
+<p><strong>可自由更换耕种池</strong> ：农民可以随时更换耕种池，无需重新P盘，同时确保农民无法为赢取更多奖励而对耕种池作弊。不涉及“注册”、“用户名”和“密码”等，农民可以直接在链上更换耕种池并直接开始耕种。</p>
+<p><strong>无需重复配置的区块链备份系统</strong> ：假设某农民拥有A和B 两台计算机，这两台计算机中用到同样的key（同样的24个关联词汇），那么只要其中一台计算机加入了某耕种池，则另一台计算机就会自动加入该耕种池并进行耕种，无需重复手动进行配置。</p>
+<p><strong>什么是Singleton？</strong></p>
+<p>每个Singleton都是独一无二的，类似于NFT，一旦在区块链上创建，那么它就永远是独一无二的。在新的Chia耕种池P图中，将会包含特定的Singleton支付地址（pay to singleton address）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0604/5_3v5aewlbz8.png" alt="Chia最新耕种池协议全解析"></p>
+<p>用户通过Singleton创始币（Singleton genesis coin）来创建你的第一个Singleton，这个创始币可以是你钱包里的任意Chia代币，因为用户想要在Chia区块链上生成记录，就必须通过花费Chia代币来实现，如此才能开始创建Singleton。</p>
+<p>在创建独一无二的Singleton时，用户可以将具体的耕种池相关信息加入其中，包括耕种池的地址、URL、用户的公钥等，这些信息将全部上链。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0604/5_u9ils91k32.png" alt="Chia最新耕种池协议全解析"></p>
+<p>一旦用户想要更新Singleton上的信息，就需要花费这个Singleton去创建新的Singleton，这个新创建的Singleton将拥有和原Singleton同样的ID。也就是说，<strong>Singleton本身无法修改，更新其信息也就意味着销毁旧的Singleton的同时创建一个相同ID的新的Singleton。</strong></p>
+<p>当成功收获一个区块时，由耕种池分配的1.75个代币并不直接流入用户或耕种池手中，而是进入Pay to singleton puzzle里，只有耕种池才有权领取这些代币。</p>
+<p>当用户想要更换到新的耕种池时，需要使用现有的Singleton去创建一个包含新耕种池信息的新的Singleton，在一定的时间过后，用户就会更换到新的耕种池中。<strong>一个Singleton对应一个特定的耕种池，各耕种池通过查看区块链上的Singleton信息来判断某用户是否为其成员之一。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0604/5_qsvbcslb1z.png" alt="Chia最新耕种池协议全解析"></p>
+<p><strong>测试版演示</strong></p>
+<p>每一个Pool Tab（耕种池标签）都代表一个Singleton。在Pool Tab上，可以看到“耕种池名称”、“耕种池URL”、“已获得奖励”、“当前难度”、“Points Balance（积分余额）”等信息。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0604/5_h4ztbgasnq.png" alt="Chia最新耕种池协议全解析"></p>
+<p>用户可以选择自己组建耕种池（耕种奖励将直接进入自己的钱包地址中），也可以选择加入其它耕种池。想要加入其它耕种池，<strong>只需将耕种池地址输入Connect to pool的空白栏内，下方便会自动弹出该耕种池的相关信息。</strong> 用户通过仔细核实这些信息，来确保自己不会加入恶意耕种池中，以免遭遇欺诈。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0604/5_a4gm1pyrdj.png" alt="Chia最新耕种池协议全解析"></p>
+<p>在新的Point积分系统中，假设A贡献难度是1000，B是10，那么A自然比B更重要，价值更大，因为A的证明比B的证明难度更高，当用户通过耕种池耕种时，在耕种池的数据库中，他们会被授予和所贡献难度相应的积分（如贡献难度为10则会被授予10个积分），由此耕种池就可以追踪用户所拥有的积分，用户也可以随时查看自己的积分。</p>
+<p>在P盘时的设定菜单中加入了Join a Pool选项。在选项单里可以选择none，即按照以往方式自己耕种，或者也可以选择由自己创建的Singleton（每个Singleton指向某特定耕种池）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0604/5_4disn2w1i5.png" alt="Chia最新耕种池协议全解析"></p>
+<p><strong>Q&amp;A</strong></p>
+<p><strong>Q: 我可以用一张P图加入两个不同耕种池吗？</strong></p>
+<p>A: 不可以，你的P图与Singleton绑定，而一个Singleton一次只能指向由你自己设定的某一特定耕种池。</p>
+<p><strong>Q: 耕种池可以封禁用户吗？</strong></p>
+<p>A: 可以，因为Singleton ID加密存储于P图中，所以耕种池理论上可以封禁用户。虽然耕种池无法禁止用户将自己指向其耕种池，但是耕种池可以通过不向用户发放奖励的方式封禁用户。无论如何，耕种池奖励依然是由耕种池控制。</p>
+<p><strong>Q: 耕种池有可能卷款跑路么？</strong></p>
+<p>A: 如果耕种池支付了你应得的奖励，那就没什么问题。不过一些流氓耕种池可以在支付间隔——也就是三天之内卷款跑路，理论上这类流氓耕种池确实可以在三天之内收集所有奖励，然后不把奖励发放给农民，自己卷款跑路。因此，耕种池的名誉是用户在加入某耕种池前需要调查清楚的重要事项，毕竟没人想加入流氓耕种池。另外，用户永远都有更换耕种池这一选项，用户一旦发现自己加入的耕种池不太对劲，就可以马上更换到其它耕种池。</p>
+<p><strong>Q: 用户如何使用Singleton？</strong></p>
+<p>A: 用户通过Chia官方的图形操作系统来创建Singleton，在相应界面加入一个P图NFT即可。对于没有Chia代币或mojos（Chia代币的最小单位）的用户而言，可以去Chia官方水龙头领取，地址为faucet.chia.net，或者用户也可以从自己的朋友那里拿些mojos。</p>
+<p><strong>Q: 当为每个用户的证明（proofs per user）设限时，是否同时会为单用户耕种规模（farm size）设限。</strong></p>
+<p>A: 不会，这两者是独立的，如果你有100P空间，同时把证明难度设置的非常高，那么你最终得到的每日证明量可能会和拥有1T空间的人一样多。</p>
+<p><strong>Q: 对于想要使用多个Singleton连接同一耕种池的用户而言，是否需要每个Singleton单独登录？</strong></p>
+<p>A: 是的，目前每个Singleton需要单独登录。不过这只是Chia耕种池协议的第一个版本，后面还会陆续加入更多功能。</p>
+<p><strong>Q: 1.75/.25奖励分割比例是否可以更改？</strong></p>
+<p>A: 不可以，这一比例存在于源代码及共识之内，因此无法更改。我们之所以加入这一比例，是因为如果存在某一耕种池的规模在全网中超过了一定比例，那么原则上，它就可以通过攻击其它耕种池来为自己牟利。为了让全网的发展更为健康，这种奖励分割是非常必要的，它保证这些被攻击的耕种池或农民依然可以获得部分奖励。那些没有奖励分割的传统矿池协议是糟糕的。另外Chia的交易手续费均直接流入农民手中，因为我们希望由农民创建区块，而不是由耕种池创建区块，这也会是对抗某些耕种池的恶意行为的有力武器。此外随着今后的奖励减半，奖励分割的数量也会减半，但是比例依然保持不变。</p>
+<p><strong>Q: 耕种池如何设置提现的最小限额，它是否可以根据全网交易手续费的变化来进行更改。</strong></p>
+<p>A: 这完全由各个耕种池决定。</p>
+<p><strong>Q: 难度和获取证明的机会是否是线性相关的？</strong></p>
+<p>A: 是完全线性相关的。这和Time Lord的速度也有关系，不过大部分时间里我们假设Time Lord的速度是恒定不变的。</p>
+<p><strong>Q: 奖励机制会不会在未来改变？我们是否可以封禁耕种池？Chia究竟是不是真的去中心化？</strong></p>
+<p>A: 关于第一个问题，奖励机制不会改变，目前我们发布的所有东西都是基于Layer 2的，未来我们什么都不会去变更。我们不会去分叉，绝不会去硬分叉，在很长一段时间内也没有任何软分叉的打算。再次强调，奖励机制不会改变，我们不是Chia网络的独裁者，这是一个去中心化的网络。关于第二个问题，我们无法封禁耕种池，因为这是一个去中心化的网络，我们并不拥有这个网络，因此它也并不被我们掌控，所以我们无法封禁耕种池。关于第三个问题，是的，我们是非常去中心化的，当然也希望未来Chia能够更加去中心化，以建设一个更健康的生态系统，我们希望存在多个耕种池相互竞争，而不是一家独大。</p>
+<p>目前关于Chia的开发均在计划之内，只不过这个计划正在加速进行。Chia上线后的发展速度超乎我们的想象，因此人们对耕种池协议的需求之急也在我们的预料之外，要知道距离Chia币价趋稳还不到一个月时间，目前我们正尽我们所能，以尽快推出耕种池协议。</p>
+<p><strong>Q: 任何人都可以建设耕种池吗？</strong></p>
+<p>A: 是的。不过想要建设并运行耕种池并非易事，你需要通过一系列相关申请，还要进行KYC、AML等。另外，我们当然不会建设官方自己的耕种池，我们希望这个生态系统是健康的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0604/5_ehssfo0qhs.png" alt="Chia最新耕种池协议全解析"></p>
+<p>最后，<strong>官方表示他们不会再提前预告具体的耕种池协议上线时间，而是会在官方认为目前的耕种池协议已经准备好，并尽可能解决了所有bug之后再上线。</strong> 另外在耕种池协议的测试网版本上线后，一旦官方确认测试网版本的耕种池协议可以在没有重大bug的前提下有序运行三天时间，官方就会在主网为所有人上线耕种池协议。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/23616/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Arbitrum应用生态一览：目前哪些DeFi大户站队Arbitrum？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/23628/">
+                <span class="next-text nav-default">Coinbase已上线狗狗币！向用户狂撒120万美元奖金</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

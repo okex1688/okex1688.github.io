@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          解读BIS多国央行数字货币互通计划“邓巴项目”（一）：平台设计 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="跨境支付分为大规模批发支付和零售支付，" />
+<meta name="keywords" content="央行数字货币" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/36401/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="解读BIS多国央行数字货币互通计划“邓巴项目”（一）：平台设计" />
+<meta property="og:description" content="跨境支付分为大规模批发支付和零售支付，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/36401/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="解读BIS多国央行数字货币互通计划“邓巴项目”（一）：平台设计">
+<meta itemprop="description" content="跨境支付分为大规模批发支付和零售支付，"><meta itemprop="datePublished" content="2022-04-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3511">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="解读BIS多国央行数字货币互通计划“邓巴项目”（一）：平台设计"/>
+<meta name="twitter:description" content="跨境支付分为大规模批发支付和零售支付，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">解读BIS多国央行数字货币互通计划“邓巴项目”（一）：平台设计</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-04-08">
+      2022-04-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3511 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E4%BA%A4%E6%98%93%E6%89%80/"> 交易所 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>&ldquo;邓巴项目&rdquo;（Project Dunbar）是国际清算银行（BIS）创新中心与澳大利亚储备银行（RBA）、马来西亚中央银行（BNM）、新加坡金融管理局（MAS）和南非储备银行（SARB）共同合作探讨的项目，旨在建立多国央行数字货币互通（multi-CBDCs）平台，实现更加廉价、快速和安全的跨境支付。跨境支付分为大规模批发支付和零售支付，&ldquo;邓巴项目&quot;的重点是银行之间的批发支付。</p>
+<p>当前，跨境支付使用代理银行模式，即银行之间相互持有外汇账户。要完成单一的跨境转账，可能需涉及多个代理银行，这些代理行进行跨境支付使用的是所持有的外币。每一个交易环节都需要时间和精力来处理，并且交易需要记录在不同技术和不同信息格式的多个系统上的多个分类账上。</p>
+<p>2020年10月，G20发布了加强跨境支付的路线图，制定了一个五年计划，来解决跨境支付带来的成本高、速度慢、接入受限和透明度不足的挑战。G20路线图的一个重点领域是新的支付基础设施和安排，其中包括CBDC。CBDC是一种数字货币。它可以由个人用来支付给企业或其他个人(称为零售CBDC)，也可以由金融机构或其他批发市场参与者用来结算金融市场或其他交易(称为批发CBDC)。CBDC在改善支付方面表现出很大的潜力，并已成为多国央行探索的主题。</p>
+<p>3月22日，BIS发布报告，称&quot;邓巴项目&quot;已完成两个原型的开发工作，可以使用多国央行发行的数字货币进行国际结算。该报告的解读将分为三个篇章：分别从平台设计、管理和流程、未来挑战三个方面进行阐述；本文为解读（一），主要围绕CBDC平台设计进行介绍。</p>
+<h2 id="多国cbdc互通平台模型">多国CBDC互通平台模型</h2>
+<p>BIS提出了三种多国CBDC互通平台的概念模型，分别是兼容的CBDC系统（模型1）、相互连接的CBDC系统（模型2）和集成为单个系统的CBDC系统（模型3）。</p>
+<p><strong>模型1：增强各国CBDC的兼容性</strong></p>
+<p>通过建立统一的监管框架、市场操作、信息格式和数据要求，增强对各国CBDC的兼容性。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0408/18_yd5ezvcm6r.png" alt="解读BIS多国央行数字货币互通计划“邓巴项目”（一）：平台设计"></p>
+<p>图1. 增强各国CBDC的兼容性</p>
+<p><strong>模型2：相互连接的CBDC系统</strong></p>
+<p>相互连接的CBDC系统通过PVP结算（对等支付）方式，可以建立在增强兼容性的基础上，同时提供额外的安全保护。通过共享技术接口或者制定共同的清算机制，将不同的支付系统连接在一起（例如，由中央银行操作，在跨货币设置中扮演通讯员的角色）。该模型可以提高效率，特别是当它们与外汇交易挂钩时。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0408/18_hvrgbs2ifc.png" alt="解读BIS多国央行数字货币互通计划“邓巴项目”（一）：平台设计"></p>
+<p>图2. 相互连接的CBDC系统</p>
+<p><strong>模型3：集成为一体的CBDC互通系统</strong></p>
+<p>该模式将多个国家央行数字货币重新创建一个系统。所有的外汇结算在默认条件下都是PVP结算方式，无需通过一个特定的实体作为接口执行结算命令。通过建立单一规则手册和治理安排、相互认可标识方案、单一基础设施和分类账簿，该模式将交易场所也整合到多国CBDC互通系统中，从而降低复杂性、分散性和集中度。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0408/18_1hnlrlr14v.png" alt="解读BIS多国央行数字货币互通计划“邓巴项目”（一）：平台设计"></p>
+<p>图3. 集成为单一mCBDC系统</p>
+<p>邓巴项目以其合作伙伴中央银行之前的工作经验为基础，探索开发一个共享的结算平台，将所有参与的中央银行和商业银行连接起来。这与模型3的安排一致。</p>
+<h2 id="建立多国cbdc互通平台的优势">建立多国CBDC互通平台的优势</h2>
+<p><strong>减少对中介的依赖</strong></p>
+<p>单一的跨境转账可能涉及一个或多个代理银行使用其持有的外币来结算交易。整个交易的每一个环节都需要时间和精力来处理。而多国CBDC互通平台，使参与银行可以使用不同的CBDC直接进行交易，而无需持有外汇账户。CBDC可以直接从发送方转移到接收方银行。</p>
+<p><strong>简化处理过程</strong></p>
+<p>在代理银行模式下，单个跨境转账需要在不同的系统上更新多个分类账。而在多国CDBC互通的平台上，转账是在一个分类账上一步记录的，参与者可以实时完整地看到自己的余额。因此，解决进程得到简化。</p>
+<p><strong>使用通用平台提高效率</strong></p>
+<p>涉及跨境转账的多家银行通常单独执行类似的流程，如反洗钱/反恐金融行动和制裁审查。这些程序在性质上是相似的，其共同目的是核实发送人和接收人的身份，以最大限度地减少为洗钱、恐怖主义融资或其他形式的金融犯罪提供便利的交易风险。通用平台为集中执行这些流程创造了机会。</p>
+<p><strong>智能合约的流程自动化</strong></p>
+<p>当资产是在一个公共平台上发布的，那么它们可以直接由智能合约管理，而不需要一个可信的中介机构和跨不同平台的协调。</p>
+<h2 id="邓巴项目工作体系">&ldquo;邓巴项目&quot;工作体系</h2>
+<p>&ldquo;邓巴项目&quot;分为三个并行的工作流程，分别为设计工作流程和技术工作流程，其中技术工作流还分为两个部分，在两个不同的DLT平台（Corda和Quorum）上开发技术原型，将多国CBDC互助平台的想法转化为原型。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0408/18_j5bkcmgtzf.png" alt="解读BIS多国央行数字货币互通计划“邓巴项目”（一）：平台设计"></p>
+<p>图4 邓巴项目工作流程</p>
+<p>多国CBDC互通平台所需的许多基本功能，如CBDC发行、交易和赎回，与国内批发CBDC系统类似。由于这一领域是各国央行和技术提供商一直进行的重大研究工作的主题，许多此类功能已被开发，并能作为已有功能在两个DLT平台上使用。因此，邓巴项目并不寻求复制这些工作，而是专注于多国CBDC互通平台的具体需求。</p>
+<p>技术工作流的目标是在两个不同的DLT平台（Corda和Quorum）上开发技术原型，将多国CBDC互通平台的理念转化为工作原型。Corda平台开发由R3牵头，而Quorum平台开发由Partior牵头（在星展银行、摩根大通和淡马锡的支持下）。这两个原型是根据设计工作流程中提出的需求和设计开发的，同时利用了各自平台的现有基础功能和架构。这些功能和特性得到了增强，以支持多国CBDC互通平台的特定需求。</p>
+<p>作为一个探索性项目，三个并行工作流程的目标也是基于技术合作伙伴开发原型所需的关键信息先后顺序所制定的。</p>
+<p><strong>表1 各工作流程的目标</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0408/18_6dsisjdgd3.png" alt="解读BIS多国央行数字货币互通计划“邓巴项目”（一）：平台设计"></p>
+<h2 id="多国cbdc互通平台设计原例">多国CBDC互通平台设计原例</h2>
+<p>多国CBDC互通平台需要跨治理、流程和技术三个领域的基础能力。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0408/18_iqmv4rbn4r.png" alt="解读BIS多国央行数字货币互通计划“邓巴项目”（一）：平台设计"></p>
+<p>图5 多国CBDC互通平台功能和注意事项</p>
+<p><strong>治理功能</strong></p>
+<p>治理功能与平台操作、使用规则和边界以及决策机制有关。治理的一个关键部分是规定参与者和利益相关者，以及他们在平台上的角色和职责。治理的其他方面还包括访问平台的注意事项、成员如何加入CBDC互通平台、决策结构以及如何开发和应用规则。</p>
+<p><strong>流程功能</strong></p>
+<p>流程与完成支付交易和执行这些操作所需的功能有关。由于这一阶段的重点是证明跨境支付的可行性，大部分工作都围绕着银行间支付流程展开。与中央银行系统的集成和连通性能力有关。</p>
+<p><strong>技术功能</strong></p>
+<p>技术是指实现多国CBDC互通平台的技术交付需要完整的解决方案。技术基础设施包括服务器、网络和DLT平台，通过这些基础设施使中央银行能够在一个共享平台上相互通信。</p>
+<h2 id="多国cbdc互通平台应用举例">多国CBDC互通平台应用举例</h2>
+<p>在多国CBDC互通平台上，每个参与的中央银行以自己的本国货币发行CBDC。参与的商业银行能够直接持有这些CBDC，并不需要通过关联银行的账户而获得外国货币。</p>
+<p>例如，新加坡银行是一家持有新加坡和马来西亚经营牌照的银行集团。它可以使用这两个司法管辖区的国家支付系统，并可以使用两种央行货币（新加坡元和马来西亚林吉特）进行结算。多国央行数字货币互通平台旨在允许该行直接持有其未开展业务的司法管辖区的货币，如澳大利亚和南非的CBDC。通过这种方式，它可以持有澳大利亚和南非央行发行的澳元和南非兰特。这使参与该平台的所有银行都可以持有多种货币，相互之间进行直接交易，例如新加坡银行可以将持有的澳大利亚CBDC直接支付给南非银行，这在过去的系统中是无法实现的。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0408/18_7smkk97j2q.png" alt="解读BIS多国央行数字货币互通计划“邓巴项目”（一）：平台设计"></p>
+<p>编译：齐稚平</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/36418/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">加密借贷公司Celcius持有超15万枚BTC，超过MicroStrategy等上市公司</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/36445/">
+                <span class="next-text nav-default">金色Web3.0日报 | The Sandbox去年虚拟土地销售额超过3.5亿美元</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#多国cbdc互通平台模型">多国CBDC互通平台模型</a></li>
+    <li><a href="#建立多国cbdc互通平台的优势">建立多国CBDC互通平台的优势</a></li>
+    <li><a href="#邓巴项目工作体系">&ldquo;邓巴项目&quot;工作体系</a></li>
+    <li><a href="#多国cbdc互通平台设计原例">多国CBDC互通平台设计原例</a></li>
+    <li><a href="#多国cbdc互通平台应用举例">多国CBDC互通平台应用举例</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

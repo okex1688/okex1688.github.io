@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          不完整比特币开发史 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文着重列举了中本聪离开这个项目前后的历史事件、软件发布和漏洞修复；还额外添加了一个章节叙述比特币开发的现状。文章后附的时间线为每一个事件提供了额外的细节。" />
+<meta name="keywords" content="BTC" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/28968/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="不完整比特币开发史" />
+<meta property="og:description" content="本文着重列举了中本聪离开这个项目前后的历史事件、软件发布和漏洞修复；还额外添加了一个章节叙述比特币开发的现状。文章后附的时间线为每一个事件提供了额外的细节。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/28968/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-23T00:00:00+00:00" />
+
+<meta itemprop="name" content="不完整比特币开发史">
+<meta itemprop="description" content="本文着重列举了中本聪离开这个项目前后的历史事件、软件发布和漏洞修复；还额外添加了一个章节叙述比特币开发的现状。文章后附的时间线为每一个事件提供了额外的细节。"><meta itemprop="datePublished" content="2021-09-23T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-23T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7688">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="不完整比特币开发史"/>
+<meta name="twitter:description" content="本文着重列举了中本聪离开这个项目前后的历史事件、软件发布和漏洞修复；还额外添加了一个章节叙述比特币开发的现状。文章后附的时间线为每一个事件提供了额外的细节。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">不完整比特币开发史</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-23">
+      2021-09-23
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7688 字 -
+        预计阅读 16 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%AF%94%E7%89%B9%E5%B8%81/"> 比特币 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>要想完全理解比特币开发现状背后的原因，就不能不了解一些历史事件。本文着重列举了中本聪离开这个项目前后的历史事件、软件发布和漏洞修复；还额外添加了一个章节叙述比特币开发的现状。文章后附的时间线为每一个事件提供了额外的细节。</p>
+<p>对于这里的大部分事件，我都不是亲历者。所以这份时间线的一大部分引自 John Newbery 的一次名为 “比特币开发的历史与哲学” 的演讲。本文的标题也写得很清楚了，本文没有，也做不到包含每一个重要事件。历史总在不断变化，如果你认为我遗漏了什么事件，或想提议我作一些修改，请在开源项目 bitcoin-development-history 中提交一个 issue，这也是我用来附加更多时间线的办法。</p>
+<h2 id="中本聪仍在的时候">中本聪仍在的时候</h2>
+<p>这份时间线的起点是 2007 年早期。中本聪开始开发比特币。这个点对点的电子现金系统没有受信任的地方。整个系统完全由用户运行的软件来控制。</p>
+<p>早期，有贡献者加入了中本聪的工作。除了软件的开发，这些新来的贡献者还为软件添加了 Linux 和 maxOS 操作系统的支持。到了 2010 年夏天，中本聪给软件做了一些关键的修改。比如，引入了 “检查点” 作为一项安全措施，来对抗传播低难度链的攻击。使用了这些检查点的节点会拒绝那些特定高度与特定区块不符的链。检查点是由中本聪独自硬编码的，理论上来说，这让中本聪可以自己决定整个网络要跟随哪条链。</p>
+<p>加入检查点的几天后，中本聪在版本 v0.3.3 的软件中放出了第一个共识机制变更。中本聪敦促用户升级。在接下来一个月里，多个小版本更新陆续放出。其中一个修复了一个致命的溢出漏洞。这个漏洞被利用来创造了两个高价值的 UTXO。中本聪建议矿工们重组包含了恶意交易的区块。</p>
+<p>一周以后，中本聪加入了一个警报系统，来提醒节点运营者网络中出现的类似 bug 和问题。这个警报系统有一个安全模式。这个安全模式一旦触发，就会禁用整个网络的所有关于货币处理的 RPC 方法。只有中本聪能够用一个私钥签名来创建有效的网络警报。一些用户开始提出质疑：如果其他人，比如某个政府，拿到了这个私钥，那网络会变成什么样呢？</p>
+<p>这个时候，中本聪对比特币网络有太大的权力。但大家主要担心的不是中本聪会变坏、会摧毁整个网络，而是一个去中心化的网络中不应该存在一个单点故障。</p>
+<p>到了 2010 年 10 月，中本聪在 bitcointalk 论坛上发布了他的最后一个帖子，宣布移除这个安全模式。中本聪在他最后留下的电子邮件之一里面写道：“我准备到别的地方去了。有了 Gavin 和大家，这个项目会得到很好的维护。”一些人主张，中本聪离开比特币世界，是他最伟大的贡献之一。</p>
+<h2 id="中本聪离开之后">中本聪离开之后</h2>
+<p>几乎同一时间，整个开发流程从 SVN 转移到了 GitHub 上。BlueMatt、sipa、laanwj 和 gmaxwell 加入了这个项目。在 2011 年中，BIP（比特币升级提议）流程应运而生。在 2011 年的最后一个季度和 2012 年的第一个月，社区讨论了允许交易的接收者指定花费条件的多个提案。由此，P2SH 交易引入了比特币。</p>
+<p>在 2012 年末，比特币基金会宣告成立。比特币基金会（Bitcoin Foundation）模仿的是 Linux 基金会。在公告帖子下面，一些人留言表示担心开发会变得中心化。</p>
+<p>Bitcoin v0.8.0 在 2013 年春天发布。两周以后，一场意料之外的硬分叉在网络中升级了和没升级的节点间爆发。硬分叉很快就被解决了，矿工们都把挖矿算力切换到了对已升级和未升级节点都有效的链上。</p>
+<p>在 2013 年末，Bitcoin 软件更名为 Bitcoin Core。在接下来几年里，包括 Chaincode 和 Blockstream 在内的公司成立。后来，MIT Digital Currency Initiative 加入了 Chaincode 和 Blockstream，为开发比特币的开发者和研究者提供报酬。在 2015 年二月，Joseph Poon 和 Tadgw Dryja 放出了闪电网络白皮书的第一份草稿。</p>
+<p>第二年，Luke Dashjr  通过 BIP 2 修订了 BIP 流程；Bitcoin Core 放出了 v0.13.0，加入了 SegWit 作为软分叉。在 2016 年 11 月，警报系统完全弃用。到了 2017 年 8 月，SegWit 在比特币网络上激活。2019 年，又一家公司 Square Crypto 开始资助比特币开发。在 2019 年 5 月，Pieter Wuille 提出了 BIP taproot。</p>
+<h2 id="比特币开发的现状">比特币开发的现状</h2>
+<p>在过去几年中，比特币的开发文化日益去中心化、目标明确而且严格。现在 Bitcoin Core 代码库有 6 名维护者，分布在三个国家。只有他们能够合并由贡献者提出的代码更改。不过，在内容合并之前，更改的内容还需经过一个审议流程，这个流程也变得严格得多。</p>
+<p>举个例子，在比特币早期，有个与 P2SH 相竞争的提议，叫做 “<code>OP_EVAL</code>”。有个实现了 OP_EVAL 的 pull request（“合并请求”）在 2011 年底被合并到了代码库中。即便是这样对共识有重大变更的代码，它也只有一个审核人。Russell O’Connor 开了一个 issue 批评了这个实现的一部分，并主张这么大的、对共识极为关键的变更应该得到更多的审核和测试。</p>
+<p>这件事推动了如何通过更多的测试和审核来实现更高质量的代码的持续讨论。到了今天，每一个合并请求都有多个开发者来审核。如果某个改变触及到了对安全性甚至共识的关键部分，审核的流程还需要通过更多的审核员审核，需要大量的测试，通常会花费几个月的事件。活跃的 Bitcoin Core 贡献者 John Newbery 告诉我，“只需一个审核人员首肯就能合并影响共识的代码的事情，已经一去不复返”。</p>
+<p>人们也投入了很多精力到自动化的测试中，比如，有 C++ 语言编写的单元测试和 Python 语言编写的功能性测试。每一个不简单的变更都要相应更新现有的测试或者在框架中加入新的测试。在单元测试和功能测试以外，还要在 Bitcoin Core 上做模糊测试，以及建立基准测试框架来度量代码的性能。举个例子，bitcoinperf.com 网络提供了 Grafana 和 codespeed 接口来可视化周期性的基准测试的结果。</p>
+<p>多年努力下来，Bitcoin Core 软件已经形成了一个清晰的发布流程。Bitcoin Core 的大版本每 6 个月发布一次。发行计划包括一个翻译流程，一个特性冻结流程，还通常有多个候选版本。近期 Cory Fields 和 Carl Dong 还致力于提高 Bitcoin Core 构建过程的安全性，使用确定性和可引导的构建包。这个新的构建系统可能还没准备好支持即将在今年秋天发布的 Bitcoin Core v0.19.0，但未来可以提供更好的构建过程安全性。</p>
+<h2 id="结论">结论</h2>
+<p>十年间，比特币的开发文化沧海桑田，从围绕中本聪的高度中心化，变为围绕几千名 GitHub 贡献者的去中心化。显然，代码审核、代码质量和安全性的高标准都是有必要的。这些标准得到了遵循和持之以恒的提高。</p>
+<p>我认为，要完全理解比特币开发现状背后的哲学，了解这些历史事件是必不可少的。所以我做了一个把更多事件串起来的时间线。</p>
+<p>若有进一步的研究需求，建议阅读 Alex B. 写的 <em>The Tao Of Bitcoin Development（比特币开发之道）</em>（中文译本）、Eric Lombrozo 写的 <em>The Bitcoin Core Merge Process（Bitcoin Core 代码合并流程）</em> 以及 Jameson Lopp 的大作 <em>Who Controls Bitcoin Core？</em>（谁控制着 Bitcoin Core？）。</p>
+<h2 id="致谢">致谢</h2>
+<p>感谢 John Newbery 帮助我梳理并审核这篇文章。他在自己的演讲 _History and Philosophy of Bitcoin Development（比特币开发的历史和哲学）_中做了很多历史考证工作，该演讲也是我这篇文章的基础。此外，我非常感激 Chaincode Labs，他邀请我参加他们的 2019 夏令营（Summer Residency），在那里我遇见了很多有意思的人，学到了很多东西，也正是在哪里，我开始着手整理时间线和撰写这篇文章</p>
+<h2 id="时间线">时间线</h2>
+<p><strong>2007 年早期：中本聪开始开发比特币</strong></p>
+<p>中本聪开始写比特币的代码。这是根据中本聪在 Cryptography 邮件列表中一份写于 2008 年 11 月 17 日的邮件中得出的：</p>
+<p>“我确信自己已经在过去一年半的编程工作中解决了所有这些细节问题。”</p>
+<p>见：e-mail (metzdowd.com) 以及 e-mail (nakamotoinstitute.org)</p>
+<p><strong>2008 年 11 月 1 日：比特币白皮书发布</strong></p>
+<p>中本聪在 Cryptography 邮件组中公布了白皮书：</p>
+<p>“我一直在开发一个全新的数字现金系统，它是完全点对点的，没有需要用户信任的第三方。”</p>
+<p>见：e-mail (metzdowd.com) 以及 e-mail (nakamotoinstitute.org)，以及白皮书</p>
+<p><strong>2009 年 1 月 3 日至 9 日之间：比特币的创世区块挖出</strong></p>
+<p>创世区块的时间戳是 1 月 9 日。</p>
+<p>这个区块的 coinbase 交易（发行新币的交易类型）包含了著名的一段话：</p>
+<p>“The Times 03/Jan/2009 Chancellor on brink of second bailout for banks（泰晤士报 2009 年 1 月 3 日刊 英国财政大臣正在考虑对银行的第二轮纾困计划）”</p>
+<p>见：区块浏览器、百科词条</p>
+<p><strong>2009 年 1 月 9 日：Bitcoin v0.1 软件发布</strong></p>
+<p>中本聪在 Cryptography 邮件组 中写道：</p>
+<p>“我发布了 Bitcoin 软件的第一个版本。比特币是一种新的电子现金系统，使用点对点网络来防止多重支付。它是完全去中心化的，没有服务端，也没有中心化的权威。”</p>
+<p>见：e-mail</p>
+<p><strong>2009 年 12 月 16 日：Bitcoin v0.2 软件发布</strong></p>
+<p>Martti Malmi (sirius-m) 加入了对 Linux 系统的初步支持。其它新功能包括在利用 CPU 的多个核心来挖矿以及初步支持使用代理。</p>
+<p>见：bitcointalk.org</p>
+<p><strong>2010 年 7 月 6 日：Bitcoin v0.3 软件发布</strong></p>
+<p>Laszlo Hanyecz (Bitcoin pizza guy) 加入了对 macOS 的支持。其他新特性包括 JSON-RPC 接口，以及一个新的 daemon 模式。用户帮助把软件的图形界面翻译成了德语、荷兰语和意大利语。</p>
+<p>见：bitcointalk.org</p>
+<p><strong>2010 年 7 月 15 日：Bitcoin v0.3.1 软件（补丁）发布</strong></p>
+<p>修复了各种各样的 bug。Gavin Andresen 开始作贡献。</p>
+<p>见：bitcointalk.org</p>
+<p><strong>2010 年 7 月 17 日：Bitcoin v0.3.2 软件发布</strong></p>
+<p>中本聪加入了检查点作为一项安全措施。检查点就是锁定某个高度的区块哈希值必须是某个，否则就拒绝。中本聪写道：</p>
+<p>“我可能会从现在开始，每发布一个新版本就增加一个检查点。如果软件已经决定了哪个是被普遍接受的区块链，就没有必要留下一个徒增困扰的、可能在几个月后发生逆转的机会。”</p>
+<p>见：bitcointalk.org、checkpoints added (diff on GitHub)</p>
+<p><strong>2010 年 7 月 25 日：Bitcoin v0.3.3 软件发布</strong></p>
+<p>这个版本加入了第一个共识层面的变更。</p>
+<p>比特币软件开始跟随累积工作量最多的链。在此之前，是跟随字面意义上的最长链。</p>
+<p>见：bitcointalk.org、consensus change (diff on GitHub)</p>
+<p><strong>整个 2010 年夏天</strong></p>
+<p>Bitcoin v0.3.xx 的多个版本在此期间放出</p>
+<p><strong>2010 年 8 月 15 日：致命的溢出漏洞得到修复</strong></p>
+<p>中本聪在 v0.3.9(ish) 中放出一个补丁，告诉用户和矿工要重组带有溢出错误交易的区块。</p>
+<p>见：bitcointalk.org</p>
+<p><strong>2010  年 8 月 22 日：警报系统引入</strong></p>
+<p>中本聪开始开发一个警报系统，计划在 v0.3.11 加入。他写道：</p>
+<p>“我一直在编写一个警报系统。警报会在网络中广播，并在一些版本的软件中生效。警报消息要用只有我知道的一把私钥签名。”</p>
+<p>“节点偶尔陷入暂时的停机可能给你惊吓，但总好过你发现自己的钱被全部吸走的惊吓。”</p>
+<p>“等什么时候我们很长一段时间都没有再发现新 bug、透彻的安全检查也没有发现任何问题时，这个系统可以缩减。我并不主张我们会永远使用它。但比特币还是一个 beta 阶段的软件。”</p>
+<p>见：bitcointalk.org</p>
+<p><strong>2010 年 12 月 12 日：中本聪发出最后一个帖子</strong></p>
+<p>中本聪在 bitcointalk.org 上发表他自己的最后一个帖子。他加入了一些 DoS 限制，并移除了前述的警报系统安全模式。</p>
+<p>“在 DoS 保护上还有许多工作要做，但我正在开发一个备份的快速构建包，以备不测；更复杂的主意则以后再说。这个包所构建的软件是 v0.3.19。”</p>
+<p>见：bitcointalk.org</p>
+<p><strong>2010 年 12 月 19 日：开发工作转移到 GitHub 上</strong></p>
+<p>Bitcoin 软件的活跃开发和 issue 跟踪转移到了 GitHub 上。</p>
+<p>见：GitHub 记录的第一个 issue</p>
+<p><strong>2011 年 4 月 23 日：中本聪最后一次发声</strong></p>
+<p>据称来自中本聪给 Mike Hearn 的最后一份电邮：</p>
+<p>“我已经做别的事情去了。Gavin 和大家会把这件事做好。”</p>
+<p>见：pastebin.com 上的电子邮件对话</p>
+<p><strong>2011 年 3 月至 6 月：新的贡献者加入</strong></p>
+<p>多位新的贡献者加入：TheBlueMatt（于 3 月 3 日）、sipa（于 3 月 12 日）、laanwj（于 3 月 15 日）和 gmaxwell （于 6 月 18 日）。</p>
+<p>他们的第一次合并请求见：TheBlueMatt、sipa、laanwj、gmaxwell</p>
+<p>*<em>2011 年 8 月 19 日：第一个 BIP *</em></p>
+<p>第一个 BIP “BIP 1：BIP 的目的和指南”  出现。</p>
+<p>见：BIP 1 on GitHub</p>
+<p><strong>2011 年 9 月 23 日：Bitcoin v0.4 推出</strong></p>
+<p>v0.4 放出，主要的新功能是钱包加密。见：更新说明</p>
+<p><strong>2011 年 11 月 21 日：Bitcoin-QT v0.5 发布</strong></p>
+<p>新特性是新的 qt 图形界面以及钱包加密功能的一个重大补丁（CVE-2011-4447）</p>
+<p>见：更新说明、CVE-2011-4447</p>
+<p><strong>2011 年 11 月 ~ 2012 年 4 月：P2SH 和其他提议上的工作</strong></p>
+<p>多个提议（OP_EVAL、P2SH、OP_CHV）都旨在允许交易的接收者可以指定花费资金的脚本。</p>
+<p>P2SH 在 Bitcoin-Qt v0.5.4 上实现。另外两个则都被放弃了。</p>
+<p>见：BIP 12: OP_EVAL、OP_EVAL 和并请求、OP_EVAL 递归问题、BIP 16: P2SH、BIP 17: OP_CHECKHASHVERIFY</p>
+<p><strong>2012 年 3 月 30 日：Bitcoin-QT v0.6 发布</strong></p>
+<p>新特性包括地址二维码，BIP30（针对一种涉及复制 coinbase 交易的攻击的安全修复）的一个实现，以及修复内存相关的拒绝服务攻击向量。</p>
+<p>见：更新说明</p>
+<p><strong>2012 年 9 月 17 日：Bitcoin-QT v0.7 发布</strong></p>
+<p>包括了 BIP22、BIP34 和 BIP35 的实现，以及图形界面上的许多变更，还有联网的 RPC 代码。</p>
+<p>见：更新说明</p>
+<p><strong>2012 年 9 月 27 日：Bitcoin Foundataion 宣布成立</strong></p>
+<p>Gavin Andresen 宣布成立 Bitcoin Foundation。</p>
+<p>见：bitcointalk.org 上的帖子</p>
+<p><strong>2013 年 2 月 19 日：Bitcoin-QT v0.8 发布</strong></p>
+<p>本版更新将区块链的存储从 BerkleyDB 数据库格式迁移成 LevelIDB 数据库。“Ultraprune（极致修剪）” 功能由 sipa (Pieter Wuille) 实现了，他将 UTXO 集合从区块链数据库中分离了出来。</p>
+<p>见：更新公告</p>
+<p><strong>2013 年 3 月 11 日：意料之外的硬分叉</strong></p>
+<p>一次意料之外的硬分叉发生，将 v0.8 的节点与更老版本的节点分离了开来。</p>
+<p>见：BIP 50: 2013 年 3 月链分裂事件的事后报告，bitcoin.org 网络警报</p>
+<p><strong>2013 年 12 月 12 日：软件品牌重新包装</strong></p>
+<p>Bitcoin-Qt 软件重新包装，使用 Bitcoin Core 的新名称。</p>
+<p>见：GitHub 上的 PR</p>
+<p><strong>2014 年 3 月 19 日：Bitcoin Core v0.9 发布</strong></p>
+<p>新特性包括：OP_RETURN 操作码可以在区块链中写入数据，但也会让相关的 UTXO 变成不可使用的状态。此外，autotools 用作构建系统，而 bitcoin-cli（命令行工具）作为一个 RPC 客户端引入。</p>
+<p>见：更新说明</p>
+<p><strong>2014 年某个时间：Chaincode Labs 成立</strong></p>
+<p>Alex Morcos 和 Suhas Daftuar 在 2014 年成立了 Chaincode Labs 以打造一个工程师和科学家能够支持去中心化数字货币开发的空间。</p>
+<p><strong>2014 年 10 月 23 日：Blockstream 成立</strong></p>
+<p>Adam Back、Matt Corallo、Greg Maxwell、Pieter Wuille 等人创立了 Blockstream 公司并放出了他们的侧链白皮书。</p>
+<p>见：为什么我们要成立 Blockstream？</p>
+<p><strong>2015 年 2 月 16 日：Bitcoin Core v0.10.0 发布</strong></p>
+<p>重要的更新包括：首先同步区块头的同步方法，REST 接口 以及用来创建和操控交易的 bitcoin-tx 模块。</p>
+<p>见：更新说明</p>
+<p><strong>2015 年 2 月：闪电网络白皮书发布</strong></p>
+<p>Joseph Poon 和 Thaddeus Dryja 发布了 Lightning Network 白皮书第一版草稿</p>
+<p>见：闪电网络白皮书</p>
+<p><strong>2015 年 4 月 15 日：MIT DCI 成立</strong></p>
+<p>MIT Media Lab 启动了 Digital Currency Initiative（DCI）。DCI 是一个研究社区，聚焦密码货币和区块链技术。</p>
+<p>见：DCI 启动公告</p>
+<p><strong>2015 年 7 月 12 日：Bitcoin Core v0.11.0 发布</strong></p>
+<p>这一版软件将区块文件修剪当成一个主要的特性。</p>
+<p>见：更新说明</p>
+<p><strong>2016 年 2 月 3 日：BIP 2</strong></p>
+<p>Luke Dashjr 起草了 BIP 2，提出了一个定义更清晰的 BIP 流程。这个提议被社区接受</p>
+<p>见：BIP 2: BIP 流程修订</p>
+<p><strong>2016 年 2 月 23 日：Bitcoin Core v0.12.0 发布</strong></p>
+<p>主要更新是引入了 libsecp、sendheader，选择进入的 RBF（BIP 125）以及交易内存池限制。</p>
+<p>见：更新说明</p>
+<p><strong>2016 年 4 月 15 日：Bitcoin Core v0.12.1 发布</strong></p>
+<p>这一版本包含了 BIP 9（版本标识逻辑）以及 OP_CHECKSEQUENCEVERIFY  软分叉的定义。</p>
+<p>见：更新说明</p>
+<p><strong>2016 年 8 月 23 日：Bitcoin Core v0.13.0 发布</strong></p>
+<p>包含了为 segwit（隔离见证）预备的变更、压缩区块功能，交易池基于手续费价格的筛选，HD 钱包的迟滞，以及 CPFP 交易选择算法。</p>
+<p>见：更新说明</p>
+<p><strong>2016 年 10 月 27 日：Bitcoin Core v0.13.1 发布</strong></p>
+<p>这个版本包含了 SegWit 软分叉。</p>
+<p>见：更新说明</p>
+<p><strong>2016 年 11 月 1 日：警报系统退休</strong></p>
+<p>网络层的警报系统代表着比特币的一个很大的中心化力量，如今走入历史。</p>
+<p>见：公告</p>
+<p><strong>2017 年 3 月 8 日：Bitcoin Core v0.14 放出</strong></p>
+<p>本版软件大幅提高了初次下载区块的速度。</p>
+<p>见：更新说明</p>
+<p><strong>2017 年 8 月 24 日：SegWit 激活</strong></p>
+<p>SegWit 在比特币主网上激活。</p>
+<p><strong>2017 年 9 月 14 日：v0.15 放出</strong></p>
+<p>本版软件加入了一个更好的手续费预估功能，可在图形界面追加手续费，还有多钱包功能以及脚本缓存功能。</p>
+<p>见：更新说明</p>
+<p><strong>2017 年 11 月 11 日：v0.15.1 放出</strong></p>
+<p>这个版本着力于 P2P 网络的安全性，以预防未来可能的网络分叉，也修复了一些 bug，为 0.15.x 系列做了优化和升级。</p>
+<p>见：更新说明</p>
+<p><strong>2018 年 2 月 26 日：Bitcoin Core v0.16 放出</strong></p>
+<p>这一版主要是为 Bitcoin Core 钱包增加了 SegWit 支持。</p>
+<p>见：更新说明</p>
+<p><strong>2018 年 10 月 3 日：Bitcoin Core v0.17 放出</strong></p>
+<p>这一版本为钱包增加了一些功能。其中一个是支持部分签名的比特币交易（PSBT）。</p>
+<p>见：更新说明</p>
+<p><strong>2019 年 3 月 20 日：Square Crypto 成立</strong></p>
+<p>Jack Dorsey 宣布 Square Crypto 将招聘 3~4 名工程师和 1 位设计师来全职为比特币生态作开源的贡献。</p>
+<p>见：tweet</p>
+<p><strong>2019 年 5 月 2 日：Bitcoin Core v0.18 放出</strong></p>
+<p>本版更新包括了大量新功能和一些小变更。</p>
+<p>见：更新说明</p>
+<p><strong>2019 年 5 月 6 日：Taproot 提出</strong></p>
+<p>Pieter Wuille 提出了多个 BIP 以在比特币中实现 Schnorr 签名以及 taproot，以提高比特币智能合约的隐私性、效率和灵活性。</p>
+<p>见：邮件组帖子</p>
+<p><strong>2019 年 8 月 9 日：Bitcoin Core v0.18.1 放出</strong></p>
+<p>这个小版本加入了新功能，多个补丁以及性能升级，还更新了翻译。</p>
+<p>见：更新说明</p>
+<p><strong>2019 年 8 月 19 日：Miniscript 推出</strong></p>
+<p>Pieter Wuille 提出了 Miniscript，让比特币脚本的编程更友好的语言。</p>
+<p>见：邮件组帖子，项目页面</p>
+<p><strong>2019 年 11 月 24 日：Bitcoin Core v0.19.0.1 发布</strong></p>
+<p>这个版本加入了新功能，多个补丁以及性能升级，还更新了翻译。</p>
+<p>见：更新说明</p>
+<p><strong>2020 年 3 月 9 日：Bitcoin Core v0.19.1 发布</strong></p>
+<p>这个版本修复了多个 bug，提高了性能。</p>
+<p>见：更新说明</p>
+<p><strong>2020 年 6 月 3 日：Bitcoin Core v0.20.0 发布</strong></p>
+<p>这个版本修复了多个 bug，提高了性能。</p>
+<p>见：更新说明</p>
+<p><strong>2020 年 8 月 1 日：Bitcoin Core v0.20.1 发布</strong></p>
+<p>这个小版本的更新包括应对不轨对等节点的方式不同，钱包提醒以及 PSBT 支持带 witness 和不带 witness 的 UTXO。</p>
+<p>见：更新说明</p>
+<p><strong>2020：为比特币项目和个人贡献者设置的开发奖</strong></p>
+<p>包括 BitMEX、Square Crypto、OKCoin、BTSE、Kraken 在内的公司，以及 Human Rights Fundation、Paradigm 和 Coinbase 交易所，为比特币项目和个人贡献者设立了多个开发奖项。</p>
+<p>见：Square Crypto Grants、BitMEX Grants、OKCoin Grants、Coinbase Grants、Polylunar Grant Tracker、Bitcoin Words Grant Tracker</p>
+<p>原文链接: <a href="https://b10c.me/blog/004-the-incomplete-history-of-bitcoin-development/">https://b10c.me/blog/004-the-incomplete-history-of-bitcoin-development/</a></p>
+<p>作者: 0xB10C</p>
+<p>翻译: 阿剑</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/28975/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">波卡复杂的经济模型如何巧妙地支持其稳健地发展？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/28952/">
+                <span class="next-text nav-default">从热媒介到冷媒介 重新理解 Loot 的价值和意义</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#中本聪仍在的时候">中本聪仍在的时候</a></li>
+    <li><a href="#中本聪离开之后">中本聪离开之后</a></li>
+    <li><a href="#比特币开发的现状">比特币开发的现状</a></li>
+    <li><a href="#结论">结论</a></li>
+    <li><a href="#致谢">致谢</a></li>
+    <li><a href="#时间线">时间线</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

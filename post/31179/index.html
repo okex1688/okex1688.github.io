@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="迄今为止，专注于NFT金融化的项目正试图让NFT尽可能具有可替代性（和流动性）。" />
+<meta name="keywords" content="NFT" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/31179/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来" />
+<meta property="og:description" content="迄今为止，专注于NFT金融化的项目正试图让NFT尽可能具有可替代性（和流动性）。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/31179/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-11-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-25T00:00:00+00:00" />
+
+<meta itemprop="name" content="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来">
+<meta itemprop="description" content="迄今为止，专注于NFT金融化的项目正试图让NFT尽可能具有可替代性（和流动性）。"><meta itemprop="datePublished" content="2021-11-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-11-25T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6615">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"/>
+<meta name="twitter:description" content="迄今为止，专注于NFT金融化的项目正试图让NFT尽可能具有可替代性（和流动性）。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-11-25">
+      2021-11-25
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6615 字 -
+        预计阅读 14 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E8%A7%82%E7%82%B9/"> 观点 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>与DeFi中的资产类似，不可替代的代币需要类似的基本要素，如借贷、流动性和资产管理，这是目前正在建立的领域。此外，虽然NFTs的基本价值主张在于其独特性，但可替换性对于增加流动性和NFTs的金融化非常重要。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_sbrbttgbjb.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p>资料来源：Messari的NFT堆栈</p>
+<p>流动性代币有成千上万的买家和卖家，但每笔NFT交易都需要一个买家和一个卖家——这表明其流动性较低。迄今为止，专注于NFT金融化的项目正试图让NFT尽可能具有可替代性（和流动性）。</p>
+<p><strong>看看流动性</strong></p>
+<p>与实物收藏品（如棒球卡交易）类似，NFT面临着流动性不足的问题，尤其是对于那些价值不高和令人垂涎的项目。尽管NFT市场正在上升，但我们通常看到这种资产的潜力尚未开发。NFT交易量仅在以太坊上就已超过130亿美元，并且随着新型资产被代币化到区块链上，交易量将随着时间的推移继续增加。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_kzcbkrk54l.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p>市场上的蓝筹NFT（如Punks）拥有最大的流动性，由于它们集中且昂贵，大多数收藏者都无法接触到。</p>
+<p><strong>NFT流动性协议</strong></p>
+<p>大多数NFT流动性协议都采取了两种方法中的一种。<strong>第一种方法是通过促进创建流动性池来创造流动性，个人可以将类似的NFT存入池中并在任何特定时间赎回。</strong> NFTX和NFT20等协议的好处是有效地成为市场，建立在一组资产的流动性池之上。</p>
+<p><strong>第二种是Unicly和Fractional采取的方法，创建单个NFT的碎片/片段，作为可替换的分数代币进行交易（例如，1个NFT变成10000个可替换的代币）</strong> 。第二种方法是通过降低购买价格来获得整个NFT的一部分，从而促进更大的流动性，类似于Robinhood将股票碎片化，这样个人就不必购买1个1000美元的特斯拉股票，而是可以购买2个100美元的特斯拉部分股票。</p>
+<p><strong>排名前四个NFT流动性协议分别是NFTX、NFT20、Unicly和Fractional，持有近8000万美元的总价值锁定（TVL）。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_gbj1zoftuo.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p>注意，NFT20的TVL计算可能更低，因为它没有像NFTX那样考虑到NFT的价值。尽管如此，NFT20的总报告TVL约为900万美元，仍然落后于NFTX，后者目前的TVL为1500万美元。此外，碎片的流动性并没有考虑到锁定在池子里的金库代币。</p>
+<p>Unicly目前在四个协议中拥有最大的市场份额，占锁定总价值的43%。NFTX在流动性池协议中领先NFT20。Fractional自7月下旬最近推出以来，已经积累了相当可观的市场份额。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_4zzk12t3t2.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p><strong>NFT流动性池和市场协议</strong></p>
+<p>我们将研究两个主要的NFT流动性池协议，NFTX和NFT20。</p>
+<p><strong>NFTX</strong></p>
+<p>NFTX是一种促进NFT买卖的市场和流动性协议。</p>
+<p>收藏家可以将整个NFTs存入NFTX金库，并铸造代表NFT价值的可替换代币（vToken）。在任何时候，收藏家都可以使用他们的vToken来随机购买金库中的资产。或者，个人可以通过支付额外的费用从同一金库中赎回特定的代币。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_6nglsmsssk.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p>为了赚取金库交易的费用，收集者必须将他们的vTokens押在各自的流动性池中（例如SushiSwap）。每次个人卖出或买入NFT时，质押者都会赚取一笔费用。</p>
+<p>NFTX的模式实现的一个特点是，用户可以获得具有高vToken流动性的NFT的即时流动性。例如，BAYC所有者可以立即将他们的Bored Ape存入NFTX金库，获得BAYC vTokens。然而，所有者可以在像SushiSwap这样的去中心化的交易所中出售代币，而不是抵押BAYC vToken。如果流动性差，NFT所有者可能会以低于OpenSea等交易所的价格出售NFT，然而，获得即时流动性的能力往往值得降低价格。</p>
+<p>最近，NFTX 还与Futureswap合作，为NFTX金库提供NFT的永续合约，这将使投机者能够做空或做多以NFTX衍生品。</p>
+<p><strong>NFT20</strong></p>
+<p>NFT20是一个去中心化的NFT交易所，也使个人能够交易、出售和交换NFT。与NFTX类似，NFT20使NFT所有者能够将他们的NFT（如Cryptopunk）添加到流动性池中，作为回报，他们将获得特定池的可替代ERC20代币（如100美元Punks代币）。使用可替换的代币（ERC20），个人可以在相应的池中购买NFT（如CryptoPunk），或通过Uniswap等交易所出售。</p>
+<p>此外，NFT ERC20代币可以用于LP以进入SushiSwap或Uniswap池，以增加可替换代币的流动性，从而使基础NFT更具流动性。某些NFT20资金池在NFT20的原生代币MUSE中有流动性挖掘奖励。</p>
+<p>在NFT20现有的NFT池中，Boring Banana&rsquo;s Co、Cyber Kongz、Wrapped Moon Cats和Gutter Cats占该协议中NFT总价值的约50%。</p>
+<p><strong>每个人都需要一个MUSE</strong></p>
+<p>NFT20的原生治理代币MUSE保持着100万个代币的供应量，其中50万个分配给了2020年9月玩Very Nifty游戏的社区。此外，30万个代币被保留用于流动性挖矿奖励。在剩余的20万代币中，50%（10万）被分配给NFT20 DAO，另外50%保留给创始团队。</p>
+<p>每次有NFT存入NFT20协议，就会有100个代币被铸造出来，其中5%的代币分配给NFT20协议。NFT20协议以ETH出售ERC20 NFT代币，然后用于购买MUSE。最后，购买的MUSE的50%被分配给MUSE抵押者。</p>
+<p><strong>地板价问题</strong></p>
+<p>地板价是指收藏品中某一资产的最低或最小售价，是NFT中一个被广泛追踪的指标。在Punks或BAYC这样的藏品中，地板价往往是由藏品中最不稀有（最不理想的特征）的资产设定的。像NFTX和NFT20这样的协议自然而然地创建了池子，这些池子必须完全由收藏品中的地板价NFT组成，因为用户将收藏品中更有价值的NFT存入池子，他们的NFT将被购买和/或替换成价值较低的NFT。例如，如果有人将一个僵尸朋克（最有价值的）存入Floor Punk NFTX金库中，另一个收藏家会立即购买Floor Punk代币来购买僵尸朋克。</p>
+<p>NFTX试图通过在NFTX金库中创建参数，要求NFT拥有特定的标准（如特征、记录等）来缓解地板价的问题。NFTX通过让收集者为不同类别的NFT创建多个金库来促进这一点。例如，有一个Cryptokitty地板价金库和一个第0代Cryptokitty金库，其中只允许将具有反映第0代元数据的Cryptokitty添加到金库。NFT20旨在通过使NFT卖家在NFT20资产页面内创建一个去中心化的荷兰式拍卖，从而为该NFT项目获得更高金额的ERC20代币，从而解决地板价问题。</p>
+<p><strong>NFTX和NFT20</strong></p>
+<p>虽然这两种协议都已经上线一年多了，但6月下旬NFTX的V2升级已经证明在累积NFT方面非常成功。在短短几个月内，NFTX凭借其由 CryptoPunks（PUNK）、HashMasks（MASK）和CryptoPhunks（PHUNK）组成的顶级流动性金库，吸收了大量高价值NFT。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_sa6an6hr6s.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p>相反，NFT20在其流动性池中拥有更多的NFT，然而，这些NFT的平均价值往往较低（其TVL明显低于NFTX），并且该协议的NFT增长在过去几个月中停滞不前。</p>
+<p>在过去的几个月里，NFT20的费用大幅下降，虽然NFTX的费用也有所下降，但仍然保持在8月历史高点的50%。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_dqcshswv6p.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p>值得注意的是，来自NFTX金库的所有费用都由金库的Stakers（质押者）承担，而与之相反的是，来自NFT20市场的费用直接由所有MUSE质押者承担。虽然在当前阶段，NFT金融化协议没有必要直接获取费用，但NFTX在未来有一条可信的路径来产生费用。</p>
+<p><strong>NFT碎片化协议</strong></p>
+<p>资产碎片化在传统金融体系中越来越普遍。从房地产到艺术品，再到现金流的传统金融资产正在创造创新的解决方案，将这些资产类别细分化，以吸引更多的买家。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_sz4oicue42.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p>资料来源：跳跃资本</p>
+<p>尽管现有的初创公司试图使用自己的专有网络和系统对资产进行细分化，但加密网络提供了更开放、流动性更强、可组合性更好的解决方案。</p>
+<p>一些协议已经采取了碎片化的代币，其中Niftex是最早的一个。它允许NFT所有者将NFT的 “碎片”（分数）创建为可替换的代币。Niftex最近被一个未知的实体收购，但情况表明大型交易所可能是收购者。在此期间，用户可以访问他们的碎片，但不能创建新的碎片。</p>
+<p>同时，现在有两个主要的协议，在NFT碎片化领域中处于领先地位：Unicly和Fractional。</p>
+<p><strong>Unicly</strong></p>
+<p>Unicly是一个无需许可的平台，允许用户组合NFT集合并通过创建uToken将它们碎片化。然后可以交易集合的碎片（ERC-721和ERC-1155代币），与AMM混合并用于在Unicly上收益耕种，而不是前往第三方交易所。</p>
+<p>一旦一个NFT集合被代币化，特定的集合（例如uPunks，它是代表NFT集合的ERC-20代币）被锁定在Unicly的智能合约中，直到有足够多的集合的代币持有者选择解锁该集合。Unicly最大的金库JennyDAO，已经选择在Unicly上收集和管理他们所有的NFTs。uJenny代币用于治理DAO的金库。截至目前，DAO必须达到50%的门槛才能解锁收藏。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_npvovkojry.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p>碎片化NFT数量的激增与今年NFT市场周期的峰值大致相符。Unicly的使用量略有下降，部分原因是碎片化竞争者Fractional的推出和普及。</p>
+<p><strong>UNIC代币</strong></p>
+<p>Unicly在5月进行了一次基本公平的代币发布，其中90%的UNIC代币可通过流动性挖矿提供给社区，10%保留给核心开发团队。UNIC可以通过质押UNIC获得，将其转换为xUNIC。此外，Unicly交易所所有交易量的0.05%被作为费用，用于回购UNIC。UNIC代币的月铸造率下降了5%，以确保供应量永远不会达到100万。</p>
+<p><strong>Fractional</strong></p>
+<p>Fractional允许任何人购买、出售和铸造碎片化的NFT。一个NFT或NFT集合的所有者可以使用Fractional对其代币进行碎片化。策展人基本上是每个进行碎片化的NFT或NFT集合的资产管理者，并从每次拍卖中收取费用。收藏家能够将一个NFT的碎片创建为可替换的代币，这些代币可以组合起来赎回NFT，也可以以高于底价的价格购买基础NFT。任何购买者都可以以底价竞拍NFT或Bundle产品，而底价是由大多数部分持有人设定的。例如，如果Art Blocks Curated Bundle的实时估值为175 ETH，但底价为230 ETH，Art Blocks bundle的代币持有者表示，除非有人出价至少230 ETH，否则他们不会受理整个Bundle的任何销售。</p>
+<p>如果部分NFT的所有者想出售整个NFT，他们首先对保留价格进行投票。如果发生买断或ETH存款大于或等于保留价格，NFT的部分所有者将可以赎回他们的部分代币。目前，该平台上有2277个NFT被锁定。</p>
+<p>迄今为止，Fractional的碎片化代币交易量已超过15亿美元，考虑到该协议是近期发布的，这是一个相当令人印象深刻的数据。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_vse2urncdw.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p>与大多数交易类似，这个故事是一个长尾的故事，在Fractional上的几个NFT集合占了交易量的很大比例。两个模因——The Doge NFT和Etherrock #72，占了超过3亿美元的交易量。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_m2ro497w7j.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p>PartyBid是一种允许任何人发起“派对”以在任何公开拍卖中集体竞价的协议，它使用Fractional的智能合约来促进其竞价过程。PartyBid最近才开始支持Opensea拍卖，我们预计这将为PartyBid和Fractional带来更多的活动。</p>
+<p><strong>Unicly和Fractional</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_awqzcdwf8y.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p>Unicly比Fractional更早成立，并且仍然保持着更多的金库和更高的TVL。然而，自6月以来，Unicly的TVL大幅下降（约50%），这可能是由于新玩家进入该领域并获得更大份额的NFT，这些NFT通常会在Unicly结束。注意，上面的图表检查了Fractional上的金库，它可以有多个NFT，但锁定在Fractional上的NFT总量，仍然是锁定在Unicly上的所有NFT的约10%。与NFT20和NFTX的情况类似，NFTX和Fractional都拥有较少的NFT，但它们拥有的平均NFT/收藏品比其竞争对手更有价值。</p>
+<p>两种协议之间的主要区别在于用户在获得他们的碎片化代币后能够做什么。使用Fractional，用户可以将代币出售或带到第三方交易所，例如 SushiSwap。另一方面，Unicly是一个AMM，允许用户使用他们的uToken参与staking或收益耕作。尽管功能比Unicly少，但Fractional对用户更加友好，尤其是对于新的NFT用户。</p>
+<p><strong>碎片化代币的世界</strong></p>
+<p>即使从NFT到碎片化、可替换的代币，在DeFi之外仍有很多有趣的使用场景，所有者可以参与其中。与NFT一样，系统可以用于：</p>
+<ul>
+<li>
+<p>Gate社区或DAO</p>
+</li>
+<li>
+<p>用分数解锁内容</p>
+</li>
+<li>
+<p>提供版权费</p>
+</li>
+<li>
+<p>游戏内/PFP头像</p>
+</li>
+</ul>
+<p>ETHLisbon黑客马拉松项目，defragment.art，使碎片化金库策展人能够创建新的衍生NFT，这些NFT能够由原始NFT的分币所有者铸造。这为零散的NFT社区释放了效用，并有机会共同建设和管理。</p>
+<p><strong>关于桥接NFT交换和碎片化协议的说明</strong></p>
+<p>虽然这些协议在本质上是对NFT的竞争，但使用不一定是相互排斥的。正如前面所讨论的，每个NFT流动性类别都有一套不同的功能，可能会有更好的表现，这取决于用户对他们想实现的目标的偏好。例如，NFTX可能更适合于特定的NFT资产类别。例如，Sorare围绕同一位玩家发行了数十张同样有价值的卡片。NFTX或NFT20也可用于改善具有大量底层资产的NFT收藏的底层定价。相反，通过集合或单个集合对NFT进行碎片化，使DAO能够创建不同资产的组合（BAYC + floor Punks + non-floor Punks），从而有可能创造一个更有价值和流动性的NFT捆绑包。</p>
+<p>然而，值得注意的是，这些协议中的许多都在它们如何提供流动性上趋于一致，为价值相似的集合中具有独特价值的NFT（Fractional和Unicly）或单个NFT（NFTX和NFT20）的投资组合创建流动性池。但这些协议仍在竞争流动性，流动性自然会在几个协议中汇集。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1125/20_e06262ww7z.png" alt="详解NFTX、Unicly等主要NFT流动性协议 探讨NFT金融化未来"></p>
+<p><strong>NFT流动性的未来</strong></p>
+<p>随着NFT市场的不断发展和新用户的加入，NFT的流动性问题需要被迫切解决。目前，NFT金融化是通过流动性和碎片化协议来解决的。随着传统资产类别被作为NFT发行，金融化协议将变得越来越重要。此外，随着不可替代的资产被接受为Maker或Compound等DeFi协议的抵押品，找到将这些不可替代资产添加到系统中的替代方法，有可能在发生流动性危机时做出有意义的改善。</p>
+<p>重要的是，可组合性将使这些金融NFT协议能够进一步发展，并与其他协议整合。Fractional已经利用Party Bid使陌生人能够众筹和购买NFT，如Nouns。在其他地方，Genie在NFT20和NFTX之间进行聚合，为NFT提供即时流动性，并促进大批量交易。这进一步实现了轻松的NFT行为，如从一个给定的集合中购买大量地板NFTs。现有的NFT流动性协议将有独特的机会从新的协议中受益，利用他们现有的功能，并支持新用户行为。</p>
+<p>撰文：Eshita Nandini &amp; Mason Nystrom 本文编译自Messari</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/31160/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">现阶段Web3.0身份系统的应用场景和案例</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/31152/">
+                <span class="next-text nav-default">印度拟禁私人加密货币 推央行数字货币</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

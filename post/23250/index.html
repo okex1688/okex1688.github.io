@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          科普 | Centrifuge 如何运转？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="快速了解Centrifuge堆栈，Centrifuge链的架构以及Centrifuge 如何运转等。" />
+
+  <meta name="keywords" content="区块大全, 区块链, 区块链资讯, 区块链快讯, 区块链新闻, 比特币行情" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/23250/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="科普 | Centrifuge 如何运转？" />
+<meta property="og:description" content="快速了解Centrifuge堆栈，Centrifuge链的架构以及Centrifuge 如何运转等。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/23250/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-29T00:00:00+00:00" />
+
+<meta itemprop="name" content="科普 | Centrifuge 如何运转？">
+<meta itemprop="description" content="快速了解Centrifuge堆栈，Centrifuge链的架构以及Centrifuge 如何运转等。"><meta itemprop="datePublished" content="2021-05-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2696">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="科普 | Centrifuge 如何运转？"/>
+<meta name="twitter:description" content="快速了解Centrifuge堆栈，Centrifuge链的架构以及Centrifuge 如何运转等。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">科普 | Centrifuge 如何运转？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-05-29">
+      2021-05-29
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2696 字 -
+        预计阅读 6 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><img src="https://img.bibiqing.com/news/2021/0529/23_hwys669t0o.jpeg" alt="科普 | Centrifuge 如何运转？"></p>
+<p>最近收到很多同学的私信，大家都对 Centrifuge 很感兴趣，我们之后会陆续发布 Centrifuge 的基础介绍，帮助大家全方位的了解 Centrifuge。</p>
+<p>今天我们介绍 Centrifuge 的堆栈，Centrifuge 链的架构以及 Centrifuge 如何运转等。</p>
+<h2 id="centrifuge-堆栈"><strong>Centrifuge 堆栈</strong></h2>
+<p><strong>Centrifuge 的使命是改变全球贸易规则，在世界各地创造经济机会。</strong> 全球 B2B 支出(也就是寄送发票)约为 180 万亿美元。由于平均付款期限为 60 天，企业，特别是中小企业，需要融资来弥补差距。这也是中小企业比大企业更难实现可持续增长的主要原因之一。现有的解决方案，如分解和反向分解，只能解决这一需求的一小部分。这就是我们创建 Centrifuge 操作系统的原因 —— 允许企业交换业务文件(如发票)，并使这些资产通证化，以获得更大的融资渠道 —— 从而释放以前无法获得的价值。</p>
+<p>Centrifuge 操作系统是一个<strong>去中心化的平台</strong> ，支持金融供应链的新一代应用程序。该堆栈由点对点消息协议组成，以一种私密、安全的方式存储和交换业务文档。作为下一层，我们建立了 Centrifuge Chain，使用 Substrate 来为各方保存这些文件的不变的，单一的真实来源。利用 Centrifuge Chain 和建立在上面的 dApps，企业可以将文件代币化，并将其用作获得融资的抵押品。Tinlake 是我们建立在 Centrifuge 链上的这些通证化资产的证券化协议，以优化风险分配，并将 Centrifuge 与 DeFi 生态系统连接起来。</p>
+<h2 id="centrifuge-链"><strong>Centrifuge 链</strong></h2>
+<p><strong>Centrifuge Chain 是真实世界资产通往区块链多重宇宙的门户</strong> 。我们在 Parity 的 Substrate 上构建了 Centrifuge 链，并与以太坊建立桥！这使我们能够更快地变化，并对某些特性使用一致的方法。</p>
+<p>与此同时，我们能够开发一个<strong>标准化的以太坊桥</strong> ，可以被其他项目重复使用，这反过来又增加了互操作性。Substrate 允许我们轻松进入 Polkadot 生态系统，并与其他支持该标准的区块链连接。</p>
+<p>我们设想了一个由许多互联区块链组成的更大的生态系统 —— 以太坊上的 Dapps 可以使用其他链上的数据，价值可以自由移动，Centrifuge 链可以使链外资产通过 DeFi 获得融资。</p>
+<h2 id="centrifuge-的效率"><strong>Centrifuge 的效率</strong></h2>
+<p><strong>Centrifuge Chain 专门为我们的特定用例所需的交易进行优化</strong> 。这种关注使我们能够在几个关键方面改进当前的架构：速度、成本、存储效率和隐私。</p>
+<p>以太坊在低交易量高价值交易方面表现良好。大量需要隐私保护的用例需要不同的解决方案。与现有的解决方案相比，一般的企业用户，无论是中小企业还是大型企业，在以太坊上使用 Centrifuge 将花费更多的钱。对大多数企业来说，不值得做出改变。但如果我们能降低成本并拥有高吞吐量能力呢?</p>
+<p>Centrifuge 链上的交易针对我们特定用例所需的操作的小子集进行了优化。这允许更快地执行逻辑和交易终结交易的优化，加上我们的 PoS 体系结构，也极大地降低了交易成本。Centrifuge 链还实现了一种状态租金模型，要求用户为他们的数据在长时间内的持续可用性付费。这鼓励去中心化，因为运行节点所需的资源更少。建立我们自己的链也可以让我们改进用户和开发者在 Centrifuge 上的体验。我们的用户需要隐私，这是我们可以直接构建的 —— 从一开始就针对他们需要的功能。对于开发者来说，我们可以提供区块链节点自带的自定义 api 和工具，而不是难以集成的智能合约 api。</p>
+<p>Centrifuge 链是专门为协议要求的交易进行优化的。这样可以更有效地执行这些交易，并针对特定的场景。虽然构建单一目的链有缺点，但是我们使用场景的优点超过了成本。与其他以太坊和 DeFi 项目的集成变得更加复杂。我们在以太坊开发方面的经验，加上一个标准化的桥链来从我们基于 Parity Substrate 的链获取数据，大大减少了成本，同时仍然受益于我们自己链的优势。</p>
+<h2 id="centrifuge-如何运转"><strong>Centrifuge 如何运转？</strong></h2>
+<p>Paper Records 等公司使用 Centrifuge P2P 网络将发票签名并发送给 Spotify。Spotify 通过它的签名来验证文件的接收及其正确性，并将文件的更新、签名版本发送回 Paper Records。Centrifuge 链用于节点身份，允许 Paper Records 查找 Spotify, Spotify 验证 Paper Records。然后，Paper Records 就可以将带有两个签名的文档哈希锚定到 Centrifuge 链上。使用这些元素，Paper Records 现在可以在 Centrifuge 链上创造一个表示未付发票的 NFT，并将此 NFT 用作抵押品，以获得以太坊等其他区块链上的融资。从传统贷款人到 DeFi 贷款池，第三方可以通过链上锚定和身份验证 NFT 的价值，并获得授权访问链下文件，其真实性也可以通过链上锚定验证。</p>
+<h2 id="centrifuge-链的架构"><strong>Centrifuge 链的架构</strong></h2>
+<p>Centrifuge 链使用自己的本地代币 - Radial (RAD) 代币。它还通过区块奖励激励验证人和提名人参与。</p>
+<p>Centrifuge 链是建立在 Parity Substrate 上的，并依赖于质押的验证人在 3 个组件上达成共识，将区块提交给区块链:</p>
+<ul>
+<li>BABE - 区块生成/授权</li>
+<li>GRANDPA - 区块终结性工具</li>
+<li>NPoS - 验证人选举算法</li>
+</ul>
+<p>任何节点都可以将自己作为验证人候选节点，但验证人的数量是有限的。只有质押最高的验证人才会被选入验证人集。验证人可以质押他们自己的 RAD，也可以被持有 RAD 的提名人所选举。</p>
+<p>验证人必须运行一个完整的节点，并直接参与出块、终结性和有效性检查。他们可以选择一个奖励佣金，从奖励中预先收取，然后与提名人平分剩下的部分。</p>
+<p>验证人必须保持在线，并且在很高的正常运行时间内可用。如果出现蓄意攻击、运行修改过的软件、代码中存在的严重错误和无响应等情况，验证人会得到 slash 的惩罚。</p>
+<p>要深入了解为 Centrifuge 提供动力的 Radial 代币，请在这里阅读更多：<a href="https://ir.centrifuge.io/static/rad-executive-summary-8e1bfe96bbae3981fe43e4bf1fbcec70.pdf">https://ir.centrifuge.io/static/rad-executive-summary-8e1bfe96bbae3981fe43e4bf1fbcec70.pdf</a></p>
+<p>原文链接：<a href="https://docs.centrifuge.io/chain/overview/introduction/">https://docs.centrifuge.io/chain/overview/introduction/</a>‌</p>
+<p>翻译：Centrifuge 中文社区</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/23226/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">金色早报 | V神：PoS是以太坊能源消耗的解决方案</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/23221/">
+                <span class="next-text nav-default">美财长支持研究CBDC等数字支付工作</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#centrifuge-堆栈"><strong>Centrifuge 堆栈</strong></a></li>
+    <li><a href="#centrifuge-链"><strong>Centrifuge 链</strong></a></li>
+    <li><a href="#centrifuge-的效率"><strong>Centrifuge 的效率</strong></a></li>
+    <li><a href="#centrifuge-如何运转"><strong>Centrifuge 如何运转？</strong></a></li>
+    <li><a href="#centrifuge-链的架构"><strong>Centrifuge 链的架构</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          剖析DAO：Web3的所有权出奇地中心化 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="去中心化自治组织（DAO）是web3的主打产品。" />
+<meta name="keywords" content="Web 3.0, DAO" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39513/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="剖析DAO：Web3的所有权出奇地中心化" />
+<meta property="og:description" content="去中心化自治组织（DAO）是web3的主打产品。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39513/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-28T00:00:00+00:00" />
+
+<meta itemprop="name" content="剖析DAO：Web3的所有权出奇地中心化">
+<meta itemprop="description" content="去中心化自治组织（DAO）是web3的主打产品。"><meta itemprop="datePublished" content="2022-06-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4459">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="剖析DAO：Web3的所有权出奇地中心化"/>
+<meta name="twitter:description" content="去中心化自治组织（DAO）是web3的主打产品。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">剖析DAO：Web3的所有权出奇地中心化</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-28">
+      2022-06-28
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4459 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>信息来源：ChainAlysis</p>
+<p>作者：老雅痞</p>
+<p>去中心化自治组织（DAO）是web3的主打产品。DAO是基于互联网和区块链的，旨在为企业、项目和社区提供一个新的、民主化的管理结构，其中任何成员只要投资项目就可以对组织决策进行投票。</p>
+<h1 id="从高层次上看这就是dao的工作方式">从高层次上看，这就是DAO的工作方式。</h1>
+<p>1、DAO的创始人创造了一种新的加密货币，被称为治理代币。</p>
+<p>2、他们将这些代币分发给用户、投资者和其他利益相关者。</p>
+<p>3、每个代币都对应于组织内一定数量的投票权。每个代币也对应着二级市场上的价格，在那里可以随意购买和出售。</p>
+<p>虽然这一过程经常被描述为权力去中心化的方式，但治理令牌数据表明，DAO所有权高度中心化。</p>
+<h1 id="治理令牌持有量的中心化"><strong>治理令牌持有量的中心化</strong></h1>
+<p>通过分析十个主要DAO的治理令牌的分布，我们发现，在几个主要的DAO中，所有持有人中只有不到1%的人拥有90%的投票权。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/3_q2o4sznd44.png" alt="vviGb4J1HGr4v10SIfq5uJlvw4ZuSR1HJ7y2IcZ1.png" title="6259048"></p>
+<p>在DAO中持有90%治理代币的用户份额数据</p>
+<p>这对DAO的治理有深渊的影响意义。例如，如果只是前1%的持有人中的一小部分人一起工作，理论上他们可以在任何决定上超过其余99%的人投票。这有明显的实际意义，就投资者的情绪而言，很可能影响到小持有人是否觉得他们能对提案过程做出有意义的贡献。</p>
+<h1 id="高度集中对dao治理的影响"><strong>高度集中对DAO治理的影响</strong></h1>
+<p>对于一个治理代币持有人来说，有三个关键的治理行动。投票很简单–任何持有人都可以做。但是通过它创建一个提案呢？</p>
+<p>按这十个DAO的提案要求，我们发现：</p>
+<p>1、用户必须持有0.1%至1%的未偿还代币供应，才能创建提案。</p>
+<p>2、一个用户必须持有1%到4%之间才能通过。</p>
+<p>用这些范围作为上下限，我们发现这十个DAO的持有人中，有千分之一到万分之一有足够的代币来创建一个提案。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/3_l0p7klzgh8.png" alt="nVdqf59WVcLxap0gHXpplB9dR4tgZ0auAPJHhP4z.png" title="6259049"></p>
+<p>这里有几个权衡的问题。如果太多的持有人可以创建一个提案，平均提案的质量可能会下降，DAO可能会充斥着各种关于治理垃圾信息。但如果太少，社区可能会觉得 “去中心化的治理 “是假的。</p>
+<p>当涉及到单枪匹马地通过一项提案时，1/10,000到1/30,000的持有人有足够的代币来做到这一点。</p>
+<p>DAO中过度集中的投票权会导致决策似乎与web3赖以建立的去中心化原则相违背。例如，在2022年6月，管理基于Solana的借贷协议Solend的DAO面临一个问题：Solana的价格正在下降，如果它进一步下降，该协议最大的鲸鱼用户将面临保证金追缴，这可能会使Solend破产，并将价值约2000万美元的Solana送到市场上，可能会使资产的价格下跌并破坏整个Solana生态系统。DAO召集了一次投票，以控制鲸鱼的账户，并通过OTC市场，而不是公开市场清算其头寸。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/3_8ik1qjmbz7.png" alt="bUwqf1yr1E1l6vJ6A2tFsQyGIr3Hj0EWncT4kK55.png" title="6259050"></p>
+<p>该提案轻松通过，110多万张 “赞成 “票对3万张 “反对 “票。然而，其中超过100万张票来自一个拥有巨大治理代币持有量的用户。如果没有他们的投票，该议案就不会通过法定人数所需的1%的参与率。</p>
+<p>这一决定引发了加密货币社区的反弹，许多人质疑一个平台如何能够声称自己是去中心化的，然后违背用户的意愿控制他们的资金。在此之后，Solend DAO再次投票决定该提案无效，鲸鱼用户最终开始解套。虽然在这个案例中，危机被避免了，但它提出了一个问题：当一些投票者控制了如此大份额的治理代币时，DAO是否有能力以所有参与者的最佳利益行事。</p>
+<h1 id="dao究竟是如何治理的"><strong>DAO究竟是如何治理的？</strong></h1>
+<p>实际治理过程因DAO而异，这个问题最好用例子来回答。让我们从最大的一个开始：Uniswap。</p>
+<h1 id="例子uniswap-治理">例子：Uniswap 治理</h1>
+<p>Uniswap是一个去中心化的交易所（DEX），和许多DeFi协议一样，它是由一个DAO管理的。</p>
+<p>任何持有Uniswap的治理代币UNI的人都是这个DAO的成员。他们可以通过将自己的投票权委托给自己或他人的地址，公开自己的意见，或提交自己的提案来参与治理。这些提案的内容千差万别：持有人最近投票决定是否资助一个补助项目，是否整合一个新的区块链，以及是否降低治理提案提交门槛。</p>
+<p>但是，在有人能够提交一个合适的提案之前，他们的想法必须通过前两个阶段：温度检查和共识检查。</p>
+<p>1、温度检查决定了是否有足够的社区意愿来改变现状。在这两天结束的时候，以25,000张UNI赞成票为门槛的多数票获胜。</p>
+<p>2、共识检查确立了围绕一个潜在提案的正式讨论。在五天结束时，以50,000 UNI赞成票为界限的多数票获胜。</p>
+<p>如果这两项检查都通过，就可以将正式的治理提案付诸表决。然后，有一个七天的审议期，在治理论坛上讨论这个提案的优点。如果在这个时期结束时，至少有4000万张赞成票，而反对票是少数，那么这个提案就通过了，并将在两天的时间锁定后被颁布。</p>
+<h1 id="例子dream-dao治理">例子：Dream DAO治理</h1>
+<p>不是所有的DAO都像Uniswap那样运作，但大多数至少在类似的基础设施上运行，使用Snapshot这样的投票系统和Discord这样的聊天服务器。Dream DAO也不例外，尽管它的任务以及它的治理过程必然是独特的。</p>
+<p>Dream DAO是由501(c)(3)慈善机构Civics Unplugged创建的以影响为导向的DAO，旨在为全球不同的Z世代提供他们需要的培训、资金和社区，以使用web3来改善人类。他们的管理过程是由SkywalkerZ的持有者运行的——NFT既是管理代币，也是对任何有兴趣向该项目捐款的人的筹款激励。捐赠者每购买一个SkywalkerZ NFT，就会为未来的Z世代保留一个新的SkywalkerZ，作为投票成员加入，从而在DAO中获得权力而不需要付费。NFT的购买者可以申请加入DAO并成为投票成员，或者他们可以把它留给他们资助的Z世代学生–无论如何，NFT都是他们自己的。</p>
+<p>通过消除参与DAO治理过程中的财务障碍，Dream DAO赋予其目标受众–未来的Z世代领导人–以影响决策，沉浸在Web3，并积极利用区块链技术。</p>
+<h1 id="哪里的dao最常见且资金充足"><strong>哪里的DAO最常见且资金充足？</strong></h1>
+<p>DAO横跨web3的整个“广度”，它们管理：</p>
+<ul>
+<li>
+<p>DeFi协议，如Uniswap（$UNI）和Sushi（$SUSHI）。</p>
+</li>
+<li>
+<p>社交俱乐部，如Friends With Benefits（$FWB）和Bored Ape Yacht Club（$APE）。</p>
+</li>
+<li>
+<p>资助者，如Gitcoin（$GTC）和Seed Club（$CLUB）。</p>
+</li>
+<li>
+<p>边玩边赚游戏公会，如Good Games Guild（$GGG）和Yield Guild Games（$YGG）。</p>
+</li>
+<li>
+<p>NFT生成器，如Nouns（1 NFT = 1票）。</p>
+</li>
+<li>
+<p>风险基金，如MetaCartel和Orange DAO。</p>
+</li>
+<li>
+<p>像Big Green DAO和DreamDAO这样的慈善机构（1个SkywalkerZ=1票）。</p>
+</li>
+<li>
+<p>像Decentraland（$MANA）和Sandbox（$SAND）这样的虚拟世界 。</p>
+</li>
+<li>
+<p>还有更多。（例如：Constitution Dao、Lex Dao）</p>
+</li>
+</ul>
+<p>但就原始数字和库房规模而言，与DeFi相关的DAO有巨大的领先优势。DeFi类别占所有DAO持有的库房价值的83%，按数量计算占所有DAO的33%。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/3_srgmwduv0y.png" alt="NXVoj5cJsFqBjXgQIzI4k4oyHgUWeOogFiN8HpRx.png" title="6259051"></p>
+<p>按Web3类别划分的持有的总资产和DAO数量</p>
+<p>还有大量专注于风险投资、基础设施和NFT的DAO，表明DAO对投资者、开发者和艺术家有较强的吸引力。然而，他们的链上财库相对较小。</p>
+<p>公平地说，这些类别之间的界限是模糊的。游戏DAO经常与NFT接触，风险DAO经常向DeFi提供资金，而基础设施DAO支持上述所有类别。</p>
+<h1 id="财务管理dao持有什么资产"><strong>财务管理：DAO持有什么资产？</strong></h1>
+<p>即使DAO的类型和规模各不相同，它们的链上库房大多持有类似的加密货币。最常持有的加密货币是稳定币（USDC），在我们分析的197个DAO中，有一半以上持有USDC的余额。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/3_qy1u864usj.png" alt="6M0mXFEHoZyYqiJpzowTfwMnnZNhIWRLgHGTLQNd.png" title="6259052"></p>
+<p>然而，稳定币很少占到链上大部分财物价值。平均而言，85%的DAO的链上财物存储在单一资产中，而在我们研究的DAO中，该资产只有23%是稳定币。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/3_dwdqvgjigf.png" alt="ClVWXbyJSHP6XT7ZCH0EPh0mo5Pe1N4cz5wSCnYr.png" title="6259053"></p>
+<p>DAO库房分配给稳定币的百分比</p>
+<p>这些链上国债的波动性与比特币大致相同。通过假设DAO目前的持有量是他们过去一年的历史投资组合，我们发现：</p>
+<ul>
+<li>
+<p>资产超过100万美元的DAO平均年化波动率为82%，而比特币为69%。</p>
+</li>
+<li>
+<p>资产超过100万美元的DAO平均在过去一年中的最大缩水率为51%，而比特币的缩水率为72%。</p>
+</li>
+</ul>
+<p>DAO库房价值也与比特币价格走势相当相关。38%的链上DAO国债与比特币的关联度在0.5和1.00之间。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/3_9mcs865c96.png" alt="Z7WxYhVw0dxAxoxLicGtuHqcEeusSTz5kQp1jMo8.png" title="6259054"></p>
+<p>DAO库房价值与比特币价格走势的关联性有多强</p>
+<p>DAO资金管理中最有趣的一个尚未起飞的领域是并购（M&amp;A）。并购对DAO来说是有意义的，因为它允许DAO进入邻近的领域，而不必开发内部工具。随着DAO模式的成熟，我们怀疑并购将变得更加普遍。</p>
+<p>迄今为止，DAO在其使用和持有的工具类型方面也相当有限。例如，到目前为止，很少有DAO使用贷款或信贷，也许是因为它们的法律地位不确定。随着DAO的成熟，我们可能会看到更多标准化的法规、管理策略和报告做法。</p>
+<h1 id="谁在为dao做贡献"><strong>谁在为DAO做贡献？</strong></h1>
+<p>虽然我们不收集关于DAO参与者的人口统计学数据，但我们可以利用区块链数据了解关于DAO贡献者的一些情况。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0628/3_q2vh8441uk.png" alt="mIbc5JYcNcHxCQ2Le0LeBnnXm1PWHY9lgfuaiyen.png" title="6259055"></p>
+<p>DAO的贡献来自哪里？代币智能合约 = 项目特定的 ERC-20 或第 1 层代币合约</p>
+<p>正如人们所料，DAO参与者是加密货币服务的高级用户。只有17.9%的DAO库房资金来自于中心化服务，而其余82.1%源自于去中心化服务。这表明大多数DAO贡献者也参与了DeFi平台，并可能自我托管其加密货币。</p>
+<h1 id="dao的未来"><strong>DAO的未来</strong></h1>
+<p>随着DAO的发展势头，一个由工具服务和宣传团体组成的山寨产业已经出现，以帮助他们成长和治理。Superdao简化了DAO的创建；Snapshot简化了治理；Coin Center在国会山为该行业进行宣传。随着它们的继续扩张，看看它们能完成什么，它们将成为什么，以及它们将在多大程度上实现其去中心化互联网所有权的目标将是有趣的。随着今天DAO的激增，我们将能看到很多机会。</p>
+<p>这篇文章是ChainAlysis的《Web3现状报告》的预览版</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39508/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">剖析 DAO：Web3 所有权出人意料地中心化会带来什么后果</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39517/">
+                <span class="next-text nav-default">区块链技术公司Circulor完成2500万美元B轮融资，Westly Group领投</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

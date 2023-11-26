@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          以太坊的设计理念：叔块奖励、更新难度算法、Gas费等 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="以太坊的叔块奖励、难度更新算法、Gas 费定价机制以及虚拟机" />
+<meta name="keywords" content="ETH" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25608/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="以太坊的设计理念：叔块奖励、更新难度算法、Gas费等" />
+<meta property="og:description" content="以太坊的叔块奖励、难度更新算法、Gas 费定价机制以及虚拟机" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25608/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-09T00:00:00+00:00" />
+
+<meta itemprop="name" content="以太坊的设计理念：叔块奖励、更新难度算法、Gas费等">
+<meta itemprop="description" content="以太坊的叔块奖励、难度更新算法、Gas 费定价机制以及虚拟机"><meta itemprop="datePublished" content="2021-07-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-09T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8853">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="以太坊的设计理念：叔块奖励、更新难度算法、Gas费等"/>
+<meta name="twitter:description" content="以太坊的叔块奖励、难度更新算法、Gas 费定价机制以及虚拟机"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">以太坊的设计理念：叔块奖励、更新难度算法、Gas费等</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-09">
+      2021-07-09
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8853 字 -
+        预计阅读 18 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="叔块uncle-blocks奖励"><strong>叔块（uncle blocks）奖励</strong></h2>
+<p>GHOST 协议是一项不起的创新，由 Yonatan Sompolinsky 和 Aviv Zohar 在 2013 年 10 月首次提出的。它是解决快速出块伴生问题的第一个认真尝试。</p>
+<p>GHOST 的用意是解决这样一个难题：更短的出块时间（因此确认速度会更快）会导致有更多区块 “过时” 因而安全性会下降 —— 因为区块在网络中传播需要一定时间，如果矿工 A 挖到一个区块并向全网广播，在广播的路上，B 也挖出了区块，那么 B 的区块是过时的，且 B 的本次挖矿对网络的安全没有贡献。</p>
+<p>此外，还有一个中心化问题：如果 A 是一个矿池，有 30% 的算力，B 有 10% 的算力。A有 70% 的时间产生过时的区块（因为另外的 30% 时间会产生最新区块，可认为 TA “立即” 得到了最新块的数据而无需等待区块传播），而 B 有 90% 的时间产生过时区块。如果区块的产出时间间隔很短，那么过时率就会变高，则 A 凭借其更大的算力使挖矿效率也更高。所以，区块生成过快，容易导致网络算力大的矿池在事实上垄断挖矿过程。</p>
+<p>根据 Sompolinsky 和 Zohar的描述，GHOST 解决了在计算哪个链是最长的链的过程中，因产生过时区块而造成的网络安全性下降的问题。也就是说，不仅是父区块和更早的区块，同时过时的旁支区块（在以太坊中，我们称之为 “叔块”）也被添加到计算哪个块具有最大的总工作量证明中去。</p>
+<p>为了解决第二个问题：中心化问题，我们采用了另一种策略：对过时区块也提供区块奖励：挖到过时区块的奖励是该区块基础奖励的 7/8；而包含过时区块的侄子区块将收到 1/32 的基础奖励作为赏金。但是，交易费不会奖励给叔块和侄块。</p>
+<p>在以太坊中，过时区块只能被其兄弟区块的 7 代以内的直系后代区块包含为叔块。之所以这样限制是因为，首先，GHOST 协议若不限制过时区块的代际距离，将会花费大量开销在计算过时区块的有效性上；其次，无限制的过时区块激励政策会让矿工失去在主链上挖矿的热情；最后，计算表明，过时区块奖励政策限制在 7 层内提供了大部分所需的效果，而且不会带来负面效应。</p>
+<ul>
+<li>
+<p>度量中心化风险的一个模拟器可见此处：https://github.com/ethereum/economic-modeling/blob/master/ghost.py</p>
+</li>
+<li>
+<p>一个更高层次的讨论可见此处：https://blog.ethereum.org/2014/07/11/toward-a-12-second-block-time/</p>
+</li>
+</ul>
+<blockquote>
+<p>校对注：此处的 “包含” 在技术上的形式是：侄块在区块头中引用叔块的区块哈希值，然后把叔块的区块头包含在区块体内。</p>
+</blockquote>
+<p>区块时间算法的设计决策包括:</p>
+<ul>
+<li>
+<p><strong>区块时间 12s</strong> ：选择 12 秒是因为这已经是长于网络延迟的最短时间间隔了。在 2013 年的一份关于测量比特币网络延迟的论文中，确定了 12.6 秒是新产生的区块传播到 95% 节点的时间；然而，该论文还指出传播时间与区块大小成比例，因此在更快的货币中，我们可以期待传播时间大大减少。传播间隔时间是恒定的，约为 2 秒。然而，为了安全起见，在我们的分析中，我们假定区块的传播需要 12 秒</p>
+</li>
+<li>
+<p><strong>7 代祖先以内的限制</strong> ：这样设计的目的是希望只保留少量区块，而将更早之前的区块清除。已经证明 7 代的可引用范围就可以提供大部分所需的效果。</p>
+</li>
+<li>
+<p><strong>1 代后裔的限制</strong> ：（例如，设 c = child 且 p = parent，则 <code>c(c(p(p(p(head)))))</code> 是无效的）：这也是出于简洁性的设计目标，而且上述的模拟器显示这不会带来很大的中心化风险。（校对注：此句难解；一种可能的意思是：叔块的后代不能作为叔块，即只有主链的一代旁支能作为叔块。）</p>
+</li>
+<li>
+<p><strong>叔块必须是有效的</strong>  ：叔块必须是有效的 header，而不是有效的区块。这样做也是为了简化，将区块链模型保持为线性数据结构（而不会变成 DAG）。不过，要求叔块是有效的区块也是有效的方法。</p>
+</li>
+<li>
+<p><strong>奖金分配</strong> ：7/8 的挖矿基础奖励分配给叔块，1/32 分给侄块，它们交易费用都是 0%。如果费用占多数，从中心化的角度看，这会使叔块激励机制无效；然而，这也是为什么只要我们继续使用 PoW，以太坊就会不断发行以太币的原因。</p>
+</li>
+</ul>
+<h2 id="难度更新算法"><strong>难度更新算法</strong></h2>
+<p>目前以太坊通过以下规则进行难度更新：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0709/19_nruri2jvkj.png" alt="JDb35wM1Z3hptoZwaVUNgw4gSviqlyxxUWUP353l.png" title="5407213"></p>
+<p>难度更新规则的设计目标如下：</p>
+<ul>
+<li>
+<p><strong>快速更新</strong> ：区块间的时间应该随着 hash 算力的增减而快速调整；</p>
+</li>
+<li>
+<p><strong>低波动性</strong> ：如果挖矿算力恒定，那么难度不应剧烈波动；</p>
+</li>
+<li>
+<p><strong>简单</strong> ：算法的实现应相对简单；</p>
+</li>
+<li>
+<p><strong>低内存</strong> ：算法不应依赖于过多的历史区块，要尽可能少的使用 “内存变量”。假设有最新的十个区块，将存储在这十个区块头部的内存变量相加，这些区块都可用于算法的计算；</p>
+</li>
+<li>
+<p><strong>不可爆破</strong> ：算法不应让矿工有过多篡改时间戳或者矿池反复添加或删除算力的激励</p>
+</li>
+</ul>
+<p>我们当前的算法在低波动性和抗爆破性上并不理想。最近，我们计划把时间戳参数改为与父区块和祖父区块比较，所以矿工只有在连续挖 2 个区块时，才有动力去修改时间戳。另一个更强大的模拟公式： </p>
+<p><a href="https://github.com/ethereum/economic-modeling/blob/master/diffadjust/blkdiff.py">https://github.com/ethereum/economic-modeling/blob/master/diffadjust/blkdiff.py</a> </p>
+<h2 id="gas-和费用"><strong>Gas 和费用</strong></h2>
+<p>比特币中所有交易大体相同，因此它们的网络成本用单一一种单位来模拟。以太坊中的交易要更复杂，所以交易费用需要考虑到账户的许多方面，包括网络带宽费用、存储费用和计算费用。尤其重要的是，以太坊编程语言是图灵完备的，所以交易会使用任意数量的宽带、存储和计算成本；而最终会使用多少数量是无法可靠预测的（因为所谓的 “图灵停机问题”）（校对注：即不存在一个可靠的办法，能够断言任意可在图灵机上执行的程序会不会在有限步内终止）。防止有人使用无限循环来实施拒绝服务式攻击是我们的一个关键目标。</p>
+<p><strong>以太坊交易费用的基本机制如下</strong> ：</p>
+<ul>
+<li>
+<p>每笔交易必须指明自身愿意消耗的 gas 数量（即指定 <code>startgas</code> 的值），以及愿意为每单元 gas 支付的费用（即 <code>gasprice</code> ），在交易执行开始时，startgas * gasprice 价值的以太币会从发送者账户中扣除；（校对注：此处的 <code>startgas</code> 就是我们现在惯用的 <code>gaslimit</code> 。）</p>
+</li>
+<li>
+<p>交易执行期间的所有操作，包括读写数据库、发送消息以及每一步的计算都会消耗一定数量的 gas；</p>
+</li>
+<li>
+<p>如果交易执行完毕，消耗的 gas 值小于指定的限制值，则交易执行正常，并将剩余的 gas 值赋予变量 <code>gas_rem</code> ; 在交易完成后，发送者会收到返回的 gas_rem * gasprice 价值的以太币，而给矿工的奖励是（startgas - gas_rem）* gasprice 价值的以太币；</p>
+</li>
+<li>
+<p>如果交易执行中，gas消耗殆尽，则所有的执行恢复原样，但交易仍然有效，只是交易的唯一结果是将 startgas * gasprice 价值的以太币支付给矿工，其他不变；</p>
+</li>
+<li>
+<p>当一个合约发送消息给另一个合约，可以对这个消息引起的子执行设置一个 gas 限制。如果子执行耗尽了 gas，则子执行恢复原样，但 gas 仍然消耗。（校对注：截至本文校对之时（2021 年 7 月 9 日），这一点还未改变，但它在未来有可能会改变。</p>
+</li>
+</ul>
+<p><strong>上述提到的几点都是必须满足的，例如</strong> ：</p>
+<ul>
+<li>
+<p>如果交易不需要指定 gas 限制，那么恶意用户就会发送一个有数十亿步循环的交易。没有人能够处理这样的交易，因为处理这样的交易花的时间可能很长很长；但是谁也无法预先告知网络上的矿工，这就会导致拒绝服务的漏洞产生。</p>
+</li>
+<li>
+<p>一种替代严格 gas 计数的方法是时间限制，但它不可能有用，因为它们太主观了（某些计算机比别人的更快，即使大家的计算机都一样也仍然有可能出现差池）。</p>
+</li>
+<li>
+<p>startgas * gasprice 的整个值，在开始时就应该设置好，这样不至于在交易执行中造成该账户 “破产”、无力继续支付 gas 费用。一边执行一边检查余额也不行，因为账户可以把余额放到别的地方。</p>
+</li>
+<li>
+<p>如果在 gas 不够的情况下，交易执行不会完全复原（回滚），合约就必须采用强有力的安全措施来防止合约发生变化。</p>
+</li>
+<li>
+<p>如果子限制不存在，则恶意账户可以对其他合约实施拒绝服务攻击。攻击者可以先与受害合约达成一致意见，然后在计算过程开始时插入一个无限循环，那么发送消息给受害合约或者受害合约的任何补救尝试，都会使整个交易死锁。（校对注：此句亦难解。）</p>
+</li>
+<li>
+<p>要求交易发送者而不是合约来支付 gas，这样大大增加了开发人员的可操作性。以太坊早期的版本是由合约来支付gas的，这导致了一个相当严重的问题：每个合约必须实现 “门卫” 代码，确保每个传入的消息为合约提供了足够的以太币供其消耗。</p>
+</li>
+</ul>
+<p><strong>gas 消耗计算有以下特点</strong> ：</p>
+<ul>
+<li>
+<p>对于任何交易，都将收取 21000 gas 的基本费用。这些费用可用于支付运行椭圆曲线算法所需的费用（该算法旨在从签名中恢复发送者的地址）以及存储交易所花费的硬盘和带宽空间。</p>
+</li>
+<li>
+<p>交易可以包括无限量的 “数据” 。虚拟机中的某些操作码，可以让收到这样交易的合约访问这些数据。数据的 “固定消耗量” 规则是：每个零字节 4 gas，非零字节 68 gas。这个公式的产生是因为用户向合约发送的交易中，大部分的交易数据由一系列的 32 字节的参数组成，其中多数参数具有许多前导零字节。该结构看起来似乎效率不高，但由于压缩算法的存在，实际上还是很有效率的。我们希望此结构能够代替其他更复杂的机制：这些机制根据预期字节数严格包装参数，从而导致编译阶段复杂性大增。这是三明治复杂模型的一个例外，但由于成本效益比，这也是合理的模型。</p>
+</li>
+<li>
+<p>用于设置账户存储项的操作码 SSTORE 的消耗是：1）将零值改为非零值时，消耗 20000 gas；2）将零值变成零值，或非零值变非零值，消耗 5000 gas；3）将非零值变成零值，消耗 5000 gas；此外，交易执行成功（即未耗尽 gas 交易就执行完了）后会退回 15000 gas。退款金额上限是交易消耗 gas 总额的 50%。这给了人们小小激励去清除存储项。我们注意到，正因为缺乏这样的激励，许多合约的存储空间没有被有效使用，从而导致了存储数据的快速膨胀。这一设计既能提供 “为存储项持续收取租金” 模式的大部分好处，又不会失去合约一旦确立就可以永久存在的保证。延迟退款机制是必要的，因为可以阻止拒绝服务攻击：攻击者可以发送一笔含有少量 gas 的交易，循环清除大量的存储项，直到用光 gas，这样消耗了大量的验证算力，但实际并没有真正清除存储，也不需要付出很多 gas。50% 的上限的是为了确保打包交易的矿工依然能够确定执行交易的计算时间的上限。</p>
+</li>
+<li>
+<p>（校对注：首先，SSTORE 等状态访问操作码的 gas 消耗量已经随着以太坊的硬分叉而多次更改。截至 2021 年 7 月，最新的数值可见《柏林升级内容概览》；在可预见的未来，这个操作码的数值还会继续变化；其次，这里的 gas refund 机制，事后证明并没有启动缓解状态数据的膨胀问题，反而恶化了该问题，因为人们可以在 gas price 较低时写入大量垃圾数据，在 gas price 较高时清除这些数据来获得 gas，这就是 “GasToken” 的原理。当前已确定，在 “伦敦” 分叉中会改变 gas refund 机制。</p>
+</li>
+<li>
+<p>合约提供的消息数据是没有成本的。因为在消息调用期间不需要实质复制任何数据，调用数据（call data）可以简单地视为指向父合约 memory 的指针，该指针在子进程执行时不会改变。</p>
+</li>
+<li>
+<p>Memory 是一个可以无限扩展的数组，然而，每扩展 32 字节的 memory 就会消耗 1 gas 的成本，不足 32 字节以 32 字节计。（校对注：memory 一般译为内存，但在以太坊的语境下，它是 EVM 由于存储数据的三种类型之一，因此都不译，以示其特殊性。）</p>
+</li>
+<li>
+<p>某些操作码的计算时间极度依赖参数，gas 开销计算是动态变化的。例如，EXP 的的开销是指数级别的（10 gas + 10 gas/字节，即，x^0 = 1 gas、x^1 … x^255 = 2 gas、x^256 … x^65535 = 3 gas，等等）。复制操作码（如：CALLDATACOPY, CODECOPY, EXTCODECOPY）的开销是 1 gas + 1 gas/32 字节（四舍五入；LOG 操作码的规则也类似）。Memory 扩展的开销不包含在这里。如若包含，会变成一个平方攻击向量（50000 次的 CALLDATACOPY，每次消耗 50000 gas，则其计算量应是 50000^2，但如果不使用动态收费规则，就只需付出 ~50000 gas）。</p>
+</li>
+<li>
+<p>如果值不是零，操作码 CALL（以及 CALLCODE）会额外消耗 9000 gas。这是因为任何值传输都会引起归档节点的历史存储显著增大。请注意，操作的 <em>实际消耗</em> 是 6700；但是此基础上，我们强制增加了一个自动给予接收者的 gas 值，这个值最小 2300。这样做是为了让接受交易的钱包至少有足够的 gas 来生成 log。</p>
+</li>
+</ul>
+<p>Gas 机制的另一个重要部分是 gas 价格本身体现出的经济学原理。比特币中，默认的方法是采取纯粹自愿的收费方式，矿工扮演守门人的角色并且动态设置收费的最小值。以太坊中允许交易发送者设置任意数目的 gas。这种方式在比特币社区非常受欢迎，因为它是 “市场经济” 的体现：允许矿工和交易者之间依据供需关系来决定价格。然而，这种方式的问题是，交易处理并不遵循市场原则。尽管可以将交易处理看作是矿工向发送者提供的服务（这听起来很直观），但实际上矿工所处理的每个交易都必须由网络中的每个节点处理，所以交易处理的大部分成本都由第三方机构承担，而不是决定是否处理它的矿工。因此，“公地悲剧” 问题很有可能发生。</p>
+<p>当前，因为缺乏矿工在实际中的行为的明确信息，所以我们将采取一个非常简单公平的方法：投票系统，来设定单个区块可消耗的 gas 总额。矿工有权将在最新区块的 gas 上限基础上变更 0.0975% (1/1024)，作为当前区块的 gas 上限。所以最终的 gas 上限应该是矿工们设置的中间值。我们希望将来能够采用软分叉的方法来使用更加精确的算法。</p>
+<h2 id="虚拟机"><strong>虚拟机</strong></h2>
+<p>以太坊虚拟机是执行交易代码的引擎，也是以太坊与其他系统的核心区别。请注意，虚拟机应该同 “合约与消息模型” 分开考虑。例如，SIGNEXTEND 操作码是虚拟机的一个功能，但实际上 “某个合约可以调用其他合约并指定子调用的 gas 限定值” 是 “合约与消息模型” 的一部分。</p>
+<p>EVM的设计目标如下：</p>
+<ul>
+<li>
+<p><strong>简单</strong> ：操作码尽可能的少并且低级；数据类型尽可能少；虚拟机的结构尽可能少；</p>
+</li>
+<li>
+<p><strong>结果明确</strong> ：在 VM 规范中，没有任何可能产生歧义的空间，结果应该是完全确定的。此外，计算步骤应该是精确的，以便可以测量 gas 的消耗量；</p>
+</li>
+<li>
+<p><strong>节约空间</strong> ：EVM 组件应尽可能紧凑；</p>
+</li>
+<li>
+<p><strong>为预期用途而特化</strong> ：在 VM 上构建的应用应能处理 20 字节的地址，以及 32 位的自定义加密值，拥有用于自定义加密的模数运算、读取区块和交易数据与状态交互等能力；</p>
+</li>
+<li>
+<p><strong>简单安全</strong> ：为了让 VM 不被利用，应该能够容易地让建立一套 gas 消耗成本模型的操作；</p>
+</li>
+<li>
+<p><strong>优化友好</strong> ：应该易于优化，以便即时编译（JIT）和 VM 的加速版本能够构建出来。</p>
+</li>
+</ul>
+<p><strong>同时 EVM 也有如下特殊设计</strong> ：</p>
+<ul>
+<li><strong>临时/永久存储的区别</strong> ：我们先来看看什么是临时存储和永久存储。临时存储：存在于 VM 的每个实例中，并在 VM 执行结束后消失。永久存储：存在于区块链状态层。假设执行下面的树（S 代表永久存储，M 代表临时存储）：</li>
+</ul>
+<ol>
+<li>
+<p>A调用 B；</p>
+</li>
+<li>
+<p>B 设置 <code>B.S[0]=5，B.M[0]=9</code> ；</p>
+</li>
+<li>
+<p>B 调用 C；</p>
+</li>
+<li>
+<p>C 调用 B。</p>
+<p>此时，如果B试图读取 <code>B.S[0]</code> ，它将得到B前面存入的数据，也就是 5；但如果 B 试图读取 <code>B.M[0]</code> ，它将得到 0，因为 B.M 是临时存储，读取它的时候是虚拟机的一个新的实例。在一个内部调用（inner call）中，如果设置 <code>B.M[0] = 13</code> 和 <code>B.S[0] = 17</code> ，然后内部调用和 C 的调用都终止、回到了 B 的外部调用（outer call），此时读取 M，将会看到 <code>B.M[0] = 9</code> （此值是在上一次同一 VM 执行实例中设置的）， <code>B.S[0] = 17</code> 。如果 B 的外部调用结束，然后 A 再次调用 B，将看到 <code>B.M[0] = 0，B.S[0] = 17</code> 。这个区别的目的是：1.每个执行实例都分配有内存空间，不会因为循环调用而减损，这让安全编程更加容易。2.提供一个能够快速操作的内存形式：因为需要修改树，所以存储更新必然很慢。</p>
+</li>
+</ol>
+<ul>
+<li>
+<p><strong>栈/memory 模式</strong> ：早期，计算状态（除了指向下一个指令的程序计数器）有三种：栈（stack，一个 32 字节标准的 LIFO 栈），内存（memory，可无限延长的临时字节数组），存储项（storage，永久存储）。在临时存储端，栈和内存的替代方案是 memory-only 范式，或者是寄存器和内存的混合体（两者区别不大，寄存器本质上也是一种内存）。在这种情况下，每个指令都有三个参数，例如： <code>ADD R1 R2 R3: M[R1] = M[R2] + M[R3]</code> 。选择栈范式的原因很明显，它使代码缩小了 4 倍。</p>
+</li>
+<li>
+<p><strong>单词大小 32 字节</strong> ：在大多数结构中，如比特币，单词大小是 4 或 8 字节。4 或 8 字节对存储地址和加密计算来说局限性太大了。而不对大小作限制又很难建立相应安全的 gas 模型。32 字节是一个理想大小，因为它足够存储下许多密码算法所需要的大数值以及地址，又不会因为太大而导致效率低下。</p>
+</li>
+<li>
+<p><strong>我们有自己的虚拟机</strong> ：我们的虚拟机使用 java、Lisp 和 Lua 等语言开发。我们认为开发一款专业的虚拟机是值得的，因为：1）我们的 VM 规范比其他许多虚拟机简单的多，因为其他虚拟机为复杂性付出的代价更小，也就是说它们更容易变得复杂；然而，在我们的方案中每额外增加一点复杂性，都会给集约化发展带来障碍，并带来潜在的安全缺陷，比如共识错误，这就让我们的复杂性成本很高；2）我们的 VM 更加专业化，如支持 32 字节；3）我们不会有复杂的外部依赖，复杂的外部依赖会导致我们安装失败；4）完善的审查机制，可以具体到特殊的安全需求；即使使用外部 VM，也无法节省太多工作量。</p>
+</li>
+<li>
+<p><strong>使用了可变、可扩展的 memory 大小</strong> ：固定 memory 的大小是不必要的限制，太小或太大都不合适。如果内存大小是固定的，每次访问内存都需要检查访问是否超出边界，显然这样的效率并不高。</p>
+</li>
+<li>
+<p><strong>1024 调用深度限制</strong> ：许多编程语言在内存还没有溢出时，就因为调用深度太深而崩溃了。所以仅使用区块 gas 上限一种限制是不够的。</p>
+</li>
+<li>
+<p><strong>无类型</strong> ：只是为了简洁。不过，DIV、SDIV、MOD、SMOD 会使用有符号（signed）或无符号的操作码（事实证明，对于操作码 ADD 和 MUL，有符号和无符号是对等的）；转换成定点运算在所有情况下都很简单，例如，在 32 位长度下，<code>a * b -&gt; (a * b) / 2^32, a / b -&gt; a * 2^32 / b</code> ，+、- 和 * 在整数下不变。</p>
+</li>
+</ul>
+<blockquote>
+<p>校对注：在原译本中还有如下一段，但其对应段落在当前版本的原文中已经删除了： <strong>栈大小没有限制</strong> ：没什么特别理由！许多情况下，该设计不是绝对必要的；因为，gas 的开销和区块 gas 上限总是会充当每种资源消耗的上限。</p>
+</blockquote>
+<p>这个 VM 中某些操作码的功能和用意很容易理解，但也有一些不太好理解，以下是一些特殊的原因：</p>
+<ul>
+<li>
+<p><strong>ADDMOD, MULMOD</strong> ：大多数情况下， <code>mulmod(a, b, c) = a * b % c</code> ，但在椭圆曲线算法中，使用的是 32 字节模数运算，直接执行 <code>a * b % c</code> 实际上是在执行 <code>((a * b) % 2^256) % c</code> ，会得到完全不同的结果。在 32 字节的空间中执行 32 字节数值的 <code>a * b % c</code> 计算的共识非常困难且繁琐。</p>
+</li>
+<li>
+<p><strong>SIGNEXTEND</strong> ：SIGNEXTEND操作码的作用是为了方便从大的有符号整数到小的有符号整数的类型转换。小的有符号整数是很有用的，因为未来的即时编译虚拟机也许有能力检测主要处理 32 字节整数又长时间运行的代码块，小的有符号整数能加快处理。</p>
+</li>
+<li>
+<p><strong>SHA3</strong> ：在以太坊代码中，SHA3 作为安全的、高强度的、不定长数据哈希映射方法，应用非常广泛。通常，在使用存储器时，需要使用 Hash 函数来防止恶意冲突，在验证默克尔树和类似的以太坊数据结构时也需要使用到 Hash 函数。重要的是，与 SHA3 的相似的哈希函数，如 SHA256、ECRECVOR、RIPEM160，不是以操作码的形式包含在里面，而是以伪合约的形式。这样做的目的是将它们放在一个单独的类别中，如果当我们以后提出适当的 “原生插件” 系统时，可以添加更多这样的合约，而不需要扩展操作码。</p>
+</li>
+<li>
+<p><strong>ORIGIN</strong> ：ORIGIN 操作码由交易的发送者提供，主要的作用是允许合约退回支付的 gas。</p>
+</li>
+<li>
+<p><strong>COINBASE</strong> :COINBASE 的主要作用是：1）允许子货币对网络安全作出贡献；2）使矿工能够作为一个去中心化的经济体，来设置基于子共识的应用，如 Schellingcoin。</p>
+</li>
+<li>
+<p><strong>PREVHASH</strong> ：PREVHASH 可用作一个半安全的随机来源。此外，允许合约求值（evalute）上一个区块的默克尔树状态证明，而不需要高度复杂的 “以太坊轻客户端” 递归结构 。</p>
+</li>
+<li>
+<p><strong>EXTCODESIZE, EXTCODECOPY</strong> ：主要的作用是让合约依据模板检查其他合约的代码，甚至是在与其他合约交互前，模拟它们。见：https://lesswrong.com/lw/aq9/decision_theories_a_less_wrong_primer/</p>
+</li>
+<li>
+<p><strong>JUMPDEST</strong> ：当跳转（jump）目的地限制在几个索引时（尤其是，动态目的跳转的计算复杂度是 O(log(有效挑战目的数量))，而静态跳转总是恒定的），JIT 虚拟机实现起来更简单。于是，我们需要：1）对有效变量跳转目的地做限制；2）激励使用静态而不是动态跳转。为了达到这两个目标，我们定下了以下规则：1）紧接着 push 后的跳转可以跳到任何地方，而不仅是另一个 jump；2）其他的 jump 只能跳转到 JUMPDEST。对跳转的限制是必须的，这样就可通过查看代码中的前一个操作来确定当前是一个静态跳转还是动态跳转。缺乏对静态跳转的需求是激励使用它们的原因。禁止跳转进入 push 数据也会加快 JIT 虚拟机的编译和执行。</p>
+</li>
+<li>
+<p><strong>LOG</strong> ：LOG是事件的日志。</p>
+</li>
+<li>
+<p><strong>CALLCODE</strong> ：该操作码允许合约使用自己的存储项，在单独的栈空间和 memory 中调用其他合约的 “函数” 。这样可以在区块链上灵活实现标准库代码。</p>
+</li>
+<li>
+<p><strong>SELFDESTRUCT</strong> ：允许合约删除它自己，前提是它已经不需要存在了。SELFDESTRUCT 并非立即执行，而是在交易执行完之后执行。这是因为如果允许 SELFDESTRUCT 在执行之后回滚，将会极大地提高缓存的复杂度，不利于高效的 VM 实现。</p>
+</li>
+<li>
+<p><strong>PC</strong> ：尽管理论上不需要 PC 操作码，因为所有 PC 操作码的实例都可以根据将 push 操作的索引加入实际程序计数器来代替实现，但使用 PC 可以创建独立代码的位置（可复制粘贴到其他合约的编译函数，如果它们以不同索引结束，不会被打断）。</p>
+</li>
+</ul>
+<p>原文链接:</p>
+<p><a href="https://eth.wiki/en/fundamentals/design-rationale">https://eth.wiki/en/fundamentals/design-rationale</a></p>
+<p>作者: Vitalik</p>
+<p>翻译&amp;校对: kim &amp; 阿剑</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25573/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">以DAO之名：改变世界的15种方法（上）</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25575/">
+                <span class="next-text nav-default">英国监管机构称将打击有误导性的加密货币广告</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#叔块uncle-blocks奖励"><strong>叔块（uncle blocks）奖励</strong></a></li>
+    <li><a href="#难度更新算法"><strong>难度更新算法</strong></a></li>
+    <li><a href="#gas-和费用"><strong>Gas 和费用</strong></a></li>
+    <li><a href="#虚拟机"><strong>虚拟机</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          深入分析 Uniswap V3 流动性供应的数学原理 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Uniswap 在今年 5 月上线了 V3 版本协议，与之前 V2 版本相比存在诸多差异。" />
+
+  <meta name="keywords" content="区块大全, 区块链, 区块链资讯, 区块链快讯, 区块链新闻, 比特币行情" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/31610/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="深入分析 Uniswap V3 流动性供应的数学原理" />
+<meta property="og:description" content="Uniswap 在今年 5 月上线了 V3 版本协议，与之前 V2 版本相比存在诸多差异。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/31610/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-12-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="深入分析 Uniswap V3 流动性供应的数学原理">
+<meta itemprop="description" content="Uniswap 在今年 5 月上线了 V3 版本协议，与之前 V2 版本相比存在诸多差异。"><meta itemprop="datePublished" content="2021-12-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-12-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3621">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="深入分析 Uniswap V3 流动性供应的数学原理"/>
+<meta name="twitter:description" content="Uniswap 在今年 5 月上线了 V3 版本协议，与之前 V2 版本相比存在诸多差异。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">深入分析 Uniswap V3 流动性供应的数学原理</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-12-08">
+      2021-12-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3621 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="前言">前言</h2>
+<p>Uniswap 是 DeFi 领域的头部去中心化交易所，其在今年 5 月上线了 V3 版本协议。V3 版本与之前 V2 版本相比存在诸多差异，如集中流动性、多个费用等级、新的预言机等等。</p>
+<p>在这些多样的特点背后，究竟藏着怎样的数学奥秘，同时是否真的能为用户带来更大的收益，减少无常损失？</p>
+<p>知道创宇区块链安全实验室 将带你从数学原理角度在 Uniswap V3 集中流动性方面进行剖析。</p>
+<h2 id="何谓集中流动性">何谓集中流动性</h2>
+<p>在 Uniswap V3 中， 流动性提供者可以将其提供的流动性 &ldquo;限制&rdquo; 在任意的价格区间内来集中其流动性。</p>
+<p>为了解释这一概念，首先我们关联到 Uniswap V2 的自动做市商曲线。在该曲线中，用户的流动性被均匀的分布在整个 (0,正无穷大) 之中。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/11_crn8aw5h6w.jpg" alt="v2-db2923842174f6984f2825b6995534ac_720w.jpg"></p>
+<p>图1</p>
+<p>在 V2 版本中，由于许多池子的价格变动没有那么的频繁，比如 UDST/DAI 池子中。由于其价值均锚定美元，发生的交易将会聚集在上图中的 A 点附近（即x≈y）， 这就意味着流动性池中的大部分资产是永远不会被触及到的。</p>
+<p>因此在 V3 中，用户可以将其流动性聚集在某一个线段。如下图 B 到 C 点：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/11_9qnf2wmowt.jpg" alt="v2-925a6a146cf55386d424de9a04bd1ce9_720w.jpg"></p>
+<p>图2</p>
+<p>这样，由于大量用户的流动性被集中，对于 B 点到 C 点的线段的流动性将会变得非常 &ldquo;厚&rdquo;，这样的池子将使得来交易的人交易滑点得以显著减小，并有效提高资本效率。</p>
+<h2 id="如何将流动性集中">如何将流动性集中</h2>
+<p>在具体实现的过程中，V3 依靠了资产的杠杆。将一部分用户资产虚拟出来，导致了坐标轴图像的平移，虚拟资产假设对应 x&rsquo; 和 y&rsquo;。</p>
+<p>在原始的 Uniswap V2 中，曲线公式为：x*y=k</p>
+<p>Uniswap V3 通过引入 x&rsquo; 和 y&rsquo; 资产升级了该公式。此处x&rsquo;我们将其称为 x 资产的虚拟储备，y&rsquo; 称为 y 资产的虚拟储备，于是引入了如下式子：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/efithy6e1g0pmhy" alt="[公式]"></p>
+<p>由于为资产添加了杠杆（虚拟资产），使下图中原本在下面的曲线，能够平移到上面储备量更大的曲线中去，这也意味着在有限的的价格范围 [xb, xc] 内，一组较小的储备 x、y 能够充当更大的储备 x+x&rsquo;、y+y&rsquo;。</p>
+<p>同时，上方为虚拟资产被添加后的虚拟 AMM 曲线。在实际交易曲线中（限于 BC 点），下方才是流动性提供者资产的真实变化曲线。</p>
+<p>于是，在 B 点或 C 点时，处于强势的资产将被损耗为 0，也就是说将会全部兑换成劣势资产并停止做市。</p>
+<p>如下图 3：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/11_93esdd4gmk.jpg" alt="v2-38da2676ad53fae252a2c42093d77ab7_720w.jpg"></p>
+<p>图 3 上方为虚拟平移的AMM曲线</p>
+<p>根据 V2 的自动做市曲线方程。让 L 被定义为 k = L^2，于是有该式：x*y = k = L^2</p>
+<p>对其开根号，即有</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/yfp6d3qvftvtug5" alt="[公式]"></p>
+<p>而对于价格来说，当前的价格 P (用 y 对 x 资产定价)有：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/20t0giip2etq26e" alt="[公式]"></p>
+<p>根据式 3，对其取平方根，即有：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/oiwqjwtwi2hcw9m" alt="[公式]"></p>
+<p>联立式 4 与式 2，我们可以消去 y，对于闭区间 [B, C] 任一点，则有：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/g47at42fuyiq0pz" alt="[公式]"></p>
+<p>同理可消去 y，对于任一点，则有：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/q2ulbgeghpqswnn" alt="[公式]"></p>
+<p>于是，我们只要知道 P ( x 的价格)，在流动性没有改变时( L 不改变)，则可以得到对应的 x 资产量和 y 资产量。</p>
+<h2 id="计算虚拟资产xy">计算虚拟资产(x&rsquo;/y')</h2>
+<p><img src="https://img.bibiqing.com/news/2021/1208/11_6pz52qsega.jpg" alt="v2-913f3e07e8aef60eb61c81e0310c104e_720w.jpg"></p>
+<p>图4 虚拟资产x&rsquo;与y'</p>
+<p>考虑极端情况，在上图中，经过平移后上方的 AMM 图形由于在 B 点时，用户提供的 x 资产由于在实际中已全部损耗。</p>
+<p>也就是说 x=0，剩余的 x 均为虚拟出来的，即 x&rsquo;。</p>
+<p>根据式 5 去计算。此时计算 x 资产量对于 B 点有：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/sve14q41iou5pu0" alt="[公式]"></p>
+<p>同理，我们计算 C 点，此时用户提供的 y 资产由于在实际中已全部损耗，即有 y=0，剩余的 y 均为虚拟出来的，即 y&rsquo;。则有</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/4ulz5adu213mmqy" alt="[公式]"></p>
+<p>由上可知，xb 与 yc 则是Uniswap为用户虚拟出来的Token量，即x&rsquo;与y&rsquo;，这也是Uniswap中为用户开的杠杆的Token数量。</p>
+<p>于是，我们得到完整Uniswap V3的AMM曲线，见式9：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/4ee71uju0qhv6s1" alt="[公式]"></p>
+<p>同时，对于选定的区间中的任意一点，由用户提供的真实的资产见下图：</p>
+<blockquote>
+<p>注：下图摘自Uniswap V3白皮书 [1]，区间为[b,a]，任意一点被选择为c</p>
+</blockquote>
+<p><img src="https://img.bibiqing.com/news/2021/1208/11_0q4ww5ouy3.jpg" alt="v2-2adfa30ecd1aaad4783631212b0904f7_720w.jpg"></p>
+<p>图 5 用户提供的真实资产与虚拟储备 AMM 曲线</p>
+<h2 id="隐患-无常损失">隐患-无常损失</h2>
+<p>由于 V3 在用户的选择下将流动性使用添加杠杆的方式进行了集中，而对于流动性提供者来说本质上是在与用户做对手盘，即越跌越买，越高越卖，这将导致无常损失的加剧。</p>
+<p>根据上述分析，只要价格达到设定的区间临界点，流动性提供者的代币将会完全转换为另一种处于劣势的代币，并且在价格重新进入该临界点之前不会赚取交易费用。</p>
+<blockquote>
+<p>世上没有什么免费的午餐。风险越高，收益越高。你提供的流动性越集中，你获得的手续费收入就越高，同时也将承担更多的无常损失。——Uniswap创始人，Hayden Adams [2]</p>
+</blockquote>
+<h3 id="uniswap-v3--添加流动性">Uniswap V3&ndash;添加流动性</h3>
+<p>具体而言，假设现有一 Uniswap V3 交易池，交易对 ETH/DAI，池中 X 与 Y 储备比例 10 : 800，L2 为 8000，P 为 80 即交易价格 80DAI /ETH 。</p>
+<p>当前价格对应点 A(10,800)， 若一流动性提供商，尝试在 P=[20, 320]进行做市。对应的 点B(5,1600)，P=320。点 C(20,400)，P=20</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/11_2w0c5484o3.jpg" alt="v2-7e032f3f008789180a8cdbb443b42a04_720w.jpg"></p>
+<p>该流动性提供商想投入 3 个 ETH，这 3 个 ETH 会被全部用于 xreal ，由于当前价格在选定区间内。</p>
+<p>根据白皮书，有以下式子：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/jflyo8s1j2lub2y" alt="[公式]"></p>
+<p>由式 10，投入 △x=3，投入的 ETH 将改变池子的 L。经过计算 △L 为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/c8rbvzlnel5re4o" alt="[公式]"></p>
+<p>再通过 △L 计算 △y:</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/1lssw2il8v163i6" alt="[公式]"></p>
+<p>于是投入 3 个 ETH（△x）,时，计算投入的 DAI 应为 240 个。新的 L&rsquo; 约为 143.11 (仅限于在闭区间 P=[20, 320])。</p>
+<h3 id="uniswap-v3--swap">Uniswap V3&ndash;Swap</h3>
+<p>对于该 Uniswap V3 池子, 若 ETH 突然上涨，价格到达 1ETH=100DAI，此时就会有套利者在该 DEX 中用 DAI 兑换 ETH 来套利，为了将其达到与外部平衡，将有 P=80 ==&gt; P&rsquo;=100，根据白皮书，Swap 计算价格变化如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/8mf1ro56c0w0cn3" alt="[公式]"></p>
+<p>将根号后的起始价格 P 和结束价格 P&rsquo; 带入，可以计算得到 △y≈151.09，而 △x≈1.689。</p>
+<p>若 Swap 的资产假设该流动性提供者按照 L 比例划分了 37.5%，于是该流动性提供者分摊 x≈0.6334，y≈56.66</p>
+<p>于是我们得出如下表格：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/11_e1gf87cymt.jpg" alt="v2-01ab354b8a2b13f43ce1ada79ee1a948_720w.jpg"></p>
+<p>我们将其百分比化：IL_V3 = (540-533.31)/540 ≈1.239%</p>
+<blockquote>
+<p>集中流动性放大了资产L的占比，提高资产效率的同时承担了更多的无常损失。当然，这只是选择做市区间比较小，同时分摊比例较大的情况，现实会有许多人根据投入的L占比大小来分摊这笔swap。并且该笔swap由于本身比较大，几乎占了总资产的21.113%，进而显得无常损失的百分比很大，这也印证了盲目做市所带来的亏损。另外，价格波动对其也存在影响，只上涨到P=85时IL_V3约为0.58%。</p>
+</blockquote>
+<h3 id="uniswap-v2--添加流动性">Uniswap V2&ndash;添加流动性</h3>
+<p>而对于 Uniswap V2，假设原池中的资产量为 10 个 ETH 和 800 个 DAI，即 P 为 80DAI/ETH。</p>
+<p>流动性提供者投入了 3ETH 和 240DAI，此时则存在 13 个 ETH 与 1040 个 DAI，价格仍为 80DAI/ETH，比重占 23.077%，新的 K 为 13520。</p>
+<h3 id="uniswap-v2--swap">Uniswap V2&ndash;Swap</h3>
+<p>当 ETH 突然上涨，价格到达 1ETH=100DAI，此时就会有套利者用 DAI 兑换ETH来套利。</p>
+<p>设共用 △y 个 DAI 兑换 △x 个 ETH 后，AMM 池中 ETH:DAI 价格达到与外部平衡的 1:100</p>
+<p>不考虑手续费等因素，则有：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/mksf5ygojwqsrr9" alt="[公式]"></p>
+<p>解得 dx≈1.3724, dy≈122.76，即套利者给了 122.76 个 DAI，换走了 1.3724 个 ETH。池子 -1.3724 个 ETH，+122.76 个 DAI</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/8e0dqs6530sz39p" alt="[公式]"></p>
+<p>这将在所有比重中分担，于是提供者分担23.077%，即失去0.3167个ETH，换取28.33个DAI，我们得出如下表格：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/11_wukssmg3t2.jpg" alt="v2-069ca551e8b0c53c9859645007c92dad_720w.jpg"></p>
+<p>IL_V2 = (540-536.66)/540 ≈ 0.6185%</p>
+<p>具体将会取决于在 V3 做市区间，越小则杠杆越多，x&rsquo; 和 y&rsquo;越大，同时无常损失和手续费收益也会越多。</p>
+<p>当然，用户也可以如 V2 一样将流动性分摊到整个曲线中去而不是某个线段，即在 0 到正无穷进行做市：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/11_mkiuezum8g.jpg" alt="v2-25d763d66019e1b5fd75dc116a8aab21_720w.jpg"></p>
+<h2 id="后记">后记</h2>
+<p>由于篇幅原因，本篇仅就集中流动性进行了讨论。Uniswap V3 创新了很多的新功能，其复杂程度相较于 V2 增加了非常多。</p>
+<p>无可否认，Uniswap V3 的创新使得 Uniswap V2 被加强，用户可以选择将其流动性集中在任何一个区间以获得更多的手续费。</p>
+<p>但与此同时这也将导致更多的无常损失和更大的资金转换为劣势资产速度，而这也产生了许多新特性如限价单 swap 等功能。</p>
+<p>因此，在选择做 LP 之前，需要认真思考自己的需求，切忌盲目做市。</p>
+<h2 id="参考">参考</h2>
+<p>[1] Uniswap V3白皮书</p>
+<p>[2] Uniswap V3新特性解析</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/31617/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">区块链技术将如何改变艺术世界？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/31606/">
+                <span class="next-text nav-default">什么是元宇宙 QitChain元宇宙是如何工作的</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#何谓集中流动性">何谓集中流动性</a></li>
+    <li><a href="#如何将流动性集中">如何将流动性集中</a></li>
+    <li><a href="#计算虚拟资产xy">计算虚拟资产(x&rsquo;/y')</a></li>
+    <li><a href="#隐患-无常损失">隐患-无常损失</a>
+      <ul>
+        <li><a href="#uniswap-v3--添加流动性">Uniswap V3&ndash;添加流动性</a></li>
+        <li><a href="#uniswap-v3--swap">Uniswap V3&ndash;Swap</a></li>
+        <li><a href="#uniswap-v2--添加流动性">Uniswap V2&ndash;添加流动性</a></li>
+        <li><a href="#uniswap-v2--swap">Uniswap V2&ndash;Swap</a></li>
+      </ul>
+    </li>
+    <li><a href="#后记">后记</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

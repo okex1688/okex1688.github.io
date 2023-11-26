@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          DeFi新玩法 | 一文了解Ethport如何降低以太坊DeFi操作成本 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="注：原文作者是Loopring首席架构师BrechtDevos，在这篇文章中，他阐述了能让用户在Layer2网络直接与L..." />
+<meta name="keywords" content="undefined" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/21037/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="DeFi新玩法 | 一文了解Ethport如何降低以太坊DeFi操作成本" />
+<meta property="og:description" content="注：原文作者是Loopring首席架构师BrechtDevos，在这篇文章中，他阐述了能让用户在Layer2网络直接与L..." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/21037/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-21T00:00:00+00:00" />
+
+<meta itemprop="name" content="DeFi新玩法 | 一文了解Ethport如何降低以太坊DeFi操作成本">
+<meta itemprop="description" content="注：原文作者是Loopring首席架构师BrechtDevos，在这篇文章中，他阐述了能让用户在Layer2网络直接与L..."><meta itemprop="datePublished" content="2021-04-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3391">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DeFi新玩法 | 一文了解Ethport如何降低以太坊DeFi操作成本"/>
+<meta name="twitter:description" content="注：原文作者是Loopring首席架构师BrechtDevos，在这篇文章中，他阐述了能让用户在Layer2网络直接与L..."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">DeFi新玩法 | 一文了解Ethport如何降低以太坊DeFi操作成本</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-04-21">
+      2021-04-21
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3391 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>注：原文作者是Loopring首席架构师Brecht Devos，在这篇文章中，他阐述了能让用户在Layer 2网络直接与Layer 1 应用进行交互的Ethport设计。</p>
+<p>概述：</p>
+<ol>
+<li>Loopring-zkRollup用户可利用批处理和零知识证明的能力，以低手续费直接在L2与L1 DeFi应用进行交互；</li>
+<li>Loopring支持了便宜且高资本效率的跨L2转账；</li>
+<li>中心化交易所（CEX）可使用标准的L1功能，轻松地将用户资金提到Loopring的zkRollup二层网络，同时可节省成本；</li>
+<li>Ethport将在2021年5月作为Loopring 3.7版本的一部分上线以太坊主网。</li>
+</ol>
+<h2 id="当前zkrollup的问题">当前zkRollup的问题</h2>
+<ol>
+<li>目前， Loopring的zkRollup二层网络非常适合转账以及订单薄/AMM交易，然而它并不支持通用智能合约，如果用户想要做更复杂的事情，那只能与以太坊L1主网进行交互，但以当前网络的gas费计算，这种操作是非常昂贵的。</li>
+<li>对于中心化交易所而言，提币的成本也是很高的，并且每一个L2网络都有自己的特殊性，因此中心化交易所要整合这些方案并不容易，而如果有一个标准的L1接口，其隐藏了所有的实现细节，同时仍能提供节省费用的好处，那它将是非常有吸引力的。</li>
+<li>现在，越来越多的L2网络在以太坊主网上线，而用户希望在这些L2之间移动，而不必通过L1的交互。</li>
+<li>即使将来会有更多的功能直接迁移到L2，这也需要一段时间才能完全实现。部分（甚至大部分）流动性可能暂时仍停留在L1上，直到更通用的L2变得成熟。我们需要一些有助于过渡期的东西。</li>
+</ol>
+<h2 id="解决方案">解决方案</h2>
+<p>尽可能让任务发生在Layer 2网络，是使得交易变得足够便宜的关键，这样用户就无需担心手续费太高的问题。通常，我们可以将多笔交易批处理在一起，这样就可以分摊L1网络的gas成本。L2交易用于完成大部分工作，而所有用户只需一笔L1交易，那么理论上就可以显著降低Gas成本。</p>
+<p>zkRollup技术特别适合解决这一问题，因为只要立即提供有效性证明，L1网络上的L2状态就会立即完成。这不仅意味着提款（withdrawal）这样的操作很快就可以完成，我们还可以立即使用L2数据进行L1交易，而不必担心无效的L2状态转换。</p>
+<p>通常情况下，最佳解决方案取决于具体问题以及所需的用户体验。首先，让我们先详细介绍一下Loopring工具包中有哪些工具，以及它们各自解决了哪些问题。</p>
+<h3 id="流动性提供者lp">流动性提供者（LP）</h3>
+<p><img src="https://img.bibiqing.com/news/2021/0421/10_wyworuk13h.png" alt="DeFi新玩法 | 一文了解Ethport如何降低以太坊DeFi操作成本"></p>
+<p>这就是当前Loopring的现状，其依靠专门的流动性提供者在L2上提供流动性，当然，有时用户之间也会提供流动性。例如，如果有人想要进入一个金库，而另一个用户想要退出该金库，只要允许这些用户相互交易，则至少有一个用户已实现了他的目标。最好的情况是，用户之间总是可以进行交易，但这是不可预测的，而且在合理的时间内并不总是可能的。</p>
+<p>这种方法的缺点是，流动性提供者（LP）只能利用有限的资金，他们还需要让这些资金随时可用。zkRollups实际上非常擅长这一点，因为资金从来不会被长期锁定（zkRollups中的存款和取款都很快），所以即使是有限的资金也可以很快地被重新使用。不过，这种方法的资本效率是不高的，实际上我们可以做的更好。</p>
+<h3 id="单相转换器single-phase-converter">单相转换器（Single Phase Converter）</h3>
+<p><img src="https://img.bibiqing.com/news/2021/0421/10_2bhyf0uqtq.png" alt="DeFi新玩法 | 一文了解Ethport如何降低以太坊DeFi操作成本"></p>
+<p>为了解决资本效率问题，我们可以利用L2上的闪电铸造（flash minting）功能，因为在L2上，每个代币都内置了闪电铸造（flash minting），我们可以根据需要创建任意多的代币。所以，我们可以：</p>
+<ol>
+<li>Flash mint所有用户想要购买的代币数量，因此所有交易都可以在L2上完成（可以是数千次交易）；</li>
+<li>按预期汇率填充L2上的所有交易；</li>
+<li>Withdraw用户出售的所有代币；</li>
+<li>使用这些代币执行L1交易，以获得用户购买的真实代币（并且已经在L2网络上分发）；</li>
+<li>用这些代币偿还闪电贷；</li>
+</ol>
+<p>当在L2上进行交易时，汇率是完全确定的，并且L1交易永远不会失败时（例如，ETH/WETH，或者只有L2本身可以与之交互的任意逻辑智能合约），这会是一个完美的解决方案，但如果：</p>
+<ol>
+<li>汇率可能会发生不可预测的变化（通常是在任何用户都可在L1上与智能合约进行交互时）；</li>
+<li>不管出于什么原因，需要完成的L1交易失败了；</li>
+</ol>
+<p>那么这个时候，就会有 flash mint 无法偿还的风险。如果flash mint无法偿还，就无法在链上提交区块，因为这会是无效的。这意味着必须恢复L2上的所有交易，用新的交易创建一个新的区块，重新创建零知识证明……理论上这是可能的，但实际这是我们需要去避免的一种情况。</p>
+<h3 id="二相转换器double-phase-converter">二相转换器（Double Phase Converter）</h3>
+<p><img src="https://img.bibiqing.com/news/2021/0421/10_tgcaa6zqto.png" alt="DeFi新玩法 | 一文了解Ethport如何降低以太坊DeFi操作成本"></p>
+<p>为了解决可预测性问题，我们可以分为两个阶段进行交易。在第一阶段，我们首先在专用金库（仅用于特定的代币swap）中收集所有用户的资金。我们首先给用户一个表示他在金库中所占份额的token（按固定的1:1比率），而不是直接交换成用户想要购买的代币。然后进行L1交易，观察实际汇率。在第二阶段，在转换过程中接收到的代币数量，可以在接下来的区块中按比例分配给所有用户。</p>
+<h3 id="bridge桥">Bridge（桥）</h3>
+<p><img src="https://img.bibiqing.com/news/2021/0421/10_d860db24vq.png" alt="DeFi新玩法 | 一文了解Ethport如何降低以太坊DeFi操作成本"></p>
+<p>桥（Bridge）是一种比转换器（Converter）更为强大的设计，但是由于一些额外的L1开销，每笔用户交易的成本也要贵一些。这种桥设计不仅可以更灵活的方式执行类似转换器的批处理代币交换，还支持不能简化为简单代币交换的L1交易。</p>
+<p>这个桥允许用户使用批存款将资金有效地存入Loopring，相比每个用户单独加入zkRollup网络，通过标准的L1智能合约直接在L1上提供批存款功能，以允许用户一起加入L2网络，通过这种设计，就可以将多笔交易聚集成一笔L1交易，从而有效降低手续费。这使得中心化交易所也可以使用标准的L1基础设施轻松地支持Loopring的L2网络。</p>
+<p>这个资产桥还允许用户直接在L2网络进行高效的L1交易，这首先在L2上的资产桥账户中收集这些交易的所有资金，这样就可以最小化L1代币转账的数量。然后在L1资产桥合约（L2资产桥账户的所有者）中，我们检查所有到资产桥的转账（这是使用有条件转账完成的，条件是转账由资产桥合约处理）。通过让用户在转账后签署一些额外的数据，资产桥可得知用户希望使用提供的资金进行哪一次L1交易。这个资产桥将所有这些交易一起批处理，将它们按L1交易的类型进行分组，然后将它们发送到与该类型交易相关联的连接器（Connector）。这些连接器是在所有用户交易和批处理交易之间进行转换的简单合约。资产桥提供了一个通用接口，允许用户连接到任何连接器合约，即使我们不知道这个连接器是做什么的。</p>
+<p>每个用户都可以向连接器提供自定义数据（接受的数据取决于连接器），这允许批处理，但每个用户都有可自定义的行为。例如，如果一组用户想要在Uniswap上交换代币，那么每个用户都可以设置其所需的滑点。连接器只能对满足滑点要求的用户进行一次批量交换，而对于所有其他用户来说，只需返回他们的资金。跨L2转账的另一个例子是，用户可以在另一个L2网络上设置其目的地地址。</p>
+<p>而Ethport，就是建立在以上这些设计的一个产品。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/21031/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">DeFi下一个爆发赛道：去中心化期权协议</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/20990/">
+                <span class="next-text nav-default">Diem协会计划在2021年推出单币种稳定币试点</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#当前zkrollup的问题">当前zkRollup的问题</a></li>
+    <li><a href="#解决方案">解决方案</a>
+      <ul>
+        <li><a href="#流动性提供者lp">流动性提供者（LP）</a></li>
+        <li><a href="#单相转换器single-phase-converter">单相转换器（Single Phase Converter）</a></li>
+        <li><a href="#二相转换器double-phase-converter">二相转换器（Double Phase Converter）</a></li>
+        <li><a href="#bridge桥">Bridge（桥）</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

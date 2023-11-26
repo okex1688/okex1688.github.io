@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          从一个钱包被盗的案例 探讨Web3的安全指南 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="道路千万条，安全第一条。" />
+<meta name="keywords" content="安全漏洞, 钱包" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/33286/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="从一个钱包被盗的案例 探讨Web3的安全指南" />
+<meta property="og:description" content="道路千万条，安全第一条。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/33286/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-01-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-20T00:00:00+00:00" />
+
+<meta itemprop="name" content="从一个钱包被盗的案例 探讨Web3的安全指南">
+<meta itemprop="description" content="道路千万条，安全第一条。"><meta itemprop="datePublished" content="2022-01-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-01-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3727">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="从一个钱包被盗的案例 探讨Web3的安全指南"/>
+<meta name="twitter:description" content="道路千万条，安全第一条。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">从一个钱包被盗的案例 探讨Web3的安全指南</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-01-20">
+      2022-01-20
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3727 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>道路千万条，安全第一条：</strong></p>
+<p>1）不要共用密钥 2）密钥离线保存</p>
+<p>3）开发和测试分开（空投和主账号隔离）</p>
+<p>4）不要下载来历不明的软件 5）立即检查授权</p>
+<p>6）进行授权前，对合约安全进行确认</p>
+<p>7）撸空投和福利的时候注意安全 </p>
+<p>8）警惕Discord来路不明的人和软件</p>
+<p><em>注: 本号不推销任何意义上的商业产品，不提供任何投资建议，不接任何PR需求。本文不构成任何投资上的建议。</em></p>
+<p>作者 | Chris 阿法兔</p>
+<p><strong>事件</strong></p>
+<p>*<strong>本文2700字左右，阅读时间10-20分钟</strong></p>
+<p>2022年元旦假期的某个早上，小C准备写代码，继续测试web3js的链上合约交易。突然发现自己的测试账号（bsc链 ）在metamask归零了，明明前一晚账户内还有100USD，然后查完转账就发现：</p>
+<p><strong>钱都没了，钱哪去了？？</strong></p>
+<p><strong>背景</strong></p>
+<p>技术出身的小C，最近在学习区块链开发。<strong>本身是专业开发者，已经很谨慎小心了，通常都是在测试网络上跑，跑完之后，再会去正式网络上部署</strong> ，但是没有意识到<strong>整个产业目前还处在相对混乱的阶段</strong> ，麻痹大意，顺手习惯导致造成了损失。</p>
+<p><strong>损失是如何造成的？</strong></p>
+<p>2021年的最后一天，小C偶然看到一个账号很有趣**（这个账号有很多活跃的交易）** ，就追踪了他的一些链上交易，然后看到了一个非常有意思的项目**（有很高的年化收益率）** ，然后就鬼使神差地连上了自己的Metamask，然后鬼使神差的进行了approve，<strong>因为一般Web3的项目就是这个流程，approve然后转账就结束了。</strong></p>
+<p><strong>但是令人惊呆的一幕出现了：点完之后，整个网站突然卡死了</strong> <strong>（其实在卡死这段时间，盗取者就把钱转走了）</strong> <strong>，没有任何反应，小C当时没当回事，把站点给关了，去做其他事情了。</strong></p>
+<p>过了大概一天，小C重新回来开发的时候，<strong>发现账上的钱全部没有了，去查了历史记录，</strong> <strong>发现账上的余额已经被全部转走</strong> <strong>。</strong></p>
+<h2 id="回顾过程"><strong>回顾过程</strong></h2>
+<p><strong>盗取者是怎么把小C账户上的钱都转走的？</strong></p>
+<p><strong>现象：</strong> 只要你approve了，不需要私钥理论上也可以把对应的钱全部转走。</p>
+<p>小C进行了下溯源，大概是在一个钓鱼网站的approve出了问题，于是追溯该转账记录。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0120/17_3kbp0parzn.png" alt="从一个钱包被盗的案例 探讨Web3的安全指南"></p>
+<p>如图，可以看到，先是approve（授权）了一个合约，授权了钓鱼合约能够对账号里面BUSD进行操作，而且是没有数量限制的。</p>
+<p>为什么会是BUSD呢？小C回忆了一下，一进入这个钓鱼站点是默认选了busd，估计在浏览站点链接钱包之后，盗取者就已经筛选了出了账号里面钱最多的token了。</p>
+<p>然后当小C以为这是一个新的swap合约，并且有很高的年化收益，准备先试试的时候，按照常规流程就进行approve。approve结束后，网站直接卡了。</p>
+<p><strong>后来经过追溯，大概在授权之后几十秒，合约就直接触发了一个转账操作，直接把BUSD token给转走了。</strong></p>
+<p>后来去查了一下授权的信息</p>
+<p><img src="https://img.bibiqing.com/news/2022/0120/17_kt50us282s.png" alt="从一个钱包被盗的案例 探讨Web3的安全指南"></p>
+<p>基本上metamask默认授权的时候是</p>
+<p>ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p>
+<p>转换成数字，我们认识的就是 1.157920892373162 乘以 10 的 59 次方。基本上就<strong>可以理解为无限量转账了</strong> ，也就是这个授权的操作，可以让这个合约无限量的操纵我账号的token。<strong>看到这里感觉背后一凉，因为以前点过很多次approve都是不会去看的。</strong></p>
+<p><strong>然后黑客操纵一个可以控制这个合约方法的钱包地址，就发起合约转账方法，把钱转走了。所以小伙伴</strong> <strong>之后点metamask授权的时候一定要小心</strong> <strong>。</strong></p>
+<p><strong>小C查了下，盗取者现在这个账号里大概已经有了3w美金的token了，现在还有源源不断的受害者在转钱。</strong> <strong>但是面对区块链没有办法，根本无法找不到这个黑客是谁。</strong></p>
+<h2 id="出现问题的环节"><strong>出现问题的环节</strong></h2>
+<p><strong>问题到底出在哪里？</strong></p>
+<p>因为最近在学习区块链。小C大概理了一下这个钓鱼的逻辑方式，害人之心不可有，防人之心不可无。大家有兴趣可以了解一下：</p>
+<ul>
+<li>
+<h3 id="正常转账"><strong>正常转账</strong></h3>
+</li>
+</ul>
+<p><strong>案例一：直接用户间转账 A用户向B用户转账BUSD</strong></p>
+<p>合约正常会检查以下逻辑</p>
+<p>1）判断A用户账户余额是否有足够的钱 2）是否是A用户发起的转账</p>
+<p>流程如下图</p>
+<p><img src="https://img.bibiqing.com/news/2022/0120/17_ooez19h4kz.png" alt="从一个钱包被盗的案例 探讨Web3的安全指南"></p>
+<ul>
+<li>
+<h3 id="正常合约兑换"><strong>正常合约兑换</strong></h3>
+</li>
+</ul>
+<p>就是我们平时使用pancakeswap、uniswap等兑换时候的流程</p>
+<p><strong>案例二：通过swap进行token兑换 A用户进行token兑换（BUSD兑换WBNB）流程 合约进行判断：</strong></p>
+<p>1）A用户账户余额是否有足够的BUSD，（假设已经授权swap合约可以操作A账户的BUSDtoken）</p>
+<p>2）swap合约取A账户下的500BUSD放入swap的合约池中（假设汇率是1:500）</p>
+<p>3）成功后合约再向A账户转入1BNB</p>
+<p>注意第2）3）点，是由合约控制token进行操作。那么也就是说合约可以绕过我们直接发起对我们账号下的token的操作。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0120/17_bs3al2f7n1.png" alt="从一个钱包被盗的案例 探讨Web3的安全指南"></p>
+<ul>
+<li>
+<h3 id="钓鱼合约"><strong>钓鱼合约</strong></h3>
+</li>
+</ul>
+<p>先看这张溯源图?</p>
+<p><img src="https://img.bibiqing.com/news/2022/0120/17_69qu9e0iak.png" alt="从一个钱包被盗的案例 探讨Web3的安全指南"></p>
+<p>正常的转账，转账方和合约执行的转账方应该是同一个人，即上图（1）与（2）应该是由同一个人发起的。而我被转账的这笔交易，这两个不是同一个地址。推测应该是由一个可以执行钓鱼合约的钱包地址控制执行了合约，然后将我授权给钓鱼合约里的BUSD转走了。</p>
+<p>去查看钓鱼合约，不出意料钓鱼合约是一个加密的合约。不过想一下也不难，稍微学过Solidity的人都知道，在合约定义的时候，多设置几个Admin或者Owner就可以了。</p>
+<p><strong>所以以后一定要注意项目方的背书，不要随便给不知道的项目授权！！！</strong></p>
+<h2 id="安全建议"><strong>安全建议</strong></h2>
+<p>因为这件事，小C搜了一些有用的建议和方法，也看到了很多血淋淋的教训。</p>
+<p><strong>这里列出来一些方法大家可以根据自己的需要选择。</strong></p>
+<h3 id="不要共用密钥"><strong>不要共用密钥</strong></h3>
+<p>之前看有帖子说一个助记词生成多个账号的，这种我不建议哈，因为很可能被一锅端。</p>
+<h3 id="密钥离线保存"><strong>密钥离线保存</strong></h3>
+<p>因为现在有很多剪贴板工具输入法会将你的剪贴板记录上传到云端，如果你直接复制了，如果云端泄漏，你的密钥就直接无了。我的建议就是生成之后，第一时间抄到本子上。当然抄到本子上，你也可以参考我对密钥自己的字典加密，比如a用1代替，b用2代替，1用a代替，这样就可以保证即使有人看到了你的纸质密钥，也不能动你的数字资产。</p>
+<h3 id="开发和测试分开空投和主账号隔离"><strong>开发和测试分开（空投和主账号隔离）</strong></h3>
+<p>安装2个浏览器，一个可以是chrome，一个是brave。一个管理你的主钱包。另外一个可以参与领取空投，各种链上操作等</p>
+<h3 id="不要下载来历不明的软件"><strong>不要下载来历不明的软件</strong></h3>
+<p>不要去用baidu这些下载来历不明的软件，我看到<strong>有案例是下载盗版metamask，直接破产的。</strong> 一定要去正规的地址下载，有条件的可以参考google play。chrome web store等</p>
+<h3 id="立即检查你的授权"><strong>立即检查你的授权</strong></h3>
+<p>检查的网址有下面几个，debank没有开源，但是UI交互比较好，后续的有开源的，大家自己抉择吧。</p>
+<p><a href="https://debank.com/">https://debank.com/</a></p>
+<p><a href="https://approved.zone/">https://approved.zone/</a></p>
+<p><a href="https://tac.dappstar.io/">https://tac.dappstar.io/</a></p>
+<p><a href="https://ethallowance.com/">https://ethallowance.com/</a></p>
+<p><img src="https://img.bibiqing.com/news/2022/0120/17_8aso8mm8eu.png" alt="从一个钱包被盗的案例 探讨Web3的安全指南"></p>
+<p>看到图上所示，基本上就是无限的。</p>
+<p>每次唤起metamask的时候一定要多看看授权，不要像我现在这样无脑点授权下一步。</p>
+<h3 id="进行授权前对合约安全进行确认"><strong>进行授权前，对合约安全进行确认</strong></h3>
+<p><a href="https://www.slowmist.com/service-smart-contract-security-audit.html">https://www.slowmist.com/service-smart-contract-security-audit.html</a></p>
+<p>可以使用慢雾的合约审计功能。</p>
+<p>也可以看看该合约是否开源，如果开源的话需要确认该合约是否是可升级合约等等。</p>
+<h3 id="撸空头和福利的时候注意安全"><strong>撸空头和福利的时候注意安全</strong></h3>
+<p>用小号去领取，别用大号，授权的时候可以设置额度！！！</p>
+<h3 id="警惕社工的入侵小心discord私聊你的陌生人"><strong>警惕社工的入侵，小心Discord私聊你的陌生人</strong></h3>
+<p>比如discord或者telegram，有人跟你认识几天，说要带你赚钱拿空投，让你安装他发给你的软件并登录，这种99.99%你会血本无归。账号被盗。</p>
+<p>特别地，Discord里面，进nft的官方discord，会有人私聊你，告诉你获得了白名单，附带一个mint链接。骗子会把头像和名称改成官方的样子，其实是把他和你拉了一个组来实现的。<strong>其实只要不贪，这种骗局还蛮好识破的，一般会告诉你在几个小时内mint，数量1-10。很多大热项目一个白名单mint一两个不错了，这一上来顶格10个还带时间限制。</strong></p>
+<p><strong>还有，会有骗子模仿项目官网做个假网站，私信给项目Server里的人，让他们来mint.</strong></p>
+<p><strong>还有小伙伴在opensea买了假NFT 后来发现不是官方的 然后过了几天那个NFT就从账户消失了 然而?已经扣了&hellip;（怎么发现的？看链条 还有官方discord 发了官方Opensea网址 )</strong></p>
+<p><strong>还有假的collab.land骗钱包密码，给大v空投然后号称大v买了那个nft/token.</strong></p>
+<p>新的一年到来，大家一定要注意安全呀，希望看到本文的朋友都能平平安安顺顺利利！</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/33260/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">从红魔布局元宇宙 看游戏手机的再思考</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/33302/">
+                <span class="next-text nav-default">当 Dani 和 AC 走在一起 他们正在组装 DeFi 的乐高死星</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#回顾过程"><strong>回顾过程</strong></a></li>
+    <li><a href="#出现问题的环节"><strong>出现问题的环节</strong></a>
+      <ul>
+        <li><a href="#正常转账"><strong>正常转账</strong></a></li>
+        <li><a href="#正常合约兑换"><strong>正常合约兑换</strong></a></li>
+        <li><a href="#钓鱼合约"><strong>钓鱼合约</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#安全建议"><strong>安全建议</strong></a>
+      <ul>
+        <li><a href="#不要共用密钥"><strong>不要共用密钥</strong></a></li>
+        <li><a href="#密钥离线保存"><strong>密钥离线保存</strong></a></li>
+        <li><a href="#开发和测试分开空投和主账号隔离"><strong>开发和测试分开（空投和主账号隔离）</strong></a></li>
+        <li><a href="#不要下载来历不明的软件"><strong>不要下载来历不明的软件</strong></a></li>
+        <li><a href="#立即检查你的授权"><strong>立即检查你的授权</strong></a></li>
+        <li><a href="#进行授权前对合约安全进行确认"><strong>进行授权前，对合约安全进行确认</strong></a></li>
+        <li><a href="#撸空头和福利的时候注意安全"><strong>撸空头和福利的时候注意安全</strong></a></li>
+        <li><a href="#警惕社工的入侵小心discord私聊你的陌生人"><strong>警惕社工的入侵，小心Discord私聊你的陌生人</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

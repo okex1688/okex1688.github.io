@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          研究 | 解析降低以太坊 Gas 费的实践及优劣势 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="哪些方案可降低以太坊 Gas 费？从 Layer 1、Layer 2 和相关 Gas 产品三个角度分析。" />
+<meta name="keywords" content="undefined" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/20110/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="研究 | 解析降低以太坊 Gas 费的实践及优劣势" />
+<meta property="og:description" content="哪些方案可降低以太坊 Gas 费？从 Layer 1、Layer 2 和相关 Gas 产品三个角度分析。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/20110/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-09T00:00:00+00:00" />
+
+<meta itemprop="name" content="研究 | 解析降低以太坊 Gas 费的实践及优劣势">
+<meta itemprop="description" content="哪些方案可降低以太坊 Gas 费？从 Layer 1、Layer 2 和相关 Gas 产品三个角度分析。"><meta itemprop="datePublished" content="2021-04-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-09T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7339">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="研究 | 解析降低以太坊 Gas 费的实践及优劣势"/>
+<meta name="twitter:description" content="哪些方案可降低以太坊 Gas 费？从 Layer 1、Layer 2 和相关 Gas 产品三个角度分析。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">研究 | 解析降低以太坊 Gas 费的实践及优劣势</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-04-09">
+      2021-04-09
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7339 字 -
+        预计阅读 15 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>撰文：崔晨， 就职于 HashKey Capital Research</strong><br>
+<strong>审核：邹传伟，万向区块链首席经济学家</strong></p>
+<p>最近以太坊网络经常拥堵，用户为了尽快达成交易，会上调 Gas 费希望能优先被矿工打包，尤其是在交易有利可图的时候。以太坊网络在 2021 年之后利用率长期超过 97%，资源短缺的局面暂时不会得到缓解，按照这种趋势，短期内以太坊的 Gas 费不会大幅下降。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0409/12_0g7erzp8ma.jpg" alt="研究 | 解析降低以太坊 Gas 费的实践及优劣势"></p>
+<p><em>图 1：以太坊网络利用率</em></p>
+<p><img src="https://img.bibiqing.com/news/2021/0409/12_g87acwsz1u.jpg" alt="研究 | 解析降低以太坊 Gas 费的实践及优劣势"></p>
+<p><em>图 2：以太坊网络的平均 Gas 费</em><br>
+以太坊高昂的 Gas 费深受诟病，严重影响了用户体验，降低以太坊 Gas 费迫在眉睫。Gas 费全部交给负责维护网络执行交易的矿工，代表用户使用网络资源需要付出的费用。Gas 费的计算方式为 Gas Price*Gas Used，其中 Gas Price 由用户设置，代表用户为每单位 Gas 支付的价格，Gas Used 是实际中使用的 Gas 数量。在操作时用户还需要设置 Gas Limit，代表用户愿意为此交易支付最多的 Gas 数量，如果在执行过程中发现所需的 Gas 超过设置的 Gas Limit，会导致交易失败，此时的 Gas Used 等于 Gas Limit，用户仍需缴纳 Gas 费。如果 Gas Used 小于 Gas Limit，交易成功后 Gas 数量会按照实际执行使用的数量收费。</p>
+<p>根据 Gas 费的计算方式，可以通过降低 Gas Price 和 Gas Used 实现降低 Gas 费，体现在降低网络拥挤程度，将计算转移到二层网络中进行；降低合约复杂度减少计算的执行步骤；改变 Gas 的收取方式等。本文将从 Layer 1、Layer 2 和相关 Gas 产品这三个角度出发，解析关于降低以太坊 Gas 费的实践以及优劣。其中 Layer 1 指的是以太坊网络本身，Layer 2 指的是以太坊主链外的网络。</p>
+<h2 id="以太坊-layer-1-上的实践">以太坊 Layer 1 上的实践</h2>
+<p>提高区块的 Gas Limit</p>
+<p>以太坊对单个区块的大小没有强制规定，但每个区块承载的 Gas 单位数量是有上限的，也就是区块的 Gas Limit。提高 Gas Limit 带来最直接的影响是单个区块可以执行更多的操作，因此提高了整个系统的承载量。每个区块可以打包更多交易来缓解网络的拥堵状况，用户就可以降低 Gas Price。这是最直接对网络进行扩容的方案，因执行简便经常被用于扩容。2020 年 7 月之后以太坊区块的 Gas Limit 达到了 1250 万左右，相较于 2017 年末已经上涨了近两倍。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0409/12_gg0isl4es2.jpg" alt="研究 | 解析降低以太坊 Gas 费的实践及优劣势"></p>
+<p><em>图 3：以太坊区块的 Gas Limit</em><br>
+可以看出，虽然以太坊区块的 Gas Limit 一直在提高，以太坊还是会出现网络拥堵的情况。这是因为以太坊的用户和使用量是同时上涨的，只要 Gas Limit 的上涨程度没有超过使用量的上涨，提高 Gas Limit 就无法根本解决高 Gas 费的问题。Gas Limit 具体数值由矿工投票决定，在目前的网络拥堵程度下，有些矿工建议将 Gas Limit 继续提高到 1600 万，但遭到了很多阻力。<br>
+除了无法根本解决网络拥堵的问题外，提高 Gas Limit 后由于区块容量扩大，区块的验证和同步时间有所延长。因此导致网络更容易分叉，叔块出现的概率升高，节点维护网络的成本也会增加，最终网络可能出现安全性和中心化问题。虽然提高 Gas Limit 是最简单进行网络扩容的方式，但它带来的弊端也是不能忽视的。不过目前网络拥堵情况加剧，出于可用性考虑，加上矿工会受到更多笔 Gas 费奖励的吸引，未来极有可能仍会提高区块 Gas Limit 来增大承载量。</p>
+<p>降低操作的 Gas 消耗</p>
+<p>虽然以太坊区块的 Gas Limit 在增加，区块的承载量远超过去，但数据显示目前的转账数量刚刚与 2018 年初的转账数量持平，说明了以太坊网络中大部分资源被分配给了更复杂的合约交易。如果在合约编写上能够降低复杂度，减少合约执行所需要的 Gas，或者直接降低操作的 Gas 定价，就可以实现节约 Gas 费的目标，并且节约网络资源。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0409/12_rnsnp8qt41.jpg" alt="研究 | 解析降低以太坊 Gas 费的实践及优劣势"></p>
+<p><em>图 4：以太坊的每日转账数</em></p>
+<p>以太坊的黄皮书规定了 Gas 的消耗规则，智能合约的编写过程中，同一功能的不同实现方式消耗的 Gas 会有所不同，为了节约 Gas 费就需要执行最节约 Gas 的代码实现方法。例如储存新数据和修改数据都要消耗 Gas，所以最好避免重复修改，一次性尽可能多地写入。在下图中，两者在结果上相同，但右边的代码实现消耗 Gas 会更少。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0409/12_8a7jn79ure.jpg" alt="研究 | 解析降低以太坊 Gas 费的实践及优劣势"></p>
+<p><em>图 5：同一结果的两种代码实现，右边更节约 Gas</em><br>
+除此之外，压缩智能合约的数据输入，避免创建智能合约时将其用作数据存储等方式也可以节约 Gas。有人提出操作消耗 Gas 的原始定价没有经过充分分析，存在定价不当的问题。以太坊中的 EIP 1380、EIP 2046 等提案就涉及降低某个操作的 Gas。但以太坊 Gas 定价的改变要慎重考虑，因为降低有些操作的 Gas 定价会降低重入攻击的难度。</p>
+<p>EIP 1559<br>
+EIP 1559 已经被纳入在以太坊的伦敦硬分叉升级中，它改变了以太坊网络 Gas 费的定价和分配规则。目前以太坊 Gas 费定价规则为市场竞价的方式，用户自行设置愿意支付的 Gas Price，矿工挑选支付最高 Gas Price 的交易打包。每个人都希望能尽快完成交易，因此在网络拥堵时 Gas 费会居高不下。EIP 1559 提出了一种新的 Gas 费收取方案，用户支付的 Gas 费分为基础费和小费，其中基础费直接销毁，小费归矿工收入。<br>
+EIP 1559 方案引入了 Gas Target 的概念，区块 Gas 上限是 Gas Target 的两倍，基础费根据网络使用情况进行动态调节，也就是区块实际包含的 Gas 与 Gas Target 的比较。如果区块的 Gas 超过 Gas Target，那么下个区块收取的基础费就会上涨，反之如果低于 Gas Target 就会下降。上涨和下降的幅度不会超过 12.5%，避免了 Gas 费突然暴涨暴跌。由于基础费一直是动态调节的，如果连续多个区块包含的 Gas 一直超过 Gas Target，基础费就会指数上涨到夸张的价格，让用户不得不暂停交易，等待 Gas 降低到 Gas Target 以下，基础费才会下降。基础费是用户必须支付的，矿工的小费可选择支付，在网络使用率不高的情况下，基础费就可以让用户及时完成交易，没有必要支付矿工小费。如果网络拥堵，则需要支付小费优先交易。<br>
+目前 Gas 费收取需要用户设定支付的 Gas Price，如果太低需要等待很久，太高则造成浪费。EIP 1559 的实施会提高用户使用体验，因为基础费是已经被计算好的，理论上支付基础费就能保证完成交易，用户只需要选择给矿工支付的小费，而且在不拥堵的情况下不需要给矿工小费。对于降低 Gas 费来说，EIP 1559 中没有很直接的体现，在不拥堵时用户只缴纳基础费于是避免了 Gas 费浪费。在网络拥堵时持续调高基础费没有让用户花费更少，而是通过不断涨价让人们面对高昂收费时不得不暂缓交易。因此很多人对 EIP 1559 的实施对降低 Gas 费的有效程度存疑，尤其是短期受到很大损失的矿工群体。但从长远看，销毁本来应该交给矿工的 Gas 费，能够将交易带来的价值引入到以太坊系统中，提升整个系统的价值也会提高矿工的收入。</p>
+<p>以太坊 2.0 的实现</p>
+<p>以太坊升级到 2.0 阶段的最终目标是实现扩容，解决网络的拥堵问题，除了将共识机制由 PoW 转变为 PoS，以太坊 2.0 的还要实现分片和部署 eWASM 虚拟机。分片就是将整个网络分区，节点不需要维护整个系统的交易，只需要负责维护其中一个分区即可。以太坊 2.0 将有 64 个分片，将交易分布到各分片中增加网络的承载量。各分片可以与信标链进行交联，信标链不储存以太坊上的账户余额和合约状态等信息，负责管理验证者和记录分片状态。分片要考虑到安全性的问题，因为相对而言攻击单分片的难度会降低。在以太坊 2.0 的分片上都存在至少 128 个验证者组成的委员会，他们负责表决分片上的信息，这些人每 epoch （6.4 分钟）更换一次，由信标链通过 RANDAO+VDF 的方案分配。作恶者很难保证在同一时间控制同一分片上超过三分之二的节点，因此保证了网络的安全。</p>
+<p>eWASM 是以太坊 2.0 阶段部署的虚拟机，相较于目前的 EVM 虚拟机，eWASM 在速度和效率上会大幅提升，配合分片技术，以太坊 2.0 能够实现大规模扩容，降低 Gas 费。但由于以太坊分片和 eWASM 的开发难度比较高，短期内不会上线。</p>
+<h2 id="以太坊-layer-2-上的实践">以太坊 Layer 2 上的实践</h2>
+<p>Rollup</p>
+<p>Rollup 是目前受到最多关注的以太坊 Layer 2 解决方案，最有可能在短期内解决以太坊网络拥堵的问题来降低 Gas 费，Vitalik 也指出 Rollup 是以太坊 2.0 分片技术上线之前最有效的扩容技术。Rollup 的运营者通过将计算和完整的状态储存放到链下，压缩交易数据实现主链上的扩容。实际上交易数据是储存在区块链上的，风险源自运行者可能提供错误的数据进而控制用户资产，为了避免风险存在不同的 Rollup 解决方案。<br>
+ZK Rollup 通过有效性证明保证数据安全，使用 ZK-SNARK 密码学证明，Layer 1 可以快速完成验证并转账，同时可以保证隐私性，但 ZK Rollup 很难对 EVM 进行证明，因此难以应用于使用智能合约的场景。Optimistic Rollup 使用欺诈证明的方式，如果有人发现运营者处理的状态根是错误的，那么可以发布一个证明，证明通过后会回滚交易并对运营者进行惩罚。Optimistic Rollup 在主网中支持智能合约的部署，更适用于现在的扩容需求。但由于欺诈证明的要求，在退出 Rollup 时，需要一周的时间检查其他用户是否提交欺诈证明。<br>
+以太坊上储存交易的一个字节花费 50 Gas，以太坊区块的 Gas 上限为 1250 万。Rollup 可以压缩以太坊上操作的字节数量，除掉 Rollup 校验所需要的 Gas 量，可以计算出 Rollup 在扩容方面的表现。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0409/12_2eh4ayosu9.jpg" alt="研究 | 解析降低以太坊 Gas 费的实践及优劣势"></p>
+<p><em>表 1：Rollup 带来的扩容空间（来源：Vitalik 博客）</em></p>
+<p>总的来说，Rollup 在扩容上十分有效，因此可以降低以太坊 Gas 费。但 Rollup 会涉及链上应用的迁移，使用不同团队开发的 Rollup 还会导致互操作性下降的问题。<br>
+侧链<br>
+侧链是一条区别于主链的区块链，用户可以将主链资产转移到侧链上交易，以节约主链的资源和交易者的成本。严格意义上侧链不算是 Layer 2 解决方案，因为无法完全保证用户的资金安全也不能保证侧链与主链的关联性。侧链只能归为链下解决方案，但由于实现方式和其他 Layer 2 较为相似，这里暂时归为一类讨论。状态通道、Plasma 和侧链都是通过链下交易实现扩容的，他们在具体实现方式和安全性上有所不同。侧链的技术实现有多种，重点在于让资产安全地转移到侧链，并让侧链资产安全地转移回主链，也就是能安全地实现双向锚定。<br>
+双向锚定体现为主链上锁定代币后到侧链上发行同等数量的代币，以及在侧链上销毁代币后到主链上解锁相同数量的代币。以太坊侧链的概念从比特币侧链衍生而来，有单方或多方的托管方式，SPV 模式，中继模式等。由于目前以太坊因生态应用繁荣拥堵，实际中用户对于侧链更偏重易用性和生态问题，也就是资产转移过程要简易无感，侧链上要有与主链相同的生态。因此目前最合格且受众最多的侧链是 BSC 和 Heco，虽然他们使用了托管方式进行资产转移，中心化风险较高，但用户已经足够信任这些交易平台作为托管机构。完全去中心化的托管模式会因用户不了解技术，或者存在黑客攻击的风险而失去竞争力。<br>
+BSC 和 Heco 链上的生态发展较为繁荣，和以太坊生态一样出现了借贷、交易等 DeFi 应用，所以有很多用户将 ETH 转移到 BSC 和 Heco 上来获得低 Gas 费的使用体验。但对于 BSC 和 Heco 来说不是将以太坊侧链作为发展目标，他们同样有独立的生态，以太坊资产转移到侧链上会因此降低以太坊主链的价值。经测算 BSC 和 Heco 提高以太坊 TPS 上限约十倍左右，如果未来侧链中用户使用量过多的话，侧链也会出现拥堵问题。<br>
+状态通道和 Plasma<br>
+状态通道是一种在链下进行交易和状态更新的技术，比特币闪电网络就是一种支付通道。以太坊的状态通道可以让交易双方在链下进行状态的更新和交易，无需占用链上资源。他们通过状态通道进行交易时，需要对双方的行为进行签名并保存副本，每一步的操作是清晰的。如果他们结束了链下交易，就将最终状态签名后返回到主链上来更新主链上的状态。<br>
+状态通道在用户撤回资金时有挑战期的要求，是为了防止用户上传过期的交易记录牟利。用户要等待一段时间确认没有人上传更新的副本，等待期结束后会按照最新的副本内容执行。如果其中一个用户在挑战期受到攻击掉线等，他就会因无法回应而受到损失。状态通道需要有一组确定的参与者，因为在通道中的状态改变只限用于通道内的用户，而且部署状态通道需要成本，适合在一段时间内频繁进行状态更新的场景。<br>
+Plasma 也是一种链下交易的方式，它通过在以太坊主链上创建子链实现，交易和状态更新通过子链操作，以太坊不会保存交易副本，因此可以节约以太坊空间实现扩容。Plasma 子链上同样存在区块生产者，其中的共识机制可以与以太坊主链不同。他们在以太坊上建立交易的根节点来记录子链状态，作为子链更新的证据。<br>
+为了防止 Plasma 链上的区块生产者作恶，Plasma 使用欺诈证明机制，如果有人发现了生产者的作恶，那么可以提交证明让错误的区块回滚并没收生产者的保证金。如果用户要退出 Plasma，也需要经历挑战期来证明他的交易为最新交易。但如果 Plasma 上所有人同时退回资金，那么可能导致以太坊主链没有容量同时处理这么多交易，会导致用户资金丢失。</p>
+<p>状态通道和 Plasma 的共性问题是要求资产具有所有者，这样资产所有者才可以出具证明。但对于智能合约不属于任何人的应用来说很难与状态通道和 Plasma 兼容，因此这两者只能针对降低转账 Gas 费时效果明显，但由于易用性和挑战期的问题，技术进展处于停滞状态。</p>
+<p>Gas 相关产品</p>
+<p>Gas Token</p>
+<p>以太坊的 Gas Price 不是一直都保持在高位，而是在高低之间不断变化，因此可以利用 Gas Price 的不断变化进行 Gas 的储存和套利，例如 Gas Token 的应用。Gas Token 利用以太坊的定价系统实现，在清理状态和存储插槽以及删除带有自毁操作码的合约时的 Gas 收费为负值，也就是会收到 Gas 的退款，最高退款为创造时消耗量的一半。于是在低价时创建状态，在高价时删除会获得 Gas，再用于其他交易就可以节约 Gas 的花费。GST1 和 GST2 是使用不同机制的 Gas Token，铸造和销毁就完成了一次 Gas Token 的应用，他们分别使用了储存和退款机制、创建和自毁机制来获得 Gas 退款，其中 GST2 得到的 Gas 更多。</p>
+<p>1inch 实践并创新了一种名为 Chi 的 Gas Token。在价格低的时候，Chi 会创建来「储存」Gas，未来 Gas 费上涨后释放来完成交易。就相当于花费 Chi 退回的 Gas 来支付应本应花钱购买的 Gas。Chi 或者任何 Gas Token 都可以集成到其他系统中来节约 Gas 费，用户可以铸造 Gas Token，也可以购买 Gas Token。Gas Token 的价格会随着 Gas Price 的涨跌而变化，对于用户或项目方来说，在 Gas Price 低的时候自行铸造更为划算。</p>
+<p>由于以太坊网络交易量增加，账簿容量扩张，Gas Token 由于占用了空间被认为是不利于网络发展的。除了增加全节点成本的问题，未来对 Gas 操作的重新定价也会让 Gas Token 失效，因此 Gas Token 不应该作为长期降低 Gas 费的手段。</p>
+<p>Gas 衍生品</p>
+<p>Gas Price 的不断变化会让用户和矿工支出收入随之改变，为了消除这部分的不确定性，Gas Price 可以被设计为期货类产品，让投机者和用户之间交易。例如 uGas 取一个月中以太坊交易 Gas Price 的中位数来定价，它类似于一种期货产品。频繁花费 Gas 的人可以通过购买 uGas 来锁定花费，矿工可以通过铸造并售出来锁定收益。但期货衍生品实用的前提是人们对 Gas Price 的预期不同，才能保证足够的流动性。目前以太坊网络 Gas Price 由网络拥挤程度决定，所以很容易出现大部分人会对 Gas Price 产生相同的预期。如果大家统一看涨或看跌，uGas 就会因流动性问题偏离正常的定价范围而很难使用。</p>
+<p>其他节省 Gas 费的方式</p>
+<p>一些用户习惯以及相关辅助工具可以帮助用户节约 Gas 费，例如：</p>
+<ol>
+<li>进行同种代币的批量转账；</li>
+<li>挑选交易者休息、网络 Gas Price 低的时间段交易；</li>
+<li>利用 Gas Price 实时监控产品确定准确的 Gas Price 区间；</li>
+<li>查询常见的 Gas Limit 范围再进行设置，避免因交易失败造成 Gas 费浪费；</li>
+<li>开发者可以通过代交 Gas 费的方式为用户节约费用等。</li>
+</ol>
+<h2 id="思考与总结">思考与总结</h2>
+<p>用户在以太坊网络中支付 Gas 费进行交易本质上就是为使用以太坊网络资源付费，在网络拥堵资源稀缺的情况下 Gas 费自然就会上涨。在不减少使用人数的情况下，最好地降低以太坊 Gas 费的方法就是进行网络扩容，降低用户对网络资源的竞争。以太坊扩容存在多种方案，包括提高 Gas Limit、分片、Rollup、侧链、状态通道等，他们的优劣进展各不相同，其中分片和 Rollup 是最有效和最可能实现的扩容方案。简洁的代码实现也很重要，优化智能合约降低用户使用 Gas 的单位数量是有效降低 Gas 费的方式，AMM 的兴起有这方面的因素。<br>
+EIP 1559 通过改变 Gas 费收取方式来改善目前的拥堵状况，虽然最终仍是网络闲暇时收费低，网络拥堵时收费高的效果，但这是由系统自动对基础费调整的结果。在网络拥堵时 Gas 费会呈指数型增长，高收费会抑制人们的使用需求，所以达到缓解拥堵的效果。EIP 1559 的方案不适合长期用于缓解拥堵的手段，但由于基础费被销毁所以整体对以太坊生态是有利的。除此之外，针对 EIP 1559，矿工可能会联合起来让区块的容量维持在 Gas Target 左右，这样想优先交易的用户和现在一样只能交给矿工更多小费。因此这里对 EIP 1559 最终实现降低 Gas 费的效果存疑。对于其他的 Gas 产品，都不适合作为长期、大规模降低 Gas 费的工具使用。下表是对上文中提到的降低以太坊 Gas 费方式有效性和缺点的总结。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0409/12_l7sqd8a9a8.jpg" alt="研究 | 解析降低以太坊 Gas 费的实践及优劣势"></p>
+<p><em>表 2：降低以太坊 Gas 费的方式比较</em></p>
+<p>如果将以太坊比作一条承载了很多汽车的公路，提高 Gas Limit 就是在扩建公路，但过去经验告诉我们扩建公路永远赶不上路上车辆增多的速度。EIP 1559 是通过改变收费方案，让一些车会因高昂的收费而不愿出门，其实这是与降低 Gas 费让更多人享受到以太坊服务的理念相悖的。优化智能合约就是将车辆改小，让同一条公路能够承载更多的车，虽然方式可行，但车辆不可能无限制地缩小，而且大部分智能合约在部署前都考虑到了这一点。分片是在原来的基础上建立交桥和快速路，实现更有效率的扩容。Layer 2 是让开汽车的人放弃这种交通方式，让他们乘坐火车或者飞机达到目的地，将本应该在原链上完成的交易转移到链下进行，减少对原来公路的使用。这个比喻就很清楚地让我们看出哪些对扩容降低 Gas 费是有帮助的。</p>
+<p>免责声明：作为区块链信息平台，本站所发布文章仅代表作者个人观点，与链闻 ChainNews 立场无关。文章内的信息、意见等均仅供参考，并非作为或被视为实际投资建议。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/20150/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">研报 | DeFi——现实世界金融秩序的去中心化重构</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/20139/">
+                <span class="next-text nav-default">央视财经《经济半小时》将于今晚播出《 告破：400亿币圈骗局 》节目</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#以太坊-layer-1-上的实践">以太坊 Layer 1 上的实践</a></li>
+    <li><a href="#以太坊-layer-2-上的实践">以太坊 Layer 2 上的实践</a></li>
+    <li><a href="#思考与总结">思考与总结</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

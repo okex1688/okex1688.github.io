@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          深度解析：DAO的7种常见投票机制 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="由于区块链及Token的可编程性，DAO 诞生短短数年，已经为治理问题贡献了丰富的方案，而 DAO 组织较低的试错成本，也为不同治理机制提供了一个实验的舞台。" />
+<meta name="keywords" content="DAO" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/32947/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="深度解析：DAO的7种常见投票机制" />
+<meta property="og:description" content="由于区块链及Token的可编程性，DAO 诞生短短数年，已经为治理问题贡献了丰富的方案，而 DAO 组织较低的试错成本，也为不同治理机制提供了一个实验的舞台。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/32947/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-01-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-12T00:00:00+00:00" />
+
+<meta itemprop="name" content="深度解析：DAO的7种常见投票机制">
+<meta itemprop="description" content="由于区块链及Token的可编程性，DAO 诞生短短数年，已经为治理问题贡献了丰富的方案，而 DAO 组织较低的试错成本，也为不同治理机制提供了一个实验的舞台。"><meta itemprop="datePublished" content="2022-01-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-01-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7581">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="深度解析：DAO的7种常见投票机制"/>
+<meta name="twitter:description" content="由于区块链及Token的可编程性，DAO 诞生短短数年，已经为治理问题贡献了丰富的方案，而 DAO 组织较低的试错成本，也为不同治理机制提供了一个实验的舞台。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">深度解析：DAO的7种常见投票机制</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-01-12">
+      2022-01-12
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7581 字 -
+        预计阅读 16 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>在大多数的 DAO 当中，Token 承载了类似于股票对于股份公司的作用，包括承载所有权，治理决策权，收益权等等。很长时间以来，DAO 的主要投票权体现形式，是最简单的一通证一票（1T1V）的形式。但这种安排弊端重重，持币比例较小的用户对参与治理采取「理性冷漠」态度，正如一句俗语：“说了不算，算了不说”；这进一步导致 DAO 当中投票权的中心化，转而服务于少数人利益；即便对于持币结构足够分散，有良好参与文化的 DAO 组织而言，如果缺乏良性的投票决策机制，也将导向“乌合之众”式的短视与愚蠢。</p>
+<p>加密行业会给予那些哪怕是做出微小创新的人以优厚的奖励。以 DAO 为载体，人们开始探索各种治理协调机制。<strong>由于区块链及Token的可编程性，DAO 诞生短短数年，已经为治理问题贡献了丰富的方案，而 DAO 组织较低的试错成本，也为不同治理机制提供了一个实验的舞台。</strong></p>
+<p>DAO 是一种充满魅力的组织形态，它在实现<strong>公共物品的共有所有制、消除公益部门的腐败风险、达成非盈利的组织目标</strong> 方面有无可比拟的优势。但这些优势，必须配合以良性的投票决策机制、公平的贡献衡量及奖励机制以及强韧的治理扩展性，才能得以实现。本文会介绍几种我们认为典型的、有趣的投票决策机制，这些投票机制尽管都不是解决一切问题的银弹，但其治理思想都有非凡的积极意义。</p>
+<ul>
+<li>
+<p><strong>流动民主（Vote delegation/Liquid democracy）</strong></p>
+<hr>
+</li>
+</ul>
+<p>每个决策都需要占用我们的思维带宽，这是我们现实中对公共议题选择「理性冷漠」的原因之一，但我们有更好的选择，那就是将决策委托给专家，这样比自己承担这些成本要低。另外在公共治理中，将权力委托到少数人手中可以有效的提高效率。但授权不是万能的，专家也不一定完全可靠，因此，在委托-代理关系中，监督是不可或缺的。</p>
+<p><strong>权力需要集中，但更需要流动。</strong> 流动民主和代议制整体相似，但比代议制整体的“流动”属性更强。拥有投票权的用户可以选择将自己的投票权委托给自己信任的，认为专业的人士，但他们随时可以撤回委托并亲自去行使投票权，或是转移委托给其他人。此外，委托是多级的，你委托出去的票，可能会被再次委托给其他人。</p>
+<p>流动民主机制最早在 Aragon 中被采用，通过这种方式，可以提高持币者的参与率，进而提高投票决策的合法性。尽管流动民主依旧存在贿选、串通等问题。但通过反应更加灵敏的、层次更多的委托机制，流动民主增加了每个人的选择权、也显著增加了委托人对被委托人的监督作用。</p>
+<ul>
+<li>
+<p><strong>二次方投票（Quadrac Voting）</strong></p>
+<hr>
+</li>
+</ul>
+<p>这是Vitalik Buterlin提出来的一种介于 1T1V 和 1P1V（一人一票）之间的投票机制，这种投票机制的关键作用在于允许单个投票主体为同一选项重复投票，以表达其意愿的强烈程度，与此同时，为了避免巨鲸垄断话语权，为同一选项进行重复投票的边际成本呈现递减趋势，这意味着第 n+1 次投票的成本要高于第 n 次投票。例如为同一选项投一票需要消耗 1 个 Token ，为其投 2 票则要消耗 4 个Token，为其投 3 票需要消耗 9 个Token，以此类推，为其投 10 票，则需要消耗 100 个Token。<strong>随着对一个选项重复投票的次数增加，投票的效用仅为已投 Token 数的平方根。</strong></p>
+<p>二次方投票可以用于权利所有者对公共资源进行分配的投票，典型的应用案例是 Gitcoin。Gitcoin 是一个采用二次方投票机制来决定将来自以太坊基金会的资金用于资助哪些项目的一个Grant DAO。在 Gitcoin 出现之前，以太坊基金会赞助哪些项目是由一个中心化的委员会决定的。Gitcoin 提供了一个让社区用户表达意见的渠道。社区用户可以通过向自己支持的项目以“捐赠”的形式进行投票，一个项目获得的每一笔捐赠的平方根之和，最终决定了能获得的赞助额度。</p>
+<p>实际运行下来，Gitcoin 高效的为众多优质的以太坊项目提供了资金。二次方投票机制让那些受到更多人支持的项目脱颖而出，Gitcoin 的二次方投票机制省去了中心化委员会的评估过程，使得资金分配更有效率，同时创造了一种开放的社区参与文化。</p>
+<p>二次方投票的弱点在于必须依赖严格的身份证明机制才能保证其公正。如果允许伪造身份，其运行结果将与1T1V毫无差别。在身份识别上，Gitcoin 采用了绑定社交账号，连接 DID 服务等多元化的方式。用户每完成一项，即可获得一定数量的积分，积分达到 150 分之后可达成身份认证。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0112/3_u18mk4obci.png" alt="深度解析：DAO的7种常见投票机制"></p>
+<p>Gitcoin 的身份验证界面</p>
+<ul>
+<li>
+<p><strong>全息共识（Holographic Consensus）</strong></p>
+<hr>
+</li>
+</ul>
+<p>全息共识是 DAOstack 为了增加治理扩展性而提供的一个解决方案。治理扩展性可以理解为某个治理机制对于 DAO 规模扩大的适应性。我们知道，随着 DAO 规模的扩大，协调的成本在急剧增加，让每个人都为每一个提案投票显然是不现实的，参与者的注意力不可避免的成为了最稀缺的资源。</p>
+<p><strong>DAOstack 认为，</strong> <strong>为了让治理体系高效，必须要有管理集体注意力的机制</strong> ，该机制要确保最重要的提案得到关注，得到参与投票的小群体倾向于按照大多数人的利益行事。“全息”一词本意是指在二维平面上记录三维物体全部信息的技术手段，而全息共识的目标则是让小群体准确表达大众意志。这点是通过注意力通证——GEN 实现的。</p>
+<p>GEN 是 DAOstack 生态系统中注意力货币化的标记。使用 GEN ，你不能投票，但你可以对任意一个提案进行押注，如果你押注的提案通过，你将获得更多的 GEN ，如果你押注的提案未被通过，你将损失 GEN 。这种押注的方式相当于建立了一个与投票机制并行的预测市场。</p>
+<p>全息共识的治理流程可以分为四个步骤：</p>
+<ol>
+<li>
+<p><strong>发起提案</strong> ：任何满足声誉门槛的用户均可发起提案；</p>
+</li>
+<li>
+<p><strong>提案增强</strong> ：GEN 持有者选择他们认为通过概率大的提案进行押注，没有获得足够 GEN 押注的提案将被忽略，不会进入下一阶段；</p>
+</li>
+<li>
+<p><strong>投票决策</strong> ：拥有投票权的群体对提案进行表决，若提案被通过，押注的用户可以获得GEN奖励，反之则损失 GEN ；</p>
+</li>
+<li>
+<p><strong>上链执行</strong> : 被通过的提案正式生效，并在链上执行。</p>
+</li>
+</ol>
+<p>以上便是 DAOstack 提供的全息共识的治理投票框架，该框架具有很强的治理扩展性，为规模较大的DAO提供了可用的治理方案。</p>
+<p>对该框架的质疑主要集中在两点：其一，该框架是否真正筛选了最值得关注的提案，还是只是筛选出了具有传播效应的热门提案？其二，押注者的判断建立在某个提案是否会被通过，而非某个提案应当被通过，具有投票资格的押注者必然会参与投票，他们是否最终会扭曲投票结果?</p>
+<p>这些弊病有待在实际运行中予以检验和修正。无论如何，DAOstack 已提供了一个将预测市场和 DAO 治理相结合的有益实践。通过使用 DAOstack 的框架，DXdao、NecDAO 和 Prime DAO 已经在实践全息共识机制。</p>
+<ul>
+<li>
+<p><strong>信念投票（Conviction Voting）</strong></p>
+<hr>
+</li>
+</ul>
+<p>信念投票是 Aragon 提出的一种基于投票者信念的动态投票机制。当用户选择为某一提案投票时，其投票效用会随着时间推演而增加。这个增加过程不是匀速的，而是减速的，最终会达到一个最大值而不再增加。用户可以随时将已投出的票撤回或者转移到其他提案，但其在上一个提案上的投票效用不会立即消失，而是会逐渐减少，这个减少过程也不是匀速的，而是加速的。为了使表述更加形象，Aragon创造了“信念”的概念，用来指代投票效用。</p>
+<p>信念投票是一种新颖的决策过程，现已被 1HIVE 社区用于资金分配的社区决策。信念投票具有如下特点：</p>
+<ol>
+<li>
+<p>用户可以随时在多个正在进行中的提案中分配他的投票，且没有明确截止日期；</p>
+</li>
+<li>
+<p>投票效用不止与所投票数有关，而且增加了时间函数，会随时间推移而逐渐增长；</p>
+</li>
+<li>
+<p>用户可以随时撤回投票，其投票效用不会被立即移除，而是随时间推移逐渐减弱；</p>
+</li>
+<li>
+<p>每个提案根据其所申请的资金额度，会有一个阈值，一旦提案所聚集的“信念”得到阈值，提案就会被通过，资金就会被拨付。</p>
+</li>
+</ol>
+<p><strong>信</strong> <strong>念投票从根本上改变了投票的形式，社区用户将不被要求在一个时间限制下投票，也不会被要求为他们不了解的提案投票。</strong> 用户可以充分表达自己的偏好，而不必总是“做决定”，他们可以为自己了解的，感兴趣的提案投票。信念投票不要求用户在同一个议题上达成多数共识，而是转而充分发挥用户意志的多样性，并让多条路径并行。</p>
+<p>当然信念投票并不能适用所有决策场景，从目前实践来看，信念投票对于预算决策而言非常适用。他有效的降低了投票的门槛，并让组织有效的收集社区的偏好，灵敏的反应群体意志。</p>
+<ul>
+<li><strong>怒退机制（Rage Quitting）</strong></li>
+</ul>
+<p>我们认为更好的翻译是“不爽就退”，该机制来源于 Moloch ，现在被广泛运用于包括 DAOhaus 在内的多个采用 Moloch 框架的 DAO 平台或 DAO 组织。</p>
+<p>理论上讲，靠多数投票来决定资金处置的组织是存在风险的，例如掌握70%投票权的所有者，投票通过一个提案，侵吞另外30%投票权所有者的资金。尽管这样极端的情况还未出现，但是在股份制公司，大股东利用决策权和信息优势，收割小股东利益的事情屡见不鲜。对于投资型DAO（Venture DAO）而言，防止具有决策权的小群体损害其他所有者的利益是十分有必要的，怒退机制便可以有效的实现这一点。</p>
+<p>对于 Moloch 框架的 DAO 而言，任意成员可以在任何时候退出 DAO 组织，销毁自己的 Share 或者 Loot（Share 是有投票权的股份，Loot 是没有投票权的股份），取回 DAO 当中对应份额的资金。而怒退特指在治理投票环节当中的退出行为。</p>
+<p>以 DAOhaus 为例，治理流程被分为以下步骤：</p>
+<ol>
+<li>
+<p><strong>提交提案</strong> ：任何人（不限于DAO组织成员）都可以提交提案；</p>
+</li>
+<li>
+<p><strong>赞助提案</strong> ：提案必须获得足够的赞助才能进入投票阶段。赞助的含义是持有 Share 的人对此提案投票表达支持，此阶段可以过滤无意义或是不重要的提案；</p>
+</li>
+<li>
+<p><strong>排队</strong> ：提案获得的赞助超过阈值之后，进入队列，等待投票。通过排队机制，确保提案有序的汇集到投票池中；</p>
+</li>
+<li>
+<p><strong>投票</strong> ：在投票截止日期之前，提案必须获得足够多的赞成票才可以通过；</p>
+</li>
+<li>
+<p><strong>缓冲期</strong> ：投票通过之后，在执行投票结果之前，有一个7天的缓冲期（Grace Period），在此期间，对投票结果不满意的股东可以怒退；</p>
+</li>
+<li>
+<p><strong>执行</strong> ：提案被标记为完成，并在链上被执行。</p>
+</li>
+</ol>
+<p>我们发现，在怒退机制下，<strong>任何成员都不能控制其他成员的资金</strong> ，通过治理投票理论上无法伤害任意成员的利益。事实上，怒退机制不光可以保障成员的利益，而且可以提高组织在思想上的统一性，提高组织协调效率。</p>
+<ul>
+<li>
+<p><strong>加权投票与声誉投票（Weighted Voting &amp; Reputation-based Voting）</strong></p>
+<hr>
+</li>
+</ul>
+<p>治理通证往往要承担双重职能，一方面要承担治理功能，另一方面又要承担价值流通职能。<strong>通证必须有足够的流通性才能捕获财务价值。但治理通证的财务价值，必然带来金融化的倾向。</strong> 这意味着治理通证不仅可能出现在交易市场，而且可能出现在借贷市场，甚至可能产生衍生资产。</p>
+<p>攻击者可以从借贷市场借入，或是从可能存在的委托贿选市场中租用委托，即可短时间获得大量投票权，对DAO发起治理攻击。</p>
+<p>为了规避这样的问题，加权投票是个不错的方式，有些 DAO 组织让投票效用与持有时长（币龄）挂钩，持有时间越长，投票权越大，还有一些 DAO 组织，让投票效用与锁仓时长挂钩，例如Polkadot：用户可以选择不锁仓，但投票效用极小，选择较长的锁仓时长，可以提高投票效用。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0112/3_4jimz8wao1.png" alt="深度解析：DAO的7种常见投票机制"></p>
+<p> Kusama 平行链 Bifrost 的治理投票界面</p>
+<p>加权投票可以增加治理攻击的金融成本，让攻击不具备经济可信性。更加彻底的方案则是<strong>将财务价值通证和治理权力通证完全解耦</strong> ，后者我们可以称之为「声誉」。</p>
+<p>声誉，是一种不可转让，不可流通的积分，通过持有或者锁仓通证可能获得声誉，但具有投票权的是声誉，而非通证。声誉还可以通过为组织做出贡献而获得。需要注意的是，声誉持有者对声誉并没有绝对的所有权，你已获得的声誉是可以通过代码规则或是治理投票销毁的。例如，当声誉持有者做出了损害组织利益的行为，其声誉有可能被扣除；再例如，为了避免早期获得的声誉持续产生影响力，破坏公平性，声誉可以随着时间推移而被陆续扣减，或因过期而失效。</p>
+<p>尽管声誉不能完全抵抗恶意贿选（例如你还是可以把你的私钥出售来间接转让声誉），但形成一个高效的声誉买卖市场、或是使其金融化无疑是极难的。</p>
+<p>从 DAOstack 开始，其他治理框架也陆续支持了声誉投票的方案。声誉投票赋予了 DAO 组织基于其社区生态分布、通证分布调整投票权重的能力，也避免了基于通证的投票带来的治理攻击问题，和公平性问题。通过自定义声誉值的计算规则和获得方式，DAO组织可以实践各自所理解和认可的”民主“。</p>
+<ul>
+<li>
+<p><strong>知识可提取投票 （Knowledge-extractable Voting (KEV)）</strong></p>
+<hr>
+</li>
+</ul>
+<p>我们需要先了解一个被称为“Furtachy”的概念，因为它的“为信念押注”的思想对 DAO 治理投票机制产生了深远的影响。Futarchy 是由 Robin Hanson 于 2000 年提出的治理理论，这是一种将治理投票与预测市场相结合的模式。其核心思想是赋予投票行为下赌注的性质，从而奖励投了正确选项的人，惩罚投了错误选项的人。上文讲到的全息共识可以理解为是 Furtachy 的一种变体。</p>
+<p>本小节要介绍Furtachy的另外一种变体：知识可提取投票（该翻译为 Knowledge-extractable Voting 的直译，尚未形成行业共识），简称 KEV。</p>
+<p><strong>KEV 的核心是让具有知识的专家拥有更多的投票权。</strong> KEV的思想源于对现实政治中民粹主义的反思。在英国脱欧的公投中，其实有不少对国际政治与贸易具有深刻认识的“有识之士”，他们普遍不支持脱欧，但他们没有更多的投票权，他们和大众一样，只有相同权重的一票。为了改善这种情况，KEV 机制引入了一种新型的知识通证，该通证和声誉的性质有些类似，不可交易，且可以通过既定的规则进行发放和罚没。但该通证不直接用于投票，而是通过影响投票权重来发挥作用。</p>
+<p><strong>在 KEV 机制中，提案会被划分为不同的主题，不同的主题会对应不同的知识通证，拥有某类知识通证可以在该类主题的提案中拥有更大的投票权。</strong> 假如 Alice 拥有很多税法主题的知识通证，Alice 在对税法方面的提案进行投票时，其投出的票会有更大的权重。</p>
+<p>如果 Alice 投出的票符合最终的投票结果，Alice 会被奖励更多的对应主题的知识通证，反之，如果 Alice 投出的票与最终投票结果不一致，则其知识通证会被扣减。<strong>KEV 机制鼓励对某个提案更有专业知识的人去投票，也鼓励对某个提案没有掌握足够信息和知识的人不要去投票。</strong></p>
+<p>KEV机制的「知识影响权力」的想法无疑是具有正面意义的，但说到底<strong>判断专家的选择是否正确，还是得靠最终的投票结果本身，而非投票决策本身是否产生了正面的影响</strong> ，这没有跳出Furtachy 的框架。</p>
+<p>KEV机制目前只有 dit protocol 正在采用，对于KEV的相关参数的合理设置也在探索中。</p>
+<h2 id="小结"><strong>小结</strong></h2>
+<p>什么是好的治理投票机制？对于私营公司，可能效率是第一位的，具有绝对权力的企业领袖、森严的科层制是其标配，但对于 DAO 组织，尽管也需要具有号召力的社区领袖和高效的执行力，但在这之前，我想「民主」应该首先被考虑。</p>
+<p>作为一个非西方文化背景下的研究团队，我们并没有把民主作为不假思索、天然正确的价值追求。<strong>DAO 组织之所以需要选择民主作为治理伦理，是符合现实利益的。</strong> 我们先给 DAO 语境下的民主做个定义：由众多利益相关者广泛的、公平的参与决策。而广泛且公平的决策机制，可以帮助DAO组织实现以下两点目标：</p>
+<ul>
+<li><strong>动员更多的智慧与资源</strong></li>
+</ul>
+<p>一个群体，可以表现为“群体无意识”，也可以表现为“群体智慧”，这取决于有没有好的协调机制。<strong>机制良性、运作得当的 DAO 组织，可以让众多所有者选择创造价值，而非“搭便车”</strong> ，从而有效发掘群体智慧与群体资源，为组织目标而服务。这一点对于传统的中心化组织，恐怕需要花更大代价才能做到。</p>
+<ul>
+<li><strong>向“善”发展，长期存续</strong></li>
+</ul>
+<p>私有制诞生以来，对人类文明的发展提供了巨大的动力，但随着生产力的发展，出现了很多提供公共物品的组织。无论是医院、学校这样的公共事业，还是像 Uber、Facebook 这样的互联网服务，都具有显著的公共物品性质。但是，<strong>当私有企业运营公共服务的时候，便会出现片面追求股东利益，损害其他更广泛的利益相关者的情况，例如私营医院过度收费，互联网公司大数据杀熟等。</strong> 人类已经探索了很多种机制来解决这样的问题，例如工会参与治理、国有制、合作社、管家所有制（Steward Ownership）等等，但我们立足当前看，发现 DAO 才是完美的答案。<strong>DAO 几乎是运营公共物品最理想的组织形态，甚至 DAO 可能会创造更多的公共物品。</strong> 或许有人会问，DAO的所有者们不会与其他利益相关者的利益矛盾吗，但我认为这个问题应该反过来思考：DAO如何将更广泛的利益相关者转化为所有者？</p>
+<p><strong>DAO 的发展不光作为一种组织形态本身，可以克服内生异化，使得组织目标更好的达成，也产生了良好的外部性。</strong> 其中之一便体现在对治理机制的创新与探索，创新与探索的力量源于新创的 DAO 组织，但更主要的会源于 Aragon、Moloch、DAOstack、SubDAO 这样的 DaaS 服务平台。</p>
+<p>DAO 的治理机制设计，已经超出了区块链的技术边界，而是回归到对人类组织形式本源的思考。我们更愿意相信，DAO 的根本目的，是通过技术降低组织协调的成本。例如二次方投票不光在 DAO 当中的得到应用——科罗拉多民主党也试验二次方投票来决定他们的纲领，这不仅是一个对投票机制的小小改进，而且是一种全新的社会治理技术的改革尝试，它将为公共议题的决策提供重要的参考；而全息共识中注意力货币化的思想、KEV 中的知识放大权力的哲学、信念投票的多元化内核，怒退机制和声誉投票的公平理念无不对我们的现实治理产生深刻的启发。</p>
+<p>参考资料</p>
+<p>[1] Vitalik Buterin：Moving beyond coin voting governance</p>
+<p><a href="https://vitalik.ca/general/2021/08/16/voting3.html">https://vitalik.ca/general/2021/08/16/voting3.html</a></p>
+<p>[2] Eric Arsenault：Voting Options in DAOs</p>
+<p><a href="https://medium.com/daostack/voting-options-in-daos-b86e5c69a3e3">https://medium.com/daostack/voting-options-in-daos-b86e5c69a3e3</a></p>
+<p>[3] DAOrayaki ：DAO民主投票系列：民主投票机制综述</p>
+<p><a href="https://daorayaki.org/daorayaki-3/amp/">https://daorayaki.org/daorayaki-3/amp/</a></p>
+<p>[4] 火币研究院：DAO哪里了——简析DAO的发展进程及治理机制</p>
+<p><a href="https://www.wikibit.us/202107297824142328.html">https://www.wikibit.us/202107297824142328.html</a></p>
+<p>[5] Aragon：Choice Architecture &amp; DAOs</p>
+<p><a href="https://blog.aragon.org/choice-architecture-and-daos-part-1/">https://blog.aragon.org/choice-architecture-and-daos-part-1/</a></p>
+<p>[6] Vitalik Buterin：Ethereum Community Governance and Gitcoin Quadratic Funding</p>
+<p><a href="https://www.caa-ins.org/archives/7182">https://www.caa-ins.org/archives/7182</a></p>
+<p>[7] Josh Zemel：An Explanation of DAOstack in Fairly Simple Terms</p>
+<p><a href="https://medium.com/daostack/an-explanation-of-daostack-in-fairly-simple-terms-d0e034739c5a">https://medium.com/daostack/an-explanation-of-daostack-in-fairly-simple-terms-d0e034739c5a</a></p>
+<p>[8] Conviction Voting TL;DR</p>
+<p><a href="https://forum.tecommons.org/t/conviction-voting-tl-dr/308">https://forum.tecommons.org/t/conviction-voting-tl-dr/308</a></p>
+<p>[9] DAOhans documents</p>
+<p><a href="https://daohaus.club/docs/proposals/">https://daohaus.club/docs/proposals/</a></p>
+<p>[10] Adam Levi：Reputation vs Tokens</p>
+<p><a href="https://medium.com/daostack/reputation-vs-tokens-6d7642c7a538">https://medium.com/daostack/reputation-vs-tokens-6d7642c7a538</a></p>
+<p>[11] Marvin Kruse, Sebastian Gajek, and Yannik Goldgräbe：The dit Protocol: Knowledge over Wealth to Sustain Open Source Development</p>
+<p><a href="https://www.ditcraft.io/dl/ditcraft">https://www.ditcraft.io/dl/ditcraft</a>_whitepaper.pd</p>
+<p>[12] Nathan Schneider：Startups Need a New Option: Exit to Community  </p>
+<p><a href="https://www.caa-ins.org/archives/6104">https://www.caa-ins.org/archives/6104</a></p>
+<p>撰文：MIDDLE.X @ PAKA Labs</p>
+<p>审阅：Owen @  PAKA Labs；Shawn Lin @ 1PAR Research</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/32955/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">全球第二大挖矿圣地 被断网了</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/32953/">
+                <span class="next-text nav-default">什么是理想的NFT市场？浅谈构成下一代NFT市场的12个要素</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#小结"><strong>小结</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

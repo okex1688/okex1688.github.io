@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          为何 Rollups &#43; 数据分片是实现百万 TPS 的唯一途径？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="支持 Rollups &#43; 数据分片 (data shards) 的理由是，二者的结合更加安全和去中心化。" />
+<meta name="keywords" content="Rollup, 分片" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/28591/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="为何 Rollups &#43; 数据分片是实现百万 TPS 的唯一途径？" />
+<meta property="og:description" content="支持 Rollups &#43; 数据分片 (data shards) 的理由是，二者的结合更加安全和去中心化。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/28591/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-13T00:00:00+00:00" />
+
+<meta itemprop="name" content="为何 Rollups &#43; 数据分片是实现百万 TPS 的唯一途径？">
+<meta itemprop="description" content="支持 Rollups &#43; 数据分片 (data shards) 的理由是，二者的结合更加安全和去中心化。"><meta itemprop="datePublished" content="2021-09-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-13T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4862">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="为何 Rollups &#43; 数据分片是实现百万 TPS 的唯一途径？"/>
+<meta name="twitter:description" content="支持 Rollups &#43; 数据分片 (data shards) 的理由是，二者的结合更加安全和去中心化。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">为何 Rollups &#43; 数据分片是实现百万 TPS 的唯一途径？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-13">
+      2021-09-13
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4862 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>支持 <strong>Rollups + 数据分片</strong>  (data shards) 的理由是，二者的结合<strong>更加安全和去中心化</strong> 。但这只是故事的一部分。Rollups + 数据分片是实现全球规模的唯一解决方案，其中真正的原因在于二者的结合带来的<strong>可扩展性</strong>  ：这是长期实现数百万 TPS (每秒交易量) 的唯一途径。具体来说，我将探讨 zkRollups，因为 Optimistic Rollups 有其固有的局限性。</p>
+<p>那么，为什么这样说呢？原因可以归结为两点：a) <strong>技术可持续性</strong> ；b) <strong>经济可持续性</strong> 。</p>
+<p><strong>技术可持续性</strong></p>
+<hr>
+<p>一个在技术上可持续的区块链节点必须做到三件事：</p>
+<ol>
+<li>
+<p>紧跟区块链，使节点同步；</p>
+</li>
+<li>
+<p>能够在一个合理的时间内从创世区块同步。</p>
+</li>
+<li>
+<p>避免状态膨胀的失控。</p>
+</li>
+</ol>
+<p>显然，对于一个去中心化网络来说，所有上述这三点都是必不可少的，但也带来了严重的瓶颈。以太坊网络在保证所有这三点的同时，正在推进可能性的边缘，而这显然是不够的：<strong>一条保留这三点的分片区块链</strong>  (sharded chain) <strong>也仅能至多将扩容性提升至数千 TPS，依然不够高</strong> 。</p>
+<h4 id="heading"></h4>
+<p><strong>中心化解决方案及其局限性</strong></p>
+<p>但<strong>一些更加中心化的区块链网络</strong> 可能会开始妥协：1) 你不需要让每个人都紧跟着区块链，只要有最少数量的验证者即可；2) 你不需要从创世区块开始同步，只需要使用快照 (snapshots) 和其他捷径即可；3) 状态到期 (state expiry) 是应对状态膨胀的一个很好的方法，将在大多数区块链中实现，在此之前，诸如 regenesis 这样的解决方案可能很有帮助。因此，你可以看出，这些区块链网络不再是去中心化的，但本文不关注去中心化方面，我们只关注<strong>可扩展性</strong>  (scalability)。</p>
+<p>对于这些网络而言，第 1) 个妥协构成了一个硬限制，RAM (内存)、CPU、磁盘 I/O 和带宽是每个节点的潜在瓶颈，且更重要的是，在网络中保持最少数量的节点同步意味着区块链能走多远存在硬限制。事实上，你可以看到，诸如 Solana 和 Polygon PoS 这样的网络已经很用力了，尽管只能处理几百的 TPS。</p>
+<p>我访问了 Solana 区块链浏览器 Solana Beach 网站，上面写着“Solana Beach 在跟上 Solana 区块链方面遇到了问题，”上面显示的出块时间为 0.55 秒，比 0.4 秒的目标出块时间增加了 43%。根据 Solana 的技术文档，你至少需要 128 GB RAM 才能保持与 Solana 同步，但即便 256 GB RAM 也不足以从创世区块开始同步，所以你需要使用快照 (snapshots) 的方式。这正是上文提及的第 2) 个妥协，但我们在本文中暂且忽略这方面，而仅仅专注于可扩展性。Jameson Lopp (比特币核心开发者) 在一台 32 GB RAM 的机器上进行了测试，不出所料，该 Solana 节点在一小时内就崩溃了。当然，Solana 是一个很好的例子，但其他一些区块链也是如此。</p>
+<h4 id="heading-1"></h4>
+<p><strong>zkRollups 可以很好地超越中心化 L1s</strong></p>
+<p>zkRollups 可能甚至比中心化的 L1s 有着更高的要求，因为 zkRollups 的<strong>有效性证明</strong>  (validity proof) 使其与最去中心化的 L1 一样安全！在 zkRollup 网络中，在任何给定的时间内，你可以只有一个节点处于活跃状态，但这仍然是高度安全的。当然，为了使 zkRollups 抗审查和具有弹性，我们需要多个<strong>定序器 (</strong> sequencers)，但即便是这些定序器也不需要达成共识，它们可以相应地轮换。比如 Hermez 和 Optimism 计划每次仅有一个处于活跃状态的定序器，并会在多个定序器之间进行轮换。</p>
+<p>此外，zkRollups 可以借助所有的创新来使全节点客户端尽可能高效，无论这些创新是针对 zkRollups 还是 L1s。zkRollups 可以通过状态到期技术而更具创新性，因为历史数据可以直接从 L1 重新构建。事实上，将会有关于分片和历史数据访问预编译的创新，从而能够在数据分片上直接运行 zkRollups！在 zkRollups 中，我们还需要轻便无辅助的取款，从而确保其安全性。</p>
+<p>然而，即使在 zkRollups，我们也会遇到硬限制。不管是 1 TB RAM 还是 2 TB RAM，节点能走多远是存在限制的。同时你还需要考虑基础设施提供商，它们需要能够与链保持同步。</p>
+<p>因此，是的，某个 zkRollup 可能比最具可扩展性的 L1 还要<strong>更具可扩展性</strong> ，但<strong>仅靠其自身并不能达到全球规模</strong> 。</p>
+<h4 id="heading-2"></h4>
+<p><strong>通过数据分片运行多个 zkRollups</strong></p>
+<p>但我们可以<strong>在以太坊的数据分片上运行多个 zkRollups</strong> 。一旦发布，它们将提供大量的数据可用性，并将根据需要继续扩大，预计到 2030 年之前将达到 1500 万 TPS。单个 zkRollup 无法实现这种疯狂的吞吐量，但多个 zkRollups 可以。</p>
+<p>每个 zkRollup 分片将会打破可组合性吗？目前来说，会的。但我们正在看到这一领域正在进行大量的工作，比如 Hop、Connex、Biconomy 等快速「桥梁」，以及让多个 zkRollups 共享流动性的 dAMM 等杰出的创新。许多这样的创新在 L1s 上会更加困难或不可能。我预计这个领域会继续创新，<strong>使多个</strong>  <strong>zkRollups</strong>  <strong>链无缝互操作</strong> 。</p>
+<p><strong>简言之，无论最中心化的 L1s 能做什么，zkRollup 都能做得更好，其 TPS 要高得多。此外，我们可以有多个 zkRollups，可以有效地达到全球规模。</strong></p>
+<p><strong>经济可持续性</strong></p>
+<hr>
+<p>这个很好理解。<strong>网络需要获得比通胀更多的交易费</strong> 来奖励给验证者 (或代理人)。事实上，这是一个非常复杂的主题，所以我将尽量让它保持简单。当然，投机热情和货币溢价可以让一个网络保持可持续性，即便该网络的通胀高于其获得的交易费。<strong>但对于一个真正有弹性的、去中心化的网络来说，我们应该努力实现经济可持续性</strong> 。</p>
+<h4 id="heading-3"></h4>
+<p><strong>中心化 L1s 网络的维护成本 (即通胀) 远远超过交易费收入</strong></p>
+<p>让我们再次考虑我们最喜欢的两个例子—— Polygon PoS 和 Solana。Polygon PoS 网络每天获取约 5 万美元的交易费，折合年交易费为 1800 万美元。与此同时，Polygon 正在分配超过 4 亿美元的年通胀奖励。<strong>这导致了令人难以置信的 95% 的净损失</strong> 。</p>
+<p>至于 Solana ，它在很长一段时间里每天的交易费只有 1 万美元，但随着投机狂潮的兴起，该网络的交易费收入已经显著增加到每天 10 万美元，也即每年 3650 万美元。但 Solana 正在发放了更令人震惊的 40 亿美元年通胀奖励，<strong>导致净亏损 99.2%</strong> 。</p>
+<p>我从 Token Terminal 和 Staking Rewards 收集了这些数据，我认为这些数据比较保守，实际的数据可能更糟。顺便说一下，<strong>以太坊网络一天获取的交易费比这两个网络一年的总和还要多！</strong></p>
+<h4 id="heading-4"></h4>
+<p><strong>你无法将吞吐量提高到技术上不可能的程度</strong></p>
+<p>有论点指出，这些网络将在未来处理更多的交易并获得更多的费用，通货膨胀将会下降，最终，网络将盈亏平衡。但现实要复杂得多。首先，即使我们考虑到 Solana 在 2030 年之前可能达到的最低通胀率，我们仍将看到该网络 96% 的损失。要实现收支平衡，该网络需要的吞吐量远远超出可能的范围：Solana 在当前交易费用下需要达到 154000 TPS 才能实现收支平衡，而考虑到当前的硬件和带宽，这是完全不可能的。</p>
+<p>然而，更大的问题是，这些额外的交易量的增长并不是没有成本的——它们增加了更大的带宽需求，更大的状态膨胀，总的来说，对系统的要求还比较高。有些人可能会进一步辩称，目前已经有很大的内存空间，它们可以做更多的事情；但正如我在上文技术可扩展性部分讨论的，这充其量是一个可疑的假设——鉴于你需要至少 128 GB RAM 才能同步一条仅有数百 TPS 的链。另一种观点是，硬件将变得更便宜——这是事实，但这不是一个神奇的解决方案——你要么需要选择更大的规模，更低的成本，要么是二者的平衡，而且 zkRollup 也将同样受益于摩尔定律和尼尔森定律。</p>
+<h4 id="heading-5"></h4>
+<p><strong>最终，所有中心化的 L1s 都不得不增加交易费</strong></p>
+<p>最终，只有两种解决方案：a) 网络变得更加中心化，b) 网络达到极限时交易费变得更高。a) 有其局限性，正如前文所讨论的，所以 b) 是不可避免的。你可以在 Polygon PoS 上看到这种情况，该网络上的交易费开始慢慢上升。事实上，币安智能链 (BSC) 已经经历了这一过程，现在它是一个可持续的网络，尽管交易费已经显著上涨了。记住，我们这里只是在讨论经济的可持续性。</p>
+<p>在继续之前，让我再次指出，其中存在很多很多的变量 (比如价格升值和波动)，且上文绝对是一个简化的理解，但我相信总体逻辑将是清晰的。</p>
+<h4 id="heading-6"></h4>
+<p><strong>Rollups + 数据分片更加高效，且成本更低</strong></p>
+<p>接下来是 Rollups + 数据分片的情况。在 Rollups 方面，其<strong>维护成本非常非常低</strong> ，在给定的时间内需要运行的节点数量非常少，而且不需要昂贵的共识安全机制，但提供比任何 L1 都大得多的吞吐量。Rollups 可以简单地<strong>收取少量的 L2 交易费</strong> ，从而保持网络盈利。在数据可用性方面，以太坊目前处于高度通缩状态，结合高效的信标链共识机制，只需要最低水平的经济活动就可以实现接近零的通胀。</p>
+<p>因此，整个 Rollups + 数据分片生态系统可以以更大的可扩展性和潜在的更低的费用保持可持续发展。事实上，<strong>成为以太坊上的 zkRollups 对于 L1s 来说是最有利的，我很高兴看到 Solana 至少</strong> <strong>在考虑这一点</strong> 。</p>
+<p><strong>简言之，Rollups + 数据分片的成本只是中心化 L1 的很小一部分，使其能够以类似的费用提供数量级更大的吞吐量；或者以更少的费用提供类似的吞吐量。</strong></p>
+<p><strong>短期的选择</strong></p>
+<hr>
+<p>很重要的一点是要明白，Rollups + 数据分片的结合是一个长期的观点，需要几年的时间才能成熟。</p>
+<p>但在短期内，有两种选择:</p>
+<ol>
+<li>
+<p>一个可持续的中心化 L1 (比如币安智能链) 和 Rollups 网络；</p>
+</li>
+<li>
+<p>一个不可持续的中心化 L1。</p>
+</li>
+</ol>
+<p>第 1 个选项对大多数人来说仍然太贵了。Hermez、dYdX 或 Loopring 等优化的 Rollups 提供类似币安智能链 (BSC) 的交易费水平，而 Arbitrum One 和 Optimistic Ethereum 网络的交易费则更高一些，尽管 Optimistic Ethereum 下个月即将发布的 OVM 2.0 承诺该网络的交易费将下降 10 倍。</p>
+<p>第 2 个选项包括的 Polygon PoS 和 Solana 目前提供较低的费用，但如前所述，长期来看这是不可持续的。不过，从短期来看，它们为寻求廉价交易的用户提供了一个很好的选择。但是，等等，还有第三个选择：<strong>Validiums</strong> 。</p>
+<p>Validiums 提供类似 Polygon PoS 或 Solana 等的交易费水平——现在 NFT 铸造和交易平台 Immutable X 已经使用  Validium 方案提供免费的 NFT 铸造。现在，Validium 的数据可用性方面可以说是不可持续的，正如中心化的 L1 一样，尽管通过使用替代性共识方法 (比如数据可用性委员会)，Validium 实际上仍然更加便宜。但 Validiums 的绝妙之处在于，当数据分片发布时，它们可以直接向前兼容于 Rollups 或者 Volitions。当然，如前所述，中心化的 L1s 也可以这样做，但这将是一个更具颠覆性性的变化。</p>
+<p><strong>总结</strong></p>
+<hr>
+<ol>
+<li>
+<p>区块链行业尚未拥有实现全球规模的技术；</p>
+</li>
+<li>
+<p>一些中心化的 L1s 区块链网络提供非常低的交易费，这实际上是由人们对其代币的投机而补贴的。对于那些希望获得非常廉价的交易费的用户来说，这些网络是一个很好的选择，但是，需要认识到这不是一个可持续的模型，更不用说它们有着严重的去中心化和安全性妥协。</p>
+</li>
+<li>
+<p>但如果这些中心化的 L1s 网络获得了用户吸引力，它们也将被迫提高交易费，并将被更新、更中心化的 L1s 所取代。这是一种不可能长期持续的逐底竞争。</p>
+</li>
+<li>
+<p>目前，确实存在可持续的网络选择，比如币安智能链 (至少在经济上) 或者优化的 Rollups，提供约 0.10 - 1 美元的交易费范围。</p>
+</li>
+<li>
+<p>长期来看，Rollups + 数据分片是<strong>唯一</strong> 可以扩容到数百万 TPS 的解决方案，达到全球规模，同时保持技术和经济上的可持续性。它们能够做到这一点，同时又保持高度安全、去中心化、无需许可、无须信任和可靠中立，这确实很神奇。一位智者曾说过：“任何足够先进的技术都与魔法无异。”这就是 Rollups 和数据碎片的结合。</p>
+</li>
+</ol>
+<p>最后，这不仅仅是关于以太坊，Tezos 也转向了以 Rollup 为中心。对于所有 L1s 来说，这是不可避免的，即它们要么 a) 成为一个 zkRollup；b) 成为一个安全和/或数据可用性链，供 Rollups 在上面进行构建；c) 接受其技术的过时，并完全依赖营销、模因和网络效应。</p>
+<p>撰文：Polynya</p>
+<p>编辑：南风</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/28594/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">晚间必读5篇 | 以太坊L2：公链们的真正对手</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/28570/">
+                <span class="next-text nav-default">新闻周刊 | 美联储希望在“未来几周”发布CBDC报告</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

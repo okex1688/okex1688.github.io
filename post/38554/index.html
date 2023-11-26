@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Jump Crypto：详解Cosmos、Avalanche等五大多链架构的特点与优劣势 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="我们研究了五个独立的多链架构：Polkadot、Cosmos、Avalanche、Polygon Supernets 和 Binance BAS，并比较了它们在共享共识、容量和互操作性方面的取舍。" />
+<meta name="keywords" content="Polkadot, COSMOS, Avalanche, Polygon" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38554/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Jump Crypto：详解Cosmos、Avalanche等五大多链架构的特点与优劣势" />
+<meta property="og:description" content="我们研究了五个独立的多链架构：Polkadot、Cosmos、Avalanche、Polygon Supernets 和 Binance BAS，并比较了它们在共享共识、容量和互操作性方面的取舍。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38554/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-03T00:00:00+00:00" />
+
+<meta itemprop="name" content="Jump Crypto：详解Cosmos、Avalanche等五大多链架构的特点与优劣势">
+<meta itemprop="description" content="我们研究了五个独立的多链架构：Polkadot、Cosmos、Avalanche、Polygon Supernets 和 Binance BAS，并比较了它们在共享共识、容量和互操作性方面的取舍。"><meta itemprop="datePublished" content="2022-06-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="10290">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Jump Crypto：详解Cosmos、Avalanche等五大多链架构的特点与优劣势"/>
+<meta name="twitter:description" content="我们研究了五个独立的多链架构：Polkadot、Cosmos、Avalanche、Polygon Supernets 和 Binance BAS，并比较了它们在共享共识、容量和互操作性方面的取舍。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Jump Crypto：详解Cosmos、Avalanche等五大多链架构的特点与优劣势</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-03">
+      2022-06-03
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 10290 字 -
+        预计阅读 21 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>概述</strong></p>
+<p>长期以来，可扩展性一直是该领域广泛讨论的话题。围绕单片式区块链与模块化区块链、横向与纵向扩展的讨论长期以来一直是社群交流的重点。</p>
+<p>一种流行观点因此应运而生——为特定应用程序或用例建立专门的执行环境或者甚至是最终性（即 finality，指区块链上的交易达到了交易状态确认的状态）工具。这种想法具体指，基于每个产品、每个应用程序的安全和速度需求，对共识和计算进行分离与优化，这在理论上可以减轻单一底层区块链的负载并提升其性能。但这种方法长期受制于一点：这种架构下确保互操作性所需的基础设施是极其复杂的。</p>
+<p>在过去的几年里，我们通过不同的方式应对这些挑战，取得重大进展。更重要的是，在过去几个月里，几个独立多链环境的通信层已上线，这些通信层可以说是这块「拼图」中最重要的一块。同时，在过去几周，更多的 L1/L2 区块链宣布调整架构，为特定应用的区块链提供开箱即用的基础设施，再一次重新激发了相关讨论。</p>
+<p>在这篇文章中，我们详细研究了为追求这一愿景而开发的各种形式的架构，并比较了它们在共享共识、容量和互操作性方面的取舍。具体来说，我们研究了五个独立的多链架构：Polkadot、Cosmos、Avalanche、Polygon Supernets 和 Binance BAS。</p>
+<p>注：该文章主要关注独立多链基础设施，在此特定应用的区块链会共享验证者组或共识算法。</p>
+<h3 id="比较标准">比较标准</h3>
+<p>独立多链生态系统的连接程度各有不同，低至共享开发者工具包，高至共享验证者集、最终性工具和状态。客观来说，每种方法各有优势，但都对共享安全的维护和速度/能力进行了一定程度的优化。</p>
+<p>在这篇文章中，我们通过五个关键参数来比较这些生态系统。</p>
+<h4 id="1-共识">1. 共识</h4>
+<p>所有的生态系统都满足了关于女巫攻击防御、最终性实现时间等基本要求，因此本质上并没有最优共识机制。然而，值得比较的是：1）共识模型的具体类型，2）每个链的共享或独立的共识机制，3）共享或独立的Token激励。链可能采用相同的共识机制（如 Tendermint BFT），但每个链的验证者受自己独立的 Token 激励，反之亦然，这些情况取决于生态系统的参数情况。共享的共识机制和 Token 激励意味着基础层能提供更大安全保障，而选择独立则意味着更大的设计灵活性。</p>
+<h4 id="2-最终性状态">2. 最终性/状态</h4>
+<p>在这些生态系统中，一些链保持着某种形式的独立状态，一些链则是在整体水平上达到最终性的。这提供了 1) 更大的安全性和 2) 更综合的互操作性。然而，这也带来在容量限制上的取舍，如果模块化区块链的数量超过一定数量，达到最终性的过程将大大减慢。</p>
+<h4 id="3-共享验证者组节点自主权">3. 共享验证者组/节点自主权</h4>
+<p>除了共享共识机制外，各个区块链还可以共享验证者组。在下面的例子中，验证者共享的范围涉及所有链上的单一验证者集，到多个验证者集（其中的每个验证者集为部分而非所有底层区块链提供共识），再到每个底层区块链的互斥验证者集。由于每条新区块链的边际风险降低，共享验证者集提供了集中的安全保障，但在节点上的大规模折中会导致被验证者集保障的所有链受到不利影响。这一参数的理想状态是一个充分分布的单一验证者集，为大量的链提供共享安全保障。另一方面，它最有风险的状态是一个有少量集中节点的单一验证者组。</p>
+<h4 id="4-互操作性架构">4. 互操作性架构</h4>
+<p>这篇文章所涉及的大多数项目都采用了「销毁销毁+铸造」或「锁定+铸造」的桥接架构。这些系统的区别在于：1）路由，即消息和 Token 是否通过具有某种全局状态观察状态的单一验证者组进行，或每条路由是否是独立的；2）这些获取链路的验证者组是否由生态系统分享，还是外包给第三方机构。生态系统越接近独立路由和第三方验证者外包的状态，我们就越不推荐选择这个底层生态系统进行新链发布，不如直接与通用目的第三方桥连接，进行独立发布。</p>
+<h4 id="5-速度和容量">5. 速度和容量</h4>
+<p>速度和容量在很大程度上是上述设计选择的表征，可以通过到达终点态的时间和一个生态系统可支持的最大链数来衡量。例如，具有共享最终性和单一全局状态的结构只能容纳一定数量的链，因此到最终性的时间就会大大减慢，这是为了获取更大安全保障做出的取舍。</p>
+<p>下面是对这五个生态系统在这些参数上的宏观概述。在文章的其余部分，我们将对这些生态系统中的每一个部分进行分解，并讨论每个设计选择的优缺点。</p>
+<h3 id="i-polkadot-parachains">I. Polkadot parachains</h3>
+<h4 id="概述">概述</h4>
+<p>Polkadot 在该领域出现较早，建立的目的是为了支持共享单一全局状态的特定应用区块链。在 Polkadot 架构下，特定应用区块链（平行链）与底层区块链（称为中继链）共享计算和共识资源，其主要功能是维护一个统一的全局状态。</p>
+<h4 id="共识最终性和验证者组">共识、最终性和验证者组</h4>
+<p>Polkadot 在中继链层面上运行提议的权益证明共识。在这种架构下，有三种类型的节点。</p>
+<h4 id="提名者">提名者：</h4>
+<p>提名者选择值得信赖的验证者，并将自己的一些 DOT 抵押给他们。他们分享验证者的奖励，但如果验证者从事恶意活动，他们也会被处罚 (slash)。</p>
+<h4 id="验证者">验证者：</h4>
+<p>中继链上的验证者参与区块生产和共识。不同于独立的单体区块链，中继链验证者必须就多条个链的状态与单独交易达成共识。</p>
+<h4 id="校对者">校对者：</h4>
+<p>校对者收集在特定平行链上的交易，并向中继链验证者提出一个候选交易块和一个状态转换证明。每个校对者在中继链和其工作的平行链上各保持一个节点。他们在自己的平行链上积累交易，创建未密封的区块，将其与状态转换证明一起提供给一个或多个中继链验证者。在中继链验证者达成共识之前，该区块都不算达到最终性。</p>
+<p>尽管平行链共享全局状态，但他们可以自由选择所运行的具体共识算法（GRANDPA /Tendermint/传统 pBFT 等），以便在中继链（Polkadot / Kusama）上结算之前实现平行链级验证。</p>
+<p>Polkadot 共识的一个独特之处在于，它将区块生产和区块最终性分离；在一个混合共识框架下运行。</p>
+<p><strong>区块生产机制：</strong> BABE（Blind Assignment for Block Extension）区块延伸随机分配制</p>
+<p>基于质押的价值大小与 Polkadot 的随机循环，验证者被选择来为 6 秒的插槽（slot）下单和生产区块。在这种随机选择下，最终每个插槽可能有一个、多个或零个区块生产候选人。当多位验证者被选入同一槽时，区块生产转为竞赛。在没有验证者被选中的情况下，会进行二次循环选择。一旦一个区块被生产出来，该消息就会被传输给其他验证者。</p>
+<p><strong>终局性工具：</strong> GRANDPA (GHOST-based Recursive ANcestor Deriving Prefix Agreement) 基于 GOSHT 的递归 ANcestor 衍生前缀协议</p>
+<p>一旦一个中继链块被传输到网络的其他部分，它需要至少 2/3 的多数同意才能被添加到链上。然而 GRANDPA 的独特之处在于，它在链上而非块上达成协议。这意味着，当它证实了一条包含某个区块的链时，该区块之前的区块都会立即一并被达到最终性，这与传统的逐个区块进行确认的过程不同。</p>
+<p>最终，Polkadot 采取了最高安全性的共识方式，同时为平行链提供了一定的灵活性。每个平行链可以在链级「共识」上做出设计，向中继链提出区块，但是最终性只在 Polkadot 中继链上实现，由一组验证者保证，他们必须质押 DOT Token 进行参与。Polkadot 有大约 100 个活跃的验证者（最多 1000 个），每个验证者最多有 256 个提名者。它的共享验证者集牺牲了一些设计灵活性，以确保平行链项目有更高的安全保障。中继链层面上的集中共识能提供更高共享安全保障，但也会牺牲一部分性能：平行链数量是固定的，在这个数量之后，到最终性的时间会大幅度减缓。</p>
+<h4 id="互操作性">互操作性</h4>
+<p>在此架构下，这些组件，特别是中继链，通过 Polkadot 特有的通信标准 XCM 相互通信。</p>
+<p>在宏观上，Polkadot 跨链信息传递系统中的所有消息都会通过中继链传输，从而延续其安全性。有两种类型的消息可以被传递：</p>
+<p>向上传递的消息（UMP）：从一个平行链到中继链的消息</p>
+<p>下行传递的消息（DMP）：从中继链到其中一个平行链的消息。</p>
+<p>进入平行链的信息被称为入口（ingress），而出去的信息被称为出口 (egress)。</p>
+<p>下面是一条消息从平行链 A 传到平行链 B 的过程：</p>
+<p>平行链 A 发布 UMP，作为出口批次的一部分，被传输到中继链上的所有验证者节点。</p>
+<p>平行链 B 上的校对者节点每次向中继链提交新的区块候选者时，都会搜索新的入口消息。</p>
+<p>入口信息被添加到平行链 B 的处理队列中，并将在下一个区块提案中被传递给验证者节点。</p>
+<p>在资产转移的过程中，基础资产在 A 区块链上被销毁，并在 B 区块链上重新发行。</p>
+<p>鉴于所有消息都要经过观察全局状态的单一验证者（与 Polkadot 中继链共享），且所有链都建立在相同的标准上，这就使「销毁+铸造」模型高效进行。Polkadot 的互操层是该领域中最有效和最安全的层级之一。因此推荐选择在它的生态系统内建立项目，因为可以使用 XCM 与现有的平行链无缝连接，并借用这些网络效应进行启动。</p>
+<h4 id="速度和能力">速度和能力</h4>
+<p>拥有更高共享安全保障的代价是：在平行链数量达到一定值后，到最终性的时间会受到大幅减缓。在 Polkadot 中，平行链估计约为 100 个，是付租金使用的，目的就是减小这一限制的影响。项目可以在社区的支持下，通过 DOT 质押竞标平行链的使用名额，一旦名额过期，他们必须与其他参与者重新竞标以保留名额。这对拥有最多活动和社区支持的项目来说是一种默认的管理机制，部分地规避了容量限制问题，但这也意味着，新项目加入这个生态系统的门槛相对较高。</p>
+<h3 id="ii-cosmos">II. Cosmos</h3>
+<h4 id="概述-1">概述</h4>
+<p>Cosmos SDK 是一套具有开箱即用的共识和执行的工具，允许任何人创建自己的 PoA/PoS 区块链。与本文涉及的其他生态系统不同，Cosmos 建立在一大前提下：基于智能合约的虚拟机其灵活性、主权和性能都是受限的。因此，Cosmos 不是建立一个可运行多应用的单一虚拟机，而是鼓励和促进为每个用例创建单独的区块链。在这种结构下，应用程序开发人员在构建时可以围绕特定的架构、语言等进行灵活操作，并通过 Cosmos 的多链通信层 IBC 实现互操作性。单个区块链被称为区（zone），而连接模块被称为中心（hub）。</p>
+<h4 id="共识最终性和验证者集">共识、最终性和验证者集</h4>
+<p>在 Cosmos 生态系统中，不同于 Polkadot，每个特定应用的区块链都保持自己的独立状态，在每个区块上达到独立的最终性。通过 Cosmos SDK，开发人员只需要定义状态机（即应用程序），并可依靠 Cosmos 的 Tendermint 核心（一个共享的软件层），以推动共识和网络连接。Tendermint 运行的是基于 BFT 的共识算法，每个独立区的验证者可以利用该算法来促进状态转换和维护独立的状态。在每个区块链/区中，每个纪元都会随机选择一个验证者来提出下一个区块；如果超过 2/3 的验证者证明其有效性，则该区块可被认为是有效的。验证者集合和具体的激励设计可以在状态机/应用层面上定义。</p>
+<p>Tendermint 是共享软件层，每个区块链/区必须通过一个名为 ABCI（应用区块链接口）的专用接口与之连接。来自各个区的交易通过 ABCI 作为交易字节传递给 Tendermint 核心，验证者对这些字节进行最终性排序，并通过 ABCI 向状态机传回代码，证明这些交易的有效性。</p>
+<p>Cosmos 生态系统中的每个区都与一个中心相连，该中心被认为是连接多个区的路由器。目前，Cosmos 中心由一个大约含有 150 个验证者的验证者组保障，在 Tendermint 共识上运行。鉴于每个区都保持着自己的状态，并通过自己的 Token 进行激励机制的设定，中心验证者不需要参与到每个区的共识中。然而在实际操作中，验证者维护中心以及相关的区，运行同样的共识算法，因此它们之间的重叠是有意义的。</p>
+<p>总的来说，Cosmos 选择了一个与 Polkadot 稍有不同的权衡方式，即链共享共识机制，但各自保持独立状态，不强制要求由相同的验证者集和激励机制来进行保障。共享共识提供了一定程度的安全性，而独立定义激励机制和保持独立状态为每个项目提供了设计的灵活性。标准化的共识也导致了更多的验证者重叠，加上验证者本身的庞大分布，这也增加了共享的安全性，尽管程度不如 Polkadot。Cosmos 在 2021 年底开始进行准备工作，为的是引入共享/链间安全。在这个拟议的框架下，单链将能够从 Cosmos 中心借用/共享安全保障。验证者将能够运行两个节点，一个在中心上，一个在区上，并从参与两个节点的共识中获得费用和奖励。在中心上抵押的 Token 将作为两地诚信共识的共享抵押品，其中任何一方的恶意活动都会导致两方被「砍」(slash: 一般指质押品被移走)，这将增加新链可用的共享安全保障。</p>
+<h4 id="互操作性-1">互操作性</h4>
+<p>鉴于每个区都有主权并保持独立的状态，区与区之间的交流变得越来越重要。Cosmost 通过中心（作为路由连接各区）对与中心相连的区的状态进行观察。Cosmos Hub 是 Cosmos 生态系统中的第一个中心，大多数早期的高价值区都与之相连。通过 Cosmos Hub，被连接的区可以相互交流信。进行信息交流的具体架构称为区块链间通信（Inter-Blockchain Communication），或简称 IBC。IBC 客户端是轻型客户端，它跟踪各个链的共识状态和必要证明，以此根据客户端的共识状态正确验证证明。</p>
+<p>在 IBC 架构下，从 Token 传输开始时，每个链就会收到来自对方的头部信息，以此追踪对方的验证者集。然后，源链上的发送地址发送一个硬币数据包，由中心记录。中心验证者必须对交易的有效性达成共识，并将这些 Token 锁定在源链上的合约中。之后中心在目的地发布证明，提议在目的地链上铸造这些锁定资产的包装 Token 。目的地链上的验证者之后将证明与源链头部进行匹配，随后在下一区块中批准这一功能，以便在目的地链上铸造被包装的资产。如果上述动作没有发生，源链上的锁定资产就会被退回到发送者地址。被包裹的资产代表随后通过中心在目的链上被销毁销毁，使源链上的基础资产能被解锁。</p>
+<p>在 Cosmos 中，路由是由一个单一且充分分布的验证者集来管理的，该验证者观察所有区块链的状态，且这些验证者大部分是与区块链共享的，因此它能够围绕跨区消息传递提供足够的安全保障。这也为在 Cosmos 生态系统内进行建设提供了充分理由，因为故障点集中且充分去中心化。</p>
+<h4 id="速度和容量">速度和容量</h4>
+<p>由于最终性没有集中到一个单一的链上，Cosmos 在理论上能拥有无限多的区和中心。因此，不同于 Polkadot，它用新项目建立新链是毫无困难的。这里的取舍是将一些安全保障卸载给区（让区自行设计激励机制和吸引验证者），以换取更大的设计灵活性和更高的容量，来容纳更多的个人区块链。</p>
+<h3 id="iii-avalanche-subnets">III. Avalanche subnets</h3>
+<h4 id="概述-2">概述</h4>
+<p>Avalanche 是一个由多组节点（称为子网）验证的区块链生态系统。子网可以自由选择自己的共识机制，包括 Avalanche 新颖的基于重复随机子采样的共识变体。子网内的每个区块链共享计算和共识资源，但最终保持自己的状态，不存在全局共享状态。</p>
+<h4 id="共识最终性和验证者集-1">共识、最终性和验证者集</h4>
+<p>为了更好了解它的架构，我们必须了解 3 个关键部分：</p>
+<p><strong>Avalanche 式共识</strong></p>
+<p>指的是重复的随机子抽样。Avalanche 共识是建立在雪球算法上的，该算法利用重复的随机子抽样来实现共识。在这个系统下，每个节点随机询问 k 数量的相邻节点，以确定一项交易是否正确。这个过程不断重复，直到达到一定的预设法定人数 x，并且节点在很高的置信度范围内（至少是比特币的哈希碰撞概率），最终网络对交易的有效性达成一致。</p>
+<p><strong>Avalanche 共识与 Snowman 共识</strong></p>
+<p>Snowman 和 Avalanche 是 Avalanche 生态系统中两个主要的基于 PoS 的共识模型，使用重复的随机子抽样。两者之间的区别是，Avalanche 采用 DAG（有向无环图）架构，而 Snowman 是为线性区块链建立的。基于 DAG 的系统与线性区块链的关键区别在于，线性区块链的最终性是有序的，而在基于 DAG 的系统中，它的状态更接近于具有无序最终性的交易网。Avalanche 生态系统内的区块链可以选择使用两者中的一种共识模型，也可以采用他们自己的模型。</p>
+<p><strong>子网（Subnet）</strong></p>
+<p>子网是验证者的集合，可以在 Avalanche 框架内的一些区块链上提供共识。每个区块链都有一个子网，但每个子网可以验证多个区块链。因为每个区块链都是独立验证的，全局状态在区块链之间是非线性的，所以区块链间没有共享安全。</p>
+<p><strong>虚拟机（VM）</strong></p>
+<p>虚拟机决定了区块链的应用级逻辑。Avalanche 希望给每条区块链提供一系列操作代码，供其选择，来处理和转换状态等，而不是只提供一套操作码。目前的选项包括子网 EVM（为子网构建的 EthereumVM）、AvalancheVM（DAG 链）、SpacesVM（一个钥：值存储虚拟机）和 BlobVM（二进制数据存储虚拟机）。除此之外，项目可以自由实施自己的自定义虚拟机。</p>
+<p>Avalanche 架构能实现的前提是这三个组件适合于一个模块化的框架，可以随着子网/验证者的增长而超线性地扩展。</p>
+<p>在 Avalanche 目前的形式下，有一个由所有参与的 Avalanche 验证者担保的主网络，其下有三个区块链。</p>
+<p>P 链：基于雪人共识的线性区块链，用于创建验证者、添加委托者、创建子网等任务。</p>
+<p>X 链：基于雪崩共识的 DAG 型区块链，用于交换资产。</p>
+<p>C 链：基于雪人共识的线性区块链，运行 EVM，用于通用智能合约。</p>
+<p>这些验证者的各种排列组合随后可以形成子网，验证增量参与的区块链。</p>
+<p>总的来说，Avalanche 生态系统中的每个区块链都保持着自己的状态，并且可以独立选择自己的 1）共识机制，2）验证者集，以及 3）激励设计。同一子网内的区块链得益于由充分分布带来的更高共享安全保障。</p>
+<p>上述情况对于如今拥有约 1450 个验证者的默认子网来说是成立的，当然向新子网的转换还有待观察。简而言之，Avalanche 所做的取舍就是把安全保障更大程度地装载到每个子网上去，以换取更大的灵活性。</p>
+<h4 id="互操作性-2">互操作性</h4>
+<p>考虑到该架构的模块化程度，以及生态系统内不同链有多个并发状态（相对于单一的全局状态而言），跨链和跨子网通信成为需要关注的议题。</p>
+<p>单个子网内的跨链传输 ：由于每个子网对该子网内的所有区块链都有一套验证者，这个问题比较容易解决。我们可以举一个例子，比如在主要/默认子网的 X、C 和 P 链之间转移资产。由于该架构中至少有 3 个并发状态，那么任何资产 Z 必须不存在于发送链当前状态的任何账户中，之后才能成为接收链中转换的一部分。因此，当有用户请求将 Z 从 X 链转移到 C 链时，例如，子网验证者必须首先同意在 X 链上烧掉 Z，随后在 C 链上铸造 Z。由于是同一组验证者对子网内的所有链上的共识负责，这个过程变得相对容易。</p>
+<p>不同子网间的跨链转移 ：不同的子网之间的跨链传输比较具有挑战性，因为验证者集不再相同。在这种情况下，与第三方中继器的外部桥接变得很重要。目前的 Avalanche 架构中有一个模块可以在多个子网之间部署桥接。每个实例都可以自定义为 1）销毁和铸币或 2）锁定和铸币。与单子网传输不同，这依赖于第三方中继器来观察发送链上的销毁或锁定情况，并将此消息转发到接收者链上以启动铸币。下面是桥接 WAGMI 和富士子网的实施实例概述：</p>
+<p>在目前的设置下，每一对子网都需要一个独立桥架，中继器的阈值可以低至一个，中继器的执行被外包给 Chainsafe。这是一个可以接受的短期解决方案，但从长远来看，带有分布式中继器网络的单桥可能更能提升安全。</p>
+<p>Avalanche 的子网内信息传递与 Cosmos 和 Polkadot 等相类似，都有一个单一验证者组，观察每个链上的状态并促进传输。只要这个验证者集是充分分布的，就能提供合理的共享安全保障，所以这个架构也是值得推荐的。然而，子网之间的信息传递仍待完善，目前还依赖于第三方中继器，那么只要第三方桥接器有自己的安全保障，结果就会相对合理。因此，在现有子网内部署是要比直接部署新子网更合适的。</p>
+<h4 id="速度和容量-1">速度和容量</h4>
+<p>与 Cosmos 类似，Avalanche 采取分布式状态是为了支持多个独立的区块链。由于共识机制和验证者集的灵活性，Avalanche 生态系统中的一些区块链也可根据每个子网中的参与者数量拥有更短的区块时间；例如，C 链到达最终性的时间为 2 秒，除此之外的所有其他链目前都有亚秒级的最终性时间。</p>
+<h3 id="iv-polygon-supernets">IV. Polygon Supernets</h3>
+<h4 id="概述-3">概述</h4>
+<p>Polygon 是这一系列生态系统中最新宣布的开箱即用特定应用区块链，称为超级网。与 Cosmos SDK 类似，Polygon 有一个名为 Edge 的模块化框架，便于创建独立网络。用户可以利用该框架来部署共享安全或主权区块链。两种链类型都保持独立的状态，但是共享安全链利用了一套共享的验证者，而主权区块链则部署了自己的验证者。</p>
+<h4 id="共识最终性和验证者组-1">共识、最终性和验证者组</h4>
+<p>有两种类型的共识可以在超级网中使用：</p>
+<p><strong>IBFT PoA（Istanbul BFT Proof of Authority）</strong> ：Polygon Edge 的默认共识。是固定验证者集，验证者可以通过多数（51%）投票增加和/或删除验证者。共识是由超级多数（2/3）投票达成的。验证者轮流提出新区块。更适合于超级网框架下的主权区块链。</p>
+<p><strong>PoS</strong> ：遵循传统的 PoS 架构，任何网络参与者都可以质押 Token ，成为验证者。验证者在网络中接受 Token 奖励，或因恶意行为而被「砍」（slash）。与我们迄今为止看到的其他框架不同，所有共享安全超级网都有相同的验证者，每个验证者必须在以太坊上质押 MATIC，以便参与超级网的共识，并以 MATIC 支付非恶意的活动参与。虽然没有它像 Polkadot 一样的全局共享概念，但由于每个 Polygon 超级网共享相同的验证者集合，也可以获得共享安全性。</p>
+<p>超级网架构用 MATIC Token 激励，有大约 200 个验证者参与共享安全 PoS 模块，提供了强大的共享安全保障。作为交换，项目必须牺牲自行设计激励机制的灵活性，并使用原生 Token 与共识相连。对于专注于建立高性能应用程序的项目来说，他们需要在自行搭建应用和自行搭建计算层之间做出取舍，后者的计算层可被其他应用使用。</p>
+<h4 id="互操作性-3">互操作性</h4>
+<p>Polygon Edge 框架利用一个名为 ChainBridge 的桥接解决方案来促进超级网之间的通信，包括但不限于 Token 转移。与我们在本篇文章前面看到的解决方案类似，以下是 Token 转移过程：</p>
+<p>1. Token 在源链上被锁定或销毁 </p>
+<p>2. 中继器在源链上观察到这个动作，并将信息传达给目的链 </p>
+<p>3. 源链 Token 代表在目的链上被铸成 </p>
+<p>4. 如果源链 Token 被锁定（或销毁），用户可以在目的链上返回包装好的 Token ，以解锁源链上的基础资产。</p>
+<p>在 Edge 和 ChainBridge 的案例中，不同于本文前面的一些解决方案，超级网和桥梁的验证者不一定相同。</p>
+<p>这与独立多链架构中强有力的观点相反，这种观点认为链级和通信级共识的共享验证者集导致更少的故障点。也就是说，考虑到 Polygon 提供的其他共享安全功能，如果桥接验证者集充分分布、拥有恰当激励，那么这可能不是一个关键因素。</p>
+<h4 id="速度和容量-2">速度和容量</h4>
+<p>Polygon 做出了一个与速度和安全有关的有趣设计。通过共享验证者集和共识机制，Polygon 提供了足够的共享安全保障。同时，通过让每个超级网维护自己的状态，它避免了 Polkadot 和其他公司所面临的开销，理论上可以建立无限数量的超级网。</p>
+<h3 id="v-binance-bas">V. Binance BAS</h3>
+<h4 id="概述-4">概述</h4>
+<p>Binance Application Sidechains（BAS）是 BSC 用于特定应用区块链的模块化框架。BAS 的初始版本据估计是一系列 PoS 侧链，有 3-7 个验证人，具体数量取决于每个链所需的安全级别。BAS 链是这篇文章中所涉及的唯一特定应用区块链，应该既不共享共识，也不共享状态，每个 BAS 都有自己独立的验证者集。若想与 BSC 进行关联，可能只能通过供开发者建立侧链的共享工具包和连接 BAS 链与 BSC 的外部桥梁。</p>
+<p>除了 BAS，Binance 还在建立一个通用的执行环境，类似于以太坊 L2，称为 BNB 链分区链（BPC），它将用于承载 BNB Beacon 链的一些计算。这很有趣，但我们在这篇文章中将专注于特定应用侧链的讨论。</p>
+<h4 id="共识最终性和验证者集-2">共识、最终性和验证者集</h4>
+<p>每个 BAS 链都会有自己的 3-7 个验证人，预计会运行基于 PoS 的超级多数（2/3）共识。与 Polygon 超级网不同的是，每个 BAS 链将使用自己的质押和实用 Token 来进行运作。此外，每个侧链的状态和状态转换将完全独立于其他侧链。</p>
+<p>Binance 提供的架构或许是该领域中最弱的情况之一。由于每条链都有小的独立验证者集，并维护自己的状态，这意味着共享安全保障极为有限，Binance 为开发者提供的唯一工具就是自行建立区块链使用的工具包。如果验证者集能够有更大规模，或者在所有侧链间进行高信任共享，那么用 Binance 建立项目值得考虑。然而，BAS 更多的还是适合只需要低共识共享的项目建设。</p>
+<h4 id="互操作性-4">互操作性</h4>
+<p>像任何一组主权区块链一样，BAS 链将需要第三方桥接器来相互通信。在这种情况下，BSC 将利用 Celer 的第三方桥梁，通过「锁定+铸造」的形式，连接到每个 BAS，同时每个 BAS 也通过这种机制连接。</p>
+<p>Binance 采用具有独立验证者的第三方桥梁，在其生态系统中建立项目可能不如建立一个独立的区块链吸引人，因为任何独立的区块链理论上都可以通过这些桥梁连接。要说明的一点是，客观上这并不是一个坏的设计，只是对开发者来说，他们没有强烈理由选择在这个生态系统内项目构建，不如选择直接构建独立的架构。</p>
+<h4 id="速度和容量-3">速度和容量</h4>
+<p>BAS 架构下的侧链不共享验证者、共识或状态，且每个链的验证者集规模很小，导致到最终性的时间可能很短，可容纳的链数很大。</p>
+<h3 id="结论">结论</h3>
+<p>一段时间以来，特定应用区块链一直是可扩展性讨论的重要组成部分，尽管它的实施受制于尚未成熟的互操作性基础设施。在过去几个月，这种基础设施在各种独立的多链生态系统中不断上线，因此我们也希望看到这一领域的更多活动——包括但不限于创建和发展更多特定于用例的子应用层（例如 Polkadot 上的 Acala）以及特定应用的执行环境。</p>
+<p>总的来说，这个领域的每个项目都在速度/能力与共享安全方面做出了不同的权衡。能够成功吸引最多开发者使用的项目很可能是那些在这两者之间做出平衡的项目。</p>
+<blockquote>
+<p>原文标题：《Flavors of Standalone Multichain Architecture》</p>
+</blockquote>
+<blockquote>
+<p>原文作者：Shanav K Mehta，Jump Crypto</p>
+</blockquote>
+<blockquote>
+<p>原文编译：郭倩雯，链捕手</p>
+</blockquote>
+<p>来源：区块律动</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38560/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">DC Comics推出NFT市场 测试版已上线</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38551/">
+                <span class="next-text nav-default">产品经理的 Web3 转型指南</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#比较标准">比较标准</a></li>
+        <li><a href="#i-polkadot-parachains">I. Polkadot parachains</a></li>
+        <li><a href="#ii-cosmos">II. Cosmos</a></li>
+        <li><a href="#iii-avalanche-subnets">III. Avalanche subnets</a></li>
+        <li><a href="#iv-polygon-supernets">IV. Polygon Supernets</a></li>
+        <li><a href="#v-binance-bas">V. Binance BAS</a></li>
+        <li><a href="#结论">结论</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

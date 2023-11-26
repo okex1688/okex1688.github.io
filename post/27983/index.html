@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文读懂勒索攻击：特征、趋势与挑战 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="勒索攻击又称为“赎金木马”，是指网络攻击者通过对目标数据强行加密，导致企业核心业务停摆，以此要挟受害者支付赎金进行解密。" />
+<meta name="keywords" content="勒索" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/27983/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文读懂勒索攻击：特征、趋势与挑战" />
+<meta property="og:description" content="勒索攻击又称为“赎金木马”，是指网络攻击者通过对目标数据强行加密，导致企业核心业务停摆，以此要挟受害者支付赎金进行解密。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/27983/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-30T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文读懂勒索攻击：特征、趋势与挑战">
+<meta itemprop="description" content="勒索攻击又称为“赎金木马”，是指网络攻击者通过对目标数据强行加密，导致企业核心业务停摆，以此要挟受害者支付赎金进行解密。"><meta itemprop="datePublished" content="2021-08-30T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-30T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8195">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文读懂勒索攻击：特征、趋势与挑战"/>
+<meta name="twitter:description" content="勒索攻击又称为“赎金木马”，是指网络攻击者通过对目标数据强行加密，导致企业核心业务停摆，以此要挟受害者支付赎金进行解密。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文读懂勒索攻击：特征、趋势与挑战</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-30">
+      2021-08-30
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8195 字 -
+        预计阅读 17 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>1989年，哈佛大学学生约瑟夫·L·波普制作了全球首个勒索病毒—AIDS木马，这位哈佛高材生将勒索病毒隐藏在软盘中并分发给国际卫生组织艾滋病大会的参会者。此款勒索病毒会记录用户设备重启次数，一旦超过90次就会对电脑中的文件进行加密，并要求邮寄189美元才能解密重新访问系统。虽然“<strong>名牌大学生恶作剧+邮寄支付赎金</strong> ”的标签在今天看来既没有多大危害，也不够专业，但勒索病毒发起的对经济社会的攻击，在此后的30多年中逐渐演变为让人闻之色变的网络攻击浪潮。</p>
+<h3 id="勒索攻击从恶作剧向"><strong>勒索攻击从恶作剧向</strong></h3>
+<h3 id="专业组织化网络攻击演变"><strong>专业组织化网络攻击演变</strong></h3>
+<p>勒索攻击又称为“赎金木马”，是指网络攻击者通过对目标数据强行加密，导致企业核心业务停摆，以此要挟受害者支付赎金进行解密。<strong>如同我们把钱放在保险箱，小偷没有撬开保险箱偷钱，反而把放保险箱的房间加了把锁。</strong> 如果没有房间的钥匙，我们依然拿不到保险箱里的钱。勒索攻击发展历程并不长，在30多年的发展过程中，主要经历三个阶段：1989至2009年是勒索攻击的萌芽期，在这20年中，勒索攻击处于起步阶段，勒索攻击软件数量增长较为缓慢，且攻击力度小、危害程度低。2006年我国首次出现勒索攻击软件。2010年以后，勒索软件进入活跃期，几乎每年都有变种出现，其攻击范围不断扩大、攻击手段持续翻新。2013年以来，越来越多的攻击者要求以比特币形式支付赎金；2014年出现了第一个真正意义上针对Android平台的勒索攻击软件，标志着攻击者的注意力开始向移动互联网和智能终端转移。勒索攻击在2015年后进入高发期，2017年WannaCry勒索攻击在全球范围内大规模爆发，至少150个国家、30万名用户受害，共计造成超过80亿美元的损失，至此勒索攻击正式走入大众视野并引发全球关注。</p>
+<h3 id="勒索攻击典型特征与案例"><strong>勒索攻击典型特征与案例</strong></h3>
+<p>近年来勒索攻击席卷全球，几乎所有国家的政府、金融、教育、医疗、制造、交通、能源等行业均受到影响，可以说有互联网的地方就可能存在勒索攻击。2021年5月，美国17个州能源系统受到勒索攻击，导致美国最大的燃料管道运营商Colonial关闭约8851公里的运输管道，犯罪分子在短时间内获取了100G数据，并锁定相关服务器等设备数据，要求支付75个比特币作为赎金（相当于440万美元）。<strong>勒索攻击已经成为未来一段时期网络安全的主要威胁。</strong> 总的来看，勒索攻击有4个显著特征：</p>
+<h3 id="一隐蔽性强且危害显著"><strong>(一) 隐蔽性强且危害显著</strong></h3>
+<p>勒索攻击善于利用各种伪装达到入侵目的，常见的传播手段有借助垃圾邮件、网页广告、系统漏洞、U盘等。隐蔽性是勒索攻击的典型攻击策略。在入口选择上，攻击者以代码仓库为感染位置对源代码发动攻击；在上线选择上，宁可放弃大量的机会也不愿在非安全环境上线；在编码上，高度仿照目标公司的编码方式和命名规范以绕过复杂的测试、交叉审核、校验等环节。此外，<strong>攻击者往往在发动正式攻击之前就已控制代码仓库，间隔几个月甚至更长时间才引入第一个恶意软件版本，其潜伏时间之长再一次印证了勒索攻击的高隐蔽性。</strong></p>
+<p>调查发现，某些勒索攻击事件的制造者利用尚未被发现的网络攻击策略、技术和程序，不仅可以将后门偷偷嵌入代码中，而且可以与被感染系统通信而不被发现。这些策略、技术和程序隐藏极深且很难完全从受感染网络中删除，为攻击活动细节的调查取证和后续的清除工作带来巨大的挑战。此外，勒索攻击一般具有明确的攻击目标和强烈的勒索目的，勒索目的由获取钱财转向窃取商业数据和政治机密，危害性日益增强。</p>
+<h3 id="二变异较快且易传播"><strong>(二) 变异较快且易传播</strong></h3>
+<p>目前活跃在市面上的勒索攻击病毒种类繁多呈现“百花齐放”的局面，而且每个家族的勒索病毒也处于不断地更新变异之中。2016年勒索软件变种数量达247个，而2015年全年只有29个，其变体数量比上一年同期增长了752%。变体的增多除了依赖先进网络技术飞速发展以外，还与网络攻击者“反侦查”意识的增强相关。很多勒索软件编写者知道安全人员试图对其软件进行“逆向工程”，从而不断改进勒索软件变体以逃避侦查。比如爆发于2017年的WannaCry，在全球范围蔓延的同时也迅速出现了新的变种——WannaCry 2.0，与之前版本的不同是，这个变种不能通过注册某个域名来关闭传播，因而传播速度变得更快。</p>
+<h3 id="三攻击路径多样化"><strong>(三) 攻击路径多样化</strong></h3>
+<p>近年来越来越多的攻击事件表明，<strong>勒索攻击正在由被动式攻击转为主动式攻击。</strong> 以工业控制系统为例，由于设计之初没有考虑到海量异构设备以及外部网络的接入，随着开放性日益增加，设备中普遍存在的高危漏洞给了勒索攻击以可乘之机，一旦侵入成功即可造成多达数十亿台设备的集体沦陷。随着远程监控和远程操作加快普及并生产海量数据，网络攻击者更容易利用系统漏洞发动远程攻击，实现盗取数据、中断生产的目的。为了成功绕过外部安装的防火墙等安全设施，不少勒索攻击诱导企业内部员工泄露敏感信息。除了针对运营管理中存在的薄弱环节，勒索攻击还在设备安装过程中利用内置漏洞进行横向渗透，一旦发现系统已有漏洞则立即感染侵入。</p>
+<h3 id="四攻击目标多元化"><strong>(四) 攻击目标多元化</strong></h3>
+<p>一方面是<strong>从电脑端到移动端</strong> 。勒索病毒大多以电脑设备为攻击目标，其中Windows操作系统是重灾区。但随着移动互联网的普及，勒索攻击的战场从电脑端蔓延至移动端，并且有愈演愈烈的趋势。俄罗斯卡巴斯基实验室检测发现，2019年针对移动设备用户个人数据的攻击达67500个，相比2018年增长了50%。同年卡巴斯基移动端产品共检测到350多万个恶意安装软件包，近7万个新型移动端银行木马和6.8万多个新型移动端勒索软件木马。</p>
+<p>另一方面是<strong>从个人用户到企业设备</strong> 。个人设备在勒索软件攻击目标中一直占据较高比例，但随着传统勒索软件盈利能力的持续下降，对更高利润索取的期待驱使网络攻击者将目标重点聚焦在政府或企业的关键业务系统和服务器上。比如在今年7月16日发生的国家级勒索事件中，厄瓜多尔最大网络运营商CNT遭遇勒索软件RansomEXX的攻击，致使其业务运营、支付门户及客户支持全部陷入瘫痪，犯罪团伙声称已经取得190GB的数据，并在隐藏的数据泄露页面上分享了部分文档截图。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0830/9_jo1bk171ne.png" alt="一文读懂勒索攻击：特征、趋势与挑战"></p>
+<p>随着AI、5G、物联网等技术的快速普及和应用，以及加密货币的持续火爆，勒索攻击呈现出持续高发态势，全球大量知名企业都曾遭到勒索攻击并导致经济和声誉损失。据《2020年我国互联网网络安全态势综述》统计，2020年我国全年捕获勒索病毒软件78.1万余个，较2019年同比增长6.8%。据Cybersecurity Adventure统计，2021年全球勒索软件破坏成本预计将达到200亿美元，高于2015年3.25亿美元的61倍。</p>
+<h3 id="勒索攻击7大趋势特点"><strong>勒索攻击7大趋势特点</strong></h3>
+<h3 id="一影响社会正常运转且难解密"><strong>(一) 影响社会正常运转且难解密</strong></h3>
+<p>勒索攻击对社会正常运转带来较大挑战。在民生方面，大型企业遭到勒索攻击严重影响民众正常生活。2021年5月全球最大的肉类供应商JBS遭到勒索病毒攻击，部分牛羊屠宰加工厂停摆，美国肉类批发价格出现上涨，使得本就受到疫情冲击的全球食品供应链雪上加霜。在医疗卫生方面，勒索攻击不但造成巨额经济损失，同时也威胁到病人生命安全。2020年9月，德国杜塞尔多夫医院30多台内部服务器遭到勒索攻击，一位前来寻求紧急治疗的妇女被迫转送至其他医院后死亡。<strong>这是公开报道的第一起因勒索攻击导致人死亡的事件。</strong> 国内也出现过类似的勒索攻击事件，如某建筑设计院遭遇勒索病毒攻击，数千台电脑文件被加密，工程图纸无法访问，损失惨重。</p>
+<p>勒索攻击使用的加密手段越来越复杂多样，绝大多数不能被解密。<strong>业内专家普遍认为遭受勒索攻击之后，没有“特效药”。</strong> 受害者往往需要在支付巨额赎金和数据恢复重建中做出选择。即使一些勒索攻击采用的加密算法是公开的，但是依靠现有的算力或者是通过暴力破解的方式也难以进行解密，因为暴力解密往往需要上百年的时间。</p>
+<h3 id="二勒索攻击saas化"><strong>(二) 勒索攻击SaaS化</strong></h3>
+<p>随着云计算、人工智能等新技术的快速普及和应用，<strong>勒索软件即服务成为当前网络攻击的新模式。</strong> 勒索软件黑色产业层级分明，全链条协作，开发者只管更新病毒，拓展传播渠道大肆释放勒索病毒，各级分销参与者点击鼠标就能从中瓜分利润。这种黑色产业分销模式大大降低了勒索攻击的传播门槛，使网络安全风险快速扩散。例如，依靠这种黑产模式，某勒索攻击软件仅用一年多时间就敛财20亿美元。</p>
+<p>勒索攻击从制作、传播、攻击到收益呈现系统化、便捷化趋势，开发者可以提供一整套解决方案，甚至包括利用加密货币进行赎金支付等服务。这些解决方案具有“<strong>开箱即用</strong> ”的便捷性，犯罪分子获得勒索病毒后，可以通过多种渠道进行传播并获利，攻击模式更为便捷。此外，攻击者往往并不需要任何编程技术就可以开展违法犯罪活动，理论上任何人只要支付少量费用就可以通过这类服务开展勒索攻击，导致网络攻击的门槛大幅降低。</p>
+<h3 id="三加密货币普及助推赎金额度快速增长"><strong>(三) 加密货币普及助推赎金额度快速增长</strong></h3>
+<p>勒索病毒的制造者对赎金的要求越来越高。2017年在全球140多个国家和地区迅速蔓延的WannaCry勒索病毒赎金仅为300美元，4年后勒索病毒要求企业支付的赎金则大多在上百万美元， Sodinokibi勒索病毒在2019年前后出现在中国时，索要金额仅7000元人民币，到了2020年，该团伙的勒索金额已动辄千万美元以上。例如2020年3月，计算机巨头宏碁公司被要求支付5000万美元赎金；2020年11月，富士康墨西哥工厂被要求支付超过3400万美元赎金。</p>
+<p><strong>高额赎金不仅让犯罪分子赚得盆满钵满，同时可以借此招揽更多人铤而走险加入勒索攻击行列。</strong> 加密货币近年来成为社会关注的焦点，尤其是加密货币的匿名化导致监管部门很难对其进行管理。犯罪分子利用加密货币这一特点，有效隐匿其犯罪行径，导致网络攻击门槛降低、变现迅速、追踪困难，一定程度上成为网络犯罪快速增长的“助推剂”。</p>
+<h3 id="四大型企业和基础设施成为攻击重点"><strong>(四) 大型企业和基础设施成为攻击重点</strong></h3>
+<p>传统勒索病毒攻击者使用广撒网、误打误撞的手法，这种无差别攻击很难预测受害者是谁，哪些受害者有价值。同时，普通用户的数据价值相对不高，且缴纳赎金的意愿并不强烈。近年来，勒索攻击对象涉及面越来越广，目前主要针对掌握大量数据的大型企业，且定向精准攻击趋势愈发明显，勒索攻击日趋APT化。所谓APT化，即攻击不计成本、不择手段，从低权限帐号入手，持续渗透攻击，直到控制企业核心服务器，再释放勒索病毒，使巨型企业彻底瘫痪。此外，勒索攻击APT化还意味着攻击者入侵后会首先窃取该企业的核心数据，即使企业使用备份恢复系统，核心机密泄露也会导致极其严重的损失。波音公司、台积电、富士康、全球最大的助听器制造商Demant、法国最大商业电视台M6 Group都曾成为被攻击对象。BlackFog研究发现，2020年勒索攻击主要针对政府部门、制造业、教育和医疗保健等行业。</p>
+<p>同时，攻击者开始针对特定企业有针对性地制定攻击策略，<strong>哪些企业掌握大量有价值的数据，哪些企业就越容易遭到攻击。</strong> 针对目标企业，攻击者手法更加多样化、对高价值目标的攻击进行“量身定做”，形成一整套攻击“组合拳”。对于大型企业来讲，网络节点和上下游关联企业与供应商都成为潜在的攻击漏洞，产业链中安全薄弱环节均成为攻击者实现突破的关键点。许多企业为了避免业务被中断，往往选择支付巨额赎金。</p>
+<h3 id="五双重勒索模式引发数据泄露风险"><strong>(五) “双重勒索”模式引发数据泄露风险</strong></h3>
+<p>时至今日，勒索攻击已经从单纯的支付赎金即可恢复被加密的数据，逐渐演变成先窃取商业信息和内部机密，而后威胁企业不缴纳赎金将公开数据，<strong>这种新模式也被称为“双重勒索”</strong> 。这样一来，不仅使得勒索攻击杀伤性增强，被勒索企业缴纳赎金的可能性变大，诱使勒索攻击者发动更多攻击，而且极易引发大规模的行业内部数据泄露事件，使得受害企业同时承受数据公开、声誉受损、行政处罚等多重压力。</p>
+<p>据不完全统计，自2019年11月首次公开报道勒索病毒窃取数据的事件以来，不到一年时间里，有超过20个流行勒索病毒团伙加入到数据窃取的行列中。以Maze（迷宫）勒索攻击为例，它不仅最先开始系统性地窃取数据，还以泄露数据相逼要挟用户缴纳赎金。越来越多的勒索事件表明，<strong>“双重勒索”模式已成为现今网络攻击者实施攻击的重要手段。</strong></p>
+<h3 id="六供应链成为勒索攻击的重要切入点"><strong>(六) 供应链成为勒索攻击的重要切入点</strong></h3>
+<p>供应链攻击作为一种新型攻击手段，凭借自身难发现、易传播、低成本、高效率等特点成功跻身最具影响力的高级威胁之列。供应链攻击一般利用产品软件官网或软件包存储库等进行传播，网络攻击一旦成功攻陷上游开发环节的服务器，便会引发连锁效应，波及处于供应链中下游的大量企业、政府机构、组织等。<strong>由于被攻击的应用软件仍然来自受信任的分发渠道，恶意程序将随着软件的下载安装流程悄无声息地入侵目标电脑，</strong> 逃避传统安全产品检查的同时又可沿供应链发动向后渗透攻击，大大增加安全检测的难度。</p>
+<p>近年来供应链攻击备受关注。2017年6月一家不知名的乌克兰软件公司遭受勒索攻击，勒索病毒通过软件公司服务器传播到数家全世界最大的企业之中，令其运营陷入瘫痪，造成全球范围内约100亿美元的损失。2021年7月，美国软件开发商Kaseya遭勒索攻击，网络攻击团伙索要高达7000万美元的赎金，有评论称此次事件可能成为2021年影响最大的供应链攻击事件。</p>
+<h3 id="七引发网络保险行业的恶性循环"><strong>(七) 引发网络保险行业的恶性循环</strong></h3>
+<p>美国战略与国际研究中心与杀毒软件供应商迈克菲联合发布的一份报告指出，估计每年全球网络攻击所带来的损失将达9450亿美元，再加上约1450亿美元的网络防护支出费用，总经济成本将超过1万亿美元。高额的网络攻击成本催生了对网络风险保险的庞大需求市场，根据预测，到2025年网络风险保险费用将从2016年的32.5亿美元上升到200亿美元。伦敦再保险经纪商Willis Re透露，今年7月保单更新季，网络安全相关保险费率将迎来40%的大幅增长。</p>
+<p>然而网络保险行业欣欣向荣的表象下，却潜藏着巨大的恶性循环危机。由于最近几个月来全球几大公司接连遭到灾难性的勒索攻击，越来越多的企业向网络保险和再保险公司寻求帮助，<strong>网络攻击者特意挑选投保了网络保险的公司作为攻击目标</strong> ，更加有针对性地实施勒索攻击，使得网络犯罪的成功率大幅提升，整体网络环境面临加速恶化的窘境。为遏制这一情况的继续恶化，已有多家公司开始缩减网络保险覆盖范围，法国正在考虑强制所有网络保险商停止报销赎金支出，以切断网络犯罪这一有利可图的途径。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0830/9_vlpy8v1rhe.png" alt="一文读懂勒索攻击：特征、趋势与挑战"></p>
+<h3 id="提高预防意识并"><strong>提高预防意识并</strong></h3>
+<h3 id="构建前置安全是关键"><strong>构建前置安全是关键</strong></h3>
+<p>由于勒索攻击高强度加密算法的难破解性和数字货币交易方式的隐蔽性，并不建议将防治重点放在遭受攻击后的解密环节，而应该着重做好预防工作，不给勒索病毒以可乘之机。</p>
+<p>从个人用户来讲， <strong>增强员工安全意识与加强数据备份同等重要</strong> ：一方面要增强安全意识。对于可疑的邮件尤其是附带的网址不建议随意点开，同时系统提示的安装补丁或者软件病毒库要保持及时更新。另一方面，对于使用了非对称加密算法加密的文件，目前尚未找到有效的破解方法，一旦计算机遭到此类新型勒索病毒的攻击只能束手待毙，因而必须在平日里就做好重要数据的备份工作，且最好使用本地磁盘和云服务器双备份的策略。</p>
+<p>从企业用户来讲，<strong>解决勒索攻击的核心是构建“安全能力前置”，提升自身的“免疫力”</strong> ：</p>
+<p><strong>1.“安全能力前置”成为企业必选项。</strong> 企业数字化程度越高，潜在的安全风险也就越大，甚至会有致命风险。被动防御性的安全思路难以应对多样化、动态化的网络攻击。因此，一方面要利用AI、大数据、云计算等新技术实现安全能力在业务环节的前置，提前预判潜在安全风险，另一方面要对安全专家或人才能力量化，使过往积累的安全经验与能力标准化、流程化，以实现安全能力的量化部署。</p>
+<p><strong>2.构建云上安全提升安全防御能力。</strong> 产业互联网时代安全威胁逐步扩大，企业在应对勒索攻击时，数据备份和恢复的重要性进一步凸显。云原生安全所具备的开箱即用、自适应等显著优势将成为保障云平台和云上业务安全的重要基础。一方面云原生安全将构建安全服务全生命周期防护，伴随云上业务发展全过程。另一方面云上安全产品将向模块化、敏捷化和弹性化演进，为用户提供差异化服务，成为兼顾成本、效率和安全的“最优解”。</p>
+<p><strong>3.零信任有望成为勒索攻击有效解决途径。</strong> 零信任假定所有身份、设备和行为都是不安全的，即使曾经有过被“信任”的经历也要一视同仁，在接入时需要进行全程安全验证和检查。攻击者使用窃取到的账号信息登录VPN或其他内部业务平台时，由于零信任采用多因子用户验证（即只有账号密码还不够，需要配合短信验证码、token、人脸识别等），即使攻陷了企业的一台服务器，也无法致使勒索攻击扩散到其他服务器。零信任体系还能有效阻止黑客入侵后在内网扩散。攻击者可能控制某些脆弱的单点，当其通过已攻击的终端向网络内部更重要系统渗透时，零信任的安全机制可以及时检测到风险，从而帮助企业将风险控制在最小限度，不至于发生全网崩溃的严重后果。</p>
+<p><strong>4. 打好保障供应链安全的“组合拳”。</strong> 一方面，须加强代码审计与安全检查。机构组织可向供应商索要清单，列明其使用的所有代码组件，以识别与开源组件漏洞有关的潜在风险。此外还可以考虑在实施代码前，增加额外的自动化或手工检查，并利用第三方工具对软件及相关产品源代码进行详细的安全分析。另一方面，加快推动建立零信任架构等安全防护机制。供应链攻击暴露出网络安全架构最大的缺陷就是过于信任。而零信任架构意味着每个试图访问网络资源的人都要进行验证，其访问控制不仅能应用于用户，也适用于服务器设备与各类应用，以防止第三方供应商获得不必要的特权，从而降低恶意软件的渗透风险。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0830/9_ru853zhzfa.png" alt="一文读懂勒索攻击：特征、趋势与挑战"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0830/9_3yv524g7hs.png" alt="一文读懂勒索攻击：特征、趋势与挑战"></p>
+<p><img src="https://img.jinse.com/5557803_image3.png" alt="一文读懂勒索攻击：特征、趋势与挑战"></p>
+<p>近期全球典型勒索攻击汇总表</p>
+<p> 数据来源：公开信息整理</p>
+<p><strong>作者</strong></p>
+<p><strong>翟尤</strong>   腾讯研究院产业安全中心主任、高级研究员</p>
+<p>参考文献：</p>
+<p>[1]张晓玉,陈河.从SolarWinds事件看软件供应链攻击的特点及影响[J].网信军民融合,2021(04):37-40.</p>
+<p>[2].瑞星2020年中国网络安全报告[J].信息安全研究,2021,7(02):102-109.</p>
+<p>[3]李江宁,覃汐赫.工业领域的勒索攻击态势与应对思路[J].自动化博览,2021,38(01):86-90.</p>
+<p>[4]张宝移.计算机勒索病毒及防治策略分析[J].技术与市场,2020,27(10):109-110.</p>
+<p>[5]高红静.近年勒索软件威胁分析及防范策略综述[J].保密科学技术,2018(12):21-28.</p>
+<p>[6]李易尚.勒索软件:过去、现在和未来[J].北京警察学院学报,2017(06):99-104.</p>
+<p>[7]李建平.供应链安全:防不胜防的软肋[J].保密工作,2021,{4}(04):58-59.</p>
+<p>[8]嵇绍国.2020年勒索软件攻击情况及趋势预测[J].保密科学技术,2020(12):33-43.</p>
+<p>[9]2021上半年勒索病毒趋势报告及防护方案建议,南方都市报,2021-5-10</p>
+<p>[10] 门嘉平.勒索病毒防治策略浅析[J].网络安全技术与应用,2020(06):23-24.</p>
+<p>[11]吴崇斌,成星恺.勒索软件发展现状及应对[J].通讯世界,2019,26(08):111-112.</p>
+<p>[12].盘点2019年勒索病毒灾难事件[J].电脑知识与技术(经验技巧),2019(12):88-90.</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/27967/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">雪崩协议AVAX的成功奥秘是什么？TVL与价格又能否持续</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/27960/">
+                <span class="next-text nav-default">一文纵览主流 NFT 市场平台版税、服务费设计</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#勒索攻击从恶作剧向"><strong>勒索攻击从恶作剧向</strong></a></li>
+        <li><a href="#专业组织化网络攻击演变"><strong>专业组织化网络攻击演变</strong></a></li>
+        <li><a href="#勒索攻击典型特征与案例"><strong>勒索攻击典型特征与案例</strong></a></li>
+        <li><a href="#一隐蔽性强且危害显著"><strong>(一) 隐蔽性强且危害显著</strong></a></li>
+        <li><a href="#二变异较快且易传播"><strong>(二) 变异较快且易传播</strong></a></li>
+        <li><a href="#三攻击路径多样化"><strong>(三) 攻击路径多样化</strong></a></li>
+        <li><a href="#四攻击目标多元化"><strong>(四) 攻击目标多元化</strong></a></li>
+        <li><a href="#勒索攻击7大趋势特点"><strong>勒索攻击7大趋势特点</strong></a></li>
+        <li><a href="#一影响社会正常运转且难解密"><strong>(一) 影响社会正常运转且难解密</strong></a></li>
+        <li><a href="#二勒索攻击saas化"><strong>(二) 勒索攻击SaaS化</strong></a></li>
+        <li><a href="#三加密货币普及助推赎金额度快速增长"><strong>(三) 加密货币普及助推赎金额度快速增长</strong></a></li>
+        <li><a href="#四大型企业和基础设施成为攻击重点"><strong>(四) 大型企业和基础设施成为攻击重点</strong></a></li>
+        <li><a href="#五双重勒索模式引发数据泄露风险"><strong>(五) “双重勒索”模式引发数据泄露风险</strong></a></li>
+        <li><a href="#六供应链成为勒索攻击的重要切入点"><strong>(六) 供应链成为勒索攻击的重要切入点</strong></a></li>
+        <li><a href="#七引发网络保险行业的恶性循环"><strong>(七) 引发网络保险行业的恶性循环</strong></a></li>
+        <li><a href="#提高预防意识并"><strong>提高预防意识并</strong></a></li>
+        <li><a href="#构建前置安全是关键"><strong>构建前置安全是关键</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

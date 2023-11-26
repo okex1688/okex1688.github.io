@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文探讨下一代稳定币设计 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="稳定币项目在长期来看受不可能三角制约，因此要对不可能三角有清楚的认识。" />
+<meta name="keywords" content="稳定币" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39302/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文探讨下一代稳定币设计" />
+<meta property="og:description" content="稳定币项目在长期来看受不可能三角制约，因此要对不可能三角有清楚的认识。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39302/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-22T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文探讨下一代稳定币设计">
+<meta itemprop="description" content="稳定币项目在长期来看受不可能三角制约，因此要对不可能三角有清楚的认识。"><meta itemprop="datePublished" content="2022-06-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6336">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文探讨下一代稳定币设计"/>
+<meta name="twitter:description" content="稳定币项目在长期来看受不可能三角制约，因此要对不可能三角有清楚的认识。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文探讨下一代稳定币设计</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-22">
+      2022-06-22
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6336 字 -
+        预计阅读 13 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="不可能三角论证">不可能三角论证</h2>
+<p>不可能三角对主权国家信用货币体系起到制约作用，并在实践上不断被证明。稳定币也存在着不可能三角，并受其制约，<strong>因此在讨论下一代稳定币的设计之前，我们需要先了解不可能三角，并与稳定币建立联系，从而抓住稳定币设计的关键</strong> 。</p>
+<h2 id="什么是不可能三角">什么是不可能三角</h2>
+<p>不可能三角由蒙代尔和弗莱明在 1960 到 1963 年间分别独立提出，并在此后国际金融的实践中被反复证明。不可能三角是指，一个主权国家，不可能同时实现固定汇率制，资本自由流动和独立的货币政策。</p>
+<ul>
+<li>
+<p>固定汇率制是指本国货币与某种货币的汇率保持稳定，从而实现本国货币的币值稳定。固定汇率有利于进出口贸易的稳定。</p>
+</li>
+<li>
+<p>资本自由流动是指对资本没有管制，资本可以随时进入和推出本国的金融市场。</p>
+</li>
+<li>
+<p>独立的货币政策是指，本国央行可以自由决定实行何种货币政策，自由调控本国货币发行，自由决定本国利率水平。</p>
+</li>
+</ul>
+<p>为什么三个要素不能同时达成呢？简单来说，对于一个主权国家信用货币来说，<strong>如果资本是自由流动的，那么隐含的一个条件是，当该主权国家信用货币体系提供的收益率不再具有吸引力时，由于资本不受限制，那么资本将会完全撤出。</strong> 而如果在资本自由流动的情况下，一国央行实行独立的货币政策，考虑其增发货币降息降准的情况，此时，由于利率下降，资本将撤出该国的金融市场，该国货币会被大幅抛出，面临贬值压力，而如果要维持固定汇率制，就必须有大量的储备资产吸收抛压，而与国际游资相比，一国的储备资产往往是无法支撑的，因此，无法保持固定汇率制。</p>
+<h2 id="稳定币的不可能三角">稳定币的不可能三角</h2>
+<p>许多研究员和学者对稳定币的不可能三角都有自己的阐述，但是并没有一个共识的表述，而本文将结合之前的研究，从自己的研判出发，讨论稳定币的不可能三角。</p>
+<p><strong>本文认为稳定币的不可能三角包括，稳定，去中心化和资本效率</strong> 。</p>
+<h3 id="去中心化">去中心化</h3>
+<ul>
+<li><strong>什么是去中心化？</strong></li>
+</ul>
+<p>在稳定币的语境下，去中心化的含义包括两个，<strong>交易的去中心化和资产的去中心化</strong> 。</p>
+<p>交易的去中心化指交易不受限制，任何实体无法阻止系统中的交易，<strong>交易的受限程度越低，交易的去中心化程度越高。</strong> 资产的去中心化是指储备资产无法被特定主体控制，无法被挪用，<strong>储备资产被特定主体的控制程度越低，资产的去中心化程度越高</strong> 。</p>
+<p>交易的去中心化在现阶段实现程度已经相当高了，许多稳定币项目会依靠公链实现交易的去中心化，并且交易所的高度发达使得资本流动的程度接近于完全自由流动，<strong>实际上，在数字货币的范围中，全球资本的自由进出达到了前所未有的高度</strong> 。</p>
+<p>而资产的去中心化是难以实现的，USDT、USDC 的储备资产完全由项目方控制，即使有透明的资产公示和第三方审计，<strong>仍然无法排除项目方挪用资产的风险</strong> 。即使是协议控制流动性的项目，也存在项目方擅自挪用储备资产的前车之鉴。Luna 崩盘时，LFG 储备了 UST 大量的高价值储备资产，如 BTC、AVAX 等，这些资产是否被拿来救市，是不透明的。资产的去中心化解决方案仍然是一个难题。</p>
+<h3 id="资本效率">资本效率</h3>
+<ul>
+<li><strong>什么是资本效率</strong></li>
+</ul>
+<p>资本效率本身包括很多因素，体系本身的增长率是一部分，更小的交易成本也是一部分，与体系相关的一些协议的收益率也是一部分。但是这些都可以被讨论成独立的货币政策，为什么，因为<strong>资本效率作为不可能三角的制约实际上是说，体系本身能不能独立地调控资本效率</strong> 。从 Luna 崩盘中可以看出，独立的高收益率，在同时实现稳定和去中心化的情况下是不可维持的，因为一旦预期发生改变，资本可以自由撤出，抛压非常严重，因此，如果想要实现稳定和去中心化，那么资本效率就是不可维持的。</p>
+<ul>
+<li><strong>超额抵押不是资本效率的损失</strong></li>
+</ul>
+<p>之前普遍存在的一个误区是，超额抵押是资本效率的损失，提高资本效率的努力方向是降低抵押率，这个是一个误解。超额抵押与否跟资本效率是没有关系的，超额抵押只是反映了不合理的信用膨胀，反映了一个新的信用形式在特定阶段合理的折兑价值，而并不是资本效率的损失。</p>
+<p>要从长期来看，在信用疯狂扩张的时期，人们只会觉得超额的抵押率是如此的刺眼，从而追求更高的杠杆，但是周期反转时，终会迎来崩溃。要把信用加强的过程和资本效率分开，但是比较困难，<strong>因为一个新的信用形式在短时间内被人们追捧，迅速向体系外扩张时，体系外资本进入的收益将超过内部收益率，此时很难分辨高收益是由资本进入，信用膨胀导致的，还是由于体系内的收益驱动的。唯一的办法就只有对新的信用形式采用超额抵押，避免超出控制的信用膨胀</strong> 。快速的信用膨胀在长期来看是不利的，在短期内会导致财富的快速再分配。超额抵押实际上降低了信用风险，对于新的信用形式，是必然的选择。</p>
+<h3 id="稳定">稳定</h3>
+<ul>
+<li><strong>什么是稳定</strong></li>
+</ul>
+<p>稳定是指数字货币与主权国家货币保持固定的兑换比率。稳定分长期和短期，短期稳定自然可以通过储备资产来抵消抛压实现，但是储备资产总会耗尽，要实现长期的稳定，就必然要受到限制，在另外两个要素里面做出取舍。现阶段，稳定依靠于足额的储备资产。</p>
+<p>信用形式不是一成不变的，上一个阶段算法稳定币的尝试就是想创造一种新的信用形式，但是想要凭空创造一种新的信用形式是不可能的，新的信用形式需要依靠旧的信用形式，逐步转变。</p>
+<h2 id="下一代稳定币设计">下一代稳定币设计</h2>
+<p><strong>下一代稳定币设计要考虑的问题是如何在不可能三角之间做出选择，如何在边际上进行信用扩张</strong> ，本文针对这一问题提出了信用扩张的零售模式，用来解决信用扩张的边际问题，提出了不可能三角的动态平衡，根据情况做出选择，提出了货币政策调控框架来调控货币发行。</p>
+<p>也有一些研究机构和学者提出了可供选择的设计思路，但是都具体于储备资产选择，抵押率选择，稳定机制构建等具体问题上，对稳定币如何进行信用扩张，如何选择不可能三角论述较少，而这些在长期来说对一个稳定币项目才是最关键的。因此，本文从这几个角度针对下一代稳定币设计提出三个改进的地方。</p>
+<p><strong>本文讨论的稳定币是以稳定为目标的数字货币，并不特指以某种资产作为储备资产的稳定币或算稳</strong> 。</p>
+<p>本文认为，下一代稳定币在设计上有三点需要注意：<strong>在不可能三角的选择上，对不可能三角进行动态平衡，根据市场情况调节自己的选择，做出弹性的应对；在信用扩张上，应当采用零售模式；在货币政策上，原生代币应部分吸收铸币税，并构建流动性市场</strong> 。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0622/22_1nmnhal6md.png!heading" alt="一文探讨下一代稳定币设计"></p>
+<h2 id="动态平衡不可能三角">动态平衡不可能三角</h2>
+<p> 对于一个稳定币项目来说，不可能三角的约束不是刚性的，即三个因素不是非此即彼的刚性约束，每一个因素都可以选择不同的强度，不可能三角的更合理表述是三者不可能同时达到高强度。<strong>稳定币既可以在同一时点对三个要素分别选择不同程度，也可以根据不同的发展阶段调节三者的强弱程度。</strong></p>
+<h3 id="同一时点不同程度各要素非刚性">同一时点，不同程度，各要素非刚性</h3>
+<p>对于稳定来说，实际上稳定本身不足以概括所有的选择，稳定本身也有强弱之分，通过抵押率的选择，储备资产的选择，兑现的摩擦成本控制，一个稳定币项目呈现出不同的波动率和承兑能力，选择更强的稳定，势必要削弱另外两个因素。</p>
+<p>同理，去中心化也是一样的，资产的去中心化程度越高，调整资产的灵活度越差，交易去中心化程度越高，资本流动越自由，越难以控制资产从内部到外部的流失，也越难以控制资产从外部到内部的涌入，另外两个因素就会受到影响。</p>
+<p>资本效率的独立性越强，即货币政策越独立，就需要调控体系内部的收益率，而这要求在稳定的情况下越封闭的系统以及在开放系统下越浮动的兑换比率。</p>
+<p><strong>总之，三个要素不是刚性的，可以调控三者的相对强度来达到平衡</strong> 。</p>
+<p>不过，意识到三个要素都不是刚性的，实际上选择就更加灵活了，这一点在 RMB，FRAX 中都是有所体现的，RMB 放开 CA 账户（经常账户，商品和服务等贸易）的自由流动，但严格控制 KA 账户（资本金融账户），RMB 虽然是固定汇率制，但是也有浮动机制，会根据情况调整目标价，而独立的货币政策也不是完全独立，美联储的加息降息周期也会考虑在内。</p>
+<h3 id="动态规则">动态规则</h3>
+<p>虽然选择的范围更多更灵活了，但是如何根据外部情况来调整，是更加关键的问题。本文在宏观上给出动态规则来指导不可能三角的动态平衡。</p>
+<p>对于动态平衡的选择，基本原则是服从传统金融的大周期和自身的发展战略，但要在扩张期更激进，因为整个数字货币市场也会有大的外部吸收。<strong>宏观上的选择有，加强内部吸收，优化内部增长，以及投机产品三种</strong> 。</p>
+<ul>
+<li>
+<p>加强外部吸收：高利率（资本效率）、锚定（稳定）、限制资本自由流动（锁仓等）</p>
+</li>
+<li>
+<p>优化内部增长：低利率（资本效率）、锚定（稳定）、放开资本自由流动</p>
+</li>
+<li>
+<p>合格的投机产品：高利率（资本效率）、浮动（稳定）、放开资本自由流动</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0622/22_agakmm7hvl.png!heading" alt="一文探讨下一代稳定币设计"></p>
+<h2 id="采用信贷零售模式进行信用扩张">采用信贷零售模式进行信用扩张</h2>
+<p>信用扩张对于一个稳定币项目来说，是和不可能三角选择问题独立的，而且是比不可能三角选择更重要的。信用扩张是稳定币在微观层面上如何增发货币，如何提高自己的信用水平的一种模式体系。本文提出采用信贷零售模式进行信用扩张，在边际上具有灵活性。</p>
+<p>在传统的主权国家信用货币体系中，信用扩张依靠整个一套中央银行加商业银行的扩张体系，微观上是密集的银行网点和大量的业务员。对于上一代算法稳定币来说，其想通过一整套的智能合约加互联网的前端运营推广来进行信用扩张。而本文则提出，<strong>稳定币完全依靠智能合约是存在问题的，还是需要有零售的模式，在微观上还是有一部分需要人来操作</strong> ，人具有主观能动性，更重要的是，每个人都有资产专用性强的信息，这一部分构成了信用扩张的基础。</p>
+<h3 id="信用扩张存在边际问题">信用扩张存在边际问题</h3>
+<p>利率在边际上应当是变化的，有一定的范围，否则就会出现一系列问题，而算法稳定币依靠智能合约或一些特定协议做信用扩张时，对于所有人的准入门槛、抵押率等都是一样的。这<strong>里就存在逆向选择问题，当一个人在考虑借贷或抵押资产以获得稳定币时，如果他觉得抵押率不合适，那么，他会选择他认为更优的项目，而且最有可能选择的就是他认为他是占到便宜的项目</strong> ，因此，如果边际上一视同仁，那么选择来这个项目的用户就会比预期要差，整个项目面临严重的逆向选择问题，即违约概率比想象中的要高。这也就是为什么要在边际上针对个体做出调整。这也是在传统金融和去中心化金融中都被反复验证的。要解决这一问题，就需要引入信贷零售模式。</p>
+<h3 id="信贷零售模式">信贷零售模式</h3>
+<p>该模式需要完备的链上信用体系，整体的信用扩张依靠业务员在微观层面上的信贷发放，业务员为自己工作，同时对信贷起到一定的担保作用，业务员可以自由形成组织，并按历史业绩叠加自身在稳定币项目上的抵押来确定自己的层级和额度优惠，而项目方只负责确保支付清算和信用结算以及维持一个固定收益市场。<strong>业务员通过历史业绩和抵押品来形成初始信用，获得额度和利率范围，然后业务员根据市场上的贷款需求来放贷，贷款人需要提供信用记录和抵押部分资产</strong> 。通过这种方式在微观上把货币发放出去，实现信用扩张。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0622/22_iscfry7z4b.png!heading" alt="一文探讨下一代稳定币设计"></p>
+<p>零售模式的优点就是可以在边际上发挥人的信息优势，通过 Web3 的方式构建一个信用扩张体系，如果 DID 发展完善的话，用户可以将一部分信息作为抵押物，这个过程实际上就是在外部吸收，因为<strong>货币在这个过程中创造了增量价值，流动性不是分配给套利者，而是分配给真正有借贷需求的人，而这些需求就是商业信用，当商业信用不断被实现时，整个体系就有了内部增长的动力</strong> 。</p>
+<h2 id="构建货币政策调控框架">构建货币政策调控框架</h2>
+<h3 id="原生代币设计">原生代币设计</h3>
+<p>在先前的项目中，发行原生代币的算稳项目大部分都要拿全部的铸币税，动机是以货币发行的预期来激励人们购买原生代币，反过来支撑稳定币。<strong>但是这种信用形式被证明是脆弱的，拿全部的铸币税不合理的地方在于，铸币税不应当被少数实体控制，也不应当激励少数人大量购买原生代币</strong> 。</p>
+<p>整个信用体系的形成并不是靠一个团队就能实现的，他依赖于所有的体系内参与者，而原生代币的分配不合理会导致体系扩张带来的收益不平衡，有少数人会在短时间内迅速积累大量财富，这对于激励体系来说是失败的。<strong>应当均衡分配收益，并且明确规则，以促使财富分配降速，这适合于整个体系的发展。因此，本文提出，原生代币应吸收部分铸币税。</strong></p>
+<p>因此，要发行原生代币作为部分储备资产吸收部分铸币税，并且随着信用扩张来提高比例，原生资产作为储备资产的比例反映了该信用形式被大众接受的程度。原生代币设计应遵循以下几点。</p>
+<ul>
+<li>
+<p>原生代币只拿部分铸币税，小比例，现阶段要选择稳定和去中心化。</p>
+</li>
+<li>
+<p>当体系内的收益增加，逐步转变为以原生代币的未来期收入做储备资产，支撑发行货币，比例慢慢提高。</p>
+</li>
+<li>
+<p>灵活选择周期，加速扩张时可以适当增加原生代币的比例。</p>
+</li>
+</ul>
+<h3 id="货币政策的量价调控">货币政策的量价调控</h3>
+<p>量指的是货币供应量，而价指的是收益率，**整个体系的收益水平，直接反映了边际上的流动性价格。**直接调控货币供应量是最直接的货币政策，上一代的货币政策调控机制 rebase 等机制，在边际上是一致的，没有所谓的精准投放。而如果采用信贷零售模式来投放货币，通过给业务员配额的直接调整来直接在边际上投放货币。</p>
+<p>相比于直接调控货币供应量来说，价格的调控更加精准，这就必须有一个完善的流动性交易市场，形成一个收益率，而项目方自己有一个可以调控的利率作为基准利率，来影响整个市场。对于采用信贷零售模式进行扩张的项目来说，基准利率可以使用抵押率。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0622/22_6d87iyidi5.png!heading" alt="一文探讨下一代稳定币设计"></p>
+<p>在价的调控中，<strong>逆周期调节机制可用于指导价的调控</strong> 。</p>
+<ul>
+<li>
+<p>加速膨胀期，货币需求大，货币发行多，增加利率（抵押率）</p>
+</li>
+<li>
+<p>加速衰退期，货币需求低，货币发行少，降低利率（抵押率）</p>
+</li>
+</ul>
+<p>通过逆周期调节，可以降低项目的波动，但是具体操作还要根据周期规律和战略进行选择。</p>
+<h2 id="总结">总结</h2>
+<p>稳定币项目在长期来看受不可能三角制约，因此要对不可能三角有清楚的认识，并根据动态规则进行动态平衡。</p>
+<p>信用扩张如果完全靠合约实现，则会存在逆向选择问题，在边际上没有变化，因此采用信贷零售模式，依靠业务员的放贷来实现外部商业信用的捕获，实现信用扩张。</p>
+<p>原生代币的信用形式完全被接受是一个长期的过程，因此，原生代币只能吸收部分铸币税，在量价的调控上，根据信贷零售模式，一个是直接调整业务员的份额来调控货币供应量，一个是通过抵押率的调整来调整流动性价格，进而影响流动性市场。</p>
+<p><strong>免责声明</strong></p>
+<p>本研究报告内的信息均来自公开披露资料，且本文中的观点仅作为研究目的，并不代表任何投资意见。报告中出具的观点和预测仅为出具日的分析和判断，不具备永久有效性。</p>
+<p><strong>版权声明</strong></p>
+<p>未经 DODO 研究院授权，任何人不得擅自使用（包括但不限于复制、传播、展示、镜像、上载、下载、转载、摘编等）或许可他人使用上述知识产权的。已经授权使用作品的，应在授权范围内使用，并注明作者来源。否则，将依法追究其法律责任。</p>
+<p><strong>关于我们</strong></p>
+<p>「DODO 研究院」由院长「Dr.DODO」带领一群 DODO 研究员潜水 Web 3.0 世界，做着靠谱且深度的研究，以解码加密世界为目标，输出鲜明观点，发现加密世界的未来价值。「DODO 」则是一个由主动做市商（PMM）算法驱动的去中心化交易平台，旨在为 Web3 资产提供高效的链上流动性，让每个人都能轻松发行、交易。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39283/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">新加坡将批准三家公司提供数字支付代币服务</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39270/">
+                <span class="next-text nav-default">以太坊基金会宣布弃用Ropsten、Rinkeby和Kiln等测试网络</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#不可能三角论证">不可能三角论证</a></li>
+    <li><a href="#什么是不可能三角">什么是不可能三角</a></li>
+    <li><a href="#稳定币的不可能三角">稳定币的不可能三角</a>
+      <ul>
+        <li><a href="#去中心化">去中心化</a></li>
+        <li><a href="#资本效率">资本效率</a></li>
+        <li><a href="#稳定">稳定</a></li>
+      </ul>
+    </li>
+    <li><a href="#下一代稳定币设计">下一代稳定币设计</a></li>
+    <li><a href="#动态平衡不可能三角">动态平衡不可能三角</a>
+      <ul>
+        <li><a href="#同一时点不同程度各要素非刚性">同一时点，不同程度，各要素非刚性</a></li>
+        <li><a href="#动态规则">动态规则</a></li>
+      </ul>
+    </li>
+    <li><a href="#采用信贷零售模式进行信用扩张">采用信贷零售模式进行信用扩张</a>
+      <ul>
+        <li><a href="#信用扩张存在边际问题">信用扩张存在边际问题</a></li>
+        <li><a href="#信贷零售模式">信贷零售模式</a></li>
+      </ul>
+    </li>
+    <li><a href="#构建货币政策调控框架">构建货币政策调控框架</a>
+      <ul>
+        <li><a href="#原生代币设计">原生代币设计</a></li>
+        <li><a href="#货币政策的量价调控">货币政策的量价调控</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

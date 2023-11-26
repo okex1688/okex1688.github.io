@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          区块链中私有链的落地应用分析 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="私有链即是被单独个人或组织所控制的区块链，简单到程序员自己写合约在电脑本地部署的测试链，或者复杂到某个企业内部的区块链应用场景，这些都属于私有链的范畴。" />
+<meta name="keywords" content="区块链" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/29365/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="区块链中私有链的落地应用分析" />
+<meta property="og:description" content="私有链即是被单独个人或组织所控制的区块链，简单到程序员自己写合约在电脑本地部署的测试链，或者复杂到某个企业内部的区块链应用场景，这些都属于私有链的范畴。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/29365/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-10-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="区块链中私有链的落地应用分析">
+<meta itemprop="description" content="私有链即是被单独个人或组织所控制的区块链，简单到程序员自己写合约在电脑本地部署的测试链，或者复杂到某个企业内部的区块链应用场景，这些都属于私有链的范畴。"><meta itemprop="datePublished" content="2021-10-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3057">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="区块链中私有链的落地应用分析"/>
+<meta name="twitter:description" content="私有链即是被单独个人或组织所控制的区块链，简单到程序员自己写合约在电脑本地部署的测试链，或者复杂到某个企业内部的区块链应用场景，这些都属于私有链的范畴。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">区块链中私有链的落地应用分析</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-10-08">
+      2021-10-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3057 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>说到区块链，大部分人都会认为指的是加密货币这类的公有链，也有少部分人想到像百度、阿里、腾讯或IBM等组成的联盟链，而私有链却很少被人所提及。实际上很多人对私有链仍然存在一定的偏见，因此对私有链的发展前景并不看好，但是私有链仍然有其一定的应用场景。</p>
+<p>顾名思义，<strong>私有链即是被单独个人或组织所控制的区块链，简单到程序员自己写合约在电脑本地部署的测试链，或者复杂到某个企业内部的区块链应用场景，这些都属于私有链的范畴。</strong> 私有链是任何人都可以自己搭建，并获得超级管理权限，可以随意对区块进行更改等功能实现的链，可以说私有链是完全中心化的链。</p>
+<p>私有链由于其出块等功能被中心化所控制，因此它对网络资源的需求也相对低了很多，比如不需要进行节点的竞争出块，区块同步速度也会快很多，因此出块速度也可以大幅提升，也就是在转账速度等方面，私有链实际上效率非常高，甚至可以达到目前银行或支付机构的速度，这也一定程度上得益于私有链的节点数量较少的缘故，私有链的参与者一般是个人或团体内部，记账人和激励方式都是可随意选择和更改的，同时主要可以进行数据的溯源，主要的应用场景是充当测试链和企业内部的审计等。</p>
+<p>虽然私有链和目前的公链、联盟链所形成的架构和治理方式有所不同，甚至可能不被很多人所理解，但是私有链仍然有其存在的价值。<strong>私有链最大的应用场景有两大方面，第一个是充当公链或联盟链的区块链功能验证，另一个是企业内部的审计管理等方面。</strong></p>
+<p>充当测试链是私有链的最大功能，简而言之，这主要是对相应的联盟链或公链架构或在上面开发的DAPP应用程序在一个可控范围内实现功能测试，在测试通过之后，即可保障应用程序或DAPP的安全性，从而使得公链和联盟链上应用程序的稳定运行，由于大部分公链源码都是公开的，因此通过相应的源码，搭建一个私有的测试链实际上难度并不高，同时联盟链通过许可的方式搭建相应的私有测试链，也是存在类似的功能，这类的链一般以以太坊或hyperledger等为主。</p>
+<p>本地测试链是DAPP或区块链应用程序发布之前必须要进行的一环，一方面团队内部需要对功能实现进行检测，通过后需要对代码进行内审，同时在对区块链应用程序或DAPP进行第三方代码安全漏洞审计的时候，审计机构也需要搭建相应的测试环境，模拟DAPP运行时的场景，这也是应用发布之前必须要做的事情。</p>
+<p>私有链另外一个应用场景即企业内部的审计功能，部分企业之所以使用私有链而不是联盟链或公链的原因其实是企业内部敏感数据的保护需求，联盟链或公链在这部分方面是无法做到的，同时企业为了方便内部管理，也有一定的私有链应用需求。我们如果将一个大型企业看成是一个区块链，那么企业内部复杂的部门和各个分公司子公司等都是一个个节点，对于这类大型企业来说，企业管理也是一个非常重要的部分，而财务等方面的审计也是企业内部关注的事情，企业内部的私有链一般都属于企业内部或购买相应软件产品而实现的功能，当然也有超级账本或企业以太坊等解决方案，一般其功能丰富，TPS较高，可扩展性也非常好，可以实现企业内部更加复杂的功能，比如财务审计、物料管理、商务合同等各种应用场景。</p>
+<p>在区块链之前，企业一般审计分为内部审计和第三方审计，内部审计简而言之就是企业内部的自查，企业内部人员通过翻旧账、资料归纳整理总结等方式暴露企业内部管理问题，从而提出改进策略，促进企业内部成长，防止腐败等行为发生，内部审计是企业内部自己的事情，一般来说，审计结果可信度并不是很高，仅仅是内部自查的一种形式。</p>
+<p>企业为了获取外部团体比如银行的信任，这时就要引入第三方审计机构，第三方审计机构是由社会上有很高知名度的专业团队和公司组成，它们的任务主要是以公平公正的一方为被审计公司提供审计报告，以自己知名度作为担保，这样组建了现代社会的信任制度，传统的内审和第三方审计往往都要花费大量的人力物力财力和时间，比如我们常见的上市公司的财报，实际上这些数据都是审计出来的结果，而我们从目前大部分上市公司财报发布日期比如年报来看，往往最快的是一个月之后出年报，而慢的话，可能需要两三个月，很显然这个过程中效率也会低很多。</p>
+<p>如果我们将区块链看成是一种数据结构或数据库的话，那么区块链在企业内部信息和文件管理方面都存在着很大的应用场景，因此在对于企业而言，如果将大部分功能都能够上传到区块链上的话，那么就可以确保在一定时间段内数据的真实可靠性，如果相应的私有链进行一定的权限划分，那么就可以确保数据的完整性，同时对于企业内审或者第三方审计机构的外审来说，也能够提高审计效率。</p>
+<p><strong>我们都知道上传到区块链的数据一般都是有一定真实度的，虽然私有链也可能存在数据篡改的可能性，但是一方面篡改者需要的高权限</strong> ，而大部分企业员工都拥有低权限管理职能，因此可实现大部分基础业务数据真实可靠，另一部分从基础数据到高层次数据也是由智能合约进行计算而来，因此这种情况下，实际上数据在更高层面的篡改会更加困难，比如进货100个零件，最后出货95个成品，那么必然会有5个剩余，假如企业内部有人故意拿走3个零件。这种情况下如果通过传统的管理软件进行管理，那么可能会出现一定的篡改的时间机会，比如企业不可能每天都进行物料判断，因此当只有内部月度盘点时才会发现问题。</p>
+<p>而如果使用私有链内部智能合约管理的时候，完全可以通过压缩审计或内部统计时间，比如当发生内部账本数据的变化的时候，即可进行相应报告的生成，最后可以实现管理者第一时间发现问题，同时提高内审效率，同时合约能够完整运行通过，那么也代表着相应的计算已经完成，此时第三方审计机构也会将重点放在数据核对方面，而不是链上数据是否造假等方面。</p>
+<p>也正因为此，这几年来，<strong>像德勤、普华永道等都纷纷开始研究区块链的应用，因为一旦企业用到了他们提供的区块链软件，</strong> 一方面能够保障企业内部敏感数据不会被泄露出去，另一方面还能够提高内审和第三方审计机构的效率，因此这也极大提高了效率。</p>
+<p>当然，在私有链在企业的应用场景之中，实际上区块链也主要涉及到数据的记录和相应的智能合约的计算功能，企业真正使用还要结合云计算、物联网、5G等新兴技术来整体实现，最终包装成相应的计算机软件产品，从而悄无声息的应用到企业的方方面面之中。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/29370/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">批准ETF 加密市场将迎来美国SEC的强监管时代？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/29393/">
+                <span class="next-text nav-default">首次拍卖额565万美元 最昂贵时尚NFT系列出炉</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

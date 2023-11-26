@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          用于 DEX 路由器构建和分析的构建区块 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="讨论可用于构建和分析Uniswap V2协议及更高版本构建和分析路由器的构建区块。" />
+<meta name="keywords" content="DEX" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/30163/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="用于 DEX 路由器构建和分析的构建区块" />
+<meta property="og:description" content="讨论可用于构建和分析Uniswap V2协议及更高版本构建和分析路由器的构建区块。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/30163/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-10-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-27T00:00:00+00:00" />
+
+<meta itemprop="name" content="用于 DEX 路由器构建和分析的构建区块">
+<meta itemprop="description" content="讨论可用于构建和分析Uniswap V2协议及更高版本构建和分析路由器的构建区块。"><meta itemprop="datePublished" content="2021-10-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-27T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5336">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="用于 DEX 路由器构建和分析的构建区块"/>
+<meta name="twitter:description" content="讨论可用于构建和分析Uniswap V2协议及更高版本构建和分析路由器的构建区块。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">用于 DEX 路由器构建和分析的构建区块</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-10-27">
+      2021-10-27
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5336 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="概述"><strong>概述</strong></h2>
+<p>用一种资产交换另一种资产是金融市场的一个基本概念。在加密货币市场中，这种情况通常发生在代币或货币与他人交换或交易的地方。Uniswap是一种自动流动性协议，有助于这种类型的交换。它使用成对或池(以下称为对)，两种资产的池储备，允许用户将一种资产交换为另一种资产。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1027/23_fulcyqf11v.png" alt="用于 DEX 路由器构建和分析的构建区块"></p>
+<p>图1.0：Uniswap代币A和B池，以及流动性提供者(LP)和交易者的互换和存款交互示例。LP接收池代币以提供流动性。</p>
+<p>如果有人想要的资产与他们想要交易的资产不成对，会发生什么?在这种情况下，在多个对之间进行一系列互换以获得所需的资产——用于促进这种交易的对被称为路由。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1027/23_nbzsoq8u1o.png" alt="用于 DEX 路由器构建和分析的构建区块"></p>
+<p> 图2.0：一条涉及多对交易 DAI 以换取 USDC 的路由。</p>
+<p>路由是从一个资产到另一个资产的路由，由零或多个对之间的段组成。如果交易的数量足够大，或者如果一对的流动性足够低，可以从多个路由中形成一条路由，通过吸收更多来自其他对的流动性来减少滑点。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1027/23_5tmt0swmmc.png" alt="用于 DEX 路由器构建和分析的构建区块"></p>
+<p>图3.0：由Paraswap路由器说明的多路径路由</p>
+<p><img src="https://img.bibiqing.com/news/2021/1027/23_2bb8kjdiml.png" alt="用于 DEX 路由器构建和分析的构建区块"></p>
+<p>图4.0：多路由</p>
+<p>滑点是指一个人预期为资产支付的价格与实际支付的金额之间的差额，这是由一些因素造成的，比如订单进入市场和交易执行之间的价格变动，或者成交量和流动性低。</p>
+<p>另一个需要考虑的是路由中的段数。这将以在以太坊区块链上操作的gas费用的形式增加交易成本。一条路由上的段数越多，所产生的gas费用就越高。类似地，如果有多种途径，如上图3和图4所示，gas费用也会更高。</p>
+<p>路由器必须考虑这些因素，以产生适合交易数量的路由。此外，由于市场状况经常变化，影响gas费用和池的流动性，生成的路由也将是动态的，现在是一条很好的路由，不一定在一小时后或第二天表现良好。</p>
+<p>本文的其余部分将讨论可用于构建和分析Uniswap V2协议及更高版本构建和分析路由器的构建区块。</p>
+<h2 id="数据建模"><strong>数据建模</strong></h2>
+<p>注意:这里提到的Graph协议不同于下一节讨论的Graph数据类型。图协议是一个或多个智能合约的区块链交易的索引，而图数据类型是指使用数学图论的数据表示。</p>
+<p>正如使用地图在点之间导航一样，可以使用图数据类型来导航可用的流动性对，以生成可以评估以提高回报的路由。在对 Uniswap 对进行建模时，一开始就需要做出一些实现选择:</p>
+<ul>
+<li>
+<p>作为顶点或边的对、符号或资产标识符 ?</p>
+</li>
+<li>
+<p>有向还是无向?</p>
+</li>
+<li>
+<p>简单还是多图?</p>
+</li>
+</ul>
+<p>为了做出上述实现选择，理解Uniswap对的属性是很重要的:</p>
+<ul>
+<li>
+<p>每一对都有一个唯一的ID。</p>
+</li>
+<li>
+<p>每对包含以下数据对 2 个代币：符号、名称、ID。</p>
+</li>
+<li>
+<p>代币符号不是唯一的——例如，符号BOND表示许多不同的资产或不同的ID。</p>
+</li>
+<li>
+<p>代币名称也不一定是唯一的。</p>
+</li>
+<li>
+<p>代币ID是唯一的，并且是代币的ERC-20合约地址。</p>
+</li>
+</ul>
+<p>Uniswap对的这些属性建议使用代币ID作为图数据类型中的顶点。由此可见，图的边代表唯一的一对ID。在这种形式下，图可以是无向的，也可以是有向的，每条边代表一对ID、代币价格和储备。然而，不断更新代币价格和保留信息的需求表明，将该数据存储在具有适当的实时设置的缓存结构中可能更有效和可扩展，特别是对于实时交易的应用程序，而不是静态分析。</p>
+<p>今后，在Uniswap V2和V3协议对之间路由是可取的。在这个场景中，可能存在多个对相同的代币ID。虽然可以在一对ID之间添加额外的边，但另一种解决方案是在同一条边上分组不同的对ID，从而避免遍历多重图的性能成本。下面是分组对ID无向简单图结构的部分示例，其中符号 ID 替换了符号名称：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1027/23_suszhj0sf5.png" alt="用于 DEX 路由器构建和分析的构建区块"></p>
+<p>图5.0：在一个无向简单图中对Uniswap V2和V3协议对进行建模(注意，实际结构使用代币ID而不是代币符号，所以在这里会很麻烦)。</p>
+<p>最初，深度优先搜索(DFS)已经证明可以遍历图，一般情况下深度限制为4。该深度的一个例外是从WETH开始的路由，其中连接节点的数量超过30000。当一条路由从WETH出发时，DFS被限制为2，以减少遍历时间。</p>
+<p>有许多用于处理图形数据类型的工具，包括图形数据库Neo4J和RedisGraph。这些讨论超出了本文的范围，目前的项目需求可以通过Javascript库Graphlib来满足。然而，如果路由问题的规模达到了LinkedIn或其他大型网络的规模，那么上述图表数据库的规模就会满足这些需求，从而权衡成本和开发复杂性。</p>
+<h2 id="约束"><strong>约束</strong></h2>
+<p>当在图数据结构中计算路由时，约束是有用的。例如，它们有助于确定只遍历有限数量对的路由，或者可以用来忽略包含某些资产的对的路由。</p>
+<p>现有的 Uniswap V2 路由主要是通过六项资产的路由，这些资产可以比作机场枢纽。这六项资产是：</p>
+<ul>
+<li>
+<p>WETH</p>
+</li>
+<li>
+<p>DAI</p>
+</li>
+<li>
+<p>USDC</p>
+</li>
+<li>
+<p>USDT</p>
+</li>
+<li>
+<p>COMP</p>
+</li>
+<li>
+<p>MKR</p>
+</li>
+</ul>
+<p>这六种资产是有用的，因为它们是常用的，当它们与其他资产成对组合时，不会施加流动性限制(即它们不是稀缺的，并且不会与新的、未经证实的加密资产构成相同的风险)。然而，它们的使用可能会造成效率问题，在这里说明:</p>
+<blockquote>
+<p>“Uniswap没有以去中心化的方式路由交换。”</p>
+</blockquote>
+<p>使用约束，比如忽略上面提到的6个“枢纽”资产，可以探索比当前Uniswap V2界面提供给用户的更有效的潜在路由。约束也可以扩展到其他标准，例如:</p>
+<ul>
+<li>
+<p>通过具有 X 美元流动性或 Y% 美元交易的池路由。</p>
+</li>
+<li>
+<p>通过具有特定定价的特定池路由。(适用于Uniswap V3协议)。</p>
+</li>
+</ul>
+<p>同样值得注意的是约束是可组合的,也就是说，它们可以组合在一起，这样路由就可以限制为最多 2 个池，每个池的流动性超过 X。当前的数据模型在图数据类型和查找表之间拆分数据，这意味着在图遍历期间和之后发现对数据时都可以修剪路由。</p>
+<h2 id="扩展"><strong>扩展</strong></h2>
+<p>扩展主要考虑向路由器公开一个公共API，以便基于当前市场数据计算路由。性能是一个函数:</p>
+<ul>
+<li>
+<p>计算路由的时间</p>
+</li>
+<li>
+<p>如果需要，获取更新对数据的时间(代币价格和储备)</p>
+</li>
+<li>
+<p>计算路由请求的影响所需的时间</p>
+</li>
+</ul>
+<p>下图说明了一个初始的系统架构，其中包含用于最常请求路由的缓存和用于计算路由请求影响的缓存对数据。这种架构非常灵活，可以以多种方式进行水平扩展。例如，完全复制图数据结构和路由缓存以及请求聚合器和对缓存，或者简单地复制缓存并在缓存之间分配路由请求。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1027/23_kg4a7s0ekm.png" alt="用于 DEX 路由器构建和分析的构建区块"></p>
+<p>图6.0:具有可扩展组件、缓存和定期更新的路由服务架构。</p>
+<p>另一个潜在的可扩展性修改可能是考虑路由请求和数量的完整路由解决方案缓存；如果数量在一定的公差内，最近计算的结果可以重用。根据用户体验和应用程序的需要，最近计算的结果也可以用作临时结果，而为用户计算更精确的结果。</p>
+<h2 id="路由缓存"><strong>路由缓存</strong></h2>
+<p>路由缓存由最常请求的路由的结果组成，其生存时间 (TTL) 与数据源的定期更新频率相关。例如，如果之前请求过WETH和DAI之间的一条路由，则可以在路由缓存中以可能路由数组的形式找到图遍历的结果:[WETH -&gt; USDC -&gt; DAI, WETH -&gt; WBTC -&gt; DAI，…]。与代币价格和储备等对数据不同，路由可能性——特别是配对的存在——变化较少，因此该缓存的TTL预期要比对数据缓存大得多。此外，该组件还可以扩展为包含对死路由(即过期或已被取代的令牌地址或非流动对)的试探法。</p>
+<h2 id="配对数据缓存"><strong>配对数据缓存</strong></h2>
+<p>配对数据缓存包含特定对的代币价格和保留数据，便于计算使用指定数量路由请求的影响。该数据比可用路由选项的变化更频繁，并且将具有大约一个以太坊区块（约 15 秒）的 TTL。</p>
+<p>当请求的数据不在缓存中时，这些请求将被捆绑在一起，并从数据源中获取，目前是Graph协议中的Uniswap子图(见下面的数据源部分)，最多可包含 1000 对数据查询。发送捆绑的对数据请求之前的等待时间将根据流量进行调整——在低流量的场景中，让用户等待直到发出额外请求是没有意义的。</p>
+<p>此外，为了改进用户体验，在获取和计算更新数据时，可能会呈现基于旧数据的预结果。</p>
+<h2 id="静态分析"><strong>静态分析</strong></h2>
+<p>路由性能将通过将生成的路由与现有Uniswap V2路由器的路由进行比较来评估。具体来说，是通过计算给定数量的源代币的收益。例如，在从DAI到COMP的交易中，路由器的性能将通过计算从100万个DAI代币接收到多少COMP，并检查从Uniswap V2路由器建议的路由获得的相同结果来进行比较。性能将根据各种不同的输入进行测量，例如，不同的初始数量，对搜索深度的不同限制等。</p>
+<p>在执行静态分析时，不需要图6.0中所示的对数据缓存和捆绑请求。静态分析是在区块链的特定区块时间内对交易的计算。它有助于结果的一致性和重复性，以便进行比较。为Uniswap V2设计新路由器的初始工作范围由静态分析提供帮助，在静态分析中，可以在一个区块时间评估一组交易，并与现有的路由算法或变体进行比较。如果潜在的配对数据发生变化，则不清楚交易结果的改善或下降是由于算法变化还是配对流动性和定价。</p>
+<h2 id="数据源"><strong>数据源</strong></h2>
+<p>随着区块链技术的成熟，出现了大量提供区块链当前和历史数据的服务。数据源的选择涉及下列考虑事项:</p>
+<ul>
+<li>
+<p>预算</p>
+</li>
+<li>
+<p>开发工作和成本</p>
+</li>
+<li>
+<p>延迟</p>
+</li>
+<li>
+<p>数据的准确性</p>
+</li>
+</ul>
+<p>开发工作和成本可以通过使用预先消化或索引的数据来减少，就像在Graph Protocol的众多子图中发现的那样。</p>
+<p>对于初始交换路由器的设计和实现，将使用Graph Protocol中的Uniswap子图。该数据源提供了极好的易用性，能够分析过去的合约数据，否则将需要更昂贵的存档以太坊节点，并且能够在不执行静态分析时在单个HTTP请求中更新1000对数据。Graph Protocol中的数据延迟比前面提到的解决方案低得多，只有通过直接运行以太坊节点或对内存池建模(或者使用Blocknative之类的服务)才能胜出。Graph Protocol的延迟明显在1区块左右，在某些索引场景下可以动态改变。值得注意的是，当索引和映射区块被证明无效时，数据也可以更改。</p>
+<p>一旦对交换路由器设计进行了评估，这个数据源将被证明不适合生成路由，因为实时数据需要具有竞争力。在这样的场景中，需要直接来自区块链当前状态的数据，例如来自Alchemy、Infura或其他来源的以太坊节点。</p>
+<h2 id="未来"><strong>未来</strong></h2>
+<p>上面概述的系统提供了灵活性和可扩展性，以分析现有Uniswap系统的性能，以及在协议之上构建新的系统，包括一个成熟的交易解决方案。类似于Coinbase vs Coinbase Pro或Synthetix vs Kwenta，也有一些对专业交易者至关重要的高级功能，我们在下面列出了一些。</p>
+<h2 id="交易生成器"><strong>交易生成器</strong></h2>
+<p>通过使用避免上述6个枢纽代币的约束，本文描述的系统可以用来检查某些代币之间的替代路由及其效率。这可以定期完成以构建一个基于启发式的列表，现有系统/交易者可以使用该列表来改进对这些对的推荐路由，或允许他们进行其他更改。</p>
+<h2 id="跨协议路由"><strong>跨协议路由</strong></h2>
+<p>通过增加图形或交替地使图形数据结构成为多图并添加额外的数据源，可以扩展该系统，为用户提供跨Uniswap V2和V3协议的资产之间的路由。根据目标的不同，这可以减少交易中的滑点，也可以对分散的流动性进行管理。</p>
+<h2 id="跨层路由"><strong>跨层路由</strong></h2>
+<p>类似于跨协议，路由器可以扩展到生成跨层路由。降低gas费用和改进交易带宽的承诺表明，layer2解决方案将有助于定义以太坊未来的很大一部分。在L2和L1资产之间交叉提出了一个新的路由挑战，其复杂性超过了协议交叉。然而，相同的基本构建区块可以生成允许跨层交易的解决方案，利用即将到来的协议来实现这一目的，例如Hop Protocol、Nova等。</p>
+<h2 id="mev"><strong>MEV</strong></h2>
+<p>通过将路由解决方案与防止MEV的技术相结合，如Flashbots，该路由系统可用于保护大额交易免受攻击。试探法或其他输入可以确定一笔交易的价值是否足以表示这种风险，然后保护性解决方案可以自动合并由确定的最佳路由提出的交易解决方案中。</p>
+<h2 id="低延迟数据源和预测路由"><strong>低延迟数据源和预测路由</strong></h2>
+<p>Graph Protocol数据源虽然方便和快速，但通常至少有1区块延迟。对于某些交易应用来说，这可能还不够。在这方面，可以替代其他性能更好的数据源，要么直接绑定到一个以太坊节点，要么过滤已完成的感兴趣的交易，以更新路由系统的数据结构。更进一步，还可以构造内存池的有限描述，并应用类似的交易过滤，以提供未执行的已知交易状态下的预测路由结果。</p>
+<p>Source：https://medium.com/@ValveFinance/building-blocks-for-dex-router-construction-analysis-acc03b9f15d8</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/30152/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">英国数字银行Monzo有望以逾40亿美元估值完成4亿美元融资</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/30149/">
+                <span class="next-text nav-default">游戏内广告平台Admix完成2500万美元B轮融资，以推进元宇宙内容变现</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述"><strong>概述</strong></a></li>
+    <li><a href="#数据建模"><strong>数据建模</strong></a></li>
+    <li><a href="#约束"><strong>约束</strong></a></li>
+    <li><a href="#扩展"><strong>扩展</strong></a></li>
+    <li><a href="#路由缓存"><strong>路由缓存</strong></a></li>
+    <li><a href="#配对数据缓存"><strong>配对数据缓存</strong></a></li>
+    <li><a href="#静态分析"><strong>静态分析</strong></a></li>
+    <li><a href="#数据源"><strong>数据源</strong></a></li>
+    <li><a href="#未来"><strong>未来</strong></a></li>
+    <li><a href="#交易生成器"><strong>交易生成器</strong></a></li>
+    <li><a href="#跨协议路由"><strong>跨协议路由</strong></a></li>
+    <li><a href="#跨层路由"><strong>跨层路由</strong></a></li>
+    <li><a href="#mev"><strong>MEV</strong></a></li>
+    <li><a href="#低延迟数据源和预测路由"><strong>低延迟数据源和预测路由</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

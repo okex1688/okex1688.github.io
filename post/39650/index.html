@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          a16z：Web3建设者的去中心化指南：原则、模型、方法（上） - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="作者认为分享过去几年与加密创始人密切合作收集的去中心化的具体模型和原则将是有用的，以指导Web3建设者在几个具体场景中解决去中心化在实践中的意义。" />
+<meta name="keywords" content="A16Z, Web 3.0" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39650/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="a16z：Web3建设者的去中心化指南：原则、模型、方法（上）" />
+<meta property="og:description" content="作者认为分享过去几年与加密创始人密切合作收集的去中心化的具体模型和原则将是有用的，以指导Web3建设者在几个具体场景中解决去中心化在实践中的意义。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39650/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-30T00:00:00+00:00" />
+
+<meta itemprop="name" content="a16z：Web3建设者的去中心化指南：原则、模型、方法（上）">
+<meta itemprop="description" content="作者认为分享过去几年与加密创始人密切合作收集的去中心化的具体模型和原则将是有用的，以指导Web3建设者在几个具体场景中解决去中心化在实践中的意义。"><meta itemprop="datePublished" content="2022-06-30T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-30T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5213">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="a16z：Web3建设者的去中心化指南：原则、模型、方法（上）"/>
+<meta name="twitter:description" content="作者认为分享过去几年与加密创始人密切合作收集的去中心化的具体模型和原则将是有用的，以指导Web3建设者在几个具体场景中解决去中心化在实践中的意义。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">a16z：Web3建设者的去中心化指南：原则、模型、方法（上）</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-30">
+      2022-06-30
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5213 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原文作者：Miles Jennings</p>
+<p>权力去中心化的承诺已经被大量讨论和辩论，从它为什么重要到谁将控制互联网软件的更大问题。这些问题很是关键，因为正如我们所见，当控制权掌握在极少数人手中时，对个人自由、选择和隐私的侵犯是与生俱来的。当CEO决定一门课程或另外一门课程时“不作恶”与“不能作恶”有很大的不同。</p>
+<p>但是去中心化互联网一直很难做到。<strong>与中心化系统公认的效率和稳定性相比，去中心化系统一直在努力跟上步伐。</strong> 然而，现在新兴的加密和Web3技术—特别是可编程区块链、可组合智能合约和数字资产，使得去中心化系统能够实现前所未有的协调和操作功能水平。这种演变促成了新形式的治理和组织、社区拥有和运营的网络和服务、强大的经济以及无数其他创新。</p>
+<p>我们已经看到了去中心化金融（DeFi）和核心基础设施项目等特定类别的腾飞，并且很快就会看到社交媒体、视频游戏、音乐和市场等现有Web2类别的去中心化版本。这些系统的成功将取决于它们提供去中心化实际好处的能力，包括利益相关者之间更公平的所有权、减少审查和更大多样性。但是，<strong>用于DeFi的更熟悉的去中心化模型不一定适用于这些更复杂的系统（即具有更多UI功能、更丰富的客户端体验、集中式产品或服务或许可IP的系统）。</strong></p>
+<p>因此，作者认为分享过去几年与加密创始人密切合作收集的去中心化的具体模型和原则将是有用的，以指导Web3建设者在几个具体场景中解决去中心化在实践中的意义。</p>
+<p><strong>Web3去中心化的设计挑战</strong></p>
+<p>权力去中心化可以被认为是跨越三个不同但相关联的元素的单一设计挑战：技术、经济和法律。了解这些元素的差异是设计Web3系统的关键，因为关于一个元素的设计决策会影响其他元素。</p>
+<p><strong>技术去中心化</strong></p>
+<p>技术去中心化主要涉及Web3系统的安全和结构控制。可编程区块链背后的核心创新在于，它们可以通过提供一个无需许可、无需信任和可验证的生态系统来支持技术去中心化，在该生态系统中可以转移价值，更重要的是可以在其上构建Web3产品和服务。</p>
+<p>这意味着可以部署和运行产品和服务，而无需信任的集中式中介来操作，从而打开了一个充满可能性的广阔世界。由于这些原因，技术去中心化是经济和法律其他这两种去中心化类型的基础。</p>
+<p><strong>经济去中心化</strong></p>
+<p>经济去中心化与Web3系统的经济有关。可编程区块链（例如Ethereum、Solana和Avalanche）和数字资产（例如ETH、SOL和AVAX）的出现释放了开源和去中心化系统最终拥有自己的去中心化经济体的能力（即自主自由的市场经济）。</p>
+<p>这是一个关键的突破。前几代技术（例如Web1、http、smtp、Ftp等）的开源和去中心化协议停滞不前，因为它们缺乏激励持续开发和/或将关键资源进一步投资回其系统的能力。这为Web2的中心化公司的出现和成功留下了肥沃的土壤，因为它们能够利用自己的效率和资源来构建超越Web1的产品和服务。但这种集中化也导致了无数用户权力被滥用、激进的抽佣比例的的例子。</p>
+<p>现在，支持Web3的技术使得创建更复杂的开源和去中心化系统成为可能——并使得去中心化经济能够围绕它们形成——这将使Web3的产品和服务能够与Web2竞争并最终超越那些产品和服务。</p>
+<p>Web3系统的构建者可以通过谨慎的设计决策促进去中心化经济的形成，这些决策导致他们的系统从广泛的来源中积累“价值”—无论是信息、经济价值、投票权还是其他形式—并根据他们的贡献公平地分配该价值在系统利益相关者之间。为了实现这一点，Web3系统需要将有意义的权力、控制权和所有权授予系统利益相关者（通过空投、其他Token分发、去中心化治理等）。这反过来又鼓励利益相关者贡献有意义的价值，因为他们有权决定如何对待和奖励他们的贡献。</p>
+<p>利益相关者—开发者、贡献者和消费者—之间的持续激励平衡，可以推动对整个系统的价值进一步贡献，造福所有人。换句话来说就是：现代网络效应的所有好处，但没有集中控制和专属经济的陷阱。</p>
+<p><strong>法律权力去中心化</strong></p>
+<p>法律去中心化关系到Web3系统的合法性。在这篇文章中，作者主要关注美国证券法，它规定了Web3系统如何以及是否可以使用自己的原生数字资产。虽然“法律权力去中心化”没有成文的标准，但对美国证券法、判例法和SEC指南的第一原则分析可以帮助我们指定实用标准。</p>
+<p>首先，美国证券法通常旨在通过限制信息较多的人利用信息较少的人的能力，为证券交易创造“公平竞争环境”。这就是信息不对称的原则，美国证券法通常寻求通过应用披露要求来消除某些证券交易中的不对称。其中包括（1）货币投资、（2）普通企业、（3）具有合理的利润逾期、（4）主要基于他人的管理努力。第四个方面旨在解决信息不对称问题，因为相信在依赖“努力管理”的情况下，信息不对称的风险可能很高，因此证券法的适用可能是必要的。</p>
+<p>基于上述和SEC的指导，我们可以推测，如果Web3系统能够（a）消除出现重大信息不对称的可能性，并且（b）消除对他人基本管理工作的依赖来推动该企业的成功或失败，那么系统可能是“充分去中心化”的，因此美国证券法对其数字资产的应用应该是不必要的。出于本文的目的，作者将这些系统成为合法分散的。诚然，大多数企业无法到法定的去中心化门槛，但正如作者在下文概述的那样，Web3系统的新颖组件独特地使它们能够满足这样的门槛。</p>
+<p>总体而言，权力去中心化的这三个独立方面——技术、经济、法律，必须从整体上去看待，作为一个单一的设计挑战，因为关于一个方面的设计决策会影响另一个方面。一般而言，技术、经济和法律之间的相互作用主要是相加的，而不是相减的——其中一个的发展在其他方面创造了更多的可能性，例如：去中心化经济通过优先考虑利益相关者之间的去中心化所有权、去中心化来源的价值增值以及向去中心化利益相关者分配价值来帮助推动系统走向合法的去中心化。所有这些都降低了信息不对称的风险和依赖个人管理努力的需要。</p>
+<p><strong>如何利用Web3系统的组件实现去中心化</strong></p>
+<p>当Web3系统设计得很好时，去中心化就变成了良心循环，而不是恶性循环。既然我们已经有了去中心化设计挑战的框架，让我们快速回顾一下构建者如何在实践中使用Web3系统的以下新颖组件来推动去中心化：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0630/25_82lcl2f4jc.png" alt="a16z：Web3建设者的去中心化指南：原则、模型、方法（上）"></p>
+<p><strong>区块链网络和智能合约协议</strong></p>
+<p>从根本上讲，区块链网络和智能合约协议可以实现技术去中心化，但它们也可以促进经济和法律权力去中心化的方式设计，包括：</p>
+<ul>
+<li>
+<p><strong>通过实现透明度——例如，任何人目前都可以查看最多的数字资产存放在哪，以及在以太坊的DeFi生态系统中赚取的费用最多；</strong></p>
+</li>
+<li>
+<p><strong>通过成为开源公共产品——任何人都可以免费使用和测试功能以确保安全、促进去中心化经济等等；</strong></p>
+</li>
+<li>
+<p><strong>通过允许数据可移植性、移动性和互操作性——用户保留对Web3产品和服务的数据、购买和内容的控制；</strong></p>
+</li>
+<li>
+<p><strong>通过优先考虑可组合性——元素可以被编程为相互交互，使这些程序成为任何人都可以使用的构建块。</strong></p>
+</li>
+</ul>
+<p>总的来说，这些特性降低了信息不对称的风险，降低了任何Web3系统专有技术的重要性，并增加了系统的贡献者和消费者网络对于其开发人员的重要性。也可以这样理解，这些功能将系统的价值从其技术堆栈转移到期网络，由于网络比专有系统更加开放和分散，这种转变凸显了为什么Web3系统比Web2系统更能实现去中心化</p>
+<p><strong>数字资产</strong></p>
+<p>Web3系统的去中心化经济是由两种激励措施共同驱动的：</p>
+<ul>
+<li>
+<p><strong>内在激励：基于系统的底层特征，如用户基础、网络效应、技术等，触发第三方参与此系统的先天意愿。</strong></p>
+</li>
+<li>
+<p><strong>外在激励：如数字资产分配、收益分配等。</strong></p>
+</li>
+</ul>
+<p>其中，数字资产是Web3建设者必须促进其去中心化经济的形成和持续运作的最关键工具，因为它们能够平衡开发者、贡献者和消费者之间的激励机制。</p>
+<p>因此，如果设计得当，数字资产分配有可能推动网络效应的“飞轮”，随着更多人参与网络，整个系统对更多用户变得更有价值。但与Web2的锁定网络效应不同，Web3数字资产使用户能够塑造自己的体验并从他们的贡献中受益。</p>
+<p>成功的用户获取和保留可以显著提高Web3系统对开发人员和贡献中的内在激励，从而为系统带来更大的价值，最终吸引更多的用户等等。以太坊在过去两年的增长就是一个很好的例子：从2020年初到2022年初，存放在以太坊DeFi协议中的数字资产数量从刚刚超过6亿美元增长到刚刚超过1500亿美元。但这并不是关于数量及其货币价值的叙述，而是它显示了开发人员的活动如何产生吸引用户的产品和服务，然后吸引更多的开发人员和额外的产品和服务，从而进一步推动用户增长。</p>
+<p>出了可能创造这样的飞轮之外，Web3系统的网络效应还可以为构建者提供一条护城河，以防止竞争对手复制和重新部署他们的基础设施，这些基础设施都是开源的。为什么会这样呢？因为对于具有强大网络效应的系统，仅靠复制不太可能激励用户切换到新系统。</p>
+<p>这再次强调了Web3系统的真正价值将在于其利益相关者网络—而不是其技术堆栈、封闭或专有系统或其他经典护城河。</p>
+<p><strong>去中心化治理</strong></p>
+<p>绝大多数区块链网络和基于智能合约的协议都具有由去中心化自治组织（DAO）管理的去中心化治理。去中心化治理和DAO沿着已经讨论过的三个去中心化标准中的每一个都提供了许多好处，包括：</p>
+<ul>
+<li>
+<p>通过将此类系统的技术控制权分配给分散的团体，使Web3系统更加安全，从而限制任何一方控制系统治理的能力。</p>
+</li>
+<li>
+<p>在决策中为利益相关者提供有意义的代表，并确保利益相关者之间的长期激励一致。此功能以及增强的安全性有助于使去中心化治理更加有效，使其能够为Web3系统的去中心化经济的整体健康和可持续性做出贡献。</p>
+</li>
+<li>
+<p>通过减少利益相关者对任何个人或团体的管理工作的依赖来支持法律权力去中心化，从而降低潜在信息不对称的风险。</p>
+</li>
+</ul>
+<p>在为任何Web3系统设计去中心化治理时，我们可以从已经在DeFi领域开发和实施的几种不同模型中借鉴一些见解，例如：</p>
+<ul>
+<li>
+<p>子DAO—为了简化决策，一些DAO授权subDAO对某些类别的行动（例如法律、财务、发展等）具有量身定制的权限。</p>
+</li>
+<li>
+<p>治理最小化—为了提高DeFi协议的可靠性，并客服DAO参与率的挑战，一些人呼吁尽量减少DAO需要做出的最终决策数量，或者创建一个层次结构，其中更重要的决策需要更高的投票人数。</p>
+</li>
+<li>
+<p>激励参与—为了确保有效的DAO治理，一些DAO鼓励积极参与，包括代表的报酬。请注意，虽然赠款计划在这里效果不佳，但追溯性奖励计划可能非常有效，因为它们将贡献的评估和奖励推迟到交付价值之后，如果设计得当，它们还可以帮助刺激竞争和开放市场。</p>
+</li>
+<li>
+<p>渐进式权力去中心化—为了防止恶意攻击，许多DAO使用“渐进式去中心化”，随着协议/网络安全性的提高，更大的控制权从开发公司移交给社区。</p>
+</li>
+</ul>
+<p>归根结底，Web3构建者应该小心，不要将过多的权力交给内部人员。相反，应该将重要的控制权交给社区。在权力不平衡的地方，Web3建设者应该寻求委托程序来帮助分散它。</p>
+<p>为了达到这种平衡，Web3构建者还应该考虑灌输针对恶意攻击的保护措施，包括潜在地操纵去中心化治理以谋取利润。虽然使用链下治理机制和多重签名（控制需要多个多重签名持有者，每个持有者都有自己的密钥来授权行动）是用于此目的的常见保障措施，但它们最近收到了重大批评，包括它们破坏权力去中心化的潜力。</p>
+<p>以上就是本期由a16z内部人员编写的《Web3建设者的去中心化指南：原则、模型、方法》的（上部）内容。由于内容、要素过多，元宇宙Lab打算用三期把这篇文章给翻译完整，以便大家学习，并且有一个很好的时间消化所看到的精彩内容。</p>
+<p>好了，感兴趣的玩家欢迎添加微信元宇宙Lab小助手对我们进行进一步的咨询，欢迎广大用户多多点赞和转发。另外，热衷于元宇宙、Web3板块项目的用户也欢迎添加微信元宇宙Lab小助手，并进入社区与众多加密爱好者一同交流。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39643/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">“阻挡不了 也停不下来”比特币持有者在2万美元处逢低买入</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39621/">
+                <span class="next-text nav-default">a16z：从传统治理历史中 Web3能学到什么？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

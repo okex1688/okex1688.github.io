@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Lido 在以太坊 2.0 质押业务上处于领先地位，stETH 具备较强的流通性，但仍需要继续拓展 stETH 的业务范围。" />
+<meta name="keywords" content="以太坊2.0" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/26783/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型" />
+<meta property="og:description" content="Lido 在以太坊 2.0 质押业务上处于领先地位，stETH 具备较强的流通性，但仍需要继续拓展 stETH 的业务范围。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/26783/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-03T00:00:00+00:00" />
+
+<meta itemprop="name" content="详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型">
+<meta itemprop="description" content="Lido 在以太坊 2.0 质押业务上处于领先地位，stETH 具备较强的流通性，但仍需要继续拓展 stETH 的业务范围。"><meta itemprop="datePublished" content="2021-08-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="13090">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"/>
+<meta name="twitter:description" content="Lido 在以太坊 2.0 质押业务上处于领先地位，stETH 具备较强的流通性，但仍需要继续拓展 stETH 的业务范围。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-03">
+      2021-08-03
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 13090 字 -
+        预计阅读 27 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>Lido 是一个以太坊 2.0 质押服务平台，用户可质押任意数量 ETH，并 1:1 获得质押代币 stETH，参与 DeFi 市场其他服务。Lido 的投资机构优质，目前业务数据在赛道内优势较大，平台 ETH 的质押量稳步增长，且 stETH 拥有较强的流通性和价格稳定性，利于被其他 DeFi 平台引入，未来可能与 AAVE、Maker 生态等进行合作，继续扩大赛道影响力，形成自己的护城河，值得关注。</p>
+<h2 id="投资概要">投资概要</h2>
+<p>Lido 是一个非托管式的以太坊 2.0 质押服务平台。对于用户来说，可以在 Lido 上以任意 ETH 参与以太坊 2.0 的质押中，无需搭建节点，且质押代币 stETH 可通过 DeFi 的 AMM 机制自由流通，参与 DeFi 市场其它服务。</p>
+<p>Lido 当前在以太坊 2.0 质押服务平台里面赛道，有几个方面优势显著：</p>
+<p>融资机构阵容相当豪华，拥有包括：Coinbase、三箭、Paradigm 以及个人投资者 AAVE，Maker，DCG、SNX 等项目创始人参与投资，累计募资 7,500 万美元，优质的投资背景对于 Lido 在 DeFi 市场的主动拓展非常有利，例如未来可能与 AAVE、Maker 生态等进行合作。</p>
+<p>业务数据领先，截止至 7 月 26 日，全网的 ETH 质押量是 6,603,900 枚，价值约 150 亿美元左右。Lido 网络的 ETH 质押数量约 656 K，日均增长约为 1,000 枚，约占全网已质押的 ETH 总量的 10%，总市值约 14.9 亿美元。目前绝大部分抵押的 ETH 都是直接参与 Staking，借助 Staking 项目参与质押的占比较小，总量接近 100 万枚左右。Lido 虽然仅占比全网量的 10%，但却是在 Staking 项目里最多的。</p>
+<p>并且 stETH 具备较强的流通性，在 Curve stETH/ETH 池中锁定了超过 10 亿美元的流动性，价格稳定性较好，利于被其他 DeFi 平台引用。相比其他竞品，当前 Lido 的业务数据在赛道内优势较大。</p>
+<p>平台的未来收益可观，当前平台收益基本来自用户在质押中所获得的奖励收益，收费范围在收益的 10%-15% 左右，平台间相差不大，但手续费是平台主要的收益来源，拥有质押池越大的平台，能从用户质押奖励中抽取的收益就越高，而 Lido 目前拥有赛道内最大的质押池。</p>
+<p>目前存在问题包括：</p>
+<p>现阶段较突出的问题是质押代币 stETH 的业务范围需要拓展。stETH 本身是实时变化的底层资产，较难与现有的 DeFi 体制兼容，团队为此提出了包装版 wstETH 来改善该问题。同时 stETH 的生态圈还未有较强的生态项目接入，可参与的生态圈仍需要继续扩展，目前已向 Aave 和 Maker 提交提案，以期两个 DeFi 龙头可以接受将 stETH 作为抵押资产。</p>
+<p>Lido 的资金未完全去中心化管理，目前可以任意金额参与以太坊 2.0 质押的平台，都还需要中介机构来控制用户资金。平台为了尽量确保密钥安全，会通过 MPC 将密钥行拆分，或多签形式进行分布式管理，但参与拆分和多签的数量，成员之间的关系等机制，都会影响到密钥的去中心化问题，是一种弱去中心化的方式。Lido 所采取的多签形式，也会存在共同作恶风险，未来平台能否实现密钥的去中心化管理，对于用户资金安全至关重要。</p>
+<p>综上，值得关注。</p>
+<h2 id="基本概况">基本概况</h2>
+<p><strong>项目简介</strong></p>
+<p>Lido 是一个以太坊 2.0 质押协议平台，用户可在 Lido 上以任意 ETH 参与质押，无需搭建节点也可以获得收益。现阶段质押量有 637 K 枚，基本占据了以太 2.0 质押赛道的大部分市场。</p>
+<p><strong>基本信息</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_qpsfglb1cp.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>来源：CoinGecko</p>
+<p><strong>项目详解</strong></p>
+<p><strong>团队</strong></p>
+<p>Lido DAO 官网没有公布团队信息，也没有注册领英账号，根据社区信息，该团队成员主要来自于 P2P Validator。</p>
+<p>团队成员推特，如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_r62lj776jp.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>P2P Validator 是一个非托管式的质押平台，用户可以质押各类平台代币，赚取收益。目前支持 20 个平台代币，包括 ETH、Solana、Cosmos 等，具体如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_aq3bgsd7l1.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-1 P2P Validator</p>
+<p><strong>资金</strong></p>
+<p>Lido 进行过 3 轮融资，累计募资 7,500 万美元：</p>
+<ul>
+<li>
+<p>从 Semantic Ventures，ParaFi Capital，Terra，Stakefish 和 Staking Facilities 筹集了 200 万美元；</p>
+</li>
+<li>
+<p>2021 年 5 月 6 日，Lido 宣布完成由 Paradigm 领投的 7,300 万美元融资，Paradigm 以 15,120 枚 ETH 的价格（约 5,100 万美元）从 Lido DAO 金库中购买了 7,000 万枚 LDO 代币，单价约 $0.73。同时有 3,000 万枚 LDO 代币由 Coinbase Ventures、Three Arrows Capital、Jump Trading、Alameda Research 和 Digital Currency Group 等共同购买，累计价值约 2,200 万美元，单价约 $0.73。</p>
+</li>
+</ul>
+<p>Lido 当前并未向社区公布资金情况，但从募资情况看，项目在短中期内的资金充足。</p>
+<p>Lido 的投资阵容有一线的投资机构和知名 DeFi 项目的创始人，包括：Coinbase、三箭，蜻蜓，DCG，Paradigm，以及个人投资者 AAVE，Maker，SNX 等项目创始人。更具体信息如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_q94kfc8stn.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-2 融资机构</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_98p8h8846m.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-3 融资机构</p>
+<p>Lido 的融资机构阵容相当豪华，对于 Lido 在 DeFi 市场的主动拓展非常有利，例如未来可能在与 AAVE、Maker 生态等进行合作，优秀的投资机构也更加关注长期价值。</p>
+<p><strong>代码</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_gdq98s9ym3.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-4 代码库情况，数据来源：https://cauldron.io/</p>
+<p>代码方面，Lido 在 GitHub 有 44 个代码子库，官方认证的代码提交者有 1 人（Mike Mozhaev）。Lido 累计提 17,099 次代码，拥有提交作者 2,037 名，代码的迭代更新良好。</p>
+<p><strong>业务</strong></p>
+<p>Lido 是一个非托管式的以太坊 2.0 质押服务平台，针对以太坊和 Terra 的流动性抵押解决方案，质押者可以通过 DeFi 的 AMM 机制自由流通 stETH Token，并参与 DeFi 市场其它服务。</p>
+<p><strong>业务概述</strong></p>
+<p>我们先了解以太坊 2.0 的质押机制：</p>
+<p>以太坊 2.0 是以太坊从 Pow 到 Pos 的转变，而迈向 PoS 机制的第一步是推出可以达成共识的独立网络，即信标链。作为对系统提供安全保障的质押者，可以从以太坊 2.0 中获得新的 ETH 奖励。未来，信标链将与以太坊合并，并允许质押者赚取目前归于 PoW 矿工的交易费以及矿工可提取价值（MEV）。</p>
+<p>但以太坊 2.0 的质押规则更强调去中心化，给普通的质押者带来一定的进入门槛，具体如下：</p>
+<ol>
+<li>
+<p>至少需要 32 个 ETH，且只能以 32 的倍数进行质押；</p>
+</li>
+<li>
+<p>无法将质押委托给其他验证者；</p>
+</li>
+<li>
+<p>目前不能从信标链中提取 ETH，即使提款启用后，解锁期为 27 小时；</p>
+</li>
+<li>
+<p>目前所获得的奖励取决于网络的 ETH 质押量，越多的 ETH 意味质押比例收益越少。</p>
+</li>
+</ol>
+<p>这些规则对质押者来说是存在一定阻碍。在其他条件相同的情况下，质押者更希望能够质押任何数量的 ETH，委托基础设施运作，并能立即提出质押的 ETH。</p>
+<p>所以，为了给用户提供更便于参与的质押环境，市场上出了中心化质押池和去中心化质押池。原理大致相同，通过将 ETH 汇集在一起，以绕过 32 个 ETH 的最低要求，不需要每个用户操作自己的验证器，质押池会处理相应操作。</p>
+<p>质押池会进行 ETH 储备，以满足用户提款需求，类似于银行。并且还能给用户提供相应的质押凭证，以参与其他的 DeFi 应用，提高资金利用率。</p>
+<p><strong>业务机制</strong></p>
+<p>Lido 收集到用户的 ETH 后，会每次在以太坊智能合约上质押 32 个 ETH，DAO 就会从治理控制的注册表中选择一个新的验证者。然后调用存款合约，将 32 个 ETH 分配给该验证人，并生成 Lido DAO 的提款凭证。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_dow5742w7r.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-5 质押流程图</p>
+<p>Lido 所提供以太坊 2.0 质押服务可解决三个问题：</p>
+<ol>
+<li>
+<p>随意 ETH 进行质押，无需 32 枚（以太坊 2.0 要求至少 32 枚），而且收益不受数量影响；</p>
+</li>
+<li>
+<p>不需要搭建节点，同时 Lido 会筛选一批优质节点，减少用户收益被罚没的概率；</p>
+</li>
+<li>
+<p>质押在以太坊 2.0 的 ETH 无法进行流动，并参与增值服务，但通过 Lido 生成 stETH 可以参与 Defi 生态。</p>
+</li>
+</ol>
+<p>在 Lido 中，stETH 持有只能获得以太坊 2.0 质押奖励的 90%，剩余需分配给 Lido 的节点运营商和金库，整体运行架构如下图：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_e8b1ae3l32.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-6 生态架构图</p>
+<p>Lido 的验证者会负责收集信标链上的质押数据，并通过预言机传入智能合约中，由智能合约对所获得的奖励进行分配。所以 Lido 生态主要由三个角色组成，具体如下：</p>
+<p><strong>质押者</strong></p>
+<p>即用户，通过 Lido 协议质押 ETH，用户向智能合约发送 ETH，并获得 stETH 代币作为凭证和权益。</p>
+<p>stETH 代表一种代币化的质押存款，stETH 代币可以持有、交易或出售，质押者 stETH 的余额是基于质押的 ETH 总额加上总质押奖励，再减去服务费。所以 stETH 代币数量是基于 Lido 中存储的 ETH 数量，以及相关的总奖励和减去惩罚的数量。</p>
+<p>Lido 可使 stETH 代币余额跟踪相应的信标链 ETH 的余额。当提取 ETH 后销毁 stETH，stETH 始终与 Lido 中质押的 ETH 保持 1:1。每天预言机更新总质押数据后就会更新 stETH 代币的总额。当以太坊 2.0 升级到第二阶段，部署了转账和智能合约这些功能时，Lido DAO 也将升级 Lido，允许用户焚烧 stETH 令牌以换取 ETH。</p>
+<p>由于 stETH 的数量是变化的，在和 DeFi 协议合作时，一些 DeFi 协议需要代币的恒定平衡机制，而 stETH 不恒定并不利于采用，所以 Lido 推出了一键包装服务，把 stETH 包装成 wstETH，wstETH 保持你的 stETH 平衡固定，并使用一个基础的份额系统来反映所赚的 Staking 奖励，以解决 stETH 数量变化问题。</p>
+<p><strong>节点运营商</strong></p>
+<p>用户质押 ETH 到 Lido 协议后，所有质押的 ETH 都被划分为 32 ETH 每份，并分配给节点运营商，由他们负责节点运维。</p>
+<ul>
+<li>节点的准入机制</li>
+</ul>
+<p>Lido DAO 作为节点运营商的策展人，只有通过 Snapshot 投票的运营商才会被授予白名单。然后节点运营商先进入 Lido 测试网络进行测试，通过后才进入主网运行 ETH 的节点。Lido 不要求节点运营商质押等量的 ETH。相反，Lido DAO 选择的节点运营商必须有资产抵押的经验，风险由 Lido DAO 提供的保险进行兜底。目前看，这种方法将使该体系的资本效率更高。现在拥有白名单的有 8 家运营商。</p>
+<ul>
+<li>资金的秘钥管理</li>
+</ul>
+<p>用户资金存入 Lido 协议智能合约，然后被锁定在 ETH 质押证明存款合约中。由 Lido DAO 控制的阈值签名帐户被指定为提款地址。</p>
+<p>目前是由 Lido DAO 控制的多签负责管理取款凭证，未完全去中心化。取款凭证是一个 ETH2 BLS 密钥，使用分布式密钥生成仪式将其拆分为 6-of-11 多重签名。这不是最优选择，因为该 6 人也可能出现共同作恶的概率。对此 Lido 官方表示：待 ETH 可提取阶段，协议将进行升级，每个用户将自己控制自己的私钥，无中间控制层。</p>
+<p><strong>验证者 Oracle</strong></p>
+<p>由于信标链是一个独立的网络，也就是说目前 ETH1.0 和信标链其实是两个相互独立的网络，Lido 智能合约无法直接访问其数据。所以系统的 ETH 1.0 部分和信标网络之间的通信由 Lido DAO 指定的验证者 Oracle 执行。</p>
+<p>他们监控节点运营商的信标链账户，并向 Lido 协议的 ETH 1.0 智能合约提交相应数据。以保持 stETH 和信标链上质押的 ETH 保持总量一致。</p>
+<p>目前 Lido 协议收取 10% 的奖励分润，作为平台服务费。服务费中的 50% 进入 Lido DAO，作为 DAO 资金和保险费，剩下的 50% 奖励给节点运营商。</p>
+<p><strong>生态</strong></p>
+<p>除了为用户提供以太坊 2.0 质押服务外，stETH 所能参与的 DeFi 生态也是项目重要的一环。目前，Lido 已与 Curve，Yearn、ARCx 等达成合作。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_e37nabe15y.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-7 生态合作图</p>
+<p>当前，stETH 的流动性主要在 Curve 的 stETH/ETH 池中，占据 stETH 流通量中的 75%，累计有 443,659 枚 ETH，价值约 10 亿美元左右，流动性强，价格稳定性较好，可支持大额交易。交易量增长趋势平稳，如下图：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_5pa2du2kbw.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-8 Curve 的 stETH/ETH 池</p>
+<p>Curve 为 stETH 提供质押凭证 crvSTETH，可参与到 Yearn v2 的机关池中，收益率在 4.65% 左右，目前累计有 174,311,475 美元的流动性。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_js0w4auvlf.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-9 Yearn v2</p>
+<p>Bancor v2.1 已经集成了 wstETH （stETH 的包装版），可以单币质押 wstETH，以赚钱交易费用。用户所质押的 wstETH 并不会实时反映以太坊 2.0 的质押奖励，但会在转回 stETH 后发生变化。当前 Bancor 上 wstETH 的流动性为 417,321 美元。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_miqg8k04nl.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-10 Bancor v2.1</p>
+<p>收益聚合平台 Harvest Finance 为 stETH 创建了流动池，用户可以存入 fCRV-STETH 赚取聚合收益，当前的 APY 在 5.92%，流动性在 34.14 M 美元左右。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_dgwi1ayats.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-11 Harvest Finance 的流动池</p>
+<p>ARCx 是一个去中心化的抵押协议，为 stETH 提供了抵押服务，用户可抵押 stETH 铸造 STABLEx。STABLEx 是一个稳定币，与美元 1:1 锚定，用户可用 STABLEx 置换流动资金池中的 USDC、USDT 或 DAI，或将 STABLEx 存入储蓄合同中以获得回报。<br>
+当前，ARCx 上的 stETH 的锁仓量在 1.28 k 个左右，如下图：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_k1my7ybf5f.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-12 ARCx 的 stETH 锁仓量</p>
+<p>Anchor 是一个类似于 Maker、Compound 的借贷协议，可以发行合成代币和非合成代币。目前已经支持 stETH 的抵押，用户可以将 stETH 作为抵押品提供给 Anchor，以 60% 的抵押率借入其他资产，界面如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_qsb6c832vz.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-13 Anchor 的 stETH 抵押界面</p>
+<p>除了上述的项目以外，Lido 团队已经向 AAVE 跟 MAKER 提交提案，以期两个 Defi 龙头可以接受将 stETH 作为抵押资产。希望 AAVE 社区可以同意添加对 stETH （Lido）的支持，当前的支持率在 85%，大概率通过。以及将 stETH 列为 Make 平台的抵押品，已有 30 人支持了该提案。</p>
+<p>除了以太坊 2.0 质押服务外，Lido 平台还提供 ETH 和 LUNA 的流动性质押，可赚取 ETH 或 LUNA，未来还会增加 SOL 和 AAVE 的流动性质押。当前 Lido 平台上的 ETH 锁仓量为 602,236 枚，累计 1,386,274,987 美元，APR 在 5.4% 左右，如下图：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_ytyebs33az.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-14 ETH 质押</p>
+<p>LUNA 的锁仓量为 77,147,313 枚，累计 458,334,760 美元，APR 在 3.8% 左右。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_ocjhvtlr7s.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 2-15 LUNA 质押</p>
+<p>总结：Lido 的团队来自 P2P Validator，具体信息处于匿名状态。当前获得了一线机构和知名 DeFi 项目创始人的投资，累计募资 7,500 万美元。代码的迭代更新良好。</p>
+<p>stETH 是 Lido 的质押代币，用户可质押任意 ETH 以 1：1 获得 stETH。stETH 可在 Curve 的 stETH/ETH 池中交易、参与到 Yearn v2 的机关池中、在 Anchor 平台作为抵押品，能以 60% 的抵押率借入其他资产等，此外 AAVE 和 Make 已为 stETH 发布了提案，将 stETH 纳入到其生态上。</p>
+<h2 id="发展">发展</h2>
+<p><strong>历史</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_9eusm3h40e.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>表 3-1 Lido 大事件</p>
+<p><strong>现状</strong></p>
+<p>截止 7 月 26 日，Lido 网络的 ETH 质押数量增长到 656 K，日均增长约为 1,000 枚，占已经质押的以太总量 10%，总市值约 14.9 亿美元，拥有 16,904 个以太坊 2.0 验证节点。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_71wojuzkr1.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 3-1 ETH 存量，数据来源：Nansen</p>
+<p>stETH 当前可在 Curve、1inch、Uniswap 以及 BlokFi 的资金池中交易，其中 Curve 的 stETH/ETH 池，占据 stETH 流通量中的 75%，累计有 443,659 枚 ETH，价值约 10 亿美元左右。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_5ytdhilywp.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 3-2 stETH 交易量</p>
+<p>除了 Curve 的 stETH/ETH 池外，stETH 分布在 Nexus Mutual 的 Yield Token Cover Pool （15,000）、defifu.eth （14,537）、EthlidoPCVDeposit （10,000）等流动池中。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_t4hcvvhvjg.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 3-3 stETH 流动性分布</p>
+<p><strong>未来</strong></p>
+<p>Lido 近期在积极和其他 DeFi 平台开展合作，例如 Inverse Finance。举办了社区 Open DeFi 黑客松，支持 DeFi 环境开发，促进 Lido 的 DeFi 生态发展。目前，暂未对外公布相关计划。</p>
+<p>总结：截止 7 月 26 日，Lido 网络的 ETH 质押数量增长到 656 K，日均增长约为 1,000 枚，占已经质押的以太总量 10%，当前 stETH 的流动性主要分布在 Curve、Nexues Mutual 的 Yield Token Cover Pool （15,000）、defifu.eth （14,537）、EthlidoPCVDeposit （10,000）等流动池中。暂未知晓项目的下一步计划。</p>
+<h2 id="经济模型">经济模型</h2>
+<p><strong>代币供给</strong></p>
+<p>Lido 的 代币为 LDO，是治理代币，总供应量为 10 亿，当前流通仅为 28,412,180，约占代币总量的 2.8%。<br>
+LDO 中有 36.32%（3.632 亿）被分配于 DAO 的金库中，由社区管理，其中：</p>
+<ol>
+<li>
+<p>2021 年 4 月，10% 即 1 亿枚 LDO 出售，融资总额约为 7,300 万美元，锁定期 1 年，一年后线性释放。</p>
+</li>
+<li>
+<p>流动性奖励（2,494 万）：500 万（Curve LP 奖励第一期），500 万（Curve LP 奖励第二期），500 万（Curve 流 LP 奖励第三期），480 万（Curve LP 奖励第四期），24 万（捐赠国库），50 万（提供 DeversiFi 流动性市场），10 万（ARCx LP 奖励），25 万（1inch LP 奖励），5 万（Unslashed Finance 保险池），400 万（空投）；</p>
+</li>
+<li>
+<p>6 月 9 日社区提案为 Curve 提供流动性奖励的第五期为 375 万。</p>
+</li>
+</ol>
+<p>剩余的 6.368 亿被分配于 4 个部分：1） 2.218 亿 LDO 用于投资者；2） 6,500 万 LDO 用于奖励验证者和签名持有者；3） 2 亿用于奖励初始 Lido 开发人员；4） 1.5 亿 LDO 用于创始人和未来员工。这些 LDO 代币将于 2021 年 12 月 17 日解锁，12 个月的代币释放期。比例如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_vmit4jkl52.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 4-1 初始代币分配</p>
+<p>LDO 代币释放时间从 2021 年 1 月起，今年的流通量基本为流动性奖励部分，社区销售（1 亿枚）、投资者以及团队部分，于年底和明年初开始释放，具体释放情况如下图：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_deicrks4m6.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 4-2 代币释放</p>
+<p><strong>代币需求</strong></p>
+<p>LDO 代币是 Lido DAO 的治理代币。可用于对协议参数进行投票，管理不断增长的 Lido DAO 金库。当前 Lido DAO 中有 20 项关于社区的提案，用户可以持有 LDO 参与投票，如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_npwqszbvpj.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 4-3 社区提案</p>
+<p><strong>代币持有</strong></p>
+<p>Etherscan 上数据显示，LDO 当前有 4,444 名持有者，前 100 名持有者共同持有了 LDO 总量的 98.03%，累计 983,011,939.46 枚 LDO。比例如下图：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_sg1r1hyae7.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 4-4 LDO 代币分配</p>
+<p>根据 Nansen 的持币地址信息，我们采取了持有数量占比前 100 名的地址进行数据分析，下表是当前机构地址所持有的 LDO 数量，以及 Nansen 标记为 Token Millionaire 和 Heavy Dex Trader 地址的持有数量总和。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_2s4oiw2opd.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>表 4-1 持币地址信息</p>
+<p>注：Token Millionaire 和 Heavy Dex Trader，都是被标记为高交易量的地址，所以我们默认为大户的持有地址，地址数量较多不一一统计。</p>
+<p>在前 100 名中，其中标记为机构的地址共有 9 个，累计持有量为 39,760,894 枚，下图三者的持有占比：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_4nji3ogj01.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 4-5 持有占比</p>
+<p>从表 4-1 和上图中，我们可看到，在前 100 名地址中，机构的持有占比并不大，相比之下，只有 15％，Token Millionaire 和 Heavy Dex Trader，即大户的持有量更高，两者累计持有 235,311,418。除了 Lido 官方外，大户的持有占比最大，这意味着当前 LDO 的数量主要集中在大户手上，机构占比较小，散户更少。</p>
+<p>从持有时间上看，持有 LDO 时间在一个月以上地址数在逐步增加，短期交易者的地址在减少，推测可能现象：市场对 LDO 的态度较为乐观，多数投资者希望中长期持有 LDO，如下图：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_mru8y31phi.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 4-6 代币持有时间</p>
+<p>总结：Lido 的代币为 LDO，是治理代币，总供应量为 10 亿，当前流通仅为 28,412,180，约占代币总量的 2%，主要的供应量将从年底和明年初开始释放。当前共有 4,444 名 LDO 持有者，前 100 名持有者共同持有了 LDO 总量的 98.03%，代币持有较为集中。不过持有 LDO 时间在一个月以上地址数在逐步增加，短期交易者的地址在减少，LDO 的市场需求度在往良性方向发展。</p>
+<h2 id="竞争">竞争</h2>
+<p><strong>行业概述</strong></p>
+<p><strong>以太坊 2.0 概述</strong></p>
+<p>以太坊 2.0，也被称为 Eth2 或「Serenity」，是以太坊区块链的未来升级。以太坊 2.0 将分为多个阶段发布，当前处于 2020 年发布的阶段 0 （Phase 0），也就是信标链上线。每个阶段都将以不同的方式改进以太坊的功能和性能。</p>
+<p>具体分为 3 个阶段：</p>
+<ul>
+<li>
+<p>阶段 0：以太坊 2.0 的第一个阶段，上线信标链。信标链负责存储和管理验证者的注册表，并实现以太坊 2.0 的共识机制 PoS。未来，以太坊原本的 PoW 链将继续与新的 PoS 链共同运行，以确保数据的连续性不会中断。</p>
+</li>
+<li>
+<p>阶段 1：预计可会在 2021 年上线。阶段 1 首要改进是实现分片链集成。分片链是一种可扩展性机制，它将以太坊「分解」成 64 条不同的链，从而实现并行交易、存储、及信息处理。</p>
+</li>
+<li>
+<p>阶段 2：预计 2021 年或 2022 年上线。当前，这一阶段的定义不及上两个阶段明确，将包括添加以太币账户并支持转账和取款、实现跨分片转账和合约调用、构建执行环境从而支持在以太坊 2.0 上构建可扩展的应用、以及合并 1.0 的链到 2.0 的链中，从而彻底结束使用工作量证明。还有更多的阶段 2 完成之后的改进在计划研究和开发。</p>
+</li>
+</ul>
+<p>以太坊 2.0 的愿景是提高可扩展性和安全性，同时保持去中心化。为了实现以太坊 1.0 向 2.0 转变，当前以太坊要做的是将共识层和执行层解耦，未来执行层由现在 ETH 1.0 继续负责运行，共识层将由信标链来完成。</p>
+<p>信标链将以 Pos 机制成为以太坊 2.0 的共识层，为了安全且可控的从当前的以太坊过渡到以太坊 2.0，在质押规则上设置了一定的门槛。信标链的 Pos 共识机制较之前 Pow，更清洁也更具参与性，并且可在以太坊 2.0 上实现大多数人的共识，不是简单的多数决原则以及财阀式的链上治理。这使得以太坊 2.0 的治理难以被控制。它的设计决定了任何实体都难以迫使以太坊 2.0 偏向或审查其他人。</p>
+<p>大多数人共识更有利于保持社区团结。在以太坊历史上曾多次出现，核心开发者在重要问题上发出自己的声音并希望改变以太坊的发展方向，但社区（部分矿工）不同意，最终它并没有执行。采用 Pos 后，可减免大型矿工（掌握网络大部分算力的矿工群）对网络升级的影响，有多数人决定未来网络的发展方向而非大型矿工。</p>
+<p>以太坊 2.0 正在转向一个完整、可靠的金融系统，在面临如政府审查、大量验证者离线、网络无法敲定区块等情况下，仍然保持稳健性，继续产生区块。这种稳健性使得即使遇到大规模网络中断，以太坊 2.0 上极其重要的事务功能都能保持运行。</p>
+<p>在当今可以不负责任地印钞票和资产疯狂膨胀的时代，以太坊社区遵循最低可行发行量的政策，以保持链的安全性，免受像双花这样的攻击，Eth2 的通货膨胀率预计低于 1%，远低于当前的美元通货膨胀率，让投资者拥有更可靠的长期经济获利和储蓄的安全性。</p>
+<p>同时，以太坊 2.0 允许任何个人、企业或政府运行验证者节点，不对验证者集设上限，只需要 32 个 ETH 就可以启动一个验证者，加入到以太坊生态社区中，让社区拥有更高的自我主权。</p>
+<p>以太坊 2.0 在未来会成为一个金融可靠的中立基础设施。在遭遇个人或国家级别的攻击时它仍然能继续运作，是构建经济与金融设施的坚实基础。</p>
+<p><strong>现状</strong></p>
+<p>自从 以太坊 2.0 质押上线，很多第三方平台都为用户提供了该服务，包括中心化和去中心化平台。目前比较主流的代表有：中心化平台有 Binance （不收取手续费）、Kraken 以及 Bitcoin Suisse。去中心化 Staking 平台有 Stakewise Pool、Rocket Pool 以及 Lido。</p>
+<p>截止至 7 月 15 日，全网的 ETH 质押量是 6,603,900 枚，价值约 150 亿美元左右，验证者总数为 200,184，以太坊官方显示的 APR 为 6.1%（各平台的 APR 有所不同）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_d50ukm2a4z.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 5-1 ETH 质押量</p>
+<p>据 Beaconcha.in 数据显示，目前全网提供以太坊 2.0 质押服务的平台有 34 个，下图是当前全网 ETH 质押池的占比情况：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_7poj6s87db.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 5-2 ETH 质押池占比情况</p>
+<p>Kraken 是目前以太坊 2.0 质押市场上最大的质押池，占比 12.98%，拥有 25,224 个验证者。其次是 Binance （占比 4.84%）、Whales （占比 3.69%）以及 Bitcoin Suisse （占比 2.88%）。</p>
+<p>Lido 是目前去中心化 Staking 项目中，质押占比排名较靠前的，约在占比 3.07%。</p>
+<p><strong>竞争分析</strong></p>
+<p>当前提供以太坊 2.0 质押服务的平台众多，我们根据 Beaconcha.in 所提供的项目数据，进行信息统计，具体如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_38759ma3jk.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>表 5-1 项目信息</p>
+<p>注：托管型指用户不需要搭建节点，由平台负责或资金存入平台，密钥由平台中心化管理。同理，非托管型指用户自己搭建节点，掌握密钥或资金存入智能合约，但密钥是分布式管理。</p>
+<p>上述的项目中，多数平台所提供的以太坊 2.0 质押服务偏向商业化，没有构建质押模型，没有搭建社区生态，以赚钱用户的收益比例或每月收取付费服务为主。而像 StaFi、Cream、Lido 这种去中化协议，在提供以太坊 2.0 质押服务同时，创建质押代币模型，提供了额外的收益方式，注重社区生态发展，强调去中心化管理，丰富用户的参与体验，也能提高资本效率。</p>
+<p>Lido 以非托管式提供以太坊 2.0 质押服务，同时积极为用户搭建更丰富的质押代币生态。Staked.us 和 Stake fish 两个平台的 ETH 质押量虽占比较大，但业务方向和 Lido 不一样，并非竞品关系。</p>
+<p>StaFi 和 Ankr Staking，两者和 Lido 的运行模式较为相似，是直接竞品关系。Shared Stake 和 C.R.E.A.M. Finance 目前所提供质押代币生态较为单一，质押机制简单，没有创新性，同时平台的质押量也不高，对比意义不大，所以不参与下文的进一步对比。</p>
+<p>Rocket Pool 和 Stakewise Pool 目前在质押代币生态上进展较慢，但质押机制上有所创新，与 Lido 有所不一样，可以进一步对比。</p>
+<h2 id="竞品介绍">竞品介绍</h2>
+<p><strong>StaFi</strong></p>
+<p>StaFi 是一个为 Staking 资产提供流动性解决方案的 DeFi 协议，用户可以在 StaFi 上通过质押 PoS 项目 Token 获得 Staking 衍生品—rToken，如 rETH，rDOT 和 rATOM 等。rToken 代表质押资产的赎回权，同时也可以直接交易 rToken 资产获得流动性。</p>
+<p><strong>Ankr Staking</strong></p>
+<p>Ankr Staking 是 Ankr 旗下的业务分支，Ankr 是一个 Web3 区块链云基础设施平台。Ankr Staking 是一个结合了 Staking 和 DeFi 的去中心化的协议平台。</p>
+<p><strong>Rocket Pool</strong></p>
+<p>Rocket Pool 是最早期的以太坊 2.0 质押项目，开发多年，致力为用户创建一个去中心化的低门槛以太坊 2.0 质押的平台（更详细信息可参考研报：Rocket Pool）。</p>
+<p><strong>Stakewise Pool</strong></p>
+<p>Stakewise Pool 是目前唯一采用双代币模型的以太坊 2.0 的质押协议。</p>
+<p><strong>业务数据对比</strong></p>
+<p>业务数据最直观的对比，我们选用各平台的 ETH 锁仓量和以太坊 2.0 节点数量作为业务数据对比，如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_djihiobz4h.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 5-3 业务对比</p>
+<p>注：Ankr Staking 和 Rocket Pool 未公开业务数据，数据截止至 7 月 8 号</p>
+<p>从图 5-1 以及上图可见，Lido 是当前竞品内，ETH 质押量最高的，包括节点数量。其次是 Stakewise，拥有 25,728 枚 ETH，节点数量在 1,000 左右。StaFi 目前业务数据方面表现较弱。</p>
+<p>当前 Lido 在业务数据上领先较大，并且 stETH 在 Curve 的 stETH/ETH 池中锁定了超过 10 亿美元的流动性，流通性强，价格较稳定，可利于被其他 DeFi 平台引用，扩展质押代币的业务范围。</p>
+<p><strong>质押代币模型对比</strong></p>
+<p>质押代币模型是指平台所铸造的 staked ETH 的代币模型，代币模式在不同的池之间的实现不同，会给用户带来不同的影响。例如，Lido 的 stETH 代币与 StakeWise 的 stETH 代币并非相同属性，因此在二级市场上定价也会不同。质押代币模型是以太坊 2.0 质押平台提供给用户的额外生态体验，质押代币所带给用户的生态体验，关系到用户的资金利用率问题。</p>
+<p>当前的质押代币模型主要分为两种模式：单一代币设计（将质押本金以及奖励一起捕获至同一种代币中）；双重代币设计（将质押本金以及奖励分别捕获至两种不同的代币中）。</p>
+<p>单一代币是指以 1:1 的形式提供给用户质押代币。这种方式设计简洁，目前采用广泛。质押池会基于用户的存款，为用户铸造单一的代币，以捕获在同一种代币下所累积的质押奖励和惩罚数额。可以通过两种方式完成：</p>
+<ol>
+<li>
+<p>在以太坊 2.0 上累计的质押奖励与惩罚，会通过实时变化的代币余额表现出来，在阶段 1.5 中，用户可以凭借其持有的 staked ETH 代币以 1:1 的比率赎回 ETH。</p>
+</li>
+<li>
+<p>在以太坊 2.0 上累计的质押奖励与惩罚，会通过代币价格表现出来，在阶段 1.5 中，一个单位的质押代币所能赎回的 ETH 随着池中的奖励和惩罚总额变化而波动。</p>
+</li>
+</ol>
+<p>Lido 所采用为第一种，stETH 会随着质押池中的奖励和惩罚进行增减，用户的质押奖励会被实时捕获，反映到期地址上的代币余额上。等到阶段 1.5，stETH 可以 1:1 赎回 ETH。</p>
+<p>Rocket Pool、StaFi 以及 Ankr Staking 采用为第二种，用户的质押代币总额会根据同期 ETH/ETH2 的代币汇率和质押池中累计的奖惩进行总额变化。随着池中的奖励和惩罚总额的增减，用户的质押代币余额将保持不变，但是每个质押代币在池中所能赎回 ETH 的数量会发生改变。例如每枚质押代币的价格可从 1 ETH 变为 1.1 ETH，这代表着用户的质押收益。到了阶段 1.5，用户将以最终的 ETH/ETH2 比率，凭借所持有的质押代币赎回 ETH。</p>
+<p>双重代币设计是指有两种分别反映存款和奖励的质押代币。随着质押池中奖励的增长，deposit （存款） ETH 代币的余额保持不变。然而当它出现在用户的地址中，就会触发 reward （奖励） ETH 代币（rwETH）的生成，以映射池中收益的增长。只要用户持有 deposit ETH 代币，地址中就会产生 reward ETH 代币。</p>
+<p>到阶段 1.5，不管是 deposit ETH 代币还是 reward ETH 代币，都能以 1:1 的比率赎回 ETH。而当前使用双重代币设计的质押池只有 Stake Wise。</p>
+<p>两种代币模型的不同在于：</p>
+<p>单一代币模型可以明确获取用户的报酬变化，1:1 的方式也利于质押代币参与其他 DeFi 应用中，或在二级市场进行交易、提供流动性等。</p>
+<p>而双重代币可将质押余额分配到不同的现金流（本金和利息）中。当用户获得奖励代币时，他们可以进行本息分离，出售 reward ETH 代币（未来的现金流），将本金收回，而购买 reward ETH 代币的用户可以不用质押也可以获得质押红利。</p>
+<p>质押模型的不同，并不会直接影响到用户以太坊 2.0 的质押收益。不同在于使用体验，单一代币更利于参与其他 DeFi 应用，特别是 Rocket Pool、StaFi 以及 Ankr Staking 所采用的第二种，用户的质押奖励会随着兑换比例变化，但所持有的质押代币总额并不会发生变化，更容易与现有的 DeFi 体系兼容。Lido 的质押代币 stETH 总额会实时变化，并不符合某些 DeFi 应用的要求，所以 Lido 推出 wstETH （包装版 stETH），便于被其他 DeFi 应用引用。</p>
+<p>双代币模型则在代币的买卖上更具操作空间，其可交易性更强，用户可以短期持有，获得 deposit ETH 后，可售出部分，以换回本金。因为 deposit ETH 会持续产生 reward ETH 代币，并不利于存入其他智能合约地址，所以对于双代币模型，可用 deposit ETH 参与其他 DeFi 市场，数量总额不会变，但流通量并不大，仍没有单一代币（浮动兑换比例）模型更利于被其他 DeFi 引用。</p>
+<p><strong>生态参与性对比</strong></p>
+<p>以太坊 2.0 这类型项目的质押机制多数相差性不大，除了业务数据外，核心竞争力在于生态的建立，形成自己的护城河与 Defi 生态圈，特别是市场对于平台质押代币价值的认可度，以及其他 DeFi 是否乐于将其引入自己生态中，为平台质押代币创造多种途径的生息方式，保证用户的收益率，才能更多的吸引用户进行抵押。</p>
+<p>生态的建立程度，我们选用质押代币所能参与的生态圈作为对比，下表是目前各平台质押代币，所能参与生态的信息统计：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_agdffhss6s.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>表 5-2 生态参与性对比</p>
+<p>注：Rocket Pool 还处于测试阶段，未开放质押代币的生态参与。部分项目中的池子太小或信息不全，不做数据统计。池中的流动性和 APY 数据截止至 7 月 20 日。</p>
+<p>当前各平台的质押代币所参与的应用，多数为流动性挖矿或聚合收益，应用范围较小。只有 Lido 的 stETH 支持以抵押品的形式借入其他资产，但抵押平台 ARCx 当前规模并不大，只有 $3 M 的流动性。</p>
+<p>StaFi 和 Ankr Staking 都在 Curve 有池子，但池子流动性的大小会直接影响用户的资金利用率。StaFi 的 rETH 在 Curve 的流动性为 40 万美元左右，Ankr Staking 的 aETHc 在 Curve 的流动性为 14 万美元，相比之下，Lido 在 Curve 上流动性达到了 143 万美元，优势较大，更利于被投资者所采用。</p>
+<p>虽然目前 stETH 的流动性较强，但未有较强的生态项目接入 stETH，可参与的生态圈仍需要继续扩展。生态圈的搭建，一方面靠项目方自己的运营和努力，另一方面就是靠背后资本和资源的介绍和推动，目前 Lido 在第二点上，有绝对的优势，例如未来 stETH 就有可能接入到赛道龙头 AAVE 中，因为 AAVE 的创始人是 Lido 的投资方之一。</p>
+<p><strong>手续费对比</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_6b3urc6igs.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>表 5-3 手续费对比</p>
+<p>当前平台所收取的手续费基本采取从用户的质押收益中扣除。收费范围在收益的 10%-15% 左右，平台间相差不大，但手续费是平台主要的收益来源，所以质押池越大的平台，其收益越高。Lido 目前的质押池几乎占据大部分市场，未来收益可观。</p>
+<p><strong>密钥管理方式对比</strong></p>
+<p>密钥的管理直接关系到用户的资金安全，也是平台安全性的直接体现。为了方便读者理解，我们先简要介绍以太坊 2.0 密钥管理规则。</p>
+<p>在以太坊 2.0 中有两个不同的密钥——验证者密钥和提款密钥，每个密钥都有公钥和私钥两种。</p>
+<p>验证者私钥用于对以太坊 2.0 进行链上签名，比如区块提议和证明，必须保存在热钱包里。验证者公钥用于让以太坊 2.0 识别验证者身份，比如存款数据、账号数据等。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_q5sc0vf4kn.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>图 5-4 以太坊 2.0 密钥</p>
+<p>提款密钥用于验证者的余额转移，保存于冷钱包中。当阶段 1 和阶段 2 实现 ETH 的可转移后，验证者的余额需要通过提款密钥识别，才能转移 ETH。丢失了这个密钥意味着无法访问验证者余额。所以提款密钥的管理方式，会直接影响到用户的资金安全。</p>
+<p>下面，我们对比一下各平台对密钥的管理方式：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/18_nj8ul8b36a.png" alt="头等仓：详解以太坊 2.0 质押协议 Lido 业务机制、生态进展与经济模型"></p>
+<p>表 5-4 密钥管理方式的对比</p>
+<p>由于目前用户可以以少于 32 ETH 参与的质押平台的单个节点，都需要聚合多个用户的资产才能筹集 32 ETH，但一个节点只能产生一个提款密钥，且掌握在提供节点的服务商上。所以，无论是通过 MPC 将密钥进行拆分，还是通过多签形式进行分布式管理，当前可以任意金额参与以太坊 2.0 质押的平台，都需要由中介机构来控制用户资金。</p>
+<p>而参与拆分和多签的数量，成员之间的关系等机制，都会影响到密钥的去中心化问题，是一种弱去中心化的方式。还没有一个平台可以为用户提供低门槛的同时，实现对密钥的去中心化管理。</p>
+<p>总结：Lido 目前在赛道上占据大部分 ETH 质押量，相对竞品，拥有较大领先优势。质押代币 stETH 可参与的 DeFi 类型也较为广泛，后续还会有 AAVE 和 Make 两个赛道的龙头项目为 stETH 提供生态服务，赛道优势显著。</p>
+<h2 id="风险">风险</h2>
+<p><strong>智能合约风险</strong></p>
+<p>用户的资金由智能合约管理，Lido 目前已经接受了 Quantstamp、Sigma Prime 和 MixBytes 三家公司审计，但并不意味 Lido 的智能合约不存在安全风险。</p>
+<p><strong>验证者风险</strong></p>
+<p>验证者方面，主要是面临 slashing 和 hostage 风险。因为以太坊 2.0 质押对验证者存在明确的惩罚机制，若验证者长期离线或作恶，会使用户的收益受到消减。为了缓解这些问题，Lido 当前仅与表现优质的节点提供商合作。</p>
+<p><strong>密钥管理风险</strong></p>
+<p>当前提款密钥是由 Lido DAO 以多签的形式让 Staking Facilities、Certus One、Argent、Banteg （yearn.finance）、Alex Svanevik （Nansen）、Anton Bukov （1inch）、Michael Egorov （Curve/nucipher）、Rune Christensen （MakerDAO）、Will Harborne （DeversiFi）和 MustafaAl-Bassam （LazyLedger），10 个机构共同管理，密钥管理虽是多签形式，但仍然掌握在机构手上。</p>
+<p><strong>生态风险</strong></p>
+<p>如果 Lido 未能按预期规划，与其他项目协议建立良好的合作关系，或是后续 stETH 的生态圈逐步减少，那么 stETH 的作用将大大受限，极端情况下，用户的 stETH 除了赎回质押的 ETH 以外没有任何作用，无法实现项目所宣传的提高资金利用率等功能。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/26788/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">唯一、不可篡改的NFT？阿里、腾讯竞相押宝区块链数字藏品</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/26767/">
+                <span class="next-text nav-default">想要对冲DeFi的风险应该怎么办？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#投资概要">投资概要</a></li>
+    <li><a href="#基本概况">基本概况</a></li>
+    <li><a href="#发展">发展</a></li>
+    <li><a href="#经济模型">经济模型</a></li>
+    <li><a href="#竞争">竞争</a></li>
+    <li><a href="#竞品介绍">竞品介绍</a></li>
+    <li><a href="#风险">风险</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

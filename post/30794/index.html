@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文介绍Filecoin虚拟机FVM：它将为网络带去什么 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="目前的Filecoin网络是一个可通过验证存储并访问NFT、公共数据集、web3和Metaverse资产的强大网络。" />
+<meta name="keywords" content="Filecoin" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/30794/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文介绍Filecoin虚拟机FVM：它将为网络带去什么" />
+<meta property="og:description" content="目前的Filecoin网络是一个可通过验证存储并访问NFT、公共数据集、web3和Metaverse资产的强大网络。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/30794/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-11-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-13T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文介绍Filecoin虚拟机FVM：它将为网络带去什么">
+<meta itemprop="description" content="目前的Filecoin网络是一个可通过验证存储并访问NFT、公共数据集、web3和Metaverse资产的强大网络。"><meta itemprop="datePublished" content="2021-11-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-11-13T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3404">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文介绍Filecoin虚拟机FVM：它将为网络带去什么"/>
+<meta name="twitter:description" content="目前的Filecoin网络是一个可通过验证存储并访问NFT、公共数据集、web3和Metaverse资产的强大网络。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文介绍Filecoin虚拟机FVM：它将为网络带去什么</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-11-13">
+      2021-11-13
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3404 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>目前的Filecoin网络是一个可通过验证存储并访问NFT、公共数据集、web3和Metaverse资产的强大网络。你可以将其视为web3的I/O层，然而这只是冰山一角。<strong>将通用的智能合约编程功能引入Filecoin网络，可以释放出网络更多的价值和潜力。</strong> 将计算层架构在存储层之上也为跨链提供了无需信任的互操作性和集成。</p>
+<p>最近，Protocol Labs 研究员Raúl Kripalani向Filecoin社区介绍了Filecoin虚拟机 - FVM。FVM将成为推动去中心化存储的核心支柱。</p>
+<p>（本文来源于Protocol Labs官方，分布式资本翻译。）</p>
+<h2 id="为什么要在filecoin中引入智能合约"><strong>为什么要在Filecoin中引入智能合约</strong></h2>
+<p>智能合约（在Filecoin亦被称为actors）可以提供智能和动态的存储解决方案，而使用现有的web2技术则很难实现。例子包括：</p>
+<p>&quot;</p>
+<p>1. <strong>对存储在Filecoin中的数据进行去中心化计算</strong>  （在数据所存储的空间直接进行计算而无需转移数据）</p>
+<p>2. <strong>对众筹的数据集进行保存</strong> （每个人对重要的社会性数据进行存储，例如犯罪统计或环境变暖的数据）</p>
+<p>3. <strong>更智能的存储市场</strong> （例如：按时间、复制级别或区域可用性对存储进行动态定价）</p>
+<p>4. <strong>跨时代存储和永久托管</strong>  （例如：存储几代人都会流传使用的数据）</p>
+<p>5. <strong>创立Data DAO和数据集的通证化</strong> （例如：为数据存储的通证化建立经济模型，并组建DAO对其进行计算和协调）</p>
+<p>6. <strong>NFT的本地存储</strong> （例如：将NFT的内容与跟踪其内容的注册表共存）</p>
+<p>7. <strong>时间锁定的数据检索</strong> （例如：仅当公司公开结果时才解锁此数据集）</p>
+<ol start="8">
+<li><strong>抵押贷款</strong> （例如：向存储供应商提供贷款，如接受特定客户的FIL+交易，在特定时间点进行交易）</li>
+</ol>
+<p> 等等。</p>
+<p>&quot;</p>
+<p>智能合约还可以让开发人员建立跨梁桥实现互操作性 - 共享流动性和为部署在其他链上的dapp（例如：Ethereum, Near, Solana, Flow等）与Filecoin网络进行集成，提供存储功能。</p>
+<h2 id="作为layer0的存储"><strong>作为Layer0的存储</strong></h2>
+<p>目前，Filecoin平台是数据存储和检索的中心。我们认为这两个特性使Filecoin网络成为了协议的Layer 0。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1113/20_160g4hmrlk.png" alt="一文介绍Filecoin虚拟机FVM：它将为网络带去什么"></p>
+<p>尽管系统设计简洁明了，但不能满足那些试图通过可编程智能合约来构建更复杂的应用程序和解决方案的开发者的需求。</p>
+<p>Layer 0之上的Layer 1，则实现智能合约的可编程性。目前，Filecoin网络的逻辑是编死在系统定义的合约中。这意味着用户自定义的智能合约只能通过其他可以被编程的区块链协议，例如Ethereum和Solana (通过类似Textile Bridges的解决方案)进行部署。Filecoin虚拟机则能够实现原生的用户自定义智能合约。</p>
+<h2 id="与以太坊兼容的filecoin虚拟机"><strong>与以太坊兼容的Filecoin虚拟机</strong></h2>
+<p>最早的技术讨论在Filecoin Improvement Proposal 113推出以后的2021年6月开始。受到通过虚拟机监视器来建立多虚拟机设计的启发，Filecoin虚拟机（FVM）的目标是成为一个多语言虚拟机。当时也考虑了许多方法，其中包括EVM as-is, LLVM-IR, eBPF, Secure EcmaScrip等等。</p>
+<p>FVM原生的运行时（Runtime）是WASM。我们认为WASM是未来非常有前景的编程语言。<strong>这使得用任何编程语言编写的原生智能合约都可以编译成WASM（尽管并非所有语言都适用，但参考的SDK是用Rust编程的）</strong> 。可以让web2的开发者能够更快地进入web3世界并达到与前者同样的开发水平，并避免特定编程语言的学习曲线。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1113/20_s2wdju1gag.png" alt="一文介绍Filecoin虚拟机FVM：它将为网络带去什么"></p>
+<p>此外，我们正在添加对模拟外部运行时的支持，第一个是以太坊虚拟机（EVM）。主要原因在于Filecoin的开发者社区要求FVM支持EVM/Solidity，对源代码进行最小甚至是零更改。</p>
+<p>随着时间推移，我们看到以太坊社区建立了大量有用的，且最重要的是经审计的，高强度测试使用过的智能合约，例如ERC-20代币、NFT、DAO、flashloan等。如能将这些合约在Filecoin网络上进行重复使用，将推动各种创新且可组合方案的快速启动。另外，让Solidity开发者通过桥和预言机进行跨链作为解决方案可以增加共同价值和效用。</p>
+<p>还需要提到一点的是，EVM兼容性针对的是字节码层，因此可以在Filecoin环境中充分利用成熟以太坊工具，如Truffle， Remix，Hardhat， VSCode插件等等。除了部署现有的智能合约外，开发者还可以以Solidity编写新的只能合约来进行快速启动，或者在需要性能优化的情况下使用原生的智能合约来进行升级。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1113/20_u7nuu2hd26.png" alt="一文介绍Filecoin虚拟机FVM：它将为网络带去什么"></p>
+<h2 id="扩大filecoin网络的影响"><strong>扩大Filecoin网络的影响</strong></h2>
+<p>Filecoin网络除了现有存储能力外，还将通过FVM获得计算能力。我们设想在Filecoin网络上运行两种计算：基于状态的链上计算和基于数据的链下计算。FVM将成为构建这两方面的关键模块。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1113/20_ikuolrok8r.png" alt="一文介绍Filecoin虚拟机FVM：它将为网络带去什么"></p>
+<p>我们很高兴在Filecoin中看到的项目包括：</p>
+<p>1. <strong>以数据为中心的去中心化自治组织（Data DAOs）</strong> ：通过汇集个人和组织的资源，人们将能够通过激励对共享/公益数据集进行保存、管理、扩充和处理。Data DAO以通证和NFT为单位对服务进行计价，并交易这些通证以请求服务、授予访问权限等。</p>
+<p>2. <strong>复制客户端</strong> ：根据用户定义的规则，自动化机器人程序将以一定的激励机制确保Filecoin网络中的数据达到一定的复制级别。</p>
+<p>3. <strong>另类的数据存储市场</strong> ：基于拍卖、奖金或其他工具，存储市场可以为数据提供纠错码，以确保数据在中断时的可恢复性。它们还可以实现自动重试交易，以确保数据交付。</p>
+<p>4. <strong>抵押贷款</strong> ：向供应商提供的无需信任或特定目标的抵押贷款，例如，贷款资金只能用于接受特定客户的FIL+交易。</p>
+<p>5. <strong>基于数据的计算</strong> ：在大规模计算中的有一个很大问题在于每项操作增加了数据传输的成本和延迟。通过将计算任务交给提供数据托管的存储提供商并奖励协调节点来制定整个Filecoin网络的执行计划，可以实现高效的执行并行任务，计算结果存储回Filecoin网络，下游计算执行。</p>
+<p>此外，将会是第一次Filecoin网络的L2解决方案能够通过FVM将其状态提交到L1，从而实现更安全、更可被追踪的覆盖网络。我们特别希望在Filecoin上看到一些L2解决方案运行，包括内容交付网络（CDN）、声誉系统和支付渠道网络。</p>
+<p>如果你是对这些用例有兴趣做原型设计的开发者，请联系我们！</p>
+<p><strong>Filecoin近期阶段的路线如下：</strong></p>
+<p><strong><img src="https://img.bibiqing.com/news/2021/1113/20_wr9k0d5bes.png" alt="一文介绍Filecoin虚拟机FVM：它将为网络带去什么"></strong></p>
+<p><strong>Phase 0 :</strong>  通过功能发布控制或者以分叉参考实现（Lotus）的方式, 使不可编程的FVM以金丝雀启动形式上线主网，只会运行系统的智能合约。与现有协议兼容且不需要协议升级。这一阶段预计在2021年Q4上线。</p>
+<p><strong>Phase 1 :</strong>  分叉协议以为用户可编程性之上做一些准备性的改变，其中包括Gas计划和架构的调整。在这一阶段的终期，100%的网络将会运行FVM-支持的系统智能合约。这一阶段预计在2022年Q1上线。</p>
+<p><strong>Phase 2 :</strong>  原生及外部的EVM将实现用户可编程性。这一阶段预计在2022年Q2上线。</p>
+<p><strong>Phase 3 :</strong>  重新设计系统的智能合约并对协议进行深度改造以便开发的。这一阶段预计在2022年Q2上线。</p>
+<p>如果您有兴趣帮助FVM的开发，或者想了解更多关于该项目的信息，请关注filecoin项目/FVM项目GitHub repo和filecoin Slack上的#FVM频道</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/30810/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">苏州元宇宙大会带你深度体验“未来世界”</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/30799/">
+                <span class="next-text nav-default">一再延迟后:美SEC终拒绝VanEck现货比特币ETF申请</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么要在filecoin中引入智能合约"><strong>为什么要在Filecoin中引入智能合约</strong></a></li>
+    <li><a href="#作为layer0的存储"><strong>作为Layer0的存储</strong></a></li>
+    <li><a href="#与以太坊兼容的filecoin虚拟机"><strong>与以太坊兼容的Filecoin虚拟机</strong></a></li>
+    <li><a href="#扩大filecoin网络的影响"><strong>扩大Filecoin网络的影响</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

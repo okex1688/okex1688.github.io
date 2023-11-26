@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          从底层技术和业务逻辑深入分析 GameFi 链游的可持续性 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="如果说 2020 年是 DeFi 爆发元年，那么 2021 年毫无疑问是 GameFi 链游爆发元年。" />
+<meta name="keywords" content="DeFi, Gamefi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/27586/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性" />
+<meta property="og:description" content="如果说 2020 年是 DeFi 爆发元年，那么 2021 年毫无疑问是 GameFi 链游爆发元年。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/27586/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-20T00:00:00+00:00" />
+
+<meta itemprop="name" content="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性">
+<meta itemprop="description" content="如果说 2020 年是 DeFi 爆发元年，那么 2021 年毫无疑问是 GameFi 链游爆发元年。"><meta itemprop="datePublished" content="2021-08-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="10501">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"/>
+<meta name="twitter:description" content="如果说 2020 年是 DeFi 爆发元年，那么 2021 年毫无疑问是 GameFi 链游爆发元年。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">从底层技术和业务逻辑深入分析 GameFi 链游的可持续性</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-20">
+      2021-08-20
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 10501 字 -
+        预计阅读 21 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="2021-年gamefi-链游元年">2021 年——GameFi 链游元年</h2>
+<p>如果说 2020 年是 DeFi 爆发元年，那么 2021 年毫无疑问是 GameFi 链游爆发元年。</p>
+<p>据 DappRadar 统计，2021 年 4 月 18 号，链游板块交易数量曾高达 4807 亿美元。链游板块的使用者截至 7 月 31 号超过 78 万，比年初增长超过 170 倍，从 3 月-7 月 GameFi 日活跃钱包数涨幅 700%。截至 2021 年 7 月 30 日，链游市场吸引投资近 10 亿美元，而 2020 年全年该数额为 7200 万美元。</p>
+<p>2021 年 8 月，Axie Infinity 超越 NBA Top Shot 成为现象级产品，它的累计交易量突破 10 亿美元，创下历史新高。截至 8 月 18 日，它的治理代币 AXS 目前市值高达 40 亿美元，排名第 40，价格从年初至今涨幅达 132%。而它在 7 月产生的 gas 费比其他加密资产都多，包括比特币和以太坊。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_usakh868iv.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>来源：CoinGecko</p>
+<p>据 DApp 数据统计公司 Token Terminal 数据显示，7 月 Axie Infinity 协议的收入是全网协议收入排名 2-10 位收入综合的 4.2 倍。</p>
+<p>据 TokenTerminal 数据，7 月 28 日，Axie Infinity 收入达到 1848 万美元，单日收入已超腾讯手游《王者荣耀》2 倍；截至 8 月 17 日，Axie Infinity 近 30 天收入 3.34 亿美元。</p>
+<p>据 Sensor Tower 数据显示，2021 年 7 月《王者荣耀》收入是 2.31 亿美元。区块链游戏代表性作品的月收入已可与头部传统游戏争锋。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_v4p7curips.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>2021 年 8 月 17 日 dapps 和区块链近 30 日协议收入</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_ywy8nw2p3s.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p><strong>DeFi 与 GameFi</strong></p>
+<p>链游发展历程经历了 3 个阶段：1、游戏币上链；2、游戏装备道具等资产上链通过 NFT 代币形式进行确权；3、游戏内在逻辑和核心规则上链。</p>
+<p>从 2017 年到 2021 年，链游领域出现了 Axie Infinity 这个游戏的现象级产品，带动了 GameFi 模式（DeFi+NFT+游戏），更让人注意到了 play to earn「玩赚」模式——边玩边赚，玩家在游戏中得到的代币资产可以进行买卖。Axie 的菲律宾玩家在游戏中的月收益能超过他们自己打工的收入。</p>
+<p>GameFi，即 Game Finance （在游戏中加入金融元素），或者更核心的模式叫 Play to Earn，本质上是资金游戏。GameFi 实际上是 PoW+DeFi，通过花费时间和精力通过游戏获取收益，可以没有原始资金，而 DeFi 是基于权益证明（PoS）共识机制的，需要有原始资金成本的，通过挖矿获取收益。GameFi 中的 DeFi 成分主要体现在：NFT 游戏资产是去中心化的，可参与提供流动性和一些质押挖矿。</p>
+<p>GameFi 重点是玩游戏，DeFi 重点是挖矿。GameFi 是将 DeFi 中的挖矿过程用游戏替代了，资金并不是必要条件，时间和精力是受益的关键条件。用户得玩转那些角色和道具，要赢过复杂的游戏关卡和策略才能赚钱，相比挖矿，这个路径要长远得多，因此项目会有一个更长的生存周期。如果游戏本身的经济模型和游戏玩法设计得越成熟越完善，就越能延长游戏的寿命。而且，DeFi 项目收费只有 0.3% 左右，而 GameFi 项目方收益多 10 倍不止，收费到达 3%+，项目方本身也有更多资金流反哺游戏。</p>
+<p>对于普通用户来说，对 DeFi 挖矿的理解成本比玩游戏高多了，因此链游可以出圈，可以让东南亚国家用户趋之若鹜，这也是为什么目前 GameFi 项目收入甚至能超过大多数 DeFi 项目的原因之一。（参考上一张图：2021 年 8 月 17 日 dapps 和区块链近 30 日协议收入）</p>
+<p>据 DappRadar 数据显示，截至 2021 年 8 月 16 日，链游数量已达 838 个。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_g7myd5cw5s.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>Axie Infinity 发展路径图，来源：CoinMartketCap</p>
+<p><strong>链游和传统游戏相比的优势</strong></p>
+<p>目前，很多传统游戏是 free to play 免费模式，包括收益最高的《王者荣耀》、热门游戏《Pokémon Go》和 11 天创收 1 亿美元的日本手游《Ni No Kuni: Cross Worlds》，游戏开发商通过出售游戏道具获得营收，但这类游戏有个弊端逐渐被发现，必须氪金才能继续完成关卡，否则就被卡住。</p>
+<p>但是传统游戏并不是没有创新者，比如《<em>Roblox</em>》，其他开发者和设计师可以在此游戏中制作自己的游戏和道具，并将其出售给其他玩家，以换取虚拟币 Robux 的收益。根据数据显示，27% 游戏成本流向了所有游戏开发者，25% 流向应用商店，12% 用于投资和支持该平台，还有 27% 流向了游戏本身。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_ndzdj65kwj.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>但传统游戏没有打通系统，因此让游戏资产交易受到阻碍，只能在游戏内部交易，通常传统游戏收到的只是物品或虚拟币奖励，且没有控制权。而在区块链游戏中的游戏奖励是加密资产，就可以在链上进行自由买卖。Play to earn 游戏还开放法币入金通道，使用信用卡，这大大降低了 NFT 游戏的成本和门槛，可以吸收到圈外的玩家。</p>
+<p>在传统游戏领域里，对于玩家来说，中心化游戏公司会将大部分游戏收入收走，或者因为中心化，玩家的利益难以保障。而在区块链游戏领域里，大部分甚至几乎全部收入都归属于玩家自己，这对玩家是一个最原始的吸引点。</p>
+<p>对于游戏开发商来说，因为行业的成熟，寡头集中度持续攀升，比如腾讯网易占据一半市场份额，流量和资源都被某几家垄断。同时，中小游戏开发商生存压力大，获客成本越来越高，而用户付费率和盈利提升空间小。而在区块链游戏领域里，真正开始发展总共不过三五年，除了今年爆发的 Axie Infinity，其他个细分领域还有巨大的潜力空间。</p>
+<p>2020 年，全球排名前 100 的上市游戏公司共计收入，同比增长高达 23%，占 2020 年游戏市场收入总额的 94%（不包括广告）。目前，全球最大的游戏公司是来自中国的科技巨头腾讯。</p>
+<p>区块链游戏将主动权交给玩家，重构了开发商、玩家之间的关系，具备极大的渗透力和发展潜力。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_scecs3rp7u.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>对应不同类型传统游戏的链游</p>
+<p><strong>游戏玩家来源——游戏公会 &amp;DAO</strong></p>
+<p>即使游戏底层技术拥有突破性发展，游戏内容丰富性在逐步提升，但没有用户，一切将变得没有价值。</p>
+<p>菲律宾游戏公会 Yield Guild Games （YGG）提出一个 Axie 奖学金（Axie Scholarship）项目，它有 Scholar 玩家、管理者、YieldGuild 公会组织三个角色。管理者负责拓展和培训新人，公会组织不直接和玩家接触，主要通过管理者接触。</p>
+<p>由于 Axie 这个游戏初始设定需要有 3 个 Axie 宠物才能开始玩，几百甚至上千美元的成本能劝退大部分人，而管理者会以３个 Axie 作为一队租赁给申请的玩家，因此玩家几乎没有前期成本，并凭借 3 个 Axie 开始在游戏中赚取 SLP 代币。玩家得到的收益按照玩家 70%、管理者 20%、公会组织 10% 的比例进行分配。</p>
+<p>玩家后期也可以通过 YGG 公会让其他玩家使用自己的 Axie，并从他们赚取的 SLP 获得一定分成。</p>
+<p>YGG 投资过或计划投资的游戏：Illuvium、LeagueofKingdoms、F1DeltaTime、TheSandbox、StarAtlas、ZEDRUN 等。</p>
+<p>YGG 这种公会组织的模式没有很高的模仿难度，加密游戏公会有可能逐步发展成为一种 DAO 组织。DAO 是基于基于某种目的，可以将人们组织起来的分散化组织形成，去投资或完成某种目的，它将推动很多区块链游戏的发展。</p>
+<p><strong>疫情激发了传统游戏最活跃市场——东南亚</strong></p>
+<p>在 newzoo 全球游戏市场报告（截至 2021 年 7 月）中，亚太地区在全区传统游戏玩家中人数（以及收入）占比已达 50%+，这是一个极具潜力的市场，只要占据这个市场，都有巨大的发展空间。</p>
+<p>「包括中南亚和东南亚等新兴市场的亚太地区拥有全世界数量最多的活跃游戏玩家，占全球玩家总数的 55%，远高于其他地区的玩家数。」</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_a4npwqjbuk.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>来源：newzoo</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_c2oneph8mj.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>在 google 搜索趋势中，100 代表搜索热度上限，可以看到 play to earn 模式热度从五、六月持续攀升，东南亚和中东地区最为关注。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_yb34smdie3.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>在 Axie Infinity 搜索趋势中，4 月下旬热度开始逐步增长，7 月中旬数据达到顶峰，随后出现 25% 的回落并保持稳定，其中菲律宾也是热度排名第一。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_ulr8cbguhm.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>因为 YGG 公会组织降低了成本，东南亚国家受疫情影响，打工收入大大减少，一听说有一个能超过月收入的途径，迅速自主传播开。听说有人家里的菲佣一晚上就学会玩 Axie 游戏，顺带把朋友圈里的其他人也都带会了。玩 Axie 游戏甚至成为有些菲律宾人养家糊口的工具，play to earn 纪录片中还有六七岁老汉每天玩几小时游戏，以支付老夫妻俩的医药费和生活费。</p>
+<p>据数据显示，Axie Infinity 7 月份日均活跃用户数量已突破 80 万，其中高达 60% 的用户都来自于菲律宾。</p>
+<p><strong>区块链游戏应具备的特质</strong></p>
+<p>一是收益率。GameFi 区块链游戏与传统游戏最本质的区别就在于是边玩边赚模式，但一个不成熟的无法形成闭环的经济模型，无法为用户带来长远稳定的收益。</p>
+<p>二是可玩性，从传统游戏的过往历史来看，不论游戏本身画质是像素还是 3A 级高端画质，只要好玩的游戏都能让用户可以把画质的好坏放在次要位置，但目前还充斥着一些投入不足的游戏，无可玩性可言。</p>
+<p>三是流畅性，区块链游戏的基础设施还不能和传统游戏相比，传统游戏的吞吐量 TPS 动辄成千上万，链游的每一个游戏动作都需要进行打包并全网广播，这种处理速度肯定会让熟悉传统游戏的玩家感受到差距。</p>
+<h2 id="游戏流畅性gamefi-链游的底层技术发展">游戏流畅性——GameFi 链游的底层技术发展</h2>
+<p><strong>公链为解决痛点而快速发展</strong></p>
+<p>2017 年，Cryptokitties （加密猫）爆发，业内也看到底层公链技术的不成熟，是几年内阻碍链游大规模应用和发展的痛点。高昂的 Gas 费用成本、低性能和网络容量问题始终是致命伤。当时，以太坊每秒仅能支持 15-30TPS，等待确认的延迟交易每天保持在 2 万笔以上，如果想要优先确认，玩家必须支付高出以往 10 倍左右的 gas 费。在线应用的最大特征是交互能力，以太坊的交互成本太高。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_c8gh670iis.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>曾经有人吐槽，不理解为何还有项目方在以太坊上发行 NFT，购买 $3 美元商品竟然要 $79 美元交易手续费。</p>
+<p>2018 年，以太坊 2.0 要完成部署还需要很久，有些区块链游戏项目方还在为很多公链不支持 NFT 而感到焦虑。</p>
+<p>2021 年，不仅 Layer1 的公链出现了好几条，而且 Layer2 的创新链也占有了一席之地，甚至还有专门为 NFT 而生的区块链。</p>
+<ul>
+<li>
+<p>Layer1 公链代表：以太坊、WAX、Flow、Solana；</p>
+</li>
+<li>
+<p>Layer2 侧链代表：BSC、Ronin、Polygon、Immutable X。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_b0z4lym822.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>来源：MESSARI</p>
+<h2 id="layer1-公链">Layer1 公链</h2>
+<p><strong>Ethereum 区块链——最强大共识</strong></p>
+<p>以 ETH 为代表的公链的优势：共识度高，节点分散在全世界，去中心化程度高，全球都可参与，因此拥护者非常多。缺点：因为交易打包时间长，不能处理巨额数据，容易造成区块拥堵，导致用户体验差。虽然存在着各种问题，但强大的共识基础促成了生态聚集效应，在一段时间内，以太坊上的位于前十的链游交易额也明显大于其他公链。</p>
+<p>代表项目：CryptoKitties、The Sandbox、Big Time。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_o40k9vlil7.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p><strong>WAX 区块链——NFT 之王</strong></p>
+<p>WAX 不是一条通用型公链，是专注于 NFT 的公链，基于 EOS 改造，沿袭了 DPoS 共识机制，WAX 的理论吞吐量可达 3000 TPS 以上，Gas 费与以太坊相比也低很多。WAX 未来会推动链上 NFT 资产在各个独立的 Dapp 之间的打通，这将有利于增强资产流动性，另外，WAX 也在跨链方向上努力。</p>
+<p>WAX 被称为「 NFT 之王」，凭借着 OPSkins （全球最大的数字市场的运营商）在成立之初便坐拥百万级用户基础。2020 年，WAX 上的 NFT 一级认购最快会在几分钟内售罄，它的 NFT 二级市场交易量比一级市场高 5 倍。</p>
+<p>有关数据显示，在第二季度，WAX 链成为市场的领头羊，NFT 销量已超过以太坊和 Ronin 的总销售额。与区块链游戏交互的 WAX 每日活跃钱包数量每季度增长 1,082% ，达到 306,707 个。</p>
+<p>6 月公链钱包数据显示，排名第一：Wax (钱包数：306707)、排名第二：BSC (钱包数：8641)、排名第三：Ronin (钱包数：7987)。</p>
+<p>代表项目：Alien Worlds、R-PLANET、PROSPECTORS。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_rmfwjho6sg.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p><strong>Solana 区块链——最高效公链</strong></p>
+<p>Solana 是没有采用分片的高性能区块链，可能是最高效的公链。</p>
+<ol>
+<li>
+<p>它拥有核心创新的历史证明共识机制（PoH），可以引入其他底层技术无法做到的时间体系，将时间编码（历史证明）为数据，对交易进行排序，因此它无需像其他公链一样需要互相通信才能完成共识，缩减共识确定和消息传递时间。</p>
+</li>
+<li>
+<p>它首次采用 GPU 并行处理模式，其他区块链都是单线程的，Solana 是唯一的多线程区块链，可并行化转账。</p>
+</li>
+</ol>
+<p>因此，Solana 具有高吞吐、高度可扩展性、低延迟和低交易成本的优势。Solana 的吞吐量可达 50,000 TPS，最高达 65,000，出块时间约 400 毫秒，全球节点数量超过 300，单笔交易成本低至 0.00001 美元（几乎没有）。</p>
+<p>弊端：由于 Solana 不兼容以太坊虚拟机（EVM），无法像 BSC、Heco 一样易于让开发者迁移。在公链的不可能三角中，Solana 更多偏向了可扩展性，链上的项目较为中心化，并牺牲了一部分安全性。</p>
+<p>代表项目：DeFiLand、Star Atlas、Aurory。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_r8r8ub6cay.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p><strong>Flow 区块链——现象级项目制造者</strong></p>
+<p>2 个 NFT 现象级项目加密猫和 NBA Top Shot 的开发团队 Dapper Labs 自主研发了 Flow，这是一条专注于适应 NFT 和游戏的公链，可在 Layer1 上不分片并打造高扩展性。</p>
+<p>以太坊是横向分解交易，按照交易类型、金额和重要性等进行分类，再分别处理。<br>
+Flow 是纵向分解交易，方法是垂直分片+专业化分工，将耗费资源的计算过程和耗费时间的共识过程进行分离，对交易和节点按照 Flow 独特的维度分类，再按照节点本身的性质和能力分配任务。</p>
+<p>据 Flow 官网显示，与传统底层技术相比，Flow 在不影响安全性或去中心化的情况下，它的吞吐量相较提高 50 多倍，速度明显提升，交易费明显降低，最低为 0.001Flow。</p>
+<p>同时，Flow 拥有丰富的生态系统，其中包括很多重量级合作伙伴，这让它有着强大 IP 市场优势。</p>
+<p>代表项目：NBA Top Shot、MotoGP™ Ignition。</p>
+<h2 id="layer2-侧链">Layer2 侧链</h2>
+<p><strong>Ronin 区块链——Axie Infinity 定制侧链</strong></p>
+<p>Ronin 是以太坊链的侧链，它的推出是 Axie Infinity 从 2021 年 4 月 24 日开始连续两个月爆炸式增长的关键催化剂，Axie 一月活跃用户只有 523 位，而后日活用户（DAU）从 4 月的 38,000 人暴增至 252,000 人。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_s5oa4ssqyw.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>来源：DappRadar</p>
+<p>Ronin 链的交易几乎可以瞬间完成，Gas 费用几乎可忽略不计，Axie 可以在以太坊和 Ronin 之间自由转移，这让玩家们更容易进行繁殖，因而促进了 Axie 数量、繁殖费用和市场成交额的增长，进而推进 DAU、Axie 持币用户量和 Discord 会员数量显著增加。Axie 甚至还和 Discord 官方协商，取消了 10 万会员数的上限。截止 8 月初，会员数已达 68 万+。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_0r3z2qvu9s.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>从 AXS 通证价格表现更直观：4 月 24 日 AXS 价格：$7.57，7 月 26 日 AXS 价格：$40.87。</p>
+<p>第二季度，Axie Infinity 向 Ronin 迁移后，创造了超过 1.62 亿美元的 NFT 交易量。而在没有 Axie Infinity 的情况下，整个以太坊游戏生态系统加起来，NFT 交易量为 6,440 万美元。</p>
+<p>Ronin 是游戏领域唯一一个在 NFT 交易量上超过以太坊的区块链解决方案，且 Ronin 曾在 30 天里产生的 Gas 费比 BSC 和 Polygon 还多。7 月，Ronin 的存款资产突破 5 亿美元，钱包下载量突破 100 万次！</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_fzs1kp30k7.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>资料来源：DappRadar</p>
+<p><strong>BSC 区块链——掘金热土</strong></p>
+<p>币安智能链 BSC 是基于 Cosmos 侧链打造的，具有高性能低转账费率，并兼容以太坊虚拟机 EVM，易于接入以太坊生态。BSC 引入权益权威证明（PoSA）共识机制，通过质押 BNB 达成共识，并需要 21 名验证人。</p>
+<p>因此 BSC 链每 3 秒生成一个区块，平均每笔交易 gas 费为 0.05 美元。在区块链不可能三角问题上，BSC 链是交易速度和交易成本方面可实现的一个替代性解决方案。</p>
+<p>BSC 拥有强大资金背景、海量社区用户以及项目资源等，对应用落地很有帮助，今年提出的 2 轮加速计划更是逐步明确要孵化 GameFi 赛道项目。</p>
+<p>交易所公链的弊端是，它的增长由一些锁仓量和交易量较为集中的 NFT 项目驱动，去中心化程度不够到位，因此也是一个隐患。另外，BSC 链时不时存在一些网络拥堵的情况，是后续用户一直关注的问题。</p>
+<p>BSC 链刚开始就是为以太坊 DeFi 而生的，今年又兼顾了新热点 GameFi，如今，排名前 10 的链游项目中，有一半左右来自于 BSC 链。</p>
+<p>代表项目：CryptoBlades、My DeFi Pet、My Neighbor Alice、MOBOX。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_l821bhrowd.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p><strong>Polygon 区块链——最全扩容方案</strong></p>
+<p>Polygon 是以太坊链上首个 Layer2 解决方案聚合器，拥有良好的 EVM 兼容性，基于以太坊的项目可轻松迁移过来，也兼容 Metamask。它具有高扩展性，交易安全，具备高吞吐量（7200+TPS），快速确认（平均 1-2 秒），低交易费（每笔 0.00004 美元）。</p>
+<p>Polygon 在共享以太坊链安全性的前提下，通过侧链扩容，既有效率，又有安全，同时，混合方案的扩容可降低技术开发门槛。</p>
+<p>它的最大技术优势，就是扩容方案多样化，拥有最多的全栈解决方案，其中 4 个最主要的扩容方案：Polygon SDK、Polygon PoS、Polygon Avail 和 Polygon Hermez，并且正在持续增加。可用性、安全性和成本各异的扩容方案，适用不同用户。</p>
+<p>今年 7 月，Polygon 已经宣布成立新工作室 Polygon Studios，专注于游戏和 NFT，并设立 1 亿美元基金，计划在 NFT 上大量投入。 目前 Polygon 上 70% 的 NFT Dapp 都是关于游戏的。</p>
+<p>代表项目：Loserchick、Tea Virtual、Exeedme</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_n2o19b4qon.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>来源：Loserchick</p>
+<p><strong>Immutable X 区块链——0 费用扩容方案</strong></p>
+<p>Immutable X 是基于以太坊的 Layer2 扩容解决方案，吞吐量可达到 9000 TPS，铸造和交易的 gas 费为 0，这个链还可以提供 NFT 流动性，因此越来越受欢迎。选择这个链的 NFT 项目大部分集中在游戏领域。</p>
+<p>Immutable X 采用的扩容方案是 ZK Rollup，引入了和 MINA 区块链一样的批量零知识证明，即让交易快照来证明过往的交易，它压缩了交易或创建 NFT 时以太坊所需的信息量，因此无需支付 gas 费。</p>
+<p>Immutable X 只消耗不到 30% 的以太坊容量，而达到每天数亿笔的交易支持量。同时，它的网络稳定可靠，可以实现即时交易，转让资产能够瞬间完成。<br>
+代表项目：Gods Unchained、Illuvium （第三、四季度上线）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_yfep9a5csc.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>来源：Illuvium</p>
+<p>在 2021 年初，随着牛市行情来临，以太坊的 DeFi 生态再爆发，但是以太坊网络拥堵和极高的费率成本让 DeFi 发展一度受限，因而其他公链生态便有了广阔的发展空间，且经过 5.19 大跌，DeFi 受挫后各项数据回落，GameFi 爆发景象应运而生。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_4vrknceks4.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>据 DappRadar 报告，从 4 月开始，WAX 链和 BSC 链上的活跃钱包数出现了暴涨，与其他几条公链拉开距离。</p>
+<p>截至 2021 年第二季度，区块链游戏每日活跃钱包数约为 375,000 个，大部分游戏活跃在 WAX 链上，其每日活跃钱包环比增长 1,082%，达到 306,707 个；排第二的是 BSC 链，每日活跃钱包达到 8641 个；排第三的是 Ronin，每日由 7897 个活跃钱包。</p>
+<p>Polygon 的活跃钱包数据也在 7 月超过了以太坊。</p>
+<h2 id="确权和安全问题">确权和安全问题</h2>
+<p>NFT 数字资产确权方案并不完善。在数字化资产上链方面，没有中心化信用机构背书，怎么确保资产的所有权是唯一且确定的，仿冒、重复出售等问题依怎么解决，暂时还没有一个闭环完整的解决方案。</p>
+<p>今年 DeFi 项目频繁出现安全问题，大量资产被黑客盗走，这成为了业内着重关注的新问题。GameFi 几亿美元的交易额已经成为了一个香馍馍，成功出圈，也肯定被很多双眼睛盯着，如何防范安全问题，是必须要重视的。</p>
+<p>游戏最终都承载海量玩家高并发的数据，即需要有很高的 tps，也要有安全高效的底层技术，并配套数据安全、分布式存储等各种插件，游戏的流畅性对玩家来说是重要的用户体验。</p>
+<p>目前已出现的底层公链，标准还没统一，性能也不完善，兼容性更不足。</p>
+<p>未来 GameFi 公链可发展的方向：所有平台之间实现互操作性，NFT 跨越不同生态系统使用，所有公链之间以及和以太坊实现交互。</p>
+<h2 id="游戏可玩性和游戏收益性经济模型">游戏可玩性和游戏收益性（经济模型）</h2>
+<p><strong>游戏可玩性</strong></p>
+<p>Axie Infinity 是一款去中心化的宠物养成和回合制策略游戏，玩家购买、出售、交易、繁殖可爱的数字宠物——Axie，并与其他玩家进行宠物战斗，通过赢得战斗和完成必要的任务来获取代币 SLP，通过花费 AXS 和 SLP 繁殖更高等级的宠物，代币和宠物都可以进行交易获利。这种游戏类似仙剑奇侠传。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_w0gvysbl04.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>Axie Infinity 已实现了爆炸式增长，凡事发展都有规律，链游的发展模式也要适应现实进行转型，用户「薅羊毛」成本越来越高，游戏开发商减少让利空间后，怎么让玩家留下，或吸引新玩家，是链游一个摆在面前的挑战。</p>
+<p>根据 Axie Infinity 路线图，2021 年 Q3 将开启 AXS 质押，在 2022 年年初开启 AXS 生态系统，到了 2022 年上半年，将上线虚拟土地玩法。</p>
+<p>Axie Infinity 联合创始人曾在 AMA 中提到过，其他项目可以提供一部分代币分发给 Axie 游戏玩家，参与到整个游戏代币生态中；同时，还可以为 AXS&amp;SLP 以及持有其他币种的玩家提供特定的品牌道具，再赋予这个道具更多丰富的功能，形成套娃模式。Axie 可以和其他游戏进行合作，玩家可以通过跨游戏获取特定物品，这同时丰富了游戏的玩法，并给双方引流不同的用户，盘活了两边的游戏，且成功的合作会造成集群效应。</p>
+<p>目前，Axie 团队已经表示他们无法创造足够的内容和体验来满足不断增长的用户需求，他们希望向玩家寻求帮助。那他们是否会效仿《Roblox》允许其他开发者创作开发？当年魔兽争霸 3 大火，正是因为它开放了编辑器和编辑语言，然后出现了 Dota、澄海 3C、三国无双，并丰富了游戏场景。Axie 团队或许可以考虑下。</p>
+<p>经过几年发展，区块链游戏在 NFT 上增加了更多属性，比如战斗模式、孵化、组合、养成、拆分、土地买卖等，但游戏可玩性和精美程度始终还比不上发展成熟的传统游戏。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_nrf53l16c7.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p><strong>GameF 转向为 DeFi+NFT+游戏+DAO/ 社交的模式</strong></p>
+<p>很多玩家也逐渐意识到很多链游，其实没有真正的乐趣，更多是因为有利可图而坚持的。链游如果只关注融资能力，并不会有长久发展。</p>
+<p>GameFi 的重心在于游戏，即使有利可图，发展到一定程度，游戏的可玩性也会吸引不到更多新用户，像 Axie 这样的游戏是不能靠存量玩家生存下去的，如果想要吸引更多积极活跃的玩家，就应该在游戏的探索性、竞技性、故事丰富性上不断升级，让玩家不断产生新的成就感，并且满足玩家社交属性。即使没有 play to earn 的玩家，也有单纯 play to win 的玩家加入，这样游戏抗加密市场风险的能力就能大大提升。一旦形成自己的用户护城河和竞争壁垒，才会获得长足发展。</p>
+<p>GameFi 应该也会像传统游戏一样，逐步向社交化研发，并带有 DAO 化性质，链游内的社交是一种刚需，也是 GameFi 步入元宇宙的一个环节。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_9r5zeol99n.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p><strong>经济模型</strong></p>
+<p>对于区块链游戏的发展模式，Abitchain 创始人赵美军曾表示，「区块链与游戏结合的方式，第一个是游戏币区块链化，第二个游戏道具和角色区块链化，第三是游戏规则区块链化」。</p>
+<p>在 Axie Infinity 游戏中，玩家的赚钱方法是：1、通过在游戏里赢得 Axie 宠物对战赚取 SLP 代币；2、通过已有 Axies 繁殖更多更高等级 Axies，并出售或租赁；3、为 AXS 和 SLP 提供代币流动性（LP）获得收益；4、投资非常稀有的 Axie；5、AXS 质押；6、土地买卖。</p>
+<p>在之前几个月中，Axie Infinity 游戏中用户已经开始进行大量土地 NFT 买卖，这些土地 NFT 售价从几百到数万美元不等，即将上线游戏的项目 Illuvium 的创始人基兰·沃维克表示，他通过倒卖土地已得到超过 90 倍的收益。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_27jzmp2rkk.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>Axie 土地画面</p>
+<p>在玩家所产生的收益中，将近 95% 的部分归于玩家自己所有，剩余的 4.25% 被项目方截留，将流入其「Community Treasury」(社区金库)，然而仅从这 4.25 收益，Axie 就创收了几亿美元。</p>
+<p><strong>Axie 经济模型的设定</strong></p>
+<p>虽然 Axie Infinity 这款游戏有着逻辑自恰的经济模型，宠物对战产生代币+繁殖宠物消耗代币，共同组成了一个完整的经济闭环，但未来是否会按计划顺利发展，还需实践论证。</p>
+<p><strong>过度繁殖</strong></p>
+<ol>
+<li>
+<p>游戏的起点，是玩家通过购买 Axie 宠物 NFT 拥有进入资格，资金的进入导致 Axie 宠物 NFT 价格上涨；</p>
+</li>
+<li>
+<p>玩家想要尽快繁殖和升级宠物必然要购买更多 AXS 和 SLP，这导致 2 个代币价格上涨；</p>
+</li>
+<li>
+<p>因为代币上涨，对代币和 NFT 的需求达到最大，这时候吸引来更多玩家，导致宠物过度繁殖，而繁殖的过高成本让新玩家望而却步，宠物 NFT 价格开始下降；</p>
+</li>
+<li>
+<p>因为宠物 NFT 利润下跌，玩家不再繁殖和升级宠物，于是 SLP 需求减少价格下跌，最终游戏因缺乏玩家而陷入停滞。</p>
+</li>
+</ol>
+<p>Axie 宠物 NFT 的数量可以按照稀缺性等级进行划分，并且有一个繁殖限制的规则，可以将 Axie 宠物 NFT 的增长趋势限制在一个最大值，让 NFT 重新变得具有稀缺性而具有价值。</p>
+<p>Axie Infinity 本质上是需要不断有新用户新资金进入，来抬升宠物和代币价格。按照原先的设定，一段时间后，宠物繁殖的成本降低到玩家的心理价位，玩家将重新回到游戏中，进行一轮循环。但是其他 GameFi 类型的区块链游戏也正在崛起，很难保证玩家不会抛弃 Axie，寻求其他高收益游戏。而且与积累数十年相比的传统游戏相比，Axie Infinity 还没有形成游戏可玩性上的竞争壁垒，无论是游戏策略设定和画质，更别说还没有社交属性。</p>
+<p><strong>SLP 供大于求</strong></p>
+<p>同时目前，Axie 正面临另外一个问题，SLP 产量过大。它的官网在 8 月初公示了 SLP 目前供过于求的现状，因为用户滥用 PVE 对战模式产生过多 SLP 奖励，于是官方公布了对 SLP 获取方式的调整方案：</p>
+<ol>
+<li>
+<p>将帐户每天在 PVE 中可获得的 SLP 数量从 100 减半至 50。</p>
+</li>
+<li>
+<p>完成每日任务的 SLP 奖励已从 50 减半至 25。</p>
+</li>
+<li>
+<p>PVP SLP 奖励获取难度现在随着驯兽师等级的提高而以更陡峭的程度增加。</p>
+</li>
+</ol>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_pk2797ldwi.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>SLP 供需关系</p>
+<p>进入 8 月以后对战产生了大量的 SLP，而繁殖宠物所用的 SLP 销毁数量远远跟不上，这造成了 SLP 供大于求，官方不得不进行调控，维持平衡，否则 SLP 通胀以后，价格下跌，会让花了成本繁殖宠物的玩家出现资产亏损，会引发不良的连锁反应。</p>
+<p>Axie Infinity 的经济模型尤其是 AXS 和 SLP 的价格深受加密市场的影响，这并不是游戏本身所能左右，因此为了提高风险防御能力，官方已经在考虑不断丰富游戏的场景，提升 Axie 宠物 NFT 本身的价值。</p>
+<p>为了可持续发展，在玩法方面，Axie 未来将上线几项大的升级，包括：工坊和 Axie 资源回收（增加 NFT 流动性和收益）、土地游戏（增加游戏玩法）、Ronin 链上 DEX （增加 AXS 和 SLP 流动性）和 AXS 质押（增加 AXS 收益）。这些措施能丰富故事性，增加经济模型收益，让资产流动性不中断。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0820/15_q6vl7ns6pk.png" alt="从底层技术和业务逻辑深入分析 GameFi 链游的可持续性"></p>
+<p>根据 Newzoo《2021 年全球游戏市场报告》，2021 年，全球游戏玩家总数突破 30 亿大关，预计到 2024 年，游戏玩家可达 33.2 亿，全球游戏收入会达到 2187 亿美元。</p>
+<p>GameFi 是目前区块链进入主流世界最佳的方式之一，它让我们看到娱乐、IP 和收益之间打破界限进行模糊地结合，爆发出如此大的威力，它注定是 2021 年的爆点。参照传统游戏的市场，GameFi 链游的前景还是一片星辰大海，它将不断蚕食传统游戏市场。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/27583/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">从Punks、 Apes到Penguins：头像型NFT如何成为新文化范式</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/27552/">
+                <span class="next-text nav-default">​从默默无闻到声名鹊起 GameFi的进击之路</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#2021-年gamefi-链游元年">2021 年——GameFi 链游元年</a></li>
+    <li><a href="#游戏流畅性gamefi-链游的底层技术发展">游戏流畅性——GameFi 链游的底层技术发展</a></li>
+    <li><a href="#layer1-公链">Layer1 公链</a></li>
+    <li><a href="#layer2-侧链">Layer2 侧链</a></li>
+    <li><a href="#确权和安全问题">确权和安全问题</a></li>
+    <li><a href="#游戏可玩性和游戏收益性经济模型">游戏可玩性和游戏收益性（经济模型）</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

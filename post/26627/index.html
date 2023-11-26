@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          全面梳理抗MEV的八项方案 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="攻击者可查看追踪每笔交易、每一个内部合约调用以及每一条指令，并对这些交易进行当前链上最常见的抢跑和三明治攻击。" />
+<meta name="keywords" content="MEV" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/26627/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="全面梳理抗MEV的八项方案" />
+<meta property="og:description" content="攻击者可查看追踪每笔交易、每一个内部合约调用以及每一条指令，并对这些交易进行当前链上最常见的抢跑和三明治攻击。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/26627/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-30T00:00:00+00:00" />
+
+<meta itemprop="name" content="全面梳理抗MEV的八项方案">
+<meta itemprop="description" content="攻击者可查看追踪每笔交易、每一个内部合约调用以及每一条指令，并对这些交易进行当前链上最常见的抢跑和三明治攻击。"><meta itemprop="datePublished" content="2021-07-30T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-30T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7509">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="全面梳理抗MEV的八项方案"/>
+<meta name="twitter:description" content="攻击者可查看追踪每笔交易、每一个内部合约调用以及每一条指令，并对这些交易进行当前链上最常见的抢跑和三明治攻击。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">全面梳理抗MEV的八项方案</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-30">
+      2021-07-30
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7509 字 -
+        预计阅读 15 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>在 2020 年 8 月，Paradigm 的交易员 Dan Robinson 尝试收回原本质押在 Uniswap 的流动性代币。为此他部署了 setter 和 getter 两个合约，并先后调用两个合约实现收回流动性代币。但其合约调用并没有成功完整实施，反被攻击者发现并捷足先登。攻击者执行了他原本要调用的合约。同年次月，Sam Sun 发现了 lien finance 的合约漏洞问题，该漏洞一旦被攻击可造成 2.5 万个 ETH 的巨额损失。作者尝试拯救 lien finance 的合约漏洞，但却担心遭遇 Robinson 相似的问题。若攻击者发现他的拯救计划，攻击者将可以发现此漏洞、执行攻击并拿走平台上的 2.5 万个 ETH。</p>
+<p>为此，尽管此次拯救行动事发突然，Sam 联系多方人士，并最终在星火矿池的帮助下躲避攻击者监听、攻击，成功实施漏洞修复。星火矿池在此事件中将执行的交易放进其私密的 mempool，防止被链上的攻击者监听。而这同时也是决定两个事件成败的根本原因。</p>
+<p>这两个事件揭露了当前的区块链是黑暗森林这一事实。实际上区块链节点网络构成的黑暗森林中存在一批伺机而动的套利机器人 / 攻击者。所有等待被打包的待确定状态交易（pending transaction）在等待池（Mempool）中被曝露在黑暗森林中。攻击者可查看追踪每笔交易、每一个内部合约调用以及每一条指令，并对这些交易进行当前链上最常见的抢跑和三明治攻击。</p>
+<p>我们认为链上攻击产生的本质原因在于区块链的设计。</p>
+<p>首先是区块链的 mempool 设计，所有交易被发送出去后，并不是直接由矿工打包，而是需要先暂时进入 mempool。mempool 包含着待确认交易（pending transactions），且由于 mempool 具有公开性，任何人可以监听 mempool 的每笔交易、每个调用的函数。这为攻击者提供了监听交易事件的条件。</p>
+<p>其次区块链出块时间为攻击者提供了执行时间。据 Etherscan 数据显示，目前以太坊的平均出块时间为 13s。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0730/gviywcmi62rlk7m" alt="为以太坊黑暗森林建造护栏，全景式解读八项抗 MEV 方案"></p>
+<p>以太坊平均出块时间，来源：Etherscan</p>
+<p>在 2019 年的 《Flashboy 2.0》 这篇文章中，首次提到了矿工可提取价值（MEV：Miner-extractable value）这一概念：指矿工可以通过在他们生产的区块中包含、重新排序、插入或忽略交易来获得的额外利润。经过区块链这两年的发展，以及链上活动的研究进程推进，目前 MEV 已经延伸为最大可提取价值（Most extractable value）。</p>
+<p>当前 MEV 掠夺战参与者包括非矿工和矿工两者。非矿工主要指套利 / 清算等机器人，矿工指负责挑选交易并且打包上链的个体，矿工拥有的权力是非矿工群体无可比拟的。我们归纳总结了如下图表，以展示现有 MEV 掠夺的相关特征。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0730/gza426w4fk2m5hy" alt="为以太坊黑暗森林建造护栏，全景式解读八项抗 MEV 方案"></p>
+<h2 id="mev-解决方案尚存可提取型可消除型">MEV 解决方案尚存可提取型、可消除型</h2>
+<p>目前如何解决 MEV 掠夺问题，保护普通交易者的利益成为了 MEV 这一领域中争相研究、开发的课题。目前主要有两方态度，一是认可 MEV 存在的不可避免性，并通过提取解决当下的困境，二是从交易源头抹杀或降低 MEV。基于此，本篇报告分别从 MEV 提取、MEV 消除两种思路对现有 MEV 解决方案进行讨论。</p>
+<h2 id="提取-mev-的解决方案">提取 MEV 的解决方案</h2>
+<p>从目前已研究结果来看，关于提取 MEV 方案目前有如下三类方式 :</p>
+<p>隐私交易：通过将交易存入隐私 mempool，而非公开型的 mempool，以躲开攻击者的监听。</p>
+<p>FRaaS：FRaaS（Front-running as a Service）通过提取交易的 MEV 并进行利润再分配的方式保护交易者利益，同时矿工由于有赏金激励将放弃攻击。</p>
+<p>MEV Auction：将矿工的挑选交易权力和交易排序权力进行分拆，矿工仍然保留挑选交易的权力，而交易排序权力则通过拍卖的方式拍卖给第三方。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0730/713c34sltfrz7ul" alt="为以太坊黑暗森林建造护栏，全景式解读八项抗 MEV 方案"></p>
+<h2 id="隐私交易">隐私交易</h2>
+<p>正如前文所述，交易在 mempool 中等待被矿工打包，同时也面临被监听、攻击的风险。因此有些协议希望以绕过公开的 mempool 的方式，让交易在隐私的 mempool 里排队等待打包，使其无法被广播至其他节点。</p>
+<p>提供这类服务的协议目前有 1inch 的 Stealth Transactions，太极网络以及 bloXroute。</p>
+<p>1inch 的 Stealth Transactions 目前仅在 1inch 钱包 ios 客户端提供。目前这种方式面临交易可能被打包进叔块从而被公开。</p>
+<p>太极网络由星火矿池创立，用户可以通过太极网络提供的接口直接发送交易到星火矿池的隐私池。由于星火矿池并不对这笔交易进行网络广播，这笔被发送出去的交易在未被正式确认前，在 Etherscan 上无法看到该笔交易的状态。</p>
+<p>bloXroute 提供隐私通信功能，允许交易在不被暴露情况下直接到达矿工手中。</p>
+<p>bloXroute 的 BDN（区块链分发网络）通过自己的网关软件将区块链节点与 BDN 链接，网关软件和区块链节点首先翻译从区块链进入 BDN 的信息。然后，在第二层，它会进行区块压缩。通过极大缩小区块大小，使其随后更高效地在区块链分发网络 (BDN) 中发送 / 传输。</p>
+<h2 id="mev-auctionoptimism">MEV Auction——Optimism</h2>
+<p>MEV Auction 最早出现于 2020 年年初，由 Karl Floersch 提出。Karl Floersch 是 L2 方案 Optimism 的 CTO。MEVA 成为契合 Optimism 的一个良好抗 MEV 的方式。</p>
+<p>谈及 MEVA 需先说明矿工在 MEV 掠夺战中作为最大赢家具有的两大权力交易抉择权力和交易排序的权力。MEVA 机制在技术上将矿工的两大权力进行拆分：矿工保留原有的交易抉择权力，但选择之后矿工不可对交易进行排序，而由一个名为 Sequencer 的角色对矿工挑选的交易进行排序权力。矿工通过拍卖过程选取唯一的 Sequencer。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0730/ebe3nrs94dtie3e" alt="为以太坊黑暗森林建造护栏，全景式解读八项抗 MEV 方案"></p>
+<p>在 Optimism L2 系统中，矿工所具有的角色（交易排序和验证区块）被划分为两个部分。Sequencers 管理交易排序，Validators 将其添加到 Optimism L2 区块链上。该方案契合 Layer2，是由于 L2 架构上早已存在 Sequencer。交易被提交给「Sequencer」序列器，由序列器生成保证交易执行和排序的已签名收据。</p>
+<p>但 MEVA 这一方式目前仍然存在问题：</p>
+<p>Sequencers 之间存在串通、Sequencer 自身作恶，造成人为压低拍卖价格。针对这一问题，目前的解决方案是开发一个开源的 sequencer 软件，增加用户参与 sequencer 竞价活动的容易度。</p>
+<p>无法完全避免矿工同时仍然保有两个权力：sequencer 可以自己成立矿池。</p>
+<h2 id="fraas">FRaaS</h2>
+<p>Front-running as a Service 指通过提取 MEV、并将其进行利润再分配的方式解决 MEV 问题。这一方式本质上通过补偿交易者以及让利矿工、攻击者，使多方达成合作，造成多赢局面。在 FRaaS 方案中，攻击者变成了搜寻者，搜寻者负责搜寻交易中可能出现的 MEV，并通过一定策略完成 MEV 提取。目前采用该种抗 MEV 方式的协议较多，是当前较为受欢迎的解决 MEV 的方式。</p>
+<h2 id="flashbots">Flashbots</h2>
+<p>Flashbots 是一个专门针对 MEV 的研究及发展平台，目前主要有三个垂直业务：</p>
+<p>Flashbots Auction：矿工和搜寻者之间的隐私通信渠道。</p>
+<p>Flashbots Data：检测 MEV 数据情况；目前具体产品是 MEV-Explore 和 Dashboard。前者目前捕捉覆盖 8 个主要的 defi 协议。 Flashbots research。：一个开放、透明和合作的研究平台，解决与 MEV 有关的短期和长期的研究问题。</p>
+<p>Flashbots Auction 构成包括：MEV-Geth 和 MEV-Relay，前者是 go-ethereum 以太坊节点客户端，后者是一个交易捆绑中继器。</p>
+<p>三个主要的角色：搜寻者（searcher）、中继（relayer）、矿工（miner）。三者之间传送的信息是 Flashbots Bundle 交易，每个 bundle 交易内容包括一个交易列表（指明发送者希望打包上链的多笔连续交易，包含先跑 / 尾随等交易），区块高度，最小超时时间、最大超时时间。</p>
+<p>搜寻者 Searchers</p>
+<p>目前 Flashbots 的搜寻者可划分为三类人：套利、清算机器人，寻求抢跑防御的交易者，以及以太坊 Dapp，如 mistX。由 searchers 直接向 relayers 提交 bundles，保证该笔交易不被网络中其他节点发现。</p>
+<p>发送者发送交易时需向矿工支付一定小费，这一小费并不是以 Gas 费用支付的方式实现，而是通过 coinbase 交易，向出块者（即矿池）支付 ETH 作为分佣。这种支付方式保证了即使交易失败也不需要支付成本，但这个方式存在攻击隐患。</p>
+<p>中继 Relayers</p>
+<p>从 searchers 处收集 bundles 并发送给矿工。在这一个过程中 relayers 本身可能也成为攻击者，因此此处需要信任 relayers 将诚实行动。</p>
+<p>relayers 除了隐私传送 bundle 交易外，还具有缓解 DOS 威胁的功用。由于 searchers 发送失效的 bundles 也为零成本，因此可能出现 searchers 可以随意提交 bundles，即这就为他们提供了用无效的 bundles 向网络发送垃圾邮件的能力，从而对其他网络参与者形成拒绝服务攻击。由于以太坊节点没有能力自行处理这种水平的负载，中继器成为缓解这种 DOS 威胁的手段。</p>
+<p>矿工</p>
+<p>矿工作为接收 bundle 交易的最终人，通过运行 MEV-Geth 客户端接入 Flashbots 网络。</p>
+<p>矿工每个区块只能打包一笔 bundle 交易，因此为了使自己利益最大化，矿工将选择由 searchers 支付小费最高的 bundle 交易。据悉 Flashbots 目前有计划开发在一个区块里面打包多个 bundles。</p>
+<p>同样此处无法完全信任矿工。矿工在接触到 bundle 的内容后，可通过解析交易，通过可以重新排序或增加交易进行 MEV 提取。</p>
+<h2 id="archerdao">ArcherDAO</h2>
+<p>ArcherDAO 拥有两个独立的产品：Archer Relay 和 Archer Swap。但两个产品均具有抗 MEV 特征。</p>
+<p>Archer Relay</p>
+<p>Archer Relay 与 MEV-Geth 客户端兼容，使得用户以搜寻者的角色参与 Flashbots 生态。</p>
+<p>Archer Swap</p>
+<p>Archer Swap 以提前端交易界面形式出现，允许用户直接提交 token 交易。Archer Relay 网络中的 backrunning bots 将针对在 Archer Swap 上产生的交易进行 MEV 搜寻、提取、捆绑等行为，并通过 Flashbots+Archer relayer 发送给矿工。</p>
+<p>ArcherDAO 利用了 Flashbots 的技术完成抗 MEV，但仍然与 Flashbots 存在不同点。ArcherDAO 的产品将搜寻者与交易者的角色进行更加清晰的化分，Archer Relay 为搜寻者转发 bundle 交易，此处的搜寻者任务为搜寻各个 DEX 中 MEV 提取的机会。而 Archer Swap 针对寻求 MEV 防御的交易者，这一交易者在 Archer Swap 上进行交易。搜寻者与交易者的角色的化分体现于 Archer Relay 的搜寻者无法接触通过 Archer Swap 发布的交易，只有 ArcherDAO 内部的 backrunning bots 可以。</p>
+<p>其次是与矿池合作方不同：目前 ArcherDAO 明确与 2miners、Ezil 达成合作；Flashbots 的三月份的报告宣称其已经与 12 个矿池合作。</p>
+<p>mistX by alchemist</p>
+<p>alchemist 是由 @thegostep 在 2 月发的一条 twitter 开始，没有开发团队，没有路线图，完全由社区推动。@thegostep 活跃于区块链领域，是以太坊、Ampleforth 的核心开发者之一，同时也参与了 Flashbots。alchemist 团队有 5 个核心项目正在进行：Crucible、Copper、mistX、sandwitched 查询和 Crucible NFT Design。</p>
+<p>mistX 同样采用 Flashbots 技术，保护用户发起的交易不会发到公开的 mempool，而是 bundle 在一起进入 Flashbot 系统。此外该团队还开发的 sandwiched.wtf 查询工具可用于查询某一个智能合约账户是否存在被进行三明治攻击过。</p>
+<h2 id="keeperdao">KeeperDAO</h2>
+<p>KeeperDAO 整体项目分为三个主要业务线：Hiding Game、Coordination Game 和 Incentive Game。这三个业务分别解决三个问题：Hiding Game 解决现有交易以及清算问题中的 MEV 问题，Coordination Game 则主要激励 keepers 之间进行合作，Incentive Game 主要关注 $ROOK 和平台治理问题。这三个业务之间以一种有机的方式结合，互相支持彼此。</p>
+<p>KeeperDAO 同样认为由于 swap 必不可免产生滑点，攻击者可通过先跑 / 尾随交易进行攻击，对 traders 造成损失。且由于交易被曝露在 mempool 中，容易造成多方竞争或双方互相「竞价」的局面，引发 Gas war。</p>
+<p>针对这两种情况 KeeperDAO 认为可让交易者与 Keepers 一起合作。其主要过程为交易者首先提交交易给 KeeperDAO，由给 KeeperDAO 内的 Keepers 分析该笔交易并判断是否可以通过先跑 / 尾随策略获得收益。若这一交易存在可获取收益，keepers 根据平台预先规定的交易排序进行执行这笔交易，获得其中利益。获取的利益需要返还给项目平台，由项目进行每日汇总分配。</p>
+<p>对交易者而言，他们在交易中获得了更好的价格，因交易者的交易滑点可通过平台铸造的 $ROOK 被抵消。可见交易者与 keepers 合作带来了双赢局面。</p>
+<p>在整个交易体系中，KeeperDAO 将每隔 100 个区块进行一次排序，排序结果决定现有 Keepers 的交易顺序。由于定序交易，keepers 避免遭受 gas war 的困扰。但是，KeeperDAO 之内的 Keepers 仍然需要与 keeperDAO 之外的交易者竞争。</p>
+<h2 id="backrunme-by-bloxroutemev-的利益分配">BackRunMe by bloXroute——MEV 的利益分配</h2>
+<p>bloXroute 除了前文所述的隐私交易外，还利用了 DEX 交易滑点这一特征开发出针对 MEV 的交易设计。</p>
+<p>具体的实现过程如下：</p>
+<p>bloXroute 发送 metadata 给搜寻者，由搜寻者执行 backrun 交易。</p>
+<p>搜寻者将根据交易创建并发送 bundles，bloXroute 检测 searcher 的回复。</p>
+<p>bloXroute 以隐私通讯方式发送收益最高 backrunning MEV bundle 给 pools。</p>
+<p>当然若搜寻者发现不存在 backrun 的机会，则这笔交易将变成普通的隐私交易发送到矿工手中。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0730/du011qj6o8angh3" alt="为以太坊黑暗森林建造护栏，全景式解读八项抗 MEV 方案"></p>
+<h2 id="其他">其他</h2>
+<p>MiningDAO</p>
+<p>这一项目允许任意以太坊用户 propose 整个区块给矿工，同时每个区块附有一定奖励，若成功被打包上链，则该奖励将支付给矿工。因此矿工为了自己的利益最大化，将选择奖励最高的区块。与前文所述的几个协议不同，该协议针对的对象为下一个区块，而非某笔交易。</p>
+<p>如下图显示，该项目将竞争下一个区块视为订单市场 DEX，每个用户可以提交一个可供打包的区块，此处即订单对象，组成区块订单市场 DEX。用户支付的成本为每个区块订单附带的由用户支付的奖励赏金，而矿工从这个区块订单市场中挑选奖励赏金最高的区块订单。一旦成交，则矿工将用户提供的区块订单打包上链，同时获得用户支付的奖励赏金。</p>
+<p>BackBone Cabal</p>
+<p>该协议针对 sushiswap 的项目，用户向 YCabal 发送交易，产生滑点等套利机会，后由矿工进行先跑 / 后跑等策略。</p>
+<p>提取 MEV 方案的优缺点</p>
+<p>这类阵营认为 MEV 由用户产生，是一个不可避免的链上交易特质，基于此该阵营的方案对 MEV 采用接纳态度保护用户。目前该阵营存在三大类协议，三类方案具有各自特色：隐私交易方案通过绕过公开 mempool、绕过公开监听保护用户的 MEV 不被提取；MEVA 将矿工的权力进行技术划分保护用户权益；FRaaS 则对将 MEV 提取作为一项服务并进行利润划分实现多赢局面。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0730/it7sseikgdheymm" alt="为以太坊黑暗森林建造护栏，全景式解读八项抗 MEV 方案"></p>
+<h2 id="消除-mev-的解决方案">消除 MEV 的解决方案</h2>
+<p>MEV 的出现，体现了作为特权阶级的矿工，利用对区块的特权进行权力寻租的产物。前文介绍 MEV 提取型方案覆盖超过 10 种协议，由于这些协议认为 MEV 不可避免，因而采取拥抱 MEV 的态度解决现有 MEV 问题，若以鸽派形容这一阵营，则另有一派作为鹰派认为 MEV 可消除。本文这部分将阐述作为鹰派的开发者们如何选择利用多种手段将权力寻租的空间降至最低乃至消灭。</p>
+<p>如何使 MEV 最小化或者阻止其出现？所谓矿工可提取价值（MEV），是指矿工（或验证者、排序器等）通过在其生产的区块内任意包含、排除或重排序交易等能力所获得利润的一种度量。所以目前市面上的抗 MEV 协议设法在交易提交到矿池的时候，进行采取措施。目前已总结如下四种方式：</p>
+<p>链内操作</p>
+<p>链下操作</p>
+<p>加密</p>
+<p>新型交易模式</p>
+<h2 id="链内操作">链内操作</h2>
+<p>Chainlink 方案 &ndash; 无须去改变 L1 主链，将交易队列信息和预言机报告提交给预言机，生成序列号和 Nonce 值，并在预言机网络进行广播。同时预言机可以监控消息池，主动获取交易队列。后续智能合约可以从预言机获取正确序列。</p>
+<p>LibSubmarine 方案 &ndash; 链上智能合约，对交易信息进行隐私保护，避免被套利者发现。</p>
+<p>Veedo 方案 &ndash; 利用 VDF（时间延迟函数），利用时间锁将交易信息延迟一段时间，然后再公开。套利者无法及时获取套利空间。</p>
+<h2 id="链下操作">链下操作</h2>
+<p>Automata 方案 &ndash; 交易队列通过加密中间件服务，依据当前的交易队列生成唯一的签名，矿工无法对交易队列插入新的交易，否则签名会发生变化。此时 Dex 在接收交易队列时候，即可识别到签名的变化，即可拒绝该交易。</p>
+<p>Arbitrum 方案 - 有些方案觉得不能完全阻止 MEV 的出现，尽可能最小化的阻止 MEV 的出现。将交易聚合打包在智能合约的 CallData 中，这样 L1 对交易无法做修改。在 L2 层，在最短 15 分钟窗口内完成交易的结算。整个流程尽可能减少 MEV 的出现。</p>
+<p>Vega Protocol 方案 &ndash; 建立全新的主链，在链本身层面进行，在单位时间内，对最先广播，被节点知晓最多的交易优先执行，&quot; 如果有一个时间 t，使所有诚实的验证者在 t 之前看到 a，在 t 之后看到 b，那么 a 必须被安排在 b 之前 &ldquo;。</p>
+<h2 id="加密">加密</h2>
+<p>Sikka 方案 &ndash; 作为隐私中间件，对交易信息和自身消息池进行加密，交易被 2/3 节点打包验证之后，进行公开。</p>
+<p>Shutter Network 方案 &ndash; 利用 DKG 分布式密钥生成服务，在交易发出之前进行加密，通过矿工消息池之后，确认被打包在区块之中，再进行对交易信息的解密。</p>
+<h2 id="新型交易模式">新型交易模式</h2>
+<p>CowSwap 方案 &ndash; 两个人同时持有互相想要的资产，即可直接匹配交易，而无需做市商或流动性提供者撮合交易。这样即可以为个人交易者带来最佳的价格，也免除通过做市商或流动性提供者产生的手续费。CowSwap 上允许用户利用 CoW 的方式直接交易。无法通过 CoW 结算的订单直接通过自动做市商 (AMM) 匹配交易。要是批量拍卖订单中有 CoW 订单。小额单完全匹配后，剩余没有通过 CoW 匹配的订单，便会交由 CowSwap 整合的流动性市场匹配。整个订单结算价格以通过外部流动性获取的剩余订单价格为准。</p>
+<h2 id="消除-mev-方案--协议对比">消除 MEV 方案 / 协议对比：</h2>
+<p><img src="https://img.bibiqing.com/news/2021/0730/c8i4b0sy15s2iv1" alt="为以太坊黑暗森林建造护栏，全景式解读八项抗 MEV 方案"></p>
+<h2 id="消除-mev-解决方案的优缺点">消除 MEV 解决方案的优缺点</h2>
+<p>不管是矿工，验证节点，排序器都是对顺序有特权的角色，从以下方式去消除 MEV 的出现，都会存在多多少少的优缺点。</p>
+<p>利用 L2 第三方公证组织，对确定的交易序列进行全网公开并进行标记，公开程度越大，越难被篡改。但是需要不同的 DeFi 协议支持该公证结果并且配合。</p>
+<p>利用对交易信息进行加密，让容易被套利的信息，隐藏在黑暗森林中，让套利者无法进行追踪。但是对信息的加密和解密，带来的资源消耗，从而导致交易体验上的损耗，也是需要考虑的因素。</p>
+<p>新的交易模式，在模式上进行范式转移，却需要经过市场去检验是否能成功。</p>
+<h2 id="结论">结论</h2>
+<p>区块链经过十余年发展，变得愈加成熟和复杂，也因此产生越来越多系统性问题，比如本文粗略探讨的 MEV 问题。正如 Paradigm 的 《MEV and Me》 文章中所描述的，相较于最早出现的比特币，后来出现的以太坊由于其应用层行为的高度复杂性而产生的 MEV 远高于比特币。</p>
+<p>目前 Flashbots 所捕捉到的 MEV 也仅覆盖 8 个协议，且每个协议上所识别到的 MEV 也限于可被先跑 / 后跑 / 三明治等提取的种类。</p>
+<p>Flashbots 通过 MEV 这一现象的研究加深了用户对区块链的了解。用户开始了解自己在区块链上的行为相对应的风险收益结构，并反之通过开发、改进协议使区块链更加具有真正的使用价值。</p>
+<p>本文粗略探讨了市面上现有的各种针对 MEV 的解决方案，并将其归纳为两大阵营。首先 MEV 可提取型，旨在实现对权力再公平分配，但也难以避免屠龙少年终成恶龙的局面。其次是 MEV 可消除型，则讲述了不管如何在黑暗森林中隐身潜行、权力的再转移，不如真正利用加密手段实现跨维压缩权力寻租空间。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/26583/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">美国众议员提出《数字资产市场结构和投资者保护法》</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/26610/">
+                <span class="next-text nav-default">如何看待即将到来的以太坊伦敦升级</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#mev-解决方案尚存可提取型可消除型">MEV 解决方案尚存可提取型、可消除型</a></li>
+    <li><a href="#提取-mev-的解决方案">提取 MEV 的解决方案</a></li>
+    <li><a href="#隐私交易">隐私交易</a></li>
+    <li><a href="#mev-auctionoptimism">MEV Auction——Optimism</a></li>
+    <li><a href="#fraas">FRaaS</a></li>
+    <li><a href="#flashbots">Flashbots</a></li>
+    <li><a href="#archerdao">ArcherDAO</a></li>
+    <li><a href="#keeperdao">KeeperDAO</a></li>
+    <li><a href="#backrunme-by-bloxroutemev-的利益分配">BackRunMe by bloXroute——MEV 的利益分配</a></li>
+    <li><a href="#其他">其他</a></li>
+    <li><a href="#消除-mev-的解决方案">消除 MEV 的解决方案</a></li>
+    <li><a href="#链内操作">链内操作</a></li>
+    <li><a href="#链下操作">链下操作</a></li>
+    <li><a href="#加密">加密</a></li>
+    <li><a href="#新型交易模式">新型交易模式</a></li>
+    <li><a href="#消除-mev-方案--协议对比">消除 MEV 方案 / 协议对比：</a></li>
+    <li><a href="#消除-mev-解决方案的优缺点">消除 MEV 解决方案的优缺点</a></li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

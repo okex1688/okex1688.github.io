@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          web3游戏之经济机制设计 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="目前的加密游戏越来越多，有些游戏可能还不是纯粹的web3游戏，但也是走向web3游戏过程中的探索，可以看出跟web2游戏有显著的不同。" />
+<meta name="keywords" content="Gamefi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/31202/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="web3游戏之经济机制设计" />
+<meta property="og:description" content="目前的加密游戏越来越多，有些游戏可能还不是纯粹的web3游戏，但也是走向web3游戏过程中的探索，可以看出跟web2游戏有显著的不同。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/31202/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-11-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-26T00:00:00+00:00" />
+
+<meta itemprop="name" content="web3游戏之经济机制设计">
+<meta itemprop="description" content="目前的加密游戏越来越多，有些游戏可能还不是纯粹的web3游戏，但也是走向web3游戏过程中的探索，可以看出跟web2游戏有显著的不同。"><meta itemprop="datePublished" content="2021-11-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-11-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5596">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="web3游戏之经济机制设计"/>
+<meta name="twitter:description" content="目前的加密游戏越来越多，有些游戏可能还不是纯粹的web3游戏，但也是走向web3游戏过程中的探索，可以看出跟web2游戏有显著的不同。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">web3游戏之经济机制设计</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-11-26">
+      2021-11-26
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5596 字 -
+        预计阅读 12 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>web2游戏与web3游戏</strong></p>
+<p>web2游戏是免费玩的模式，其很大程度上通过游戏内的物品来赚钱。web3游戏是玩赚模式，用户通过参与游戏生态获得收益，且物品是NFT，真正属于参与者，而不是公司。当然，目前的web3游戏还不够纯粹，保留了大量web2游戏的痕迹。未来原生的web3游戏会真正改变游戏产业。</p>
+<p>游戏领域被web3重塑只是时间问题。目前的加密游戏越来越多，有些游戏可能还不是纯粹的web3游戏，但也是走向web3游戏过程中的探索，可以看出跟web2游戏有显著的不同。下面简单介绍其中几个游戏（TreasureDAO、Gold Fever、illuvium、Star Atlas）的经济机制设计，看看这些机制如何内化到其游戏玩法中，成为自身发展的推动力。当然，这些游戏还处于研发阶段，还没有转化为真正的实践，具体效果如何还有待后续的真正的实践。</p>
+<p><strong>TreasureDAO</strong></p>
+<p>TreasureDAO是一个构建于L2（Arbitrum）的元宇宙概念项目，它以元宇宙的资源出发点，围绕经济机制进行生态建设，一个是MAGIC代币，一个是宝物（可以生成新资源的魔法物品），还有玩家。这三者有内在关系，MAGIC提供游戏世界的动力；宝物是玩家用来达成目的的资源；玩家进行游戏活动需要MAGIC和宝物，也赋予它们用途。</p>
+<p>在TreasureDAO中，为了生成新资源，需要同时拥有特定的宝物和抵押MAGIC代币才能完成。而这些新产生的资源，有更大的机会捕获更多的MAGIC。在其机制设计中，随着需求规模的增加，其MAGIC的捕获难度会提升。</p>
+<p>从TreasureDAO的经济机制设计看，MAGIC和宝物之间有相互支撑的关系，要想获得MAGIC，需要拥有宝物，有了宝物才有机会生成新资源，有了新资源才能获得更多的MAGIC收益。</p>
+<p>此外，MAGIC还用于购买其角色NFT（军团等）、宝物等，也有支付媒介的作用。根据TreasureDAO的描述，在游戏中的炼金之类的场景，也可以烧毁MAGIC，以增加其用途，并减少其流动供应。当然，这些未来都可以通过DAO治理进行改变。</p>
+<p>在上述的经济机制基础上，TreasureDAO目前正在开发一款Legions游戏（据说跟Netflix的前图形负责人合作），在这款游戏中，玩家主要是军团，士兵挖MAGIC代币，同时使用宝物升级其级别。这是一个互动游戏世界，可以通过冒险积累宝物、MAGIC以及军团。玩家根据其头像（CyberKongz、Cool Cats、Bored Apes、Penguins等）组队对战。游戏有各种地图，一个军团保护地图中央的宝藏，另外一支进攻，获胜者保留宝藏。</p>
+<p>除了军团游戏，它还有构建于L2的NFT市场，其市场上除了自身的NFT（军团和物品）之外，还有合作项目的NFT（如Smol Brains）等，也可以在其NFT市场上交易，支付媒介也是MAGIC。</p>
+<p>TreasureDAO希望自身可以连接不断增长的元宇宙网络，通过开放和可组合性，将NFT、DeFi以及游戏进行融合。未来的生态如何连接也还不清楚，一切都有待于演化。</p>
+<p>目前游戏还未上线，具体游戏品质还未可知，这也是潜在的风险。</p>
+<p><strong>Gold Fever</strong></p>
+<p>Gold Fever是一款多人在线的虚拟淘金游戏，也是生存类角色扮演游戏。跟不少游戏一样，它也有多种角色、武器以及各种物品。这些角色、武器、物品和目标之间形成一定的关系。这些关系通过跟经济机制的结合，试图创造出跟web2游戏不一样的模式。</p>
+<p>在Gold Fever中，有投资者、冒险家（淘金者）、部落以及地区州长等参与者，类似于现实世界的淘金场景。跟赛马游戏Derace参考现实世界的赛马场景类似。</p>
+<p>首先，挖矿需要有许可证。许可证是NFT。投资者购买许可证获得某个地区的采矿权。采矿的对象是虚拟的“黄金”，黄金由其代币NGL代表。获得采矿权之后，该地区会包含一定数量的“黄金”（NGL代币）。这种机制设计意味着两个事情：</p>
+<p><strong>1.“金矿”有一定的价值支撑，它通过“采矿许可证”进行底层支撑；</strong></p>
+<p><strong>2.不同的矿具有不同数量的“黄金”，这里有了投机的属性。这激发了投资者或投机者的兴趣。</strong></p>
+<p>除了投资者之外，还有冒险家。冒险家是淘金者，他们是唯一有机会从这个虚拟世界挖出“黄金”的参与者。不过冒险家在某个投资者的地区挖出“黄金”之后，需要跟投资者进行分成。这样投资者和冒险家之间形成了相互需要的关系。</p>
+<p>在这两者之外，跟现实世界一样。淘金也充满风险。其中游戏中有“部落”的设定。“部落”的引入对游戏的策略性和玩法的丰富性起到重要的作用。部落会阻止冒险家来挖“黄金”，如果他们干掉了冒险者，他们也可以获得对应的“黄金”，并将偷来的“黄金”归还其祖先神灵。</p>
+<p>冒险家还包括不同的角色，有些适合挖矿（探矿者），有些适合战斗（猎人），有些适合救助（军医）；相对应的部落中也有觅食者、术士以及武士不同的角色。不同角色有不同的优缺点，他们之间的对战需要考虑策略，这在淘金过程中，丰富了可玩性。猎人用于抵御部落的攻击者，探矿者专注于淘金等等。</p>
+<p>在淘金过程中，冒险家们需要生存，不仅要面对部落的攻击，还需要面对环境威胁，如野猪、毒蛇、鳄鱼的攻击，需要拥有衣服、药物、粮食等。为了提升生存概率，冒险家需要发展其角色的力量和属性。一个刚参与挖矿团队的猎人和干掉过大量敌人的猎人以及拥有强大枪支的猎人之间具有明显不同的杀伤力。</p>
+<p>除了以上的角色，还有地区州长等。地区州长有多重特权。比如构建基础设施（如着陆带、马厩、码头、商店、维修店、银行、酒吧、餐厅以及酒店等）。地区州长构建这些基础设施需要支付费用，但他们可以通过向玩家租赁或征税获得收益。例如，征收机场使用税、店主税、从其所在地区的银行储蓄中收取一定比例的“黄金”等。</p>
+<p>这些税收来自于其淘金服务的经济体。这类似于历史上淘金场景的服务支持方，也就是人们常说的“卖水”的。这些提供服务的参与者需要向地区州长纳税，此后他们有权利开设商店，提供驾驶飞机、修理物品、制作衣服、饲养动物等服务。</p>
+<p>总体来说，在Gold Fever的经济体制设计中，它有很多部分，是一个复杂的经济体系。目前游戏还没上线，没有落地，具体品质还不清楚，这也是潜在的风险。</p>
+<p><strong>illuvium</strong></p>
+<p>illuvium的经济机制之前披露不是很多。其中有一个很重要的方面是其价值捕获方面。关于Illuvium游戏简介。</p>
+<p>在illuvium的当前机制设计中，来自游戏、游戏周边的收入会进入其财库，这些收入通过ETH获得，然后用于购买ILV代币。所购买的ILV并不是烧毁，而是将其分配给质押者。烧毁相当于给所有ILV持有者价值，而发给质押者，则将其价值的捕获分给质押者。这样会鼓励用户持续进行质押，而不是放入流通市场中，从而支撑其长期的生态发展。</p>
+<p>2021年底，illuvium预计进行其土地资源NFT的拍卖，据说拍卖所得的ETH也会归入财库。除了土地拍卖、还有神兽NFT的拍卖，这些都可以为财库带来相应的收入。而财库有了资金之后，可以通过DAO的方式来决定它的用途，是反馈给ILV代币的质押者，还是用于发展生态，开发更多的游戏场景和用途。从它目前的代币经济机制设计来说，它对于代币质押者更友好。</p>
+<p>财库的资产用以支撑ILV价值。不过最终来说，真正支撑起价值的还是其生态场景的扩展，如果玩家规模足够大，场景足够丰富，其用途价值会越多。财库也有机会捕获更大的价值。当然，反过来也一样，如果游戏的玩家规模不够，游戏的价值也小，代币的用途价值也不会大。</p>
+<p>目前illuvium游戏还没有上线，无法了解游戏的具体品质如何，这也是潜在的风险。</p>
+<p><strong>Star Atlas</strong></p>
+<p>Star Atlas是一款太空探索游戏。经济机制渗透到游戏的各个部分，主要有三大块：生产、飞行以及统管。生产有采矿、精炼和技术开发等。飞行包括战斗和探索。更广泛的统筹管理包括土地开发、角色发展以及DAO系统。这些活动会产生奖励，奖励包括ATLAS奖励和装备掉落。</p>
+<p>游戏中的大部分物品通过生产层生产出来，少部分稀有装备或资源从游戏的飞行活动（探索或战斗）中掉落，还有少部分限量的物品（如独特飞船）从售卖中产生。</p>
+<p>从其经济机制看，它拥有极其复杂的生产、飞行以及统管的设计。每个方面都有大量的经济活动。</p>
+<ul>
+<li>生产</li>
+</ul>
+<p>生产是一个复杂的系统。这里以其采矿为例进行简要描述。</p>
+<p>采矿是Star Atlas经济活动的重要支撑，首先为了采矿，必须通过购买ATLAS或设备进行投资。基本资源是NFT，需要在采矿时候投入。采矿可以产生资源。资源用于交易或创造游戏内资产。采矿玩家的生产力取决于技能。采矿技能的提升可以提高资源收获的数量和速度,还可以获得制作和维护农场设施方面的折扣等。</p>
+<p>采矿获得原始资源需要提炼才能转化为可用资源。不管是采矿还是提炼都需要投入成本（土地、建筑、NPC工人、电力）以及获得更高的技能等。除了初始成本之外，还有后续的维护成本，例如土地增值税、运输等。</p>
+<p>从上述来看，这也是一个复杂的经营生态系统。</p>
+<ul>
+<li>飞行</li>
+</ul>
+<p>飞行活动也是游戏中的重要组成部分，这是玩家们喜欢的探索和战斗游戏。探索家的任务是发现新的资源。他们通过利用飞船和各种技术来提高发现新行星和稀有资源的效率和安全性。通过探索，他们可以为矿工带回新的稀有材料，可以用于获得新的优势，或者直接售卖为ATLAS。探索家可以提升技能，这些技能包括在飞行时减少飞船的损伤或增加采集稀有资源的效率。</p>
+<p>战斗也是Star Atlas的重要场景。在战斗中可以获得战利品，这些战利品来自于其他玩家，战斗的胜利还可以扩大派系的控制范围。为了获得更高的收益，玩家可以进入外太空，进入越远，奖励越多，但风险也越高。此外，玩家还可以参加各种比赛或锦标赛获得收益。战利品可以用来修理设备和飞船，或者再投资于新技术、生产等。为了在战斗中获胜，战士可以提升技能，以增加攻击和防御能力。</p>
+<p>战斗角色中，包括了命令者角色和执行角色。不同的角色有不同的成本（战斗机、武器、船员、燃料、维修），也有不同的收益（来自失败者的战利品或者ATLAS、赏金）等。</p>
+<ul>
+<li>统管</li>
+</ul>
+<p>统筹管理有服务参与者，比如零售平台制造商或销售者和公共设施建设者，他们也需要付出成本（用ATLAS购买设施或使用自然资源构建），他们可以获得销售收入、门票收入等。</p>
+<p>在上述的经济活动场景中，Star Atlas包括了四种资产：代币资产、土地、游戏物品（飞船、设备、船员、组件、建筑等）以及游戏资源。</p>
+<p>其中代币资产包括POLIS和ATLAS。POLIS是治理代币，代表了游戏的决策权，控制游戏的发展方向和财库的使用，固定供应，其价值取决于游戏本身价值。只有游戏有价值，才有治理需求。价值越大，治理的需求就越大。反之亦然。ATLAS是支付媒介，在游戏中用于各种资源之间交换时使用，比如购买飞船、组件、稀有资源等。</p>
+<p>NFT资产，比如飞船有武器生命值、装甲等级、技能加成等。游戏物品可以通过完成任务、玩家对战等方式获得。</p>
+<p>Star Atlas的宇宙星图包括区域、太阳系、行星。每个星球会划分地块，基本地块代表行星领土的部分所有权。每个地块有尺寸、边界、位置以及所有权等。土地会有土地增值税。越是发达地区，土地增值税越高。</p>
+<p>从上述来看，Star Atlas是一个非常庞大的系统。因此，其游戏也会需要很长的开发实践。目前游戏还没有出来，游戏品质还无法知晓，这也是潜在风险点。</p>
+<p><strong>web3游戏的未来</strong></p>
+<p>web3游戏或加密游戏是从加密猫（Cryptokittes）开始引起人们的注意，但是从Axie开始真正起来的。当然目前的游戏还不能算纯粹的web3游戏。不过，Axie的崛起也人们带来一些启示：</p>
+<ul>
+<li>要融合而不是拷贝</li>
+</ul>
+<p>Axie的诞生来自于Cryptokittes的启发，Crypokitties在2017年底是热门项目，这启发了Sky Mavis的创始人Trung Thanh Nguyen。不过，他的思路是融合，不是简单拷贝。偷懒式的拷贝，则是将加密猫，换成加密狗之类。</p>
+<p>融合是再创造的过程。Sky Marvis将 Pokémon游戏玩法、NFT和加密猫的繁殖体系等结合起来，创作了新游戏Axie Infinity。玩家可以拥有自己的宠物NFT，宠物可以参与战斗、繁殖、构建王国等。</p>
+<ul>
+<li>项目需要沉淀</li>
+</ul>
+<p>Axie Infinity成为当前加密游戏代表项目，而在2018年到2021年初，它在大多数时候都是默默无闻的，且不管是用户数、收入等方面都不算出色。</p>
+<p>不过，随着P2E模式的崛起，随着其采用侧链技术，随着其机制不断完善，熊市中不断构建的Axie终于在合适的契机下爆发。</p>
+<p>由于Axie的示范作用，目前有大量的游戏项目在路上，web3游戏会越来越壮观，也会鱼龙混杂，最终会沉淀出少数的经典作品。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/31220/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Vitalik：扩展 Rollups 的分步路线图</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/31199/">
+                <span class="next-text nav-default">zkTube与WAFI集团达成合作：将在阿联酋建立设备销售店 推动zkTube全球化进程</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

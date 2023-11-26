@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          漏洞随笔：通过Jet Protocol任意提款漏洞浅谈PDA与Anchor账号验证 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="据 Jet Protocol 官方博客披露，他们近期修复了一个赏金漏洞，这个漏洞会导致恶意用户可以提取任意用户的存款资金。" />
+<meta name="keywords" content="Jet Protocol" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/36192/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="漏洞随笔：通过Jet Protocol任意提款漏洞浅谈PDA与Anchor账号验证" />
+<meta property="og:description" content="据 Jet Protocol 官方博客披露，他们近期修复了一个赏金漏洞，这个漏洞会导致恶意用户可以提取任意用户的存款资金。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/36192/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-01T00:00:00+00:00" />
+
+<meta itemprop="name" content="漏洞随笔：通过Jet Protocol任意提款漏洞浅谈PDA与Anchor账号验证">
+<meta itemprop="description" content="据 Jet Protocol 官方博客披露，他们近期修复了一个赏金漏洞，这个漏洞会导致恶意用户可以提取任意用户的存款资金。"><meta itemprop="datePublished" content="2022-04-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2363">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="漏洞随笔：通过Jet Protocol任意提款漏洞浅谈PDA与Anchor账号验证"/>
+<meta name="twitter:description" content="据 Jet Protocol 官方博客披露，他们近期修复了一个赏金漏洞，这个漏洞会导致恶意用户可以提取任意用户的存款资金。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">漏洞随笔：通过Jet Protocol任意提款漏洞浅谈PDA与Anchor账号验证</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-04-01">
+      2022-04-01
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2363 字 -
+        预计阅读 5 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>据 Jet Protocol 官方博客披露，他们近期修复了一个赏金漏洞，这个漏洞会导致恶意用户可以提取任意用户的存款资金，慢雾安全团队对此漏洞进行了简要分析，并将分析结果分享如下。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0401/26_4l5rkezr5l.png" alt="漏洞随笔：通过Jet Protocol任意提款漏洞浅谈PDA与Anchor账号验证"></p>
+<p>（来源：https://www.jetprotocol.io/posts/jet-bug-disclosure）</p>
+<p><strong>相关信息</strong></p>
+<p>Jet Protocol 是运行在 Solana 上的一个借贷市场，用户可将账号里的代币（如：USDC、SOL）存入金库，赚取年化收益，同时也可以按一定的比例借出另一种代币。在这个过程中合约会给用户一个 note 凭证，作为用户未来的提款凭证，用我们熟悉的字眼来说就是 LP，而本次漏洞发生的原因也和这个 LP 的设计有关。</p>
+<p>我们知道和以太坊合约相比，Solana 合约没有状态的概念，取而代之的是账号机制，合约数据都存储在相关联的账号中，这种机制极大提升了 Solana 的区块链性能，但也给合约编写带来了一些困难，最大的困难就是需要对输入的账号进行全面的验证。Jet Protocol 在开发时使用了 Anchor 框架进行开发，Anchor 是由 Solana 上的知名项目 Serum 团队开发的，可以精简很多账号验证及跨合约调用逻辑。</p>
+<p>Anchor 是如何工作的呢？我们可以从 Jet Protocol 的一段代码说起：</p>
+<ul>
+<li>programs/jet/src/instructions/init_deposit_account.rs</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0401/26_7pf31k0si8.png" alt="漏洞随笔：通过Jet Protocol任意提款漏洞浅谈PDA与Anchor账号验证"></p>
+<p>这里的 deposit_account 账号就是用于存储 LP 代币数据的账号，用户在首次使用时，需要调用合约生成该账号，并支付一定的存储费用。</p>
+<p>而这里的 #[account] 宏定义限定了这个账号的生成规则：</p>
+<p>规则 1：#[account(init, payer = &lt;target_account&gt;, space = &lt;num_bytes&gt;)]<br>
+这个约束中，init 是指通过跨合约调用系统合约创建账号并初始化，payer=depositor 意思是 depositor 为新账号支付存储空间费用。</p>
+<p>规则 2：#[account(seeds = <seeds>, bump)]<br>
+这个约束中将检查给定帐户是否是当前执行程序派生的 PDA，PDA (Program Derived Address) 账号是一个没有私钥、由程序派生的账号，seed 和 bump 是生成种子，如果 bump 未提供，则 Anchor 框架默认使用 canonical bump，可以理解成自动赋予一个确定性的值。</p>
+<p>使用 PDA，程序可以以编程方式对某些地址进行签名，而无需私钥。同时，PDA 确保没有外部用户也可以为同一地址生成有效签名。这些地址是跨程序调用的基础，它允许 Solana 应用程序相互组合。这里用的是 &ldquo;deposits&rdquo; 字符 + reserve 账号公钥 + depositor 账号公钥作为 seeds，bump 则是在用户调用时传入。</p>
+<p>规则 3：#[account(token::mint = &lt;target_account&gt;, token::authority = &lt;target_account&gt;)]</p>
+<p>这是一个 SPL 约束，用于更简便地验证 SPL 账号。这里指定 deposit_account 账号是一个 token 账号，它的 mint 权限是 deposit_note_mint 账号，authority 权限是 market_authority。</p>
+<p>Account 的宏定义还有很多，这里略表不提，详细可以考虑文档：<br>
+<a href="https://docs.rs/anchor-lang/latest/anchor">https://docs.rs/anchor-lang/latest/anchor</a>_lang/derive.Accounts.html</p>
+<p>有了这些前置知识，我们就可以直接来看漏洞代码：</p>
+<ul>
+<li>programs/jet/src/instructions/withdraw_tokens.rs</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0401/26_via5o4s5r7.png" alt="漏洞随笔：通过Jet Protocol任意提款漏洞浅谈PDA与Anchor账号验证"></p>
+<p>正常情况下，用户调用函数 withdraw_tokens 提币时，会传入自己的 LP 账号，然后合约会销毁他的 LP 并返还相应数量的代币。但这里我们可以看到 deposit_note_account 账号是没有进行任何约束的，用户可以随意传入其他用户的 LP 账号。难道使用别人的 LP 账号不需要他们的签名授权吗？</p>
+<p>通过前面分析宏定义代码，我们已经知道了 market_authority 账号拥有 LP 代币的操作权限，确实不需要用户自己的签名。那么 market_authority 又是一个怎么样的账号呢？我们可以看这里：</p>
+<ul>
+<li>programs/jet/src/instructions/init_market.rs</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0401/26_mfatjia6pu.png" alt="漏洞随笔：通过Jet Protocol任意提款漏洞浅谈PDA与Anchor账号验证"></p>
+<p>这个 market_authority 也是一个 PDA 账号。也就是说合约通过自身的调用就可以销毁用户的 LP 代币。那么对于恶意用户来说，要发起攻击就很简单了，只要简单地把 deposit_note_account 账号设置为想要窃取的目标账号，withdraw_account 账号设置为自己的收款账号，就可以销毁他的 LP，并把他的存款本金提现到自己的账号上。</p>
+<p>最后我们看一下官方的修复方法：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0401/26_5wfzm9jq01.png" alt="漏洞随笔：通过Jet Protocol任意提款漏洞浅谈PDA与Anchor账号验证"></p>
+<p>补丁中并未直接去约束 deposit_note_account 账号，而是去除了 burn 操作的 PDA 签名，并将 authority 权限改成了 depositor，这样的话用户将无法直接调用这里的函数进行提现，而是要通过另一个函数 withdraw() 去间接调用，而在 withdraw() 函数中账号宏定义已经进行了严密的校验，恶意用户如果传入的是他人的 LP 账号，将无法通过宏规则的验证，将无法通过宏规则的验证，因为 depositor 需要满足 signer 签名校验，无法伪造成他人的账号。</p>
+<ul>
+<li>programs/jet/src/instructions/withdraw.rs</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0401/26_znsj9whiq9.png" alt="漏洞随笔：通过Jet Protocol任意提款漏洞浅谈PDA与Anchor账号验证"></p>
+<p><strong>总结</strong></p>
+<p>本次漏洞的发现过程比较有戏剧性，漏洞的发现人 @charlieyouai 在他的个人推特上分享了漏洞发现的心路历程，当时他发现 burn 的权限是 market_authority，用户无法进行签名，认为这是一个 bug，会导致调用失败且用户无法提款，于是给官方提交了一个赏金漏洞，然后就去吃饭睡觉打豆豆了。</p>
+<p>而后官方开发者意识到了问题的严重性，严格地说，他们知道这段代码没有无法提现的漏洞，而是人人都可以提现啊，老铁，一个能良好运行的 bug 你知道意味着什么吗？！所幸的是没有攻击事件发生。</p>
+<p>目前在 Solana 上发生过多起黑客攻击事件均与账号校验问题有关，慢雾安全团队提醒广大 Solana 开发者，注意对账号体系进行严密的审查。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/36156/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">金色早报 | 欧盟议会投票通过破坏隐私的加密规则</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/36202/">
+                <span class="next-text nav-default">美国SEC拒绝Ark 21Shares的现货比特币ETF申请</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

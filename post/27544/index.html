@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          民道：DeFi中的协议抽象及资产协议的一体化 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="我们不再需要把DeFi 当作一个模糊的事物从它的外部来探讨它，我们跳入DeFi 内部来观察它，它的组织结构、它的活力源泉。" />
+<meta name="keywords" content="DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/27544/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="民道：DeFi中的协议抽象及资产协议的一体化" />
+<meta property="og:description" content="我们不再需要把DeFi 当作一个模糊的事物从它的外部来探讨它，我们跳入DeFi 内部来观察它，它的组织结构、它的活力源泉。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/27544/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-19T00:00:00+00:00" />
+
+<meta itemprop="name" content="民道：DeFi中的协议抽象及资产协议的一体化">
+<meta itemprop="description" content="我们不再需要把DeFi 当作一个模糊的事物从它的外部来探讨它，我们跳入DeFi 内部来观察它，它的组织结构、它的活力源泉。"><meta itemprop="datePublished" content="2021-08-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7425">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="民道：DeFi中的协议抽象及资产协议的一体化"/>
+<meta name="twitter:description" content="我们不再需要把DeFi 当作一个模糊的事物从它的外部来探讨它，我们跳入DeFi 内部来观察它，它的组织结构、它的活力源泉。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">民道：DeFi中的协议抽象及资产协议的一体化</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-19">
+      2021-08-19
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7425 字 -
+        预计阅读 15 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>受访者：杨民道，dForce 创始人</p>
+<p>采访与撰文：李画</p>
+<p>2019年5月，我第一次采访了dForce 创始人杨民道，那时提出的问题是「DeFi 是区块链重要的落地方向吗」，他的回答是「区块链里最天然、最能落地的应用就是金融应用」。  </p>
+<p>现在，在两年之后，在DeFi Summer 之后，我再次访问了他。这一次我们不再需要把DeFi 当作一个模糊的事物从它的外部来探讨它，我们跳入DeFi 内部来观察它，它的组织结构、它的活力源泉。本文主要包括两部分内容，第一部分关于抽象，第二部分关于资产和协议的一体化。</p>
+<h2 id="抽象与自由"><strong>抽象与自由</strong></h2>
+<p><strong>问：在整个DeFi 生态中，会不会有一些协议是其他协议的基础设施？</strong></p>
+<p><strong>民道：</strong> DeFi 的金钱乐高里_最基础的收益来源无非是两种，一是借贷利息，二是交易手续费_。所以能提供这两类收益的协议，自然就是最底层的基础设施。</p>
+<p>现在这个趋势非常明显，我们从协议锁仓额也可以看出来，前面的几个锁仓额是：Aave、Compound，做通用借贷协议的；Maker，做稳定币加借贷的；Uniswap、Curve，做AMM 的。</p>
+<p>锁仓额里，大部分的锁仓额其实是多重重叠在一起的，包括YFI、包括很多机枪池。比如YFI 很多钱是投到Curve 去的，Curve 的钱又穿透到Aave 去，整个资金是落到Aave 里的。最终，大部分的DeFi 锁仓额其实都留存在这两种类型的基础协议中。</p>
+<p>DeFi 基础设施其实挺像传统金融的基础设施。在传统金融，我们的钱、支付工具的留存资金，最后沉淀到哪里去？还是要沉淀到商业银行，沉淀到交易所，这几个是获得基础资金收益的场所。</p>
+<p>所以DeFi 里最底层的基础设施，就是借贷（利息提供）、 DEX （手续费提供）、合成资产（利息+手续费），其中借贷和AMM 是两个最抽象的协议层，它们是DeFi 资金池的海平面，所有的资金和流动性都天然地往海平面汇聚。</p>
+<p>dForce 的三个协议（借贷、原生稳定币、合成资产）都是底层的协议，为什么要做这个方向？最主要的原因是还是要往最底层走，因为上面所有的yield farming 看着热闹，但最终流动性还是要找一个停留的地方，还是要回到我刚才讲的几个基础协议。整个DeFi 还是在跑马圈地的阶段，往底层走机会是最多的。</p>
+<p><strong>问：以Uniswap 为代表的一些底层协议之所以带来了突破，是不是得益于它们在「抽象」上所做的工作？</strong></p>
+<p><strong>民道：</strong> 讨论协议抽象最好的案例是Aave。Aave 的前身是ETHLend, 做的是P2P模式的借贷协议；后来团队痛定思痛，决定用Compound 的池子模式，做出来了Aave，从此奠定江湖地位。P2P 模式和池子模式，两者在模式抽象上高下立见。</p>
+<p>ETHLend 这种一对一的借贷，要假设同时存在一个供给方和一个需求方，如果不能满足这样的匹配条件，交易就做不成，这样导致需求错配率远高于匹配率。</p>
+<p>而池子模式是把借贷关系做了抽象，它不依赖于去寻找这种满足条件。存钱人的需求只是存钱，钱存进来后被谁借的他不在乎，只在乎借他钱的时候一定是超额抵押的，其他事情不管。这种方式的灵活性非常高。</p>
+<p>存钱的人，存一个资产、存两个资产，或者存钱加借钱，都能同时满足，而且他并不需要在某个时间点被满足，钱存进池子，有需求的人可能不是今天借钱，而是明天借钱、后天借钱，但无所谓，池子模式可以满足不同时间段的需求。在这种条件下，双方都没有错配，池子模式的借贷是一种永续匹配的模式。</p>
+<p>再看DEX，比如Uniswap 这种AMM。只要任何一个人把流动性提供进去，大家都可以去交易池里交易，且支持任何币对的交易。<em>相比传统金融的交易模式需要假设存在交易对手，AMM 完全把交易关系变成了任意的两方，交易对手从个体做市商变成协议本身，流动性不是割裂的而是一个完整整体</em>。</p>
+<p>传统交易所没法提供任意币对的交易，因为各个币对都需要有流动性，其流动性不是共享的。但在Uniswap，每个币对的流动性最后都是在一起的、大家可以共享的，连接的人越多，AMM 的资金效率、组合的灵活性都会越来越好。</p>
+<p>「抽象」除了灵活性，还有一个特征就是自洽性，或者说对外部的最小依赖性。</p>
+<p>还是用Uniswap 来说，它是一个完全自洽的协议，已经抽象到不需要依赖任何外部的条件假设，甚至连价格预言机（oracle）这样的价格依赖都去掉。对比市场上PMM 的模式，需要引入外部oracle或者做市商提供报价，虽然一定程度上能提高AMM 的资金效率，但引入一个外部的依赖，会对系统的健壮性、灵活性和扩展性产生大的影响。这类型的PMM 较难支持长尾的资产，因为这类资产大概率没有oracle 提供报价。</p>
+<p>在交易协议层面，很难找到一个比Uniswap 更加抽象的协议，它能支持任意的用户自由地去添加币对、自由地去交易，而且是无数token 之间的一种多向交易。Uniswap 无疑是DeFi 的协议抽象典范，也是加密原生派（crypto native）的协议样本。从V2（最自由的DeFi）到V3的升级，直接把最自由的V2 变成V3 的子集，同时兼顾自由和资本效率最大化。</p>
+<p>一个东西越抽象的时候，它是向下兼容的，它能被其他人接纳和变成底层的可能性是越大的。比如数学是科学里最高的抽象，超级自由，物理上能用，化学上能用，向下兼容所有的学科。</p>
+<p><strong>问：一个协议要把抽象这件事做好，是在于它对抽象的理解，还是在于其他什么？</strong></p>
+<p><strong>民道：</strong> Uniswap 的架构有点像什么？它把所有我们对交易的理解先抹干净，它的模式是完全没有依照传统金融的交易模式来做的。传统的到交易所里去，是要先上币对，然后有做市商，然后买、卖方要挂单，撮合引擎再怎么去帮买卖单做撮合。但在Uniswap 里，这套逻辑是完全没有的，它就是个白板，是原生的基于区块链的特性去设计的交易协议。</p>
+<p>我觉得_Uniswap 的整个设计哲学的核心是自由/非许可，自由/非许可对它来讲可能是一个最重要的诉求，然后才是资金效率_。任何人都可以上币对，任何人都可以添加流动性，完全的自由。</p>
+<p>Uniswap 为什么这么坚持把所有的外部依赖都去掉？我个人感觉团队在观念上、在各方面可能真是比较绝对化的，做一个不可更新的协议、一个在自由度上不用任何外部依赖的协议，有对最极致的追求。当你没有这种理念的时候，就不会往这方面设计，会乱七八糟的加起来，就会发现这个产品会大大的牺牲非许可性，会产生增长模式上的区别。我感觉团队思维和文化背景对这种产品设计的影响其实挺大的。</p>
+<p>一个非许可的开放系统，天然地具有扩展性，比如，币安应对外部整合扩展、交易量并发的能力强，还是Uniswap 的能力强？肯定是Uniswap。Uniswap V2 的核心代码只有300行，但其规模化交易的能力是没有上限的，它不需要添加服务器。Uniswap 在应对1亿美金、10亿美金、100亿美金的交易需求的时候，它不需要增加任何的运维人员，不需要增加任何的服务器的负载能力。</p>
+<p>这里核心是因为Uniswap 抽象到把它的外部依赖全部去掉了。中心化交易所有很多外部依赖，比如服务器依赖、人员依赖、组织依赖、监管依赖……所以它跟没有外部依赖的纯粹DeFi 协议来讲，规模效应和增长模式上差距巨大。</p>
+<p>同样，我们看借贷里面的Aave。Aave 去年1月份开始做的，从支撑几千万美金，到现在支撑200亿美金，整个资金量涨了100多倍，但它的代码基本没变，它的人员没增长10倍、100倍，设备的投入也几乎不需要增加。</p>
+<p>如果这是传统银行，人员增长几十倍是需要的。得有这么多客户经理、信审员，得去扩张。DeFi 协议设计的一个有意思的点是协议设计的越抽象，其本质的好处在于减少了外部的依赖，这样能方便外部整合及后续的极速扩张，它的增长曲线和传统的增长曲线是完全不一样的。</p>
+<h2 id="一体化与记账模式的改变"><strong>一体化与记账模式的改变</strong></h2>
+<p><strong>民道：</strong> 其实我一直在思考个问题，就是DeFi 领域的这些协议，为什么叫协议不叫产品。互联网都叫产品对不对？互联网金融也是产品。</p>
+<p>在DeFi 中，一个协议，哪怕它是在底层DeFi 协议之上的，其本身有可能也是一个通用的协议。协议和产品的思路完全不一样，产品更多的在服务和业务逻辑层面，考虑的是产品和用户之间的交互，而协议考虑的更多是和其它协议和标准的交互。</p>
+<p>DeFi 协议更多的是在于各个协议的互通，包括资产标准、资产之间统一化、提供一个代币标准（ERC20），这样可以更方便让各个协议方以这样的代币标准互相通讯和协同，提升协议之间的可组合性。</p>
+<p>我觉得_DeFi 协议主要是把资产和协议之间的通信做了标准化处理，使得DeFi 极大区别于传统的互联网金融_。DeFi 的资产和协议是一体化的。</p>
+<p><strong>问：「把通信做了标准化处理」是什么意思？</strong></p>
+<p><strong>民道：</strong> 其实从第一性原理出发，<em>金融本身是一个信息系统，金融系统的运行效率就是信息本身的传递效率。「金融系统是信息系统」是金融的最根本的抽象</em>。</p>
+<p>如果把金融理解为一个信息系统，那信息传递的标准就变得很重要。比如信息是不是在同一个介质里传递，就像光线是在真空中传递，还是在真空、大气层和水里传递。传统金融的信息流是在真空、大气层、水等不同介质里传递，不同介质的密度不一样，必然影响传递的速度和效率。</p>
+<p>DeFi 是在同一个介质里传递：在统一的执行环境（EVM）里传递，基本上排除人的干预。而且用的是同一的标准组件：比如DeFi 里最大的基础通信标准ERC20，所有的DeFi 协议以这个代币标准作为基础资产协议来通信，它使用统一的通信规则（参数设置、数字位数等），极大增强了协议的可组合性和可扩展性。</p>
+<p>举个例子说明。dForce 的原生稳定币USX，它通过超额抵押铸币；有一个借贷协议接受USX 做抵押物，那么该借贷协议的利率就会受到USX 的利率政策的影响，如果USX 提高铸币利率，会直接影响这个借贷协议的市场利率。也就是说，资产协议的利率政策可以无缝传递给借贷协议，资产协议的利率政策是全局穿透的。</p>
+<p>对比传统金融，一个信托产品需要调整定价，那么发行方需要去协调所有的渠道方逐个做价格调整。传统金融也有金融产品之间的通信标准，特别是互联网金融的产品，但是其运行效率和DeFi 有天壤之别。</p>
+<p><strong>问：「资产和协议是一体化的」，是什么意思？</strong></p>
+<p><strong>民道：</strong> 如果初略去分类，DeFi 有两大类协议，一类是资产协议（稳定币、FT、NFT等），一类是功能性协议（借贷、DEX等）。以后者为例，当资金，比如稳定币USX 进入借贷池后，比如进入dForce 借贷池，就变成了iUSX，就变成了一个有/自带利息的token。这个过程实际是：USX 这个货币资产通过借贷协议，合体成为iUSX，合体是在USX 这个代币基础上增加了利息的功能，变成一个自带利息的iUSX 代币。资产被赋能，转化成了协议功能的一个部分，资产跟协议合体了。</p>
+<p>有意思的是，在这个转变过程中,USX 和iUSX 的代码还是ERC20 代码，其基因没变、代码量没变，只是通过借贷协议对其属性做了改变，从一个纯稳定币，变成一个稳定币「余额宝」凭证。因为它还保持着ERC20 的形态，所以还可以被进一步整合到新的协议里，比如变成一个衍生品交易市场的保证金。</p>
+<p>在DeFi 平台，资产token 化的意义是非常大的，因为token 化就是协议化了。<em>资产都是一个一个的协议，只是以不同代币的方式体现出来</em>。</p>
+<p>我们一直说DeFi 是programmable money, 确实是这样。DeFi 是在同一个介质里运行的信息系统，我们可以把整个DeFi 理解为一个跑在以太坊上的超大程序，资产更像是函数，功能协议（借贷、DEX）是编程模块，这里面的互相调用和组装，实际上就是程序模块、函数的互相调用、组装、转变。</p>
+<p>这个超大程序跟传统程序不一样的地方是：DeFi 是在一个统一的执行环境（EVM）上运行，这特别适合金融这类需要同步操作的应用，传统的计算和编程框架是无法实现这一点的。</p>
+<p>传统的金融科技（FinTech）,其产品的代码实现都是在不同的计算环境部署，而且被公司、国家等外部环境隔离（类似于光线在不同的介质里传播），大部分需要人工干预，使得不同公司的产品不可能存在不需许可的调用。比如微信支付和PayPal 是两个独立的公司发布的两个独立的、受限于中国、美国法律监管、受限于网络环境、受限于底层不同国家的银行支付网关、受限于两个国家不同的互联网监管的独立产品。</p>
+<p>反观比如Curve 和dForce，更像是在同一个DeFi 大程序里，两个函数的非许可调用关系，这种调用没有对公司、国家、司法辖区、银行网卡等的外部依赖，从这个层面看，DeFi 显然是比FinTech 更高维度的协议抽象。</p>
+<p><strong>问：资产和协议一体化后，对资产可进行的操作也变得丰富了。</strong></p>
+<p><strong>民道：</strong> 对，极大的丰富，你可以任意操作，就类似编程里的函数调用。比如把代币利息分一下，把本金切分，或者再做指数合成等等。我觉得这是DeFi 协议跟传统互联网金融产品的最大区别。</p>
+<p>资产token 化后，在token 这个层面也可以给资产赋予很多的属性，比如rebase 稳定币，它实际上是通过智能合约，把依据代币价格对数量做调整的功能加到资产里面去，它是一个特别典型的、把资产协议和功能协议结合在一起的东西，它是在资产端加上功能合约，这样它的组合的可能性是更大的。</p>
+<p><em>当所有的资产都以协议存在时，它可以跟其它的协议、其它的服务之间直接的、原生地去交互</em>。这个太厉害了，传统的互联网金融不是这种模式的，传统互联网金融是一个记账模式，它只在你的账户体现出一个数字来，但那个数字本身不是一个协议或代币，仅仅是一个计量单位，它们之间不能再去拆分、再去组合，也出不了它们的体系。</p>
+<p>比如银行里的钱是依赖于整个银行的封闭体系的，但当它代币化之后，整个自由和流通的属性就彻底改变了。就如很多人不明白央行的数字货币跟余额宝里面的人民币有什么区别？两者差别极大。</p>
+<p>央行数字货币是资产代币，原生的在它体系里的资产，能直接用任何与它系统通信、跑它的区块链钱包转钱；但余额宝里的钱，只是一个代记账符号，不是随便可以转到你的钱包去的，必须要经过它自有的支付体系及其和其它支付体系的准入和许可才能转账。</p>
+<p><strong>问：可以理解为每个token 身上都背着一个协议。</strong></p>
+<p><strong>民道：</strong> 对。token 本身你可以理解为它有点像孙悟空，可以分身、变身，甚至根据环境和对象的变化而变化。</p>
+<p>以dForce 的黄金代币GOLDx 举例，它特别简单，就是把PAX Gold 做了一次再封装，把它拆分成按克来算。但GOLDx 还有一个特点：PAX Gold 是每次转账的时候，都会收一笔费用给到发行方，可如果你把币铸成GOLDx 后，dForce 是不收费的，也就是说这个封装和组合，实际上改变了PAXG 自身的货币政策（去掉手续费），但是保留了黄金代币的其它特征。</p>
+<p>这就是非常典型的一个非许可改造，这种改造的好处在于dForce 不需要PAX Gold 准许，可以做基础的货币化改造（去除费用），当然也可以加上其他属性。所以当资产token 化后，可以作为一个函数被持续改造，这类型的资产的自我迭代和进化是非常快的。</p>
+<p><em>当一个资产变成了这种协议之后，最大的优点就是它的可组合性、可变化性、可被重新改造的可能性基本是无限的</em>。所以你会发现在DeFi 里有各种各样的创新，有各种token，加不同杠杆的token，加各种期货、期权特性的token 等等。这在传统金融里是不可想象的。</p>
+<p><strong>问：DeFi 发展到现在已经有了一些清晰的轮廓，你觉得这种情况下新协议的机会在哪里？</strong></p>
+<p><strong>民道：</strong> 我个人觉得在AMM 这个层面和借贷层面，底层的架构基本上定型了。</p>
+<p>如果从增长的角度讲，我个人觉得在协议底层创新的难度在增加，但是在可组合性上的创新有很多机会，另外落地和运营的执行是比较重要的。原生的创新不是没有机会，但这个机会并不在于说你的资本效益做得高多少，或者你在底层协议层面再去怎么创新。也就是说，靠发明一个更牛的AMM 出来跟Uniswap 竞争的可能性比较小，在组合性创新和运营思路上去突破可能性比较大。</p>
+<p>DeFi 在应用场景上会不断丰富，DeFi 将来会是在不断地寻找新的场景。</p>
+<p>去年的时候，Compound 的借贷量是Aave 的5到10倍，Aave 怎么起来的？它打了另外一个场景，那就是长尾资产。Compound 不上的长尾资产，Aave 都上，把这些资产的社区全带起来，然后锁仓额往上走。协议上，Aave 实际上是学Compound，底层没做过多创新，出的比Compound 还晚，那时候它还没有流动性挖矿。它的锁仓额超过Compound，本质上是找到更多场景，当然也在于它比Compound 更激进的风险政策，而不在于协议层创新。</p>
+<p>其实每一个团队在这方面都有不同想法，包括dForce 也一样。借贷协议要去跟Aave 争资产量，在主流数字货币资产范围内有难度，所以我们去做新的东西，比如合成资产、质押生息资产、实体资产融资等。</p>
+<h2 id="结束语"><strong>结束语</strong></h2>
+<p>区块链是账本，这是一种有助于我们去理解区块链的认知。但区块链的发展已经让我们看到，资产的token 化，token 化背后的资产和协议的一体化、资产的可编程化，已经让这个账本远不同于传统的账本，用颠覆一词来形容这种改变或许也不过分。</p>
+<p>上一次采访时，杨民道用「重新想象金钱, 重新构造金融」来描述DeFi；这一次他说，「整个加密金融运动的本质是让金融还原信息的本色，并且做到极致：让金融信息在同一个介质里以光速传递，用同一种语言通信。这是金融的极致状态和最高维度的抽象」。我们就以这段话作为本文的结尾吧。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/27488/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">美联储布拉德：2022年第四季度是加息的合理时机</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/27528/">
+                <span class="next-text nav-default">穆迪：数字人民币有助于改善银行的支付竞争力</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#抽象与自由"><strong>抽象与自由</strong></a></li>
+    <li><a href="#一体化与记账模式的改变"><strong>一体化与记账模式的改变</strong></a></li>
+    <li><a href="#结束语"><strong>结束语</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

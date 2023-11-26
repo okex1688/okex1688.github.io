@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          闪电网络的缺环：一个去中心化的流动性市场 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Liquidity ads 是一个最近在 c-lightning v0.10.1 中实现的规范，是闪电网络的一个重要补充。" />
+<meta name="keywords" content="Lightning" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/28195/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="闪电网络的缺环：一个去中心化的流动性市场" />
+<meta property="og:description" content="Liquidity ads 是一个最近在 c-lightning v0.10.1 中实现的规范，是闪电网络的一个重要补充。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/28195/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-03T00:00:00+00:00" />
+
+<meta itemprop="name" content="闪电网络的缺环：一个去中心化的流动性市场">
+<meta itemprop="description" content="Liquidity ads 是一个最近在 c-lightning v0.10.1 中实现的规范，是闪电网络的一个重要补充。"><meta itemprop="datePublished" content="2021-09-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2860">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="闪电网络的缺环：一个去中心化的流动性市场"/>
+<meta name="twitter:description" content="Liquidity ads 是一个最近在 c-lightning v0.10.1 中实现的规范，是闪电网络的一个重要补充。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">闪电网络的缺环：一个去中心化的流动性市场</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-03">
+      2021-09-03
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2860 字 -
+        预计阅读 6 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>Liquidity ads （ad 字面意义为 “广告”）是一个最近在 c-lightning v0.10.1 中实现的规范，是闪电网络的一个重要补充。它体量虽轻，却能让网络以去中心化的方式在网络中协调流动性部署，并保证可访问性。</p>
+<p>Liquidity ads 解决了通过闪电网络来接收支付的一个常见问题：从何处以及如何获得入账流动性（inbound liquidity）。</p>
+<p>实际上，补充入账流动性，是闪电网络中每个节点或多或少都要面对的问题。</p>
+<h2 id="为什么入账流动性很重-要"><strong>为什么入账流动性很重</strong> <strong>要</strong></h2>
+<p>无论是要接收支付，还是路由支付，入账流通性都极为重要。</p>
+<p>你的入账流动性总量，就是你能在闪电网络中接收的支付额的上限；这对于使用闪电网络的 供应商/服务商 来说，重要性不言而喻；对于普通的节点来说，也关系到可以获得的路由费总数。</p>
+<p>总而言之，入账流动性的作用是：</p>
+<ul>
+<li>
+<p>在闪电网络中接受流动性</p>
+</li>
+<li>
+<p>赚取路由费</p>
+</li>
+</ul>
+<h2 id="入账流动性与路由费"><strong>入账流动性与路由费</strong></h2>
+<p>在闪电网络中赚取路由费就是通过转介支付交易来获得手续费。这部分收获会累加在你的节点的通道的本地余额（local balance）中。</p>
+<p>也就是说，你的闪电网络余额，会随着你把入账流动性转化为出账流动性而增加，且这一过程会在所有通道中发生。</p>
+<p>这里，我们来考虑一个假想的例子，一个路由节点靠转介支付交易来赚取手续费。我们来看看他可以获得的路由手续费的数量，是如何被通道开启时的入账容量所限制的。</p>
+<p>我们假设，这个节点一开始有两个通道，通道的余额使得支付交易可以在两个通道间穿梭，这个节点（<Node>）则居中路由。他的通道分别有 1000 聪的入账容量和 1000 聪的出账容量。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0903/15_y1aswbo99s.png" alt="19KBQTgtOVE1oywfABHkrT6JuwVgrdd98vFPfbP2.png" title="5572596"></p>
+<p><Node> 为两个通道设置了 100 聪（sat）的 “路由费”，也就意味着，每次有支付交易经过，<Node> 就要收取 100 聪。</p>
+<p>如我们所见，随着转介次数的增加，节点的通道费将逐渐侵蚀其路由能力 —— 因为他净赚了转移资金的费用。</p>
+<p>简单演示一下。假设我们通过这两个通道来回发送支付，每支付一次，都要给 <Node> 支付 100 聪。</p>
+<p>那么，在开始时：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0903/15_na04mqkozs.png" alt="ETTvsq8Pxr1IHHmA4IVuXJ0nXQmVUwgWdPizIkEW.png" title="5572600"></p>
+<p>然后我们用这两个通道来回发送支付交易。每一次我们都支付最大可支付的数额，所以第一笔我们支付 1000 聪，减去 100 聪的手续费之后，接收方得到 900 聪。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0903/15_n98qc62q1w.png" alt="8L71ytQb5vIoaZPyrkkzwMxOyYl6EcLcG6DJcm3C.png" title="5572601">经过这么多次转介之后， <Node> 就没法在转介支付交易了。这个节点路由了 9 笔支付交易。</p>
+<p>一开始，节点有 1000 聪的出账容量（也就是自己能花的钱）和 1000 聪的入账容量。</p>
+<p>在转介了 9 笔支付交易之后，节点现在拥有了 1900 聪的出账容量和 100 聪的入账容量。</p>
+<p>通过转介支付交易，你成功用这对状态通道赚到了 900 聪。我们的节点如果还想继续做路由交易的生意的话，就需要更多的入账容量了。</p>
+<h2 id="让流动性可获取更便宜"><strong>让流动性可获取、更便宜</strong></h2>
+<p>某种程度上来说，每个节点都需要入账流动性。</p>
+<p>因为这是运行一个闪电网络节点的基础部分 —— 只有节点能获得入账容量之时，闪电网络对他才有意义。</p>
+<p>现在，补充入账容量有很多办法：</p>
+<ul>
+<li>
+<p>使用闪电网络来买一些东西，可以获得入账容量</p>
+</li>
+<li>
+<p>使用像 Lightning Labs 的 Loop 或是 Boltz 这样的 loop out 服务，可以将资金从你的闪电网络节点推回你的链上钱包</p>
+</li>
+<li>
+<p>与朋友合议开启一个余额充足的通道</p>
+</li>
+<li>
+<p>使用第三方的布告栏（bulletin board）比如 LightningNetwork.plus</p>
+</li>
+<li>
+<p>从已知的服务商比如 LNBig 的流动性服务处购买入账容量</p>
+</li>
+<li>
+<p>找一个愿意通过中心化拍卖来出租入账容量给你的人</p>
+</li>
+</ul>
+<p>Liquidity ads 与这些方法都不相同：你是通过闪电网络的 gossip 网络找出节点来租用入账容量。</p>
+<p>Ads （广告）是去中心化的，任何拥有一个公开通道的节点都可以创建一个并发送给网络上的每一个节点。租用广而告之的流动性非常简单，就是跟发布广告的节点开启一个通道。你也知道跟你开启通道的人是谁 —— 在开启租用之前，你可以看到对方都有哪些通道。</p>
+<h2 id="流动性不是同质化的"><strong>流动性不是同质化的</strong></h2>
+<p>在闪电网络上，流动性不是同质化的，它们是嵌在网络中的，而网络由节点和他们的通道余额组成。</p>
+<p>在一个流动性网络中，没有两条意义完全相同的通道 —— 每个通道都是独一无二的，连接起了网络的不同部分。新的通道对闪电网络通道图的影响也不完全相同。一个新加入的节点处在网络的哪个位置、最短路径的启发，也会因他连上的节点而有所不同。</p>
+<p>换句话说：新创建的每个通道，都对一个节点在网络图谱中的位置有完全不同的影响。连上某个节点的一条新通道，可能让这个节点迅速靠近中心；而连上另一个节点可能对此毫无帮助。</p>
+<p>如果不知道一条新的通道会在网络图谱的哪个位置，为这笔新的入账流动性定价是很难的。即使善意的第三方会尝试给不同对等节点的价值 “评级”，也很难准确估计来自一个未知节点的入账资金的价值。实际上，分辨具有哪些属性的节点是值得分配流动性与之建立通道的，仍然是一个未有定论的问题。</p>
+<p>估计价值的困难，同样也使人们难以辨别哪些入账流动性是有价值的。</p>
+<p>举个例子，如果我的节点在广告流动性，你怎么知道该给我付多少钱呢？</p>
+<p>这个问题的答案会因节点而异，因为我所提供的流动性的价值，也部分取决于你的节点当前的流动性情形以及通道图谱中，你我的节点的相对位置。</p>
+<p>我希望能看到一些服务商为不同的节点广告提供实时估价，并为谋求租用入账容量的节点量体裁衣。</p>
+<h2 id="权衡"><strong>权衡</strong></h2>
+<p>Liquidity ads 是一种强大、轻量的方法，可协助入账流动性在闪电网络所有节点间的部署。然而，关于布告栏方法，仍有一些要点需要强调。</p>
+<p>优点：</p>
+<ul>
+<li>
+<p>只需提交一笔链上交易来租用入账流动性。不需要将资金预先锁定在拍卖账户中。</p>
+</li>
+<li>
+<p>任何带有一个公开通道的节点都可以创建一个广告。</p>
+</li>
+<li>
+<p>在租用开始之前，你可以知道自己的通道对手的情形。</p>
+</li>
+<li>
+<p>租用可持续一个月（4032 个区块）</p>
+</li>
+<li>
+<p>部分租用条款可在链上强制执行 *</p>
+</li>
+<li>
+<p>通道对手会为租用资金转介支付交易的手续费承诺一个上限</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>
+<p>无法保证流动性可用。对手可能用尽了资金，或者无法为你提供足够的数额</p>
+</li>
+<li>
+<p>出租资金的节点必须提前决定资金的费率（没有即插即用的拍卖机制来决定它的价格）。不过，这可以通过第三方服务来缓解，他们可以帮助你拍下可用流动性，然后用 dual-funded/liquidity ad 来执行。</p>
+</li>
+<li>
+<p>流动性的市场可能更为碎片化，因为任何人都可以在任何时间向你请求流动性。</p>
+</li>
+<li>
+<p>你必须自己调查为你提供流动性的对等节点。</p>
+</li>
+</ul>
+<p>* 租用的资金会用 CSV（相对时间锁）锁在一个 <code>to_remote</code> 输出中。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/28193/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">瑞士外汇银行杜卡斯贝支持Tether（USDT）充提</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/28169/">
+                <span class="next-text nav-default">社交代币悖论：新节点回报递减</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么入账流动性很重-要"><strong>为什么入账流动性很重</strong> <strong>要</strong></a></li>
+    <li><a href="#入账流动性与路由费"><strong>入账流动性与路由费</strong></a></li>
+    <li><a href="#让流动性可获取更便宜"><strong>让流动性可获取、更便宜</strong></a></li>
+    <li><a href="#流动性不是同质化的"><strong>流动性不是同质化的</strong></a></li>
+    <li><a href="#权衡"><strong>权衡</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

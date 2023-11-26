@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Defi之交易所(一)：CEX与DEX之安全性 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="中心化交易所（CEX）和去中心化交易所（DEX）有什么区别，方便和安全性上有什么不同呢？" />
+<meta name="keywords" content="DeFi, CEX" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25327/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Defi之交易所(一)：CEX与DEX之安全性" />
+<meta property="og:description" content="中心化交易所（CEX）和去中心化交易所（DEX）有什么区别，方便和安全性上有什么不同呢？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25327/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-05T00:00:00+00:00" />
+
+<meta itemprop="name" content="Defi之交易所(一)：CEX与DEX之安全性">
+<meta itemprop="description" content="中心化交易所（CEX）和去中心化交易所（DEX）有什么区别，方便和安全性上有什么不同呢？"><meta itemprop="datePublished" content="2021-07-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4272">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Defi之交易所(一)：CEX与DEX之安全性"/>
+<meta name="twitter:description" content="中心化交易所（CEX）和去中心化交易所（DEX）有什么区别，方便和安全性上有什么不同呢？"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Defi之交易所(一)：CEX与DEX之安全性</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-05">
+      2021-07-05
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4272 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>交易所是什么：</strong></p>
+<p>交易所是一个固定的“地点”，用来交易某种信息、物品等。交易所是提供信息、物品价格价值的一个渠道，会有多个交易所存在，那么如何抹平交易所之间的价格差，避免市场用差价赚钱，扰乱市场呢？<strong>交易所通过借助信息平台实现产权信息共享和异地交易，统一协调产权交易市场及各种条款来平衡这一点。</strong></p>
+<p>形象点说，链家就是一个房屋买卖交易所。</p>
+<p>区块链里的交易所同理，无论中心化还是去中心化的，都是为了给币的买卖提供场所，这个场所既然是为大家服务的，那么：</p>
+<ol>
+<li>
+<p>要确保系统方便好用。</p>
+</li>
+<li>
+<p>大家的资金在这个系统里是安全的，不然本来是来赚钱，最后还被别人割了，谁还用？</p>
+</li>
+</ol>
+<p>那么中心化交易所（CEX）和去中心化交易所（DEX）有什么区别，方便和安全性上有什么不同呢？</p>
+<p><strong>两个本质的区别在于有无基于区块链技术而带来的安全性区别。</strong> 去中心化交易所**（DEX）** 通过链上的智能合约执行交易，实现了数据去中心化，以及操作去信任，且治理带有开放和社区驱动的属性。中心化交易所**（CEX）** 是在链下进行交易且其治理模式与传统公司相同。</p>
+<p><strong>先说中心化交易所（CEX）</strong></p>
+<p>中心化交易所（CEX）的优势显而易见，<strong>方便、高效、流动性</strong> （使用的人越多流动性越强）。但是成也萧何败也萧何，中心化是其优势来源也是其不足处的起因。</p>
+<p>中心化交易所最黑的一笔历史是2014年2月24日，曾经的世界第一大交易所Mt.Gox被曝遭遇黑客攻击，平台10万枚比特币和用户75 万枚比特币被盗（当时总价值约为4.75亿美元），3 天后Mt.Gox申请破产。该事件被称为“门头沟事件”。最终结局是，2019年宣布按照公司破产时每个账户的比特币余额，赔偿当时每个比特币660美元以及0.18个比特币。<strong>结果不算坏，至少有交代，弥补了部分损失，但比特币的价格已经翻20倍。</strong></p>
+<p>2014年到现在，加密货币中心化的<strong>风险在依</strong> 然存在**，只是风险变“高级”了。**</p>
+<p>仅2019年，11个主要加密货币交易所被黑客入侵，盗取共计约2.83亿美元加密货币。</p>
+<p>当然美其名曰是黑客，但黑客盗取了多少，交易所自己监守自盗了多少，以及更高级的数据拉砸和拔网线收割了多少这些都无从考证，<strong>真正的历史只有当事人知道</strong> 。以及<strong>人们相信的历史只是人们愿意去相信那一种</strong> 。</p>
+<p>这些“意外”说明了：<strong>比特币是安全的，但比特币交易平台不一定是安全的。</strong> 加密货币放在中心化交易所，资产就存在安全隐患，特别是对现有合约用户。除了被黑客盗取，也可能交易所自己作恶，或创始人小不心出了意外（比如年初火币的私钥管理人被传话），最终都是用户躺平。</p>
+<p><strong>为什么会出现这些不安全因素？</strong></p>
+<p>下图1是交易所的交易流程。中心化和去中心化交易所<strong>最核心的区别点是：</strong> 开始的时候<strong>用户有没有属于自己的钱包私钥。</strong> 即在中心化操作下，交易所里资产的拥有权不实际属于你，而是别人，因为你的“钱包”的私钥在交易所手里，详细见下面解释。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0705/8_t2p0497be5.png" alt="Defi之交易所(一)：CEX与DEX之安全性"></p>
+<p>下图2是注册CEX的具体细节流程：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0705/8_q52iq9m1dy.png" alt="Defi之交易所(一)：CEX与DEX之安全性"></p>
+<p><strong>此处补充说明一点：钱包</strong></p>
+<p>如果你是一个行业资深者，证明你真正拥有多少资产需要看你钱包里的资产，每个人的钱包通过<strong>私钥</strong> 认证（一串字符），是<strong>唯一属于你的</strong> ，如果<strong>忘了/丢了就意味着币丢了，永远找不回</strong> ，所以记得保存好。托管在交易所的没有提现的钱不能完全算你的钱是因为（1）可能明天就亏了，当然也可能赚更多，（2）交易所可能给你搞没了。就好像传统投资人都说股票里的钱不算钱，要实际变现出来了放在自己的银行卡里了才算。</p>
+<p>然后回到上面的<strong>图2</strong></p>
+<p>注册中心化交易所，用户把资产转到交易所，储存在中心化交易所里的一个虚拟钱包里，用户没有私钥/助记词（<strong>私钥不在你手中表示你的资产也不在你自己手中）</strong> ，虽然可以随时操作，但显示在屏幕上的资产数字只是交易所给你的一个凭证：表明你可以的币种和数量，或，兑换为多少价值的法定货币。但<strong>这些资产实际已归属于交易所</strong> 。</p>
+<p>也就是说你转账进交易所的时候，就把你的资产完全的托管给交易所全权负责，屏幕上的数字是交易所给你的凭证，证明你有多少资产在他那。</p>
+<p>这意味着，<strong>交易所的私钥控制人可以拿着你的币和资金另寻它用，</strong> 由此便产生了中心化交易所已经发生过，且未来可能继续发生的恶劣现象：</p>
+<ol>
+<li>
+<p>数据拉砸、拔网线、交易所跑路。这些情况下用户的资金（币）没有任何保障，特别是玩合约的朋友很容易躺平起不来。</p>
+</li>
+<li>
+<p>中心化交易所把用户资产和数据储存在中心化的数据库中，一旦这个数据库出问题：可能交易所维护不善、可能黑客攻击，你的资产就不安全了。数据库出问题就好比水桶被戳了个洞，一个小洞就可以把水漏完。</p>
+</li>
+</ol>
+<p>历史上有过多次交易所监守自盗、挪用用户资产的恶性事件，也有不少外部黑客对CEX恶意攻击的事件。在行业还没有得到明确的监管情况下，能约束恶性事件发生的只有<strong>交易所的道德底线和技术实力</strong> 。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0705/8_5fl2u8vio4.png" alt="Defi之交易所(一)：CEX与DEX之安全性"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0705/8_tk1ngksde4.png" alt="Defi之交易所(一)：CEX与DEX之安全性"></p>
+<p>类似的银行理财产品、基金都是用户将自己的钱托管在别人手里，让别人帮忙操作赚取收益，是中心化的，只是他们身后的背书力量比较强。去年的中国银行原油宝穿仓事件即中心托管的一个问题，被迫亏损，而且是因为别人不留心的操作失误被迫亏损，以前大家放心是因为法律要求这些理财产品保本，现在取消了。</p>
+<p><strong>为什么前文说现在风险变高级了？</strong> 其实矿机生产商、交易所、甚至矿厂主，基本算这个行业的食物链顶端，稳赚不陪，交易所跑路了也没多大意思，自断财路，一般不会，但是或许有可能他们其他什么地方缺钱了，可以搞个数据拉砸/拔网线来爆合约赚用户的资产（币）。要知道我们的所有操作，交易所后台都能看到。</p>
+<p>安全问题一直是悬在交易所上方的达摩克利斯之剑，因平台安全问题被反向割韭菜的交易所数不数胜。</p>
+<p><strong>去中心化交易所（DEX）</strong></p>
+<p><strong>有问题不代表没有市场价值，</strong> 中心化交易所的好处依然<strong>大大优于</strong> 其存在的问题，但事物是发展的，<strong>需求的侧重点也是多样的，有问题就会有创新，就会有更进一步解决方案。</strong></p>
+<p>通过上文知道，中心化交易所（CEX）最大的不安全来自于（1）数据集中：整个体系安全性不被保障，断电、外来攻击都会影响，（2）用户没有实际拥有自己的资产：后台处理程序不可见，可以产生很多猫腻。<strong>怎么解决呢？</strong></p>
+<p>将<strong>区块链作为整个网络的运作底层</strong> 就自然而然的解决这些问题。去中心化交易基于区块链，被赋予了：</p>
+<ol>
+<li>
+<p><strong>链上记录</strong> ：每笔交易链上发生，任何人都可通过区块链浏览器查询到每一笔交易，公开透明；以及数据去中心化存储无需担心暗箱操作与数据造假和数据拉砸。这是区块链技术本有的特点，无需再多做解释。</p>
+</li>
+<li>
+<p><strong>智能合约</strong> ：用写定的程序去托管，去人为操作，防止盗用用户资产另寻它用</p>
+</li>
+<li>
+<p><strong>资产自持</strong> ：钱包作为接入口，用户的钱永远都在用户手里。</p>
+</li>
+</ol>
+<p>以上是去中心化交易所的<strong>三个安全性特点</strong> 。</p>
+<p>即一个数据在链上存储（透明、安全）、智能合约完成执行流程（撮合交易、结算、提现）、钱包为接入口（资金安全）的交易平台：<strong>该平台仅负责撮合交易，</strong> <strong>不接触你的资产，</strong> <strong>不参与用户资金的任何操作，不将个人数据存储在中心化服务器上，而是通过智能合约进行点对点交易，即去信任。</strong></p>
+<p><strong>在这个平台上，除非你把私钥给别人，否则谁也动不了你的币。</strong> 且只需要一个钱包就能使用不同的去中心化交易所Dapp，相对简便。</p>
+<p>但在使用不同的中心化交易所时，需要<strong>重复</strong> 完成账号注册与KYC 认证，就像在币安、火币、抹茶等CEX上开户时都要求上传身份证照片，有的甚至要求拿着身份证自拍，这些信息被存储在CEX的中心化数据库里，如果CEX有更大的利益诉求或者其他什么原因，是完全可以出卖这些数据信息的。所以中心化交易所<strong>最大的不安全来自于数据集中，用户没有实际拥有自己的资产。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0705/8_0ikzsoly7s.png" alt="Defi之交易所(一)：CEX与DEX之安全性"></p>
+<p><strong>那么去中心化交易所怎样保证安全？——智能合约。</strong></p>
+<p>把以上所有环节置于链上，由智能合约全部执行（包括钱包间的直接交易），没有中间人插手。 </p>
+<p>有点像你通过绑定了银行卡的支付宝/微信给商家付款，直接刷走的你银行卡里的钱， 但是你通过支付宝/微信支付.有所不同的是，区块链世界卖方收到的钱也直接到银行卡里（钱包里），而不是留在支付宝或微信里（交易所里）。</p>
+<p>这样交易过程就无需任何信任的第三方，做到了去中心化，去中心化的意义除了数据安全还有去信任，所谓<strong>去信任不是不要信任，而是用写好的、明确可见的、不变的程序替代具有很大变数的人为控制</strong> 。所以在交易所方面，去中心化交易所的核心是“资产去托管”。也就是说，在交易的过程中，没有任何人或者说一个中心化的机构能够接触、动用你的资产。</p>
+<p><strong>但，区块链给DEX带来了安全、透明的同时，也给了DEX一些弱点。</strong> 比如交易速度交易慢，无法处理高并发交易，底层公链的 TPS（系统吞吐量）使得用户体验没有中心化交易所那么流畅，这是目前区块链本身性能带来的局限。以太坊 12 秒打包 1 个区块，表示交易完成至少需要 12 秒，当网络拥堵时需要等待的时间将更长。这对高频交易员来或者完全去中心化的交易所来说是很大的限制。</p>
+<p>不过随着扩容技术的不断发展，去中心化交易所与中心化交易所的差距将不断被缩小。聪明的开发者们开始把上述部分环节（下单及撮合环节，因为这部分需要的tx实在太多）放在链下。</p>
+<p><strong>只要去中心化交易所仍然保有「非托管」以及「与智能合约交互」的特性，就有存在的价值。</strong></p>
+<p><strong>所以总结：</strong></p>
+<p>去中心化交易所所有的交易流程是由智能合约来完成的，交易<strong>效率相对较低</strong> （区块链技术的TPS一直是软肋），但币的归属完全是掌握在用户自己手里，所以<strong>安全性相对高一点</strong> 。</p>
+<p><strong>中心化交易所相对去中心化交易所的优势在于交易深度和用户数量</strong> ，这两点是去中心化交易所不能比拟的。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25347/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">DeFi项目分析：DeFi赛道的蓝海—保险</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25364/">
+                <span class="next-text nav-default">EIP-1559是以太坊Gas的救星吗？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

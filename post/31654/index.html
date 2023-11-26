@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          深度研究：以太坊新的1 MB区块大小限制弊大于利？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="我们将解释 Rollups 工作的基本原理，并讨论以太坊可能面临的一些由新的区块大小限制引起的挑战，我们认为这甚至可能会破坏 EIP-1559 带来的部分优势。" />
+<meta name="keywords" content="ETH" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/31654/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="深度研究：以太坊新的1 MB区块大小限制弊大于利？" />
+<meta property="og:description" content="我们将解释 Rollups 工作的基本原理，并讨论以太坊可能面临的一些由新的区块大小限制引起的挑战，我们认为这甚至可能会破坏 EIP-1559 带来的部分优势。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/31654/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-12-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-09T00:00:00+00:00" />
+
+<meta itemprop="name" content="深度研究：以太坊新的1 MB区块大小限制弊大于利？">
+<meta itemprop="description" content="我们将解释 Rollups 工作的基本原理，并讨论以太坊可能面临的一些由新的区块大小限制引起的挑战，我们认为这甚至可能会破坏 EIP-1559 带来的部分优势。"><meta itemprop="datePublished" content="2021-12-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-12-09T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4249">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="深度研究：以太坊新的1 MB区块大小限制弊大于利？"/>
+<meta name="twitter:description" content="我们将解释 Rollups 工作的基本原理，并讨论以太坊可能面临的一些由新的区块大小限制引起的挑战，我们认为这甚至可能会破坏 EIP-1559 带来的部分优势。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">深度研究：以太坊新的1 MB区块大小限制弊大于利？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-12-09">
+      2021-12-09
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4249 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>被三箭资本 diss 后，V 神提出了新的以太坊改进提案（EIP-4488）。这个提议的目的是使第二层（Layer 2）扩容解决方案（Rollups）变得更经济可行。因此，为了减少这些 Rollups 可能消耗的大量区块空间，引入了一个新的区块大小数据限制。我们将解释 Rollups 工作的基本原理，并讨论以太坊可能面临的一些由新的区块大小限制引起的挑战，我们认为这甚至可能会破坏 EIP-1559 带来的部分优势。</p>
+<h3 id="eip-4488概述">EIP-4488概述</h3>
+<p>EIP-4488 提议将以太坊区块链中一个字节的交易调用数据（calldata）的成本从 16 gas 降低到 3 gas，进一步降低第二层 gas 费。这样做的目的是降低 Rollups 的成本。以太坊上的 Rollups 会占用大量空间，这是扩容的关键。许多人认为以太坊的费用太高，无法吸引新用户，交易通常要花费数百美元，据说这将促使用户转向 Solana或 Avalanche 等替代系统。</p>
+<p>使用“第二层”解决方案，如 Rollups，可以显著降低 gas 费用，而如 Aribitrum 的这样多轮交互式 Rollups 方案也正开始获得关注。与我们交谈过的许多正在开发中的 DeFi 项目，在构建阶段已经转向使用 Rollups，而像币安这样的交易所将接受 Rollup 存储。然而，可能减少的 Rollups 费用只有 10 倍左右，一些用户仍然需要支付相当高的费用。因此，EIP-4488 被提出作为一个快速解决方案，至少在短期内，它有可能将这些费用降低到另一个数量级。由于“第一层”以太坊交易也使用交易调用数据（calldata），因此也会降低少量的费用，可能约为 2%。</p>
+<p><strong>如果交易调用数据（calldata）的 gas 成本降低，以太坊区块可能会变得更大，这可能会导致太多的中心化压力。</strong> 目前的 gas 上限是 3000 万个单位，目标是 1500 万。因此，区块的最大大小为 1.875 MB。Gas 费用降低到 3，将最大区块大小增加到 10 MB，这已经太大了。因此建议还提出一个新的限制，就是一个 1 MB 的交易调用数据（calldata）区块大小限制。</p>
+<p>这个新的 1 MB 限制有点讽刺，因为比特币多年来一直在争论旧的 1 MB 区块大小限制。当然，以太坊中的目标区块时间远低于 10 分钟（现在约为 13 秒，过渡到以太坊 2.0 后约为 12 秒），因此 1 MB 的区块大小并不是一种直接比较。</p>
+<h3 id="rollups工作基本原理">Rollups工作基本原理</h3>
+<p>使用 Rollups，交易在链下被处理和执行，但交易数据仍然包含在以太坊主链上，因此 Rollups 的结果没有明显地节省区块空间。通常，在以太坊世界中，当使用“链下”（off-chain）一词时，它意味着另一个链。因此，Rollups 是一种侧链系统，它是比特币开发者 Johnson Lau 在 2013 年最初提出的想法的最新版，可能也是最先进的迭代。Rollups 侧链与 EVM（以太坊虚拟机）兼容，可以使用 Solidity 智能合约。因此，需要区块链才能获得以太坊的全部功能。</p>
+<p><strong>此举的优点是可扩展性。侧链没有主链的严格计算 gas 限制，因此吞吐量更高，交易更便宜。Rollups 的缺点是侧链需要新的共识代理，而且这些代理有能力订购交易。还有一个从侧链向主链转移资金的问题，出于安全原因，交易速度必然是缓慢的。</strong></p>
+<h3 id="欺诈证明和债券机制bonds">欺诈证明和债券机制（bonds）</h3>
+<p>在以太坊上产生的最令人兴奋的 Rollups 类型是 Optimistic Rollups。其工作的方式是用户假设 Rollups 状态是有效的，但如果 Rollups 被认为无效，侧链验证者可以向主以太坊链提交欺诈证明。然后，该证明可以由所有主链以太坊节点进行验证。将原始 Rollups 交易数据放入以太坊链的实体的同时也需要以太坊债券做抵押。如果他们提交了一个无效的状态，这被证明将失去他们的债券。这种激励结构的设计是为了保证 Rollups 侧链的安全。这与股权证明制度和对不良行为的惩罚有一些相似之处。</p>
+<p><strong>这种债券类型机制可能看起来复杂、不必要，甚至有点弱。</strong> 例如，系统设计者如何确保债券有足够的价值来阻止欺诈，同时又确保实体有足够的流动性？鉴于该领域的资金流动规模巨大且波动很大，这可能具有挑战性。假设如下，来证明这样一个机制是必要的：</p>
+<ul>
+<li>
+<p>侧链上的吞吐量很高，以至于没有多少实体运行完全验证的侧链节点，而且侧链系统过于集中而不安全；</p>
+</li>
+<li>
+<p>在主链上存储数据很便宜，但计算时系统的容量受到限制。</p>
+</li>
+</ul>
+<p>在这种情况下，这种复杂的债券机制可能是有意义的，而侧链本身被认为是不安全的，但由于有欺诈证明和债券机制，侧链安全度足够。以太坊目前可能处于一个“舒适期”，人们对 Optimistic Rollups 相当兴奋，许多人认为它们对以太坊的扩容至关重要。</p>
+<h3 id="比特币的语境下的rollups">比特币的语境下的Rollups</h3>
+<p>有一种讽刺手法，叫在比特币语境中评估 Rollups。多年来，一些所谓的“比特币最大化论者”认为，以太坊的一个主要弱点是，智能合约是在链上处理的。他们声称，这个过程应该发生在链下，而只有这些计算的数据和结果应该出现在链上，而这正是 Rollups 所做的。然而，我们并没有看到很多“比特币最大化主义者”因为这种发展而对以太坊持更积极的态度。与此同时，我们也没有看到很多以太坊开发者感谢比特币多年来为其推广这一想法。</p>
+<p>“比特币也能 Rolllups 吗？”答案是肯定的，从理论上讲，比特币可以做到。</p>
+<p>事实上，如果有人试图在比特币上执行这些类型的智能合约，那么它必须进行 Rollups，因为没有办法让现有的比特币完整节点验证这些复杂的智能合约。因此，唯一的方法是将智能合约数据放在比特币区块链上，并让运行侧链的其它节点软件执行和验证智能合约交易。<strong>从技术上讲，为了成为一个真正的 Rollups，第一层交易必须能够强制执行第二层交易，然而在比特币上你不能这样做，也许在比特币语境下，它不应该被简单称为 Rollups，而应该是“比特币特色 Rollups”。</strong> 然而，在比特币中，通过这种类型的侧链构建，仍然可以实现几乎任何事情，包括让系统以太坊虚拟机（EVM）能够使用 Solidity 智能合约。当然，这样的系统在比特币的基础上可能不是有效或高效的，但在理论上它是可行的。</p>
+<p>与以太坊不同，在比特币之上创建这种侧链 Rollups 类型系统的一个缺点是，你永远无法实现欺诈证明和Optimistic Rollups 类型系统。然而，我们并不清楚这是否需要或可取。在比特币之上构建这些 Rollups 的目的是在比特币上添加以太坊之类的智能合约功能。相比之下，在以太坊上 Rollups 的目的是提高容量，而不是改进智能合约能力。因此，在这个理论性的比特币构建中，用户可以选择是否要验证主链之外的侧链，而不需要欺诈证明系统。比特币上的存储并不便宜，我们一开始也没有假设侧链需要非常高的吞吐量，这样中心化程度就太高了，这样我们就会因为缺少验证者而面临重大安全风险。在我们看来，对于以太坊来说，Optimistic Rollups 是有意义的，但这种明显的优势可能不会持续太久。</p>
+<h3 id="gas限制和交易调用数据calldata限制">Gas限制和交易调用数据（calldata）限制</h3>
+<p><strong>EIP-4488 的一个潜在问题是创建了新的 1 MB 交易调用数据（calldata）限制。因此，以太坊区块有两个限制，gas 限制和交易调用数据（calldata）限制。区块的构建现在可能变得更加复杂，因为区块生产者在选择收益最大化交易时需要考虑多维度的问题。</strong> 由于矿工可提取价值 (MEV)等因素，区块生产已经非常复杂。这两个区块约束的问题远比生产区块时如何提取 MEV 的问题简单，因此认为这两个限制并不会增加区块生产创建者的区块创建复杂性。</p>
+<p>然而，我们仍然认为这两个限制可能会增加用户和钱包的复杂性，因为它们需要决定他们的交易的费用。当将其与比特币进行比较时，这就更具讽刺意味了。SegWit 是解决比特币规模问题的解决方案，其升级让比特币的区块中有更多的交易，但它限制链比特币可以处理的交易数量，其主协议最大区块大小为 1 MB，这将限制比特币的潜在增长，并阻止比特币成为一种可用的大额支付系统，所以受到了市场的批评。</p>
+<p>尽管当时的批评是不正确的，然而，基于我们对这个新的以太坊限制的理解，我们现在实际上面对的是一系列相关的“经济复杂性”。不过，如果我们不完全理解 EIP-4488，我们可能会犯与那些 SegWit 批评者相似的错误。</p>
+<h3 id="削弱eip-1559">削弱 EIP-1559</h3>
+<p>新的区块大小限制也可能在一定程度上削弱 EIP-1559。EIP-1559 引入了区块 gas 限制目标和基本费用。基本费用根据 gas 使用量高于或低于目标而调整。据我们所知，这个新的交易调用数据（calldata）限制没有调整机制。因此，如果 calldata 限制发挥作用，收费市场可能会再次出现波动，EIP-1559 的优势可能会弱化。</p>
+<h3 id="总结">总结</h3>
+<p>以太坊区块目前的大小通常约为 80 KB，10 分钟内约为 4 MB。然而，当涉及到同步以太坊节点时，区块的大小从来不是重点。比较以太坊和比特币的区块链大小，比特币的区块链实际上比以太坊更大。然而，这并不意味着比特币比以太坊更难同步或验证，实际上以太坊更难验证，根据我们最近的经验，在类似机器上，它可能比比特币花费大约 10 倍的时间。我们的观点是，以太坊问题从来都不是来自区块大小。如果 Rollups 提高作用，情况可能会改变。</p>
+<p><strong>至于两个区块限制和收费市场的复杂性，也许可以考虑一个更简单的解决方案，比如将一个字节的交易调用数据（calldata）的 gas 成本降低到 8 而不是 3。这将把最大区块大小限制在 4 MB 左右，同时避免了两个限制的复杂性，还将调用数据的成本降低了 50%。</strong> EIP-4488 并不意味着是一个长期的扩容解决方案，但它是一个快速修复解决方案。Optimistic Rollups 本身并不能解决以太坊的扩容问题，它只会让区块变得更大，直到它们的大小成为下一个新问题。目前将需要部署更多的技术来扩展以太坊，这是一个巨大的挑战。</p>
+<p>本文来自BitMEX，原文作者：BitMEX，由 Odaily星球日报译者 Katie 辜编译。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/31636/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">深度研报：灰度全景解读Solana</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/31651/">
+                <span class="next-text nav-default">数字人民币签约缴税业务在海南率先落地</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#eip-4488概述">EIP-4488概述</a></li>
+        <li><a href="#rollups工作基本原理">Rollups工作基本原理</a></li>
+        <li><a href="#欺诈证明和债券机制bonds">欺诈证明和债券机制（bonds）</a></li>
+        <li><a href="#比特币的语境下的rollups">比特币的语境下的Rollups</a></li>
+        <li><a href="#gas限制和交易调用数据calldata限制">Gas限制和交易调用数据（calldata）限制</a></li>
+        <li><a href="#削弱eip-1559">削弱 EIP-1559</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

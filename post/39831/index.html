@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          金色深核｜“高并发”中的“文昌链” - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="基础设施应对互联网级别并发的经验甚为重要。" />
+<meta name="keywords" content="金色深核, 区块链服务网络, 联盟链" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39831/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="金色深核｜“高并发”中的“文昌链”" />
+<meta property="og:description" content="基础设施应对互联网级别并发的经验甚为重要。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39831/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-05T00:00:00+00:00" />
+
+<meta itemprop="name" content="金色深核｜“高并发”中的“文昌链”">
+<meta itemprop="description" content="基础设施应对互联网级别并发的经验甚为重要。"><meta itemprop="datePublished" content="2022-07-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-07-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6083">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="金色深核｜“高并发”中的“文昌链”"/>
+<meta name="twitter:description" content="基础设施应对互联网级别并发的经验甚为重要。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">金色深核｜“高并发”中的“文昌链”</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-07-05">
+      2022-07-05
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6083 字 -
+        预计阅读 13 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>编者按：本文内容源于2022年6月25日BSN月度说明会上边界智能创始人曹恒对文昌链的汇报口述内容，会后边界智能CTO奚海峰为内容增加了更为详细的问题分析和分布式应用开发建议，本文因此成为一篇全面记录文昌链经历高并发过程的文章。</p>
+<p>《金色深核》栏目认为开放联盟链将会是中国Web3进程中的重要角色，其基础设施应对互联网级别并发的经验也甚为重要，为此，将文章中进行后期编辑，以更为清晰的叙述过程，为关注开放联盟链的读者、开发者所用。</p>
+<p>作者：曹恒、奚海峰，编辑：王航</p>
+<hr>
+<p><strong>背景</strong>  <strong>：6</strong>  **月的并发高峰</p>
+<hr>
+<p>** 6月29日，中国区块链基础设施BSN官方发布了一则数据，其NFT基础设施BSN-DDC单日链上交易总数接近百万次，超过了以太坊单日链上交易数。</p>
+<p>BSN-DDC是由多个开放联盟链组成的NFT基础设施，以适应中国监管合规环境的特性塑造着与以太坊开源生态相似的应用多样性。</p>
+<p>由边界智能搭建的的文昌链，是目前支持BSN-DDC运行的四条开放联盟链之一，在6月，BSN链上数据爆发的表现中，文昌链链上数据爆发尤为突出。</p>
+<p>据边界智能创始人曹恒描述，截止到2022年6月21日19点18分，文昌链上活跃链账户数为645万，以链上数据估算，上线应用近250个，进行测试对接的应用约300个。</p>
+<p>而此时链上NFT技术支持的可信数据对象总数为797万。通过历史数据分析，所有可信数据对象中，55%产生于6月，约为442万个。</p>
+<p><em>（至本文发出时，文昌链活跃账户数已过1061万，NFT技术支持可信数据对象1194万）。</em></p>
+<p>文昌链于2021年2月上线，免费稳定试运行一年后，于2022年3月份开始商业化运行，随后文昌链的业务量已开始快速增长，从月度业务量翻倍到6月实现指数级增长。</p>
+<p><em>（<strong>可对比数据</strong>：<strong>开放联盟链的__腾讯至信链</strong>，<strong>2021年6月上线，截止到__2022__年__5月，总用户数超过300万，发行的数字藏品超过500万。</strong>）</em></p>
+<p>而伴随着6月业务量飞涨，618前后在并发高峰期，文昌链出现了卡顿、交易排队的情况，区块打包时间最高达到了30秒，有所影响用户体验。</p>
+<p>随后，BSN运维团队红枣科技和文昌链技术支持团队边界智能通力合作，在不停服的前提下对系统进行了紧急升级及优化。</p>
+<p>调优后，正在以小于4秒的平均出块时间平稳安全地运行。</p>
+<hr>
+<h2 id="问题--上链交易缓慢与优化思路"><strong>问题</strong> <strong>：</strong> <strong>上链交易缓慢与优化思路</strong></h2>
+<hr>
+<p>全球公链上的交易堵塞、等待问题很常见。文昌链在高并发情况下出现的此类问题，是区块链在面对商业化应用中必然要面对的。</p>
+<p>在传统互联网应用中，平台方可以通过增加计算资源的水平扩展方式和挑战任务并行分配方式来解决，有多大压力，就用多大的计算资源解决。</p>
+<p>而在区块链上，尤其是在与公链同样分布式结构的开放联盟链上，其性能的优化、升级需要经历相对复杂的过程。</p>
+<p><strong>性能问题公示</strong></p>
+<p>文昌链采用开放应用服务模式，支持多元应用生态。经技术团队进行网络性能分析，其问题和解决方案如下：</p>
+<p><strong>问题1：</strong> 接收用户交易的全节点跟共识节点之间的p2p连接不稳定，造成很多交易不能及时进入共识节点参与出块。</p>
+<p>解决方案：优化全节点与共识节点之间p2p连接配置参数，提高连接稳定性。</p>
+<p>解决状态：已解决</p>
+<p><strong>问题2：</strong> 全网交易量高峰时段，每个新区块包含交易数很多（2000~3000），共识节点在广播和校验每个区块上耗费时间变长，造成出块间隙时间变长（从3秒左右变为30秒左右）；虽然网络整体吞吐量（TPS）增加，但单个交易的上链延迟变长，用户体验到的上链等待时间变长。</p>
+<p>解决方案：优化共识算法各阶段超时时间配置参数，提高出块速度。</p>
+<p>解决状态：已改善，还在持续优化参数和垂直扩展共识节点性能。</p>
+<p><strong>问题3：</strong> EVM相关交易因nonce错误而上链失败，需要用户重试。</p>
+<p>解决方案：应用修改上链策略，每个发交易的链账户要串行发送交易，确保前一个交易的上链状态确定后再发送下一个交易；若要提高交易并发性能，则可采用多个链账户并行发送交易。</p>
+<p>解决状态：已经发布更新的FAQ和代码示例</p>
+<hr>
+<h2 id="分析--为何开放联盟链opb调优更为复杂"><strong>分析</strong> <strong>：</strong> <strong>为何开放联盟链（OPB）调优更为复杂？</strong></h2>
+<hr>
+<p>开放联盟链（OPB，OpenPermissionedBlockchain又称开放许可链）是结合了公链、联盟链技术优势，能支持非信任环境下的分布式公共账本服务，其可以很好地支持商业级应用的合规需求和良好的应用开发体验。</p>
+<p>因此，OPB（开放联盟链）的调优比公链、联盟链都要复杂许多。</p>
+<p>在传统的互联网中心化应用开发中，应用上线前要对数据库进行规划，包括分区，如何给数据表加读写锁，索引等等。应用上线后，中心化数据库的调优可能需要一个月甚至更长的时间，来监控应用访问数据库的模式，针对应用进行进一步的优化。</p>
+<p>而相比中心化数据库的调优，开放联盟链的调优难度近乎是其20倍甚至以上。</p>
+<p>区块链应用，又称分布式应用。所以有人说区块链则是分布式数据库，但区块链的难度远远超越了分布式数据库。</p>
+<p>原因在于分布式数据库的调优，比中心化数据库增加了数据的同步、多阶段提交以保持数据一致性以及网络通讯优化等多方面的复杂步骤。</p>
+<p>而区块链相比分布式数据库，除数据同步、保证数据一致性外，还需要保证网络的安全性。</p>
+<p>区块链中以众多节点来共同维护可信数据账本。开放区块链需要假定每一个节点都有作恶的可能性（带入错误账本数据、篡改数据等）。因此需要识别作恶数据，并可以通过共识算法，对合法交易进行排序和正确执行，并将结果分布式可信地写入账本。</p>
+<p>在这个过程中：</p>
+<p>共识算法可以保证分布式节点以block（数据块）方式组成链式数据，并保证当有恶意请求、网络不可靠或者黑客攻击的情况下，算法依然可以准确无误地运行。</p>
+<p>共识协议的执行，会产生相比分布式数据库更多的网络通讯，需要协调更多节点的信息以及本地运算结果的全网同步。</p>
+<p>在这样复杂的过程里，也代表着，优化区块链是优化分布式数据库、中心化数据库的难度的10倍、20倍。</p>
+<p>在这样的理解基础上再看OPB。兼顾公链和联盟链特性，让开放联盟链带来了创新性，为开发者和用户带来了友好体验，但也让开放联盟链的参数调优比一般的公链或者联盟链更难。</p>
+<p>在公有链上，应用开发者管理自己的节点，根据自己的应用特性优化节点。在联盟链上，普通联盟链一般服务封闭生态的1~2个应用，通过统一中心化的API服务支持应用。</p>
+<p>而开放联盟链要面对开放多元的应用读写需求，相比公链和联盟链，OPB面对的是更多不确定的应用访问模式，也扩大了其优化的参数范围。并且在保证安全、开放的基础上，还要保证高性能要求。</p>
+<p>文昌链（IRITAOPB）基于Cosmos/Tendermint共识技术开发，兼顾开放、安全、合规、高性能等方面，在调优上不只是几个参数的调整，及简单数据索引的变化，要涉及记账节点和全节点的网络拓扑，共识速度，甚至不同节点的读写带宽，不同通讯类型信息的带宽分配等等。</p>
+<p>在过去618的应用高峰期，在调优的过程中，文昌链为了保证网络不停服，选择循序渐进的一个节点一个节点地调整。虽然单个节点调整、重启的过程也会影响文昌链暂时的性能。但即使网络体验会有些许延迟，也能保链账本正确、链资产安全以及链安全持续运行。</p>
+<hr>
+<h2 id="后续--正在进行-的-优化迭代"><strong>后续</strong> <strong>：</strong> <strong>正在进行</strong> <strong>的</strong> <strong>优化迭代</strong></h2>
+<hr>
+<p>除了上面实施的方案，文昌链经历了此次高并发后，边界智能团队还梳理了多个层次的优化策略，主要包括：</p>
+<p><strong>1.节点配置拓扑的优化：</strong> 在测试网络验证后，正在文昌链上部署，后续还将持续优化；</p>
+<p><strong>2.Tendermint共识对于EVM的优化：</strong> 文昌链支持Cosmos原生NFT也支持以太坊虚拟机（EVM）NFT，已经找到了Tendermint共识对于EVM优化的方式。未来边界智能会验证后协调全球相关开源开发者一起验证，预计需要1个多月的时间；</p>
+<p><strong>3.多全节点分级的拓扑结构设计：</strong> BSN网络计划下半年向社区开放全节点部署，有能力的厂商可自行部署全节点，边界智能已经开始和红枣科技团队协同，部署BSN环境外的全节点，并已经在支持AVATA API服务；</p>
+<p>_（__未来会发布__全节点部署最优实践指导文档，_<em>帮助__有能力的应用方__建立__自己的全节点，<strong>用来__改善应用访问网络的可靠性</strong>。）</em></p>
+<p><strong>4.多语言SDK优化以及AVATA服务性能优化：</strong> 围绕上述几点，边界智能已在SDK和AVATA API服务上进行优化，计划一个月内会在SDK及AVATA中添加包含更多最优实践的实现，提供更多方便的开发接口供应用者使用；</p>
+<p><strong>5.节点历史数据压缩：</strong> 文昌链的数据增长很快，目前已经有节点数据压缩技术，计划两个月内完成其围绕浏览器和相关支持工具（SDK&amp;AVATA等）的开发和测试；</p>
+<p><strong>6. 二层网络：</strong> 边界智能已经在其他大规模网络上实现了二层网络的技术，通过二层网络技术，可满足应用数万级别的TPS需求。未来几个月中会完成其相关支持工具（浏览器、SDK&amp;AVATA等）的开发和测试，同时和BSN一起探索其商业化业务模式，以保证一旦有业务需求，就可以及时上线二层网络。</p>
+<hr>
+<h2 id="实践建议--如何-开发-最优的-分布式应用数藏元宇宙"><strong>实践建议</strong> <strong>：</strong> <strong>如何</strong> <strong>开发</strong> <strong>最优的</strong> <strong>分布式应用（数藏/元宇宙）</strong></h2>
+<hr>
+<p>分布式应用又被称为Web3应用，是基于区块链的下一代互联网应用。分布式应用如果希望成为用户体验良好，成本优化的应用，需要基于区块链系统的特性去实现。</p>
+<p>区块链系统特性如下：</p>
+<p><strong>1.网络状况决定交易处理/上链速度：</strong> 多个区块链节点根据共识算法对需要上链的事务(transaction，也称为交易)根据请求先后顺序排序，并在各个节点中分布式执行；节点的内存池容量有限，当事务多的时候，可能出现节点忙于其他计算，等待处理的事务无法进入内存池，因此无法得到及时处理并上链的情况，因此应用会需要链外维护队列排队，并对上链失败的事务重试；</p>
+<p><strong>2.网络费用：</strong> 任何涉及链上数据变化的事务(交易)都会产生一定的网络费用（GAS）；</p>
+<p><strong>3.计算需求：</strong> 对于不同类型的交易而言，根据其需要的计算资源，节点处理速度也不同（转账的速度会比铸造快）；</p>
+<p><strong>4.多笔交易：</strong> 每笔交易网络都需要验证，因此对多次请求而言，打包成一笔交易会比多笔交易（需多次验证）的处理速度更快、消耗GAS更少；</p>
+<p><strong>5.本地状态：</strong> 在共识过程中，或因为网络通讯有延迟，区块链各个节点可能出现状态不一致，因此分布式应用自己的状态变量最好采取自己本地维护的方式，而不是每次都到链上获取。分布式应用也不能像中心化应用一样假定你发送的链上事务（交易）一定会在确定时间内完成。例如文昌链网络畅通时一般出块时间在3秒～10秒间，但如果堵塞的时候就会要等待比较多的区块，等待交易被验证打包。</p>
+<p>基于这些特性的理解和实践，有以下几点经验之谈：</p>
+<p>1.业务流程：一些比较费资源的、计算量大的业务，例如NFT铸造，业务流程上可以设计为提前铸造，这样其他的场景，例如用户领取NFT时，就只有链上转账交易，会快很多；</p>
+<p>2.业务设计：可以学习优秀数藏应用（比如幻核、鲸探）的业务设计。例如鲸探近期开始避免秒杀活动，让用户邀请好友助力来获取购买的资格。这样的设计增强了用户的社交性，更有趣，用户不用掐点去抢，体验好了许多，还避免了系统的高并发；</p>
+<p>3. 链账户创建：为了用户体验良好，一般都是应用托管用户的链账户，并替用户支付GAS费用。应用则可以提前准备申请好链账户，并完成GAS费代付的链上授权（文昌链原生模块NFT支持GAS代付的功能），这样应用用户注册时，应用只在应用系统中进行分配即可，也就是进行应用的本地计算，不用等待链上响应。</p>
+<p>4. 上链时间选择：避免在网络繁忙的时候进行大批量的链上交易（事务）提交，开放联盟链是开放地支持数百个应用。建议提前计划需要大量产生链账户、NFT铸造等链上事务的执行，留出工作时间余量。文昌链提供了非常完善的区块链浏览器，可以通过浏览器非常方便地查看当前网络繁忙情况。出块时间和最近区块包含的交易笔数可以反映网络拥堵程度，可以提前去浏览器了解相关情况，避开链繁忙的高峰时间。</p>
+<p>5. 上链方式：把多个事务信息打包在一个交易中，又快又省GAS。可以参考文昌链SDK以及API服务AVATA中的multi-msg方法。</p>
+<p>6.本地应用状态维护：上链操作是无法实时返回结果的，因此建议应用自己离线维护sequence/nonce或本地保存operationid。</p>
+<p><em>（<strong>更多__具体__实践</strong>，可以__在__文昌链GitHub</em> <em>FAQ找到样本</em>_）_</p>
+<hr>
+<h2 id="编者结语"><strong>编者结语</strong></h2>
+<hr>
+<p>中国的开放联盟链目前已经有很多条，除了BSN体系内的泰安链、文昌链等，BAT各有Xuperchain开放网络、蚂蚁链开放网络、腾讯至信链等。</p>
+<p>这些开放联盟链，与FISCO BCOS、长安链主张开源的联盟链相比，其更符合“在一条链应用百花齐放”的多元生态愿景，也是应用开发者“放弃重复建链”“选择合规”后更为友好的选择。</p>
+<p>相应的，基于各家的技术不同，几家开放联盟链也通过网络架构、基础协议、API平台、业务模块等具备各自的开发优势。</p>
+<p>例如文昌链是基于Cosmos企业版IRITA开发的，基于Tendermint共识引擎，并兼顾Cosmos的模块化特点，支持非常多的业务模块。</p>
+<p>在本文提及的BSN-DDC NFT业务上，文昌链原生NFT兼容以太坊EVM NFT，并且执行性能优于EVM。原生NFT还具有fee grant的代付GAS费功能，目前该模块正在适配DDC接口。</p>
+<p>此外，为了降低开发者的接入难度，文昌链也已经推出API服务平台AVATA，AVATA平台封装了多种链上最优实践。</p>
+<p>这恰恰体现了，在不断壮大的行业需求下，开放联盟链在不断降低门槛，不断为开发者建立一个技术上更便捷更低成本的环境，以求得应用规模快速发展，以引导行业变革。</p>
+<p>在中国区块链快速发展的过去6年里，中国区块链的ToB产品和ToG产品已经具备庞大的规模，借助ToB产品和ToG产品在技术上的发展速度，开放联盟链出现后体现了自主可控、安全、合规等技术特点，更补足了原来区块链应用在ToC方向的不足，我们在全球公链上看到的多元盛景，将有机会以另一种形式实现。</p>
+<p>敬请期待。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39830/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">金色趋势丨短线回撤或为蓄力</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39806/">
+                <span class="next-text nav-default">金色数藏 | 《嘻哈一夏》优先购、免费空投今天开启</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#问题--上链交易缓慢与优化思路"><strong>问题</strong> <strong>：</strong> <strong>上链交易缓慢与优化思路</strong></a></li>
+    <li><a href="#分析--为何开放联盟链opb调优更为复杂"><strong>分析</strong> <strong>：</strong> <strong>为何开放联盟链（OPB）调优更为复杂？</strong></a></li>
+    <li><a href="#后续--正在进行-的-优化迭代"><strong>后续</strong> <strong>：</strong> <strong>正在进行</strong> <strong>的</strong> <strong>优化迭代</strong></a></li>
+    <li><a href="#实践建议--如何-开发-最优的-分布式应用数藏元宇宙"><strong>实践建议</strong> <strong>：</strong> <strong>如何</strong> <strong>开发</strong> <strong>最优的</strong> <strong>分布式应用（数藏/元宇宙）</strong></a></li>
+    <li><a href="#编者结语"><strong>编者结语</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

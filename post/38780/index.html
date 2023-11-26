@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          从实践出发 教你如何建立一个 DAO - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="我们将以叙事的方式，讲述如何冷启动一个 DAO，并附带 DAO 工具列表。" />
+<meta name="keywords" content="DAO" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38780/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="从实践出发 教你如何建立一个 DAO" />
+<meta property="og:description" content="我们将以叙事的方式，讲述如何冷启动一个 DAO，并附带 DAO 工具列表。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38780/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-09T00:00:00+00:00" />
+
+<meta itemprop="name" content="从实践出发 教你如何建立一个 DAO">
+<meta itemprop="description" content="我们将以叙事的方式，讲述如何冷启动一个 DAO，并附带 DAO 工具列表。"><meta itemprop="datePublished" content="2022-06-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-09T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7524">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="从实践出发 教你如何建立一个 DAO"/>
+<meta name="twitter:description" content="我们将以叙事的方式，讲述如何冷启动一个 DAO，并附带 DAO 工具列表。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">从实践出发 教你如何建立一个 DAO</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-09">
+      2022-06-09
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7524 字 -
+        预计阅读 16 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>我们将以叙事的方式，讲述如何冷启动一个 DAO，并附带 DAO 工具列表。</strong></p>
+<p>关于 DAO 冷启动的问题，一直是大家所关注的一个问题。我们经常看到各种文章介绍，DAO 的机制、文化、工具等，但是关于如何冷启动以及启动和运行 DAO 的细微差别，仍然较为缺失。因此，DAOrayaki 社区整理了这篇文章。这不是一篇指导类文章，而是作者在过去几个月里所学到和经历的所有事情的一个知识点汇总，我们以叙事的方式，讲述如何冷启动一个 DAO，并附带 DAO 工具 list。还是那句话，本文不构成任何的财务建议、税务建议或法律建议。</p>
+<h2 id="这一切是如何开始的">这一切是如何开始的？</h2>
+<p>我从 2017 年开始交易加密货币 —— 看着我的投资组合暴跌，然后起死回生。在放任自流并遗忘了一两年之后，我的兴趣在疫情期间真正开始再次达到顶峰。到 2020 年年中，我回到了交易领域，并试图消化新的信息，但出于一些原因，我远离了 NFT。</p>
+<p>这种情况很快发生了改变。</p>
+<p>到 2021 年 9 月，我已经在朋友和家人中间树立了 Web3 宅男的名声 (无论这是好是坏)。我甚至说服了我们的梦幻足球联盟把我们的钱放进加密货币里。</p>
+<p>去年 12 月，我购买了自己的第一个 NFT，并加入了几个我喜欢的至今仍在活跃的社区 (Floor &amp; Shiny)。</p>
+<p>到 2022 年 2 月，我感觉自己已经在这个领域待了一年，但仍有很多东西要学。</p>
+<p>然后，我突然有一种冲动，我想创建点什么。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0609/20_gmbchsri8j.png" alt="从实践出发 教你如何建立一个 DAO"></p>
+<p>「始终焦虑」是描述我们去年状态的唯一词汇</p>
+<p>快进到 2022 年 3 月，我们可以肯定地说，我们的 fantasy football pot（梦幻足球壶）表现出色。市场在不断上涨，我很高兴向我那些主要在 Web2 世界工作的好奇心强的优秀朋友提供关于加密货币和 NFT 的建议。</p>
+<p>但是，我到底要创建什么呢？</p>
+<p>我努力思考并试图通过创建自己的 NFT 社区。然而，正如你们中的一些人所知道的，期望很高，但项目交付能力不足，尤其是行业里的人们变得越来越摇摆不定。WGMInterface 的告别信对我打击很大，我不希望创造一个项目的经历从拥有乐趣而变成充满焦虑。</p>
+<p>有没有什么，既有影响力，但又低风险且能够创造良好学习氛围的机会呢？</p>
+<p>我的确有一些朋友向我抛出了涉及加密、NFT 和 web3 领域的橄榄枝。他们在自己的事业和生活中都已经很成功。如果我们在我们中间成立一个小组，一起学习，一起投资，最终一起创造东西，会怎么样？如果我们是从创建一个 DAO 开始，会是怎样呢？</p>
+<p>这不是一个新颖的想法，但关键我已经为我自己构建了一些事情 —— 保持小规模并仅在必要时扩展我们的圈子（一个最小化的可行性社区）。</p>
+<p>我已经在研究 NFTs 了。</p>
+<p>我已经向朋友和家人解释了 NFTs。</p>
+<p>我已经在关注 Web2 领域里的朋友和他们的业务，并试图了解是否有值得开发的 web3 应用程序。</p>
+<p>创建一个 DAO 似乎是让朋友更多地参与 Web3、了解在 Web3 中管理产品的来龙去脉、在此过程中赚钱并期待与其他 14 个拥有超级大脑的朋友一起创造伟大事物的最优选方式。</p>
+<p>于是，它开始了&hellip;</p>
+<h2 id="dao-是如何运作的运作的规则是什么">DAO 是如何运作的？运作的规则是什么？</h2>
+<p>在创建之前，每个项目 / DAO 都需要知道他们想要实现什么。对我们来说，我们想成为一个 Web3 学习和投资社区，准备在时机成熟时根据我们的知识采取行动并抓住机会。</p>
+<p>有了这个基础，我们就能够创建基本的 DAO 章程。我们选择了完整和简单而不是完美。我们彼此之间有很高的信任度，所以我们利用这一点来避免创建过程中的麻痹或过度复杂化。</p>
+<h3 id="存款">存款</h3>
+<p>每个人都有大约一个月的时间来存款</p>
+<p>最小值 = 1 ETH，最大值 = 10 ETH（以确保没有人立即大规模控制 DAO）</p>
+<p>1 ETH = 10,000 DUCK 代币</p>
+<p>存款截止日期后，6 个月内不提款（确保 DAO 的一些稳定性）</p>
+<h3 id="治理">治理</h3>
+<p>基于 DAO 的代币所有权，1 个代币 = 1 票</p>
+<p>多数票通过提案（&lt;50% &amp; =50% 为不通过票）</p>
+<p>提案 / 民意调查持续 24 小时</p>
+<p>如果投票数 &gt; 50%，提案可以被执行（控制在 24 小时内，以确保我们可以在需要时迅速采取行动）</p>
+<p>投票针对事项：新成员、投资、业务变更和行政变更</p>
+<h3 id="会议">会议</h3>
+<p>我们选择每周开会。其目的是为了有一个媒介，让我们可以讨论在 NFT 领域正在发生的事情，把关注点带到讨论桌上，谈论当前和未来的投资，并相互转达任何重要的信息。</p>
+<p>面对面的互动当然是最好的，其次是视频或 IRL。无论哪种形式，对我们来说，创造一个建立在信任基础上的安全空间十分重要。</p>
+<h3 id="随机花絮">随机花絮</h3>
+<p>很多新加入的人对存入大笔的 ETH 感到犹豫不决。这是预料之中的，所以我允许在第一笔投资的 7 天后存款 &ndash; 而通常，在筹集到一轮资金后存款是大忌，但为了取得胜利，一些实验不是值得的么？</p>
+<p>尽管这造成了稀释，但我最初还是选择了权衡取舍，因为它可以帮助我们进一步发展。我们的第一笔投资是 2.5 个 ETH 的 Moonbird mint（现在的地板价约 25 个 ETH）。你可以想象这对我们来说是多么激动人心，这让 DAO 变得多么诱人?。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0609/20_ketyww28fq.png" alt="从实践出发 教你如何建立一个 DAO"></p>
+<p>我收集了一大堆常见问题的截图，希望大家都能够快速入门</p>
+<p>很好，现在你有一个非常基本的架构，那么接下来你会怎么设置它们呢？</p>
+<h2 id="我们是怎么做的">我们是怎么做的？</h2>
+<p>由于很多人来自 Web2 的世界，对 Web3 的领域几乎一无所知，我们意识到它需要以尽可能少的摩擦开始。尽管我希望一切都在链上进行并且完全去中心化，但我意识到这可能对初入门来说是一个较高的门槛，所以最明智的做法是逐步的去中心化。</p>
+<p>以下是我们的基本要求：</p>
+<ul>
+<li>
+<p>尽可能地从单点接触开始（一个应用程序）</p>
+</li>
+<li>
+<p>需要选择适合的移动设备</p>
+</li>
+<li>
+<p>差异化，不与其他社区竞争</p>
+</li>
+<li>
+<p>升级 / 切换应用程序的成本要低</p>
+</li>
+<li>
+<p>合法合规</p>
+</li>
+</ul>
+<p>考虑到上述情况，我们开始探索 DAO 的工具和构建 DAO 的方法，以便它能够很好地扩展。</p>
+<p>我们专注于：</p>
+<ul>
+<li>
+<p>沟通</p>
+</li>
+<li>
+<p>DAO 创建</p>
+</li>
+<li>
+<p>DAO 治理</p>
+</li>
+<li>
+<p>文档</p>
+</li>
+<li>
+<p>资金管理</p>
+</li>
+<li>
+<p>贡献者的报酬支付和报销</p>
+</li>
+<li>
+<p>会计与税务</p>
+</li>
+</ul>
+<p>以及着手处理很多细节的工作。</p>
+<h3 id="沟通">沟通</h3>
+<p>我们首先排除了 iMessage 和 WhatsApp。前者过于局限，对我们的 Android 用户来说不是个好兆头。后者没有很好的机器人集成。</p>
+<p>对我们来说，真正的争论是在 Discord 和 Telegram 之间。两者都有各自的优点 &ndash; Discord 是 web3 世界已经采用的最多的集成。Telegram 则是一个更流畅的体验，并且对群组聊天友好。</p>
+<p><strong>Discord 的优点</strong></p>
+<p>Web3 社区大量使用 Discord，加入 Spicy Duck 的 Web3 朋友的行为习惯不会发生改变。</p>
+<p>集成很丰富。大多数社区都建在这里，所以我们应该能够使用许多开箱即用的机器人来运行一个社区。</p>
+<p>扩展容易。频道细分是 Discord 的特色。</p>
+<p><strong>Discord 的缺点</strong></p>
+<p>在许多其他聊天服务器一期争夺用户的注意力。</p>
+<p>在只有 15 名成员的时候，Discord 感觉有点矫枉过正 —— 我们真的有足够的闲聊话题来充分发挥 Discord 的全部功能吗？</p>
+<p>Discord 经常宕机（尽管频率可能不足以让我们关心）。</p>
+<p><strong>Telegram 的优点</strong></p>
+<p>没有对用户注意力的竞争。你知道这是一条来自 Spicy Duck 的消息，你只会打开 Telegram 进行 DAO 聊天。</p>
+<p>本地投票。在 DAO 治理中会有更多这方面的内容，但是一个轻量级的 DAO 投票方式是很重要的。</p>
+<p>有 15 个成员的的群聊方式会让氛围感觉更活跃。这是正确的氛围，而不是矫枉过正。</p>
+<p>安全性似乎更好，更多的 Web3 诈骗发生在 Discord 上，仅仅是因为更多的人使用 Discord。</p>
+<p><strong>Telegram 的缺点</strong></p>
+<p>与 Discord 相比，Telegram 的 Web3 集成 / 机器人功能较少。</p>
+<p>在未来，超过 15 个成员的扩展可能会变得困难。频道分段不是 Telegram 的原生功能。</p>
+<p>如果我们要为 Telegram 建立更多东西，转换成本以扩大规模时可能会很 烦人 / 麻烦。</p>
+<p>归根结底，我们真的很看重低摩擦 + 更紧密的社区感觉。尽管没有那么多集成和扩展在未来可能会成为一个问题，但 Discord 对 15 个人来说感觉有点矫枉过正（多余）。我们都知道第一次尝试使用 Discord 的感觉，一言难尽。</p>
+<p>Telegram 为我们提供了 80%-90% 的功能，以及我们想要的更好的小型社区 / 群聊感觉。对于已经在 Web3 中活跃的成员和变得更加活跃的成员来说，重要的是我们没有在数百个其他社区中争夺注意力。当我们打开 Telegram 时，我们知道这些信息是用来做什么的，而且注意力很高。</p>
+<p>我们认为，如果我们需要搬离 Telegram，搬迁 15 人的潜在成本很烦人，但并非无法承受。</p>
+<h3 id="dao-的启动器">DAO 的启动器</h3>
+<p>这个领域还处于起步阶段，不发达，所以规则在不断变化。快速消化信息的需求是至关重要的。虽然我们非常关心 DAO 平台，但它相对来说都是比较均匀的。我们探索了 Upstream Collective, Colony 和 Syndicate 等内容。为了简单明了，我们花了大部分时间来讨论这三个问题。</p>
+<p>虽然 Upstream 和 Colony 确实更强大且提供了更大的功能集 —— 但我们最终基于三个主要原因与 Syndicate 发布了我们的 DAO：</p>
+<ol>
+<li>
+<p>客户服务 / 响应</p>
+</li>
+<li>
+<p>对一般性法律的保护</p>
+</li>
+<li>
+<p>非认可的投资者能够合法参与</p>
+</li>
+</ol>
+<p>在这个瞬息万变的领域里，事情经常会被打破，市场可能会动荡不安 —— 我们希望依赖于一种响应迅速的服务。坦白地说，Syndicate 已经超越了这一点。他们的 Discord 管理的很好，多名团队成员总是在那里回答问题，关注问题，并及时地消除 bug。这是一个巨大的优势。</p>
+<p>此外，Syndicate 还帮助普通人合法地建立 DAO。指望其他服务机构让人们拥有完整的法律顾问的想法令人却步。我们需要更多像 Syndicate 这样的服务，可以考虑到一般人的法律影响，并能够持续到大规模采用。认为每个人都可以掏出大量现金为 DAO 创建法律结构的想法是愚蠢的。</p>
+<p>Syndicate 帮助你创建了一个合法的实体，只需点击几次 Doola，他们就会给你一个很好的模板来创建一个运营协议和其他需要准备的文件，如订阅协议。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0609/20_hbsf0ds927.png" alt="从实践出发 教你如何建立一个 DAO"></p>
+<p>联合管理仪表板和法律文档的创建</p>
+<p>一旦每个人都是法律实体的一部分，最美妙的是，根据美国证券交易委员会的指导方针，Syndicate 的结构是一个「投资俱乐部」。如果你从长远考虑，并希望在更多的监管出台后能够合法地继续运行，这是一个重要的区别。</p>
+<p>作为一个投资俱乐部，要记住四件大事：</p>
+<ol>
+<li>
+<p>你不能投资于证券（作为非认可的投资者），这意味着只能投资于加密货币和 NFTs（少数例外）。</p>
+</li>
+<li>
+<p>你的成员上限是 99 个成员。</p>
+</li>
+<li>
+<p>每个成员都必须以某种身份参与决策。</p>
+</li>
+<li>
+<p>你不能公开提供进入你俱乐部的注册信息（只有加入的私人链接）。</p>
+</li>
+</ol>
+<p>这很好。它给了我们需要遵守的护栏，也给了我们的非认证投资者一个能够合法参与的途径。对于 DAO 的大规模采用，要么法规需要改变，要么服务需要围绕明确的法律护栏建立。此外，与我们的 DAO 类似，世界上大多数人都是由未经认可的投资者组成。Syndicate 很好地处理了这一点。</p>
+<p>?注意 &ndash;Colony 出现在我们视野的时间有点晚，但看起来是一个神奇的产品。只是我们没有对它像对 Syndicate 和 Upstream Collective 那样做大量的研究比较。</p>
+<h3 id="dao-治理">DAO 治理</h3>
+<p>这是 DAO 的一个领域，很快就会变得更复杂。我们评估了一些链上选项，但最终缩小到两个链下工具的范围 ——Snapshot 和 Telegram Polls。</p>
+<p>尽管我希望治理和投票在链上进行，但我想优化参与度 —— 让它尽可能简单。许多投票选项在移动设备上都很糟糕，不经过很多复杂的步骤或多次点击就无法连接到移动钱包。我意识到我们 DAO 的大多数成员将是移动优先的，因为他们非常忙。我希望他们能够快速讨论并轻松投票。</p>
+<p>不幸的是，我们觉得 Snapshot 对桌面来说太重了。出于这个原因，我们选择了 Telegram Polls。这是我们的即时通讯应用的原生功能，为我们提供了一种快速透明地提交投票提案的方式</p>
+<p>但是，事实上 – Telegram Polls 是你能做的最非 Web3 的事情……</p>
+<p>我当然知道这一点，只是再次强调，我们首先选择的是更容易参与 + 学习其他 Web3 概念的方式，随着会员们越来越适应，我们将慢慢都迁移至链上。</p>
+<h3 id="文档">文档</h3>
+<p>我们需要一个可以访问和存储用于研究、提案、数据、会议记录和链接所有文档的单独位置。</p>
+<p>这很简单 —— 我们选择了 Notion。我们认为它优于 Google Docs，并为我们提供了一个在研究和提案方面进行协作的好方法。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0609/20_vgumid67r6.png" alt="从实践出发 教你如何建立一个 DAO"></p>
+<p>我们的第一个提案是《Moonbirds》—— 这是一个令人惊叹的首次胜利</p>
+<h3 id="金库保险库和热钱包">金库、保险库和热钱包</h3>
+<p>这是我们做出的另一个简单的决定。我们需要一个多签名的钱包来保证我们资产 / 金库的信任和安全，还需要一个热钱包，以便能够根据需要铸造、购买和出售资产。这在其他 DAO 中已经实施了很多次，常见的解决方案对我们很有效。</p>
+<p>因此，我们实施了以下措施：</p>
+<ul>
+<li>
+<p>Gnosis Safe 用于我们的金库 / 保险库</p>
+</li>
+<li>
+<p>为每个用户提供 MetaMask 热钱包 &ndash; 只用于 DAO 目的，不用于个人（稍后会详细介绍）</p>
+</li>
+</ul>
+<h3 id="贡献者的报酬支付和报销">贡献者的报酬支付和报销</h3>
+<p>我们发现三个有效地进行贡献者报酬支付和报销的方式是：</p>
+<ul>
+<li>
+<p>Utopia Labs</p>
+</li>
+<li>
+<p>Parcel</p>
+</li>
+<li>
+<p>Coinshift</p>
+</li>
+</ul>
+<p>我们喜欢这三种方式的原因各不相同。在某种意义上，这三种方式都允许用于资金 / 费用管理，并且这三种方式的基本功能都是相对相似的。区别就在于其客户服务 / 响应能力和他们的产品方向。</p>
+<p>我们希望它能在多个钱包中记账，处理贡献者的付款，并有体面的客户服务，因为处理财务会变得混乱，当事情变得混乱时，有一个人可以直接联系对我们来说很重要。</p>
+<p>虽然我们喜欢 Parcel 和 Coinshift 的用户体验，但他们不支持多个钱包的记账功能。这对我们来说是个难题 &ndash; 我不想手动监控和添加这些交易。</p>
+<p>一开始是一条推文，最终与 Pryce 一起安排了一场演示。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0609/20_0kkw9hdbjp.png" alt="从实践出发 教你如何建立一个 DAO"></p>
+<p>如果还不清楚的话，我们选择了 Utopia Labs，因为该团队反应迅速，符合我们未来的计划，并且有一些最大的 DAO 正在与他们进行实验（FWB、PleasrDAO、SquiggleDAO）。我对这个团队充满了爱，很高兴看到他们继续建立的东西。</p>
+<h3 id="簿记会计和税务">簿记、会计和税务</h3>
+<p>虽然现在有很多适用于 Web3 的个人会计和记账工具，但还没有任何真正适合企业 / DAO 的工具。大多数都处于早期开发阶段，而且成本高于它们所能提供的功能。</p>
+<p>话虽如此，我们其实也还没有一个超级复杂的系统，也没有太多的交易，所以我们选择使用 Koinly（必要时对交易进行注释），同时等待 Utopia Lab 的记账解决方案在 6 月推出。</p>
+<p>我们评估了 Coinbooks，并喜欢他们所做的事情，但最终，我们想把所有的支出、付款和记账放在一个服务上，以减少麻烦。Coinbooks 的成本（在这个时候）对我们来说也没有意义。使用 Koinly 和后来迁移到 Utopia Labs 的短期痛苦似乎是一个不错的权衡。</p>
+<p>我们也有一个会计师在帮助我们，这有助于使我们对我们的决定感到放心。</p>
+<h3 id="今天的我们发展到哪一步了">今天的我们发展到哪一步了？</h3>
+<p>我们已经做了一些投资，并开始围绕我们认为对我们未来有意义的东西形成一个论点。</p>
+<p>一些值得注意的投资包括：</p>
+<ul>
+<li>
+<p>Moonbirds</p>
+</li>
+<li>
+<p>Moonbirds Oddities</p>
+</li>
+<li>
+<p>Chromie Squiggles</p>
+</li>
+<li>
+<p>Floor NFTs</p>
+</li>
+<li>
+<p>Tokenproof</p>
+</li>
+</ul>
+<p>我们的总资产价值已经从 42.2ETH 增加到 66.63ETH（57.89%）。这主要是由于 Moonbirds，但我们非常兴奋地继续在这个领域学习并增加我们的资产。</p>
+<h2 id="我们还遇到了什么">我们还遇到了什么？</h2>
+<p>随着我们继续逐步去中心化，我们的问题和学习不断增长。以下是我们可能需要在不久的将来解决的一些首要问题，以扩展并完全上链。</p>
+<h3 id="退出机制">退出机制</h3>
+<p>需要解决的问题：我们如何才能让拥有允许流动性强且不违反针对非认可投资者，在证券法规允许下的正确退出 ？</p>
+<p>目前，当你投资于 NFT 等非流动性资产时，没有什么好方法可以离开 DAO。现有做法是你不得不出售手头的资产以确保人们可以随心所欲地来来去去，这使得 DAO 变得不稳定。对资产进行分割会给未经认可的投资者带来问题。Syndicate 正在处理这个问题。</p>
+<h3 id="增加-dao-的国库资金">增加 DAO 的国库资金</h3>
+<p>需要解决的问题：我们如何在不稀释现有股东的情况下增加 DAO 的资金？</p>
+<p>我们有 15 名成员，起始值为 42.2 ETH。这很棒，但与大型 DAO 相比，它微不足道。我们很想去那里，但我们不一定认为邀请更多人参与是这样做的最佳方式。</p>
+<p>可能想到的一些想法：</p>
+<ul>
+<li>
+<p>创造艺术 / 生成铸币厂，我们与艺术家（或我们自己）分享利润</p>
+</li>
+<li>
+<p>在我们的专业领域提供咨询（类似于 CPG）</p>
+</li>
+<li>
+<p>构建我们为 DAO 盈利的工具</p>
+</li>
+<li>
+<p>创建 POP 到 CPG（尽管这涉及到有明确的价值交付和一个成熟的品牌）</p>
+</li>
+</ul>
+<h3 id="增加--激励参与">增加 / 激励参与</h3>
+<p>眼前的问题是：我们如何增加和激励参与？</p>
+<p>虽然我们有 15 个成员，但鼓励更多的人参与从来都不是一件坏事。我们正在寻找方法，使每个人都能够以对他们认为最重要的方式为社区作出贡献。</p>
+<h3 id="作为一个-dao-共同学习">作为一个 DAO 共同学习</h3>
+<p>眼前的问题是：我们如何使每个人都能真正接触到相同的工具并且一起学习？</p>
+<p>我们着手创建这个 DAO，以共同学习为目的。它允许我们投资资产，接触不同的社区，并将这些学习成果应用于未来的投资和我们建立的事物。理论上，这很有意义。在实践中，我们遇到了一些问题。</p>
+<p>不是每个人都能进入相同的 Discords / 社区来学习和感受正在发生的事情。这导致一个人进入这些社区，然后转达信息与自己看 / 听 / 读的不一样。</p>
+<h3 id="稀释早期信仰者">稀释早期信仰者</h3>
+<p>眼前的问题是：我们如何确保不稀释早期的信徒 / 投资人？或者说我们是否会稀释他们？</p>
+<p>我们正在探索如何引入更多的人和新成员而不稀释我们现有的成员的模式。什么是最好的方法？我们如何做到这一点并仍然符合法律规定？或者最好的办法是让稀释发生？</p>
+<h3 id="商业钱包和支出管理">商业钱包和支出管理</h3>
+<p>眼前的问题是：我们怎样才能让每个人都能代表 DAO 进行购买，并正确操作我们的会计系统和进行纳税？</p>
+<p>现在，Web3 的钱包架构对现实世界来说并不友好。我们每个人都必须有单独的热钱包或确保我们分别在个人钱包上标记商业交易。否则，我们会遇到会计和税务问题。</p>
+<p>Rain 是少数致力于解决这个问题的 Web3 原生创业公司之一。我很期待看到他们的成果。</p>
+<h2 id="愤世嫉俗的人看什么都不顺眼">愤世嫉俗的人看什么都不顺眼</h2>
+<p>在你阅读这篇文章时，有一个部分是为了解决一些常见的不满和问题，这些问题可能会出现在你身上。我们的目的是学习 Web3、NFTs、加密货币和 DAO。对于一群新人来说，一次性实现所有的东西是过犹不及的，不是正确的解决方案。我们的目的是逐步去中心化，随着时间的推移，我们会越来越适应，并将事情转移到链上。</p>
+<p><strong>有很多还没有考虑到的 DAO 工具。此列表并不完整。</strong></p>
+<p>我知道。我希望我有时间去经历所有事情，但有时候，建立和调整比花大量时间消化细微差别更好。我们将逐步去中心化，时间和精力将证明这是否是正确的决定。</p>
+<p><strong>为什么是 DAO？如果你只是投资、收集和学习，那就太低效了。</strong></p>
+<p>虽然我们正在努力提高效率，但这并不是我们优化的目标。我们想要学习并真正相信 DAO 将成为未来值得真正理解的结构。我很少接受没有亲身经历过的人的建议 —— 边做边学 &gt; 通过阅读、观看、聆听等方式学习。</p>
+<h2 id="dao-工具">DAO 工具</h2>
+<p>以下是本文中提到的所有工具，以及我们在此过程后期遇到的一些其他出色工具。这不是一份详尽的清单，但可以帮助任何人开始工作。</p>
+<h3 id="通讯工具">通讯工具</h3>
+<p>Telegram: https://telegram.org/</p>
+<p>Discord: https://discord.com/</p>
+<h3 id="dao-的创建工具">DAO 的创建工具</h3>
+<p>Syndicate: https://syndicate.io/</p>
+<p>Upstream: https://upstreamapp.com/</p>
+<p>Colony: https://colony.io/</p>
+<p>Prysm: https://www.prysm.xyz/</p>
+<p>Gardens: https://gardens.1hive.org/</p>
+<h3 id="dao-的治理工具">DAO 的治理工具</h3>
+<p>Snapshot: https://snapshot.org</p>
+<p>Tally: https://www.tally.xyz/</p>
+<p>Boardroom: https://www.boardroom.info/</p>
+<h3 id="文档工具">文档工具</h3>
+<p>Notion: https://notion.so/</p>
+<p>Google Docs: http://docs.google.com/</p>
+<p>Mirror: https://mirror.xyz/</p>
+<p>Clarity: https://www.clarity.so/</p>
+<h3 id="财务管理工具">财务管理工具</h3>
+<p>Gnosis Safe: https://gnosis-safe.io/</p>
+<p>Parcel: https://parcel.money/</p>
+<p>Coinshift: https://coinshift.xyz/</p>
+<h3 id="贡献者的报酬支付和报销工具">贡献者的报酬支付和报销工具</h3>
+<p>Utopia Labs: https://www.utopialabs.com/</p>
+<p>Parcel: https://parcel.money/</p>
+<p>Coinshift: https://coinshift.xyz/</p>
+<p>Coordinape: https://coordinape.com/</p>
+<h3 id="簿记会计和税务工具">簿记、会计和税务工具</h3>
+<p>Coinbooks: https://www.coinbooks.xyz/</p>
+<p>Koinly: https://koinly.io/</p>
+<h3 id="代币发行工具">代币发行工具</h3>
+<p>Collab.Land: https://collab.land/</p>
+<p>Guild: https://guild.xyz/</p>
+<p>Vulcan: https://www.vulcanbot.io/</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38792/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">从 Optimism 治理的角度探讨 OP 代币模型及其启发</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38768/">
+                <span class="next-text nav-default">关于 NFT 和版权的纠结真相</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#这一切是如何开始的">这一切是如何开始的？</a></li>
+    <li><a href="#dao-是如何运作的运作的规则是什么">DAO 是如何运作的？运作的规则是什么？</a>
+      <ul>
+        <li><a href="#存款">存款</a></li>
+        <li><a href="#治理">治理</a></li>
+        <li><a href="#会议">会议</a></li>
+        <li><a href="#随机花絮">随机花絮</a></li>
+      </ul>
+    </li>
+    <li><a href="#我们是怎么做的">我们是怎么做的？</a>
+      <ul>
+        <li><a href="#沟通">沟通</a></li>
+        <li><a href="#dao-的启动器">DAO 的启动器</a></li>
+        <li><a href="#dao-治理">DAO 治理</a></li>
+        <li><a href="#文档">文档</a></li>
+        <li><a href="#金库保险库和热钱包">金库、保险库和热钱包</a></li>
+        <li><a href="#贡献者的报酬支付和报销">贡献者的报酬支付和报销</a></li>
+        <li><a href="#簿记会计和税务">簿记、会计和税务</a></li>
+        <li><a href="#今天的我们发展到哪一步了">今天的我们发展到哪一步了？</a></li>
+      </ul>
+    </li>
+    <li><a href="#我们还遇到了什么">我们还遇到了什么？</a>
+      <ul>
+        <li><a href="#退出机制">退出机制</a></li>
+        <li><a href="#增加-dao-的国库资金">增加 DAO 的国库资金</a></li>
+        <li><a href="#增加--激励参与">增加 / 激励参与</a></li>
+        <li><a href="#作为一个-dao-共同学习">作为一个 DAO 共同学习</a></li>
+        <li><a href="#稀释早期信仰者">稀释早期信仰者</a></li>
+        <li><a href="#商业钱包和支出管理">商业钱包和支出管理</a></li>
+      </ul>
+    </li>
+    <li><a href="#愤世嫉俗的人看什么都不顺眼">愤世嫉俗的人看什么都不顺眼</a></li>
+    <li><a href="#dao-工具">DAO 工具</a>
+      <ul>
+        <li><a href="#通讯工具">通讯工具</a></li>
+        <li><a href="#dao-的创建工具">DAO 的创建工具</a></li>
+        <li><a href="#dao-的治理工具">DAO 的治理工具</a></li>
+        <li><a href="#文档工具">文档工具</a></li>
+        <li><a href="#财务管理工具">财务管理工具</a></li>
+        <li><a href="#贡献者的报酬支付和报销工具">贡献者的报酬支付和报销工具</a></li>
+        <li><a href="#簿记会计和税务工具">簿记、会计和税务工具</a></li>
+        <li><a href="#代币发行工具">代币发行工具</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

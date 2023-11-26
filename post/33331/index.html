@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          详解Web3时代重要的基础设施：Arweave - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="原文来自 Arweave 官方介绍，由 W3.Hitchhiker 编译。" />
+<meta name="keywords" content="Arweave" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/33331/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="详解Web3时代重要的基础设施：Arweave" />
+<meta property="og:description" content="原文来自 Arweave 官方介绍，由 W3.Hitchhiker 编译。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/33331/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-01-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-21T00:00:00+00:00" />
+
+<meta itemprop="name" content="详解Web3时代重要的基础设施：Arweave">
+<meta itemprop="description" content="原文来自 Arweave 官方介绍，由 W3.Hitchhiker 编译。"><meta itemprop="datePublished" content="2022-01-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-01-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="10832">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="详解Web3时代重要的基础设施：Arweave"/>
+<meta name="twitter:description" content="原文来自 Arweave 官方介绍，由 W3.Hitchhiker 编译。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">详解Web3时代重要的基础设施：Arweave</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-01-21">
+      2022-01-21
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 10832 字 -
+        预计阅读 22 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>**<strong>抓牢核心场景的去中心化永久存储赛道代表。</strong> **</p>
+<p>编者按：原文来自 Arweave 官方介绍，由 W3.Hitchhiker 编译，并分为“什么是 Arweave”、“Arweave 初学者的关键术语”、“Arweave 初学者必不可少的工具”、“如何上传数据到 Arweave”四部分发布，Odaily星球日报经授权整合编辑如下。</p>
+<p>当试图解释 Arweave 时，通常会落入使用复杂术语的陷阱，以至于非技术读者无法轻松理解。但我们希望对每个人（不管来自什么背景），Arweave 都是十分容易理解的。这就是本文的目的。我们将本文分解成了 Arweave 是什么，以及它是如何工作的——将用户所需要知道的一切都写出来。</p>
+<p><strong>一、Arweave简述</strong></p>
+<p><strong>Arweave 是一个帮助任何人永久存储数据的工具。它的工作方式是将存储的信息分布在一个称为节点或矿工的计算机网络中。</strong> 这与我们所知道的模式不同，因为今天的互联网掌握在少数公司手中，这些公司的服务器可以在任何时候瘫痪——有对应权限的管理员也可以悄悄改变内容。</p>
+<p>Arweave 通过一个广泛的节点网络来为一个平行的互联网「permaweb」提供服务，所有这些节点通过在很长一段时间内提供现有数据存储，并根据客户要求存储新数据的方式来赚钱。</p>
+<p>就像许多去中心化的存储平台一样，Arweave 使用自己的原生加密货币——AR 来运行服务。当人们花费代币来存储数据时，会支付 AR 给矿工。从这些交易中，AR 也会被储存在一个捐赠基金（endowment）内，该基金能够在技术上无限期地缓慢释放奖励。通过这种机制，Arweave 保证了无限的永久存储。</p>
+<p>使 Arweave 脱颖而出的一些新特点是，它可以通过传统的网络浏览器访问；它是开源的，所以社区可以参与其改进的过程。社区在很多方面都有很大的作用，因为 Arweave 有一个投票机制，允许其用户对内容进行审核，并可将某些标记为非法内容，此外还有一个蓬勃发展的新应用开发者生态系统。</p>
+<p><strong>1.Arweave是如何被创建的？</strong></p>
+<p>早在 2017 年，那时 Arweave 被称为 Archain。2018 年，当 Arweave 团队参加 Techstars 时，它被重新命名。2019 年，Arweave 从包括 Coinbase、a16z 和 Multicoin Capital 在内的知名风险投资公司那里筹集了 500 万美元。</p>
+<p>2020 年，Arweave 又获得了 830 万美元的资金，他们计划将其用于建立在 Arweave 之上的用户和开发者社区上。这包括 Verto、ArDrive 和 Arweave News 等项目。</p>
+<p>Arweave 的创造者和创始人是 Sam Williams，&ldquo;他是一名博士，在去中心化系统设计和实施方面有着丰富的经验&rdquo;。他在大学期间建立了 Arweave，灵感来自于 Orwell 的《1984》，并将其作为对假新闻流行的反应。</p>
+<h2 id="2arweave是如何工作的"><strong>2.Arweave是如何工作的？</strong></h2>
+<p>与通常的区块链（保存关于交易内容的区块）不同，Arweave 将数据存储在一个区块图（a graph of blocks）中。通过这种方式，每个区块都与之前的两个区块相连，形成一个被称为「blockweave」的结构。</p>
+<p>在这里有几个关键方面使 Arweave 与众不同：</p>
+<p><strong>（1）获取共识的证明（Proof of Access Consensus）</strong></p>
+<p>Arweave 与其他加密货币的不同之处在于它检查交易准确性的方式。通常情况下，使用工作量证明 （proof of wowrk）系统，加密货币会要求让计算机竞争计算一个数学难题（hashing）。Arweave 使用一种不同的方法来解决这个问题，称为 SPoRA（随机访问的简洁证明 Succinct Proofs of Random Access）。</p>
+<p>Arweave 要求网络中的每个节点检查一个新的交易区块是否包含一个从早期随机选择的区块，如果它是存在的，那么新的交易就可以被添加到网络中。</p>
+<p>这种共识机制有助于验证新交易的准确性，并确认旧交易没有被篡改。这种方法被称为访问证明（proof of access），添加新区块的节点会得到 AR 代币作为奖励。</p>
+<p><strong>（2）Bundles</strong></p>
+<p>Bundles 是一种保证一组交易最终会被开采进一个区块的方式。它解决了每个区块链都有的一个问题，即在其他人提交的交易对矿工奖励更多的情况下，交易可能会被拒绝的情况。</p>
+<p>当 Arweave 作为一种存储大容量 NFT 项目的方式，有成千上万的媒体文件需要同时上传时，Bundles 就成为一种必须。项目可能会发现，在他们上传的批次中，有几个文件被删除了，这就会破坏项目的上传。</p>
+<p>Solana FT 市场的 Metaplex 是 Bundles 的第一个采用者，并与 Bundlr 的 Josh Benaron 合作开发了 Metaplex Candy Machine，这是一个允许项目使用 Arweave 作为存储层来批量上传 NFT 的应用程序。其实，它也常用于非 NFT 的项目。</p>
+<p><strong>（3）SmartWeave</strong></p>
+<p>SmartWeave 是一个智能合约协议，使用 AR 代币，使开发人员能够使用 JavaScript 构建智能合约应用程序。像大多数（传统 web2 应用）代码一样，它是由用户的计算机运行的，而不是区块链本身。</p>
+<p>它的工作方式与以太坊的合同执行方法不同，在以太坊中，整个网络被调用来验证交易；SmartWeave 依靠智能合约，用户自己在本地客户端完成。</p>
+<p>它不需要那么多的计算能力，因此使它成为了一个更环保的选择，也更加安全。如果有人使用恶意代码，那么它也不会影响整个区块链。这样一来，它不需要那么多的安全检查和安全束缚，也可以运行得更快。</p>
+<p>另一个值得注意的特点是，SmartWeave 合约可以成为一个应用程序的整个后端。这意味着开发者不需要服务器，整个应用程序可以在区块链上运行。与以太坊不同的是，与 SmartWeave 合约互动的成本少于 1 美分。</p>
+<p><strong>（4）Vartex网关（Vartex Gateways）</strong></p>
+<p>Vartex 是一个工具，它只需几个命令，就可以让运行自己的网关成为可能。虽然 arweave.net 是通过浏览器访问 Arweave 上所有数据的一个主要途径，但它是由 AWS 提供服务的，这是一个可能的单点故障。而 Vartex 是一种任何人都可以运行自己网关的方式，这意味着更多的网关和不依赖中心化的服务器。</p>
+<p>这是一种将 permaweb 去中心化的方式，确保它不依赖于某个主要的公司。它建立在 Amplify 的基础上——最初的 arweave.net 网关的分叉。开发者可以在 GitHub 上找到源代码，只需克隆它并遵循 readme 说明。</p>
+<p><strong>（5）内容调节（Content moderation）</strong></p>
+<p>内容调节（Content Moderation）允许运行挖矿软件的任何人选择他们希望存储的数据类型。这种类型的调节允许网络上的计算机选择他们想要承载的内容。</p>
+<p>然而，由于由网关来决定他们屏蔽什么，可能内容并不像数据的大小那样重要。例如，有人可能只想存储图片或只存储音频文件。当一个新文件被上传到网络时，Arweave 会询问每台计算机是否接受它。然而，人们会因为激励而接受它，尤其是如果它是一个更大的文件的话，因为简单来说，你存储的越多，你得到的奖励就越多。</p>
+<p>还需要注意的是，现在启动这个激励机制还为时过早，因为没有人真正得到一个他们愿意或不愿意支持文件的总清单。Arweave 是相当新的；同时，上传的数量是巨大的，浏览所有的文件将是相当困难的。</p>
+<p>尽管如此，我们还是增加了这个功能，作为确保内容调节的方法之一。在这里，它不是关于政治倾向或内容偏好，而是 Arweave 在发明时试图摆脱的东西。</p>
+<h2 id="3关于代币"><strong>3.关于代币</strong></h2>
+<p>Arweave 有自己的代币——AR。想要存储数据的用户必须购买它来支付存储费用，反之提供存储的计算机必须接受 AR 代币作为付款。但有趣的是，付款并不直接给每个矿工，而是汇集起来，随着时间的推移分配给网络。</p>
+<p>这个费用池被称为存储基金（Storage Endowment）。其目的是为未来的数据从这个超额收费的 AR 池中提供保障。其费用是由用户支付的挖矿奖励，因为这个池子随着时间的推移而增长，它能够在很长一段时间内为矿工支付未来的报酬。</p>
+<p>需要补充的是，<strong>Arweave 上的存储是一次性付款，而不是基于订阅的方式</strong> 。但是，数据是永久存储的，这使得 Arweave 对客户和网络都有吸引力，使其成为一种具有真正效用的货币。AR 代币的供应量有限，只有 6600 万。</p>
+<p><strong>二、围绕Arweave的关键术语</strong></p>
+<p>如果你不精通区块链和加密货币语言的话，那么进入 Arweave 的世界可能是一项极大的挑战。许多新项目让技术性不强的人了解到 Arweave，或者吸引那些对他们来说这是一个全新世界的人，如艺术家和博主。</p>
+<p>虽然老韭菜们知道新韭菜会从 NFT 和 permaweb 中受益，但当每一个新术语都把你送进一个新的兔子洞（rabbit hole）时，想要知道该从哪里开始，这可能有点令人生疏。因此，我们为初学者制作了这个 Arweave 关键术语的词汇表，来帮助使你更自信地在这个世界中航行。</p>
+<h2 id="1blockweave区块纺"><strong>1.Blockweave（区块纺）</strong></h2>
+<p>通常情况下，当旧区块的全部内容被验证为正确时，就会添加一个区块。在 Arweave，当矿工验证了一个随机选择的旧区块时，就会添加一个新的区块。</p>
+<p>它的工作原理是，如果那个旧区块可以被验证，那么区块链就是有效的。它比比特币更轻便，它使用一个区块链模板，但是不需要验证整个历史记录。</p>
+<p>在 Arweave 的背景下：Arweave 的区块纺存储也验证了 permaweb（永久网络）上的所有数据。</p>
+<h2 id="2bundles"><strong>2.Bundles</strong></h2>
+<p>开发者可以选择以 bundles 方式发送多个（甚至只有一个！）交易，而不是直接向 Arweave 网络发送传统交易。bundles 交易是将一组交易作为单独一个交易发送至 Layer 2 服务器上，bundles 交易保证其中包含的交易将被会被开采成一个区块。Bundler 服务器由 Bundir DAO 管理。</p>
+<p>更详细的解读：https://arweave.news/bundles/</p>
+<p>在 Arweave 的背景下：bundles 是一种 Arweave 特有的数据组交易形式。</p>
+<h2 id="3dao去中心化的自治组织"><strong>3.DAO（去中心化的自治组织）</strong></h2>
+<p>DAO 代表去中心化的自治组织。它是 Web3 的一个版本，也可以称为 Web2 中的初创公司，然而，与初创公司不同的是，DAO 更像是社区而不是公司。DAO 没有一个 CEO 或领导者，而是采用一种民主的、有 token-gated（yet token-gated）的方式进行管理的。</p>
+<p>例如，如果一个新功能被推出，社区就会对其进行投票。在 DAO 中每个人都有发言权，但是，在这里有一个安全网，它使更多参与的社区成员在投票率上有更大的摆动（swing）。通过对拥有更多代币的人给予更大的投票权是确保这一点的方法——更成熟的成员可以看到产品以他们设想的方式发展。</p>
+<p>在 Arweave 的背景下：DAO 是 Arweave 中围绕新产品和任务而建立的的治理方式。Arweave DAO 也被称为 PSC。</p>
+<h2 id="4endowment捐赠"><strong>4.Endowment（捐赠）</strong></h2>
+<p>捐赠是一种永久存储的未来安全费用。通过 Arweave，永久存储数据就变得十分便宜——它包括即时的存储成本，和为捐赠基金（endowment）贡献的一小部分。这就把钱放进了共同的池子里，以确保对信息的未来复制进行支付。</p>
+<p>永久性存储至少有 200 年的保证。这要归功于 Arweave 及其代币的经济激励，使得用户和矿工都有欲望参与到这个系统中来。</p>
+<p>在 Arweave 的背景下：捐赠（endowment）从最初支付的存储费用中发送费用，以确保未来的数据复制被存储。</p>
+<h2 id="5miner矿工"><strong>5.Miner（矿工）</strong></h2>
+<p>矿工是运行 Arweave 挖矿软件的机器。该软件自动开采区块，但矿工可以制定一个黑名单，列出某些他们不想添加的文件类型。例如，矿工可以选择不支持视频上传，而只存储图片和音频文件。</p>
+<p>在 Arweave 中，矿工们被激励去存储更多的稀有区块，且对其存储给予更高的奖励。这使得所有的数据更加永久，并被更多的矿工复制。矿工也会因为存储的数据越大而获得更高的奖励，如，视频的奖励会比照片高。</p>
+<p>在 Arweave 的背景下：矿工是机器（和人！），负责向区块纺（blockweave）添加和验证新的数据交易。</p>
+<h2 id="6mining挖矿"><strong>6.Mining（挖矿）</strong></h2>
+<p>挖矿是通过对区块的历史记录进行验证，再将新交易添加到区块纺（blockweave）中的过程。</p>
+<p>当一个应用程序进行交易时（如在 Arweave 上存储数据），这些交易在被挖到下一个区块之前都会处于待处理状态。发送数据不是立即进行的，交易与其他待处理交易一起放在内存池中，由矿工将其挖成一个区块。</p>
+<p>在 Arweave 的背景下：拥有挖矿软件的矿工将交易组合成区块，如果他们能证明对其他数据的访问，那么他们就将可以其提交给区块纺（blockweave）。</p>
+<h2 id="7nft"><strong>7.NFT</strong></h2>
+<p>NFT 代表非同质性代币，意思是不能被分解成小于一个整体部分的代币。NFTs 是资产和跟踪资产所有权的合约组合。从图像、视频或技术上来说，它可以是任何东西——许多人也认为这是 NFTs 的未来方向——房子或其他财产，而目前这些资产所有权由一个中心化的组织管理。</p>
+<p>在许多情况下，NFTs 只是链接到中心化的服务器来存储资产的合同。Arweave 使用 Atomic NFTs，它是永久的、独特的、具有成本效益和完全去中心化的。</p>
+<p>在 Arweave 的背景下：<strong>在 Arweave 中，NFTs 被永久存储，资产与合约密不可分。</strong></p>
+<h2 id="8the-permaweb永久网络"><strong>8.The permaweb（永久网络）</strong></h2>
+<p>The permaweb 是与传统网络平行的，但其内容是永久性的，而且权力动态使用户处于控制地位。这意味着你不会遇到 404，而且你可以确信，<strong>一旦你在 permaweb 上找到一个页面，它将在几年后仍然存在</strong> 。</p>
+<p>这意味着你不会遇到 404 的情况，而且你可以确信，一旦你在 permaweb 上找到一个页面，那么几年后它仍然会在那里。</p>
+<p>这对内容创作者来说十分重要，因为 permaweb 提供网页甚至应用程序的永久托管。此外，它的成本效益高，去中心化且不基于订阅，使其成为长期项目的更好选择。例如，你现在正在阅读的这篇文章，已经被永久存档在 permaweb 上了。</p>
+<p>在 Arweave 的背景下：Arweave 网络上的所有连接的网站和应用程序就是所谓的 permaweb。</p>
+<h2 id="9pscprofit-sharing-community"><strong>9.PSC（Profit Sharing Community)</strong></h2>
+<p>PSC 是利润分享社区的意思。通常情况下，PSC 由基于 Arweave 应用程序的创始人发起，并由那些持有该应用程序的利润分享代币的人参与。像 DAO 一样，创始人和代币持有者决定应用程序的改进和变化，且谁持有的代币更多，谁的投票权就更大。这样一来，更多参与项目的人更有可能影响项目的发展。</p>
+<p>在 Arweave 的背景下：PSCs 类似于 Arweave 在 Web2 世界中那种发起初创公司的模式，但对参与者有更好的激励。</p>
+<h2 id="10pstprofit-sharing-token"><strong>10.PST（Profit Sharing Token)</strong></h2>
+<p>PST 代表的是利润分享代币——具体到每个 PSC，用于利润分配，它们在投票时也同样很重要，因为拥有 PST 越多的人，他的投票权重就更高，这也确保更多参与进产品的人有更大的影响力。</p>
+<p>PSTs 可以在 Verto 交易所上进行交易。</p>
+<p>在 Arweave 的背景下：PSTs 是一种 Arweave 特定的利润分享和社区管理的方法。</p>
+<h2 id="11replica副本"><strong>11.Replica（副本）</strong></h2>
+<p>当数据被上传时，它被存储在矿工许多不同的硬盘上，为每个矿工的硬盘创建一个原始数据的副本。由于稀有数据对矿工的奖励较高，因此没有得到很好复制的数据（稀缺块）会激励矿工去进行复制。</p>
+<p>在 Arweave 的背景下：矿工们在经济上被激励去复制稀有数据，为使数据永久化做出贡献。</p>
+<h2 id="12smart-contract智能合约"><strong>12.Smart Contract（智能合约）</strong></h2>
+<p>智能合约是一个基于区块链的应用程序，任何人都可以与之互动，进而存储数据或检索已存储的数据。</p>
+<p>针对 Arweave 的智能合约系统被称为 SmartWeave。SmartWeave 依靠用户在客户端验证交易，而不是调用每个节点进行验证。RedStone 团队正在为 SmartWeave 开发一个备用的SDK。</p>
+<p>在 Arweave 的背景下：不同于传统的智能合约需要每个节点进行昂贵的验证， SmartWeave 只在使用时由用户的电脑进行验证。</p>
+<h2 id="13随机访问的简洁证明spora"><strong>13.随机访问的简洁证明(SPORA)</strong></h2>
+<p>SPoRA 是验证区块链中区块的一种创新方式。它与工作量证明不同，因为它不依赖前一个区块来验证交易，而是使用前一个区块和链上的一个随机区块作为对矿工的挑战。</p>
+<p>在 Arweave 的背景下：SPoRA 是一种 Arweave 用于验证区块纺上的区块特定的方法。</p>
+<h2 id="14web3"><strong>14.Web3</strong></h2>
+<p>Web3 应用程序与 Web2 的不同之处在于，它使用 ArConnect 或 Metamask 等加密钱包作为识别和登录形式，而不是用户名和密码。由于用户与他们的钱包相连，因此很容易进行验证交易。</p>
+<p>它是由一种基于去中心化且基于区块链的网络的网络应用组合而成的。在 Web3 中，没有一个单一的实体来控制连接，而是有许多较小的网络和参与者来进行的。这样一来，如果一个连接出现故障，还有其他连接可以依靠——不像 Web2 那样，如果主服务器出现故障，网络就会瘫痪。</p>
+<p>在 Arweave 的背景下：基于 Arweave 的应用程序，如 Verto 和 ArDrive 是 Web3 的一个关键部分。</p>
+<p><strong>三、Arweave初学者必备工具</strong></p>
+<p>下面，一起来看下对于 Arweave 初学者来说有哪些必不可少的工具和资源，这些工具将有助于大家开启和了解生态系统的基本构建。</p>
+<h2 id="1arconnect"><strong>1.ArConnect</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_zc1rk1ccv0.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>ArConnect 是一个浏览器扩展程序，也被作为 Arweave 的钱包管理和应用程序的登录通行证。它可以让你查看和转移资产，管理你的余额，并且看到你所有钱包的最新交易。它还允许你与许多 Arweave 应用程序（或 dApps）进行互动。</p>
+<p>由于交易的签名和加密都是在后台通过扩展程序而不是应用程序来进行的，因此你的密钥文件不会被盗。由于交易一般都发生在本地客户端，因此这是一个比上传你的密钥文件来说更为安全的解决方案。</p>
+<p>他们不对扩展内部的 AR 或 PST 转移进行费用收取，但在与 dApps 互动时，他们会收取少量费用。当第三方应用程序使用 ArConnect 时，也会收取少量的小费，而这些小费会被交给一个随机选择的 VRT 代币持有者。</p>
+<p>你可以从他们的网站 arconnect.io 上下载该浏览器扩展。</p>
+<h2 id="2ardrive"><strong>2.ArDrive</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_a64s3us00g.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>ArDrive 是一个去中心化的、由社区拥有的数据存储平台，提供永远持续不断的存储。ArDrive 不仅提供对 NFT、个人照片和视频、文件的存储，甚至是对网页的存档，此外也提供多文件上传，安全和公开，以及无审查的文件共享。人们也使用 ArDrive 来分享文章、书籍、录音、照片和代码。</p>
+<p>ArDrive 提供了一个 &ldquo;终身付费（pay-per-life）&ldquo;的支付计划，而不是基于订阅的计划，这意味着你不必为存储和访问你的数据而反复支付费用。它还确保了无论公司的条款和服务如何，所有数据都会留在你身边，例如，即使在你的账户长期不活动的情况下，它依然会存在。</p>
+<p>从 ArDrive 开始让你在 permaweb 上存储你的数据时，你的文件无论如何都会被存储，即使 ArDrive 倒闭了，你也能对它们进行完全访问和控制。</p>
+<h2 id="3arweave-dev-discord"><strong>3.Arweave Dev Discord</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_zgotus1unm.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>对于 permaweb 开发的支持，是很值得加入到 Arweave Dev 社区当中的。它拥有 Arweave 团队及其生态系统的核心开发人员。它是一个大有裨益的服务器，让开发者们在有关开发的问题上相互给予和获得帮助。也有关于 app ideas、SmartWeave help、gateways、testweave 等的更多频道。</p>
+<h2 id="4arweaverstelegramcommunity"><strong>4.Arweavers Telegram Community</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_716grqz3ov.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>另一个用于社区参与的工具是 Telegram，你可以加入 Arweaver Telegram 社区。这是一个技术性不强的聊天工具，在那里大家更多的是关注于价格和协议的一般效用。甚至在今年，该社区还在里斯本举行了一次聚会。</p>
+<p>除了大家可以志同道合地聊天，你还可以咨询大家如何购买 AR，如何上传数据，以及矿工的位置和其他相似类型的信息。</p>
+<h2 id="5arweave-web-extension"><strong>5.Arweave Web Extension</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_39frymzyzz.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>Arweave Web Extension 既是一个钱包，也是一个网络存档器（archiver）。通过 Arweave Web Extension，你可以将网页和在线 PDF、视频以及任何可能使大家成为可怕的 404 错误的受害者的东西归档。</p>
+<p>它还允许你在浏览器中直接管理你的 AR 代币钱包，导出钱包历史记录，并以 CSV 文件形式下载。它用有多种钱包支持，因此你可以在它们之间轻松切换。你可以发送和接收 AR 代币，同时也可以生成新的 AR 钱包密钥。</p>
+<h2 id="6arweave-js"><strong>6.arweave-js</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_sljs95g83a.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>与 Arweave 对接的 JavaScript 程序库（library）——arweave-js——是在 permaweb 上建立自定义应用程序的主要方式。由于支持客户端 JS 和 Node 服务器，arweave-js 是一个对 JavaScript 开发人员来说非常有价值的程序库。</p>
+<p>该程序库让生成一个新的钱包、转移 AR、签署和发布数据到网络等操作都变得非常简单。</p>
+<h2 id="7everpay"><strong>7.everPay</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_omz0mf463y.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>everPay 是 Arweave 和 Ethereum 的实时支付协议。它的目的是为每个人提供一个可信的、去中心化的支付应用程序，以及为开发者提供一个 SDK，使其能够更加简单地建立 DEXs。</p>
+<p>由于 everPay 交易没有被打包，交易在几分钟内就被上传到了链上。everPay 协议目前支持 Ethereum 和 Arweave，甚至也即将支持 Arweave 利润分享代币（PSTs）。</p>
+<h2 id="8finnie"><strong>8.Finnie</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_t5h4isi5hm.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>Finnie 是 Koii 钱包的浏览器扩展程序。你可以用它来铸造 NFT，并将它们永远储存起来（例如，你会用 Finnie 来获得不断进化的 Atomic Zombies）。你也可以用它来存储你的 NFTs，并从参与当中来收集 KOII。</p>
+<p>下载 Finnie 浏览器扩展后，你可以建立一个新的钱包或添加你现有的钱包，最后你可以获得少量的 AR 和 KOII 代币来开始使用。</p>
+<h2 id="9verto"><strong>9.Verto</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_psjhc2536o.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>Verto 是 Arweave 利润分享代币和 NFTs 的通用交易所。用 AR 来交换生态系统中的各种 PST，而这些 PST 也代表了 ArDrive、decent.land、PermaBot  和 Verto 本身等各种产品的股份。Verto Space 也被作为展示所有由 Verto 铸造的 NFT 的画廊，其中也包括 articulate.eth 的 Bark Blocks 系列。</p>
+<h2 id="10viewblock"><strong>10.ViewBlock</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_fdqmsk7d6i.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>每一个区块链都需要有一种让公众来监控交易、地址、区块和网络统计数据的方式——ViewBlock 作为 permaweb 的主要区块探索器（explorer），为 Arweave 提供了这个方法。为了监测货币交易目前是否已经被开采成区块，或者 SmartWeave 合约互动是否失败，都可以通过使用 ViewBlock 来将它们轻松解决。在此你还可以获得区块链的总规模、每日交易数量、节点位置等统计信息。</p>
+<h2 id="11wrapped-ar"><strong>11.Wrapped AR</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_q2bboidfei.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>Wrapped AR，或称 wAR，是由 everFinance 创建的 ERC20 代币。ERC20 代币意味着它是源于以太坊标准。每个 wAR 代币与 AR 代币有 1:1 的价值，它们是 Arweave 代币持有人与以太坊生态系统进行互动的一种方式。</p>
+<p>就像如果你持有 AR，你可以把它换成 wAR 一样，反之亦然。EverFinance 创造了一种以去中心化的方式来获得 AR 代币的方式。</p>
+<p><strong>四、如何上传数据到Arweave</strong></p>
+<p>我们经常看到 Arweave 的发起人询问关于将数据上传到 permaweb 的最佳方式是什么。一次支付，永久存储的价值主张是普遍吸引人的，但却没有一个前进的路径。</p>
+<p>如果你从朋友那里听说了 Arweave，并做了一些谷歌搜索，可能仍然不知道该如何将文件永久地存储。由于 Arweave 是一个存储层——就像一个数据库而不是一个完全成熟的应用程序——所以这里有很多方法可以将数据上传到 permaweb，其中最好的方法取决于你的具体使用情况。</p>
+<p>你是否想：</p>
+<ul>
+<li>
+<p>像 Dropbox 一样，私下存储文件和照片；</p>
+</li>
+<li>
+<p>将一个网页永远以其当前状态存档；</p>
+</li>
+<li>
+<p>托管你的应用程序的前端；</p>
+</li>
+<li>
+<p>以易于查询的方式在 permaweb 上存储应用程序数据；</p>
+</li>
+<li>
+<p>上传 NFT 并获得关注奖励；</p>
+</li>
+<li>
+<p>批量上传文件……</p>
+</li>
+</ul>
+<p>Arweave 有 dApps 用于所有的这些用例，下面我们将进行探讨。</p>
+<h2 id="1获得一个钱包以及一些ar"><strong>1.获得一个钱包，以及一些AR</strong></h2>
+<p>Arweave dApps 需要用一个钱包登录，通常通过 ArConnect。最好的第一步是下载 ArConnect 浏览器扩展，有了它，你可以发送/接收 AR，并只需通过一次点击就那登录到 Arweave dApps。在 web3 中，你的钱包就是你的身份，就像 web2 中的 &ldquo;用谷歌登录 &ldquo;功能一样。</p>
+<p>若要与 Arweave dApps 互动，你还需要一些 AR——Arweave 生态系统的货币。你可以从水龙头（faucet）中获得少量免费的 AR，或者在从交易所购买后发送一些到你的钱包。</p>
+<p>如果你打算通过水龙头获得少量的 AR，就需要通过该流量生成一个钱包。否则，就需要使用 ArConnect 扩展来创建一个钱包，你可以从你选择的交易所或 on-ramp 发送 AR 到钱包。</p>
+<p>若想知道存储必要的数据需要多少 AR 的话，请查看 arweavefees.com</p>
+<p>只要你的钱包里有 AR，你就可以在 permaweb 上存储数据了。</p>
+<p><strong>2.使用ArDrive作为Dropbox的永久替代品</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_sfepjwsj17.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>ArDrive 是一个建立在 Arweave 之上的文件存储工具。有了它，你可以存储任何类型的私人文件，或将它们发布给所有人看。ArDrive 可以很轻易地将文件组织到文件夹中，并将它们保存给你自己，或生成独特的链接与任何人公开分享它们。</p>
+<p>ArDrive 在台式电脑和移动网络上都很好用。此外，一天内上传超过 50MB 的用户有资格获得 ArDrive 的原生利润分享代币——ↁ的奖励。</p>
+<h2 id="3使用evermore自动同步本地文件到arweave"><strong>3.使用Evermore自动同步本地文件到Arweave</strong></h2>
+<p>Evermore 是一个带有桌面客户端的文件存储应用程序，允许用户配置一个本地文件夹，该文件夹将被自动备份到 Arweave。</p>
+<p>Evermore 还能够从你的其他本地机器上下载同步的文件，这意味着你拥有的每台电脑都可以共享同一套永久存储的文件。</p>
+<p>每当任一用户上传 1GB 的数据时，他们就会得到 1500 个 Evermore 利润分享代币的奖励。</p>
+<h2 id="4用arweave-browser-extension将网页存档"><strong>4.用Arweave browser extension将网页存档</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_9q94q6pmli.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>Arweave 最初被设想为一种轻松归档网页的方式，并准确地保存它们在被保存时的状态。这仍然是该协议的一个巨大的使用案例，并帮助拯救了像《Apple Daily》这样的出版物，以免它们变得无法恢复。</p>
+<p>下载 Arweave 网络扩展浏览器后，在浏览器工具栏上点击它，就可以对一个页面进行存档，并重新访问你以前保存的页面。</p>
+<p>你还可以通过 arweave.news 网络应用程序看到每个人最近存档的项目的反馈。</p>
+<h2 id="5托管你的应用程序的前端"><strong>5.托管你的应用程序的前端</strong></h2>
+<p>对于 web3 dApps，前端是中心化故障的主要点。虽然后端可能由智能合约或查询区块链的代码组成，但前端可以——而且经常是——被审查。</p>
+<p>这里有几种简单的方法可以在 Arweave 上托管你的前端，这取决于你想得到的花哨程度。</p>
+<p>这项工作最简单的工具是 akb，这是一个命令行工具，可以用来上传已建网络应用程序的/build 文件夹。然而，你的网络应用程序将会运行在一个很长的、不可能记住的 URL 上，并且你无法控制。</p>
+<p>一个更丰富的选择是 ArGo，它使上传前端到 Arweave 更简单以及提供自定义的 URL——传统的 .com 风格，或 ENS（.eth！）。</p>
+<h2 id="6在permaweb上存储应用数据并进行查询"><strong>6.在permaweb上存储应用数据（并进行查询）</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_dh25d3ykc9.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>构建在 permaweb 之上的开发者只需要在后端使用 Arweave，而在前端使用他们选择的框架。应用程序的 &ldquo;API 服务器 &ldquo;就是 Arweave——要么直接查询交易，要么查询 SmartWeave 合约的状态。</p>
+<p>例如，如果你在 Arweave 的基础上建立一个简单的社交媒体应用程序，你需要一个前端，将 &ldquo;帖子（posts） &ldquo;发送到 permaweb，并可以查询它们。为此，你会在前端使用 arweave-js——一个 JavaScript SDK，使其能够轻松地与 Arweave 进行互动。</p>
+<p>若要从 Arweave 读取数据，那么 GraphQL 就是普遍的选择。你可以写 GraphQL 查询，就像这里记录的那样，或者使用 ardb 来查询 Arweave，它就像是一个 SQL 一样的工具。</p>
+<h2 id="7上传一个nft并获得关注奖励"><strong>7.上传一个NFT并获得关注奖励</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0121/3_7o1rhh7upq.png" alt="详解Web3时代重要的基础设施：Arweave"></p>
+<p>如果你是一个希望发表作品的创作者，那么可能最好的方式是把它铸造为 NFT——这样，你就可以赚取关注奖励，销售你的作品，甚至从转售中赚取佣金。</p>
+<p>Koii 是一个使用 Arweave 进行存储的区块链——其旗舰产品 koi.rocks 允许用户以 NFT 的形式花费 AR 以及将文件铸造成 NFT。当有人加载文件时，上传者会赚取 KOII 代币作为奖励。</p>
+<p>用 Koii 铸造 NFT 有几种不同的方法；如果你不确定从哪里开始，只需要下载他们的 Finnie 浏览器扩展。</p>
+<h2 id="8用bundles的方式批量上传文件"><strong>8.用bundles的方式批量上传文件</strong></h2>
+<p>想要一次性提交大量的文件到 permaweb 吗？使用 bundles——Arweave 最近的一项创新，可以实现大量上传。现在，你可以使用  arkb (-use-bundler) 或者编写使用 arbundles 程序库的代码。在这里 ArWiki 专用页面（https://arwiki.wiki/#/en/preview/WUAtjfiDQEIqhsUcHXIFTn5ZmeDIE7If9hJREBLRgak）上阅读更多关于何时以及为何使用 bundles 的信息。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/33351/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">晚间必读5篇 | Web 3.0 需要更多用户 而非更多投资者</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/33321/">
+                <span class="next-text nav-default">元宇宙合规报告（七）虚拟房地产</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#2arweave是如何工作的"><strong>2.Arweave是如何工作的？</strong></a></li>
+    <li><a href="#3关于代币"><strong>3.关于代币</strong></a></li>
+    <li><a href="#1blockweave区块纺"><strong>1.Blockweave（区块纺）</strong></a></li>
+    <li><a href="#2bundles"><strong>2.Bundles</strong></a></li>
+    <li><a href="#3dao去中心化的自治组织"><strong>3.DAO（去中心化的自治组织）</strong></a></li>
+    <li><a href="#4endowment捐赠"><strong>4.Endowment（捐赠）</strong></a></li>
+    <li><a href="#5miner矿工"><strong>5.Miner（矿工）</strong></a></li>
+    <li><a href="#6mining挖矿"><strong>6.Mining（挖矿）</strong></a></li>
+    <li><a href="#7nft"><strong>7.NFT</strong></a></li>
+    <li><a href="#8the-permaweb永久网络"><strong>8.The permaweb（永久网络）</strong></a></li>
+    <li><a href="#9pscprofit-sharing-community"><strong>9.PSC（Profit Sharing Community)</strong></a></li>
+    <li><a href="#10pstprofit-sharing-token"><strong>10.PST（Profit Sharing Token)</strong></a></li>
+    <li><a href="#11replica副本"><strong>11.Replica（副本）</strong></a></li>
+    <li><a href="#12smart-contract智能合约"><strong>12.Smart Contract（智能合约）</strong></a></li>
+    <li><a href="#13随机访问的简洁证明spora"><strong>13.随机访问的简洁证明(SPORA)</strong></a></li>
+    <li><a href="#14web3"><strong>14.Web3</strong></a></li>
+    <li><a href="#1arconnect"><strong>1.ArConnect</strong></a></li>
+    <li><a href="#2ardrive"><strong>2.ArDrive</strong></a></li>
+    <li><a href="#3arweave-dev-discord"><strong>3.Arweave Dev Discord</strong></a></li>
+    <li><a href="#4arweaverstelegramcommunity"><strong>4.Arweavers Telegram Community</strong></a></li>
+    <li><a href="#5arweave-web-extension"><strong>5.Arweave Web Extension</strong></a></li>
+    <li><a href="#6arweave-js"><strong>6.arweave-js</strong></a></li>
+    <li><a href="#7everpay"><strong>7.everPay</strong></a></li>
+    <li><a href="#8finnie"><strong>8.Finnie</strong></a></li>
+    <li><a href="#9verto"><strong>9.Verto</strong></a></li>
+    <li><a href="#10viewblock"><strong>10.ViewBlock</strong></a></li>
+    <li><a href="#11wrapped-ar"><strong>11.Wrapped AR</strong></a></li>
+    <li><a href="#1获得一个钱包以及一些ar"><strong>1.获得一个钱包，以及一些AR</strong></a></li>
+    <li><a href="#3使用evermore自动同步本地文件到arweave"><strong>3.使用Evermore自动同步本地文件到Arweave</strong></a></li>
+    <li><a href="#4用arweave-browser-extension将网页存档"><strong>4.用Arweave browser extension将网页存档</strong></a></li>
+    <li><a href="#5托管你的应用程序的前端"><strong>5.托管你的应用程序的前端</strong></a></li>
+    <li><a href="#6在permaweb上存储应用数据并进行查询"><strong>6.在permaweb上存储应用数据（并进行查询）</strong></a></li>
+    <li><a href="#7上传一个nft并获得关注奖励"><strong>7.上传一个NFT并获得关注奖励</strong></a></li>
+    <li><a href="#8用bundles的方式批量上传文件"><strong>8.用bundles的方式批量上传文件</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          以太坊研究者Polynya：为什么单片式 L1 区块链是“死胡同”？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="我们需要模块化的执行层 & 数据可用性抽样来扩展区块链。" />
+<meta name="keywords" content="ETH, 扩容" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/34752/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="以太坊研究者Polynya：为什么单片式 L1 区块链是“死胡同”？" />
+<meta property="og:description" content="我们需要模块化的执行层 &amp; 数据可用性抽样来扩展区块链。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/34752/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-28T00:00:00+00:00" />
+
+<meta itemprop="name" content="以太坊研究者Polynya：为什么单片式 L1 区块链是“死胡同”？">
+<meta itemprop="description" content="我们需要模块化的执行层 &amp; 数据可用性抽样来扩展区块链。"><meta itemprop="datePublished" content="2022-02-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6993">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="以太坊研究者Polynya：为什么单片式 L1 区块链是“死胡同”？"/>
+<meta name="twitter:description" content="我们需要模块化的执行层 &amp; 数据可用性抽样来扩展区块链。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">以太坊研究者Polynya：为什么单片式 L1 区块链是“死胡同”？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-02-28">
+      2022-02-28
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6993 字 -
+        预计阅读 14 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>我从来没有写过一篇关于“Optimistic Rollups vs. ZK-Rollups”的文章。它们都很棒。我的文章都是关于反对效率极低、无法扩展、不安全、缺乏弹性的单片式 L1 区块链，我们已经看到了资本对这些 L1 网络的荒谬配置。我唯一的目的是看到区块链以技术、经济和社会可持续的方式扩展到全球无所不在。单片式 L1 区块链网络不仅是不可持续的，实际上它们永远也无法提供所需的吞吐量——而且与目标相差好几个数量级。但这不再是一个问题了——<strong>我们需要_模块化的执行层_</strong>  <em>&amp;</em> <strong>_数据可用性抽样_来扩展区块链</strong> 。这一点从来没有这么清楚过。我们越早认识到这一点并转向这种方式，区块链行业就会越好。是的，这只是我的观点。和往常一样，请将这篇文章视为业余爱好者的意识流漫谈，而不是一篇专业的研究文章。</p>
+<h2 id="单片式-l1-区块链-依然-极为低效"><strong>单片式 L1 区块链 (依然) 极为低效</strong></h2>
+<p>我从 2020 年开始撰写关于 Rollups 的评论，并在去年的这个时候发表博文，当时主流的说法是“Cardano/其他 L1 智能合约平台即将到来，用户将会在一夜之间从以太坊大规模地迁往其他 L1 网络。”之后的说法是“L2 网络是暂时的权宜之计，实现扩展的唯一方式是 L1 网络。”然而，即使在 2021 年底进行最温和的测试，这些替代性 L1 网络的叙述也以惊人的速度瓦解：</p>
+<ul>
+<li>
+<p><strong>币安智能链 (BSC)</strong>  由于状态膨胀而使其系统要求更高。其结果是，节点开始不同步，导致许多问题。这里的问题在于他们一开始指定的系统要求非常低——但他们没有告知人们，<strong>系统要求会随着状态膨胀呈指数增长</strong> 。现在，他们在没有充分的审计或测试的情况下进行不计后果的网络变更。当然，切换到 Erigon 并拥有多条链将提供增量效益，但总是会存在严重的限制。</p>
+</li>
+<li>
+<p><strong>Solana</strong>  没有犯这样的错误，他们从一开始就对很高的系统要求非常开放。现在，我绝对不会对 Solana 的各种失败和问题进行批评，因为这很大程度上是因为它是一个<strong>早期的</strong>  <strong>beta</strong>  <strong>产品</strong> 。由于缺失一些特征而导致的 bug 和问题总是会出现在 beta 项目中，无论是 Rollups、dapps 还是单片式 L1 网络都是如此，我只希望开发人员能够修复这些问题。但问题是，随着时间的推移，当 Solana 成熟了，久经测试消除了 bugs，并实现了一个费用市场，它将需要提供一个递增的吞吐量，并<strong>在技术和经济可持续性上付出巨大的代价。</strong> <strong>Solana</strong>  <strong>本质上是不可扩展的</strong> 。Optimistic Rollups 是要比 Solana 要好得多的解决方案，并且会很快成熟。</p>
+</li>
+<li>
+<p><strong>Polygon PoS</strong>  可以说是继以太坊之后被采用最多的链。现在，Polygon PoS 确实是一个“提交链”(commit chain)，而不是一个替代性 L1 链，但它仍然是一个单片链，并<strong>受到与 L1 网络相同的低效率约束</strong> 。Polygon PoS 达到了它的极限，受到了垃圾交易的影响，提高了它们的最低 Gas 价格。但即使在那之后，还是有很多项目向它发送垃圾信息，导致 Gas 价格上涨了超过 0.1 美元。需要明确的是，这是一个比 Solana 或 Cardano 要好得多的结果，<strong>在 Solana 或 Cardano 中，在拥堵期间 99% 的交易都会失败，只有微型 MEV 机器人会成功</strong> 。值得赞扬的是，与其他单片式区块链项目不同的是，Polygon 团队非常公开地承认了这些局限性，并<strong>将所有精力投入到 ZK-Rollup 中</strong> ——这实际上将实现高可扩展性。行动胜于言语，Polygon 团队在零知识技术方面投入 10 亿美元的行动值得称赞。</p>
+</li>
+<li>
+<p>说到 <strong>Cardano</strong> ，他们也是一个处于非常早期的 beta 产品，和 Solana 一样，也<strong>必须实现费用市场</strong> 。Cardano 的系统要求仍然很低。最近，我看到 Cardano 社区对 Rollup 越来越感兴趣，很高兴看到这种情况！然而，<strong>在 Cardano 本身没有实现数据可用性采样之前，所有这些都是徒劳的</strong> 。</p>
+</li>
+<li>
+<p>我们看到还有许多其他项目没有达到其大肆宣传的效果。每当区块空间饱和时，<strong>Avalanche C-Chain</strong>  的费用就会飙升——我的意思是，<strong>这是单片区块式链的一个基本特征</strong> 。子网会导致安全性或去中心化的碎片化，并且将受到同样严重的限制 (即费用的飙升)。至于 Avalanche 的“online Purning” (在线修剪，这里的“修剪”是指节点压缩过去的历史交易)：让我们拭目以待，但这似乎实现了 Geth 的“离线修剪”(offline purning)，并使其以更高的频率进行修剪。这可能是 Geth 的一个很好的补充，但它<strong>绝对不能解决状态膨胀的基本限制</strong> 。我们已经看到了 Harmony 的失败等等。但我也想强调的是这些正在为下一代构建可扩展性解决方案的项目：<strong>以太坊、Tezos、Celestia 和 Polygon Avail 的数据可用性抽样</strong> ；<strong>Mina 和 Aleo 的有效性证明</strong> ；以及还有许多的 <strong>Rollups 方案</strong> ，现在似乎每周都会出现新的 Rollup！很明显，我们已经进入了「<a href="https://mp.weixin.qq.com/s?__biz=MzU2MDE2MDU3Mg==&amp;mid=2247506755&amp;idx=1&amp;sn=cb55cd2104567fa13786e024f643a646&amp;scene=21#wechat_redirect">模块化架构</a>」的时代——很少有人会认真地构建新的单单片式 L1 区块链。在紧要关头，<strong>Polkadot 和 NEAR 等“原型模块化”项目是中期解决方案，虽然不能解决上述许多问题，但仍保持了可持续性和安全性</strong> 。<strong>如果你不关心可持续性和安全性，那么 Dfinity/ICP 正在构建有趣的东西</strong> 。</p>
+</li>
+<li>
+<p>我还想明确一点，单片式 L1 区块链是有一条前进的道路的：<strong>升级到下一代技术</strong> 。例如，Avalanche 可以在底层实现一个“数据可用性抽样子网”，该子网由整个验证者集进行验证，并引入模块化的执行层。除非这是他们路线图上的优先事项，否则我将继续推动这种说法，直到这种转变在整个行业普遍存在。</p>
+</li>
+<li>
+<p>现在，并不是每一条链都必须是一个 Rollup 或者有着某种形式的模块化设计。<strong>在安全性不重要的情况下，以及希望实现某种在  Rollups 中很难或不可能实现的新特性时，主权 L1 链仍然有其一席之地</strong> 。当然，这在很大程度上是一个利基市场，但它是真实存在的。<strong>Cosmos</strong>  生态系统在这方面做得很好，<strong>Polygon Edge</strong> 也在构建引人注目的解决方案，尽管我希望看到这些链被证明是有效的，并且 IBC (链间通信) 也在进化以验证有效性证明。<strong>跨 L1 区块链的</strong> <strong>「桥」</strong> 也是如此。但即便是在有效性方面被证明是完美的 L1 跨链桥，比如 =nil; Foundation 正在构建的「<strong>Mina &lt;&gt; Ethereum 桥</strong> 」，仍然<strong>需要假设这条更脆弱的链</strong>  (即 Mina 链) <strong>不会被攻击</strong> ；相比之下，<strong>Rollups「桥」</strong> 能够提供完整的安全保证，即使那条更脆弱的 Rollup 链被攻击，你仍然可以继承那条更强大的链的安全性。</p>
+</li>
+<li>
+<p>最后，讨论时机很重要。当前，Optimistic Rollups 还没有准备好，所以使用这些非 beta 阶段的单片式 L1 区块链仍然是有意义的。应该注意的是，不管是 Optimistic Rollups 还是单片式 L1 链，都存在<strong>不同程度的成熟度/不稳定性</strong> ，因此你必须根据具体情况进行评估。但我不会在这篇文章中对此进行论述，我唯一的兴趣是<strong>从长期来看，区块链可以如何大规模、可持续地进行扩展</strong> 。但 <strong>Optimistic Rollups</strong>  <strong>正在迅速成熟</strong> ，在成为可持续性解决方案这方面有着明确的途径。只需要工程工作就可以实现——很有可能至少会有一个Optimistic Rollup 将实现完全的去中心化、实现数据压缩、拥有高流动性的「桥」，并在一年的时间内扩大规模。<strong>一旦</strong>  <strong>Optimistic Rollups 准备迎接其黄金时刻</strong> <strong>，那么所有单片式 L1 区块链网络的游戏就都结束了</strong> 。</p>
+</li>
+</ul>
+<p>在过去，我采取了非常长远的观点，因此，我可能从一个更积极的角度讨论了 ZK-Rollups。我一直认为 <strong>ZK-Rollups 将是游戏终局，并认为所有的</strong>  <strong>Optimistic Rollups 将会要么转变成 ZK-Rollups，要么使用有效性证明 (validity proofs) 来取代其欺诈证明系统</strong> 。但这可能是 3 年以后的事了。</p>
+<p>上文第一部分的结论是：<strong>单片式 L1 区块链是一条死胡同</strong> ，在这一点上的证据是压倒性的，所以我想把这一点彻底强调一下。以下是本文第二部分，将主要以以太坊为中心，因为以太坊是所有 Rollups 创新的所在地，而且以太坊有着最具雄心的可扩展性路线图。</p>
+<p><strong>Optimistic Rollups 对比 ZK-Rollups</strong></p>
+<p>=========================================</p>
+<p>现在，让我们来讨论一下 Optimistic Rollups 和 ZK-Rollups。顺便说一下，最近我了解了 Obscuro (一个 TEE Rollup) 和 Urbit 的 Naive Rollup。Rollups 的设计空间是一个空白画布，因此可以有多种类型的 Rollups！但是在这里，我特别讨论的是基于<strong>欺诈证明</strong>  (Optimistic Rollups) 和<strong>有效性证明</strong>  (ZK-Rollups) 的安全 Rollups。</p>
+<ul>
+<li>
+<p><strong>交易费</strong></p>
+<hr>
+</li>
+</ul>
+<p>让我们从<strong>特定于应用程序的 Rollups</strong>  开始：很明显，<strong>ZK-Rollups 在这方面领先</strong> 。<strong>Loopring</strong> 、<strong>zkSync</strong>  等方案在支付领域被欢迎，其 ERC-20 代币转账的费用在 0.10 美元左右。撰写本文时，基于 ZK-Rollup 技术的去中心化交易所 <strong>ZigZag</strong>  上的固定费用是 0.28 美元，包括 Gas 费和交易费。同时，去中心化衍生品交易平台 <strong>dYdX</strong>  平台没有面向用户的 Gas 费用，但我们可以计算该平台的交易费用：在交易量较高时，每笔交易他们都要向以太坊支付 0.08 美元的 Gas 费；在交易量较少的日子，则是在 0.10 美元左右。</p>
+<p>现在，Optimistic Rollup 很有可能能够提供这一范围的费用——实际上，Worldcoin 项目计划使用的 <strong>Hubble</strong>  (基于 Optimistic Rollup 的 L2 网络) 的 ERC-20 转账费用目前<strong>低于 0.10 美元的范围</strong> 。我们继续转向智能合约 Rollups——为什么当前 <strong>Optimism</strong>  和 <strong>Arbitrum</strong>  网络上的费用如此之高？撰文时，根据 Lefees.info 的数据，Optimism 上的代币兑换费为 0.85 美元，而 Arbitrum 的为 1.35 美元，这实在是太高了！</p>
+<p>答案很简单：<strong>这些 Optimistic Rollups 本身还没有优化</strong> ，<strong>而且</strong> <strong>大多数早期在 Optimistic Rollups 上部署的 dApps 项目都是以太坊上原有项目的分叉版本，并不是针对</strong>  <strong>Optimistic Rollups</strong>  <strong>而设计的</strong> 。最近，通过专门针对 Optimistic Rollups 而进行优化的 <strong>Aave V3</strong>  成功地降低了约 10 倍的费用！</p>
+<p>但是还会有更多的优化。<strong>_签名聚合/压缩_将使得每笔交易直接节省约 1,000 Gas</strong> 。调用数据 (calldata) 的基本压缩可以直接节省 2.5 倍，且更多更先进的方案将会出现。<strong>随着 Optimistic Rollups 以及部署在其上的 dApps 的优化，</strong> <strong>Optimistic Rollups</strong>  <strong>的交易费用将很容易达到 <em>0.01- 0.10 美元的范围</em>。</strong></p>
+<p>等等，这是以太坊发展路线图中的 The Surge 阶段 <em>(即通过分片 (sharding) 大幅提高 Rollups 的可扩展性)</em> 到来之前的情况！如果 2022 年末的以太坊上海硬分叉升级 (这将是以太坊合并后的首次升级) 进展顺利，那么第一步将很可能是引入“<strong>携带 blob 的交易</strong> ” (blob-carrying transactions，这是 Vitalik 提议的一种新的交易格式)，<strong>这将使得 calldata (调用数据) 的成本降至大约为零</strong> ，且并且 Optimistic Rollups 实际上将变得更加便宜！</p>
+<p>今天，ZK-Rollups 有着较高的固定成本。当前，ZK-Rollups 要更便宜，因为其调用数据成本超过了该固定成本；但是，随着调用数据成本变得可以忽略不计，交易费将完全由 ZK-Rollups 的固定成本主导。而 <strong>ZK-Rollups 的运行成本要高得多</strong> 。</p>
+<p>很明显，现在有很多不同的证明系统，成本也不同，但<strong>通常的估计是 0.01- 0.02 美元</strong> 。<strong>这将是 ZK-Rollups 的一个最低成本</strong> 。然而，如果它们愿意，<strong>Optimistic Rollups</strong>  <strong>可以自由地下降至更低</strong> ：由于一个成熟的 Optimistic Rollups 成本 99% 是调用数据成本，它们可以以微不足道的成本访问 ~5200 TPS 的 blobspace。</p>
+<p>顺便说一下，<strong>Optimistic Rollups</strong>  <strong>也将比 V</strong> <strong>alidiums 方案</strong> <em>(在链下保存其数据可用性)</em><strong>更便宜</strong> ，因为这个最低成本也适用于 Validiums！我相信 <a href="https://mp.weixin.qq.com/s?__biz=MzU2MDE2MDU3Mg==&amp;mid=2247503872&amp;idx=1&amp;sn=9756542d53ce92c63ec1b4e2ad625096&amp;scene=21#wechat_redirect"><strong>zkPorter</strong> </a> (这是一个 Validium 方案) 的交易成本在 0.01- 0.03 美元之间，而 Optimistic Rollups 的成本可以远低于这个水平。就我个人而言，出于交易质量的原因，我不建议使用这种方案，但在这种情况下，Optimistic Rollups 最终将获得更高的“利润”，可以重新分配给利益相关者，或将其用于公共产品融资、开发等等。</p>
+<p>当然，最终，~5200 TPS 会饱和，如果有超过这个的巨大需求，调用数据成本将再次开始上升。但是，到那时，<strong>Danksharding</strong>  将会推出，首先将这个空间扩展到 125,000 TPS，然后在数年内扩展到数百万 TPS。(顺便说一下，在讨论 Rollups 时，“TPS”数字是没有意义的，但它用于说明目的是有用的。) 长期来看，调用数据成本绝对不会成为瓶颈——瓶颈将是 Rollups 本身。重申一下，瓶颈将是 Rollups 本身，而不是以太坊。</p>
+<p>长期来看**，随着 ZK-Rollups 的成熟，我们将有 ASIC 证明者，ZK-Rollups 的成本也将变得微不足道** 。届时，ZK-Rollups 的优势——最明显的是即刻取款 (无需等待)——将胜出。对于一些具有高度压缩状态增量的用例 (如 dYdX)，它们很快就会比 Optimistic Rollups 便宜得多。</p>
+<ul>
+<li>
+<p><strong>最终性 (Finality)</strong></p>
+<hr>
+</li>
+</ul>
+<p>说到这，一个常见的误解是，Optimistic Rollups 有 7 天的敲定期。但实际上，Optimistic Rollups 将比 ZK-Rollups 更快地实现与 L1 相同的最终性 (finality)。我们已经看到 Optimistic Rollups 每 5 到 10 分钟提交一个交易批次，所以这就是延迟。这 7 天是为了确保维持这一最终性，并假设至少有一个实体会维持该最终性。<strong>随着 Optimistic Rollups 的扩展，这些交易批次将更加频繁地被提交</strong> ，且当达到大约 20 TPS 时，Optimistic Rollups 可以在每个区块进行提交，此时 Optimistic Rollups 的最终性将等于 L1 的最终性。由于 ZK-Rollups 的固定成本要高得多，在每个区块进行提交将需要更多的活动 (&gt;100 PTS) 才能实现。然而，通过 Vitallik 提出的这个 blob 交易 EIP (以太坊改进提案)，ZK-Rollups 可以重新设计，将一些证明提交给 blob，所以这可能不是一个问题。</p>
+<p>那么，Optimistic Rollups 的这 7 天是什么呢？因为挑战期是 7 天，所以有一种交易确实有 7 天的敲定期，即从 Optimistic Rollups 取款至 L1 链。对于某些情况，比如跨链 NFTs，这可能是一种挑战。然而，我们已经看到了许多在 Optimistic Rollups 上线的「桥」，且随着 Optimistic Rollups 的成熟，活动 &amp; 流动性将提高，<strong>届时这 7 天的挑战期将不再是一个问题</strong> 。更大的问题是 ZK-Rollups 支持了许多新用例和跨 Rollup 活动，而这些用例和活动是无法在 Optimistic Rollups 上实现的。</p>
+<p>比如，借助于 Danksharding，ZK-Rollups 可以同步调用 L1,</p>
+<ul>
+<li>
+<p><strong>吞吐量</strong></p>
+<hr>
+</li>
+</ul>
+<p>特定于应用程序的 Rollups 相当精简，并且可以大规模扩展。如果我没记错，早在 2020 年年中，StarkEx 就演示了 9000 - 18000 TPS。然而，对于智能合约 Rollups 来说，情况更加具有挑战性。我们已经看到 StarkNet 只能够比 dYdX 或 Immutable X 的吞吐量更低，并将吞吐量优化作为一个最高优先级。因为 Optimism 和 Arbitrum 都是基于 EVM 客户端，所以它们 a) 拥有经过实战测试的代码库，b) 相对优化的客户端。几天前，我询问在需要并行性之前 EVM 可以扩展到什么程度，Alexey Sharp 认为 Erigon 可以扩展到 500M Gas/秒。因此，对于优化的基于 EVM 的 Optimistic Rollups 有很大的空间，并且可以通过多线程客户端或多个实例/递归 Rollups 提供更多的空间。</p>
+<p>这是我们争论的焦点：因为 Optimistic Rollups 有一个诚实的少数假设，你不能将系统需求推得太紧。要清楚的是，因为这是一个诚实的少数假设而不是单片式 L1s 的那种诚实的大多数假设，因此 Optimistic Rollups 可以比任何单片式 L1 区块链更安全。但是你仍然需要有一个限制，这个限制在默认情况下需要低于 ZK-Rollups，因为 ZK-Rollups 可以很容易地通过有效性证明进行验证。</p>
+<p>但是 Optimistic Rollups 有一个解决方案——<strong>无状态客户端</strong> 。我在 Optimism 的路线图上看到了这一点，但我不记得在哪里了。使用无状态客户端，验证 Optimistic Rollups 非常容易，使用正确的工具验证交易将非常简单。此外，因为可以很容易地直接从 L1 重构 Rollup 的状态，所以通过借助状态过期，Rollups 比 L1 更具有侵略性。一旦实现了无状态性和高频率状态过期，Rollups 将已经克服了状态膨胀的严重问题！此外，你还拥有像 Fuel V2 这样的新解决方案，它通过类似 UTXO (未花费交易输出) 的系统进行并行化。</p>
+<p>话虽如此，通过递归有效性证明，ZK-Rollups 仍然是实现网络最大吞吐量的更优雅的解决方案。很有可能的是，在 StarkNet 自身日趋成熟的同时，我们看到特定于应用程序的 ZK-Rollups 在其之上构建了巨大的吞吐量，且作为一个整体，StarkNet 的规模远远超过任何 Optimistic Rollups。然而，其中的权衡是原子可组合性——除非 ZK-Rollups 团队的向导很快发现这一点！</p>
+<h2 id="总结"><strong>总结</strong></h2>
+<p>最终，这一切都与时间线有关。</p>
+<p><strong>对于特定于应用程序的链而言，ZK-Rollups 已经是大多数情况下的最佳解决方案</strong> 。这对于任何使用过 dYdX、zkSync、Loopring 或 Immutable X 的人来说都是非常明显的。会有一些权衡，但所有这些都将在今年年底前完成 (比如 dYdX V4)。</p>
+<p>智能合约：单片式 L1 链还有一年的时间保持相关性。<strong>对于这些单片式 L1 链来说，不祥预兆</strong> <strong>已成定局，除了紧急转向使用欺诈证明，有效性证据和 DA</strong>  <em>(数据可用性)</em> <strong>证明，别无他途</strong> 。</p>
+<p><strong>Optimistic Rollups</strong>  <strong>将比 ZK-Rollups 扩展得更快</strong> 。Optimistic Rollups 的很多代码库已经成熟，一旦定序和可升级性实现了去中心化，Optimistic Rollups 将准备好被大规模采用。到 2022 年底，Optimistic Rollups 可能会迎来低于一美分的 Gas 费用，完全实现去中心化，并且本质上有着与以太坊 L1 一样的安全性和最终性，并拥有足够的流动性用于快速取款。且<strong>随着 2023 年无状态性 (statelessness) 和状态到期 (state expiry) 的实施，Optimistic Rollups 将继续改善</strong> 。</p>
+<p>ZK-Rollups 将继续演化、成熟和久经测试，优化证明时间，转移到 GPU 证明者并最终转向 ASIC 证明者。它们新颖的虚拟机和定序器节点也将随着时间的推移而成熟和扩展。<strong>到 2023 年底，我预计 ZK-Rollups 将赶上并取代 Optimistic Rollups</strong> 。但 Optimistic Rollups 将继续发挥作用直至 2024/25 年，到那时，我<strong>预计大多数 Optimistic Rollupsor 将成为 ZK-Rollups，或至少使用有效性证明取代它们的欺诈证明系统</strong> 。</p>
+<p>我曾说过多次，我的时间范围是 5-10 年。但是 Rollups 和 DAS (数据可用性抽样) 的发展是如此之快，我现在认为它的结局就在眼前，并且将在 5 年内发生。</p>
+<p><em>感谢 Reddit 用户 u/proof_of_lake 的校对。</em></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/34735/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">以太坊信标链网络验证者数量突破30万个</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/34712/">
+                <span class="next-text nav-default">银行也爱元宇宙 宁波银行申请元宇宙商标 回应：暂无进一步计划</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#单片式-l1-区块链-依然-极为低效"><strong>单片式 L1 区块链 (依然) 极为低效</strong></a></li>
+    <li><a href="#总结"><strong>总结</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

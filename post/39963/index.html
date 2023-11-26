@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          在 Celestia 上 Rollup 是如何被用作主权链的？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Rollup 可能是几乎所有区块链应用程序的未来家园，无论是使用 Celestia、以太坊还是其他平台来实现共识和数据可用性。" />
+<meta name="keywords" content="Rollup, Celestia" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39963/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="在 Celestia 上 Rollup 是如何被用作主权链的？" />
+<meta property="og:description" content="Rollup 可能是几乎所有区块链应用程序的未来家园，无论是使用 Celestia、以太坊还是其他平台来实现共识和数据可用性。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39963/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="在 Celestia 上 Rollup 是如何被用作主权链的？">
+<meta itemprop="description" content="Rollup 可能是几乎所有区块链应用程序的未来家园，无论是使用 Celestia、以太坊还是其他平台来实现共识和数据可用性。"><meta itemprop="datePublished" content="2022-07-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-07-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5501">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在 Celestia 上 Rollup 是如何被用作主权链的？"/>
+<meta name="twitter:description" content="Rollup 可能是几乎所有区块链应用程序的未来家园，无论是使用 Celestia、以太坊还是其他平台来实现共识和数据可用性。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">在 Celestia 上 Rollup 是如何被用作主权链的？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-07-08">
+      2022-07-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5501 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>大多数使用 Celestia 作为其共识和数据可用性层的应用程序都将托管在 Rollup 上。作为一种新的第 2 层解决方案，最初提出以提高交易吞吐量，<strong>Rollup 可能是几乎所有区块链应用程序的未来家园，无论是使用 Celestia、以太坊还是其他平台来实现共识和数据可用性。</strong></p>
+<p>在这篇文章中，我们将讨论什么是 Rollup，它们目前如何在以太坊上运行以及它们将如何在 Celestia 上运行。</p>
+<p>在当前的以太坊 Rollup 中，以太坊链被奉为 Rollup 的结算层，使 Rollup 有效地成为以太坊的“婴儿链”，其中 Rollup 链由以太坊上的智能合约定义。这也可以与 Polkadot 平行链模型相媲美，其中中继链被奉为平行链的结算层。</p>
+<p>然而在 Celestia 中，我们设想了一种新型的 Rollup：主权 Rollup 链。这些是独立的主权链，其中 Rollup 链由 Rollup 子网络本身定义，类似于独立的 L1，并且可以选择与其他链或结算层一起拥有受信任或信任最小化的桥梁。</p>
+<p><strong>目录</strong></p>
+<ul>
+<li>
+<p>什么是 Rollup？</p>
+</li>
+<li>
+<p>以太坊上的 Rollup（结算层）</p>
+</li>
+<li>
+<p>Celestia（主权）上的 Rollup</p>
+</li>
+<li>
+<p>主权交叉 Rollup 通信</p>
+</li>
+<li>
+<p>为什么是主权的？</p>
+</li>
+</ul>
+<h2 id="什么是-rollup">什么是 Rollup？</h2>
+<p>Rollup 是将其区块发布到另一个区块链的区块链，并继承该区块链的共识和数据可用性（称为一个“共识和数据可用性层”）。</p>
+<p>典型的 Rollup 由三个主要方维护：<strong>排序器（sequencers）、Rollup 完整节点、Rollup 轻客户端</strong> 。所有 Rollup 都有一个状态，例如，可能是 Rollup 用户在某个时间点的所有帐户地址和代币余额。</p>
+<p><strong>Sequencers</strong>  是接收来自用户的新 Rollup 交易的节点，将交易组合成一个区块，并将该区块发布到共识和数据可用性层。一个区块由两部分组成：区块头和实际的交易数据。除其他外，区块头包含对链状态的加密承诺——通常是 Merkle 根。</p>
+<p><strong>Rollup 完整节点</strong> 是下载所有 Rollup 区块头和交易数据、处理和验证所有交易的节点，以计算 Rollup 的状态并检查所有交易是否有效。如果全节点在汇总区块中遇到无效事务，它会拒绝并忽略该区块。因此，Sequencers 无法创建具有无效交易的有效区块，因为节点会从他们的视野中拒绝它们。</p>
+<p><strong>Rollup 轻客户端</strong> 只下载 rollup 区块头，不下载和处理任何交易数据，因此无法计算最新状态或验证 rollup 本身的状态有效性。相反，他们可以从最新的 Rollup 区块头中了解最新的状态承诺，并向 Rollup 完整节点询问部分状态。他们还使用欺诈证明或有效性证明等技术间接检查 Rollup 交易的有效性。</p>
+<p>当 Rollup 节点同步 Rollup 链时，它们使用共识和数据可用性层对 Rollup 区块施加的排序。如果它是 Rollup 中要在数据可用性层上发布的第一个处于其高度的有效区块，则它们将确认这个 Rollup 区块的最总想 - 无论是直接检查有效性（完整节点）还是间接检查有效性（轻客户端）。</p>
+<p>有关 Rollup 的更详细和技术性的解释，我们建议读者参阅 Celestia 论坛上有关 Rollup 的文章。</p>
+<h2 id="以太坊上的-rollupenshrined-结算">以太坊上的 Rollup（enshrined 结算）</h2>
+<p>当前以太坊上的 Rollup 将其区块直接发布到基于 EVM 的智能合约，也称为桥合约。该合约有效地实现了一个用于 Rollup 的链上轻客户端，该客户端接收区块头并处理欺诈或有效性证明。在这个模型中，以太坊主链有一个神圣的、硬编码的、信任最小化的桥。</p>
+<p>使用桥合约，用户可以在 Rollup 和桥合约所在的执行链之间以信任最小化的方式存取资产，因为由于欺诈或有效性证明，合约不会接受来自 Sequencers 的无效区块。</p>
+<p>以太坊链作为共识和数据可用性层，仅记录和最终确定根据桥合约有效的区块。因此，Rollup 完整节点和轻客户端（智能合约之外）将以太坊链上轻客户端视为关于什么是规范（正确）Rollup 链的真相的根本来源。在这个模型中，我们认为以太坊被奉为 Rollup 的耦合结算层，其中 Rollup 是以太坊的“婴儿链”，而不是一种拥有自己权利的独立链。</p>
+<h2 id="celestia上的-rollup主权">Celestia上的 Rollup（主权）</h2>
+<p>Celestia 上的主权 Rollup 不会将他们的区块发布到智能合约中，而是直接作为原始数据发布到链上。Celestia 共识和数据可用性层不解释或对 Rollup 区块执行任何计算，也不为 Rollup 运行链上轻客户端。</p>
+<p>相反，Rollup 像第 1 层区块链一样有效地运行：完整节点和轻客户端直接从 Rollup 自己的点对点网络下载 Rollup 的区块。主要区别在于，他们还通过 Merkle 证明验证了 Rollup 区块数据是否包含在 Celestia 数据可用性层上并对其进行排序。因此，与第 1 层区块链类似，这个规范链由本地验证分叉选择规则和 Rollup 交易的节点确定，而不是由链上轻客户端确定。</p>
+<p>欺诈和有效性证明的工作方式也类似于它们在第 1 层区块链中的工作方式。欺诈证明通过点对点网络直接传递给客户端，有效性证明简单地包含在区块头中（例如，参见 Mina 协议）。因为点对点网络中的网络同步延迟很可能远小于获取包含在链上的欺诈证明的延迟，这意味着点对点欺诈证明的挑战期可能要短得多，从而为轻客户端带来更快的最终确定性。</p>
+<p>在这个模型中，Rollup 和任何结算层之间没有桥，因为 rollup 区块只是直接发布到数据可用性层，而不是智能合约。这与 Cosmos 的设计理念相一致，在 Cosmos zones 中，通往 Cosmos Hub 的桥不是内置确定的，而是可选的，可以添加，同时仍允许 zones 保留其主权。Rollups 仍然可以以信任最小化的方式连接到其他 Rollup——我们将在下一节讨论这个问题。</p>
+<p>如果一条 Rollup 链没有规定一个结算层来确定规范链和 Rollup 的交易有效性规则，则它是主权的。相反，Rollup 的规范链是由 Rollup 的点对点网络中的节点确定的（前提是这些区块在数据可用性层上可用）。这意味着结算层不能强制将交易包含在 Rollup 中。</p>
+<p>“不设结算层”主要是社会区别，而不是技术区别，这意味着 Rollup 的社区之间存在社会合约，即 Rollup 的交易有效性规则由社区定义，而不是不可变的 L1 合约。在实践中，这意味着到 Rollup 的桥（未被写入）必须是可变的，以便有一条升级路径来确认主权 Rollup 上的硬分叉（在下一节中讨论）。</p>
+<p>因此，这意味着 Rollup 社区可以通过硬分叉升级链，而无需对结算层或数据可用性层进行硬分叉，也无需嵌入破坏链的信任最小化性质的链上治理。如果有资产是在主权 Rollup 链上本地铸造的，而不是所有资产都从其他链桥接，则这一点尤其重要。</p>
+<p>主权 Rollups 也可以仅将以太坊用作数据可用性层，而无需将以太坊用于结算，但是与使用诸如 Celestia 之类的“纯”数据可用性层相比，这会增加更多开销，因为 Rollup 节点需要对数据的有效性感兴趣以太坊结算层中的所有交易，以便为以太坊数据可用性层运行一个节点。</p>
+<p>也可以在 Celestia 上构建一个“结算 Rollup‌”，这是主权 Rollup 的一种。结算 Rollup 可以具有将其用作结算层的非主权 Rollup。然而，结算层是主权的，就像以太坊 L1 是主权一样，因为它的社区经常通过社会共识用硬分叉升级它。</p>
+<h2 id="主权跨-rollup-通信">主权跨 Rollup 通信</h2>
+<p>如上所述，Celestia Rollup 在 Rollup 和任何结算层之间没有一座设置的桥梁。Rollup 的结算层和执行层因此被解耦和模块化。那么 Celestia Rollups 如何连接到其他链呢？因为没有结算层，这让我们有更广阔的跨链桥设计空间。我们在下面探索设计空间和各种选项。</p>
+<p>让我们假设某个主权 Rollup 链 A 想要与另一个链 B 桥接——我们将假设它也是一个 Rollup。</p>
+<h3 id="点对点-vs-链上结算">点对点 vs. 链上结算</h3>
+<p>链 A 和 B 可以直接在两个链的轻客户端中相互嵌入一个轻客户端。例如，两条链都将为链 A 和 B 运行一个轻客户端。轻客户端因此将通过点对点网络直接接收区块头和任何相关的欺诈或有效性证明。我们将此称为点对点结算。</p>
+<p>两个链上都存在一个桥合约，这将允许资产被提取并存入任一链（例如通过锁定和铸造机制‌），并由每个链的 sequencers 或验证者监控（通过中继器直接或间接实现）以执行转移。</p>
+<p>另一方面，轻客户端也可以实现为链上智能合约，将区块头和欺诈/ZK 证明提交给链上智能合约。这就是以太坊 Rollup 的现状。我们将此称为链上结算。</p>
+<h3 id="中心辐射型-vs-点对点桥接">中心辐射型 vs. 点对点桥接</h3>
+<p>目前，预计 Rollup 将连接到充当结算中心的单个结算层，例如以太坊（中心辐射桥接）。如果 Rollup 链 A 和 B 都连接到同一个中心（hub），那么它们可以使用 hub 作为结算的中介来将资产相互连接起来。</p>
+<p>但是，就像 IBC 一样，Rollup 也可以选择直接相互桥接，而不是使用中间 Hub 链（点对点桥接）。</p>
+<h3 id="动态与静态桥接">动态与静态桥接</h3>
+<p>根据 Rollup 链的执行环境，可能需要链升级或硬分叉来桥接新链。这是因为链 A 和 B 必须支持彼此的执行环境，才能支持彼此的欺诈或 ZK 证明。</p>
+<p>让我们假设 Optimistic Rollup 链 A 的状态机是直接用 Golang 编写的（例如使用 Cosmos SDK），而不是像 EVM 或 CosmWasm 这样的智能合约环境。为了与链 B 桥接，链 B 需要升级其节点软件，以便将链 A 的状态机作为库，以验证链 A 的欺诈证明。这是因为链 B 无法自动添加链 A 的状态机代码，因为它可能是恶意的或不确定的，从而构成安全风险。因此，需要社会共识或治理来增加这样的桥。在使用链 B 不理解的 ZK 证明结构的有效性 Rollup 的情况下，这也同样需要。我们将其称为静态桥接，因为必须通过链升级显式添加桥接。这样的桥可以实现为 IBC 轻客户端‌。</p>
+<p>另一方面，如果 Optimistic Rollup 链 A 是在 EVM 或 CosmWasm 等沙盒智能合约环境中编写的，那么链 B 可以允许将链 A 的状态机代码直接添加到链 B 的状态机中，而无需任何必要用于社会共识或治理，例如使用智能合约。同样，如果链 A 是 ZK 汇总，它可以动态桥接到链 B，只要链 B 能够理解链 A 的 ZK 证明。我们将此称为动态桥接。</p>
+<h3 id="非-enshrined-与-enshrined-结算层">非 enshrined 与 enshrined 结算层</h3>
+<p>如果 Rollup 链将其区块和证明发布到充当结算中心（如以太坊）的结算层，则我们说如果规范链及其交易有效性规则由结算层确定，则结算层是 enshrined（神圣或完美）的。</p>
+<p>另一方面，如果 Rollup 将其区块和证明发布到结算层，但 Rollup 的规范链最终由 Rollup 网络本身决定，我们就说结算层是非 enshrined。为了使非 enshrined 的结算层有意义，它应该有一种不需要硬分叉结算层的方式来升级 Rollup。</p>
+<h3 id="基于委员会与基于证明的桥">基于委员会与基于证明的桥</h3>
+<p>为了使两条 Rollup 链之间的跨链桥的信任最小化，Rollup 链必须验证彼此的欺诈或 ZK 证明，这意味着它们必须了解彼此的状态机（基于证明的桥梁）。</p>
+<p>但是，也存在基于委员会的桥（例如今天的 IBC 桥），该桥不依赖于状态有效性的证明，而是依靠委员会来证明区块的有效性。这样的桥梁并没有最小化信任，因为委员会可以窃取资金。然而，这样的桥可能具有较低的复杂性，因为目标链不需要具有处理源链的欺诈或 ZK 证明的功能。</p>
+<p>在当前的 IBC 桥中，委员会是源链的验证者集。然而，人们可以设想这样一个世界，委员会由证明多个链的专业跨链桥提供商运营。这可以被认为是仅用于桥的链间安全性，而不是区块生产。在这样的设置中，桥委员会与源链的验证者集解耦。</p>
+<h3 id="可升级与不可升级的跨链桥">可升级与不可升级的跨链桥</h3>
+<p>当前以太坊 Rollup 的最终目标是 Rollup 不应由多重签名或委员会进行升级，因为如果可以，它们不会被信任最小化，因为资金可能会通过升级被盗。在这个模型中，Rollup 只能通过硬分叉 L1 来升级，因为规范链是由 L1 的结算层定义的，这意味着 Rollup 没有主权。</p>
+<p>然而，为了使主权 Rollup 变得实用，应该有一个升级路径，承认 Rollup 是主权的而不是神圣的结算层的。有几种方法可以考虑，这些方法会影响桥是否最小化信任。假设一条 Rollup 链 A 是硬分叉，而链 B 需要为链 A 升级其轻客户端：</p>
+<ul>
+<li>
+<p>对于静态桥，链 B 也需要硬分叉。这样的升级路径将意味着桥的信任最小化，因为不涉及多重签名或委员会。</p>
+</li>
+<li>
+<p>对于动态桥，由链 A 控制的委员会（例如 DAO）可以升级链 B 上的轻客户端。这将是一个可信的桥。</p>
+</li>
+<li>
+<p>对于动态桥，由链 B 控制的委员会（例如 DAO）可以升级链 B 上的轻客户端。如果链 B 是结算层，这使结算层有责任实施升级，这可能是可取的，如果结算层有专门的治理，或具有较高的经济安全性。这也将是一个值得信赖的桥。</p>
+</li>
+</ul>
+<h2 id="为什么是主权">为什么是主权？</h2>
+<p>“主权不仅仅是一个模因。 这是硬分叉的能力。 这是一种认识：区块链和社会中最重要的一层是社会共识。<br>
+这是人&gt;代币的编码。 人 &gt; 验证者。 人 &gt; 治理。”</p>
+<p>Rollup 的核心是简单的区块链，而 Rollup 桥只是这些区块链的轻客户端。以太坊推广的 Rollup 的当前现状旨在具有神圣的结算层的不可升级的汇总。这等效于为永远无法升级的区块链运行客户端，其区块只有在被轻客户端的一个神圣的链上实例接受以进行 Rollup 时才有效。如上所示，这只是 Rollup 设计空间的一小部分。</p>
+<p>在 Celestia Labs，我们对没有固定结算层的主权 Rollup 感兴趣，因为我们相信区块链中最重要的层是社会共识。特别是，区块链是一种允许社区以主权方式进行社会协调的工具，而不会受到现状的负担。这意味着将硬分叉视为一项功能，而不是错误，因为硬分叉赋予主权社区强制执行社会共识的能力。当出现问题时，这作为一种社会追索机制尤其重要，例如在 DAO 黑客攻击后以太坊分叉时。</p>
+<p>主权 Rollups 将成为主权社区拥有社区计算机来跟踪和执行社会经济价值和协议的有效方式，无需引导或维护自己的共识层和验证者集的开销，也无需服从于一个他们支持或不支持的神圣的结算层的社会共识。</p>
+<p>主权 Rollups 还为开发人员在其执行环境中提供了更大的灵活性，因为他们不受必须为其 Rollup 处理欺诈或 ZK 证明的神圣结算层的限制，因为在许多情况下，某些结算层存在欺诈或 ZK 证明可能无法轻松或有效地处理。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39942/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">元宇宙为什么会令人神魂颠倒</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39909/">
+                <span class="next-text nav-default">Amber Group：加密游戏的区块链选择</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是-rollup">什么是 Rollup？</a></li>
+    <li><a href="#以太坊上的-rollupenshrined-结算">以太坊上的 Rollup（enshrined 结算）</a></li>
+    <li><a href="#celestia上的-rollup主权">Celestia上的 Rollup（主权）</a></li>
+    <li><a href="#主权跨-rollup-通信">主权跨 Rollup 通信</a>
+      <ul>
+        <li><a href="#点对点-vs-链上结算">点对点 vs. 链上结算</a></li>
+        <li><a href="#中心辐射型-vs-点对点桥接">中心辐射型 vs. 点对点桥接</a></li>
+        <li><a href="#动态与静态桥接">动态与静态桥接</a></li>
+        <li><a href="#非-enshrined-与-enshrined-结算层">非 enshrined 与 enshrined 结算层</a></li>
+        <li><a href="#基于委员会与基于证明的桥">基于委员会与基于证明的桥</a></li>
+        <li><a href="#可升级与不可升级的跨链桥">可升级与不可升级的跨链桥</a></li>
+      </ul>
+    </li>
+    <li><a href="#为什么是主权">为什么是主权？</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

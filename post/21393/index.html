@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          明智的比特币矿工 应当通过模型了解收益变化 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="通过模型模拟比特币矿工挖矿收益变化也许不全面，但有用。" />
+<meta name="keywords" content="比特币, 矿工" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/21393/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="明智的比特币矿工 应当通过模型了解收益变化" />
+<meta property="og:description" content="通过模型模拟比特币矿工挖矿收益变化也许不全面，但有用。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/21393/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-26T00:00:00+00:00" />
+
+<meta itemprop="name" content="明智的比特币矿工 应当通过模型了解收益变化">
+<meta itemprop="description" content="通过模型模拟比特币矿工挖矿收益变化也许不全面，但有用。"><meta itemprop="datePublished" content="2021-04-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6125">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="明智的比特币矿工 应当通过模型了解收益变化"/>
+<meta name="twitter:description" content="通过模型模拟比特币矿工挖矿收益变化也许不全面，但有用。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">明智的比特币矿工 应当通过模型了解收益变化</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-04-26">
+      2021-04-26
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6125 字 -
+        预计阅读 13 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E7%9F%BF%E5%8C%BA/"> 矿区 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>通过模型模拟比特币矿工挖矿收益变化也许不全面，但有用。</p>
+<p><em>撰文 ：Leo Zhang、Jack Koehler</em>、<em>Karim Helmy</em> ；<em>前两者就职于算力及衍生产品研究机构 Anicca Research</em>，后者是 Coin Metrics 数据研究分析师__</p>
+<p>本文是《明智的比特币矿工》系列第二篇，上一篇为《<a href="https://www.jinse.com/blockchain/934903.html">明智的比特币矿工，应当像管理投资一样运营算力</a>》,由 Anicca Research 与新加坡算力及衍生产品投资和交易机构 General Mining Research （GMR）合作撰写。</p>
+<blockquote>
+<p>「当然，任何试图用确定性的方法产生随机数的人，都生活在罪恶中。」</p>
+<p>约翰·冯·诺伊曼 <em>(John von Neumann)</em></p>
+</blockquote>
+<p><strong>概述</strong></p>
+<p>在难以通过实验检验假设时，可以通过模型模拟收益变化。比特币挖矿业不透明，资本密集度高，但如果以数值模拟为主，定性分析为辅，研究该行业时会更加简单易行。在无法判定市场变化的前提下贸然投资挖矿的代价是昂贵的，但在实际操作之前建立模型却很便宜。</p>
+<p>在本系列的第一部分中，我们建立了<strong>蒙特卡罗模型</strong> 来模拟矿机的公允价值以及该公允价值对不同市场参数的敏感性。我们证明了：由于矿机流动性较差，算力的市场价格经常偏离其理论公允价值。</p>
+<p>在上一篇文章中，我们用<strong>跳跃扩散</strong>  <em>(Jump-Diffusion)</em> 过程对未来的价格轨迹进行了建模，并使用线性函数来描述全球算力如何响应价格的变化。但正如我们的几篇文章中所讨论的那样，算力和价格之间的动态关系超出了简单的线性关系。为了提高我们框架的代表性，我们必须将全网算力作为一个单位的方法提高精度，从自下而上的角度来建模。</p>
+<p>参考阅读:</p>
+<p>《Bitcoin Mining’s Three Body Problem》</p>
+<p><a href="https://www.aniccaresearch.tech/blog/bitcoin-minings-three-body-problem">https://www.aniccaresearch.tech/blog/bitcoin-minings-three-body-problem</a></p>
+<p>在本文中，我们根据<strong>矿机类型</strong> 、<strong>全部运营成本</strong> 和<strong>挖矿策略</strong> ，将矿机定性为几种原型。每个矿工原型都有着不同的<strong>利润率</strong> 和<strong>风险考量</strong> 。随着挖矿收入发生波动，每个矿工会产生利润或亏损，而利润或亏损又会促使他们决定增加或减少作业矿机的数量。</p>
+<p>在这个框架下，<strong>网络算力</strong> 的变化不仅是价格变化的函数，而且是具有不同经济和风险特征的所有矿工输出的决策的总和。</p>
+<p>该模型的代码库是完全开源的，可以在这里_(<a href="https://github.com/khelmy/intelligent-bitcoin-miner)">https://github.com/khelmy/intelligent-bitcoin-miner)</a>_ 获得。</p>
+<p>用户可以插入自己的假设，并查看他们的挖矿业务在此后的表现。在本文中，我们将详细介绍该模型，解释如何使用该模型，并从五个场景的分析中给出一些有趣的发现。</p>
+<p><strong>康威的生命游戏</strong></p>
+<p>我们将网络算力建模为单个矿工输出的总和，这种方法是基于一种叫做<strong>基于代理的模拟技术</strong> 。基于代理的建模起源于 20 世纪 50 年代约翰·冯·诺伊曼 <em>(John Von Neumann)</em> 关于细胞自动机的早期研究，并因约翰·康威_（John Conway）_的**《生命游戏》** 而流行起来。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_psdiu2oc8k.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>图片来源: Teb’s Lab</p>
+<p>参考阅读:</p>
+<p>《Agent-based modeling》</p>
+<p><a href="https://en.wikipedia.org/wiki/Agent-based">https://en.wikipedia.org/wiki/Agent-based</a>_model</p>
+<p>《How I optimized Conway’s Game Of Life》</p>
+<p><a href="https://medium.com/tebs-lab/optimizing-conways-game-of-life-12f1b7f2f54c">https://medium.com/tebs-lab/optimizing-conways-game-of-life-12f1b7f2f54c</a></p>
+<p>《Play John Conway’s Game of Life》</p>
+<p><a href="https://playgameoflife.com/">https://playgameoflife.com/</a></p>
+<p>这是一个回合制的模拟，发生在一个<strong>二维的细胞网格</strong> 上。一个预先指定的、决定性的规则负责管理相邻细胞之间的<strong>相互作用</strong> 。每一个回合，细胞的状态都会根据其相邻细胞的状态而改变：如果细胞刚好有三个活着的邻居，它们就会复活；如果有两个或三个活的邻居，它们可以存活，否则则会死亡。</p>
+<p>《生命游戏》是基于代理的模型的一个原始例子，这是一种由共享全局状态的参与者做出决策的模拟类型。在《生命游戏》中，细胞是代理人，它们的决策围绕着生存还是死亡展开。结果完全取决于棋盘的初始状态，而棋盘的状态可能会以非直观的方式演变。</p>
+<p>基于代理的建模已经较康威的《生命游戏》有了很大的发展。如今，基于代理的模拟被广泛应用于<strong>生态学</strong> 、<strong>经济学</strong> 、<strong>量化金融和智能合约分析</strong> 。</p>
+<p>参考阅读:</p>
+<p>《Insights from the study of complex systems for the ecology and evolution of animal populations 》</p>
+<p><a href="https://academic.oup.com/cz/article/66/1/1/5477426">https://academic.oup.com/cz/article/66/1/1/5477426</a></p>
+<p>比特币挖矿的盈利能力取决于<strong>比特币的价格</strong> 、<strong>网络总算力</strong> ，在较小程度也跟<strong>交易费用</strong> 有关_（到目前为止）_。计算盈利能力的第二个因素，即网络算力，取决于其他矿工打算运行还是关闭机器。因此，对矿工盈利能力的预测必须是迭代的，而这个问题非常适合基于代理的建模。</p>
+<p>假设比特币价格完全独立于网络算力，我们可以将价格建模为一个独立的几何布朗运动。可以将时间序列中的每一天视为一个轮次；在每个轮次开始时，价格和全局算力都被输入到矿工代理的决策过程中。</p>
+<p>参考阅读:</p>
+<p>《Geometric Brownian motion》</p>
+<p><a href="https://en.wikipedia.org/wiki/Geometric">https://en.wikipedia.org/wiki/Geometric</a>_Brownian_motion</p>
+<p>根据他们的<strong>利润率</strong> ，每个矿工通过改变他们运行的机器数量来扩大或缩小他们的运作规模，并公布他们运作的算力。每个矿工的算力输出之和因此成为新的<strong>全局算力</strong> <strong>。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_3uv1lozwdd.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p><strong>矿工作为代理</strong></p>
+<p>将矿工作为代理建模，本质上是对挖矿经济学中的输入变量进行<strong>参数化</strong> 。在**《算力的炼金术》**  <em>(The Alchemy of Hashpower)</em> 中，我们提出了算力的<strong>反身性</strong> 这个概念：每一个挖矿作业都会受到物理条件和操作者对市场主观感知的严重影响。</p>
+<p>参考阅读:</p>
+<p>《The Alchemy of Hashpower》 </p>
+<p><a href="https://www.aniccaresearch.tech/blog/the-alchemy-of-hashpower-part-i">https://www.aniccaresearch.tech/blog/the-alchemy-of-hashpower-part-i</a></p>
+<p>虽然不可能涵盖所有决策因素，但我们认为<strong>矿机类型</strong> 、<strong>成本基础</strong> 和<strong>策略</strong> 应该是决定矿工行为的主要因素。我们在矿工类别中，将这些因素定为了参数。</p>
+<p><strong>机器类型</strong></p>
+<p>在现实世界中，一个挖矿作业通常涉及多种不同类型的矿机。为了简单起见，我们让每个矿工原型在整个分析过程中使用单一的矿机类型。在这个版本的模拟中，我们支持以下的矿机类型：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_fy7jwpih9w.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p><strong>成本基础:</strong> <strong>总电费能源消耗</strong></p>
+<p>在整个模拟过程中，每个矿工都被分配了一个<strong>平均的总电量</strong> 。能量消耗为矿工的：矿机数量*矿机类型消耗。</p>
+<p>每天，矿工产生的<strong>运营费用</strong> 等于：能耗 / 1000 *总电费* 24。</p>
+<p>我们还指定了一个<strong>总电费分布</strong> ，它决定了初始化时相关矿工原型的矿机数量。</p>
+<p>在这个版本中，我们提供以下默认分层。用户可以在运行模拟之前对其进行自定义。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_1oygvp9u7h.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>基于最佳努力预测</p>
+<p><strong>策略</strong></p>
+<ul>
+<li>
+<p>做多比特币</p>
+</li>
+<li>
+<p>每日出清</p>
+</li>
+</ul>
+<p>每个矿工在<strong>初始化</strong> 时都被分配了一个策略。在实践中，矿工可以使用的策略范围很广，只要他们对市场条件的看法发生变化，就可以在这些策略之间进行切换。</p>
+<p>为简单起见，我们在整个模拟过程中按照相同的策略对每个矿工进行建模。在《 智能比特币矿工，第一部分》 <em>(The Intelligent Bitcoin Miner, Part I)</em> 中，我们介绍了这两种策略，并评估了它们在不同市场周期中的表现。</p>
+<p>参考阅读：</p>
+<p>《明智的比特币矿工，应当像管理投资一样运营算力》</p>
+<p><strong>做多比特币</strong> 意味着矿工每天只卖出足够支付运营费用的比特币，并将其余收入保留在比特币中。</p>
+<p><strong>每日出清</strong> 是指矿工立即将所有资产兑换成美元。</p>
+<p>矿工的策略决定了他们的<strong>美元仓位</strong> 和<strong>比特币仓位</strong> 如何划拨。当使用看多比特币策略计算矿工的利润时，需要考虑未实现收益。<strong>未实现收益</strong> 按比特币仓位*比特币价格计算。</p>
+<p>基于这三个变量的组合，我们将矿工的世界分解为 11 种矿机类型、7 种电费成本层和 2 种策略，总共 <strong>154 种原型</strong> 。</p>
+<p>在初始化时，我们根据 <strong>Hashrate Index</strong>  和 <strong>General Mining Research</strong>  以及其他一些来源的数据，提供了市场上矿机的默认分层和价格数据。用户可以在模拟之前自定义：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_h57kpysoi3.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>价格数据：Hashrate Index, General Mining Research。算力百分比：基于各种来源的估算</p>
+<p>参考阅读:</p>
+<p>《Bitcoin runs on Hashrate》</p>
+<p><a href="https://hashrateindex.com/">https://hashrateindex.com/</a></p>
+<p><a href="https://www.gmr.xyz/">https://www.gmr.xyz/</a></p>
+<p><strong>电费分布</strong> 和<strong>矿机分层</strong> 是每个矿工矿机数量的输入。这代表了矿工作业的矿机数量。需要注意的是，在实践中，这两个分布并不像模型中假设的那样在统计上是独立的—例如，像 S9 这样的老矿机更有可能是由能够获得更便宜电力的矿工操作。</p>
+<p>在模拟开始时，所有矿工的矿机数量*算力的总和被缩放为大致等于当前网络算力水平，这个数值是从 <strong>Coin Metrics</strong>  中收集的。</p>
+<p>参考阅读:</p>
+<p><a href="https://charts.coinmetrics.io/network-data/">https://charts.coinmetrics.io/network-data/</a></p>
+<p>为了跟踪矿工的表现，我们在矿工类别中加入了一个简单的账户余额和历史利润计算器。</p>
+<ul>
+<li>账户余额</li>
+</ul>
+<ol>
+<li>
+<p>美元仓位</p>
+</li>
+<li>
+<p>比特币仓位</p>
+</li>
+<li>
+<p>算力仓位</p>
+</li>
+</ol>
+<p><strong>初始算力仓位</strong> 为矿工的矿机数*矿机_类型_算力。</p>
+<ul>
+<li>盈利能力</li>
+</ul>
+<ol>
+<li>
+<p>每日盈利       </p>
+</li>
+<li>
+<p>最近30天盈利            </p>
+</li>
+<li>
+<p>全部盈利</p>
+</li>
+</ol>
+<p>随着市场的发展，<strong>盈利能</strong> 力决定了矿工的行为。我们将在下一节中介绍该机制。最近30天盈利和全部盈利是延伸盈利的总和。</p>
+<p>下面是一个示例矿工类的所有数据条目。矿工类的代码可以在 <strong>agents.py</strong>  文件中找到。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_i5e3ou9zfu.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>参考阅读:</p>
+<p><a href="https://github.com/khelmy/intelligent-bitcoin-miner/blob/main/agents.py">https://github.com/khelmy/intelligent-bitcoin-miner/blob/main/agents.py</a></p>
+<p><strong>矿工的效用函数</strong></p>
+<p>当预期盈利能力较高时，矿工可能会想要购买更多的矿机，当预期未来盈利能力为负时，他们可能会关闭一些矿机以减少运营费用。我们需要准确定义矿工如何增加或减少他们的算力。</p>
+<p>在现实中，还会有许多外部因素驱使矿工决定购买或关闭矿机，比如是不是能从外部融资，甚至于他们是不是太累了。为了简单起见，我们将矿工的<strong>历史利润</strong> 作为矿工决策过程中的主要输入进行建模。</p>
+<p>决策流程将<strong>最近30天盈利</strong> 作为输入，并计算用于生成操作的结果。计算过程如下：</p>
+<p>如果最近30天盈利为<strong>零</strong> 或<strong>负数</strong> ，矿工将矿机数量减少 x，直到盈亏平衡。计算方法很简单：损失_（最近30天盈利）_除以每台矿机的能耗成本。</p>
+<p>如果最近30天盈利为<strong>正</strong> 并<strong>超过</strong> <strong>某个阈值</strong> ，矿工将增加矿机数量。<strong>阈值</strong> 为：最近30天盈利 &gt; 所有 <em>(支出)</em> 的总和。</p>
+<p><strong>增加的矿机数量</strong> 计算如下：<em>(最近30天盈利所有 (支出) 的总和)</em> / 矿机价格*矿机增长系数。</p>
+<p>每种矿机类型都有一个<strong>增长率</strong> ，反映的是它的<strong>相对增长</strong> 。由于制造商缺乏继续生产的意愿，老一代的矿机增长率较小。我们还为添加新矿机设置了一个反应延迟。新订单的生产和交付通常需要一段时间。</p>
+<p>在我们的模型中，这意味着在增加 x 台矿机的动作被触发后，矿机不会立即被添加到矿工的账户中。我们设置了一个常量列表作为每种机器类型的反应时间。<strong>反应延迟</strong> 是一个静态近似值，应定期更新，以反映供应链能力的变化。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_zwe8ii15ks.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>基于最佳努力估计</p>
+<p>总而言之，触发函数会输出矿工买入或卖出的矿机数量。</p>
+<p>用户可以用他们认为合适的常量来更新增长因子和反应天数。调整的代码可以在 <strong>Simulator.py</strong>  中找到。</p>
+<p>参考阅读:</p>
+<p><a href="https://github.com/khelmy/intelligent-bitcoin-miner/blob/main/Simulator.py">https://github.com/khelmy/intelligent-bitcoin-miner/blob/main/Simulator.py</a></p>
+<p><strong>设置模拟</strong></p>
+<p>与《第一部分》一样，我们使用一个随机过程来预测比特币在模拟生命周期内的价格。几何布朗运动模型的基础支持来自于从 Coin Metrics 中提取的历史价格数据。</p>
+<p>将所有内容结合在一起，我们使用下面的图表来说明这个过程是如何运作的：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_jsprp2ug5p.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>参考阅读：</p>
+<p>《明智的比特币矿工，应当像管理投资一样运营算力》</p>
+<p><strong>场景分析</strong></p>
+<p>为了测试该模型，我们模拟了不同的市场条件，并分析了由此产生的矿工行为。我们评估了一个用户矿工的盈利能力，该矿工获得了 100 万美元的前期资金用于购买矿机，但无法进一步扩大经营规模。模拟运行 100 天，取 25 次试验的平均结果。</p>
+<p>用户的盈利能力是根据<strong>不同矿机类型</strong> 和几种<strong>不同的电力成本</strong> 来衡量的。亮点如下所示。</p>
+<p>所使用的参数绝不是确定的，用户可以自由地用自己的假设重新运行分析。场景分析的代码可以在 <strong>main.py</strong>  中找到。</p>
+<p>参考阅读:</p>
+<p><a href="https://github.com/khelmy/intelligent-bitcoin-miner/blob/main/main.py">https://github.com/khelmy/intelligent-bitcoin-miner/blob/main/main.py</a></p>
+<p><strong>牛市场景</strong></p>
+<p>我们的第一个测试是模拟了牛市的情景。考虑到撰写本文时正在进行的牛市，我们简单地将<strong>几何布朗运动模型</strong> 与<strong>历史数据</strong> 进行拟合。在这种条件下，价格逐渐上升到 10 万美元以上，沿途经历了几次修正。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_g03c3knu68.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>网络算力稳步上升，随着价格下调，经历了一些<strong>小型滞后修正</strong> 。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_biosay3oyw.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>在这种情况下，相比每天卖出比特币，保留比特币仓位的利润要高得多即使电价很高也是如此。考虑到比特币价格的快速升值，这是有道理的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_p5c7wbsw3s.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>以一度电 4 美分的价格来算，只有使用 S9 矿机并在比特币中保持仓位的矿工才能在百日模拟期内实现<strong>盈亏平衡</strong> 。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_hyypapu2bg.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p><strong>市场波动</strong></p>
+<p>在第二种场景分析中，我们模拟了一个极为波动的市场，将历史拟合 <strong>GBM 模型</strong> 中的波动项增加 25%，并将<strong>漂移</strong> 设置为 0。价格最初上涨到近 8 万美元，然后暴跌到略高于 4 万美元。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_gqu9sn642l.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>算力开始快速增长，但随着价格下降开始趋于稳定。由于响应延迟，算力会继续增加，但速度较慢。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_ycffpebbup.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>最初，这两种策略的表现相当，<strong>比特币多头</strong> 的表现略好于<strong>每天出清的卖家</strong> 。随着价格下跌，有比特币风险敞口的矿工会因为承担了额外的风险而受到惩罚，持有的比特币市值下降。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_rdclm6gfqa.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p><strong>熊市</strong></p>
+<p>第三种模拟通过将 <strong>GBM</strong>  与<strong>历史数据</strong> 拟合，并<strong>翻转漂移项的符号</strong> 来模拟熊市。价格从目前的水平急剧下降，跌到近 3 万美元。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_5ayfjypawt.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>为了应对价格下跌，网络算力在最初的上升后进入修正。这就是**《算力的炼金术》** 中介绍的从库存刷新到周期震荡阶段的过渡。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_aqdj6q9q0c.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>参考阅读:</p>
+<p>《The Alchemy of Hashpower, Part II.》</p>
+<p><a href="https://www.aniccaresearch.tech/blog/the-alchemy-of-hashpower-part-ii">https://www.aniccaresearch.tech/blog/the-alchemy-of-hashpower-part-ii</a></p>
+<p>在熊市中，每个人都遭殃。<strong>比特币多头</strong> 尤其如此：在每度电 4 美分的价格下，如果面临着比特币风险敞口，即使是最有效率的操作在模拟期内都无法收回一半的初始投资。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_e09yyi8iyr.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p><strong>每日出清</strong> 的卖家的表现明显要好一些，但由于他们的收益仍然取决于比特币的价格，因此表现仍然不如牛市时。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_tbwsgnm0us.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p><strong>在牛市中，用旧矿机好还是新矿机更好？</strong></p>
+<p>场景 4 使用与场景 1 相同的历史参数，目的是比较在具有竞争性电价的情况下，运行新旧硬件的矿工的表现。</p>
+<p>这一次，价格飙升到 14 万美元以上，一路加速。算力也迅速增加。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_525qmse6n0.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_nwl02zl5u6.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>场景 1 vs. 场景 4</p>
+<p>考虑到牛市的强度，即使是每天<strong>出清比利币的矿工</strong> ，在运行 S9 矿机的情况下，也能在 100 天的模拟期内实现<strong>盈亏平衡</strong> 。S19 矿机的利润要低得多，但仍能在每天出售的同时收回大部分初始投资。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_lje75grjgs.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>在这种情况下，<strong>做多比特币的矿工</strong> 盈利惊人。在模拟期间，运行 S9 的矿工投资基本上翻番，S19 矿工也能获得可观的利润。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_kgtyltw333.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p><strong>在熊市中，降低运营成本有多重要？</strong></p>
+<p>第五种也是最后一种模拟重新回到熊市中运行，这次的目标是分析<strong>电力成本</strong> 对<strong>盈利能力</strong> 的作用。为此，我们评估了 <strong>S9</strong>  和 <strong>S19 矿机</strong> 在熊市条件下的表现，电费分别为每度 3、4 和 5 美分。</p>
+<p>情形与场景 3 类似：价格暴跌，算力出现了一个较浅但长时间的修正。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_0eovq74sor.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_13esd9pw4t.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p> 场景 3 vs. 场景 5</p>
+<p>对于 <strong>S9 矿工</strong> 来说，电力成本带来了实质性的差异。尽管在这些条件下，无论电力成本处在哪个水平，矿工的表现都不佳，但在电费为每度 3 美分的情况下，做多比特币的矿工的回报率接近其初始投资的 40%，如果电费换成是每度 5 美分，回报率则略低于 32%。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_1mdoscokvc.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p>这种对电价的敏感性有助于解释为什么 S9 矿工往往会在电费更便宜的地区运营。</p>
+<p>对于 <strong>S19 矿工</strong> 来说，这种差异就不那么明显了。虽然电价较低的矿工仍然比电价较高的矿工赚得更多，但这一变量对盈利能力的影响要小得多。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0426/20_kd2ntb8rj7.png" alt="明智的比特币矿工 应当通过模型了解收益变化"></p>
+<p><strong>结论</strong></p>
+<p>维度是统计学家的天敌，而比特币挖矿是一个很难建模的问题。即使是我们这种只做了几个简化假设的模型，也比我们最初设想的要复杂得多。像所有基于蒙特卡罗的工具一样，它的预测能力从根本上受到用户偏见的限制，这些偏见会从初始种子条件波及到一切结果。</p>
+<p>参考阅读:</p>
+<p><a href="https://en.wikipedia.org/wiki/All">https://en.wikipedia.org/wiki/All</a>_models_are_wrong</p>
+<p>我们的模型明确假设价格和算力之间的关系是单向的，同时假定了可能相关的矿机模型和电力成本分布之间的独立性。所有的模型都是不全面的，但有些是有用的。</p>
+<p>我们认为这个模型是有用的。在明智的比特币矿工的工具箱中，它应该能找到用武之地。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/21381/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">美国6月将达疫苗目标 货币政策收紧利空比特币 但印度疫情爆发成变数</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/21402/">
+                <span class="next-text nav-default">明智的比特币矿工，应当通过模型了解收益变化</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

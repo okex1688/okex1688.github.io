@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          DID在区块链下的各种实践与探索 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Web3.0下的DID协议致力于解决DeFi、DAO治理参与、非机器人证明、NFT欺诈等多个链上痛点。" />
+<meta name="keywords" content="OKLink, 去中心化身份" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38088/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="DID在区块链下的各种实践与探索" />
+<meta property="og:description" content="Web3.0下的DID协议致力于解决DeFi、DAO治理参与、非机器人证明、NFT欺诈等多个链上痛点。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38088/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-20T00:00:00+00:00" />
+
+<meta itemprop="name" content="DID在区块链下的各种实践与探索">
+<meta itemprop="description" content="Web3.0下的DID协议致力于解决DeFi、DAO治理参与、非机器人证明、NFT欺诈等多个链上痛点。"><meta itemprop="datePublished" content="2022-05-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4732">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DID在区块链下的各种实践与探索"/>
+<meta name="twitter:description" content="Web3.0下的DID协议致力于解决DeFi、DAO治理参与、非机器人证明、NFT欺诈等多个链上痛点。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">DID在区块链下的各种实践与探索</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-05-20">
+      2022-05-20
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4732 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>前几日，Vitalik Buterin等人发布了一篇名为《去中心化社会：寻找Web3.0的灵魂》的论文，文内指出：</p>
+<p><strong>「现如今，Web3.0更多的是表达可转让的、金融化的资产，而不是对社会信任关系的一种编码。然而，许多核心经济活动，如无抵押贷款和建立个人品牌，都建立在持久的、不可转让的关系上。</strong></p>
+<p><strong>在不到十年的时间里，Web3.0打造了一个前所未有的独特且灵活的平行金融系统，为金融交易带来了一个复杂和开放的生态系统，然后，金融交易的经济价值是由人类和他们的关系产生的。由于 Web3 缺乏代表这种社会身份的基础元素，它从根本上依赖于它所要超越的中心化的 Web2 结构，因此复制了其局限性。」</strong></p>
+<p>而在此前，我们在《身份管理或成下一个千亿市场？》一文中，介绍了DID之于Web2.0和Web3.0的重要性，提到了DID（Decentralized Identifier，去中心化身份体系）是一个亟待爆发的市场，其主要原因有二：</p>
+<p><strong>一是Web2.0下，数据隐私、所有权方面的矛盾激化；</strong></p>
+<p><strong>二是原生Web3.0身份的缺位，而它作为信任的先决条件，使得Web3.0无法支持现实世界普遍存在的活动</strong> ，如确认身份的真实性、提供抵押不足的贷款、抵抗女巫攻击（Sybil Attack）、一人一票的投票治理等。</p>
+<p>今天，我们将把笔墨着重放于DID在区块链下的各种实践与探索，包括：</p>
+<h3 id="链上身份的应用场景概览">链上身份的应用场景概览；</h3>
+<h3 id="代表项目盘点">代表项目盘点；</h3>
+<h3 id="did的优势与现存问题">DID的优势与现存问题；</h3>
+<h3 id="一did去中心化社会的基石">一、DID：去中心化社会的基石</h3>
+<p>作为Web3.0不可或缺的组件以及底层基础设施，DID的价值不在于其本身，而是基于它产生的一系列应用，此时DID充当的是数据切入口和数据安全治理窗口的作用。Web3.0下的DID协议致力于解决DeFi、DAO治理参与、非机器人证明、NFT欺诈等多个链上痛点。</p>
+<h4 id="1-defi的下一轮爆发在did基础上">1. DeFi的下一轮爆发在DID基础上？</h4>
+<p>金融的核心驱动是信用要素，现代金融本质上也是构建在信用之上的各式玩法。区块链仅用不到十年的时间，就打造了一个前所未有，独特且灵活的平行金融系统（DeFi），为金融交易带来了更开放的生态系统。</p>
+<p>而DeFi最发达的是其信贷产品，但由于身份的缺位，很多DeFi借贷协议都需要超额抵押，因为无法依靠信用评分来衡量借款人的信用度，而这也限制了DeFi协议获得抵押或大额商业贷款等功能。</p>
+<p>如果能通过DID，根据链上资产状况和行为数据等直接考量因素为个人信用进行评级，并对照着提供不同等级的服务，比如具有良好偿债历史的实体可以从借贷平台以较少或者无抵押品获得贷款，以当前DeFi总锁仓量已经突破1,100亿美元的背景下，这将激发更多的想象空间，DID也能催生并支撑更多的DeFi产品和服务。</p>
+<h4 id="2nft的滥用和欺诈">2. NFT的滥用和欺诈</h4>
+<p>虽然区块链的运用能够帮我们追踪特定商品的制作时间和流转历史，但却无法为我们追踪社会出处，也无法提供丰富的社会背景，这导致了目前NFT领域在缺乏社会语境下，大量的滥用和欺诈，也迫使大多数的艺术家只能通过Twitter和OpenSea这样的中心化平台来承诺稀缺性和初始出处。</p>
+<p><strong>通过部署DID解决方案，买卖双方可以验证创作者或特定数字艺术品，当然，这个应用范围不仅局限于艺术，还可扩展至服务、租赁和任何建立在稀缺性、声誉或真实性上的市场。</strong></p>
+<h4 id="3-dao治理">3. DAO治理</h4>
+<p>DAO（Decentralized Autonomous Organization，去中心化自治组织）是因共同目的而聚集在一起的虚拟社区，通过区块链上的智能合约投票来进行治理和协作。</p>
+<p>随着加密市场的不断发展，DAO也逐渐成了链上项目发展的标配，是评价工会/团队是否成熟的重要条件之一，配备DAO的项目也会让用户更加信任。由于DAO的治理是分散的，因此权力下放是DAO自治的关键，但由于缺乏个人唯一性的证明，这就使得一个用户可以通过注册多个钱包来累积投票权。</p>
+<p>目前为止，Web3.0在很大程度上是依靠链上资产销售或是空投召集新社区或为社区赋能，但这样做的准确性不高，很容易受到女巫攻击。</p>
+<p>目前圈内越来越多的项目也意识到了这一点，如前不久宣布推出治理资产 的跨链协议Hop Protocol，就表示为了对抗女巫空投攻击者，将计划奖励社区成员识别和报告女巫地址。可见，DID在这一方面的应用会有颇大的前景。</p>
+<p>另外，由于多链生态的兴起，链上身份不再是单链维度，更多提供链上身份服务的平台，也充当了身份聚合器的功能，允许用户管理跨链身份，用户在不同链上进行互动时，也可使用可量化的活动为自己建立和完善链上声誉及信用。</p>
+<h3 id="二did赛道的代表项目">二、DID赛道的代表项目</h3>
+<p>目前已经有不少协议在构建Web3.0下用户通用身份的解决方案，如展示能力、价值或地位的身份概览，包括ENS、POAP、CyberConnect、Lens Protocol，侧重于赏金任务的Rabbithole、Gitcoin DAO、Layer3.xyz，也有非机器人证明，如BrightID、Proof of Humanity（POH），以及链上链下信用的身份协议，如Arcx.money、Project Galaxy、Reputation DAO等。</p>
+<h4 id="1project-galaxy">1. Project Galaxy</h4>
+<p>Project Galaxy构建了一个基于Web 3.0 DID系统，基本框架包括其应用程序模块、凭证Oracle引擎和供开发人员（数据消费者）利用凭证的凭证API。由于凭证数据的使用将根据使用量收费，并且所收取的大部分费用将归凭证数据管理者所有，因此当凭证在 Galaxy 的生态系统中使用时，此类数据管理者会获得奖励。</p>
+<p>对于链上凭证，策展人可以提供子图查询或静态快照。在链下，则已与 Snapshot.org、Twitter 和 Github 等数据源集成。</p>
+<p>今年1月25日，Project Galaxy完成了1,000万美元的融资，Multicoin Capital和Dragonfly Capital领投。</p>
+<h4 id="2-arcxmoney">2. ARCx.money</h4>
+<p>ARCx是一个去中心化的评分协议，为链上身份和基于信用评分的借贷提供支持。ARCx发行了一个名为DeFi Passport的产品，根据每个Passport持有者的信用分来量化其链上地址的信誉度。信用分将通过分析持有者的历史活动来确定。ARCx还建立了机器学习模型，对清算或未清算仓位的分类进行回测，以此反映链上活动和信用风险之间的相关性。</p>
+<p>2021年，ARCx完成130万美元融资，Dragonfly Capital、Scalar Capital和Ledger Prime领投。</p>
+<h4 id="3litentry">3. Litentry</h4>
+<p>Litentry是一个去中心化的身份聚合器，可以跨多个网络链接用户身份。用户可以通过它管理自己的身份，DApp可以跨不同区块链获取身份所有者的实时DID数据。通过聚合的跨链身份，使得区块链项目能够基于此提供专用的分级身份服务，以支持下一代Web 3.0服务。</p>
+<p>Litentry可计算个人的信用评级，以促进DeFi分析服务。 通过 Litentry 在各个地址上汇总的所有链上活动数据，用户可以通过提交IDO/空投白名单等活动的地址以去中心化的方式生成证明。</p>
+<p>未来还将继续深入探索如基于用户链上行为的权重计算、风险评估、信用判断、用户价值计算等。</p>
+<h3 id="三web30最有价值的创新">三、Web3.0最有价值的创新？</h3>
+<p>基于DID的Web3.0的主要特征可以概括为「主动性」、「数字最大化」、「多维度」、「去中心化」、「隐私为主」这五大关键词。</p>
+<p>「主动性」即用户拥有对数据的绝对话语权，掌握对数字身份数据的所有权、管理权和控制权；「数字最大化」是指将数字技术和解决方案集成到业务的各个领域；「多维度」即综合考量，建立全面且独一无二的数字身份系统，防止欺诈和身份盗用；「去中心化」意味着基于区块链的去中心化网络结构和防篡改等技术特性，避免了身份数据被单一的中心化权威机构所控制；「隐私为主」指的是确保信息安全，保护用户隐私的同时，最大化建立Web3.0的信任。</p>
+<p>与中心化的身份不同，DID有着明显的三大优势：</p>
+<p>把数据的控制权还给用户，赋予所有者对其数字身份及使用方式的完全主权，就像用户持有私钥就意味着完全拥有加密资产一样；实现数据的整合，用户可以拥有一个包含所有信息并单独管理的数字身份，而非由不同中心化平台管理的多个数字身份（如支付宝管理的支付宝账户、银行管理的银行账户、学信网管理的学历认证等）；通过DID，用户可以安全地管理和使用自己的隐私数据，平台在获取用户授权时，不再需要掌握数据的全部信息，即可确认用户身份，也就是实现数据「可用不可见」的安全模式。当然，当前基于区块链下的DID仍面临以下四大问题：</p>
+<h3 id="尚处于发展早期无论是did还是web30都处于早期阶段面临着技术不成熟成本高体验差用户接受度低等问题比如很多的did身份验证是链上链下相结合而链下多依靠于人工易出现等候时间长验证缓慢等问题链上数据的隐私和透明度由于区块链具有公开性巨鲸们的钱包地址早已不是秘密甚至已经有不少的链上工具被开发出来专门追踪巨鲸动态若是将链上身份与线下本人对应起来也会给本人带去人身安全舆论等压力数据量较为庞大和冗杂虽然链上数据是一座待挖掘的金矿但由于区块链的永久运转和公开的属性导致链上沉淀了各式信息从冗杂的信息中挖掘并提取有效信息也是一个不小的挑战对于各大数字身份平台而言在给链上身份设计模型和维度考量方面增加了不小的难度监管问题新生事物从野蛮生长到成熟的考量标准之一就是合规化的发展一般肯定会存在各种法律短时间跟不上的问题当然did能否被监管层接受也是挑战之一web30实现正常营收仍有很长的距离要走中心化平台利用把用户产生的数据转化为流量进行收费而did模式下平台失去了对数据的控制权这也意味着平台的大头收益消失了而为了继续提供did服务以及持续的技术迭代平台又不得不寻找新的收益点这时发行链上资产似乎成了很多平台的选择但资产的价值增长绝不能仅依靠短期的炒作而应关注长期的运作而这又对项目方又提出了持续稳健现金流的需求">尚处于发展早期。无论是DID还是Web3.0都处于早期阶段，面临着技术不成熟、成本高、体验差、用户接受度低等问题，比如很多的DID身份验证是链上链下相结合，而链下多依靠于人工，易出现等候时间长、验证缓慢等问题；链上数据的隐私和透明度。由于区块链具有公开性，巨鲸们的钱包地址早已不是秘密，甚至已经有不少的链上工具被开发出来，专门追踪巨鲸动态。若是将链上身份与线下本人对应起来，也会给本人带去人身安全、舆论等压力。数据量较为庞大和冗杂。虽然链上数据是一座待挖掘的金矿，但由于区块链的永久运转和公开的属性，导致链上沉淀了各式信息，从冗杂的信息中挖掘并提取有效信息也是一个不小的挑战，对于各大数字身份平台而言，在给链上身份设计模型和维度考量方面增加了不小的难度。监管问题。新生事物从野蛮生长到成熟的考量标准之一，就是合规化的发展，一般肯定会存在各种法律短时间跟不上的问题。当然，DID能否被监管层接受也是挑战之一。Web3.0实现正常营收，仍有很长的距离要走。中心化平台利用把用户产生的数据转化为流量进行收费，而DID模式下，平台失去了对数据的控制权，这也意味着平台的大头收益消失了，而为了继续提供DID服务以及持续的技术迭代，平台又不得不寻找新的收益点，这时发行链上资产似乎成了很多平台的选择，但资产的价值增长，绝不能仅依靠短期的炒作，而应关注长期的运作，而这又对项目方又提出了持续、稳健现金流的需求。</h3>
+<h3 id="四小结">四、小结</h3>
+<p>对Web2.0而言，数据隐私、安全等问题，提出了数字所有权的刚需，而就Web3.0来看，当前链上用例的痛点，也使得去中心化身份成了最具潜力也是挑战性的领域。</p>
+<p>DID的本质是在保护用户隐私的同时，最大化地建立Web3.0的信任，基于DID的服务模式可以是非常丰富多样的，而目前对于它的探索才刚刚开始。作为Web3.0的核心组件，相信DID的发展也将与Web3.0一同演进，创造出更具价值的应用模块，而我们也会持续关注新的用例，为大家带来更多的一手资讯。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38107/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">DeFi协议iZUMi Finance融资3000万美元，IV Ventures、Cobo等参投</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38104/">
+                <span class="next-text nav-default">G7 表示 加密货币应符合与常规金融相同的规范</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#链上身份的应用场景概览">链上身份的应用场景概览；</a></li>
+        <li><a href="#代表项目盘点">代表项目盘点；</a></li>
+        <li><a href="#did的优势与现存问题">DID的优势与现存问题；</a></li>
+        <li><a href="#一did去中心化社会的基石">一、DID：去中心化社会的基石</a></li>
+        <li><a href="#二did赛道的代表项目">二、DID赛道的代表项目</a></li>
+        <li><a href="#三web30最有价值的创新">三、Web3.0最有价值的创新？</a></li>
+        <li><a href="#尚处于发展早期无论是did还是web30都处于早期阶段面临着技术不成熟成本高体验差用户接受度低等问题比如很多的did身份验证是链上链下相结合而链下多依靠于人工易出现等候时间长验证缓慢等问题链上数据的隐私和透明度由于区块链具有公开性巨鲸们的钱包地址早已不是秘密甚至已经有不少的链上工具被开发出来专门追踪巨鲸动态若是将链上身份与线下本人对应起来也会给本人带去人身安全舆论等压力数据量较为庞大和冗杂虽然链上数据是一座待挖掘的金矿但由于区块链的永久运转和公开的属性导致链上沉淀了各式信息从冗杂的信息中挖掘并提取有效信息也是一个不小的挑战对于各大数字身份平台而言在给链上身份设计模型和维度考量方面增加了不小的难度监管问题新生事物从野蛮生长到成熟的考量标准之一就是合规化的发展一般肯定会存在各种法律短时间跟不上的问题当然did能否被监管层接受也是挑战之一web30实现正常营收仍有很长的距离要走中心化平台利用把用户产生的数据转化为流量进行收费而did模式下平台失去了对数据的控制权这也意味着平台的大头收益消失了而为了继续提供did服务以及持续的技术迭代平台又不得不寻找新的收益点这时发行链上资产似乎成了很多平台的选择但资产的价值增长绝不能仅依靠短期的炒作而应关注长期的运作而这又对项目方又提出了持续稳健现金流的需求">尚处于发展早期。无论是DID还是Web3.0都处于早期阶段，面临着技术不成熟、成本高、体验差、用户接受度低等问题，比如很多的DID身份验证是链上链下相结合，而链下多依靠于人工，易出现等候时间长、验证缓慢等问题；链上数据的隐私和透明度。由于区块链具有公开性，巨鲸们的钱包地址早已不是秘密，甚至已经有不少的链上工具被开发出来，专门追踪巨鲸动态。若是将链上身份与线下本人对应起来，也会给本人带去人身安全、舆论等压力。数据量较为庞大和冗杂。虽然链上数据是一座待挖掘的金矿，但由于区块链的永久运转和公开的属性，导致链上沉淀了各式信息，从冗杂的信息中挖掘并提取有效信息也是一个不小的挑战，对于各大数字身份平台而言，在给链上身份设计模型和维度考量方面增加了不小的难度。监管问题。新生事物从野蛮生长到成熟的考量标准之一，就是合规化的发展，一般肯定会存在各种法律短时间跟不上的问题。当然，DID能否被监管层接受也是挑战之一。Web3.0实现正常营收，仍有很长的距离要走。中心化平台利用把用户产生的数据转化为流量进行收费，而DID模式下，平台失去了对数据的控制权，这也意味着平台的大头收益消失了，而为了继续提供DID服务以及持续的技术迭代，平台又不得不寻找新的收益点，这时发行链上资产似乎成了很多平台的选择，但资产的价值增长，绝不能仅依靠短期的炒作，而应关注长期的运作，而这又对项目方又提出了持续、稳健现金流的需求。</a></li>
+        <li><a href="#四小结">四、小结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

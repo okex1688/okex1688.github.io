@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          源码解读：你买的NFT到底是什么？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="如果你是WEB3加密界的新手，面对众多概念无从入手，那么欢迎你，来对地方了" />
+<meta name="keywords" content="NFT" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38932/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="源码解读：你买的NFT到底是什么？" />
+<meta property="og:description" content="如果你是WEB3加密界的新手，面对众多概念无从入手，那么欢迎你，来对地方了" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38932/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-14T00:00:00+00:00" />
+
+<meta itemprop="name" content="源码解读：你买的NFT到底是什么？">
+<meta itemprop="description" content="如果你是WEB3加密界的新手，面对众多概念无从入手，那么欢迎你，来对地方了"><meta itemprop="datePublished" content="2022-06-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3969">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="源码解读：你买的NFT到底是什么？"/>
+<meta name="twitter:description" content="如果你是WEB3加密界的新手，面对众多概念无从入手，那么欢迎你，来对地方了"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">源码解读：你买的NFT到底是什么？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-14">
+      2022-06-14
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3969 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="内容概要">内容概要</h3>
+<p>如果你是WEB3加密界的新手，面对众多概念无从入手，那么欢迎你，来对地方了！！</p>
+<p>本文围绕标准 ERC721协议，描述了Mint、 safeMint、 transfer等是如何实现资产管理的，并通过解读代码来了解它的安全性设计和以太坊数据上链成本构成。</p>
+<h3 id="目录大纲">目录大纲</h3>
+<ul>
+<li>
+<p>1.所谓NFT资产是什么？</p>
+</li>
+<li>
+<p>2.Mint和safeMint的差别</p>
+</li>
+<li>
+<p>3.交易时会发生什么？有哪些细节设计</p>
+</li>
+<li>
+<p>4.NFT哪些数据也存储在链上？</p>
+</li>
+<li>
+<p>5.以太坊上存储有多贵？</p>
+</li>
+</ul>
+<h3 id="面向对象">面向对象</h3>
+<ul>
+<li>
+<p>Web3新手，有无技术背景均可：</p>
+</li>
+<li>
+<p>研发——可无障碍阅读，理解精美的合约设计</p>
+</li>
+<li>
+<p>非研发——可能读不懂列举的代码，但能体会标准协议的设计思路</p>
+</li>
+</ul>
+<h2 id="1所谓nft资产是什么">1.所谓NFT资产是什么？</h2>
+<p>在opensea上，可看到每个NFT都有个唯一的编号。</p>
+<p>比如azuki系列中第4132号，在页面的Details栏目可以看到其合约地址，ID编号，部署所在公链等信息，而Properties栏目则是其设定的具备各种属性，对应的稀有度（非azuki本身携带，而是opensea整合计算的）。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0614/28_ekbz4yafk9.png!heading" alt="源码解读：你买的NFT到底是什么？"></p>
+<h3 id="11-资产在标准erc721协议里是什么">1.1 资产在标准ERC721协议里是什么？</h3>
+<p>而咱们回顾到源代码（此处取ERC721标准库openzepplin代码），会发现程序记录了全局性的两个字典类型的变量，通过 _owners中用数字映射地址的方式记录每一个ID 当前对应的所有者，同时也附带用_balances 记录了当前所有者总计持有的NFT数量</p>
+<p><img src="https://img.bibiqing.com/news/2022/0614/28_lblvhmqjgw.png!heading" alt="源码解读：你买的NFT到底是什么？"></p>
+<p>并且由于ERC721创新性的赋予了一个ID对应地址的变量 _owners，从而与ERC20仅_balances 进行地址与余额的管理，区分出了FT（同质化）与NFT（非同质化）的差别。</p>
+<h2 id="2mint和safemint的差别">2.Mint和safeMint的差别</h2>
+<h3 id="21mint是如何进行的">2.1 Mint是如何进行的</h3>
+<p>Mint 意思为铸造，即每个NFT的创造过程，例如之前的爱死机NFT 当奈飞的NFT忘记了web2的业务安全</p>
+<p>Mint 获取到该NFT的资产证明。</p>
+<p>从源代码中可以看到，Mint 主要是进行了安全判断：</p>
+<ul>
+<li>
+<p>判断1：确保转入的不是0x00地址（黑洞地址无法转出，转入则资产损失）</p>
+</li>
+<li>
+<p>判断2：确保此交易所操作的NFTID是不存在的</p>
+</li>
+</ul>
+<p>最终代码执行的操作是：</p>
+<ul>
+<li>
+<p>操作1：将转入地址的_balances 所持有总数加1</p>
+</li>
+<li>
+<p>操作2：将对应 NFTID 的所有者修改为转入的地址</p>
+</li>
+<li>
+<p>操作3：完成交易则发出emit 事件，可以让链下监听到这次交易的数据</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0614/28_0u8or7zvg2.png!heading" alt="源码解读：你买的NFT到底是什么？"></p>
+<p>中间有_beforeTokenTransfer和_afterTokenTransfer 属于虚函数，作为标准，是让项目方可以再不修改标准协议的情况下增加一些特定的逻辑代码用的。</p>
+<h3 id="22-为何safemint更安全">2.2 为何safeMint更安全</h3>
+<p>safeMint 意为安全的铸造，从代码实现中可以看到他本身也是调用了MInt 但是他额外增加了_checkOnERC721Received 的判断，这点是属于ERC165的标准，相当于在完成转入操作后，则判断对方地址，是否是黑洞地址（即无法发起交易NFT操作的地址）是防止转入对象为合约地址时候，其合约没有预设置好转出的函数，导致资产在内无法被转走，从而造成永久损失。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0614/28_6hul8zbqrn.png!heading" alt="源码解读：你买的NFT到底是什么？"></p>
+<h3 id="23-erc165是如何防止资产转入黑洞的">2.3 ERC165是如何防止资产转入黑洞的？</h3>
+<p>设计初衷可见：https://eips.ethereum.org/EIPS/eip-165</p>
+<p>是让合约接口标准化的提案，在编程语法中interface 是接口的意思，在其中定义的函数可以不实现仅仅放上函数名字相关参数，在程序复杂的时候，相当于目录一般告诉别人我都有什么功能。</p>
+<p>但是接口的写法各有千秋，名字定义参数类型，甚至是否存在都有不同，</p>
+<p>所以此提案最终形成了ERC165标准，规范了接口的识别规则。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0614/28_7uw2shh22k.png!heading" alt="源码解读：你买的NFT到底是什么？"></p>
+<p>使用流程是：</p>
+<p>STEP 1 判断是否存在 supportsInterface 函数，并且其符合165标准</p>
+<p>STEP 2通过 supportsInterface 函数，判断是否具有转出NFT的函数</p>
+<p>（PS：让合约具备NFT接收转出功能，可通过引入 IERC721Receiver.sol 拓展包来实现）</p>
+<h2 id="3交易时会发生什么有哪些细节">3.交易时会发生什么？有哪些细节？</h2>
+<p>标准协议设计有两种转移方式，transfer 和 transferFrom，作用于两种场景：</p>
+<ul>
+<li>
+<p>transfer 转移：由用户调用，将本消息发送的钱包所持有的NFTID转移到指定地址</p>
+</li>
+<li>
+<p>transferFrom 从转移：用某机构调用，需要用户先授权某地址，让其有权可转移。</p>
+</li>
+</ul>
+<p>类比一下：</p>
+<ul>
+<li>
+<p>transfer 就是现金交易，从自己口袋里拿钱支付</p>
+</li>
+<li>
+<p>transferFrom 就是扫码扣款，由店家申请扣款，受制于用户是否开通小额代扣权限</p>
+</li>
+</ul>
+<p>接下来咱们从代码来看看，其中可能有会意想不到的细节。</p>
+<h3 id="31transfer是如何进行的">3.1 transfer 是如何进行的</h3>
+<p>他会检测当前交易的 from 方是否是此NFTID的持有者，并且限制该NFT转入0x00地址。其次进行 from 转出地址和 to 转入地址的余额刷新，修改 _balances全局变量并且重新设置_owners此NFTID的所有者地址修改为to。</p>
+<p>这里有个防护的细节会先执行_approve(address(0), tokenId);  清空历史授权，如果没有这一步，则资产完成了转移，但是其NFTID的转移授权依旧在，细思极恐：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0614/28_1g32unnr6s.png!heading" alt="源码解读：你买的NFT到底是什么？"></p>
+<h3 id="32-transferfrom是如何进行的">3.2 transferFrom是如何进行的</h3>
+<p>这里的交易本质调用的是_safeTransfer 所以他的核心逻辑是require 部分，</p>
+<p>这的一大细节是：_msgSender()   这是openzepplin的标准库Context.sol 中的方法。</p>
+<p>其实就是获取当前交易的发送者地址，但这里使用了封装版本，而不是直接使用msg.sender</p>
+<p>是考虑到，可能存在一种交易类型“元交易” ，即交易的付费gas方和交易发起方不相同的情况。</p>
+<p>所以一些处于中间环节的，类似library的合约需要考虑这种特殊情况。</p>
+<p>其余部分判断是确定是否有授权记录，易于理解，不作赘述</p>
+<p><img src="https://img.bibiqing.com/news/2022/0614/28_v8cy4fmfsb.png!heading" alt="源码解读：你买的NFT到底是什么？"></p>
+<h2 id="4还有哪些数据可扩展存储在链上">4.还有哪些数据可扩展存储在链上？</h2>
+<p>交易的环节也看完后，其实很多新同学也顿感奇怪，原来我买的NFT只有一个ID的归属地址指向了我，从而达成了唯一性。那就算如此，稀有度信息放在哪里？我的NFT图像本身在那里？</p>
+<p>这就是涉及到ERC721的元数据拓展IERC721Metadata.sol</p>
+<p>要放什么都可以，但是项目方往往在链上只存储最基础的ID+IPFS的地址。</p>
+<p>咱们可以通过之前Etherscan教程方法来看看一些项目数据有什么？</p>
+<p>Azuki上合约地址是：0xed5af388653567af2f388e6224dc7c4b3241c544</p>
+<p>通过Read Contract可以查阅到，其元数据只存放了ipfs上的指向地址</p>
+<p>而近期兴起的Metaverse项目元宇宙土地sandbox和****Decentraland ，以及去年火热的****Axie Infinity ，基本链上存储元数据也只是ID+网址。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0614/28_or7m7e1kgo.png!heading" alt="源码解读：你买的NFT到底是什么？"></p>
+<p>像mirror那些是专门设计低费用可进行高存储，一个块常规都是30M起步，大约是以太坊的1000倍。</p>
+<h2 id="5以太坊上存储有多贵">5.以太坊上存储有多贵？</h2>
+<p>这里是本文稍难的地方。咱们从源码来分析链上存储的成本构成以及金额换算</p>
+<p>成本产生将有2个方面，按执行流程来看</p>
+<ul>
+<li>
+<p>用户发起一笔交易，将要写链上数据作为参数传入，其大小是一笔成本</p>
+</li>
+<li>
+<p>交易执行合约代码，依据修改和使用，EVM计算消耗的gas成本。</p>
+</li>
+</ul>
+<h3 id="51-交易发起的成本">5.1 交易发起的成本</h3>
+<p>咱们可以核对下以太坊黄皮书，里对交易数据大小所消耗gas有清晰的定义</p>
+<p><img src="https://img.bibiqing.com/news/2022/0614/28_bhdir8zu0a.png!heading" alt="源码解读：你买的NFT到底是什么？"></p>
+<p>可以看到交易所附带的参数的价格：</p>
+<ul>
+<li>
+<p>每笔交易都有21000 GAS需要支付</p>
+</li>
+<li>
+<p>为交易的每个非零字节数据或代码支付68 GAS</p>
+</li>
+<li>
+<p>为交易的每个零字节数据或代码支付4 GAS</p>
+</li>
+</ul>
+<p>所以如果是再 Mint 的时候，登记上若干NFT属性信息，交易的data部分会将abc等字符转成2个十六进制表示，而每个字符为一个八位二进制，等于一个byte。所以可以约等于将data的长度除以2作为byte数。</p>
+<p>而1kb的数据，如果都是非0的有信息量的文本信息，则等于增加是68*1000=6.8W 的gas消耗。按20gwei的gas价格和2000的eth兑换美元价格，可以估算出，每上链1kb数据在交易发起端就要：</p>
+<p>20*(21000+68000)*1e9/1e18 * 2000 = 3.5美金</p>
+<h3 id="52合约存储的成本">5.2合约存储的成本</h3>
+<p>由于交易发起后，还有智能合约上存储的逻辑，咱们从以太坊go源代码中（EIP1283），来分析具体的消费量，代码具体在函数内，太长了不全粘来：</p>
+<p>func gasSStore(evm *EVM, contract *Contract, stack *Stack, mem *Memory, memorySize uint64)(uint64, error)</p>
+<p>历史上GAS消耗的估算有经过若干迭代，如果是Petersburg或者 Constantinople 未激活的话，则不按下面逻辑进行计算</p>
+<p>gas消耗计算，依赖3个种数据的管理形式（增删改）</p>
+<ul>
+<li>
+<p>从零值地址到非零值（NEW VALUE），每个存储槽需消耗2Wgas</p>
+</li>
+<li>
+<p>从非零值地址到零值地址（DELETE），每个存储槽需消耗5Kgas，但会有奖励1.5W gas退回</p>
+</li>
+<li>
+<p>从非零到非零（CHANGE），每个存储槽需消耗 200 gas</p>
+</li>
+</ul>
+<p>注意，上述每一个存储槽算32byte，1kb存储则是32个存储槽。Mint 的过程是新增存储，所以如果新增1kb的数据存储在链上代价将是64Wgas，换算成金额则是：</p>
+<p>20*(640000)*1e9/1e18 * 2000 = 25 美金</p>
+<p>真可谓寸土寸金！</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38929/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">元宇宙系列之虚拟人：“人”潮汹涌 探路未来</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38892/">
+                <span class="next-text nav-default">「在世界中心呼唤Web3」本周活动预告 6.13-6.17</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#内容概要">内容概要</a></li>
+        <li><a href="#目录大纲">目录大纲</a></li>
+        <li><a href="#面向对象">面向对象</a></li>
+      </ul>
+    </li>
+    <li><a href="#1所谓nft资产是什么">1.所谓NFT资产是什么？</a>
+      <ul>
+        <li><a href="#11-资产在标准erc721协议里是什么">1.1 资产在标准ERC721协议里是什么？</a></li>
+      </ul>
+    </li>
+    <li><a href="#2mint和safemint的差别">2.Mint和safeMint的差别</a>
+      <ul>
+        <li><a href="#21mint是如何进行的">2.1 Mint是如何进行的</a></li>
+        <li><a href="#22-为何safemint更安全">2.2 为何safeMint更安全</a></li>
+        <li><a href="#23-erc165是如何防止资产转入黑洞的">2.3 ERC165是如何防止资产转入黑洞的？</a></li>
+      </ul>
+    </li>
+    <li><a href="#3交易时会发生什么有哪些细节">3.交易时会发生什么？有哪些细节？</a>
+      <ul>
+        <li><a href="#31transfer是如何进行的">3.1 transfer 是如何进行的</a></li>
+        <li><a href="#32-transferfrom是如何进行的">3.2 transferFrom是如何进行的</a></li>
+      </ul>
+    </li>
+    <li><a href="#4还有哪些数据可扩展存储在链上">4.还有哪些数据可扩展存储在链上？</a></li>
+    <li><a href="#5以太坊上存储有多贵">5.以太坊上存储有多贵？</a>
+      <ul>
+        <li><a href="#51-交易发起的成本">5.1 交易发起的成本</a></li>
+        <li><a href="#52合约存储的成本">5.2合约存储的成本</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

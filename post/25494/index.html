@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          理解自动做市商：价格冲击 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="AMM模式下如何缓冲价格冲击？" />
+<meta name="keywords" content="AMM" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25494/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="理解自动做市商：价格冲击" />
+<meta property="og:description" content="AMM模式下如何缓冲价格冲击？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25494/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-07T00:00:00+00:00" />
+
+<meta itemprop="name" content="理解自动做市商：价格冲击">
+<meta itemprop="description" content="AMM模式下如何缓冲价格冲击？"><meta itemprop="datePublished" content="2021-07-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3677">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="理解自动做市商：价格冲击"/>
+<meta name="twitter:description" content="AMM模式下如何缓冲价格冲击？"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">理解自动做市商：价格冲击</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-07">
+      2021-07-07
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3677 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>每天有成千上万的人第一次使用去中心化交易所。然而，公链的特性通常会让新手措手不及，即使是那些熟悉传统市场的用户。结果就是交易者的资金流向套利者和抢跑者，导致其操作受到预期之外的影响。</p>
+<p>在宏观层面上，我们可以将每笔交易的成本分解为几个部分：</p>
+<ol>
+<li>
+<p><strong>价格冲击</strong></p>
+</li>
+<li>
+<p><strong>中间费或交易费</strong></p>
+</li>
+<li>
+<p><strong>滑点</strong></p>
+</li>
+<li>
+<p><strong>底层区块链的交易费</strong></p>
+</li>
+</ol>
+<p>这篇关于自动做市商 (AMM) 的文章将作为本系列的引介，并讨论第一种也是最关键的成本：价格冲击。读者将了解到：</p>
+<ul>
+<li>
+<p>Uniswap v2, Sushiswap 和 Balancer 的 AMM 机制如何确定价格</p>
+<p>注：其他使用中心化订单簿 (如 Serum) 或批量拍卖 (如 Gnosis) 的 DEX 本文不作讨论)</p>
+</li>
+<li>
+<p>如何使用一些简单策略最小化价格冲击对个人交易的影响</p>
+</li>
+</ul>
+<h2 id="流动性池是什么"><strong>流动性池是什么？</strong></h2>
+<p>大多数去中心化交易所的流动性池代表了不同的交易对，例如 ETH/WBTC。不同于在订单簿中匹配买卖方的方式，这些流动性池作为<strong>自动做市商</strong>  (AMM, automated market maker) 存在。</p>
+<p>流动性池是一个智能合约，其中储存了两种或以上的代币，并且允许任何人在其中进行存款和提款操作，但是受到特定规则的约束。</p>
+<p>其中的一条规则就是<strong>恒定乘积公式 x * y = k</strong> ，x 和 y 代表 A, B 两种代币的储备。为了取出一定数量的代币 A，用户必须要存入成比数量的代币 B 以维持恒定的 K 值 (注：每次交易的费用会导致 K 值略微升高)。</p>
+<h2 id="amm-如何定价"><strong>AMM 如何定价？</strong></h2>
+<p>根据恒定乘积公式可得，使用代币 B 储备量除以代币 A 储备量可以简单得到代币 A 的价格 (price_token_A = reserve_token_B / reserve token_A)。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0707/13_jee0pmgi3n.png" alt="理解自动做市商：价格冲击"></p>
+<p>表1: 不同的 AMM 公式会产生不同的价格曲线。假设 Uniswap v2 流动性池有 15 个 Y 代币时，它只会为边际 Y 代币支付 0.1 个 X 代币。但是当只有 2.5 个 Y 代币时，它会支付 4.0 个 X 代币。其他价格曲线旨在将更多流动性集中在某个价格 (例如稳定币为 1.0)。来源：Curve 白皮书</p>
+<p>举个真实的例子，在撰写本文时 Uniswap 的 ETH/WBTC 交易池中有 2,700 WBTC 和 86,000 ETH。该储备率意味着 ETH 当时的市场价格为 2,700 / 86,000 = 0.0314 WBTC。</p>
+<p>至关重要的是，<strong>AMM 不会随着其他市场的变动而更新此价格。</strong> 市场价格只会随着池中代币储备率的变化而变化，当有人在其中进行交易时就会产生变化。</p>
+<p>举个例子，如果 Binance 中的 ETH 价格跌至 0.0310 WBTC 会发生什么？这意味着 Uniswap LP 目前正在以溢价购买 ETH，从而创造了<strong>套利机会</strong> 。套利者在 Binance 上购买“便宜”的 ETH，然后在 Uniswap 上出售以获利。他们会一直这样做，直到 Uniswap ETH 单位价格变成 0.0310 WBTC (与 Binance 相同)，他们无法再通过卖出 ETH 获利。在我们上面的示例中，这会发生在以 17.2 WBTC 的价格向交易池出售 550 ETH 后 (为简单起见，忽略费用和 gas)。</p>
+<p>因此，即使 AMM 不会根据现实世界的信息更新其价格，由于持续的套利，交易者仍然可以预期 AMM 的报价会密切跟进全球市场价格。</p>
+<h2 id="价格冲击是什么"><strong>价格冲击是什么？</strong></h2>
+<p>虽然我们学习了如何根据两种代币储备比率计算当前市场价格，但该市场价格仅代表 AMM 想要的<strong>边际代币价格</strong> 。然而在实践中，交易者通常会一次性买卖许多代币，每单位代币的成本都比前一个高。</p>
+<p><strong>当前市场价格与预期成交价之间的差距就是</strong> 价格冲击 (price impact)。</p>
+<p>价格冲击是以下两个因素作用的结果：</p>
+<ul>
+<li>
+<p>你交易量的规模在流动性池中的占比；</p>
+</li>
+<li>
+<p>流动性池采用的交易规则 (例如恒定乘积公式)。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0707/13_5c280htcl0.png" alt="理解自动做市商：价格冲击"></p>
+<p>表2 : 不同订单规模下的平均成交价 (左 y 轴) 和价格冲击 (右 y 轴) 对比图。这两个参数都随着订单规模增大而增加。随着订单规模在流动性池规模中的占比增加，成交价相对市场价格会高出更多。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0707/13_6s916jqicc.png" alt="理解自动做市商：价格冲击"></p>
+<p>表3: 在 Uniswap v2 上不同规模的流动性池中进行 10 WBTC 的卖单后，平均成交价 (左 y 轴) 和价格冲击 (右 y 轴) 的对比图。流动性池规模指的是交易池中两种资产储备量的总价值。10 WBTC 的卖单在不同流动性池中的占比分别为 0.19%、1.85% 和 18.52%。因此根据经验，<strong>你的订单的价格冲击约为该订单规模在流动性池中占比的两倍。</strong></p>
+<p><strong>如何最小化价格冲击？</strong></p>
+<p>正如我们之前提到的，价格冲击在交易总执行成本中占很大一部分。以下是一些能够将价格冲击最小化的简单策略：</p>
+<ul>
+<li><strong>找到深度最好的市场：</strong> 到目前为止，我们已经确定价格冲击取决于交易规模在流动性池或市场规模中的占比。因此，我们希望找到在某个价格区间流动性最好的交易池，以使成交价尽可能接近市场价格。Coingecko 上的市场深度表是一个不错的切入点。</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0707/13_nszh7nlho4.png" alt="理解自动做市商：价格冲击"></p>
+<p><em>表4: 市场价格差异 2% 内的 UNI 交易对流动性排序。注意 Uniswap 和 Bitfinex 价差的差异。来源：Coingecko</em></p>
+<ul>
+<li>
+<p><strong>关注 DeFi 以外的市场：</strong> 虽然这是一篇关于自动做市商的文章，但是我们知道用户并不总是能够在链上获取最佳的交易执行。实际上，由于所讨论的自动做市商的流动性分布在一个连续的价格区间内，通常很少会有流动性集中在当前市场价格附近。这是许多去中心化交易所都试图解决的问题。例如 Uniswap v3 可以让做市商将其流动性集中在当前市场价格附近，从而提供比中心化交易所更有竞争力的价格。</p>
+<p>如果有一笔交易改变了去中心化交易所上某个代币的价格，且该代币还在其它市场上交易，就会产生套利机会。如上所述，套利者将进行尾随交易 (即在某笔交易后立即插入自己的交易)，让去中心化交易所上的价格重新回到全球市场价格。显然，套利行为的存在本身就是一种执行不当证明，因为交易者无异于向套利者捐赠资金。这引出了一个问题：其它市场存在的情况下，你是否应该接受超过 2%-3% 的价格冲击来执行链上交易？</p>
+</li>
+<li>
+<p><strong>注意交易费：</strong> 自动做市商收取 0.3% 的交易费，这就意味着最佳买单和最佳卖单之间的价差是 0.6%。在这个范围内，自动做市商不会进行报价。换言之，<strong>即使是流动性最好的自动做市商交易也明显存在 0.3% 的价格冲击。</strong> 尽可能降低交易费是至关重要的，对于在中心化交易所中受到价格冲击影响微乎其微的交易来说更是如此，因此，完全可以说中心化交易所可能是更好的交易执行平台。(做个对比，同样一笔交易的费用在币安上可能是 0.1%，在 FTX 交易所中可能是 0.07%)</p>
+<p>尽管如此，还有其它原因导致去中心化交易所的成本较高，如全托管、KYC 或存款流程等。但即使在这些情况下，交易者也应该意识到较高的交易价格背后意味着<strong>去中心化或即时流动性溢价。</strong></p>
+</li>
+<li>
+<p><strong>分散交易：</strong> 首先，我们可以将一笔交易分解成几笔较小的交易陆续完成。这点对于更倾向于使用去中心化交易所的交易者来说尤其重要，暂不论 DeFi 领域之外还存在其它流动性市场。举个例子，每次买入 20%，然后等待套利者恢复价格。这 5 笔交易的价格冲击加起来低于一笔大额交易，但 gas 成本会更高，执行时间也会更长。交易的数额越大，这个策略就越有优势，因为固定的 gas 成本随着更优的边际执行降低。这个策略也同样适用于均值反复资产 (如稳定币)。</p>
+</li>
+<li>
+<p><strong>直接交易的成本不一定更低廉：</strong> 并非每笔交易都存在直接交易对，即使存在，也不一定比使用<strong>中间货币</strong> 更便宜。例如，尽管代币 A 和 B 存在直接交易对，但是在 A-ETH 和 ETH-B 代币对流动性更充足的情况下，A → ETH → B 的交易路线通常更便宜。从交易路线来看，聚合器的建议非常有帮助。</p>
+</li>
+<li>
+<p><strong>使用去中心化交易所聚合器：</strong> 最后，你可以使用1inch、Matcha 或 Paraswap 等去中心化交易所聚合器。这些聚合器相当于 DeFi 领域的智能订单路由，其运行方式是自动做市商卖出第 1 个代币的价格会比第 10 个代币低。每当某代币在多个流动性池中交易时，聚合器会从所有流动性池买入该代币，尽可能降低每个流动性池的价格冲击。不同于在一个市场中拉长交易周期，聚合器会在许多可能的市场中分散交易并立即执行。和手动拆分交易一样，聚合器的 gas 成本同样比单笔交易更高。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0707/13_ozsi45s04u.png" alt="理解自动做市商：价格冲击"></p>
+<p>表5：用 ETH 买入 10 个 (3200 美元)、50 个 (1.6 万美元)、100 个(3.2 万美元) 和 200 个 (6.4 万美元) AAVE 的最佳策略。交易规模越大，交易路径就会包含越多交易所，避免对单个流动性池造成过大的影响。来源: 1inch</p>
+<p><strong>预告</strong></p>
+<p>在本系列的第二篇文章中，我们将讨论<strong>滑点</strong> 。几乎所有自动做市商交易都会被抢跑，最终<strong>以交易者愿意接受的最大滑点成交。</strong> 这是公链交易独有的“特征”，在如今的去中心化交易所模式下都无法避免。这一成本只能转移，从而导致 “三明治困境”。</p>
+<p>致谢：感谢 EvanSS、Georgios Konstantopoulos、Dave White、Dan Robinson、Arjun Balaji 和 raul 的讨论和审阅。</p>
+<p>来源 | research.paradigm.xyz</p>
+<p>作者 | Hasu</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25497/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">矿业新秩序：头部矿企出海 中小矿工何去何从？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25452/">
+                <span class="next-text nav-default">历史罕见大迁移：50%比特币矿工“离线” 从数据看他们在做什么？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#流动性池是什么"><strong>流动性池是什么？</strong></a></li>
+    <li><a href="#amm-如何定价"><strong>AMM 如何定价？</strong></a></li>
+    <li><a href="#价格冲击是什么"><strong>价格冲击是什么？</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

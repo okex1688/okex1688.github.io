@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          首发｜灵踪安全：对XSURGE受攻击事件的完整回顾 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="8月17日，灵踪安全的监测系统检查到BSC链上的DeFi协议XSURGE遭到闪电贷攻击。" />
+<meta name="keywords" content="黑客攻击" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/27458/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="首发｜灵踪安全：对XSURGE受攻击事件的完整回顾" />
+<meta property="og:description" content="8月17日，灵踪安全的监测系统检查到BSC链上的DeFi协议XSURGE遭到闪电贷攻击。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/27458/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-18T00:00:00+00:00" />
+
+<meta itemprop="name" content="首发｜灵踪安全：对XSURGE受攻击事件的完整回顾">
+<meta itemprop="description" content="8月17日，灵踪安全的监测系统检查到BSC链上的DeFi协议XSURGE遭到闪电贷攻击。"><meta itemprop="datePublished" content="2021-08-18T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-18T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2485">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="首发｜灵踪安全：对XSURGE受攻击事件的完整回顾"/>
+<meta name="twitter:description" content="8月17日，灵踪安全的监测系统检查到BSC链上的DeFi协议XSURGE遭到闪电贷攻击。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">首发｜灵踪安全：对XSURGE受攻击事件的完整回顾</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-18">
+      2021-08-18
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2485 字 -
+        预计阅读 5 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>由灵踪安全授权，金色财经独家发布。</p>
+<p>8月17日，灵踪安全的监测系统检查到BSC链上的DeFi协议XSURGE遭到闪电贷攻击。 </p>
+<p>关于闪电贷攻击，我们在此前的文章中曾经有过多次介绍。“闪电贷”在DeFi领域，尤其是今年以来的屡 次攻击事件中已经成为圈内外耳熟能详的词汇。 </p>
+<p>“闪电贷”的原理是利用以太坊智能合约可以回滚交易的特性，进行借贷操作的一种手段。大家一定要注意的是，“闪电贷”只是被利用的手段，它本身并不是罪魁祸首。罪魁祸首一般都另有其它原因。 </p>
+<p>黑客们利用闪电贷进行攻击的基本过程是这样的： </p>
+<ul>
+<li>
+<p>首先利用闪电贷从资金池借出资金 </p>
+</li>
+<li>
+<p>然后利用借出的资金找准被攻击合约的漏洞进行攻击 </p>
+</li>
+<li>
+<p>最后从攻击获得的巨额收益中拿出借贷的本金归还给资金池，则剩下的就是黑客本次攻击的获利。</p>
+</li>
+</ul>
+<p> 本次受攻击的XSURGE项目被黑客抓住的漏洞是“重入攻击”。黑客抓住这个漏洞，利用闪电贷，放大了攻击效果。不过本次攻击事件中，值得注意的是：在XSURGE受到攻击前，项目方已经在推特上发表了声明，声称在合约中发现漏洞，并提醒大家将资金撤出。 </p>
+<p>或许是项目方的声明提醒了黑客，抑或许是黑客蓄谋已久，就在项目方的声明发出不久，项目即遭到了攻击。 </p>
+<p>在本次攻击中，黑客前后进行了多轮测试和攻击，总共的获利超过13000个BNB，市值超过500万美元。在黑客发起的众多轮测试和攻击中，我们选取了一次很简单的攻击流程和大家展示一下黑客攻击的过程。</p>
+<p>在这个攻击中，攻击者的地址为：0x59c686272e6f11dC8701A162F938fb085D940ad3，被攻击的 XSURGE的合约地址为： 0xE1E1Aa58983F6b8eE8E4eCD206ceA6578F036c21。</p>
+<p>这个攻击的交易哈希值为 0x42bc03afdbda5c46d185711ce1f5df990ece215534dcd8b14529bb1beddacd4 ，与其相关的交易流 程图如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0818/25_05k6inar5p.png" alt="LTWX4GzpRLhvDjXaXAVFHXKFjPCANhZ3RkW7FXsf.png" title="5523358"></p>
+<p>这个流程图显示的是一系列BNB的转账流程，这个流程所暗含的信息如下： - 攻击合约首先以闪电贷的方式借入了3个BNB - 然后攻击者开始攻击SurgeToken合约 - 经过重复多次攻击后，攻击者获得的累计金额达8.175个BNB - 攻击者最终偿还3个BNB的闪电贷借款，最后获利5.1667个BNB “麻雀虽小、五脏俱全”，这个金额很小的试探性攻击过程就反映了黑客利用闪电贷攻击合约的完整流 程。那么具体到被攻击的合约代码，到底是哪里出了问题呢？下面是我们节选的关键代码：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0818/25_5ylvszkvil.png" alt="GzdTDr1aq81Ub5rv00zCqIypp5FZjucROv9n1Zcs.png" title="5523511"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0818/25_k7sbgavfo2.png" alt="HNpJJWowLIToIVTrn9WwpKOONDElvWqjGpKbyDOP.png" title="5523513"></p>
+<p>上述代码中，有&quot;重入攻击&quot;漏洞的代码是下面这一行：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0818/25_muftn69kml.png" alt="PU85ap0JJgfmDbkfksE0CQdL9by0g30px5zgSl9Q.png" title="5523406"></p>
+<p>这一行代码中，在外部调用时，通常 call 调用默认只有2300 gas可用，无法完成一次攻击。但这里使 用 gas: 40000 的参数， 使得重入攻击最多有40000 gas可用，这就使得重入攻击得以完成，漏洞就出 现了。 另外，合约的状态修改是在外部调用之后，从而导致重入攻击发生时 require(_balances[seller] &gt;= tokenAmount 这句语句中的 balances[seller] 没有被修改。因此攻击者可以在重入时继续调用上面 的代码，转走合约中的BNB。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0818/25_ianlshnyhk.png" alt="SWKoZa312zUoHRO9d40fMR3Irrx5GMcGvpNwRuWc.png" title="5523519"></p>
+<p>因此，本次攻击得逞的原因有以下两点：</p>
+<ul>
+<li>
+<p>状态修改发生外部调用之后 </p>
+</li>
+<li>
+<p>调用call函数时设置了gas 值使得重入攻击的条件得以具备。</p>
+</li>
+</ul>
+<p> 重入攻击是智能合约安全领域经常出现的问题，在本次攻击中，闪电贷同样也只是起到了“帮凶”的作用，而不是“祸首”。所以本次合约安全事故的根本还是“重入攻击”这个漏洞。 这次事件再次提醒所有的项目方要高度重视合约的审计。同时这也提醒了所有的审计者，对常见问题的审计不能掉以轻心，要以严谨的态度处理一切问题、细致的工作堵住一切漏洞，而这也是灵踪安全一直以来秉持的基本态度和方法。</p>
+<p>关于灵踪安全： 灵踪安全科技有限公司是一家专注区块链生态安全的公司。灵踪安全科技主要通过“代码风险检测+逻辑风险检测“的一体化综合方案服务了诸多新兴知名项目。公司成立于2021年01月，团队由一支拥有丰富 智能合约编程经验及网络安全经验的团队创建。</p>
+<p>团队成员参与发起并提交了以太坊领域的多项标准草案，包括ERC-1646、ERC-2569、ERC-2794，其中 ERC-2569 被以太坊团队正式收入。 </p>
+<p>团队参与了多项以太坊项目的发起及构建，包括区块链平台、DAO组织、链上数据存储、去中心化交易 所等项目， 并参与了多个项目的安全审计工作，在此基础上基于团队丰富的经验构建了完善的漏洞追踪 及安全防范系统。 </p>
+<p>作者：灵踪安全CEO 谭粤飞 </p>
+<p>美国弗吉尼亚理工大学(Virginia Tech, Blacksburg, VA, USA) 工业工程（Industrial Engineering） 硕士 (Master)。曾任美国硅谷半导体公司 AIBT Inc（San Jose, CA, USA） 软件工程师，负责底层控制系统的 开发、设备制程的程序实现、算法的设计，并负责与台积电的全面技术对接和交流。自2011至今，从事 嵌入式，互联网及区块链技术的研究，深圳大学创业学院《区块链概论》课程教师，中山大学区块链与 智能中心客座研究员，广东省金融创新研究会常务理事 。个人拥有4项区块链相关专利、3本出版著作。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/27443/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">如何保护看得见摸不着的虚拟财产？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/27454/">
+                <span class="next-text nav-default">数字人民币App更新 首批“一点接入”的中小银行已全部支持</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

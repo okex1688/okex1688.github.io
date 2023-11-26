@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          读懂以太坊的客户端多样性 为何如此重要？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="从工作量证明 (PoW) 到权益证明 (PoS) 的合并。这将从根本上改变该网络对区块链的真实状态达成共识的方式，并维护网络安全。" />
+<meta name="keywords" content="ETH" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/34250/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="读懂以太坊的客户端多样性 为何如此重要？" />
+<meta property="og:description" content="从工作量证明 (PoW) 到权益证明 (PoS) 的合并。这将从根本上改变该网络对区块链的真实状态达成共识的方式，并维护网络安全。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/34250/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-16T00:00:00+00:00" />
+
+<meta itemprop="name" content="读懂以太坊的客户端多样性 为何如此重要？">
+<meta itemprop="description" content="从工作量证明 (PoW) 到权益证明 (PoS) 的合并。这将从根本上改变该网络对区块链的真实状态达成共识的方式，并维护网络安全。"><meta itemprop="datePublished" content="2022-02-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="9509">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="读懂以太坊的客户端多样性 为何如此重要？"/>
+<meta name="twitter:description" content="从工作量证明 (PoW) 到权益证明 (PoS) 的合并。这将从根本上改变该网络对区块链的真实状态达成共识的方式，并维护网络安全。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">读懂以太坊的客户端多样性 为何如此重要？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-02-16">
+      2022-02-16
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 9509 字 -
+        预计阅读 19 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>以太坊有多个可互操作的客户端，由独立团队用不同的语言开发和维护。这是一项重大成就，通过将漏洞或攻击的影响限制在运行受影响客户端的网络部分，可以为网络提供弹性。然而，只有当所有用户大致均匀地分布在各个可用的客户端上时，才能实现这种优势。目前，绝大多数以太坊节点运行单个客户端，给网络带来不必要的风险。</p>
+<p>以太坊将很快经历自成立以来其架构最重要的一次升级——从工作量证明 (PoW) 到权益证明 (PoS) 的合并。这将从根本上改变该网络对区块链的真实状态达成共识的方式，并维护网络安全。这种新架构将带来安全性、可扩展性和可持续性方面的好处，但同时也放大了与这种由单个客户端占主导地位有关的风险。这篇文章将探讨其中的缘由&hellip;</p>
+<h2 id="信标链"><strong>信标链</strong></h2>
+<p>信标链是一条 PoS 区块链。它目前与以太坊主网并行运行，但两者很快将“<strong>合并</strong> ”在一起。合并之后，现有的以太坊主网客户端 (“<strong>执行客户端</strong> ”) 将继续托管以太坊虚拟机 (EVM)，并验证和广播交易，但将停止参与工作量证明 (PoW) 挖矿，并放弃对区块链链头 (顶端区块) 达成共识的责任。相反，这种共识将成为“<strong>共识客户端</strong> ”的责任，“共识客户端”负责把来自“执行客户端”的交易与共识所需的信息一起打包进“<strong>信标区块</strong> ”中，这些信标区块就构成了信标链。“矿工”将被“<strong>验证者</strong> ” (validators) 取代，这些验证者需要将 ETH 存入某个以太坊智能合约中 (这一过程称为“<strong>质押</strong> ”(staking))。验证者质押的 ETH 将作为抵押品，以激励他们正确地完成_验证工作_。不履行验证工作 (比如因为离线) 或进行恶意行为的验证者，将导致其质押的 ETH 的一部分被销毁。另一方面，如果验证者行为得当，那么将会获得 ETH 奖励。</p>
+<h3 id="heading"></h3>
+<p><strong>1. 验证者的职责</strong></p>
+<p>对于验证者来说，良好的行为意味着参与_验证_从其他验证者那里接收到的信标区块，并对区块链链头进行投票。如果验证者接收到的区块是有效的，那么验证者将对区块进行“<strong>证明</strong> ”(attest)，实际上就是投票支持将该区块添加到区块链中。一个节点将不定期地被要求<strong>提议一个新区块</strong> ，其他验证者将“证明”该区块。当区块链有多个分叉时，只有那条在其历史上积累了最多“<strong>证明</strong> ”(attestations) 的链才是正确的区块链。</p>
+<p>验证者还将不定期地参与到某个<strong>同步委员会</strong>  <em>(sync committee)</em> 中，同步委员会是一个由随机选择的 512 名验证者组成的小组，这些被随机选中的验证者将对_区块头 (block headers)_ 进行签名，这样**<em>轻客户端</em>** 就可以检索这些被验证过的区块，而无需访问整条历史链或整个验证者集。</p>
+<h3 id="heading-1"></h3>
+<p><strong>2. 合理化 &amp; 被敲定</strong></p>
+<p>信标链为网络设定节奏。这种节奏被组织成两个时间单位：<strong>slot</strong>  和 <strong>epoch</strong> 。slot 是将区块添加到信标链的机会，每 12 秒出现一次。某个 slot 可能没有区块，但当系统以最佳方式运行时，区块会添加到每个可用的 slot 中。epoch 是以 32 个 slot (约 6.4 分钟) 为单位的。slot 和 epoch 设定了以太坊区块链的节奏。</p>
+<p>在每个 epoch 期间，第一个 slot 中的区块是一个<strong>检查点</strong>  (checkpoint)。检查点是非常重要的，因为检查点被用于使区块链账本上的记录变得永久和不可逆转——这是一个分为两个阶段的过程：首先，如果所有活跃验证者质押的 ETH 余额中至少有 2/3 (即“绝对多数”) 证明了<strong>最近的两个检查点</strong>  (当前的被称为“目标检查点”，前一个被称为“源检查点”)，那么这两个检查点之间的这段区块就被“<strong>合理化</strong> ” (justified) 了。“合理化”是迈向成为以太坊权威链上_永久记录_的_第一步_。一旦某个被“合理化”的检查点之后新出现了另一个被“合理化”的检查点，那么前一个检查点就是“<strong>被敲定</strong> ” (finalized) 了，也即使其具有了永久性和不可逆转 <em>(即这个检查点之前的所有记录都成为了区块链上永久不可篡改的记录)</em>。</p>
+<p>这个“合理化”和“敲定”的过程要求验证者进行的“<strong>证明</strong> ”(attestations) 实际上要比上文阐述的要更复杂一些。有两种类型的证明：一种是 <strong>LMD GHOST 投票</strong> ，用于证明区块链的链头 (LMD GHOST 是分叉选择算法)；第二种是用于对两个检查点进行证明的 <strong>FFG 投票</strong>  (FFG 是“最终性小工具” (finality gadget)，对区块链进行合理化和最终敲定)。<strong>所有验证者都会对_每个检查点_进行 <em>FFG 投票</em>，而只有一个随机选中的验证者子集在_每个 slot_ 进行 <em>LMD GHOST 投票</em></strong> 。</p>
+<h3 id="heading-2"></h3>
+<p><strong>3. 验证者的质押奖励、惩罚和罚没</strong></p>
+<ul>
+<li>
+<h4 id="heading-3"></h4>
+<p><strong>奖励</strong></p>
+</li>
+</ul>
+<p>如前所述，验证者质押的 ETH 用于作为“抵押品”，以激励验证者的诚实行为。随着验证者因为参与到保护网络中而获得奖励，这些被质押的 ETH 将随着时间的推移而增加。当验证者进行的 <strong>LMD-GHOST 投票</strong> 和 <strong>FFG 投票</strong> 与大多数其他验证者一致时，那么验证者就会获得证明奖励。当验证者被选中作为“<strong>区块提议者</strong> ”(block proposer) 时，如果其提议的区块被“敲定”， 那么该验证者也将获得奖励。区块提议者也可以通过将有关其他验证者行为不当的证明打包进自己提议的区块中，从而增加自己获得的奖励。这些奖励是鼓励验证者诚实行事的“报酬”。</p>
+<ul>
+<li>
+<h4 id="heading-4"></h4>
+<p><strong>惩罚</strong></p>
+</li>
+</ul>
+<p>验证者可能受到的“惩罚”是以各种机制的形式来销毁一部分验证者质押的 ETH。当验证者未能提交一个 FFG 投票、提交延迟了或者提交了错误的 FFG 投票时，都会受到**<em>证明惩罚</em>**  <em>(attestation penalties)</em>。但如果验证者错过了进行 LMD-GHOST 投票，则不会受到惩罚，只是错过了本可以通过对链头进行投票而获得的奖励。<strong>验证者余额被削减的数额，等同于如果他们提交_正确的证明_而本可以获得的奖励数额</strong> 。这意味着，一个诚实但“懒惰”的验证者，他因为**<em>错过了证明</em>** 而遭受到的最大惩罚，就是损失他如果以完美的方式进行证明时本可以获得的奖励金额的 3/4。此外，当验证者被分配至“<strong>同步委员会</strong> ”(sync committee) 时，如果该验证者未能签名区块，那么其受到的惩罚将等同于如果他成功地签名区块时本可以获得的 ETH 价值。</p>
+<p>总的来说，这些惩罚是温和的，验证者持续的怠惰 (inactivity) 仅会使其质押的 ETH 受到一个相当缓慢的削减。</p>
+<ul>
+<li>
+<h3 id="heading-5"></h3>
+<p><strong>罚没</strong></p>
+</li>
+</ul>
+<p><strong><em>罚没</em></strong>  <em>(slashing)</em> 是一种更严重的行为，这会导致验证者被强制从网络中<strong>移除</strong> ，并导致相关的 ETH 质押金损失。<strong>有三种方式会导致验证者被罚没</strong> ，所有这些都相当于验证者进行了不诚实的区块提议或区块证明：</p>
+<ol>
+<li>
+<p>在同一个 slot 提议和签名两个不同的区块；</p>
+</li>
+<li>
+<p>对“环绕”某个区块的另一个区块进行证明 (实际上就是更改区块链历史)；</p>
+</li>
+<li>
+<p>通过对同一个区块的两个候选区块进行“双重投票”(double voting)。</p>
+</li>
+</ol>
+<p>如果检测到上述这些操作，验证者就会罚没。这意味着相当于其质押的 ETH 的 1/64 (最高可达 0.5 ETH) 将立即被销毁，然后一个<strong>为期 36 天的移除期</strong> 开始了：在此期间，验证者的质押金将逐渐被削减；且在这段期间的中间点 (<strong>第18天</strong> )，该验证者还将受到额外的惩罚，惩罚大小将与此次罚没事件发生之前的 <strong>36 天内</strong> _所有被罚没的验证者的 ETH 质押总额_成比例。这意味着，当更多的验证者被罚没时，此次罚没的量级将会增加。最大的罚没是所有被罚没的验证者的全部有效余额 (也即，如果有大量验证者被罚没，那么他们可能损失全部的质押金)。另一方面，一个单独的、独立的罚没事件只会销毁验证者一小部分的质押金。这种随着被罚没验证者的数量而变化的中间惩罚被称为**“串谋惩罚”** (correlation penalty)。</p>
+<ul>
+<li>
+<h3 id="heading-6"></h3>
+<p><strong>Inactivity Leak 机制</strong></p>
+</li>
+</ul>
+<p>如果信标链已经有超过 4 个 epoch 都没有被敲定，那么一个称为“<strong>inactivity leak</strong> ”的经济机制将被激活。Inactivity leak 的最终目的是创造条件使区块链重新恢复敲定。如上文所解释的，“敲定”(finality) 需要 2/3 的 ETH 总质押金对“源检查点”和“目标检查点”达成共识。如果_超过 1/3_ 的验证者离线或未能提交证明的证明，那么就不可能有 2/3 的绝对多数验证者来敲定检查点。此时，<strong>Inactivity leak 机制会让属于这些不活跃的验证者的 ETH 质押金_逐渐被削减_，直到这些验证者控制的质押金少于网络中总质押金的 1/3，从而允许剩余的活跃验证者对区块链进行敲定</strong> 。无论这些不活跃的验证者数量有多大，剩余的验证者最终都将控制 &gt;2/3 的总质押金。这种质押金的削减将是一个强烈的刺激因素，激励不活跃的验证者尽快重新激活！</p>
+<p>信标链设计中的奖励、惩罚和罚没鼓励了个体验证者正确行事。然而，从这些设计选择中出现了一个系统，它强烈地激励了验证者在多个客户端之间的平等分配，并强烈地抑制这种由单个客户端占主导地位的情况。这是因为，“绝对多数制”对于信标链来说非常重要，单独一个恶意验证者对网络而言是相当无害的，但大量恶意验证者将可能造成严重破坏。让我们来看看一些潜在的场景&hellip;&hellip;</p>
+<h2 id="风险场景"><strong>风险场景</strong></h2>
+<p>这种资产激励共识客户端多样性是有风险的。通过在多个客户端之间均匀分布验证者，可以大大减少针对特定客户端的攻击或漏洞带来的影响，而单一客户端占主导地位则会增加这种风险。这种风险倍增效应会随着单个主导性客户端占据的网络份额多少而变化。</p>
+<p>我们可以通过一些假设的 (但可能实际会发生的) 场景来获得更多的直觉感知。让我们假设<strong>一个 bug 意外地被引入到一个共识客户端中，这个 bug 可以直接导致该客户端进行不正确的证明，或者暴露一个漏洞，使得恶意攻击者能够迫使客户端进行不正确地证明</strong> 。那么，客户端多样性会如何影响这种 bug 带来的后果呢？</p>
+<h3 id="heading-7"></h3>
+<p><strong>场景1：受影响的客户端控制了少于 1/3 的 ETH 质押金</strong></p>
+<p>这种情况为信标链提供了最大的弹性，因为<strong>仍有 2/3 被质押的 ETH 仍在进行正确地证明</strong> ，允许信标链正常地进行敲定。因此，从网络的角度来看，这种场景的后果是可以忽略的。受影响的验证者将受到怠惰惩罚，因为他们提交了不正确的证明。<strong>这些损失相对较小，受影响的验证者可以等待客户端被修复或者切换到另一个客户端</strong> 。无论哪种方式，验证者都可以以最小的经济后果和不会破坏信标链的方式继续进行正确的证明。</p>
+<h3 id="heading-8"></h3>
+<p><strong>场景2：受影响的客户端控制了超过 1/3 的 ETH 质押金</strong></p>
+<p>这种情况的问题要大得多，因为只剩不到 2/3 的 ETH 质押金在正确地进行证明，即没有绝对多数的验证者来正确地达成共识。<strong>这意味着信标链无法实现敲定，且 Inactivity Leak 机制将被激活</strong> 。此时，这个 bug 对整个网络造成了影响。对于搭建在以太坊之上的交易所和 Dapps (去中心化应用) 而言，区块链被敲定 (finality) 是至关重要的，如果区块链无法被敲定，那么就不能保证交易是永久性和不可篡改的。<strong>对于使用了这个受影响的客户端的个体验证者来说，相关的惩罚要严重得多</strong> ，因为 Inactivity Leak 机制的激活意味着个体验证者质押的 ETH 将逐步被销毁，直到这个受 bug 影响的客户端控制了少于 1/3 的 ETH 总质押金，且只有到那个时候信标链才会恢复敲定。这种 ETH 的销毁可能实际上会在信标链恢复之后持续一段时间，从而为验证者数量的较小变化提供缓冲。只有当一个受影响的客户端控制了超过 1/3 的 ETH 总质押金时，信标链的敲定才会处于危险之中。</p>
+<p>在这种场景中，正常运行其他替代性客户端的验证者在 Inactivity Leak 机制被激活期间_不会_收到任何奖励。这是一种安全机制，用于防止攻击者蓄意启动 Inactivity Leak 机制，从而提高该攻击者控制的其他以正确方式运行的验证者获得的总奖励。这些都是很小的惩罚，但<strong>关键是，没有人能从一个控制着超过 1/3 的 ETH 总质押金的客户端的共识 bug 的负面后果中逃脱</strong> 。</p>
+<h3 id="heading-9"></h3>
+<p><strong>场景3：受影响的客户端控制着 1/2 的 ETH 质押金</strong></p>
+<p>这种情况可能导致信标链中出现不可恢复的**<em>分叉</em>** 。如果有共识 bug 的客户端分叉到它自己的链上，那么原始的链和新的分叉链都无法实现敲定，因为新旧两条链都缺失了大约一半的验证者，并且都将激活 Inactivity Leak 机制。此时，这两条链上缺失的验证者的 ETH 质押金将会逐渐被销毁，直到他们控制的质押金少于 1/3 的网络 ETH 总质押金，此时每条链上的验证者才可以再次开始进行敲定。这个过程在两条链上花费的时间相同，因为恢复敲定需要销毁的 ETH 数量是相等的。这两条链将使用不同的检查点来独立完成敲定。这两条链可能永远不会合并成为一条单独的“权威链”。解决方法将需要以太坊社区对哪条链是“权威链”达成共识，这个过程肯定会在政治上很难处理和引发分歧，导致一半的社区由于切换区块链而产生的经济损失 (这还不包括 ETH 可能贬值)。也许更糟糕的是，社区可能只是继续分裂下去 (类似于 The DAO 事件导致以太坊经典的产生)。</p>
+<p>为了避免信标链的永久分裂，使用受影响的客户端的验证者将必须与 Inactivity Leak 赛跑进行客户端切换，或者在区块链开始敲定之前修复他们的客户端。可能有 3-4 周时间，在此期间开发者将争相拯救以太坊。<strong>在这个场景中，对于大量的验证者来说，无法逃避重大的经济损失</strong> 。</p>
+<h3 id="heading-10"></h3>
+<p><strong>场景4：受影响的客户端控制着超过 2/3 的 ETH 质押金</strong></p>
+<p>对于信标链来说，这是<strong>噩梦般的情况</strong> ，因为受影响的客户端控制着一个超级多数的验证者，并且能够敲定自己的链。这样，不正确的信息就很有可能永远被固定在以太坊的历史记录中。在区块链开始敲定非法区块之前，客户端团队将有大约 13 分钟的时间来确定该共识 bug、修复它，并将客户端更新信息广播给受影响的验证者。</p>
+<p>对于这种情况，唯一可行的缓解方法是让受影响的验证者取出他们质押的 ETH 并从区块链中退出。如果在 bug 修复之后，这些受影响的验证者试图重新加入那条正确的区块链中，他们将由于“串谋惩罚”而被罚没，因为他们此时证明的检查点是与他们之前证明的检查点相矛盾，而且是_集体_进行这样的操作。Inactivity Leak 机制将由于大量验证者离去而被激活，这意味着这些受影响的验证者将在他们等待取款 (退出) 时不断损失他们的 ETH 质押金。由于有大量验证者要退出，因此等待的队伍将很长、缓慢和昂贵。</p>
+<p>唯一的其他选择是，剩下的未受影响的客户端接受该 bug，加入新的链，并同意该 bug 从此成为以太坊共识层的预期行为。这将与 staking (质押) 社区的核心原则背道而驰，而且会造成极大的分裂。这些少数客户端将在新链上受到怠惰惩罚，即使他们的行为得当。</p>
+<p>两种选择都不是好的选择。前一个选择对于受影响的验证者来说非常昂贵，并且在逻辑上难以纠正。后一种选择将严重破坏对以太坊的信任，并导致我们接受一个永久被玷污的链。</p>
+<h3 id="heading-11"></h3>
+<p><strong>其他风险</strong></p>
+<ul>
+<li>
+<h4 id="heading-12"></h4>
+<p><strong>逆转最终性</strong></p>
+</li>
+</ul>
+<p>如果单个客户端控制着超过 2/3 的 ETH 总质押金，那么<strong>该客户端的开发者就有能力选择哪个版本的区块链历史是正确的</strong> 。比如，如果该客户端的开发者变得恶意，他们可以花费一些 ETH (比如通过某个交易所套现，或者桥接到另一个区块链网络)，然后这些开发者集体投票，使用另一个不包含这笔花费交易的链版本来代替当前这个已经被敲定的链。这是一种“双花”，因为该客户端控制着绝大多数验证者使其能够逆转最终性和重写历史。与此同时，诚实的少数验证者会因为他们不一致的证明而受到惩罚。一个恶意的控制了绝对多数 ETH 总质押金的攻击者也可以威胁做出这样的行为，并控制网络索要赎金。即便是一个控制着 1/3  的 ETH 总质押金的恶意团队也可以威胁停止链的敲定并激活 Inactivity Leak 机制。</p>
+<ul>
+<li>
+<h4 id="heading-13"></h4>
+<p><strong>共同的责任</strong></p>
+</li>
+</ul>
+<p>前一点对客户端开发团队的看法有些悲观，不是因为这是合理的，而是因为恶意行为是_可能的_，因此需要防范。然而，这些开发人员最有可能永远是好人，他们自己需要抵制单个客户端占主导性地位，不仅仅是因为他们很可能是以太坊用户 (以及 ETH 持有者或质押者)，还因为网络安全的责任不应该集中在一个小团队的肩上。开发者的行为对整个以太坊的健康造成了巨大的影响，他们的压力和心理健康是真正的代价。<strong>客户端多样性通过在多个独立团队之间分担责任来避免这种情况</strong> 。</p>
+<ul>
+<li>
+<h4 id="heading-14"></h4>
+<p><strong>中心化</strong></p>
+</li>
+</ul>
+<p>即使客户端开发团队由完全出于善意的开发者组成，当他们控制了大部分的 ETH 质押金时，他们仍然保留了以太坊运作方面的过度权力。去中心化是以太坊的一个核心原则，这必须包括开发者、用户和托管商的去中心化。跨多个客户端的开发团队的去中心化，通过均匀分配 ETH 质押金，从而限制了单个客户端团队对诸如分叉内容和时间等做出关键决策，从而限制了他们对以太坊哲学方向的影响。<strong>客户端多样性确保了在开发者层面做出_去中心化的决策_</strong> 。</p>
+<ul>
+<li>
+<h4 id="heading-15"></h4>
+<p><strong>政治</strong></p>
+</li>
+</ul>
+<p>对一条诚实链的_社交恢复 (social recovery)_ 是一个充满政治的问题。以太坊的共识机制应该基于编码到其客户端的规则来确定——这是它的主要目标。干预这一过程可能会导致以太坊社区的分裂，导致不同的用户在哲学上、伦理上和技术上对于缓解某个主要客户端的共识 bug/攻击有各种各样的观点。治理决策将是笨拙的、破坏性的，而且可能过于缓慢而无法达到最大的有效性。</p>
+<h2 id="真实例子"><strong>真实例子</strong></h2>
+<p>上述场景发生的概率相对较低。开发者在研究和测试他们软件的每一个更新时都是一丝不苟的，没有理由怀疑任何客户端团队的职业操守。然而，这些场景也不是纯粹的假设。已经有真实例子表明，客户端多样性拯救了以太坊主网，使其免于永久损坏，且一些共识 bug 也破坏了以太坊测试网。下面将介绍其中的一些例子。</p>
+<h3 id="heading-16"></h3>
+<p><strong>上海攻击</strong></p>
+<p>2016年9月，在上海 DevCon 会议期间，黑客攻击了以太坊，利用客户端软件中的几个漏洞，导致网络速度显著放缓。攻击者坚持不懈，迅速部署新的类似攻击，而客户端开发人员则竞相对这些攻击进行逆向工程和修补。最终，攻击者在 <strong>Geth 客户端</strong> 中发现了一个无法修补的漏洞，使得硬分叉成为必然。即使在硬分叉升级之后，攻击者仍然发现了一个拒绝服务漏洞，该漏洞利用之前攻击所导致的膨胀状态，迫使客户端在每个区块中进行数万次缓慢的磁盘I/O操作。客户端多样性赢得了胜利，因为当开发人员努力修复 Geth 中的漏洞时，以太坊能够继续使用替代性的 <strong>Parity 客户端</strong> ，该客户端没有遭受同样的漏洞。</p>
+<p>由于有多个客户端，上海攻击是可以恢复的，但如果一个类似的 bug 影响了多数共识客户端，情况可能会截然不同。如果一个“<strong>共识客户端</strong> ”与当时 Geth 被攻击时有着相同的主导性地位，那么以太坊量将无法实现敲定，因为此时大多数验证者将无法对区块进行证明。Inactivity Leak 将被激活，因为只有少于 1/3 的 ETH 质押金可用于进行证明。</p>
+<h3 id="heading-17"></h3>
+<p><strong>Insecura 链</strong></p>
+<p>“远程攻击”的可行性最近在 Pyrmont 测试网得到了证明。其想法是建立一组验证者来证明一个备用的区块链历史。然后，这些验证者被用来诱骗新的验证者加入这条不诚实的“Insecura”链，从而逐渐增加被影响的验证者的数量，最终达到中断区块链敲定、激活 Inactivity Leak 并耗尽诚实多数验证者的 ETH 质押金的程度。最终，这可能导致受影响的客户端最终敲定自己版本的区块链。虽然所需要的时间和金钱的投入使这种行为不太可能成为攻击向量，但类似的动态可能导致一个占主导地位的共识客户端中的一个 bug 感染网络的大部分。</p>
+<h3 id="heading-18"></h3>
+<p><strong>Medalla 测试网</strong></p>
+<p>此前由于 Prysm 客户端的时钟问题，Medalla 测试网的活跃验证者数量突然下降。这条链无法进行敲定，因为太多的验证者退出了网络，以至于 2/3 绝大多数被质押的 ETH 已经不再可用于进行证明。其恢复是渐进的，因为这依赖于验证者将客户端从 Prysm 切换到其他少数客户端上。然后，真实的时间与 Prysm 客户端错误的时钟时间赶在一起，之前无效的证明突然间变得有效了。这导致 Prysm 客户端陷入停滞，同时 Teku 和 Lighthouse 客户端也因突然处理大量的证明而遭遇了巨大的状态膨胀。<strong>如果 Prysm 是 Medalla 测试网的唯一客户端，那么整个网络都已经停滞了；如果 Prysm 客户端控制了少于 1/3 的 ETH 总质押金，那么许多混乱就可以避免了。</strong></p>
+<h3 id="heading-19"></h3>
+<p><strong>Prysm 的存款根 bug</strong></p>
+<p>2021 年初，Prysm 客户端遇到了一个与 Eth1 存款根验证相关的 bug。当时，Prysm 客户端能够生成无效的<strong>存款根</strong>  (deposit root)，并将其传递给其他 Prysm 节点。因为 Prysm 拥有如此大的验证者份额，这种无效的存款根很快在网络中传播，且由于 Prysm 遵循绝大多数投票机制而非在每个区块中显性地验证存款根，因此加速了其传播。虽然该 bug 带来的影响很小，没有中断信标链的敲定，也没有对验证者带来重大的经济惩罚，但<strong>这个事件从两个方面证明了客户端多样性的重要性</strong> ：首先，如果 Prysm 客户端有着较小的验证者份额，那么就会限制该 bug 在整个网络的传播，减少其影响；其次，该事件发生后的分析文章描述了如何使用替代性客户端实现作为基准，帮助开发人员快速识别和修复该 bug。显然，如果没有多个积极维护的客户端，这是不可能实现的。</p>
+<h2 id="当前的客户端多样性"><strong>当前的客户端多样性</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0216/6_elsbfdfgsz.png" alt="读懂以太坊的客户端多样性 为何如此重要？"></p>
+<p><em>上图为当前以太坊客户端的多样性情况：左边为</em><strong><em>执行客户端</em></strong> <em>的占比情况，右边为</em><strong><em>共识客户端</em></strong> <em>的占比情况。</em></p>
+<p>上面的两个饼状图显示了以太坊执行层和共识层的当前客户多样性的快照 (截至 2022 年 1 月撰写本文时)：<strong>执行层</strong> 由 <strong>Geth</strong>  客户端主导，<strong>OpenEthereum</strong>  客户端远远排在第二，<strong>Erigon</strong>  客户端排第三，<strong>Nethermind</strong>  排第四，其他客户端只占不到网络的 1%。<strong>共识层</strong> 上最常用的客户端 <strong>Prysm</strong>  虽然不像执行层的 Geth 客户端那样占主导地位，但仍然拥有了超过 60% 的网络，<strong>Lighthouse</strong>  和 <strong>Teku</strong>  分别占 20% 和 14%，其他客户端则很少使用。</p>
+<p>执行层数据于 2022 年 1 月 23 日通过 Ethernodes 网站 <em>(ethernodes.org/)</em> 获取；共识客户端的数据来自 Michael Sproul <em>(github.com/sigp/blockprint)</em>。共识客户端数据要更难获取，因为信标链客户端并不总是具有可以用来识别它们的明确踪迹。这些数据是使用一种分类算法生成的，这种算法有时会弄错一些少数客户端。然而，很明显，共识层的大部分网络节点都在运行 Prysm。Prysm 的优势有时更高，超过 68%。尽管只是快照，但图中的占比情况提供了客户端多样性的当前状态的良好总体认识。</p>
+<p>执行层的客户端多样性包含在上图中，因为影响执行客户端的 bug 可能也会传播到共识层，这是由于合并之后，共识层和执行层将耦合在一起，且执行客户端生成的执行负载 (execution payload) 将是信标区块的核心组件。</p>
+<h3 id="heading-20"></h3>
+<p><strong>个人质押者 &amp; 质押池</strong></p>
+<p><strong>解决客户端分配不平衡的问题，需要主要交易所和押注池 (stking pools) 采取行动</strong> 。然而，<strong>个人质押者也可以通过选择运行非 Geth/Prysm 客户端组合来发挥作用</strong> 。搭建少数客户端的说明须知可以在这个 clientdiversity.org 页面找到：</p>
+<p><em><a href="https://clientdiversity.org/">https://clientdiversity.org/</a></em></p>
+<p>对于持有量少于 32 ETH 或者不想要承担运行验证者的责任的质押者来说，有一些质押服务提供商可以使用。一些主要的中心化交易所提供 ETH 质押服务，但他们的质押池中的客户端分布情况通常是隐秘的，而且这些交易所提供的 ETH 质押代币的可交易性是有限的。出于这些和其他的原因，不建议使用这些中心化的服务商。</p>
+<p>一个更好的选择是使用更去中心化的<strong>流动性押注服务提供商</strong> ，如 Lido 或 Rocketpool。这些服务商提供 ETH 质押服务，同时还提供了一种流动性代币 (比如用户通过 Lido 协议质押 ETH 将获得具有流动性的 stETH 代币)，这些流动性代币的价值将随着验证者累积的奖励而增加。这些代币可以进行交易，或者用于赚取 DeFi 收益。这些流动性质押平台的客户端分布情况也要更加透明，比如 Lido 会发布季度更新，而 Rocketpool 现在也发布了他们的季度更新。对于不能或不愿意运行自己的验证器者的用户，这些服务是实现更好的客户端多样性的途径。</p>
+<h2 id="总结"><strong>总结</strong></h2>
+<p>信标链的奖罚协议直接激励了客户端多样性。单个客户端占主导地位将是对以太坊的潜在威胁，当单个主导性客户端表现良好时，这种威胁是无形的，但当该客户端出现共识 bug 时，这种威胁可能是灾难性的。拥有多个客户端是以太坊的独特优势，也是开发者社区勤奋努力的证明。然而，当一个客户端控制了大部分 ETH 质押金时，这种 (以太坊开发者社区的) 努力就会被削弱。理想的情况是在至少 4 个客户端上平均分配 ETH 质押金，给每个客户端最多 1/4 的 ETH 质押金。通过使用现在可用的生产就绪的客户端，这是很容易实现的。</p>
+<p>撰文：Joseph Cook</p>
+<p>编辑：南风</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/34264/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">从互联网的起源到去中心化Web 3.0</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/34265/">
+                <span class="next-text nav-default">读完倒吸一口寒气 一亿美元是怎么差点被骗走的？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#信标链"><strong>信标链</strong></a>
+      <ul>
+        <li><a href="#heading"></a></li>
+        <li><a href="#heading-1"></a></li>
+        <li><a href="#heading-2"></a></li>
+        <li><a href="#heading-5"></a></li>
+        <li><a href="#heading-6"></a></li>
+      </ul>
+    </li>
+    <li><a href="#风险场景"><strong>风险场景</strong></a>
+      <ul>
+        <li><a href="#heading-7"></a></li>
+        <li><a href="#heading-8"></a></li>
+        <li><a href="#heading-9"></a></li>
+        <li><a href="#heading-10"></a></li>
+        <li><a href="#heading-11"></a></li>
+      </ul>
+    </li>
+    <li><a href="#真实例子"><strong>真实例子</strong></a>
+      <ul>
+        <li><a href="#heading-16"></a></li>
+        <li><a href="#heading-17"></a></li>
+        <li><a href="#heading-18"></a></li>
+        <li><a href="#heading-19"></a></li>
+      </ul>
+    </li>
+    <li><a href="#当前的客户端多样性"><strong>当前的客户端多样性</strong></a>
+      <ul>
+        <li><a href="#heading-20"></a></li>
+      </ul>
+    </li>
+    <li><a href="#总结"><strong>总结</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

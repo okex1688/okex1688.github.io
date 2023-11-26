@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          简述Layer2的定义、发展历程和技术对比 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="侧链是一条链，二层协议没有链。侧链也是链，所以有节点，有共识机制，有存储板块，有区块。二层协议不是链，所以没有节点，没有共识机制，没有区块的概念。" />
+<meta name="keywords" content="Layer 2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/31611/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="简述Layer2的定义、发展历程和技术对比" />
+<meta property="og:description" content="侧链是一条链，二层协议没有链。侧链也是链，所以有节点，有共识机制，有存储板块，有区块。二层协议不是链，所以没有节点，没有共识机制，没有区块的概念。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/31611/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-12-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="简述Layer2的定义、发展历程和技术对比">
+<meta itemprop="description" content="侧链是一条链，二层协议没有链。侧链也是链，所以有节点，有共识机制，有存储板块，有区块。二层协议不是链，所以没有节点，没有共识机制，没有区块的概念。"><meta itemprop="datePublished" content="2021-12-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-12-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5206">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="简述Layer2的定义、发展历程和技术对比"/>
+<meta name="twitter:description" content="侧链是一条链，二层协议没有链。侧链也是链，所以有节点，有共识机制，有存储板块，有区块。二层协议不是链，所以没有节点，没有共识机制，没有区块的概念。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">简述Layer2的定义、发展历程和技术对比</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-12-08">
+      2021-12-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5206 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原文标题：《一个长长的 Layer2 介绍/科普/讨论/笔记》</p>
+<p>本文比较长，一共七个部分：</p>
+<p>1、通俗的方式理解 zkrollup 和 optimistic rollup</p>
+<p>2、Plasma 的简单历史</p>
+<p>3、数据可用性</p>
+<p>4、派系之争 op</p>
+<p>5、派系之争 zk</p>
+<p>6、Immutable X</p>
+<p>7、结论</p>
+<h3 id="1-通俗的方式理解-zkrollup-和-optimistic-rollup">1. 通俗的方式理解 zkrollup 和 optimistic rollup</h3>
+<p>侧链是一条链，二层协议没有链。侧链也是链，所以有节点，有共识机制，有存储板块，有区块。二层协议不是链，所以没有节点，没有共识机制，没有区块的概念。</p>
+<p>Layer 2 没有区块的概念其实，也没有节点，也不需要共识机制，所以在 Layer2 方案的区块浏览器上，其实看不到区块的。现在去看 Arbitrum 的浏览器，还有一个 Bk，Block，仔细看看每个区块其实就是每个交易，具体请看截图。Layer 2 的运营者只负责把交易排个顺序然后拿去处理。而区块链的关键之处就在于对交易的排序工作。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/23_luv194o0s2.png" alt="简述Layer2的定义、发展历程和技术对比"></p>
+<p>比如知名的三明治攻击其实就是排序攻击。你要发起一笔交易，付了 50 刀 Gas 费，有人发现了这笔还没处理的交易（在 Mempool 里面），然后花 100 刀 Gas 费，做两笔交易，一笔是跟你一样的买你要买的币，第二笔就是把买到的币再卖给你。先买的价格低，后买的价格高。所以对方就用两笔交易把你的交易夹在中间，先把你要买的币买了，然后再提高价格卖给你。</p>
+<p>你感受到的最后变贵了，交易的滑点，就是对方的利润。这个和 Uniswap V3 的精准单点流动性提供是一个意思（Just-in-time Liquidity）。</p>
+<p>了解了交易这个排序的重要性之后，两个 Layer 2（zk 和 op）方案的区别简单理解。</p>
+<p>为了防止对 zk 和 op 不熟，再说一遍这两个的区别：</p>
+<ul>
+<li>
+<p>Zk 是零知识证明，先证明是没问题，然后再把数据传到主链。先查后干。</p>
+</li>
+<li>
+<p>Op 是乐观接受，先把数据处理了传到主链，再等人来挑战，一周时间内没人证明是错的，那就是对的。干完再查。</p>
+</li>
+</ul>
+<p>换个通俗但是不严谨的方式理解。</p>
+<p>既然排序那么重要，那负责排序的就说了：我现在给你两条路，一条呢是你就听我的，一大堆交易给我我来排序，处理完我把处理的结果关键数据传到主链。你们要是对数据有意见有想法，我给你们一周时间，找到证据，反正原始的交易数据都在（这个就叫做数据的可获得性，data availability），你们自己核对，有问题就举报我，或者觉得我搞错了举报。要是你们挑战成功，主链也会给你们解决问题。这样只要我不出问题，我处理起来的速度就贼快。排序嘛，多简单。</p>
+<p>第二条路呢，就是我好好干，每一次排序交易处理我都记录一个证明，然后传到主链的交易都有一个证明。这样任何交易任何人任何时候都能够随时保证我干的工作没问题。但是缺点就是，每次我都要处理完事搞一个证明，这样很累。所以速度就会很慢，而且越是复杂的处理逻辑，我干的就越慢，这个你们要理解。</p>
+<p>看完上面你应该你对两个二层协议的方案有了一个大概的认知，如果还不懂也没关系，后面还会更详细的说。在此之前，先讲讲过去沸沸扬扬的 Plasma 的扩容之路。</p>
+<h3 id="2-plasma-的历史">2. Plasma 的历史</h3>
+<p>稍微过一下 Plasma 的历史。其实一开始以太坊在 2017 年的最火热的时候就很堵，那时候就已经有关于扩容方案大量讨论的了。Plasma 是第一个受到非常大关注的方案。因为提出人是 V 神，还有来自 Lightning 的 Joesph Poon。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/23_s0t9hjotkc.png" alt="简述Layer2的定义、发展历程和技术对比"></p>
+<p>第一个版本的 Plasma 叫做 Plasma MVP（Minimal Viable Plasma）。这个版本肯定是行不通失败了。第一个版本大概就是把一大堆交易按照特定的规则排列，然后一起处理（其实后续的改进很多都是对这些一批次一批次交易的数据存储结构做改进）。</p>
+<p>那么 MVP 的问题在哪里呢？还记得上面说的负责交易排序的人吗？这个人在二层协议里就是操作员，二层协议需要考虑到操作员作恶的情况。所以 zk 是操作员每笔留下一个证明，op 是操作员有一段时间的被挑战期。MVP 的问题在于：</p>
+<p>- 挑战期依然存在，一周；</p>
+<p>- 如果考虑到操作员作恶，发起挑战的时候需要把所有（注意，是所有，不是沿着默克尔树验证一条线）的交易全部验证一遍才能核查；</p>
+<p>后来 V 神又做了一个新的版本，Plasma Cash。改变了交易集合的数据结构，同时还把资产都用非同质化通证来表示。这样其实就解决了核查是要检查所有人的所有交易问题。但是新的问题也出现了，用户提现的时候需要证明自己的拥有权，在挑战期用户需要定期在线。此外在存储方面，Plasma 对用户的要求也比较高，要自己存下来所有的数据。最终结果就是失败了。</p>
+<h3 id="3-数据可用性">3. 数据可用性</h3>
+<p>你发现了吗？zk 是把结果和对结果的证明加密后小部分数据传到主网，来证明结果没问题；op 也是要把结果和原始的记录传到主网，如果有挑战能够有证据可查。</p>
+<p>说到底，二层协议最后，甚至到扩容方案都是数据可用性的问题。理解数据可用的最好方式是从主网的角度，主网的节点能不能获得这些数据，并且是无条件的相信，也就是说二层协议处理的交易数据不能够存在中心化服务器或者什么地方。</p>
+<p>以太坊主网把所有的数据都放在链上，任何人都能看能查，所以安全。但是这样就慢、效率低。侧链的解决方案比较彻底，直接搞个新的，侧链的数据上侧链，跟主链无关，所以主链的安全性跟侧链是独立的。这也是为什么很多人普遍觉得二层协议才是最好的扩容方案。因为二层协议能够利用主链的安全性。</p>
+<p>在数据可用性方面，二层协议都把数据量减少，一个是给（跟主链比）比较少能证明交易没问题的数据；一个是不给数据但是请你相信我，要不然就挑战我然后我让你相信我。并且挑战的时候数据都是可用的，而且验证过程相比于历史的方案比较简单。</p>
+<p>现在再回头看看还是 V 神的这个推文：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/23_enm5dbmpqo.png" alt="简述Layer2的定义、发展历程和技术对比"></p>
+<p>其中 SNARKs 和 STARKs 都是零知识证明的方向，具体含义有兴趣自己可以查查。Fraud proofs 就是之前说的乐观的 rollup，直接翻译叫做欺诈证明，其实就是之前说的挑战 &mdash; 拿出证据来证明交易有问题存在欺诈行为。</p>
+<p>而下面的两行就是在说数据可用性，on-chain 就是说二层的交易集合的数据对主网来说是可用的，而 off-chain 则是说二层交易集合的数据对主网来说是未知的，不可用。</p>
+<p>图中的 validium 之前没有提到过，这里解释一下。validium 就是在 zkrollup 的基础上，再把要传到主链的部分数据舍弃，让数据量更少，这样交易处理起来也更快，还能达到交易免费执行的程度（这个下面还会细说，因为 ImutableX 用的就是这个）。</p>
+<p>所以顺着这个图，也就是我们今天比较熟悉，也是文章一开始说的两类扩容方案，zk 和 op。</p>
+<p>op 熟悉的人可能更多，主要是因为 Arbitrum 和 optimistic 两个上线，并且有很多项目（特别是土狗项目）。而 zk 方案其实也挺多项目，比如说 dydx，immutable X，gitcoin 捐赠的支付方式等。</p>
+<h3 id="4-派系之争-op">4. 派系之争 op</h3>
+<p>啥啥都有派系，区块链也是一样。看开点，炒币炒的不是涨跌，是人情世故。</p>
+<p>就好像二层协议有 zk 和 op 两个派系一样，zk 和 op 内部也都有各自的派系之争。</p>
+<p>op 的上面说了，就是 arbitrum 和 optimistic，两个目前都已经上线。很明显 arbitrum 发展的更好，截止到目前为止，arb 一共处理了三百多万笔交易。而 optimistic 则只处理了二十多万笔交易。但是！optimistic 的浏览器做的更好一点，这个必须要说。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/23_126whz8e7g.png" alt="简述Layer2的定义、发展历程和技术对比"></p>
+<p>非常直接地告诉了是交易批次，不是区块。而右边的一层和二层的交易是要完全按照主链的规则记录在主链，所以右边有 Bk，区块的标识。相比于 arbitrum 确实用心很多。</p>
+<p>Arbitrum 和 optimistic 的部分信息对比：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/23_6d5oc2jj65.png" alt="简述Layer2的定义、发展历程和技术对比"></p>
+<p>从目前的情况来看，两个对比，Arbitrum 目前确实领先许多。</p>
+<p>最近 Optimistic 做了一次追溯性奖励计划，给生态中的项目发放奖励。收到奖励的项目一共有 60 个，一共 100 万美元。仔细看看这些项目，基本上都是非常非常技术类型的项目，而非应用类型会发币的项目。V 神前两天还写了一篇回顾，点评 Optimistic 的追溯奖励做的非常棒，项目总体的质量比 Gitcoin 11 期的还要高。这些技术类型的基础设施对于以太坊生态发展尤为关键。</p>
+<p>再仔细看 Opitmistic 的动态，一周前才刚刚完成链网络升级，而唯一地址数的飙升也是最近几天刚刚发生。在此之前 Optimistic 上甚至都可以用没有什么应用来形容。而 Arbirtum 从九月份上线后并没有停机维护过，目前的主要动态就是和更多的项目合作，让更多的应用部署到二层上。</p>
+<p>不得不说，早期在 Arbitrum 出现的土狗项目对于用户和资金的吸引起到了很大的作用。</p>
+<p>多说一句，币安刚刚支持了 Arbitrum ETH 的充值和提现。这样以后从 Arbitrum 上提 ETH 应该都不用等七天了。在此之前还有一个可以用折价换流动性的方法，有协议提供这样的服务。就是如果你想提 1 个 ETH，还不想等七天。可以直接立刻提 0.98 个 ETH。或者说直接在主网借 0.98 个 ETH。等 7 天后，你的 ETH 提出来再还回去。</p>
+<p>因为本身二层出错是个概率事件，只要用户的折价的收益能够弥补错误率乘以总提现额，这个就跑得通。</p>
+<h3 id="5-派系之争-zk">5. 派系之争 zk</h3>
+<p>zkRollups 主要两个派系，分别是 Matter Labs 开发的 zkSync 方案和 Starkwave 开发的 StarkEx 方案。其中 zkSync 目前有两代，分别上 zkSync1 和 zkSync2；Stark 那边则分别是 StarkEx 和 Stark Net 两代。</p>
+<p>这几个的区别 Immutable X 的 CTO 做了非常清晰明了的解释：</p>
+<p>For networks that you can play with right now, StarkEx is live with four applications, DyDx and DiversiFi for trading, and ImmutableX and Sorare for NFTs. zkSync is live for payments with primitive NFT functionality featured with </p>
+<p>ZKNFT.StarkEx 已经上线，有支持交易方面的 dYdX，DiversiFi；还有 ImmutableX 和 Sorare 做 NFT。而 zkSync 那边则是支付方面已经成熟，zkNFT 则是解决 NFT 方面的问题。</p>
+<p>如果还不明白，可以看下面的这个表格</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/23_nd0s035dql.png" alt="简述Layer2的定义、发展历程和技术对比"></p>
+<p>关于两个 zkrollups 的开发团队信息：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1208/23_7357voee8j.png" alt="简述Layer2的定义、发展历程和技术对比"></p>
+<p>目前这两个对比下来，也很明显是 StarkWave 这边更胜一筹。目前利用 StarkEx 技术方案的项目之前也提到了，知名的爆款 dydx，immutablex，deversifi，sorare。根据 StarkWave 官网的数据，利用自己方案项目的总锁仓额已经超过了十亿美元，交易超过了 5100 万笔，累计交易量超过了 2150 亿美元。</p>
+<p>其他在应用和未来发展规划方面的对比，前两天 Bankless 发了一篇文章《The best comparison on zkRollups today》，很详细介绍了这部分内容，中文也已经有很多翻译，有兴趣可以去找找看。</p>
+<h3 id="6-immutable-x">6. Immutable X</h3>
+<p>特别提一下 IMX，一个声势浩大的二层协议，啥也没干先把币发了。</p>
+<p>IMX 用的是和 dydx 差不多的方案，也就是 zkrollups，这都没啥。重点是因为游戏链，道具装备人物肯定都是 NFT，虽然 rollups 比主网便宜很多，但是如果是规模很大的游戏，一样会超级贵，多了还是会用不起。为了解决这个问题，IMX 就更激进，直接用了上面提到 validium 方案。</p>
+<p>Validium 和正常的 zkrollups 的区别就是完全抛弃了数据可用性，打一个简单的比方去理解就是。</p>
+<p>我们把文章一开始例子里面操作员要做的事情是批改学生的试卷。</p>
+<p>Zkrollups 的方式是，操作员每批改完一份试卷，就把批改结果和试卷的照片拍个照，然后一起上传到主网上。这样大家直接就能看到考试分数。如果对考试分数有意见，直接看试卷的照片，看看自己是哪里错了批改没有问题。</p>
+<p>而 validium 是直接把结果分数传上去，试卷照片不传。也就是抛弃了一部分的数据。对于主网来说，是找不到试卷在哪里的，如果有意见，也没办法申诉，因为没有试卷不知道错在哪里。再说一遍，这个就是抛弃了数据可用性，Data Availability。</p>
+<p>但是这样会让整个批改过程（交易处理）变得贼快。</p>
+<p>为了让用户放心，IMX 又搞了个委员会，定期把试卷照片传到其他地方，就是 IPFS。</p>
+<p>但是传到任何地方都没用，只有在主网的区块链里面的数据，才是真的区块链。放在其他地方再安全，他也不是所谓的 crypto native。</p>
+<p>当然，IMX 也知道这个，所以用户未来直接在做交易的时候，可以选择是正常的 zkrollups 或者 validium。按照官方的说法：「我们把选择交给用户。」</p>
+<p>We’re allowing users to choose between two Validium and ZK-rollups via a system known as「Volition」, and we’re starting by offering maximum scalability via Validium to allow applications to scale NFTs to the billions, all while remaining on Ethereum. Let’s go!</p>
+<p>讲实话，虽然能够理解这样的妥协。但是用户知道个啥啊，交给用户不一定是个好的选择。</p>
+<h3 id="7-结论">7. 结论</h3>
+<p>本篇其实没有什么结论，更多的就是一个科普/介绍/讨论/笔记。因为涉及到二层协议，这是一个比较大赛道，技术设计架构方面也都比较复杂，我也不是技术出身所以必然有很多地方理解不到位。目的就是能够让一部分人大概能知道自己如果买了这些或者在这些协议活动，干的是个什么事情。 加之最近中文内容有些不太平，中文非广告的内容可能越来越少，就整理了一个出来。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/31600/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">价格剧烈波动 ETH托管数据会下降吗？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/31601/">
+                <span class="next-text nav-default">今年DeFi被盗最高记录破1.2亿美元 金融创新成为&#34;黑客&#34;敛财神器？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-通俗的方式理解-zkrollup-和-optimistic-rollup">1. 通俗的方式理解 zkrollup 和 optimistic rollup</a></li>
+        <li><a href="#2-plasma-的历史">2. Plasma 的历史</a></li>
+        <li><a href="#3-数据可用性">3. 数据可用性</a></li>
+        <li><a href="#4-派系之争-op">4. 派系之争 op</a></li>
+        <li><a href="#5-派系之争-zk">5. 派系之争 zk</a></li>
+        <li><a href="#6-immutable-x">6. Immutable X</a></li>
+        <li><a href="#7-结论">7. 结论</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

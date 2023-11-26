@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          去中心化基础设施如何实现 dApp 价值捕获 (下) - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="考虑到所需的各种 dApp 功能以及将影响价值捕获的宏观趋势，让我们从长期角度来看，价值捕获是如何在四个主要层面上进行整合的。" />
+<meta name="keywords" content="去中心化" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/28867/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="去中心化基础设施如何实现 dApp 价值捕获 (下)" />
+<meta property="og:description" content="考虑到所需的各种 dApp 功能以及将影响价值捕获的宏观趋势，让我们从长期角度来看，价值捕获是如何在四个主要层面上进行整合的。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/28867/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-21T00:00:00+00:00" />
+
+<meta itemprop="name" content="去中心化基础设施如何实现 dApp 价值捕获 (下)">
+<meta itemprop="description" content="考虑到所需的各种 dApp 功能以及将影响价值捕获的宏观趋势，让我们从长期角度来看，价值捕获是如何在四个主要层面上进行整合的。"><meta itemprop="datePublished" content="2021-09-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6740">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="去中心化基础设施如何实现 dApp 价值捕获 (下)"/>
+<meta name="twitter:description" content="考虑到所需的各种 dApp 功能以及将影响价值捕获的宏观趋势，让我们从长期角度来看，价值捕获是如何在四个主要层面上进行整合的。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">去中心化基础设施如何实现 dApp 价值捕获 (下)</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-21">
+      2021-09-21
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6740 字 -
+        预计阅读 14 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>价值捕获将在四个层面上进行整合</strong></p>
+<p>考虑到所需的各种 dApp 功能以及将影响价值捕获的宏观趋势，让我们从长期角度来看，价值捕获是如何在四个主要层面上进行整合的。</p>
+<h2 id="区块链-链上功能层"><strong>区块链 (链上功能层)</strong></h2>
+<p>捕获 dApp 价值的第一个也是最明显的基础设施是底层区块链。区块链可能会围绕 dApp 提供以下链上功能进行整合：</p>
+<ul>
+<li>
+<p>检查用户之间、dApp 内部和 dApp 之间资产转移的私钥签名</p>
+</li>
+<li>
+<p>验证链下计算和 layer-2 网络的有效性证明、欺诈证明、阈值签名和 TEE 证明</p>
+</li>
+<li>
+<p>计算智能合约逻辑；或多或少取决于区块链的吞吐量</p>
+</li>
+<li>
+<p>更新智能合约的状态并在链上存储 calldata 或真实运行的数据</p>
+</li>
+</ul>
+<p>在区块链上捕获 dApp 价值可以通过赚取区块奖励和执行链上功能的用户费用，这两者都以区块链的原生资产计价。区块奖励被分配给矿工，因为他们产块 (工作量证明,PoW) 是需要消耗能量的，或者可以让那些质押了一定数量区块链原生代币 (权益证明,PoS) 同时还要产块的验证者获得一定数量的奖励。基础用户费用直接支付给矿工/验证者，或者通过销毁基础费用的货币通缩机制间接支付给代币持有者。矿工/验证者还可以获得额外的用户费用作为更快打包用户交易的激励 (如，支付高昂的 gas 费以便其交易更快被包含到下一个区块中)。并且在其中一些区块链中，通过重新对区块内的交易进行排序，可以获取矿工/最大可提取价值 (MEV) 。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0921/6_drhvy56mf1.png" alt="去中心化基础设施如何实现 dApp 价值捕获 (下)"></p>
+<p>比特币和以太坊矿工产生的收入的 7 天移动平均值 (来源)</p>
+<p>实际上，每个区块链可以从其网络上运行的每个 dApp 中都获得一部分的价值。这种价值捕获很可能来自于高吞吐量链上非常低成本及高频的个人交易，以及去中心化区块链上成本较高、频率较低的批量交易。总的来说，区块链捕获 dApp 价值的关键是能否支持大量拥有活跃用户的dApp。</p>
+<p>不过区块链确实也有一些局限性。首先，它们只从在其区块链上运行的 dApp 中捕获价值。在一个链的选择越来越多的环境中，dApp 可能会选择通过跨链部署来分割它的功能使用，也就是在某条合适的链上部署相应高性能的功能，这样就会减少另外一条链对其的价值捕获。其次，区块链经过优化来提供某些功能，例如以牺牲去中心化为代价来产生链上可扩展性，或以牺牲隐私为代价提供透明度。因此，dApp 可能只部署在具有某些优化过功能的区块链上，或者只是将特定功能路由到链下，从而减少单个区块链对其的总价值捕获。最后，区块链有意去限制其计算能力，因此更高阶的 dApp 可能永远不会直接在链上运行计算。然而，区块链的原生代币可能会从一些链下计算系统 (如 layer-2 欺诈证明或有效性证明) 中积累价值。</p>
+<h2 id="预言机-混合服务层"><strong>预言机 (混合服务层)</strong></h2>
+<p>从 dApp 捕获价值的第二个，也是最容易被误解的基础设施是预言机，它们执行信任最小化的链下功能，被称为混合服务。由于区块链通过隔离来创建确定性 (即，区块链仅使用内部数据追踪内部状态) ，因此它们没有连接链下的内置功能。所以区块链需要预言机与链下资源进行交互，以在某种程度上维持其确定性。</p>
+<p>虽然人们通常在一定意义上认为预言机只在链上中继外部数据 (如喂价服务) ，但像 Chainlink 这样的通用预言机网络可以被用来为 dApp 提供任何类型的混合服务——使用去中心化、密码学、经济激励和/或可信硬件的链下计算，以在链上通过可验证和可执行的方式为智能合约提供高度安全和可信任的服务。</p>
+<p>如果区块链层类似于去中心化的计算机，那么预言机层就像一个去中心化的互联网协议网。然而，预言机不仅仅能安全地连接不同的价值系统；它们还通过完善自身服务来补充链上计算和链下资源。例如，预言机可以为 dApp 的计算提供可扩展性和隐私性，以及通过数据聚合和质押为传统 API 服务提供链上的连接性和可信任性。而这里值得我们注意的是，这两种服务都不需要对底层区块链或 API 进行修改。</p>
+<p>dApp 将对去中心化预言机网络 (decentralized oracle networks，DONs) 的广泛混合服务有很大需求，包括：</p>
+<ul>
+<li>
+<p>从外部 API 获取数据并传送到链上</p>
+</li>
+<li>
+<p>将智能合约的输出中继到像法币支付系统这样的外部 API</p>
+</li>
+<li>
+<p>聚合数据以使其免受单点故障的影响</p>
+</li>
+<li>
+<p>自动化开发(DevOps) 和智能合约维护功能 (Keepers) ，如触发偿还、回基、限价订单、收取收益、余额充值等</p>
+</li>
+<li>
+<p>生成可验证的随机数，以证明链上随机数的公平性</p>
+</li>
+<li>
+<p>使用 Layer-2 技术执行可扩展的智能合约和数据计算</p>
+</li>
+<li>
+<p>为智能合约计算和数据生成隐私</p>
+</li>
+<li>
+<p>根据预先定义的公平概念为用户交易排序，防止抢跑和有害形式的 MEV</p>
+</li>
+<li>
+<p>为封装代币和代币化的现实世界资产提供跨链和储备证明 (proof of reserve)的桥接</p>
+</li>
+<li>
+<p>作为一个区块链抽象层，可以为任何区块链读取/写入数据</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0921/6_bzequgdm1k.png" alt="去中心化基础设施如何实现 dApp 价值捕获 (下)"></p>
+<p>去中心化的预言机网络在链上和链下环境之间双向通信 (来源)</p>
+<p>DON 执行的每项混合服务都会获得报酬，即从 dApp 中捕获了价值。支付主要以 DON 的原生代币来计价，与矿工/验证者以区块链的原生代币获得报酬无异。成本会有很大的差异，取决于混合服务的使用频率、复杂性和质量，以及服务保障的价值量和支持它的加密经济系统的安全性。DON 可以通过要求预言机节点在链上服务协议中质押预言机网络的原生代币来提供加密经济的安全，这些代币是会因恶意活动或只是因为未能履行预先订立的链上义务 (例如离线、异常数据、错误证明等) 而被罚没。</p>
+<p>绝大多数的 dApp 对混合服务是有需求的，而且 dApp 需要的是多种混合服务，例如可扩展的合约计算、外部数据、DevOps 自动化等。这使得与通用型区块链预言机层的应用范围比任何单一的区块链都更广泛，因为它可以在非常多独立服务上从大多数区块链上的大多数 dApp 中捕获价值，并将整个现有的 API 经济货币化。</p>
+<p>我们认为混合服务层将主要围绕 Chainlink 进行整合。作为市场领先的预言机解决方案，Chainlink 不仅已经有了显著的网络效应，而且它是一个完全通用的、无需许可的，并具有异构网络架构的协议，。在这个意义上，Chainlink 是一个可以无限扩展的独立的 DON 网络，其中每个 DON 可以由任何自定义的节点组合组成，负责向不同的区块链/ Layer 2 上的 dApp 提供不同类型的混合服务。正如 Chainlink 2.0 白皮书中所述，Chainlink DON 是可以有自己的共识机制、数据结构、外部连接、治理框架和信任假设的。但它们不是像区块链那样是永久的、通用的账本。相反，DON 是独立的，并且可以针对现有区块链和 Layer 2 网络的智能合约提供针对性的应用服务。</p>
+<p>像 Chainlink 这样的通用型异构预言机网络可以很好地实现网络效应，因为它可以为任何用例提供服务；不存在强制的设计模式、网络可扩展性瓶颈或 DON 之间的相互依赖关系。这种网络架构可以创建一个通用的混合服务市场，开发人员可以利用现有的 DON 或者可以结合可信任的节点运营商、外部 API 和计算适配器，为 dApp 快速接入混合服务。随着市场的多样化发展，还发展出用于筛选 DON 及其各个组件质量的声誉框架，以及用于记录任何链上和链下系统如何通过 DON 进行交互的公共库。</p>
+<p>只有混合服务层的网络效应才能向区块链开发者开放世界上所有现有的数据和系统，并培育出大型高度可信任的通用节点池，以计算这些链下资源。由于开发者只需要专注于开发的核心业务逻辑，并可以用一种代币做任何链下的事情，通用资源的可访问性将大大加快构建和发布 dApp 所需的时间。此外，还存在强大的规模经济效应，因为多种类型的 DON 可以由多个 dApp 共同使用和资助，且多亏了用户费用聚合机制，大家可以以最低的成本使用最安全的 DON。</p>
+<p>然而，混合服务层的广阔性将同时看到其他项目所创造的竞争和利基市场，以及不同 dApp 对混合服务的差异需求。例如有些区块链已经有内置的跨链桥接，如波卡的 XCMP 和 Cosmos 的 IBC。一些 dApp 还使用链上激励来鼓励混合功能，如 keeper bots 和其他 dApp 对可扩展性计算的需求较低，因为它们本来就在高吞吐量的区块链上运行。虽然会有很多竞争，但毫无疑问，预言机层的网络效应可以为那些想要构建高级 dApp 的开发人员带来最大的裨益。为什么呢？因为它可以让所有区块链上的开发者都能访问可信任的节点网络，以安全、可扩展和加密的方式使用任何输入和输出执行自定义计算。</p>
+<h2 id="外部-api-链下资源层"><strong>外部 API (链下资源层)</strong></h2>
+<p>捕获 dApp 价值的第三类基础设施是 dApp 使用的外部 API。任何存在于 dApp 底层区块链之外的系统或网络都属于外部 API，其本身产生了独特的价值形式，无论这部分的价值是体现在数据上还是服务上。外部 API 包括中心化的系统、独立于 dApp 本身的区块链，以及可以在链下使用的链上 dApp。因此，虽然通用型预言机网络提供了连接外部资源的网关并完善了链上/链下服务，但外部 API 生成了许多 dApp 想要访问的底层数据集和计算服务。</p>
+<p>一些常见的外部 API 资源示例：</p>
+<ul>
+<li>
+<p>专门生成特定数据集的数据提供商，例如高质量的天气数据或金融市场信息。dApp 可以通过预言机把这些数据作为输入，触发其计算的执行</p>
+</li>
+<li>
+<p>提供高级计算能力，如高性能机器学习算法和集成物联网网络的云基础设施。dApp 可以利用云系统来处理原始数据，然后由预言机在链上中继作为输入，触发智能合约的函数计算</p>
+</li>
+<li>
+<p>提供法币支付轨道和能接触到大型客户群的全球支付基础设施。dApp 可以使用传统的支付网关以当地法定货币进行链下交易的结算</p>
+</li>
+<li>
+<p>由去中心化网络 (如 Filecoin 和 Siacoin) 或中心化网络 (如 DropBox 和云系统) 组成可用的存储解决方案。dApp 可以将大型存储需求卸载到外部网络，以避免更昂贵的链上开销和/或检索外部数据所需的计算。</p>
+</li>
+<li>
+<p>创建受欢迎服务（如The Graph的链上数据索引服务，以支持用户交互或其他区块链的外部支付）的 dApp。dApp 可以利用其他链上系统来获得新功能，或接触新用户。</p>
+</li>
+<li>
+<p>为用户交互和网站提供支持的网站托管和域名注册解决方案，使用户能够找到和使用 dApp。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0921/6_cfj0nc0elh.png" alt="去中心化基础设施如何实现 dApp 价值捕获 (下)"></p>
+<p>示例：数据提供商对其金融市场数据的定价模型 (来源)</p>
+<p>外部资源通过 dApp 直接或间接为其数据/服务付费来捕获价值。支付方式有两种：使用法币和传统 API 订购模型的链下支付，或者使用外部 dApp/网络的原生代币的链上支付。所有区块链中的大多数 dApp 都需要某种形式的外部数据或计算，这几乎总是需要使用预言机作为不同环境之间的桥梁。这些外部资源可能对 dApp 的成功起着相当关键的作用，尤其是在 dApp 执行中使用的数据和计算。总的来说，外部资源的价值捕获是相对较高。然而，大多数外部 API 面向的都是小众市场，因此任何单一的外部资源可以从 dApp 中捕获的价值都明显有限。</p>
+<p>如前所述，预言机通常通过将外部资源费用的提取纳入到 dApp 支付的预言机费用中。这对 dApp 来说，其实是一种更容易的形式，因为对于任何链下资源他们只需要管理一种支付流。这种形式还降低了成本，因为预言机可以将费用汇总到共享外部服务中。随着时间的推移，外部资源提供商很可能也会选择成为预言机节点之一，这样的情况在 Chainlink 上并不少见 (例如 Tiingo、dxFeed 和其他) 。</p>
+<p>从根本上说，预言机网络以这两种方式支持外部资源是很重要的：1) 允许外部资源提供商以向后兼容的方式向现有预言机出售 API 连接；2) 允许外部资源提供者启动他们自己的预言机节点，直接在链上出售其 API。</p>
+<p>这种双重方法模型对于在链上获得最广泛的数据，同时保持对时间敏感的 dApp 所需的强大可信任性保证是至关重要的，这些 dApp 以自动化的方式为数十亿美元提供安全性。这就是为什么 Chainlink 今天运行着这两种模式的原因，并同时提供数据聚合和数据隐私的解决方案，为 dApp 优化其所需的数据。现实情况是，许多 API 供应商不希望运行额外的基础设施，或者他们本身就缺乏以高度可信任的方式运行系统的能力。因此，如果供应商需要自己来运行节点，这将严重限制链上数据的访问，并为智能合约引入了潜在的严重漏洞 (即如果 API 供应商不是专业的 DevOps 的话) 。</p>
+<h2 id="dapp代币-链上资金层"><strong>dApp代币 (链上资金层)</strong></h2>
+<p>捕获 dApp 价值的最后一层是 dApp 的原生代币，和可能在一个 dApp 中使用的各种外部 dApp 代币。大多数 dApp 会选择发行自己的原生代币，这些代币与 dApp 内的某些价值流或治理权力相关联，在 dapp 内赋予代币价值并用于引导一个双边市场。或者，有些dApp会给非原生 dApp 代币提供支持， 这样做通常是为了吸引资金，尤其是需要各种资产流动性的 DeFi 应用。当今使用 dApp 代币的最常见方式包括：</p>
+<ul>
+<li>
+<p>为基本的 dApp 服务提供流动性，例如代币兑换和超额抵押贷款</p>
+</li>
+<li>
+<p>为保险池提供资金，在服务出现故障时保护用户的资金</p>
+</li>
+<li>
+<p>通过收取 dApp 内特定用户交互的小额交易费用，给持有者发股权</p>
+</li>
+<li>
+<p>允许用户在链上治理决策中使用代币加权的投票权</p>
+</li>
+<li>
+<p>作为货币间交易的桥梁</p>
+</li>
+<li>
+<p>作为 dApp 服务或购买的支付和/或折扣媒介</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0921/6_2osvwfqar5.png" alt="去中心化基础设施如何实现 dApp 价值捕获 (下)"></p>
+<p>基于 30 天数据样本，关于从 DeFi 协议中产生的年化收入 (来源)</p>
+<p>dApp 代币以多种方式捕获价值，有时有不只一个价值流。一些 dApp 代币只是赋予持币者通过 dApp 的原生治理 DAO 对协议修改进行投票的权利。其他 dApp 将所有交易费用的一部分分配给治理代币持有者 (通过给分红或烧毁的方式) ，作为持有该 dApp 代币股权的一种收入形式。也有 dApp 向做质押的 dApp 代币持有者发放增发奖励，无论是只给它们代币的持有者还是一些外部 dApp 的代币持有者，都是为了吸引流动性。最后，有些dapp更有创意，它们提供一些只有它们的代币持有者才享有的特权和在它们dapp内可用的折扣。</p>
+<p>dApp 代币可以说受限于网络效应，因为它们只能从其 dApp 的使用中捕获价值，并且鉴于 dApp 易于复制，在收取高额费用时必须要谨慎。但是，某些 dApp 的构建更像是基础设施，而不是纯粹应用本身，例如使用其他 dApp 作代币兑换或即时链上流动性的 dApp。还有证据表明，具有良好声誉和社区的 dApp 是很难被取代的。例如，今天市场上我们看到很多 dApp 有仿盘，但仿盘的存在大多数都是没有什么意义的，因为用户不信任缺乏经验的团队和/或由于社区共识或经济风险而选择忠于他们最喜欢的 dApp。</p>
+<p>最成功的 dApp 可能是由那些有原创想法且能力强大的团队构建的。他们还可能采用多链策略，吸引大量的长期流动性提供者，支持充满热情和活跃的社区，将混合服务外包给具有最佳网络效应的解决方案，将收入来源与其代币联系起来，并成为其他 dApp 中受欢迎的代币。</p>
+<p><strong>高级dApp需要联合基础设施，以形成网络效应</strong></p>
+<p>dApp 已准备好成为人们在多样化的社会和经济进程中进行全球互动的支柱了。然而，要形成成功的 dApp 的大型生态系统，需要利用网络效应，这必须涉及与支持 dApp 的去中心化基础设施的整合。网络效应提供的先进开发环境对dApp 的创建、维护和演化过程非常重要，一方面给开发者提供更多的可用资源，另一方面以最低的成本给dApp提供最高质量的服务。</p>
+<p>网络效应对 dApp 和支持它们的所有层是确实有益的存在。</p>
+<ul>
+<li>
+<p>承载着成功的 dApp 的区块链将产生更多的用户费用，这些费用可以用来提高安全预算，从而能够支持更去中心化和防篡改的网络。那些在有更高安全预算的区块链上运行的 dApp 是更安全的，也会更容易得到用户的信任。</p>
+</li>
+<li>
+<p>预言机网络通过混合服务支持大量新的 dApp，这样将会吸引更大的用户费用池，增加网络的安全预算，使得节点运营商可以雇更多的人来维护。对预言机网络的需求增加导致预言机节点之间的竞争，从而提升节点的安全性，扩大服务种类，也使得额外的 API 数据和计算服务通过预言机变得链上可用。</p>
+</li>
+<li>
+<p>外部资源提供商从成功的 dApp 和预言机网络中获益良多，因为它为他们开辟了新的市场，赚取了更多的收入。开发人员可用的外部资源和预言机计算越多，dApp 的开发速度就越快，它们就可以为更多的价值提供安全性，并且它们可以支持的功能也会越高级。</p>
+</li>
+<li>
+<p>由安全的区块链支持、得到高级的预言机计算的协助，并与高质量的外部输入/输出相连，dApp 变得性能更强、成本更低和技术更前沿。不断提升的dApp 促进用户需求的增长，为 dApp 代币持有者带来更多收入。</p>
+</li>
+</ul>
+<p>因此，虽然不同的基础设施层可能会争夺价值捕获，但成功的 dApp——无论捕获的价值在哪里——都会为所有基础设施层带来更多价值，因为总的蛋糕面积更大了。最终，所有四个层都是相互依存的，并需要彼此的成功才能不仅最大化自身的价值捕获，而且实现超越物质欲望的终极元目标：</p>
+<p>在这个社会中，人们有能力控制自己的数据和金融资产，并参与到与他人公平、公开、透明和可靠的合约关系中。</p>
+<p>来源 | smartcontentpublication</p>
+<p>作者 | SmartContent</p>
+<p>翻译/校对：Lochaiching/ECN</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/28870/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">桥水基金创始人：比特币具有估算价值而不是内在价值</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/28859/">
+                <span class="next-text nav-default">吴晨：理解元宇宙的三个维度</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#区块链-链上功能层"><strong>区块链 (链上功能层)</strong></a></li>
+    <li><a href="#预言机-混合服务层"><strong>预言机 (混合服务层)</strong></a></li>
+    <li><a href="#外部-api-链下资源层"><strong>外部 API (链下资源层)</strong></a></li>
+    <li><a href="#dapp代币-链上资金层"><strong>dApp代币 (链上资金层)</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

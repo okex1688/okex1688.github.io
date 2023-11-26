@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          波卡80%代码需要修改？谣言 深度分析平行链的开发进展 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="信息量大，仔细看！" />
+<meta name="keywords" content="Polkadot, 波卡" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/21503/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="波卡80%代码需要修改？谣言 深度分析平行链的开发进展" />
+<meta property="og:description" content="信息量大，仔细看！" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/21503/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-27T00:00:00+00:00" />
+
+<meta itemprop="name" content="波卡80%代码需要修改？谣言 深度分析平行链的开发进展">
+<meta itemprop="description" content="信息量大，仔细看！"><meta itemprop="datePublished" content="2021-04-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-27T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4029">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="波卡80%代码需要修改？谣言 深度分析平行链的开发进展"/>
+<meta name="twitter:description" content="信息量大，仔细看！"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">波卡80%代码需要修改？谣言 深度分析平行链的开发进展</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-04-27">
+      2021-04-27
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4029 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>前段时间 Gavin 分别 在 Github 上发布重构 XCM 的待开发清单以及 Kusama 平行链的上线清单，给社区带来最新进展的同时，也被一些不了解波卡的社区成员利用并散布一些不实的信息。今天 PolkaWorld 发起<strong>第 3 次</strong> 社区讨论会，邀请 6 位一直紧跟平行链开发的团队，来与大家解答：</p>
+<ul>
+<li>
+<p>波卡平行链的开发现状，Parity 目前在平行链上的进展</p>
+</li>
+<li>
+<p>Gavin 发布的上线清单是不是会导致平行链上线延迟的原因</p>
+</li>
+<li>
+<p>生态项目各自的进展</p>
+</li>
+</ul>
+<p>嘉宾：</p>
+<ul>
+<li>
+<p>陈锡亮：Acala 联合创始人</p>
+</li>
+<li>
+<p>Lurpis：Bifrost 创始人</p>
+</li>
+<li>
+<p>佟林：Phala CEO</p>
+</li>
+<li>
+<p>郭涛：Zenlink 中国区负责人</p>
+</li>
+<li>
+<p>Kristen：ChainX CMO</p>
+</li>
+<li>
+<p>Sota：Plasm CEO</p>
+</li>
+<li>
+<p>Xiaojie：PolkaWorld 联合发起人</p>
+</li>
+</ul>
+<p><strong>1. 最近社区有人传言波卡因为要修改 80% 的代码，所以导致平行链上线延迟，可以分享下 Parity 在平行链上的进展吗？</strong></p>
+<p><strong>Bifrost Lurpis：</strong> 修改 80% 代码这个说法是<strong>谣言</strong> ，当然这么传的原因可能是来自之前 Gavin 公布了一个比较长的 XCM 更新清单，但是修改 80% 代码这个是无稽之谈，Substrate 本身是一个具备多模块的区块链框架，在资产、共识、治理等大部分模块已开发完毕的基础上，现在正在 XCM 这个模块上继续开发迭代，XCM 作为跨链通讯的基础，当然需要在完善之后谨慎推出。</p>
+<p>至于重构 XCM 会不会导致平行链的延迟，我认为会有一定影响，但不是很大。因为 XCM 是平行链与平行链、平行链与中继链通信的基础设施，是在平行链开始拍卖之前的一个重要协议。XCM 从开始测试以来，也不断的更新迭代了非常多的新功能，这次 XCM 的更新内容较多，涉及到跨链过程中的<strong>源地址定义</strong> ，<strong>消息执行优先级</strong> 以及<strong>消息调度</strong> 等问题，当前进展根据 Github 显示，XCM 重构进度已经达到 <strong>45%</strong> ，进度还是比较快的，具体进展可以关注 <a href="https://github.com/paritytech/polkadot/issues/2841">https://github.com/paritytech/polkadot/issues/2841</a></p>
+<p><strong>Acala 陈锡亮：</strong> 针对 XCM 的代码有大的重构，但这只是 XCM 的，和平行链共识没有直接关系。现在平行链共识的部分基本稳定，只剩下最后的大规模性能测试。接下来几周 rococo 会陆续增加到 <strong>900</strong>  个验证人，模拟类似 Kusama 的环境，进行压测。XCM 的开发还在进行之中，现在的侧重点是支持通过 relaychain 的议会来管理系统平行链的升级等操作。</p>
+<p><strong>Phala 佟林：</strong> 最近确实在重构一部分代码，但是没有这么夸张！Parity 最近更新了很多 Statemint 和 XCMP 底层实现，还有 staking 模块。</p>
+<p><strong>ChainX Kristen：</strong> 更新代码是常态，特别是每个阶段的测试完成后。社区传言的 80% 代码需要修改，有些夸张和渲染。</p>
+<p>目前的平行链开发其实大概是两个方面，<strong>一个是完善底层的跨链基础设施以及跨链互操作的细节规范</strong> ，比如最重要的 XCM 需要进一步重构来达到生产级别的标准, 概念验证的阶段早已经完成，现在主要是进行性能优化以及进行更大规模的平行链测试。另一个是推出<strong>首批系统平行链</strong> ，比如 statemint，我们可以看到这两条线基本是在并行一起稳步推进。</p>
+<p><strong>Plasm Sota：</strong> 从 Parity 的 github 上看，我们可以看到一些进展，例如 Statemint，但是 Rococo 和 Statemint 仍然需要一些更新和优化。</p>
+<p><strong>Zenlink 郭涛：</strong> 从我们这次大规模真实环境公测结果来看这些修改我们觉得是<strong>必要的</strong> ，也是及时的。目前波卡在共识层是稳定可靠的，但是在平行链之间的通信并未经过大规模实测，XCM 重构以及中继链的“瘦身”是为平行链的大规模上线做的必要技术储备。</p>
+<p><strong>PolkaWorld xiaojie：</strong> 修改 80% 的代码这个信息有点太假了！我想应该是指的 Gavin 前段时间提出的对 XCM 的重构（https://github.com/paritytech/polkadot/issues/2841）但这仅仅只是 XCM 的，正如 Acala 提到的，这与平行链的共识没有直接关系，只是波卡众多功能中一小部分！说修改 80% 的代码言过其实！Parity 目前除了 XCM 的重构，还在同步进行公益平行链 Statemint 的测试和跨链桥 Wococo 的测试！</p>
+<p>另外，因为链上治理的投票需要一定的时间，我们已经看到一些团队在提前通过理事会<strong>准备申请</strong> 成为 Kusama 和 Polkadot 的公益平行链！</p>
+<p>上周 Kusama 理事会一起进行了线上电话会，讨论了除了在 Polkadot 网络上部署一个 <strong>PolkaBTC</strong>  的公益平行链之外，是否还要把 PolkaBTC 接入到 Kusama 网络并作为公益平行链供整个生态使用。你在这里可以看一些大家讨论的总结：https://kusama.polkassembly.io/post/570</p>
+<p>另外，在 Polkadot 网络上，波卡理事会也正在讨论是否将一个<strong>身份平行链</strong> 作为波卡网络的公益平行链！目前这个议案是由 Parity 的一位工程师提出，计划之后通过国库来激励社区维护这个公益平行链。你可以在这里查看这个议案的内容：https://polkadot.polkassembly.io/post/415</p>
+<p>目前，Kusama 理事会和 Polkadot 理事会<strong>正在分别讨论</strong> 这两个议案，一旦理事会通过这两个议案，他们就会被分别分配一个免费的插槽，接入到 Kusama / Polkadot 中继链！</p>
+<p>所以，总结一下，平行链上线是一个非常庞大的工程，除了基础架构的技术实现，还有基于已经实现代码的各种测试，不仅仅要测试网络稳定性、平行链与中继链的跨链消息、平行链的拍卖众筹，还有要测试公益平行链、桥链等等；除此之外，还有同步外部公益平行链的申请，要提前为整个网络的利益做出决策等等，并非大家想象中的容易和简单！波卡的所有机制一直是复杂而精妙的，每一步都在正常的推进中！</p>
+<p><strong>2. Gavin 7 天前发布过一个 Kusama 的上线清单，从 github 上看，parity 还没有开始执行清单上的列表，这个是导致平行链上线延迟的原因吗？</strong></p>
+<p><strong>Acala 陈锡亮：</strong> 因果关系要搞清楚，这个是清单的果，做完了就打勾，没做完就没打勾。但是没打勾不表示没做东西出来，也没有规定所有的东西必须一个一个来，部分事项是并行开发的。正常的软件开发需要的时间都是初步估计的 3 到 5 倍以上，<strong>目前平行链开发的进度并没有什么特别的慢</strong> 。</p>
+<p><strong>Phala 佟林：</strong> 没打勾不是原因，是结果。这个清单打勾肯定<strong>不是线性</strong> 的，我相信某个时间点打勾时会一起打好几个勾！</p>
+<p><strong>Bifrost Lurpis：</strong> 不是，目前主要工作为上线前的测试，一旦测试稳定之后，将按照上线清单上的内容逐步开始在 Kusama 上进行公投，所以<strong>上线时间也可以理解为等待公投通过，进行链上升级的时间</strong> 。</p>
+<p><strong>Zenlink 郭涛：</strong> 哈哈哈，从我们自己开发的实际情况来看，可能有时候某些任务之间有继承关系的时候。我们会等所有任务都完成后<strong>一次性</strong> 完成“打勾”操作。</p>
+<p><strong>ChainX Kristen：</strong> 码过代码的都知道了，上传 github 是工作的最后一步了。这个执行清单不是在线文档，时时同步每一个字的更新。</p>
+<p><strong>Plasm Sota：</strong> 总的来说，Parity 目前在进行一些内部测试！外部的团队暂时没有接进来。我认为 Parity 已经开始了一些任务，但尚未完成。我认为 Parity 本周将升级 Rococo 和 Statemint，希望我们能看到进展。</p>
+<p><strong>PolkaWorld xiaojie：</strong> 首先要搞清楚 Gavin 发布的这个清单是 Kusama 平行链的上线清单，一旦到这一步的时候，说明是 Kusama 已经开始上线平行链了。我们现在看到的 statemint 这些的测试就是为了上线 Kusama 准备的，这些测试好之后，到时候会直接部署 Kusama，这个清单的时间就是部署在 Kusama 网络上的投票时间了！</p>
+<p><strong>3. 生态项目目前在平行链上各自的进展是怎么样的？</strong></p>
+<p><strong>Acala 陈锡亮：</strong> Acala 平行链基本的核心功能（支持平行链共识，跨链转账）都已经开发完成，唯一缺少的核心功能是收集人的选举模块，这个已经设计完成，就等 Cumulus 有着完善的支持后就可以快速的开发完成。所以现在是万事俱备只欠东风了。</p>
+<p><strong>Phala 佟林：</strong> 我们完成了 Phala crowdloan 的 DAPP 开发，到时候大家可以在链上参加 Phala 的 Kusama 众贷。</p>
+<p>我们最主要的工作是把 Phala 主网的复杂系统平行链化。因为 Phala 不仅是 Substrate 链，还涉及到管理链下几千台、几万台计算节点的复杂系统，所以在平行链状态下的实现还是很有考验的。比如在平行链共识下，如何完成计算节点的心跳传递、任务发放和奖励结算，这个和独立 Substrate 链实现会截然不同。</p>
+<p>跨链用例：我们再重构原先的暗钱包，使之兼容 Statemint 和其他平行链，从而在 Kusama 平行链上线后可以第一时间用起来 Phala，而不是傻傻的一条空气链！</p>
+<p><strong>Zenlink 郭涛：</strong> 我们一直关注跨链消息 XCM 的动态，最近有两个大方向 —— 跨链消息的手续费和 XCM 的链上治理，我们会随时根据最新的 Rococo 代码更新我们的 Protocol。最近完成的 Zenlink DEX DApp 的首次公测也是模拟真实平行链环境的大规模压测，整体达到目标，也暴露出一些性能优化点。另外，我们做了一个服务于平行链拍卖的产品，到时候会和整个生态的朋友见面！</p>
+<p><strong>Plasm Sota：</strong> 目前我们已经准备好了启动平行链，只待 Parity 的一些技术更新。我们可能会在拍卖前推出具有诸如 PoS 和 DApps Staking 之类的全部功能的主网。</p>
+<p><strong>ChainX Kristen：</strong> SherpaX 将接入 Kusama 作为平行链，目前代码 80% 已经完成，剩下的部分需要紧跟着 Statemint 的更新来完善。因此 ChainX 密切关注 Statemint 动态，尤其是平行链上的合约操作如何与 Statemint 上的资产相关联。</p>
+<p><strong>Bifrost Lurpis：</strong> 在平行链竞拍 Crowdloan 和上线的流程已经在 Rococo 测试完毕了，目前我们发布了最新版的测试网 Asgard CC4 和 Bifrost 公测 Dapp，大家可以在 Bifrost 平行链正式上线前体验到 Bifrost 的具体功能，同时我们正在紧张筹备 Kusama 的插槽竞拍，并在竞拍环节首次应用了 SALP 协议来解锁参与 Bifrost 插槽竞拍的 KSM 流动性，有关 Bifrost 竞拍 Kusama 的具体激励细则将在 Bifrost 参与 Kusama 插槽前进行公布。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/21489/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">比特币价格下跌28%后，比特币期权交易员仍持中立态度</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/21480/">
+                <span class="next-text nav-default">波卡连续公布三大重要进展 插槽拍卖上线在即</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

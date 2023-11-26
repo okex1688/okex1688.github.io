@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          波卡联合创始人Robert：平行链的未来规划和 Rococo 的重构 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文整理自 10 月 14 日波卡联合创始人 Robert Habermeier 在「Sub0 Online 2021」Substrate 开发者大会上关于平行链的演讲。" />
+<meta name="keywords" content="Polkadot, 平行链" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/29966/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="波卡联合创始人Robert：平行链的未来规划和 Rococo 的重构" />
+<meta property="og:description" content="本文整理自 10 月 14 日波卡联合创始人 Robert Habermeier 在「Sub0 Online 2021」Substrate 开发者大会上关于平行链的演讲。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/29966/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-10-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-22T00:00:00+00:00" />
+
+<meta itemprop="name" content="波卡联合创始人Robert：平行链的未来规划和 Rococo 的重构">
+<meta itemprop="description" content="本文整理自 10 月 14 日波卡联合创始人 Robert Habermeier 在「Sub0 Online 2021」Substrate 开发者大会上关于平行链的演讲。"><meta itemprop="datePublished" content="2021-10-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4023">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="波卡联合创始人Robert：平行链的未来规划和 Rococo 的重构"/>
+<meta name="twitter:description" content="本文整理自 10 月 14 日波卡联合创始人 Robert Habermeier 在「Sub0 Online 2021」Substrate 开发者大会上关于平行链的演讲。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">波卡联合创始人Robert：平行链的未来规划和 Rococo 的重构</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-10-22">
+      2021-10-22
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4023 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E8%A7%82%E7%82%B9/"> 观点 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>本文整理自 10 月 14 日波卡联合创始人 Robert Habermeier 在「Sub0 Online 2021」Substrate 开发者大会上关于平行链的演讲。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/13_4qt11sjz10.png" alt="波卡联合创始人Robert：平行链的未来规划和 Rococo 的重构"></p>
+<p>我今天其实就是要讲讲<strong>平行链</strong> ，包括：怎样实现、目前到什么阶段了、未来有什么计划。</p>
+<p>我是 Polkadot 的创始人之一，从 2016 年就开始和 Gav 一起在做 Polkadot，我也是平行链代码库和实现的主程序员和团队负责人。所以我今天分享的内容是来自第一线的。</p>
+<p><strong>平行链 V1 开发线路图</strong></p>
+<p>首先我们来看看时间线，看看平行链是怎样发展到今天的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/13_qjegsk0009.png" alt="波卡联合创始人Robert：平行链的未来规划和 Rococo 的重构"></p>
+<p>在 Polkadot 的开发周期初期我们花了大量的时间，去构建 Substrate、BABE 和 GRANDPA 共识算法、lib p2p。其实平行链的开发，需要提前完成这里面的很多基础组件。所以我们在 5 月发表了**《实现者指南》** 的第一版草案，这个指南其实就是一个巨大的实现文档，它描述了我们的动机，我们在写这样大量的代码时的想法。因为当你深入到一个很大的软件开发项目时，你真的需要去思考所有的部分要怎样组合在一起。这些部分不会自然地融合到一起，你不能今天写点这块，明天写点那块，你需要去思考每一块要怎样放在正确的位置。所以说，如果你要做某件事情，就像我们在做的事 —— 上线平行链一样，那么类似《实现者指南》这样的东西就至关重要，它可以确保代码是经得起推敲的，它是一个基本的基础设施组件。</p>
+<p>所以《实现者指南》是在 2020 年 5 月发表的，这时我们就郑重地开始开始去构建。它所做的一件事是，把平行链代码分为了四个主要部分：</p>
+<p><strong>1、支持和可用性</strong> ：验证人从收集人那里找到区块，然后说我觉得这个区块不错，把它包含到链上，然后保证检查区块所需的数据存在。</p>
+<p><strong>2、批准检查：</strong> 安全性的一大部分就来自于这里，它是一种方式，一旦平行链区块上链了，验证人通过一种安全的方式随机自我选择，这种方式就会检查是否他们应该恢复这些数据，然后自己检查区块。</p>
+<p><strong>3、争议处理：</strong> 也就是如果一个验证人检测到了某个东西是恶意的，那么它就需要去联系其他的验证人，让他们可以参与和检查。这种情况发生的概率极低，比如是 20 个小数点左右的概率，在批准检查阶段没有人发现这个区块是恶意的，此时事态就会迅速升级。所以说这些组件其实都是环环相扣的，来保证平行链的安全性和可扩展性。如果你去攻击这条链的话，你不会失去几百万美金的概率只有十万亿分之一，而且在每一次你去攻击时都是一样的。</p>
+<p><strong>4、审计：</strong> 在过去的几个月中，我们雇了 SR Labs 去做代码审计，去检查实现，试图找出 Bug。他们进行了独立的评审，检查了平行链的不同部分。现在我们也请他们做了其他一些部分代码的审计。他们提出了几个 Bug，不算太多，目前我们修复了 50% 左右，剩下的也有了解决方案。</p>
+<p>这就引出了技术敏捷性的概念，也就是在 Rococo 和 Kusama 上进行审计和重大部署之后，平行链已经准备好初始产品版本发布了，要注意的是，我们要修复显著的审计问题，安排在 12 月之前完成。真实环境下的部署也非常重要，我们有一个 Rococo 测试网，是一个多地区测试网，Parity 运行着它所有的节点，这个网络也没有经济价值，所以它只是用来试一试技术是否可行，我们可以看到在几百个节点的情况下这项技术有什么表现。</p>
+<p>我们还会看到在 Kusama 上的真实环境测试，因为在进入到真实环境之前，你永远不知道实际上会发生什么。我们可以试着在 Rococo 上尽可能地去中心化，但是直到进入真实世界前，你其实也不知道真实的情况会如何。Kusama 上有 900 个验证人，分布在全球，你根本不知道这些节点是谁在运行，他们只是在自己买来或租来的电脑上运行了一个程序而已。</p>
+<p><strong>敏捷 vs 成熟</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/13_1zpcs4en5n.png" alt="波卡联合创始人Robert：平行链的未来规划和 Rococo 的重构"></p>
+<p>那么，敏捷和成熟相比，意味着什么呢？</p>
+<p><strong>敏捷</strong> 的意思就是，它能用，但是它还没有到达最终形态。代码的功能都完整了，该有的功能都有。也用高标准测试过了，在各种边缘情况下都测试了，和各种模块都结合地很好。还有安全专业机构进行了独立的评审，我们还模拟了可能的攻击，看看该系统是否可靠。实际上如果你现在去看 Rococo 测试网的话，你会发现有敌对的节点正在试图去破坏网络，但是没有成功。但是，如果说某个东西是敏捷的，它可能还是存在 Bug，可能还需要重大优化。</p>
+<p>相对的就是<strong>成熟</strong> 的这一类代码，当某件事已经演化到一个阶段，经过了几年的使用后，它已经是一个基础性的、大负载的、可靠性很高的基础设施，我们就会说它是成熟的。所以有很多优化可以去做，它是经过了实战考验的。比如说以太坊在 2016 年经历的上海攻击，那时大家真的在努力地试着去摧毁以太坊网络。当现实世界中的某些东西被证明可以承受经济攻击时，这是朝着成熟迈出的一大步。</p>
+<p>代码是稳定的，更多地在维护代码，而不是开发代码。这意味着在这这时创新并没有那么多了，因为它的基础设施和增长更多地都是一些边缘创新。</p>
+<p><strong>走向成熟的道路</strong></p>
+<p>那么，我们走向成熟的道路是什么？沿着这条道路前进的一些步骤是什么？我将介绍一些主要的步骤。</p>
+<p>我认为其中的一些非常重要的即将发生的事情是上下文执行、平行线程和一般的网络优化。所以我将深入聊聊这三件事。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/13_g40uty6eg5.png" alt="波卡联合创始人Robert：平行链的未来规划和 Rococo 的重构"></p>
+<p>如果你观察过 Kusama 或 Rococo 网络，你会看到每 12 秒包含一个区块。这不是出于协议的限制，而是实现的限制。所以上下文执行就是为了从 12 秒出块加速到 6 秒出块。在我们目前 Rococo 和 Kusama 上的很短的区块执行时间中，又只有很少的时间是真正用于区块的执行的。</p>
+<p><strong>上下文执行</strong> 的想法是显著增加区块执行时间，它基本上是关于提前准备区块，有点像是在链下进一步构建平行链，然后慢慢地把这些东西放到主中继链上。而不是在平行链区块马上就要被包含到中继链上时再去构建这些区块。这是我们已经制定好的优化方案，我们已经为它制定了设计，它是接下来的优先事项之一。</p>
+<p>另一件即将发生的有趣事情是<strong>平行线程</strong> ，它是建立在一个区块又一个区块的基础上的平行链插槽的动态调度。这是什么意思呢？目前平行链是有专用的执行时间的，这些时间通过拍卖来购买，可能是 6 个月、12 个月或 24 个月的时间专属于我，我可以在任何我想使用系统的时候去执行一个区块。而平行线程更像是一种即用即付的模型，它和平行链非常相似，其实代码实际上并没有特别不同，它实际上只影响我们所说的支持和收集阶段。对于我之前说到的一些阶段，比如可用性、批准检查和争议等，平行线程和平行链是一模一样的。</p>
+<p><strong>网络优化</strong> 是一个比较大的部分。这是点对点网络，正如 Gav 在之前的演讲中提到的一样，点对点网络是一个挑战，它非常困难，因为在客户端服务器模型中，你必须标记一些服务器，就能快速回复。但是当你在做点对点网络的时候，挑战就是尽可能有效和快速地分发数据，并且具有低冗余和高交付保证，其实很难做到这一点。我认为在网络优化方面有很多马上就要够得到的成果，这将极大地提高实现的性能。</p>
+<p>所以我觉得这些都是平行链方面在不久的将来可以关注的一些点。</p>
+<p><strong>重构 Rococo</strong></p>
+<p>接下来我想聊聊 Rococo 测试网，包括这对社区意味着什么，大家可以怎样参与进来。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/13_e39t9h5iir.png" alt="波卡联合创始人Robert：平行链的未来规划和 Rococo 的重构"></p>
+<p>之前我提到了 Parity 在运行所有的 Rococo 节点，它的作用主要集中在<strong>内部测试</strong> 上，我们会运行前沿代码，快速修改，部署对抗性节点之类的。但这确实意味着当我们在开发过程中发现了错误，我们偶尔会破坏这条链，这使得对于想在上面部署自己的平行链的团队来说，这条链变成了一个非常困难的部署环境。Substrate 开发者需要有一个地方来部署和测试跨链解决方案。随着目前版本的 XCM 更加稳定，大家已经可以真正使用那些跨链创新了，那么一个测试环境就变得非常重要。</p>
+<p>所以在这里我要向你隆重介绍 <strong>Rococo 改造计划</strong> 。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/13_ez1qsvnu1p.png" alt="波卡联合创始人Robert：平行链的未来规划和 Rococo 的重构"></p>
+<p>我们的想法是，Parity 会在 Rococo 测试网上保持<strong>向后兼容性</strong> ，以确保它不会重新启动。所以当你注册平行链的时候，不用像在 Kusama 和 Westend 里那样再去更新你的节点或 runtime，这意味着你可以计划在更长的时间内使用 Rococo，并真正将其用作与其他团队合作的地方。</p>
+<p>另一点是<strong>自动平行链插槽</strong> 。我们构建了一种调度程序，将 Rococo 上的时间分配给注册使用它的团队，这样他们就可以获得长度为一周插槽。这些插槽会在可用性的基础上自动且公平地分配给团队。不过我们特别会优先考虑已在实时网络上部署链的团队，也会优先考虑加入了 Substrate Builder Program 的团队。</p>
+<p>当然我们也会非常<strong>注重社区</strong> 。我们鼓励在 Rococo 上进行跨链通信和实验，尤其是在更高层次上，不仅是部署平行链，还包括在平行链链之上部署一些东西，比如我们希望可以看到用户界面或去中心化应用程序开发者，可以去利用多条平行链，并且享受在这个测试网中进行创造。而不仅仅是那些超级硬核的特别底层的开发者。</p>
+<p>我在这列出了一个时间表，说明一些 Rococo 改造的计划是什么样的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/13_uej37merse.png" alt="波卡联合创始人Robert：平行链的未来规划和 Rococo 的重构"></p>
+<p>今天我宣布了我们打算改造 Rococo，我们还将很快发表一篇更长的博客文章来详细描述。</p>
+<p>然后就是技术方面的跟进，包括制定新的链规范，制定一些参数，比如 Session 是多长时间，更换验证人的频率如何等，我们会把这些都自动化。</p>
+<p>最后就是朝着 Rococo 的最终重启进发，我们将不再把这条链用于内部测试。目标是在 11 月底完成这一步。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/30003/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Valkyrie比特币期货ETF已在纳斯达克上市交易，开盘价25.5美元</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/29968/">
+                <span class="next-text nav-default">部分矿场停电 哈萨克斯坦矿工迎来“艰难冬季”</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

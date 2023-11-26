@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          详解功能代币的价值来源及设计方法 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="功能代币则是一种服务通证，其目的是促进组织业务的价值循环。功能代币的价值一般锚定具体服务价格，现实中的服务价格一般比较稳定，因而代币的价值通常也比较稳定。" />
+<meta name="keywords" content="代币发行" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39319/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="详解功能代币的价值来源及设计方法" />
+<meta property="og:description" content="功能代币则是一种服务通证，其目的是促进组织业务的价值循环。功能代币的价值一般锚定具体服务价格，现实中的服务价格一般比较稳定，因而代币的价值通常也比较稳定。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39319/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-23T00:00:00+00:00" />
+
+<meta itemprop="name" content="详解功能代币的价值来源及设计方法">
+<meta itemprop="description" content="功能代币则是一种服务通证，其目的是促进组织业务的价值循环。功能代币的价值一般锚定具体服务价格，现实中的服务价格一般比较稳定，因而代币的价值通常也比较稳定。"><meta itemprop="datePublished" content="2022-06-23T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-23T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3633">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="详解功能代币的价值来源及设计方法"/>
+<meta name="twitter:description" content="功能代币则是一种服务通证，其目的是促进组织业务的价值循环。功能代币的价值一般锚定具体服务价格，现实中的服务价格一般比较稳定，因而代币的价值通常也比较稳定。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">详解功能代币的价值来源及设计方法</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-23">
+      2022-06-23
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3633 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>X to earn</strong> 的一个潮流逐渐受到大家追捧，可惜的是很多系统的代币设计都不是很成功。其中的原因有很多，但是一个最重要的原因是无脑撒币：即简单的因为用户使用了平台就给予用户代币。这种设计通常导致经济系统失衡，并用错误的激励导致用户错误的行为。一个好的代币系统应该有如下两个特点：</p>
+<ol>
+<li>
+<p><strong>代币是为了激励目标的实现，而不能是目标本身</strong> 。你的目标可以是激励好的内容，可以是用户增长，但是不能是简单的代币增值。</p>
+</li>
+<li>
+<p><strong>代币循环清晰且可持续</strong> 。什么行为会产生代币？什么行为会消耗代币？代币的产生和消耗的循环是如何实现的？这个系统是可持续的吗</p>
+</li>
+</ol>
+<h3 id="治理代币-vs-功能代币">治理代币 vs 功能代币</h3>
+<p>现在很多代币系统都是双代币结构，既将治理代币和功能代币分开。这两种代币的差异很大，在我们设计一种代币时需要明确我们设计的是治理代币还是功能代币。</p>
+<p><strong>治理代币</strong> 代表了股权。每个代币代表了这个组织的一部分所有权，用于投票和领取分红。代币的分发和持有跟具体的业务无关，跟组织的权力结构有关。治理代币的价值不稳定，随市值波动。治理代币一般总量固定，但是也可以增发，增发会稀释代币的价值。MakerDAO中的MKR代币、Compound中的COMP代币都是典型的治理代币。</p>
+<p><strong>功能代币</strong> 则是一种服务通证，其目的是促进组织业务的价值循环。功能代币的价值一般锚定具体服务价格，现实中的服务价格一般比较稳定，因而代币的价值通常也比较稳定。功能代币的总量通常不固定，随着服务的开始和结束而不断的被产生和销毁。代币的流通量一般由当前的业务规模决定。MakerDAO的DAI就是一个功能代币，它的价格相对稳定，锚定1 USD。随着借贷和还贷的循环，DAI不停的被产生和销毁，其流通量跟借贷业务的规模相关。</p>
+<p>这篇文章介绍了一种基于价值流的<strong>功能代币</strong> 的设计方法，而没有触及到治理代币的内容。我们将以现有的Web2基于广告的社交网络为例，解析它的价值流，然后进行功能代币设计。</p>
+<h2 id="step-1-搞清楚价值来源">Step 1: 搞清楚价值来源</h2>
+<p>大家都对当前社交网络基于广告的商业模式很熟悉了。在这个模式下，商家给社交网络付费，用户则免费使用平台，收入减去成本即社交平台本身的利润。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0623/14_e13qn458qg.png" alt="详解功能代币的价值来源及设计方法">价值流图 v1.0</p>
+<p>根据上图，人们很容易将商家作为社交网络的价值来源。有一种说法是，如果你没有给一个产品付费，那么你就是产品本身。但是，真的是这样吗？用户真的没有给社交网络付费吗？如果我们跳出社交网络为中心的视角，把它放在一个更大的商品经济的图景里，我们就能看出，上图的价值流，只是一个更大的价值流的一部分。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0623/14_0gp21mgqbu.png" alt="详解功能代币的价值来源及设计方法">价值流图 v2.0</p>
+<p>一个更完整的故事是：商家在社交网络上打广告，用户通过社交网络从商家那里购买商品，商家把利润中的一部分划出来作为市场营销的支出付给社交媒体当广告费。事实上，社交网络的收入仍然是用户支付的，只不过商家倒了一手，付费用户看起来就像“免费用户”了！</p>
+<p>我将当前社交网络的这种特性称为<strong>寄生性</strong> ，即社交网络是寄生在一般市场经济上的。寄生性主导的社交网络必须起到加速商品市场流通的作用，而非只关注用户的需求。用户是真正的价值来源，但是完整的价值流动被社交网络的寄生性掩盖了。</p>
+<h2 id="step-2-用户行为细分">Step 2: 用户行为细分</h2>
+<p>基本的价值流搞清楚了之后，我们就要做行为细分。这里要搞清楚的问题是，什么样的行为是创造价值的？什么样的行为是消耗价值的？</p>
+<p>对于上节提到的社交网络，我们可以将用户的行为细分为三类：</p>
+<ol>
+<li>
+<p><strong>商品购买行为</strong> ，如浏览或者点击广告，这些行为为社交网络直接创造了价值</p>
+</li>
+<li>
+<p><strong>内容消费行为</strong> ，如浏览内容，这类行为没有为平台创造价值，并且消耗了社交网络的价值</p>
+</li>
+<li>
+<p><strong>内容创作行为</strong> ，这个情况比较复杂，如果创作的内容促成了商品购买行为(通过拉新或者转化)，它也为平台间接创造了价值，但是这种价值创造可能是具有“时差”的。一个视频可能刚发出来的时候无人问津，但是过了一段时间后大火。这里我们需要注意广告模式和内容付费模式的区别。内容付费模式下，内容消费者作为主要的价值输入来源为其他人付费，而广告模式下，是最终的商品购买者为其他所有人付费。</p>
+</li>
+</ol>
+<p>这个也解释了为什么社交网络很难做成订阅和广告的混合模式。在订阅模式下，订阅行为直接为系统输入价值，然而，愿意订阅的用户往往也是可以通过广告转化为商品购买者的高价值人群，即这两种价值输入方式是互斥的。这些人一旦通过订阅来规避广告，广告的商业模式会丧失大量商品购买者，从而丧失价值输入渠道，从而让广告模式无以为继。这也给了我们一种判定不同商业模式优劣的方式，如果我们要颠覆当前的社交网络，一定要通过优化价值流的方式降低社会总成本，而不能简单的从广告模式转向订阅模式。</p>
+<h2 id="step-3-目标细分">Step 3: 目标细分</h2>
+<p>平台根据它的发展阶段细分，我们发现，平台不同的发展时期有不同的目标。</p>
+<p>社交网络早期首要目标是形成规模效应，因为规模效应本身可以带来用户增长。换句话说，”用户使用这个社交平台是因为其他人也使用这个平台“。换句话说，早期用户对平台的使用就是在帮助平台形成规模效应，就是在帮助平台做用户拉新和用户转化，也间接的为平台创造了价值，这个价值是由后进入的用户进行偿付的。据此我们可以根据阶段和行为做一个渐进的分析：</p>
+<ol>
+<li>
+<p><strong>内容消费行为</strong> ，一直消耗价值，但是早期同时也创造价值</p>
+</li>
+<li>
+<p><strong>内容创作</strong> ，一直消耗价值，但是早期同时也创造价值，后期好的内容也可以创造价值</p>
+</li>
+<li>
+<p><strong>商品购买行为</strong> ，创造价值</p>
+</li>
+</ol>
+<h2 id="step-4-代币设计">Step 4: 代币设计</h2>
+<p>现在很多Social to earn的项目本质上就是将我们上述所说的行为和价值代币化，从而达成平台增长和盈利的目标。这种带有社交属性的代币我们称之为社交代币，社交代币的价值是多方面的：</p>
+<ol>
+<li>
+<p><strong>增加价值流动的透明度</strong> 。一个好的代币系统应该致力于将系统的价值流显化，从而提高价值流通的效率。</p>
+</li>
+<li>
+<p><strong>增加系统调节的灵活性</strong> 。我们可以调节系统的参数来平衡我们的目标，早期我们可以加大激励以提高用户增长，后期则要更加注重平衡性，系统参数不能是一成不变的。</p>
+</li>
+</ol>
+<p>根据上节的行为和目标分析，一个最直接的代币设计方案是:</p>
+<ol>
+<li>
+<p><strong>商品购买相关行为</strong> ，对用户进行代币奖励</p>
+</li>
+<li>
+<p><strong>内容消费行为</strong> ，早期免费或者对用户进行代币奖励，后期需要花费代币</p>
+</li>
+<li>
+<p><strong>内容创作行为</strong> ，早期免费，后期需要花费代币，但是根据内容的受欢迎程度系统会奖励内容创作者一定量的代币</p>
+</li>
+</ol>
+<p>但是现实生活中，用户一般都是先成为内容消费者，后成为商品购买者。内容创作者也面临着相同的困境。一般来说，一个新的内容创作者前期的作品一般浏览量很少。让用户提前付费会极大的打击用户的积极性，影响用户增长。现有的系统都是用后期的营收覆盖使用成本，所以一个更加合理的方式是：</p>
+<ol>
+<li>
+<p><strong>商品购买相关行为</strong> ，对用户进行代币奖励</p>
+</li>
+<li>
+<p><strong>内容消费行为</strong> ，早期免费，后期收费或者免费</p>
+</li>
+<li>
+<p><strong>内容创作行为</strong> ，在扣除成本的基础上据内容的受欢迎程度奖励内容创作者适量的代币</p>
+</li>
+</ol>
+<h2 id="总结">总结</h2>
+<h3 id="原则">原则</h3>
+<ol>
+<li>
+<p>搞清楚价值流的来源和流动，确保价值流动是可持续的、自洽的</p>
+</li>
+<li>
+<p>搞清楚具体的用户行为是在消耗价值还是创造价值</p>
+</li>
+<li>
+<p>将时间的因素考虑进来，根据不同时期的不同目标来调整自己的模型</p>
+</li>
+<li>
+<p>这个模型最好是可调的，可以将一些关键参数以一种合适的方式交给社区治理 一旦我们搞清楚了价值流，就可以判断出一个X to earn的模型是不是靠谱。Social to earn未必不可行，但是我们需要确保我们只对那些创造价值的行为进行奖励，而不是无脑的对所有用户的所有行为撒币。</p>
+</li>
+</ol>
+<h3 id="局限">局限</h3>
+<ol>
+<li>
+<p>只讨论了三种简单的用户行为。社交平台的行为是多样化的，对于不同的行为我们都应该考察它们的价值流，从而才能得到一个全面的分析。我们甚至可以把非用户的行为纳入进来，比如投资人的投资、程序员的开发和线下的社区运营。</p>
+</li>
+<li>
+<p>只是一种定性的分析。具体的代币设计应该根据具体的成本和预期收益进行量化的分析。</p>
+</li>
+<li>
+<p>如何判断一个内容是好的？如何判断一个内容带来了多少价值？这个需要社区想出一种更加创新的方法，但是早期的时候可以模糊一些，快速迭代调整。</p>
+</li>
+</ol>
+<p>作者介绍</p>
+<p>Shu, FB软件工程师，区块链从业者，相信社会主义 :</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39330/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">物理资产上链实现规模化突破 蚂蚁链能源产业上链设备破500万</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39320/">
+                <span class="next-text nav-default">新加坡金管局：将对加密行业不良行为采取“强硬措施”</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#治理代币-vs-功能代币">治理代币 vs 功能代币</a></li>
+      </ul>
+    </li>
+    <li><a href="#step-1-搞清楚价值来源">Step 1: 搞清楚价值来源</a></li>
+    <li><a href="#step-2-用户行为细分">Step 2: 用户行为细分</a></li>
+    <li><a href="#step-3-目标细分">Step 3: 目标细分</a></li>
+    <li><a href="#step-4-代币设计">Step 4: 代币设计</a></li>
+    <li><a href="#总结">总结</a>
+      <ul>
+        <li><a href="#原则">原则</a></li>
+        <li><a href="#局限">局限</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

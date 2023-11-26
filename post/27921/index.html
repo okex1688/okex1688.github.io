@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          项目周刊｜以太坊域名系统（ENS）在以太坊上完全集成DNS域名空间 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="金色周刊是金色财经推出的一档每周区块链行业总结栏目，内容涵盖一周重点新闻、行情与合约数据、矿业信息、项目动态、技术进展等行业动态。" />
+<meta name="keywords" content="金色周刊" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/27921/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="项目周刊｜以太坊域名系统（ENS）在以太坊上完全集成DNS域名空间" />
+<meta property="og:description" content="金色周刊是金色财经推出的一档每周区块链行业总结栏目，内容涵盖一周重点新闻、行情与合约数据、矿业信息、项目动态、技术进展等行业动态。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/27921/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-28T00:00:00+00:00" />
+
+<meta itemprop="name" content="项目周刊｜以太坊域名系统（ENS）在以太坊上完全集成DNS域名空间">
+<meta itemprop="description" content="金色周刊是金色财经推出的一档每周区块链行业总结栏目，内容涵盖一周重点新闻、行情与合约数据、矿业信息、项目动态、技术进展等行业动态。"><meta itemprop="datePublished" content="2021-08-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8500">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="项目周刊｜以太坊域名系统（ENS）在以太坊上完全集成DNS域名空间"/>
+<meta name="twitter:description" content="金色周刊是金色财经推出的一档每周区块链行业总结栏目，内容涵盖一周重点新闻、行情与合约数据、矿业信息、项目动态、技术进展等行业动态。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">项目周刊｜以太坊域名系统（ENS）在以太坊上完全集成DNS域名空间</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-28">
+      2021-08-28
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8500 字 -
+        预计阅读 17 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>金色周刊是金色财经推出的一档每周区块链行业总结栏目，内容涵盖一周重点新闻、行情与合约数据、矿业信息、项目动态、技术进展等行业动态。本文是项目周刊，带您一览本周主流项目以及明星项目的进展。</p>
+<p><strong>以太坊</strong></p>
+<p><strong>以太坊2.0客户端Lighthouse发布v1.5.0版本</strong></p>
+<p>以太坊2.0客户端Lighthouse发布v1.5.0版本，该版本新增了对以太坊2.0测试网Pyrmont上Altair硬分叉的支持，此外还包括提高了验证者的证明速率、缓存未知区块以提高验证奖励、支持在Rust语言下编译等更新，且该版本无法兼容v1.4.0或更早的版本。 注，以太坊2.0测试网Pyrmont已于19日进行Altair硬分叉，Altair是以太坊相对较小的信标链更新，其中一个重要新功能是轻客户端同步委员会，此委员会里的验证者会定期得到激励，把区块头的信息提供给轻客户端。</p>
+<p><strong>以太坊二层扩展解决方案Boba Network宣布集成DODO</strong></p>
+<p>8月24日消息，由Enya开发的下一代以太坊第二层Optimistic Rollup扩展解决方案Boba Network宣布，与去中心化交易所和链上流动性提供商DODO集成。通过合作关系，DODO将为Boba带来充足的流动性，确保Boba生态系统的平稳资产流动和增长。DODO将在Boba上部署该平台的全功能版本。</p>
+<p><strong>以太坊隐私交易平台Tornado.Cash计划上线以太坊侧链xDai</strong></p>
+<p>以太坊隐私交易平台Tornado.Cash计划上线以太坊侧链xDAI上。其中Tornado.Cash将创建新的池来扩大其使用范围，使得xDai持有人可通过访问100 xDai pool、1000 xDai pool、10000 xDai pool、100000 xDai pool以实现隐私交易。</p>
+<p><strong>Enya推出以太坊L2扩容网络Boba Network主网Beta版</strong></p>
+<p>8月26消息，去中心化基础设施解决方案Enya宣布推出以太坊二层网络Boba Network的主网Beta测试版本。据官网文档显示，Boba Network由原本的OMGX Network改名而来，Boba团队和Enya团队会共同维护Boba Network。Boba Network是一个基于Optimistic Rollup概念的扩容方案，结合了Optimism的开源技术以及Enya和Boba团队在网络的充值、快速提现、跨链桥方面的努力。Enya表示，Enya由斯坦福大学的教师和校友创建，希望成为去中心化隐私的先驱并成为最大的多方安全计算服务提供商。</p>
+<p><strong>BXH笨小孩将于20:00正式登陆以太坊主链</strong></p>
+<p>据官方消息，DeFi平台BXH笨小孩于8月26日20:00（UTC+8）正式登陆以太坊主链。首批上线单币矿池：WETH、USDT、USDC、DAI、WBTC、UNI。同步开启流动性矿池：WBTC/USDT、ETH/USDT、ETH/USDC、WBTC/ETH、USDT/USDC、UNI/USDT。 BXH笨小孩以太坊跨链上线，初步完成多链计划，实现资产互通，为用户打造一站式全生态交易协议。</p>
+<p><strong>阿尔卑斯山五星级酒店开始接受比特币和以太坊</strong></p>
+<p>金色财经报道，位于瑞士阿尔卑斯山的豪华五星级酒店Chedi Andermatt已开始接受比特币和以太坊支付。从现在开始，如果酒店的客人支付超过200瑞士法郎（约合218美元），就可以选择以比特币或以太坊支付。据悉，该酒店四年来一直在考虑接受加密货币。</p>
+<p><strong>以太坊域名系统（ENS）在以太坊上完全集成DNS域名空间</strong></p>
+<p>以太坊域名系统（ENS）宣布在以太坊上完全集成DNS域名空间（DNS Namespace），允许将任何.com域名关联到以太坊地址。例如，如果用户在DNS上拥有example.com，可以将其导入ENS继续使用example.com，而非example.eth，另外，还允许用户设置ENS纪录，以在example.com域名上接收ETH、BTC和DOGE等加密货币。 ENS表示，该功能的开发是由以太坊基金会和ETC Labs资助。这只是ENS更大愿景的开始。ENS一开始只是针对以太坊地址.ETH域名，但它已经发展成为DNS的全面扩展，并行运行并支持一组全新用例：可移植的Web3用户名和设置、任何加密货币的支付以及去中心化网站。</p>
+<p><strong>比特币</strong></p>
+<p><strong>MicroStrategy CEO：苹果iCloud可充当支付服务商来转移比特币等数字资产</strong></p>
+<p>8月23日消息，近日，手握105,084枚比特币的美股上市公司MicroStrategy首席执行官Michael Saylor在接受采访时谈到苹果公司该如何拥抱比特币，他表示如果果苹果、谷歌和 Facebook 在他们的应用程序中加入比特币，他们的业务势必会得到改善；如果萨尔瓦多、古巴、土耳其、日本、俄罗斯、美国、英国或法国购买比特币，他们就会修复资产负债表。 MichaelSaylor认为，未来iCloud可以充当支付服务商来转移比特币等数字资产，他解释说：“现在iCloud里有什么，您的视频、照片、文档和通信。现在iCloud中没有什么？你的钱！当100万亿美元从20世纪的财产中流失时会发生什么？如果这100万亿美元流入到数字资产时会发生什么？届时每个人都需要登陆iCloud、AndroidCloud或是Facebook，如果有1亿人把10,000美元放在iCloud中，那么你就成了世界上、甚至是人类历史上最大、最赚钱的银行，对吧？”截至目前，苹果公司并未深入研究加密货币或比特币，但根据相关数据显示，全球加密货币用户已经从2021年1月的1亿增加到2021年6月的2.21亿，几乎翻了一番。</p>
+<p><strong>新加坡央行正在打造一种受比特币启发的加密货币</strong></p>
+<p>8月23日消息，新加坡央行、新加坡金融管理局（MAS）正致力于实验利用受比特币启发的中央银行数字货币改变货币跨境流动的方式，从而简化全球经济。一旦成功，这项与国际清算银行中央银行财团合作进行的实验可以将费用降低到即使是收入最低的公民也能够参与全球经济的水平。为了实现这一简化的系统，金融管理局于7月与国际清算银行合作推出了一项名为“邓巴项目”的新举措，以建立一个共同平台，让各国央行可以使用中央银行数字货币（CBDC）直接跨境转账。</p>
+<p><strong>富达宏观主管：比特币与黄金在20世纪70年代的价格行动非常相似</strong></p>
+<p>8月23日消息，富达公司全球宏观主管Jurrien Timmer表示，随着比特币的市值越来越接近以前的高点，BTC 不再是一个摆设。Timmer也在评估比特币在过去两年的表现，并表示它与黄金在20世纪70年代的价格行动非常相似。Timmer表示，根据我的（高度主观的）1970年代的黄金类比，比特币看起来已经准备好恢复其上升趋势。我对比特币和整个加密货币领域在这次55%的调整中的反弹印象深刻。投机者现在只占市场的17%。这个水平与过去的底部是一致的。 此外，比特币的基本面（其网络）正在稳步改善。在高峰期，有3430万个地址（至少有1美元）。这个数字在低谷时下降到3180万，现在已经重新攀升到3350万&quot;。 巨鲸或持有BTC超过10年的实体，现在控制了比特币供应的很大一部分，现在占了市场的12%。</p>
+<p><strong>内容在线平台Substack开始接受比特币支付</strong></p>
+<p>8月23日消息，内容在线平台Substack 作家可以通过该平台从订阅中赚钱，它已将比特币作为一种支付选项。Substack 发言人表示，该选项目前仅适用于“选定的一组以加密为重点的出版物”，并补充说：“我们期待根据反馈和需求探索更广泛的可用性。比特币支付快速、方便、安全，费用低。我们使用闪电网络进行交易，这比信用卡更快。”据悉，Substack 将在链上和通过闪电网络接受比特币。</p>
+<p><strong>美国杰克逊市市长：比特币势必会成为未来的货币系统</strong></p>
+<p>美国杰克逊市市长ScottConger发推称：随着美联储继续印钞票，比特币将继续上涨。它势必会成为未来的货币系统。ScottConger一直在呼吁让比特币为城市服务。稍早前，他曾表示要通过挖矿在政府资产负债表中加入比特币。7月，他称所在城市的区块链工作组正研究如何接受比特币支付财产税。</p>
+<p><strong>花旗集团计划提供CME比特币期货交易</strong></p>
+<p>据一位银行内部人士透露，美国银行业巨头花旗集团准备交易芝加哥商品交易所（CME）比特币期货，正在等待批准。随着比特币再次攀升至5万美元，该行正应对客户对加密货币风险敞口的需求激增。目前仍在努力通过必要的监管批准的花旗银行将与高盛银行一起提供比特币期货交易。 另一位熟悉加密货币衍生品市场的人士表示，花旗正在积极招募人员加入伦敦一个专注于加密业务的团队，并补充道，“该团队可能会获得批准，首先开始交易CME比特币期货，然后开始交易比特币交易所交易票据（ETN）。”</p>
+<p><strong>纳斯达克披露Valkyrie比特币期货ETF申请</strong></p>
+<p>周二，纳斯达克提交了一份意外的监管文件，以 &ldquo;上市和交易 &ldquo;Valkyrie XBTO比特币期货基金的股份，揭示了之前未披露的ETF提案的存在，这是Valkyrie寻求将比特币期货包装成ETF的第二个提案。Valkyrie表示，其几个月前就秘密申请了该产品，现在有一个合作伙伴的交易所，这意味着美国证券交易委员会可以开始考虑该产品，使Valkyrie比其他有希望的发行人更接近比特币期货ETF的裁决。</p>
+<p><strong>知情人士：花旗等候监管机构批准以开始比特币期货交易</strong></p>
+<p>8月25日消息，随着华尔街继续进军加密货币市场，花旗集团(C.N)正在考虑是否向其最大的客户群体提供比特币期货交易服务。据知情人士，这家银行业巨头正在等待监管部门批准开始交易芝商所比特币期货。“我们的客户对这个领域越来越感兴趣，我们正在密切关注这些事态发展，”花旗集团在一份电邮声明中表示。“鉴于围绕监管框架、监管预期和其他因素的许多问题，我们对我们的做法进行了全面研究。我们目前正在为一些机构客户考虑期货等产品，因为这些产品在强大的监管框架下运作。”</p>
+<p><strong>分析师：预计SEC或最早于10月批准美国首个比特币ETF</strong></p>
+<p>8月25日消息，分析师Eric Balchunas和James Seyffart认为， ProShares和VanEck最近撤回向美国证券交易委员会(SEC)提交的以太坊(ETH-USD)期货ETF提案，可能会促使比特币(BTC-USD) ETF获得批准。分析师表示：“VanEck和ProShares迅速撤回对以太坊期货ETF的提案，这对潜在的比特币期货ETF来说是一个好兆头，因为SEC允许这类申请保持活跃。比特币期货ETF最早可能在10月份推出。同时，我们认为，SEC可能会批准多个比特币期货ETF同时上市，以避免形成先发优势。”</p>
+<p><strong>阿尔卑斯山五星级酒店开始接受比特币和以太坊</strong></p>
+<p>金色财经报道，位于瑞士阿尔卑斯山的豪华五星级酒店Chedi Andermatt已开始接受比特币和以太坊支付。从现在开始，如果酒店的客人支付超过200瑞士法郎（约合218美元），就可以选择以比特币或以太坊支付。据悉，该酒店四年来一直在考虑接受加密货币。</p>
+<p><strong>央行：比特币等虚拟货币不是法定货币，没有实际的价值支撑</strong></p>
+<p>8月27日消息，在2021年“金融知识普及月 金融知识进万家 争做理性投资者 争做金融好网民”活动媒体吹风会上，中国人民银行金融消费权益保护局副局长尹优平表示，虚拟货币相关交易纯属投资炒作，人民大众要增强风险意识，自觉远离，保护好自己的“钱袋子”。 在此次媒体吹风会上，尹优平介绍说，针对虚拟货币交易操作可能出现反弹的势头，央行在今年会同有关部门在检测境外交易所和境内交易商，封堵打击交易网站、App和企业渠道，加强政策宣传等方面开展积极的应对工作，虚拟货币交易炒作的热度明显下降。据悉，作为处置非法集资部级联席会议成员单位，央行积极配合牵头部门银保监会，在制度建设、监测预警、打击处置、宣传教育等各个方面做了大量工作，坚决打击以虚拟货币、区块链名义开展的非法集资活动。 尹优平透露说，下一步，央行将建立常态化的工作机制，保持高压态势，持续打击虚拟货币相关交易操作，广大人民群众如果发现相关的非法集资犯罪线索，要及时向有关部门举报。</p>
+<p><strong>推特CEO：计划为比特币创建去中心化交易所</strong></p>
+<p>金色财经报道，推特及Square首席执行官Jack Dorsey上个月披露了一个“待定”的项目计划，他当时称该项目将专注于开发一个专门用于比特币的开源金融服务平台。根据Dorsey和负责该计划的CashApp执行官Mike Brock的说法，该项目有了一个更清晰的路线图，即创建一个去中心化交易所。Brock指出，该平台的确切设计原则尚未完全确定，并强调Rootstock，即一种支持智能合约的比特币侧链是一个潜在的选择。</p>
+<p><strong>西班牙、墨西哥和哥伦比亚有超过10%的年轻人拥有比特币</strong></p>
+<p>金色财经报道，根据Finder公司最近的一项调查数据，墨西哥和哥伦比亚有14%的年轻人拥有加密货币，而在西班牙，这一比例为12%。同样，就比特币和其他流行加密货币的采用水平而言，墨西哥在27个国家或地区中排名第 8 位。与此同时，西班牙和哥伦比亚排名第23和17位。另一方面，根据调查结果，全球采用加密货币的年轻人占19%。越南是加密货币采用率最高的国家，占成年人口的45%。</p>
+<h2 id="其他项目-">**<strong>其他项目</strong> **</h2>
+<p>**<strong>Axie Infinity</strong> **</p>
+<ul>
+<li><strong>Axie Infinity NFT总销量击穿350万创下历史新高</strong></li>
+</ul>
+<p>8月24日消息，据最新数据显示，“边玩边赚”（Play-to-Earn）类项目Axie Infinity NFT销量击穿350万，创下历史新高，本文撰写时为3,507,486，交易者总计459,410，总交易额15.81亿美元。目前按照NFT收藏品销量排名，Axie Infinity位列第二，排名第一的是NBA Top Shot，其销量为8,251,965，位列第三的是Alien Worlds，销量为3,058,223。不过，Axie Infinity的总交易额位列第一，几乎是第二名CryptoPunks的两倍。</p>
+<ul>
+<li><strong>菲律宾财政部：Axie Infinity游戏收入需缴纳所得税</strong></li>
+</ul>
+<p>8月23日消息，菲律宾财政部表示，从Axie Infinity等play-to-earn（边玩边赚）游戏中获得的收入需缴纳所得税。财政部收入运营小组负责人Tionko说财政部和国税局正在调查由越南公司Sky Mavis开发的线上冒险游戏Axie Infinity。据悉，菲律宾是该游戏的最大市场。Tionko表示菲律宾证券交易委员会和央行尚未确定Axie到底是货币还是证券。但不论如何，它都需缴纳所得税。虽然Sky Mavis是一家非居民外国公司，但她指出该公司来自菲律宾境内的收入应涵盖在本地缴税。Tionko说：它没有在菲律宾注册。我们未来建立非居民注册系统后，将涵盖此类公司。但现在，无论谁从中赚到了钱，都需要报告。她说过去几个月席卷数字空间的所有此类收入都需要缴纳所得税。</p>
+<ul>
+<li><strong>彭博社：Axie Infinity让因疫情失业者变成加密交易者</strong></li>
+</ul>
+<p>8月26日消息，彭博社发长文介绍了链游Axie Infinity，称其正帮助因疫情失业者变成加密交易者。Axie Infinity日活跃用户已从今年4月的3万人增至8月的逾100万人，其中多数都来自受疫情重创的发展中国家，包括菲律宾、巴西和委内瑞拉。AXS的价格在过去两个月飙升，与菲律宾的整体经济形成鲜明对比，该国目前约有十一分之一的人失业。从2018年推出到今年7月1日，Axie Infinity仅为Sky Mavis创造了2100万美元的收入，但过去两个月，它就带来了4.85亿美元的收入。有迹象表明新玩家并不完全了解如何保护他们的收益。加密分析师认为这里存在巨大的加密货币教育机会，很多玩家从未接触过加密货币，从未有过钱包，也从未在区块链中转过账。</p>
+<ul>
+<li><strong>Axie Infinity：乐于就税收需求与菲律宾当局展开合作</strong></li>
+</ul>
+<p>热门NFT项目Axie Infinity在推特上表示，Play-to-Earn是工作性质的一个重要转变，我们期待与实体国家（政府）在鼓励创新和赋予玩家权力的前进道路上合作，并呼吁其数字用户遵守当地法律。 数日前，菲律宾财政部表示，从Axie Infinity等Play-to-Earn（边玩边赚）游戏中获得的收入需缴纳所得税。财政部收入运营小组负责人Tionko称财政部和国税局正在调查由越南公司Sky Mavis开发的线上冒险游戏Axie Infinity。据悉，菲律宾是该游戏的最大市场。Tionko表示菲律宾证券交易委员会和央行尚未确定Axie到底是货币还是证券。但不论如何，它都需缴纳所得税。虽然Sky Mavis是一家非居民外国公司，但她指出该公司来自菲律宾境内的收入应涵盖在本地缴税。Tionko说：“它没有在菲律宾注册。我们未来建立非居民注册系统后，将涵盖此类公司。但现在，无论谁从中赚到了钱，都需要报告。她说过去几个月席卷数字空间的所有此类收入都需要缴纳所得税。”</p>
+<p>**<strong>Uniswap：创始人发推称Uniswap v3交易失败率为6.7%，创历史新低</strong> **</p>
+<p>Uniswap创始人Hayden Adams发推称，Uniswap v3交易失败率为6.7%，创历史新低。历史平均在10%-15%之间。这是EIP-1559的好处。</p>
+<p><strong>Compound：总法律顾问称DAO的令人兴奋之处在于它与传统商业形式的不同</strong></p>
+<p>Compound总法律顾问Jake Chervinsky发推称，DAO的令人兴奋之处在于它与传统商业形式的不同。许多DAO是完全独特的，但有些DAO为了提高效率而采用标准的公司结构。注意：DAO越像一个公司，就越有可能被这样对待。</p>
+<p><strong>SushiSwap：向白帽黑客samczsun支付100万USDC漏洞赏金</strong></p>
+<p>8月28日消息，SushiSwap首席技术官Joseph Delong在推特上表示，SushiSwap向此前出手拯救BitDAO在MISO进行的荷兰拍卖的著名白帽黑客samczsun（区块链投资机构Paradigm研究合伙人）支付了100万USDC的漏洞赏金。 此前消息，区块链投资机构Paradigm研究合伙人、著名白帽黑客samczsun撰文披露了BitDAO昨日在SushiSwap IDO平台MISO进行的荷兰拍的智能合约存在安全漏洞，多名白帽黑客联手从众筹资金池中拯救回10.9万枚ETH（当时约合3.5亿美元）的经过。SushiSwap首席技术官JosephDelong随后发布了漏洞分析，证实了samczsun所报告的漏洞及白帽拯救行动，MISO平台上ETH众筹池中价值3.5亿美元的ETH现已安全。</p>
+<p><strong><strong>Ops：</strong> GameFi应用CoPuppy与NFT社交平台Ops达成SocialFi生态战略合作</strong></p>
+<p>据官方消息，GameFi应用Couppy与 NFT社交平台Ops达成SocialFi生态战略合作，双方将在品牌宣传、生态协同等多方面领域开展合作。 CoPuppy是⼀款部署在币安智能链，充满机会与趣味的GameFi应用。在CoPuppy，NFT不仅是收藏品，更是游戏、借贷协议、跨链协议。 Ops是一款由Zero One团队打造的Web3.0时代新型社交，用户可自由发行NFT社交名片实现社交内容NFT化。</p>
+<p><strong><strong>Anchorage：</strong> 聘请前富国银行区块链高管担任银行和资本市场总监</strong></p>
+<p>8月26日消息，美国全国信托公司Anchorage聘请前富国银行区块链高管Ken Chapman担任银行和资本市场总监。Ken Chapman表示：“我的主要任务是帮助Anchorage从银行收到的大量服务需求，包括托管、交易和贷款。我还将利用区块链技术，帮助银行寻找一种不同的解决模式。” Ken Chapman 在富国银行的资本市场团队领导了两年的数字资产和区块链项目。他还在BNY梅隆、桥水联合银行、美国银行、摩根大通和瑞士联合银行有过工作经历。</p>
+<p>免责声明：金色财经作为区块链资讯平台，所发布的文章内容仅供信息参考，不作为实际投资建议。请大家树立正确投资理念，务必提高风险意识。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/27923/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">细数史上最昂贵的10件NFT</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/27920/">
+                <span class="next-text nav-default">雪崩协议Avalanche锁仓量击穿20亿美元 创历史新高</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#其他项目-">**<strong>其他项目</strong> **</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

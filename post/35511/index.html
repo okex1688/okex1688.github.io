@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Web3需要中间件 但可能不需要去中心化 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文梳理Chainlink、The Graph、Pocket Network这三个代表性的中间件项目，试图分析加密圈的中间件所满足的需求和面临的问题。" />
+<meta name="keywords" content="Web 3.0" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/35511/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Web3需要中间件 但可能不需要去中心化" />
+<meta property="og:description" content="本文梳理Chainlink、The Graph、Pocket Network这三个代表性的中间件项目，试图分析加密圈的中间件所满足的需求和面临的问题。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/35511/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-16T00:00:00+00:00" />
+
+<meta itemprop="name" content="Web3需要中间件 但可能不需要去中心化">
+<meta itemprop="description" content="本文梳理Chainlink、The Graph、Pocket Network这三个代表性的中间件项目，试图分析加密圈的中间件所满足的需求和面临的问题。"><meta itemprop="datePublished" content="2022-03-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="12572">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Web3需要中间件 但可能不需要去中心化"/>
+<meta name="twitter:description" content="本文梳理Chainlink、The Graph、Pocket Network这三个代表性的中间件项目，试图分析加密圈的中间件所满足的需求和面临的问题。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Web3需要中间件 但可能不需要去中心化</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-16">
+      2022-03-16
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 12572 字 -
+        预计阅读 26 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>区块链的发展历来有两大主题，一是作为底层操作系统的公链基础设施，二是满足各类C端需求的Dapp。Dapp的发展经历了几波更迭，从Defi到NFT到Gamefi，每个赛道都有各自的英雄，未来也将不断有新的潮流。而在这一过程中，公链的发展态势越来越趋近于稳定，发展预期集中于目前的主流L1和L2，很难再有新的巨大投资机会。</p>
+<p>在这样的板块轮动中，「中间件」开始越来越受到重视。随着Web3生态发展，Dapp所需要的服务也会越来越细分。2020年下半年到2021年第一季度，灰度母公司DCG的13项新投资中，有7个中间件项目。今年至今，已有Pocket Network、Ceramic、Aleph.im等一系列中间件项目获得Multicoin等一线机构的投资。中间件项目作为加密世界的toB服务，拥有高确定性和高用户粘性，必定是块重要的投资领域。</p>
+<p>本文梳理Chainlink、The Graph、Pocket Network这三个代表性的中间件项目，试图分析加密圈的中间件所满足的需求和面临的问题。</p>
+<p><strong>本文目录</strong></p>
+<p>1. We3技术堆栈中的「中间件」</p>
+<p>2. Chainlink </p>
+<p>2.1 产品机制</p>
+<p>2.2 通证经济</p>
+<p>2.3 运营现状</p>
+<p>2.4 团队及融资</p>
+<p>2.5 优势及风险</p>
+<p>3. The Graph</p>
+<p>3.1 产品机制</p>
+<p>3.2 通证经济</p>
+<p>3.3 运营现状</p>
+<p>3.4 团队及融资</p>
+<p>3.5 优势及风险</p>
+<p>4. Pocket Network</p>
+<p>4.1 产品机制</p>
+<p>4.2 通证经济</p>
+<p>4.3 运营现状</p>
+<p>4.4 团队及融资</p>
+<p>4.5 优势及风险</p>
+<p>5. 总结</p>
+<p><strong>1. We3技术堆栈中的「中间件」</strong></p>
+<p>「中间件」（Middleware）是一个古老的概念，最早出现于1968年，随着技术的发展，其涵义和分类也在不断变化。维基百科提供了一种通俗的解释：中间件是一种计算机软件，为操作系统之外的应用软件提供服务，可以理解为是一种「软件粘合剂」。</p>
+<p>这一理解基本来自于开源软件提供商Red Hat开发人员发布于2018年的定义，其中Red Hat还概述了中间件的主要用途，原文为：「中间件是为操作系统之外的应用提供公共服务和功能的软件。数据管理、应用程序服务、消息传递、身份验证和API管理通常都由中间件处理。中间件帮助开发人员更高效地构建应用程序。它就像应用、数据和用户之间的结缔组织。」</p>
+<p>随着Web3生态越来越丰富，也开始有不少机构专门定义出Web3开发堆栈中的中间件。对于中间件概念的理解，基本都继承了原有的含义，认为这类产品的特征是不直接面向终端用户，是加密世界中的B2B服务，但是分类和范围界定不尽相同。</p>
+<p>例如，Deribit将介于Layer1和Dapp之间的产品统称为中间件。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_2z7luvcn72.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：Deribit Medium，详见附录</p>
+<p>MetisDAO则在中间件之外加了一层Layer2，并且将中间件分为三个类型，分别是：1）上层中间件，如智能合约开发工具Truffle、或是钱包Metamask；2）下层中间件，如节点运营商Infura；3）项目中间件，这些中间件建立在L1/L2上，目的是增强区块链的核心功能，如The Graph。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_47t3wyvohn.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：MetisDAO Medium，详见附录</p>
+<p>The Graph也梳理发布过一版Web3堆栈分类。The Graph似乎无意使用「中间件」的概念，但是根据产品用途所做的分类，能够更好地帮助我们理解中间件所包含的组件。下图中，文件存储、索引查询、预言机、链下数据、身份等项目，都符合「为操作系统之外的应用提供公共服务和功能的软件」的定义，可以视为中间件。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_08g6l3kkk8.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：Edge &amp; Node（The Graph母公司） Blog，详见附录</p>
+<p>由上述几种分类可以看到，「中间件」包含的组件类型非常广泛，本身不是一个赛道，而是开发堆栈中的一个分类。宽泛地来说，除了操作系统和直接面向用户的应用软件之外，其他的服务都可以视为中间件。</p>
+<p>中间件toB的功能决定了其距离C端用户较远，日常用户很难感知到。但是随着Web3生态的发展，中间件也必然会蓬勃生长——不论NFT、Gamefi、Socialfi中的哪个赛道会爆发，不论哪条公链会成为王者，都需要中间件作为基础服务设施。<strong>中间件所包含的每一种服务，都是确定性极高的赛道。</strong></p>
+<p>下文将梳理并分析三种中间件服务类型中的代表产品，分别为：预言机Chainlink、数据索引及查询服务The Graph、API服务Pocket Network。</p>
+<p><strong>2. Chainlink</strong></p>
+<p>Chainlink是头部的去中心化预言机网络，主要服务是为Defi产品提供喂价功能。</p>
+<p><strong>2.1 产品机制</strong></p>
+<p>Chainlink的主题机制分为三个步骤。</p>
+<p>首先，用户选择预言机服务商，可以通过链上声誉系统和历史服务记录手动选择，也可以通过Chainlink提供的订单匹配合约自动匹配。随后，预言机服务商执行合约，将链下的数据上报。最后，多方返回的数据会通过聚合合约来确定最终值，对于数值类结果则取加权平均，对于无法取加权平均的结果可由用户自行配置聚合方式。</p>
+<p>在2021年4月发布的新版白皮书中，Chainlink阐述了其产品更新：通过DON（去中心化预言机网络）实现<strong>安全的链下计算</strong> ，将预言机的功能从单纯的数据传输扩展为数据计算。通过采用Chainlink新的DON方案，Dapp可以将链上代码与链下计算结果相结合，提升可扩展性。Chainlink将这样的智能合约称为「混合智能合约」。</p>
+<p>为了保证链下数据和计算的安全性，新版白皮书中引入了<strong>双层预言机网络</strong> 。一层预言机网络即上文所述的、执行合约的预言机服务商，当这些预言机对聚合结果有质疑时，任何一个节点都可以成为监督者发出报警。随后，二层网络会对一层的结果进行投票决议，如果判定报警生效，那么一层网络中生成错误结果的恶意节点就会被没收质押的保证金，奖励给监督节点。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_rel4m0041q.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：官方博客，详见附录</p>
+<p>二层网络包含成百上千个独立的Chainlink节点，如Aave、Synhetix和Compound等，这些节点的利益与Chainlink深度绑定，Chainlink依赖这些节点的决议来保证安全性。</p>
+<p>攻击者如果要避免一层网络节点上报，就必须贿赂每个一层节点。假设共有n个节点，每个节点质押的保证金为d，则所有保证金为dn。由于要买通多数节点作恶，所以恶意节点的保证金总额至少为dn/2，而监督者可以获得所有恶意节点的保证金，即dn/2。任何节点都可以成为监督者，因此需要贿赂的总额为(dn/2)*n=dn²/2。</p>
+<p><strong>2.2 通证经济</strong></p>
+<p>平台代币LINK的主要功能，一是作为用户支付给预言机运营商的费用，二是预言机运营商质押LINK作为保证金，以防作恶。与一般项目不同的是，Chainlink还没有挖矿增发代币的收益。</p>
+<p>在2017年9月初始发售时，项目方总共铸造了10亿枚LINK，这也是LINK的总量上限。其中，3.5亿枚用于公开发售，3亿枚归属团队母公司，还有3.5亿枚用于未来的激励和空投，最后一部分目前还没有挪用过。根据Coingecko的数据，当前流通总量约4.67亿枚，FDV约130亿美元。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_o5et3fhs13.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>图片来源：Messari</p>
+<p><strong>2.3 运营现状</strong></p>
+<p>2017年6月成立，2019年5月上线主网。Chainlink的提供了多种功能模块，包括：去中心化的喂价，提供可靠的链下数据；可验证的随机函数，为NFT何链上游戏提供公允随机数生成器；储备金证明，为智能合约审计链上资产的真实链下储备抵押率；Keepers，帮助Dapp获取链下数据并自动化交易。</p>
+<p>其中最主要的业务，应当还是喂价服务。Chainlink网络中的主流喂价包括ETH/BTC/稳定币等主流币种，多数在以太坊、Polygon、BSC上，少数建立在Gnosis、Arbitrum、Heco。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_qe43k73erv.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_lsi7b2pzih.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：https://data.chain.link/</p>
+<p>根据官方报告显示，在2021年末采用了Chainlink服务的项目（包括Dapp、任何数据提供方、节点、企业等等）总共达到1,000多个，而其中一半都是在2021年新增的。</p>
+<p>从业务总量来看，每日请求数在2021年下半年的部分时间点达到高峰最高达到3,000多万次/天，<strong>近期集中在500万~1,000万次之间</strong> ，这一数字看起来并不庞大（与下文的项目对比，The Graph每日处理15亿次以上的请求，Pocket Network每日约2~2.5亿次）。也许依靠Defi赛道的喂价服务难以增长，也使得Chainlink需要拓展链下计算、Keepers等其他服务。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_4ek3zzuvo5.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：https://www.chainlinkmetrics.com/</p>
+<p><strong>2.4 团队及融资</strong></p>
+<p>Chainlink的母公司是SmartContract，由Sergey Nazarov和Steve Ellis于2014年联合创立。</p>
+<p>Sergey Nazarov担任CEO。Sergey出生于纽约，是俄国移民的后代，毕业于纽约大学，获得Philosophy and Managemen学士学位。毕业后，Sergey曾在FirstMark Capital工作（2009.4~2010.11），也在NYU Stern商学院短暂担任助教（2010.1~2010.5）。在创办SmartContract之前，Sergey处在职业探索期，也曾挖过比特币。</p>
+<p>Steve Ellis担任CTO，与Sergey同样毕业于纽约大学。</p>
+<p>在开发Chainlink之前，Sergey与Steve在2014年就开发了Secure Asset Exchange，是一个基于区块链的众筹平台，运行至2016年，随后开始摸索预言机，并于2017年宣布Chainlink的诞生。</p>
+<p>Chainlink在2017年拿过2笔种子轮融资，但均未公布额度；同年9月通过ICO筹集了3,200万美元。</p>
+<p><strong>2.5 优势及风险</strong></p>
+<p>Chainlink提供的主要服务——喂价功能运行稳定，拥有主流Defi产品作为客户，用户不易转移，业务稳定性强。</p>
+<p>但从每日请求数这一业务量来看，Chainlink在2021年8~10月之间出现个别高峰，其后业务量渐趋稳定，但并未有显著增长，集中在每天500~1,000万次左右。相对下文提到的The Graph和Pocket Network来说，没有特别明显可见的业务增长趋势。这可能是由于Chainlink的主要服务依赖于Defi，而Defi不再像前两年那样爆发式增长，也给Chainlink的业务带来了一定局限性。</p>
+<p><strong>‍3. The Graph</strong></p>
+<p>The Graph是一个提供区块链数据索引和查询的去中心化网络，能够让开发者搭建区块链数据的API，并通过GraphQL读取数据。由于The Graph将复杂的区块链信息分类整理成了便于检索的格式，类似于Google将网络中的繁杂信息贴上标签、提供检索，因而也被称为「区块链的Google」。</p>
+<p>The Graph早期以中心化的托管服务来支持Dapp，目前为止大多数的查询也都还发生在托管服务上，并且完全免费。但是The Graph真正吸引人、也是支撑其币价的地方，是其构建的去中心化网络，主网已于2020年12月上线。The Graph正在试图将托管服务迁移到去中心化网络上，迁移后的发展情况仍有待观察。</p>
+<p><strong>3.1 产品机制</strong></p>
+<p>数据的索引本质上是一个「人为建立分类标准、随后不断重复给数据贴标签」的过程，区块链数据的索引也依赖于用户完成这两个过程。本节介绍The Graph去中心化主网的工作机制。</p>
+<p>在The Graph的索引工作中，首先会由开发者（developers）来定义一个子图（subgraph），也就是一个数据API。在其中，开发者需要定义子图索引的智能合约、合约中的哪些特定事件、如何将事件映射到特定的字段，这些就是一个分类标准，一个给数据贴标签的方案。完成这样一个分类标准之后，需要网络中的其他节点依照这个标准不断执行，将区块链中新的数据按照这个框架贴标签，存储在节点中。</p>
+<p>其基本工作流程如下图所示：Graph节点会不断扫描区块链中新的区块，搜寻子图所需要的数据，随后通过事先定义了贴标签方式的WASM模块，将这些数据贴上标签，并存储在Graph节点内。Dapp想要调取数据时，就通过GraphQL端口向The Graph提出请求。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_9gqp1pdwjw.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：https://thegraph.com/docs/en/about/introduction</p>
+<p>The Graph是如何激励节点进行数据索引，维持整个网络生态的呢？在整个运行网络中，有四种主要角色，共同完成这些任务，分别是开发者（developers）、索引人（indexers）、委托人（delegators）和策展人（curators）。</p>
+<p>开发者即上述建立分类标准的人，他们提出一份索引提案（即子图），给节点提出索引需求。未来当他们或其他任何终端用户需要查询数据时，需要支付查询费用。</p>
+<p>索引人则是运行节点、为子图提供索引和查询的角色。索引人必须质押平台代币GRT来运行节点，而其激励来自于两部分：一部分是子图投入使用后的用户查询费用，另一部分是索引成果带来的直接奖励，后者来自于GRT每年的3%通胀。</p>
+<p>委托人向其信任的索引人质押GRT，来获得成比例的查询费用，是散户参与投资的一种方式。</p>
+<p>策展人的职能类似子图的孵化器，在全网中寻找有索引价值的数据，并通过质押GRT代币来示意索引人为此做索引。区块链数据庞杂，节点工作量有限，因此需要有人来排优先级，策展人就承担了这样的角色。策展人质押代币可获得相应的 Graph Curation Shares，类似于子图的股份，而这些股份依据Bonding Curve来定价，未来如果子图获得更多质押，那么策展人在退出时可以获得更多的GRT，反之则会损失。同时，策展人也会获得子图投入使用后的查询费用。</p>
+<p><strong>3.2 通证经济</strong></p>
+<p>平台代币GRT最初发售100亿颗，每年有3%的通胀，作为索引奖励，也会销毁所有查询费用的1%。代币的价值捕获来源于用户查询支付手续费、及每年1%查询费用的销毁。</p>
+<p>网络内部的代币流通为：索引人、策展人、委托人质押代币，查询者支付代币。索引人质押以进行索引，防止作恶；策展人质押以投资子图；委托人质押以支持索引人；查询者支付的代币将会分配给以上三种角色。每年3%的通胀，则会根据每个子图获得的策展人质押量，分配给索引人。</p>
+<p>除了查询费用和索引奖励外，The Graph还设计了一个返利池（Rebate Pool），一部分查询费用会先进入返利池，延后发放给索引人，只有当索引人质押GRT的比例与其贡献给返利池的比例一样时，他们才能获得全部的返利。这是为了平衡索引人在网络中的工作占比和质押量，保证网络的安全。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_z1nbcl7sud.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：https://thegraph.com/blog/the-graph-grt-token-economics</p>
+<p>代币初始分配如下：35%分配给社区，其中包括负责拨款、教育活动的Graph基金会，以及公开发售；~34%分配给投资方；23%分配给早期团队和顾问；8%分配给Edge &amp; Node，也就是原Graph Protocol, Inc.更名后的新公司。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_2v14e3sglb.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：https://thegraph.com/blog/announcing-the-graphs-grt-sale</p>
+<p><strong>3.3 运营现状</strong></p>
+<p>The Graph的运营现状和上述漂亮的产品机制，其实有很大差距。如开头所述，<strong>The Graph以托管服务起家，目前主要的查询也都还发生在托管服务上。</strong> 相对主网而言，托管服务完全免费，而且托管服务支持多条公链，除了以太坊主网外，还支持kovan等一系列ETH测试网/Near/Matic/Fantom/BSC/AVAX/Arbitrum/Optimism等。迁移不仅仅涉及到要向服务方开始收费，也涉及到跨链兼容的技术问题。</p>
+<p>当然，The Graph的愿景是成为去中心化的基础设施，官方也在努力将服务迁移到主网上。2021年4月开始了第一波从托管服务到主网的迁移。6月，The Graph官宣了一批项目的迁移，包括：Audius， DODO，Livepeer, mStable，Opyn, PoolTogether，Reflexer和UMA。但是如Uniswap这样的大客户，目前仍在托管服务中，享受免费服务。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_6mgijdu85d.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>已迁移到主网的Dapp，来源：https://thegraph.com/explorer</p>
+<p>我们来看一下The Graph的运营数据，会发现这很像一个<strong>靠补贴用户赚DAU、再靠DAU去赚估值的叙事</strong> 。而且，The Graph需要同时补贴数据查询方和数据索引方的双边市场。</p>
+<p><strong>对于数据查询方，也就是Dapp而言，The Graph确实已经占据了相当大的市场。</strong> 根据CEO在2021年12月发布的年终回顾，托管服务每天要处理超过15亿次查询请求（来源见附录）。笔者没有查到主网的查询次数，但是根据社区人员反馈，绝大多数查询都发生在托管服务上，<strong>那么15亿应当接近总数</strong> ，而这已经是个相当可观的数据。作为粗略对比，Google在2021年每天处理的查询次数超过85亿次（来源：Internet Live Stats），The Graph至少已经达到了同等数量级。</p>
+<p><strong>对于数据索引方，包括所索引人、委托人和策展人，也确实从The Graph获得了不小的回报</strong> 。根据主网数据可以看到，索引人和委托人的总质押量达到27亿颗GRT，价值约9.5亿美元，通过主网增发获得的索引奖励合计3.34亿颗GRT，约合1.2亿美元，<strong>币本位年化率约10%</strong> 。然而值得注意的是，从上线以来到现在合计产生28万颗GRT的查询费用，仅约10万美元，连索引奖励的零头都不到。可以看到，数据索引方<strong>的收益主要来自于主网的代币增发，实际产生的效用价值却并不高</strong> 。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_6zumrfmk6s.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：https://thegraph.com/explorer/network</p>
+<p>应该说，The Graph已经在很大程度上<strong>依靠补贴行为占据了市场，其猛增的查询数据也验证了市场需求，但是项目还没有过渡到可持续的商业模式上</strong> 。将Dapp迁移到主网也是The Graph今年需要攻克的难关，也是其能否上岸的考验。</p>
+<p><strong>3.4 团队及融资</strong></p>
+<p>The Graph于2017年成立团队，2019年1月上线托管服务，在托管服务时期已经和Uniswap、Synthetix、Gnosis、AAVWE、Aragon、Moloch、Decentraland等应用合作。2019年开始往去中心化的网络转型，2020年12月主网上线。</p>
+<p>团队由Yaniv Tal、 Jannis Pohlmann和Brandon Ramirez三人联合创立，三人此前也在多个创业公司做过开发者工具。公司更名为Edge &amp; Node后，Yaniv Tal继续担任CEO，</p>
+<p>团队累计已融资6,960万美元，包括2019年1月由Multicoin领投的250万美元、2020年6月的510万美元、2020年10月通过ICO筹集的1,200万美元、以及今年1月由Tiger Global Management领投的5,000万美元。</p>
+<p><strong>3.5 优势及风险</strong></p>
+<p>The Graph处在一个确定性高的赛道中，其每日超过15亿次的查询数据也验证了区块链数据查询的市场需求。The Graph成立早，知名度高，已经布局了几乎所有的头部Defi项目，且作为ToB服务有较强的用户粘性，整体有很大的市场先发优势。</p>
+<p>但是从其运营数据可以看出，当前仍然依靠免费的托管服务提供数据索引和查询，还没有形成可持续的商业模式。未来团队的重点工作就是从中心化的服务模式，过渡到去中心化的服务模式上，这一进程是否顺利仍待观察。</p>
+<p><strong>4. Pocket Network</strong></p>
+<p>Pocket Network的核心功能是提供去中心化的API服务，从赛道分类上来看，处于区块链的云API赛道。</p>
+<p>在任何网络服务中，当业务量足够大时，客户端就需要与服务器分离来提升处理性能，而当客户端需要调用服务器的数据时，就需要专门的接口来辅助，这就是API的作用。API的分类多样，也因此诞生了专门的API服务市场。根据MRFR调研，预计2022年全球的云API市场规模达到7亿美元（不确定这一口径是否包含了区块链的API服务）。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_ppd4e4lzvk.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>在区块链中，所有的Dapp运行时都需要读取公链上的数据，如读取用户在某条链上的账户余额，这一过程也需要API来辅助。API大体分为两种形式，一种是面向过程的RPC，另一种是面向资源的Rest。RPC包含数据和调用方法，适用的场景更复杂，而区块链业务场景中都采取了RPC调用方式，因此通常也称为RPC服务。</p>
+<p>在区块链RPC服务中，主要的玩家包括：公链自己提供的RPC服务、中心化服务商如Alchemy和Infura、去中心化服务商Pocket Network。</p>
+<p><strong>4.1 产品机制</strong></p>
+<p>Pocker Network的产品机制很直白，整体分为三个组成部分：应用、节点和主网。</p>
+<p>应用提出中继请求，通过质押平台原生代币POKT来获得服务；节点完成中继服务，并获得代币奖励；主网负责通过代币分配来运行激励系统，同时也负责随机匹配应用和节点，每个会话周期（Session，约60分钟）过后重新匹配一次，保证网络的安全。</p>
+<p>不过，由于POKT的主网是一条独立的公链，其原生代币资产也建立在独立公链上，用户需要下载Pocket的钱包来使用，不天然支持与其他公链的交互。为了增强资产的可组合型，Pocket Network计划推出ERC20代币wPOKT（Wrapped POKT），接入以太坊生态</p>
+<p>Pocket较新颖的设计在于通证经济，下文将详述。</p>
+<p><strong>4.2 通证经济</strong></p>
+<p>Pocket Network的平台代币为POKT，其作用主要包含：</p>
+<ol>
+<li>
+<p>应用开发者质押POKT以获得中继服务。开发者无需额外付费，因为Pocket当前处在通胀中，增发的POKT大部分会分发给提供了服务的节点，开发者所质押的POKT价值会逐渐稀释，通过这样的价值转移来完成支付，避免了频繁的支付交易。开发者质押后可以一直享受中继服务，但是质押1个POKT所对应的中继服务次数是个可调节的参数，如果未来这个参数下降，而开发者还要维持原有的服务量，就需要追加质押，相当于预留了价格调整空间。</p>
+</li>
+<li>
+<p>节点需要至少质押1.5万枚POKT以提供中继服务，作为初期投入资本。如果节点作恶，则其质押的POKT可能会被全部没收。</p>
+</li>
+<li>
+<p>节点通过增发的POKT来获得激励。按照当前的设计，每成功提供一次中继服务，就会铸造0.01枚POKT代币。其中，89%分配给提供了中继服务的节点，作为服务费用；10%分配给DAO；剩余1%分配给验证服务的节点，这主要是用来激励质押量高的节点，只有质押量排名前5,000的中继节点才能成为验证节点，且质押量越大则成为验证节点的机会越大。</p>
+</li>
+</ol>
+<p>Pocket Network初始发售6.5亿枚POKT，未来的通胀或通缩将由Pocket DAO根据业务发展情况来决定。</p>
+<p>当前Pocker Network处在通胀机制中，以此来吸引早期用户使用网络，增发的代币量与业务量成正比，即上述所说的每完成一次中继服务会增发0.01枚POCK。随着业务的逐渐增长，通胀会逐渐放缓，未来当业务量开始缩减时，会启动通缩机制，通过销毁应用开发者质押的POKT来平衡代币量。下图是近期通过DAO决议的通货膨胀参数，已经在逐渐降低，以应对不断膨胀的业务量：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_659ghtm6hs.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：官方文档「POKT Inflation」小节</p>
+<p>POKT的初始发行量为6.5亿枚，没有规定总量上下限，如前文所述将会由DAO来调整通胀和通缩参数。初始代币分配及解锁安排如下，创始团队、员工、实体公司（PNI）、基金会合计占比超过了50%。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_g4yof67bti.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_e9cppys0hj.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：官方文档「FAQ - Pricing &amp; Economics」小节</p>
+<p><strong>4.3 运营现状</strong></p>
+<p>Pocker Network于2020年7月主网，自去年下半年开始<strong>业务量增长迅猛，但是与中心化的Infura/Alchemy相比仍然体量悬殊</strong> 。</p>
+<p>从中继数量来看，在去年Q1、Q2，中继总数约4.5亿左右，平均每天~500万次，Q3翻倍到每天~1,800万次，Q4更是增加到了每天~1.3亿次。在今年1~2月，每日中继数在2.5~3亿次之间浮动，<strong>近期回落到2~2.5亿之</strong> 间。从节点数量来看，近期节点数量已经达到将近3万多。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_7sn8slpukd.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：官方文档，「Welcome」小节</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_9fanhkn1he.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：官方博客，Recap #60</p>
+<p>相应地，全网发出的激励也非常惊人，截止目前为止合计增发了4.3亿枚POKT，也就是累计中继次数的1%。加上初始发售的6.5亿枚，POKT当前总供给量达到9.8亿枚，上线以来的通货膨胀率~50%。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_a7dl0cr2pq.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：Token Terminal</p>
+<p><strong>虽然增长迅猛，但是相对中心化的竞争对手Infura/Alchemy来说仍然体量悬殊</strong> 。笔者没有找到两家公司当下的业务量，但是据公开报道，2018年时Infura每日处理的API数量就达到了100亿次，已经是当下Pocket Network的50倍左右。保守假设Infura的业务量与ETH的交易量成正比增长，ETH在2021年时的每日交易量大约为2018年时的2倍左右（如下图），那么其业务量大概已是Pocker Network的100倍左右。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0316/15_dsuufdiqa7.png" alt="Web3需要中间件 但可能不需要去中心化"></p>
+<p>来源：Etherscan</p>
+<p>从估值上来看，Pocket Network也与其中心化对手相去甚远，<strong>但是按照业务体量折算单价来看，Pocket Network的估值并不低</strong> 。如前所述当前POKT总发行量约9.8亿，按0.7美元单价，FDV约6.9亿美元。相对地，Alchemy的估值在今年2月达到102亿美元，Infura母公司Consensys在今年3月的最新估值约70亿美元（去年11月仍为32亿美元）。假设Alchemy的API业务量与Infura是同一量级，<strong>即Pocket Network的100倍，但其估值只是Pocket Network的15倍左右</strong> （虽然Alchemy的估值已经有了惊人的飙升，在去年10月还只是35亿美元）。Pocket Network的估值中，仍然有较多加密世界的溢价。</p>
+<p><strong>4.4 团队及融资</strong></p>
+<p>CEO兼创始人Michael P O&rsquo;Rourke毕业于南佛罗里达大学国际事务研究专业。Michael曾担任过多个iOS开发工作，2017年创办Pocket Network。CTO是Luis C. de Leon，毕业于圣多明戈技术学院系统工程专业，辅修信息技术专业，曾在多家公司担任开发岗位，于2018年加入Pocket Network。</p>
+<p>据Crunchbase资料显示，Pocket Network前后融资过8轮，但公开的并不多。2019年2月曾融资75万美元，2020年7月由Borderless Capital领投，但无具体数额；2021年4月融资930万美元；2022年1月融资1,000万美元，领投方为Arrington XRP Capital、C2 Ventures、Republic Labs、RockTree Capital。合计公开的融资数额为2,005万美元。</p>
+<p><strong>4.5 优势及风险</strong></p>
+<p>Pocket Network所处的赛道特征和The Graph类似，API服务和区块链数据索引的赛道潜力，都会随Web3整体增长而增长，不像Chainlink会相对更依赖于Web3中的细分赛道。同时，Pocket Network是一个完全去中心化的网络，可以避免中心化网络的单点风险，符合加密世界的价值观。</p>
+<p>但是Pocket Network与其中心化的竞争对手相比，业务体量存在巨大差距，短期难以补上；而且，中心化的公司运营灵活，有成熟的营销策略，如Infura针对不同使用量的用户推出不同的套餐，甚至让低使用量的用户免费享受API服务以扩大用户基础，而Pocket Network目前的服务模式相对单一，完全按量付费，在市场竞争策略上不及对手，要做出改变也非易事。</p>
+<p>去中心化的API服务是否是个真命题，Pocket Network能否成为API市场中的主流玩家，还需要时间来证明。</p>
+<p><strong>5. 总结</strong></p>
+<p>对比上述三类产品的模式，可以看到几种不同的去中心化中间件的发展路径。</p>
+<p>Chainlink的特征在于：1）在市场早期切入，2017年即发币，拥有巨大声望；2）其产品从最开始就实现了去中心化，借此保障链下数据的安全可靠，业务模式稳定；3）业务规模随着主要服务对象Defi的发展而发展，但近期Defi发展速度放缓，Chainlink的业务增长也有一定局限。</p>
+<p>The Graph与Chainlink一样在市场早期切入，成为主流玩家，但是The Graph的现状其实更像一个中心化运营的公司，其主要业务都建立在免费的托管服务上，仍在努力将客户迁移至去中心化的网络上。</p>
+<p>The Graph是一个从中心化服务往去中心化服务模式过渡的有趣案例，其前后阶段的对比也反映出了两种服务模式的区别：<strong>中心化的服务模式，在短时间内提供非常优秀的用户体验，用户接入门槛远远低于去中心化服务。</strong></p>
+<p>中心化服务模式提供的优质用户体验，包括接入方便（如The Graph的托管服务支持多条公链，而去中心化服务仅支持以太坊主网）、初期免费等等，可以借此吸引到大批量用户，等建立粘性后再依靠增值服务来收费。而在去中心化的服务模式中，由于服务节点需要激励，用户使用服务就需要向提供服务的对手方支付费用，除非依靠具有资金盘性质的代币增发来吸引早期用户；而且，去中心化的服务网络对于节点的技术要求高，服务升级所涉及的难度也大，较难灵活支持。因此，去中心化用户的接入门槛必然较高。</p>
+<p>The Graph前期依靠中心化的免费服务占据了市场，未来的考验在于，在多大程度上能够转变为去中心化服务平台。否则，其代币将失去价值，因为代币的使用和托管服务完全无关。</p>
+<p>Pocket Network在去中心化的服务模式上和Chainlink类似，一开始就构建了符合加密世界价值观的服务模式。但是，Pocket Network入场晚，和其中心化运营商对手的体量不在一个数量级上。可以想见，Pocket Network要成为主流会更难。</p>
+<p>总结来说，中间件所处的赛道确定性高，其需求会随着Web3的发展而不断增长。但在加密圈中的主流中间件，如The Graph和Pocket Network，其高估值在很大部分上来自于去中心化网络所具有的理想价值，包括网络共有共享、避免单点故障等等。这一逻辑至少已经成就了Defi，满足了成百上千万用户掌握资产所有权的需求，但是这一叙事在中间件领域能否成立，仍然未知。</p>
+<p>文/echo_z</p>
+<p><strong>附录</strong></p>
+<p>1）中间件概念及分类：</p>
+<p>Deribit：</p>
+<p><a href="https://medium.com/deribitofficial/infrastructure-lego-the-middleware-thesis-1114eb0421ac">https://medium.com/deribitofficial/infrastructure-lego-the-middleware-thesis-1114eb0421ac</a></p>
+<p>MetisDAO：</p>
+<p><a href="https://metisdao.medium.com/blockchain-middleware-ccb41ded0fab">https://metisdao.medium.com/blockchain-middleware-ccb41ded0fab</a></p>
+<p>Edge &amp; Node：</p>
+<p><a href="https://edgeandnode.com/blog/defining-the-web3-stack">https://edgeandnode.com/blog/defining-the-web3-stack</a></p>
+<p>2）Chainlink：</p>
+<p>新版白皮书质押机制：</p>
+<p><a href="https://blog.chain.link/explicit-staking-in-chainlink-2-0-zh/">https://blog.chain.link/explicit-staking-in-chainlink-2-0-zh/</a></p>
+<p>3）The Graph：</p>
+<p>CEO2021年终总结：</p>
+<p><a href="https://thegraph.com/blog/year-one-web3-renaissance">https://thegraph.com/blog/year-one-web3-renaissance</a></p>
+<p>Pocket Network：</p>
+<p>4）先行研究：</p>
+<p><a href="https://mp.weixin.qq.com/s/Bdr301a3ev6Lk8t4hqx99w">https://mp.weixin.qq.com/s/Bdr301a3ev6Lk8t4hqx99w</a></p>
+<p>Infura2018年业务量：</p>
+<p><a href="https://www.trustnodes.com/2018/07/25/ethereums-node-infrastructure-provider-infura-handling-10-billion-requests-per-day">https://www.trustnodes.com/2018/07/25/ethereums-node-infrastructure-provider-infura-handling-10-billion-requests-per-day</a></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/35471/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Web3浏览器到底是什么？它能否对谷歌造成威胁？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/35486/">
+                <span class="next-text nav-default">Web3依赖参与型经济 而它缺少的正是参与</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Polkadot v1.0：分片和经济安全（1） - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="这篇文章是关于支撑 Polkadot 的技术。Polkadot 是具有异构分片的分片区块链。" />
+<meta name="keywords" content="Polkadot" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/33436/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Polkadot v1.0：分片和经济安全（1）" />
+<meta property="og:description" content="这篇文章是关于支撑 Polkadot 的技术。Polkadot 是具有异构分片的分片区块链。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/33436/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-01-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-24T00:00:00+00:00" />
+
+<meta itemprop="name" content="Polkadot v1.0：分片和经济安全（1）">
+<meta itemprop="description" content="这篇文章是关于支撑 Polkadot 的技术。Polkadot 是具有异构分片的分片区块链。"><meta itemprop="datePublished" content="2022-01-24T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-01-24T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4266">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Polkadot v1.0：分片和经济安全（1）"/>
+<meta name="twitter:description" content="这篇文章是关于支撑 Polkadot 的技术。Polkadot 是具有异构分片的分片区块链。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Polkadot v1.0：分片和经济安全（1）</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-01-24">
+      2022-01-24
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4266 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>加入 PolkaWorld 社区，共建 Web 3.0！</p>
+<p>这篇文章是由 Polkadot 联合创始人 Robert 发布的关于 Polkadot 分片和经济安全的技术文章，原文篇幅较长，PolkaWorld 将分四篇翻译和发布！本篇是该文章的<strong>第一部分</strong> ！请查阅！</p>
+<p>这篇文章是关于支撑 Polkadot 的技术。Polkadot 是具有异构分片的分片区块链。在这种情况下，分片意味着将工作拆分到多个子区块链上，称为平行链。异构意味着每个区块链都有自己的状态转换功能，该功能专为特定用例而构建。不同类型的交易会有不同的归属地，这使得特定场景的链可以最有效地为其用户服务。Polkadot 为所有平行链提供安全和消息传递功能。</p>
+<p>这篇文章主要是为对区块链共识有一定了解的技术读者写的。我希望它对除了开发者以外的人有用，并为大家提供对基础层区块链面临的问题和挑战以及 Polkadot 如何解决这些问题的见解。我不会详细介绍我们的解决方案的每一个细微差别，但我会深入描述我们考虑的事物类型以及如何保证我们的目标实现。</p>
+<h2 id="polkadot-之前的链"><strong>Polkadot 之前的链</strong></h2>
+<p>对区块链的简化理解只涉及一条单链，从这条链的创世区块延伸到其尽头。对于许多人来说，这是唯一重要的链概念，它代表了所有已经发生并已被网络同意的状态转换。任何区块链共识系统的最终目标都是为观察者提供这一事实来源。然而，这条单链，我们可以称为最终链或规范链，只是可能存在的许多可能的竞争链中最后剩下的幸存者。区块链共识算法的作用是从许多可能的链开始，最终只确定其中一个。</p>
+<p>区块生产者可以产生下一个区块，但一次可能有多个获胜者。在工作量证明中，矿工通过找到一种方法来生成一个新块，当该块 hash 到一个低于某个困难目标的唯一随机数，从而获得在给定块之上的生产块的权利。在充分竞争的环境中，矿工可能需要大量尝试才能找到满足此条件的区块。作为参考，在撰写本文时，比特币网络的累积哈希率为每秒 162 Exahashes，这意味着比特币矿工总每秒要尝试 162 万亿次来获得贡献下一个区块的权利，难度目标设定为平均每 10 分钟只有一个哈希值低于目标值。请注意，多个矿工可以大致同时找到一个解决方案，该解决方案在区块链中引入了一个小分叉。未来的矿工将不得不选择在哪些区块上进行开采，这可能会导致分叉变长。规则是遵循最长的链，对于从过去的区块开始的攻击者来说，追赶并压倒更长的链变得越来越困难。因此，在最长链中足够深的块可以被认为是概率上最终的块。</p>
+<p>Ouroboros 系列权益证明协议使用称为可验证随机函数 (VRF) 的加密技术，通过将时间划分为离散的插槽并将每个验证人从已注册和质押的验证人集合（验证人集合）中分配出来来模拟工作证明每个 slot 产生一个可验证的随机值的机会，如果低于阈值，则作为允许验证人创建新块的凭证。与工作量证明一样，多个验证人可能会产生一个低于阈值的 VRF 值并同时创建块，从而导致分叉。验证人不会激励故意引入分叉，他们会受到 slash 惩罚来扣除他们的链上的质押。这些协议还提供了最长链分叉选择规则下的概率确定性。</p>
+<p>与工作量证明中的矿工不同，Ouroboros 式网络中的验证人只需要运行一次计算就有机会创建一个块，而不像矿工必须做的大量哈希值。这允许验证人将大部分时间花在构建带有交易的区块上，并随后允许区块链包含更有价值的计算。</p>
+<p>Polkadot 的中继链使用一种称为 BABE 的协议，它是 Ouroboros Praos 的演变。BABE 对 Praos 的具体改进是 BABE 避免了依赖中心化 NTP 服务器让验证人知道当前时间。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0124/29_1l6s3pfzas.png" alt="图片"></p>
+<p>虽然概率确定性很好，但等待一个块在最长链中达到一定深度是一种效率低下的机制，因为它旨在适应预期的最坏情况，即网络处于一定程度的网络压力和攻击之下。可能大多数网络已经就哪些区块是规范链的一部分达成了一致。事实上，在几乎所有情况下，网络都能够在一个区块达到最长链的最小深度之前就已经达成共识。为此，我们引入了确定性小工具（finality gadget）和绝对确定性（absolute finality）的概念。最终性小工具是在概率性最终区块链之上运行的二级共识协议，它证明了网络将认为哪些区块是最终区块的更快协议。这些共识协议引入了进一步的经济安全属性：在不 slash 惩罚至少 1/3+ 验证人集合总权益的情况下，确定性小工具永远不会最终确定 2 个竞争块。</p>
+<p>Polkadot 的中继链使用称为 GRANDPA 的确定性小工具。它可以在任何特定长度的子链上实现近乎瞬时的最终确定性，并且通过让验证人反复对他们认为位于最长链头部的块进行反复投票来粗略地发挥作用。GRANDPA 目前在 Polkadot 和 Kusama 网络上运行，在撰写本文时拥有 900 个验证人的 Kusama 上，它可以在 3 秒内实现新区块的最终确定性。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0124/29_r03vw63c8i.png" alt="图片"></p>
+<p>BABE 和 GRANDPA 的结合允许 Polkadot 仅使用来自单个验证人的输入来乐观地增长链，这很快，并通过获得绝大多数验证人的签名在后台完成。这种属性的组合意味着在良好的网络条件下，Polkadot 实现了高吞吐量和低延迟，而在糟糕的网络条件下，中继链实现了高吞吐量和（更）高延迟，因为 GRANDPA 将转向跟踪 BABE 的最终性。</p>
+<h2 id="分片通过子集选择进行扩展"><strong>分片：通过子集选择进行扩展</strong></h2>
+<p>让我们回到分片。分片的目标是通过以交易的形式在许多称为分片的链上拆分工作来提高吞吐量。分片由顶级区块链引用和保护。在 Polkadot 中，顶级区块链称为中继链，分片是平行链。中继链上出现的大多数数据都是包含对新平行链区块的引用的交易，这使得处理中继链本身的任何分叉变得便宜。请注意，我在这里区分了中继链的任意分叉和最终的中继链。我们在这里的大部分工作是确保中继链的最终部分（用户将其视为规范链）仅包含对有效平行链块的引用。</p>
+<p>此图或类似图在互联网上广泛分布。它们展示了验证人如何被分成组并分配给平行链，并从收集人那里获得平行链区块提案。在这篇文章中，我对许多更细微的概念进行了视觉解释。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0124/29_fhgpajv5nn.png" alt="图片"></p>
+<p>如果每个验证人只需要检查一些提交的平行链块，而不是全部，分片就只是对可扩展性的改进。如果有 10 条平行链，并且每个验证人必须检查所有 10 条链中的所有区块，我们不妨将所有交易放在一个区块链上，然后收工。诀窍是找到一种方法，让每个验证人在保持经济安全的同时尽可能少地做验证工作：提倡不良平行链区块的验证人在经济上不会受到激励。更具体地说，在他们所有质押被惩罚之前，将一个坏的平行链区块包含在最终的中继链中，一组对抗性的验证人应该不可能串通一气。验证人，实际上是验证人的一小部分，可以串通以获得中继链的未最终分叉所引用的不良平行链块，但我们保证这些分叉在最终确定之前被忽略，并且违规者被惩罚。</p>
+<p>当引用它们的中继链块最终确定时，平行链块被最终确定。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0124/29_gmku09s2if.png" alt="图片"></p>
+<p><em>当引用它们的中继链块最终确定时，平行链块被最终确定</em></p>
+<p>让我们对我们要防御的对手做出一些具体的假设：</p>
+<ul>
+<li>
+<p>攻击者最多可以控制所有验证人的 1/3，并且可以控制所有这些验证人的行为完全符合预期。</p>
+</li>
+<li>
+<p>攻击者可以查看诚实验证人人与其控制的验证人之间的所有网络消息</p>
+</li>
+<li>
+<p>攻击者可以随时拒绝最多 X% 的验证人，阻止他们发送或接收消息。</p>
+</li>
+<li>
+<p>在攻击者开始拒绝任何验证人之前需要一个固定的延迟</p>
+</li>
+</ul>
+<p>在这篇文章中，我不会为该协议设置正式的安全证明，但这些约束应该可以让我们深入了解我们打算防御的攻击类型。</p>
+<p>事实上，我们平行链共识的基本单元实际上并不是平行链，而是我们称之为可用性内核或简称内核的东西。这些类似于 CPU 内核：它们并行运行，并在离散的 slot 中安排工作。每个平行链都有自己的专用内核，这意味着它总是被调度到一个特定的内核上。但是，我们也可以将多个链多路复用到一个内核上。唯一的区别是调度算法。</p>
+<p>内核服务是中继链吞吐量的有效描述。内核直接对应于验证人需要做的工作量。每个内核最多可以在每个中继链块处理一个平行链块，在峰值。</p>
+<p>在任何分片区块链系统中，只有一些验证人检查每个平行链块，数据可用性是确保检查平行链块所需的数据可以恢复以进行欺诈检测的关键组成部分。可用性内核由中继链管理，并跟踪哪些平行链块正在等待数据可用性。可用性内核的主要目的是作为调度原语，并在数据可用性比平时慢时提供背压。</p>
+<p>可用性内核的逻辑如下所示。当内核准备好接受新的平行链块时，内核是空的，此时它们被占用。然后，数据要么变得可用，要么可用性过程超时。那时，内核再次变空。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0124/29_er43zevf8u.png" alt="图片">将平行链共识划分为 5 个不同的协议是有帮助的，这些协议在中继链共识中交织在一起。</p>
+<ul>
+<li>
+<p>收集</p>
+</li>
+<li>
+<p>支持</p>
+</li>
+<li>
+<p>可用性</p>
+</li>
+<li>
+<p>审批检查</p>
+</li>
+<li>
+<p>争议 Disputes</p>
+</li>
+</ul>
+<p><strong>Collation 收集</strong> 是创建平行链块的过程。收集人构建一个平行链块并将其发送给验证人。</p>
+<p><strong>Backing 支持</strong> 是由一小组中继链验证人最初检查平行链块并在中继链上注册的过程。支持的主要副产品是，如果后来的协议失败，它要求验证人将自己置于危险之中。</p>
+<p><strong>Availability 可用性</strong> 是支持验证人分发检查平行链块所需的数据片段并确保以后可以检查的过程。</p>
+<p><strong>Approval Checking 批准检查</strong> 是随机验证人恢复数据并执行平行链区块的过程。他们根据是否认为平行链区块有效来批准或发起争议。</p>
+<p><strong>Disputes 争议</strong> 是解决验证人对平行链区块的冲突意见、忽略不良平行链区块并惩罚违规者的过程。争议仅作为故障保险存在，预计不会经常触发。</p>
+<p>请注意，验证人可能同时参与这些协议中的每一个，并且通常是它们的多个实例化。例如，验证人可能在参与支持较新区块和对更旧区块争议的同时，参与对管道更下游的平行链区块的批准投票。</p>
+<p>这种内部并行性也反映了实现的架构：这些协议中的每一个都被实现为一个独立的子系统，并且所有子系统都并行运行。每个节点总是在做一些事情。</p>
+<p>原文链接：https://polkadot.network/blog/polkadot-v1-0-sharding-and-economic-security/</p>
+<p>翻译：PolkaWorld 社区</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/33437/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">OpenSea前端疑似出现挂单Bug，有人获利超200ETH</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/33440/">
+                <span class="next-text nav-default">Web 3无法脱离中心化服务</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#polkadot-之前的链"><strong>Polkadot 之前的链</strong></a></li>
+    <li><a href="#分片通过子集选择进行扩展"><strong>分片：通过子集选择进行扩展</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

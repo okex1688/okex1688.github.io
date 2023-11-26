@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          迭代与竞争：以太坊的Layer2扩容之路 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文将系统性地介绍Layer 2扩容机制的原理和发展历程，展望未来的生态演化和投资机会。" />
+<meta name="keywords" content="以太坊, Layer 2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/21586/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="迭代与竞争：以太坊的Layer2扩容之路" />
+<meta property="og:description" content="本文将系统性地介绍Layer 2扩容机制的原理和发展历程，展望未来的生态演化和投资机会。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/21586/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-29T00:00:00+00:00" />
+
+<meta itemprop="name" content="迭代与竞争：以太坊的Layer2扩容之路">
+<meta itemprop="description" content="本文将系统性地介绍Layer 2扩容机制的原理和发展历程，展望未来的生态演化和投资机会。"><meta itemprop="datePublished" content="2021-04-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="9420">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="迭代与竞争：以太坊的Layer2扩容之路"/>
+<meta name="twitter:description" content="本文将系统性地介绍Layer 2扩容机制的原理和发展历程，展望未来的生态演化和投资机会。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">迭代与竞争：以太坊的Layer2扩容之路</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-04-29">
+      2021-04-29
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 9420 字 -
+        预计阅读 19 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原标题：《国盛区块链·深度｜迭代与竞争——以太坊的Layer2扩容之路》</p>
+<p><strong>摘要</strong></p>
+<p>“车多路堵，扩容在即”——Layer 2扩容一直是区块链行业明确的发展趋势之一，随着以太坊生态活跃和网络拥堵，Layer 2赛道又成为了市场的关注点。本文将系统性地介绍Layer 2扩容机制的原理和发展历程，展望未来的生态演化和投资机会。</p>
+<p>Layer 2扩容的本质——把区块链上的部分运算任务放到链下，并将计算结果传回链上，从而实现区块链运算能力的提升。与之相对的Layer 1扩容是在区块链协议上进行改进，从而实现扩容。而Layer 2扩容不改变区块链协议本身，通过链上智能合约与链下交互从而实现扩容。其核心环节在于Layer 1与Layer 2的数据交互，以及如何保证Layer 2上的资产安全。</p>
+<p>以太坊“甜蜜的烦恼”——需求爆发带来网络拥堵、费用飙升，Layer2既是技术问题也是平衡多方利益的手段。每当以太坊生态繁荣，用户的增加带来了更多的交易请求，复杂合约和复杂调用的增加减少了单个区块的实际交易容量，ETH价格上升增加了交易的法币计价手续费，拥堵的网络又会进一步抬高Gas价格，这种机制性的循环发展会使得以太坊的项目上出现泡沫化和头部效应，整体上是降低了以太坊平台应用的创新能力。以太坊扩容既是众望所归，也是大势所趋，只有缓解了这种机制性拥堵和高昂手续费，才能实现以太坊生态的良性发展。</p>
+<p>纵观Layer 2扩容技术的发展，目前的技术路线主要包括侧链扩容、状态通道扩容、Plasma和Rollup：侧链扩容的核心就是用另一条独立的区块链来承接目前交易，从而提高计算效率降低手续费。状态通道在2014年左右被提出，它的核心是通过哈希锁定并在链下进行一系列交易，只把交易结果上链，尤其适合解决小额高频支付的手续费过高的痛点。在2017年左右Plasma的扩容路线被提出，为了解决侧链扩容中的侧链安全性对资产的威胁，Plasma的设计原则就是即使在侧链出故障的情况下也能保证用户能第一时间提出自己的资产。Rollup的概念则是在2018年被提出，将交易信息高度压缩打包上链，即使链下数据完全不可用，也能提出资产。这些技术路线之间并非泾渭分明，而是一种相互融合的演化发展，展现着区块链生态的自发性生长。</p>
+<p>投资建议：我们认为目前Layer 2扩容处于爆发前夕，最先上线且兼容EVM的通用平台Layer 2方案将具备很大的先发优势，使用体验将会成为决定性因素。Layer 2扩容将极大程度地降低手续费和提高交易效率，Defi市场很可能因此迎来洗牌。Layer 2扩容会降低链上操作成本，推动区块链项目创新，可能在游戏、金融、虚拟世界、元宇宙等领域实现更深度的区块链创新应用。</p>
+<p>风险提示：区块链商业模式落地不及预期；监管政策的不确定性。</p>
+<p><strong><img src="https://img.bibiqing.com/news/2021/0429/m1rjs4p03hasq1a" alt="迭代与竞争：以太坊的Layer2扩容之路"></strong></p>
+<p><strong>Layer 2是什么？</strong></p>
+<p>区块链扩容是为了提高区块链的交易处理速度，从而能在相同时间内处理更多交易，可类比于车多路堵，需要新建高架、隧道来提供交通效率。Layer 2扩容是链下扩容方案的统称，指的是把区块链上部分的运算过程放到链下，并将计算结果传回区块链，从而实现区块链运算能力的提升。</p>
+<p>与之相对的Layer 1扩容就是在区块链协议上进行改进，从而实现扩容。而Layer 2扩容不改变区块链协议本身，通过链上智能合约与链下数据的交互来实现扩容。</p>
+<p><strong>以太坊为什么要扩容？</strong></p>
+<p>以太坊通过EVM（以太坊虚拟机）实现了图灵完备的计算，开发者通过链上智能合约可以实现复杂的程序逻辑，我们可以把以太坊抽象的看成是一台去中心化的计算机。</p>
+<p>以太坊通过Gas费机制防止恶意合约（如无限循环）的影响，限制单个区块的容量大小，并且激励参与者提高网络的使用效率。Gas费机制就是对用户在链上的操作进行收费，费用根据规则按操作类型和复杂度计算。这些费用支付给维护网络并运行合约计算的矿工群体，挖到区块的矿工获得区块内交易的总Gas费。Gas费由操作类型和复杂度决定，读写链上信息和调用外部合约会比执行普通代码更贵。宏观上看，以太坊本意通过Gas机制动态调整了资源供需，防止恶意占用链上资源的情况。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0429/6e76iw05ul14jwe" alt="迭代与竞争：以太坊的Layer2扩容之路"></p>
+<p>交易的Gas价格受以太坊网络水平影响，一般而言矿工会按照Gas价格高低和交易指令的等待时间来选择打包的交易，优先打包Gas价格高和等待时间长的交易指令，用户可根据网络情况决定Gas价格。Gas价格的单位一般为Gwei，1Gwei = 0.000 000 001ETH，单个交易所要支付的Gas费用＝操作所需的Gas（由规则确定）×当前的Gas价格（由网络情况决定）。</p>
+<p>Gas费机制为ETH带来了天然的使用价值，也激励着用户和开发者精简自己的操作和智能合约，激励矿工带来打包交易。以太坊的单个区块的容量大小也是通过Gas费来限制的（比特币是通过区块大小），单个区块所包含的所有交易的Gas费不能超过Gas上限，从而限制了单个区块的容量大小，挖到区块的矿工可对Gas上限进行微调以适应网络状况。</p>
+<p>随着最近半年以太坊生态应用的爆发，以太坊网络交易量急剧上升，ETH的价格也收益于生态发展而快速上升。各种套利机器人在DeFi应用中开启了自动套利。套利者的网络速度敏感度要远大于网络费用敏感度，只要套利空间比费用要大，他们就愿意支付超高的Gas费用以换取交易的快速处理，网络的平均Gas费也水涨船高。普通用户在参与这些应用的时候，则变得缓慢、网络拥堵，高昂的Gas费加上ETH的高价格，一次普通的Defi合约调用甚至能达到数十上百美元。随着交易的费用上涨，以太坊将会面临热度减弱，项目创新减少的局面。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0429/kt489cno2d7zt3z" alt="迭代与竞争：以太坊的Layer2扩容之路"></p>
+<p>我们认为目前以太坊网络拥堵和高手续费是以太坊Gas费机制性问题，每当生态繁荣，用户的上升带来了更多的交易请求，复杂合约和复杂调用的增加减少了单个区块的实际交易容量，ETH价格上升增加了交易的法币计价手续费，拥堵的网络又会进一步抬高Gas价格，这种机制性恶化会使得以太坊的项目上出现泡沫化和头部效应，初期项目和市场宣传不够的项目会因为高昂的手续费被用户拒之门外，整体上是降低了以太坊平台应用的创新能力。</p>
+<p>上述矛盾对于公链而言是“甜蜜的烦恼”，只有当链上生态发展到一定程度，才会有Gas费的问题，究其背后，是矿工、Token持有人、生态项目方的三方博弈，网络稳定、激励有效与应用创新处处需要平衡，处理不当会对社区造成伤害，尤其是ETH已成为区块链“样板工程”之后。同样，这种问题理论上是每一个采用原生代币Gas费机制的区块链网络都无法避免的，以太坊发展最快而最先面临这样的挑战。</p>
+<p>在目前这种情况下，以太坊扩容既是众望所归，也是大势所趋，只有缓解了这种机制性拥堵和高昂手续费，才能实现以太坊生态的良性发展。</p>
+<p><strong>Layer 2扩容的基本框架</strong></p>
+<p>以太坊Layer 2扩容的核心思想在于：在主链的基础上再搭建一个二层网络，帮助Layer 1分担网络压力，以达到整体效率的提升。目前以太坊Layer 2扩容技术架构主要有四类：状态通道、侧链、Plasma和Rollup。</p>
+<p>Layer 2扩容机制的关键点在于Layer 1的合约设计、Layer 2的协议设计、跨链数据交互的设计尤其是资产存入和取出时的流程设计。由此我们勾勒出了Layer 2扩容机制基本框架，足以描述目前绝大部分Layer 2扩容项目。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0429/gnr4rs3p93wrksa" alt="迭代与竞争：以太坊的Layer2扩容之路"></p>
+<p><strong>为什么要关注Layer 2扩容？</strong></p>
+<p>区块链扩容路线关注如何在保证安全性的条件下实现更高的运算能力，Layer1扩容或许更能从本质上改变网络拥堵，例如ETH2.0采用的分片扩容。但Layer1扩容最大的弊端在于共识成本高，简单的提高区块容量会导致系统更加中心化，存在硬分叉的风险（如BCH从BTC分叉）。而Layer2扩容是一种更轻型、能够快速实现的扩容方式，它可以承接主链已有的生态应用，并且所需资源成本比主链扩容要少得多，这也是Layer 2赛道快速发展的原因之一。</p>
+<p>纵观Layer 2扩容的发展，侧链扩容和状态通道扩容的思想要比以太坊网络的出现还要早，早在比特币时期被提出，侧链扩容的核心就是用另一条独立的区块链来承接目前交易，从而增大计算效率降低手续费。状态通道在2014年左右被提出，它的核心是通过哈希锁定并在链下进行一系列交易，只把交易结果上链，尤其适合解决小额高频支付的手续费过高的痛点。在2017年左右Plasma的扩容路线被提出，为了解决侧链扩容中的侧链安全性对资产的威胁，Plasma的设计原则就是在子链出故障的情况下也能保证用户能提出自己的资产。Rollup的概念则是在2018年被提出，将交易信息高度压缩打包上链，即使链下数据完全不可用，也能提出资产。</p>
+<p>Layer 2扩容试图在保证去中心化和安全性的条件下，突破以太坊现有的计算瓶颈。“杀手级”的Layer 2扩容方案将很有可能改变当前的行业竞争格局，并且可能产生新的应用落地，扩大行业想象空间。因此我们建议关注Layer 2扩容的发展，本文也梳理了Layer 2不同路线的实现方式。</p>
+<p><strong>以太坊Layer 2扩容是怎么实现的？技术路线一文总览</strong></p>
+<p>侧链扩容路线成熟，生态活跃却饱受争议</p>
+<p>侧链是与主链兼容的区块链网络，它与主链是相对概念，以太坊侧链扩容技术路线的本质就是打造一个兼容以太坊的区块链网络，并运用跨链机制实现从主链到侧链的资产转移，并在侧链上部署应用，分担主链网络拥堵。</p>
+<p>侧链是一条独立的区块链，拥有自己独立的共识机制，安全性不依靠主链，往往会采取DPOS、POA等更有效率的共识机制。</p>
+<p>侧链技术路线的重点在于跨链机制的设计。跨链机制的基本原理就是通过锁定主链上的资产，并在侧链发行相关资产，如果想要回到主链，只需要销毁侧链上的资产，并在主链上解锁相关资产。因为区块链自身不能获取其它链上信息，那么谁传递并确认信息从而决定资产的锁定与发行就成为了关键问题，为了解决这个问题，可以采取通过第三方主体验证的公证人人机制，或者通过区块链自身进行验证的中继机制。公证人可以采用单一主体，也可以是是多个主体进行验证并多签确认交易。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0429/4jqh2omqklcsn8j" alt="迭代与竞争：以太坊的Layer2扩容之路"></p>
+<p>侧链扩容的最大风险在于侧链自身的安全性和跨链过程的安全性：一旦侧链出现故障，转移到侧链的资产便极有可能丢失。公证人和侧链的运行节点一旦作恶，便可以从主链上转移用户的资产(Plasma和Rollup技术路线都是为了解决这个问题，保障用户免受中心化和系统故障的威胁)。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0429/r73p47hbnvq1rmi" alt="迭代与竞争：以太坊的Layer2扩容之路"></p>
+<p>尽管跨链机制已经日趋成熟，侧链扩容变得越来越方便和高效，但这种扩容路线却存在着很大的争议。</p>
+<p>2020年年底火热至今的交易所公链，就可以看作是一种以太坊的侧链扩容，承接了以太坊的生态外溢，取得了引人注目的用户增长速度和链上资产数量。以币安智能链BSC为例，它兼容了以太坊的数据与智能合约，采取相似的区块链数据结构与协议，并采用了TPS更高的DPos共识机制。以太坊资产和应用可以轻松转移到BSC上，开发者也有成熟开发工具在BSC上进行应用开发。同时交易所凭借自身的生态和用户优势，为BSC引流了数量可观的用户。因为与以太坊协议的相似性，大量对标以太坊Defi的BSC项目快速上线，以太坊上的生态应用也有部分向BSC上迁移。</p>
+<p>相较于以太坊，交易所公链大大降低了合约运行的手续费，对小额资产或者初次接触区块链应用的用户更为友好，快速增长的用户和链上交易也证明了这一点。对于行业而言，交易所公链的崛起对去中心化生态的利弊存在着很大的争议，既降低了用户门槛、带来了生态活跃，也是一种中心化的威胁。侧链扩容还存在另一个争议点，用于扩容的侧链还属于以太坊的生态吗？侧链本身能算是以太坊的Layer 2扩容方案吗？如果交易所公链算是以太坊Layer 2扩容的一种，从发展现状和用户数量来看，侧链扩容目前确实是Layer 2扩容最成熟和活跃的路线。</p>
+<p>状态通道专注于小额支付，但使用体验和可用性较差</p>
+<p>状态通道是交易双方在链上锁定资产创建支付通道，并在链下进行交易，当用户从主链取出资产时，只需把链下多次交易的结果证明提交至主链智能合约验证即可。</p>
+<p>状态通道摊薄了多次交易的手续费用，尤其适合小额多频的交易场景。这种技术早在比特币时期就被提出，因为链上交易的手续费都与交易金额无关，这导致小额交易的手续费用占很高。</p>
+<p>以状态通道扩容项目雷电网络为例，流程如下：</p>
+<p>参与者双方需要将资产锁定在智能合约中，这一步保证了参与者可以相互转账和接收资产，直到参与者关闭了支付通道；参与者维护者自己的账户余额，双方通过发送签名后的交易证明进行交易；交易可以不断地进行，直到其中一方决定取出资产并关闭通道，他可以随时向智能合约展示交易证明来关闭通道，另一方如果与退出方有交易的话也需要在当时展示交易证明；当双方都展示余交易明后，便可以从智能合约中取回存款。当另一方不能及时展示交易证明时，系统会判定他没有接收到任何转账，并按照单方的证明进行分配，这种机制保证了任何人都一定能取回他的资金，即使对方不配合。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0429/gaarvdwq82ojnmn" alt="迭代与竞争：以太坊的Layer2扩容之路"></p>
+<p>我们可以看出状态通道的优势在于：采用了双方净结算降低了单次交易费用；双方交易细节不上链保障了交易隐私；同时退出机制最大程度的保障了参与方的资金安全。</p>
+<p>但在使用体验上有着严重不足：第一，只能和开通通道或者在支付网络内的用户进行交易；第二，必须经常性地关注交易对手方是否选择关闭通道，从而展示接收的交易以保障自己的权益；第三，状态网络扩容机制的拓展性较差，难以实现链下交易外其他操作。</p>
+<p>Plasma保障资产安全，信息不可用成最大阻碍</p>
+<p>Plasma可以看作是一种保障资产安全的侧链技术，它将链下的状态证明上传主链，即使链下出现了安全问题，用户也能够证明并提出资产。Plasma技术架构目前主要有两种主流的机制Plasma MVP、PlasmaCash。</p>
+<p>Plasma MVP是通过UTXO和Merkle proof来实现用户在不借助第三方的情况下实现资产退出的。在链下的交易以UTXO的形式记录在Merkle tree上，并把相应哈希值上传至主网的智能合约，这样用户只需要提供Merkle proof便能证明自己所拥有的UTXO，从而提出资金。</p>
+<p>当用户提出资产时需要一段质疑期进行欺诈证明，其他任何人都可以通过举证该用户已被花费的UTXO实现质疑。因为主链通过智能合约虽然能够验证用户提供的证据，却无从得知的用户隐藏的信息（比如有些UTXO已经花费掉了）。</p>
+<p>Plasma MVP的“群体离开问题”：当大部分用户都想离开Plasma，则所有的状态证明全部都要被提交到以太坊上，并在挑战期内接受“挑战”。由于Plasma是不限用户数量的，但以太坊区块的处理能力却很有限，因此如果整个Plasma的有效状态全部都提交给以太坊进行处理，会彻底堵死以太坊，导致交易的处理时间被大大拖延甚至遥遥无期。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0429/pohnkgv6q662lpb" alt="迭代与竞争：以太坊的Layer2扩容之路"></p>
+<p>Plasma Cash的机制与Plasma MVP非常类似，不同之处在于资产在子链上以NFT的形式进行记录，其具体流程如下：</p>
+<p>1、 用户在合约中锁定资产时，在Plasma上会收到一个代表所有存入资产的NFT；</p>
+<p>2、 Plasma Cash采用特定的默克尔树，每个NFT都有指定的位置，当发生转账时，相应位置记录转账信息，并将默克尔树的根哈希上传主链；</p>
+<p>3、 在交易时需要提供该NFT之前的交易记录；</p>
+<p>4、 当用户退出时，需要提交前两次交易的merkle proof；</p>
+<p>5、 当用户取出资产时，存在一个质疑时段，任何人都可以通过交易记录进行质疑该用户操作。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0429/prcl3u3ypvjk949" alt="迭代与竞争：以太坊的Layer2扩容之路"></p>
+<p> </p>
+<p>总体而言，Plasma技术路线的优点在于能够在Layer 2发生故障的情况下保证用户的资产安全，这种运用去中心化密码学的保障机制使得Plasma路线一度被社区热捧。</p>
+<p>但Plasma技术路线存在的问题在于以下几点：第一，在这种技术框架下限定了子链的数据结构，使得通用性拓展变得非常困难；第二，Plasma机制存在数据不可用问题，即主链没办法获取所有链下数据，只能通过根哈希进行简单验证，这也导致了退出机制比较复杂，往往需要很长的周期（数日）进行欺诈证明，同时用户需要保存自己的数据，时刻注意子链变化，非常影响使用体验。</p>
+<p>交易数据压缩上链，通用化平台即将落地，Rollup技术路线前景可观</p>
+<p>Rollup机制指的是高度压缩交易并打包上传主链，并通过零知识证明或欺诈证明验证交易包的真实性，解决了Plasma的数据不可用问题。Rollup机制实现了数据在链上，运算在链下的分层模式，从而最大程度地保证了资产的安全性。</p>
+<p>为了实现交易的高度压缩，Rollup子链上维护着账户资产数据，每个账户都有自己相应编号。因此只需4个字节就能实现223个账户的索引，足以应对绝大多数情况。与此类似，Rollup在所有能够压缩、又不影响可读性的地方都进行了压缩（如图12），压缩后的交易只有不到原来的十分之一。通过对交易的压缩，Rollup机制能够更有效率地利用现有的Layer 1网络容量，从而实现扩容，并且在扩容的同时保证了数据的链上可用性。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0429/l23e17bnjvkyorb" alt="迭代与竞争：以太坊的Layer2扩容之路"></p>
+<p>Rollup机制的核心问题就是验证压缩交易包中交易的真实性。对于这个问题，解决方案主要分为两种类型：基于零知识证明的ZK Rollup；基于欺诈证明的Optimistic Rollup。目前两种方案都在快速发展，不同的团队选择了不同的技术机制，以太坊主链上的项目们也做出了自己Layer 2迁移的选择。</p>
+<p>采用零知识证明的ZK Rollup是通过在发送交易包时，同时发送交易对应的零知识证明，智能合约通过零知识证明验证交易包的真实性。总体流程如下：</p>
+<p>1、用户转入并锁定资产，Layer 2状态树添加账户信息并生成对应资产；</p>
+<p>2、在Rollup网络中，用户签名并发送交易；</p>
+<p>3、排序者收集交易，压缩打包成交易包，并生成零知识证明，并按照交易包更新状态树；</p>
+<p>4、排序者将交易包和零知识证明广播至主链；</p>
+<p>5、智能合约通过零知识证明验证交易包的真实性，并且更新数值，执行相应的转账操作。</p>
+<p>ZK Rollup的最大优势就是高度去中心化和验证效率高。在侧链更新状态的同时生成零知识证明，矿工运行的智能合约能够通过零知识证明验证交易包中的新状态是否源于旧状态叠加交易产生，从而实现了Layer 2数据到Layer 1去中心化的数据验证，同时因为Layer 1能快速识别来自Rollup的数据真实性，能快速完成资产的取出。</p>
+<p>ZK Rollup的劣势在生成零知识证明的过程复杂且困难，不仅需要大量运算，而且应用的定制化开发难度大，难以实现兼容现有应用的通用平台。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0429/is2mvssgqnatmy0" alt="迭代与竞争：以太坊的Layer2扩容之路"></p>
+<p>Optimistic Rollup（OP Rollup）技术路线选择相信操作者提交的交易包真实性，并对欺诈的行为做出处罚。操作者需要质押了一定数量的资产，只有满足资产质押的条件智能合约才会接收其发送的交易包，任何人都可以针对交易包的真实性发布欺诈性证明，一旦欺诈行为被判定便会失去所有的质押资产。通过对排序者和质疑者的经济学激励，使系统达到安全性的平衡。</p>
+<p>当质疑者通过重新计算状态值，发现交易包的错误时，他可以向智能合约发送一个欺诈性证明。欺诈性证明包括所有必要的信息，包括交易前的账户状态、交易对应的Merkleproof等。智能合约能够运用欺诈性证明，通过重放交易的方式检验交易包的真实性，实现欺诈交易的检验。</p>
+<p>这种模式下的验证效率被降低了，但它的好处在于能够更容易实现通用平台，从而兼容EVM智能合约，使得开发者工作量大大减少，这使得项目迁移的难度大大降低，为OP Rollup项目占领Layer 2蓝海提供了先天优势，也能最快速度地解决以太坊网络的燃眉之急。</p>
+<p>OP Rollup机制的缺点在于欺诈证明机制使得资产的存入和转出都需要等待较长的质疑期，因为一旦合约中储存的资产离开Rollup合约后，就不太可能进行交易的回滚和资产的追回了。相较于ZK Rollup，Optimistic Rollup的验证效率低，交易压缩率也更低，因此扩容能力也更差。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0429/yq42ui4dkfdj84i" alt="迭代与竞争：以太坊的Layer2扩容之路"></p>
+<p>以太坊Layer 2扩容路线脉络梳理，机制传承而非一蹴而就</p>
+<p>从侧链扩容到Rollup机制，不难发现这些技术路线之间并不是泾渭分明，而是一种相互融合的演化发展。最新的Optimistic Rollup机制中的欺诈性证明，早在状态通道扩容中就有类似的机制。而通过锚定主链来保护侧链的资产安全性，也从最开始的Plasma方案传递到了Rollup技术路线。而跨链机制更是在大部分技术路线中都有运用。</p>
+<p><strong><img src="https://img.bibiqing.com/news/2021/0429/gyu37yl21vig7a0" alt="迭代与竞争：以太坊的Layer2扩容之路"></strong></p>
+<p><strong>以太坊Layer 2扩容的未来展望</strong></p>
+<p>目前以太坊网络Layer 2扩容技术处于快速发展期，解决方案百花齐放，每种方案都有自己的优势所在，也获得了与自身特性匹配的相关项目和社区的支持。</p>
+<p>短期而言，我们认为会看到一个高度竞争且分裂的Layer 2网络群，以太坊主网或将成为大宗交易、套利交易的通道，而各种Layer 2网络将为用户带来低价且高效的交易执行。短期内不同的Layer 2协议因为机制和技术问题可能暂时无法打通，将会形成较为独立小型生态，相互间的交互成本较高（多次与主网交易）。这个阶段，最先上线的兼容EVM的通用平台Layer 2方案将具备很大的先发优势，使用体验将会成为决定性因素。Layer 2扩容将极大程度地降低手续费和提高交易效率，Defi市场可能因此迎来洗牌。</p>
+<p>中期来看，Layer 2协议之间将尝试实现数据打通，不同的方案会自发形成不同的Layer 2联盟。我们认为ZK Rollup对比OP Rollup有着更好的安全性和使用体验，将凭借协议的优越性占领大部分Layer 2市场份额。长期来看，我们认为最终以太坊社区会角逐出Layer 2的最终赢家，占领大部分市场，在保障去中心化和信息安全的前提下实现扩容。统一的Layer 2协议也会降低网络的使用成本，有利于生态的发展。Layer 2扩容并不是中间态的妥协而是长期方案，在以太坊2.0成功上线后，Layer 2的扩容机制也依然能够与分片扩容共存，提高网络吞吐量。</p>
+<p>Layer 2扩容离不开加密货币钱包、区块链浏览器、行情网站对相应项目进行支持跟进，提供更好的使用体验。Layer 2扩容会降低链上操作成本，推动区块链项目创新，从而催生在游戏、DeFi、虚拟世界等领域实现更深度的区块链应用。</p>
+<p><strong>风险提示</strong></p>
+<p>区块链商业模式落地不及预期；</p>
+<p>监管政策的不确定性。</p>
+<p>本文节选自国盛证券研究所已于2021年4月28日发布的报告《国盛区块链|科创未来（六）：迭代与竞争——以太坊的Layer 2扩容之路》，具体内容请详见相关报告。</p>
+<p>宋嘉吉  S0680519010002   songjiaji@gszq.com</p>
+<p>任鹤义  S0680519040002    <a href="mailto:renheyi@gszq.com">renheyi@gszq.com</a></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/21573/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">德国新法律允许机构投资基金投资于加密货币</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/21596/">
+                <span class="next-text nav-default">独家丨Messari解析顶级Crypto基金持仓：DOT、KEEP、UNI最受欢迎</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

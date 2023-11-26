@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          科普 | 算法稳定币的视觉解释 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="去年稳定币的使用量呈现爆炸式增长，然而了解稳定币实际工作原理的人越来越少。" />
+
+  <meta name="keywords" content="区块大全, 区块链, 区块链资讯, 区块链快讯, 区块链新闻, 比特币行情" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/22496/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="科普 | 算法稳定币的视觉解释" />
+<meta property="og:description" content="去年稳定币的使用量呈现爆炸式增长，然而了解稳定币实际工作原理的人越来越少。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/22496/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-19T00:00:00+00:00" />
+
+<meta itemprop="name" content="科普 | 算法稳定币的视觉解释">
+<meta itemprop="description" content="去年稳定币的使用量呈现爆炸式增长，然而了解稳定币实际工作原理的人越来越少。"><meta itemprop="datePublished" content="2021-05-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4137">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="科普 | 算法稳定币的视觉解释"/>
+<meta name="twitter:description" content="去年稳定币的使用量呈现爆炸式增长，然而了解稳定币实际工作原理的人越来越少。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">科普 | 算法稳定币的视觉解释</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-05-19">
+      2021-05-19
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4137 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>去年稳定币的使用量呈现爆炸式增长，然而了解稳定币实际工作原理的人越来越少。</p>
+<p>由于某种原因，稳定币的创造者沉迷于复杂的设计中，几乎每份白皮书都深陷在方程式和新发明的术语中，就好像创作者试图说服你一样：相信我，你不够聪明，无法理解这一点。</p>
+<p>但我不同意这个观点。归根结底，所有稳定币的设计都非常简单。接下来我将向你们展示一种简单的可视化语言以了解所有稳定币的工作原理。</p>
+<p>将每个稳定币协议都看作是一个银行，他们各自都拥有资产和负债，以某种方式获取价值并将该价值分配给“股权”持有者。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0519/16_59scttrwdm.png" alt="科普 | 算法稳定币的视觉解释"></p>
+<p>一个正常的全额储备银行模型，如上图，左侧是其实际资产，即它所持有的实际美元储备，右边是其负债（称为“数字美元”），是对储备资产的债权。</p>
+<p>在全额储备银行中，每项负债与储备资产按1:1比例匹配。如果某人拥有数字美元要求现金返还，那么将为持有人提供实物美元，并销毁相应的数字债务。这就是Tether、USDC和其他法币支持的稳定币工作方式。</p>
+<p><img src="https://appserversrc.8btc.com/Fp8hwV2hc3VRsSN8mivE6S1c-Leb.png" alt="科普 | 算法稳定币的视觉解释"></p>
+<p>银行的股权属于股东（银行的投资者），他们从银行收取的费用中获利。在Tether的案例中，Tether Ltd.的所有者是股东，其利润来自Tether的铸造和赎回费用。</p>
+<p>全额储备银行的每项负债都应与美元保持紧密联系，因为它总是可以兑换1美元的储备金。只要银行保持廉价的可兑换性，套利者就会毫不费力地维持其锚定美元汇率。</p>
+<p>因此，这是一家普通的全额储备银行。这是一个显而易见的模型，但它将有助于说明加密银行的不同之处。</p>
+<h2 id="全额储备加密稳定币"><strong>全额储备加密稳定币</strong></h2>
+<p>如何创建一个完全加密的储备银行，其负债是稳定的美元？</p>
+<p>鉴于加密货币重新发明了货币，所以第一件事就是将美元资产换成加密资产。但是加密货币是不稳定的，因此如果您的债务是以美元为单位，则1:1的担保将不起作用。如果加密货币的价值下降，该银行将面临抵押不足的问题。</p>
+<p>因此，只需做一件显而易见的事情：放置一个额外的加密缓冲区，以便在加密资产崩溃时给你一个缓冲。</p>
+<p>基本上这就是MakerDAO的工作方式。</p>
+<p><img src="https://appserversrc.8btc.com/Ft_VkQ2TpPA3zuSX4HqKaIhKOUVn.png" alt="科普 | 算法稳定币的视觉解释"></p>
+<p>Dai的锚定汇率目前稳定。</p>
+<p>请注意，储备资产明显大于总负债（Dai），这样可以确保整个系统的安全。</p>
+<p>现在让我们看看Synthetix，Synthetix采用了不同的方法：Synthetix不是持有一篮子多样化的加密资产，而是针对自己的SNX代币发行了sUSD稳定币。该SNX还是“股票代币”，换句话说，Synthetix允许作为存款的唯一资产是其自己的代币。由于SNX的波动性很大，因此Synthetix要求流通中的每个sUSD都要有600%的超额抵押。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0519/16_afb6hjkj9t.png" alt="科普 | 算法稳定币的视觉解释"></p>
+<p>sUSD的锚定汇率目前稳定。</p>
+<p>MakerDAO和Synthetix都类似于传统的全额储备银行，只是它们的资产采用加密货币进行了超额抵押。从某种程度上说，它们的锚定是安全的，因为有某种机制可以将稳定币兑换到其基础资产中。（在这两种方法中，都有一个以期望价格为目标的利率体系。）</p>
+<p>还有另一种稳定币，通常称为“算法稳定币”。</p>
+<p>算法稳定币根本无法赎回，也没有传统意义上的存款人，这使得它们不太像传统银行，而更像中央银行。（中央银行倾向于使用可赎回权以外的其他方法来保持价格稳定。）</p>
+<p>每个算法稳定币的工作方式略有不同。为了分析算法稳定币，需要尝试了解它在两种重要情况下的作用：当稳定币高于锚定汇率时，以及当稳定币低于锚定汇率时。</p>
+<h2 id="算法稳定币"><strong>算法稳定币</strong></h2>
+<p>从结构上来讲，最简单的算法稳定币是Fei。</p>
+<p>Fei几乎立即摆脱了锚定汇率的局面，最近也是声名狼藉。下图介绍了Fei的工作原理：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0519/16_cgf9mag9a5.png" alt="科普 | 算法稳定币的视觉解释"></p>
+<p>Fei目前的锚定位已经被打破。</p>
+<p>Fei的运作与真正的中央银行非常相似，直接在市场上捍卫自己的锚定汇率制度。请注意，Fei并没有进行有意义的超额抵押，其大部分资产都是加密货币。这意味着，如果出现黑天鹅事件，Fei的资产可能会大大低于其负债水平，从而无法保持自己的锚定汇率。</p>
+<p>Fei的算法机制相当复杂，Fei的所有交易活动都通过Uniswap进行，并采用一种称为“重新加权”的技术来进行实际交易，还使用“直接激励”（实际上是一种资本控制）。</p>
+<p>但是最终结果是一样的：协议参与公开市场，将价格推向锚定汇率。</p>
+<p>类似算法中央银行的Celo协议，它发行了Celo Dollar（cUSD）的稳定币。Celo Dollar使用CELO作为其储备抵押品（Celo的原生资产），以及其他多种加密货币的多元化投资组合。</p>
+<p>像Fei一样，Celo协议一直持续使用Uniswap风格的模式在市场上交易Celo Dollars。Celo储备金最初是由大量储备资产构成的，储备金旨在始终保持超额抵押。如果Celo的资产跌至负债的200％以下，该系统将通过收取CELO转移的交易费用来进行资本重组。</p>
+<p>因此，Celo和Fei除其交易机制外的主要区别在于其持有的资产及其围绕抵押的规则。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0519/16_3thv7e4f6j.png" alt="科普 | 算法稳定币的视觉解释"></p>
+<p>Celo Dollar的锚定汇率目前是稳定的。</p>
+<p>同类型的第三个稳定币是Terra的UST。它的抵押品是LUNA，Terra的原生资产，像FEI和Celo一样，Terra协议充当稳定币的做市商。如果稳定币系统耗尽了资产，它会通过增加原生LUNA供应来补充库存。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0519/16_4hi3tuvw4v.png" alt="科普 | 算法稳定币的视觉解释"></p>
+<p>UST的锚定汇率目前是稳定的。</p>
+<p>Fei、Celo和Terra不允许赎回。相反，他们在公开市场上进行自己的货币交易，也就是说他们愿意买卖差价。</p>
+<p>从表面上看，这似乎与赎回大不相同，但这实际上是一个比看起来更接近的连续体。这是因为，从经济上讲，对做市的可信承诺与允许造币和赎回是相同的。</p>
+<p>想象一个由ETH抵押的稳定币，称之为STBL代币，该协议向市场推出ETH/STBL对。这意味着该协议将愿意以1.01美元的ETH出售1个STBL，并以0.99美元的ETH购买1个STBL。如果STBL低于锚定汇率，它将继续交易STBL，直到其ETH耗尽。</p>
+<p>如果STBL代币改为铸币和赎回，它可能会允许任何人以1.01美元的ETH铸造1个STBL，并以0.99美元的ETH赎回1个STBL。如果STBL低于锚定汇率，它将继续用STBL赎回ETH，直到其ETH耗尽。</p>
+<p>在传统的中央银行中，做市商不允许赎回，而是允许中央银行有更多的自由裁量权。但是算法做市是不同的，因为智能合约可以做出牢不可破的、自我执行的承诺。因此做市和可赎回性是实现同一目标的两条途径：提供流动性和确保紧密锚定。</p>
+<p>研究了中央银行风格的算法稳定币，还有另一种更稳定的算法稳定币：铸币股份模式（Seigniorage Shares）。</p>
+<h2 id="铸币股份模式稳定币"><strong>铸币股份模式稳定币</strong></h2>
+<p>经典的铸币股份模式稳定币是Basis Cash，基于未发行的前身Basis。它可能是最典型的算法稳定币，后来许多其他设计都是从它衍生出来的。一个视频展示Basis Cash的工作原理，视频链接地址：https://youtu.be/bHzI8mECz_w。目前，Basis Cash的锚定汇率已经被打破。</p>
+<p>可以将Basis Cash视为两个运作阶段：当有未偿还的债券时，Basis Cash处于收缩周期，货币供应的增长速度不足以偿还所有系统债务。但是，如果需求继续增加，最终所有债券将得到还清，系统将进入扩张周期，股东们将再次获得新铸造的Basis Cash奖励。</p>
+<p>新铸造的Basis Cash是“铸币税”，即央行通过发行新货币获得的利润。</p>
+<p>正常的中央银行将铸币税保留在自己的资产负债表上，以备不时之需。另一方面，Basis Cash会在收到铸币税的那一刻就向股东支付所有铸币税。这使得Basis具有非常“高效的担保”，其资产负债表上根本就没有资产。这使它能够在0资产上支持非常大的高稳定币供应。但是，这也使其很容易遭受“死亡螺旋”或信任危机的影响。事实上，Basis Cash确是如此。</p>
+<p>后来的算法稳定币大多数都是Basis设计的后代，包括我们将要研究的最后一个稳定币。</p>
+<p>ESD（Empty Set Dollar）是由匿名创始团队精心发行的稳定币。ESD的原始版本（ESD v1）就是基于Basis Cash设计的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0519/16_3nr29tytc2.png" alt="科普 | 算法稳定币的视觉解释"></p>
+<p>ESD v1的锚定汇率已经被打破，此后便转向了新的设计。</p>
+<p>ESD的创新在于将股权代币与稳定币融合在一起，这意味着稳定币如果被抵押，会产生更多的稳定币。就像您可能猜到的那样，这导致稳定币变得高度动荡，从而脱离锚定汇率，有时高达2.00美元，直到最终跌至0.20美元以下。</p>
+<p>到目前为止，纯铸币股权模式稳定币普遍失败了。许多Basis和ESD的仿盘，如DSD，都遇到了同样的命运。这至少告诉我们，稳定币的设计确实很重要。这些的插图应帮助您推理出为什么铸币股份模式稳定币如此容易受到信任危机的影响。</p>
+<h2 id="结语"><strong>结语</strong></h2>
+<p>在DeFi初期，去中心化的稳定币基本上是不可能的。目前看来，这些说法似乎还不成熟。算法稳定币的设计空间很大，某些设计确实比其他设计更坚固。</p>
+<p>有一点是肯定的：你不应该仅仅因为白皮书坚持认为去中心化的稳定币会很强大就可以了。而是应该考虑一下，稳定币需要什么才能稳定。</p>
+<p><em>作者：Haseeb Qureshi，Dragonfly Capital投资人，持有本文中讨论的许多资产。</em></p>
+<p><em>编译：陈一晚风</em></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/22450/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">金色早报 | Uniswap V3 总锁仓价值突破十亿美元</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/22497/">
+                <span class="next-text nav-default">科普：算法稳定币的视觉解释</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#全额储备加密稳定币"><strong>全额储备加密稳定币</strong></a></li>
+    <li><a href="#算法稳定币"><strong>算法稳定币</strong></a></li>
+    <li><a href="#铸币股份模式稳定币"><strong>铸币股份模式稳定币</strong></a></li>
+    <li><a href="#结语"><strong>结语</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

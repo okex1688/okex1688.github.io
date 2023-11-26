@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          自动做市商（AMM）算法的数学原理及其未来发展 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="我们可以把这个算法看作是向 Uniswap/Balancer 模型添加一个固定价格部分，使最终的做市函数锚定于一个价格。" />
+<meta name="keywords" content="AMM" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/28754/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="自动做市商（AMM）算法的数学原理及其未来发展" />
+<meta property="og:description" content="我们可以把这个算法看作是向 Uniswap/Balancer 模型添加一个固定价格部分，使最终的做市函数锚定于一个价格。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/28754/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-17T00:00:00+00:00" />
+
+<meta itemprop="name" content="自动做市商（AMM）算法的数学原理及其未来发展">
+<meta itemprop="description" content="我们可以把这个算法看作是向 Uniswap/Balancer 模型添加一个固定价格部分，使最终的做市函数锚定于一个价格。"><meta itemprop="datePublished" content="2021-09-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5463">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="自动做市商（AMM）算法的数学原理及其未来发展"/>
+<meta name="twitter:description" content="我们可以把这个算法看作是向 Uniswap/Balancer 模型添加一个固定价格部分，使最终的做市函数锚定于一个价格。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">自动做市商（AMM）算法的数学原理及其未来发展</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-17">
+      2021-09-17
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5463 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E8%A7%82%E7%82%B9/"> 观点 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>本文总共分为中篇阐述自动做市商算法、现状及未来迭代的思考，本文为中篇。<a href="https://www.jinse.com/blockchain/1157635.html">下篇请点击</a></p>
+<p><strong>目录</strong></p>
+<p>7.  Curve的StableSwap和交易公式</p>
+<p>8.  Curve V2 的动态权重、可定制的价格锚定和平滑的价格过渡</p>
+<p>9.  Curve V2 在 2 代币池中的做市商函数</p>
+<p>10. 与 CPMM 和 StableSwap 相比，Curve V2 的价格函数</p>
+<p>11. 价格重锚过程：Xcp 标准、EMA 价格预言机、相对价格变化步长 s</p>
+<p>12. Curve V2的动态交易手续费</p>
+<p>13. DEX聚合器：Balancer SOR算法的通用解决方案</p>
+<p>14. Pivot 算法：解决无常损失问题的一种尝试</p>
+<p>15. 单边流动性解决方案</p>
+<p><strong>Curve的StableSwap和交易公式：</strong></p>
+<p>Curve 将 恒定加和做市商 (CSMM) 和 恒定乘积做市商(CPMM) 合并在一起，以实现更低的价格滑点。我们可以把这个算法看作是向 Uniswap/Balancer 模型添加一个固定价格部分，使最终的做市函数锚定于一个价格。</p>
+<p>Curve¹⁰ V1，被称为 StableSwap，设计了用于稳定币交易的算法。它将 CSMM 与权重相乘并加上CPMM：</p>
+<blockquote>
+<p>Curve¹⁰ V1</p>
+<p>StableSwap — efficient mechanism for Stablecoin liquidity</p>
+<p><a href="https://curve.fi/files/stableswap-paper.pdf">https://curve.fi/files/stableswap-paper.pdf</a></p>
+</blockquote>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_5pacz8tzs7.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>首先我们考虑一个特殊情况，即流动性池中每种代币的数量是相同的。很容易证明在平衡点处时这个方程成立（<em><strong>χ</strong></em> 是权重，与**<em>D</em>** ⁿ⁻¹ 相乘以使 CSMM 和 CPMM 具有相同的数量级）。但是，当流动性池失衡时，如果 <em><strong>χ</strong></em> 是一个常数，则该等式将不再成立。因此，我们需要将 <em><strong>χ</strong></em> 变量化。Curve V1 选择了一种 <em><strong>χ</strong></em> 的函数形式，使它在流动性池极端不平衡时变为零，这意味着该方程由 CPMM 主导。在平衡点下，<em><strong>χ</strong></em> 等于 <em><strong>A</strong></em>。<em><strong>A</strong></em> 是一个常数，通过模拟历史数据进行优化。代入 <em><strong>χ</strong></em> 给了我们一个始终成立的方程。</p>
+<p>接下来，让我们推导出 StableSwap 如何实际计算交易结果。根据当前池中的代币数量，我们可以计算出 <em><strong>D</strong></em>。例如，如果我们想换出代币 _<strong>j</strong> _，我们可以将 <em><strong>xⱼ</strong></em> 分离开来并求解 <em><strong>xⱼ</strong></em> 的方程：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_0b3fjffmzb.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>该方程可以简化为二次形式。可悲的是，现在链上Vyper语言里没有可以解二次方程的数学库。因此，StableSwap 使用了<strong>牛顿法</strong> 来求解 _<strong>xⱼ</strong> _。迭代公式每次迭代都将其精度加倍。因此，可以在设定的gas上限内计算可接受的 <em><strong>xⱼ</strong></em>。最后，交换前后 <em><strong>xⱼ</strong></em> 之间的差值将是购买的代币 j 的数量。</p>
+<blockquote>
+<p>牛顿法</p>
+<p>它是一种在实数域和复数域上近似求解方程的方法</p>
+<p><a href="https://en.wikipedia.org/wiki/Newton%27s">https://en.wikipedia.org/wiki/Newton%27s</a>_method</p>
+</blockquote>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_mb4cw3jpkj.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>From StableSwap whitepaper</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_1deeyslc34.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>From StableSwap whitepaper</p>
+<p>与 CPMM 相比，StableSwap 做市商受压、 以x + y = 常数方向压平。这确保交易价格接近或等于 1，在平衡点附近有非常小的滑点（当池中的一个代币不接近几乎售罄时）。当池中的一个代币几乎售罄时，价格开始急剧下降。这很容易理解：函数的曲率/滑点被集中/推到别处，以确保在平衡点附近的低滑点。</p>
+<p>该模型中的 CPMM 和动态权重被用于惩罚提前知道消息的大额订单，防止池中的代币被完全售罄。</p>
+<p><strong>优点：</strong> 通过添加CSMM和CPMM以及动态权重，Curve的StableSwap 实现了非常小的滑点，非常适合稳定币。</p>
+<p><strong>缺点：</strong> 价格始终锚定在1。如果市场价格与流动性池价格显著不同，流动性池将被买空。因此，StableSwap 仅适用于稳定币。</p>
+<p><strong>Curve V2 的动态权重、可定制的价格锚定和平滑的价格过渡：</strong></p>
+<p>为了确保更平稳的价格过渡和可定制的价格锚定，Curve¹¹ V2 将动态权重 <em><strong>χ</strong></em> 修改为 <em><strong>K</strong></em>，如下所示：</p>
+<blockquote>
+<p>Curve¹¹ V2</p>
+<p>Automatic market-making with dynamic peg</p>
+<p><a href="https://curve.fi/files/crypto-pools-paper.pdf">https://curve.fi/files/crypto-pools-paper.pdf</a></p>
+</blockquote>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_2rpbs98j6a.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p><em><strong>K0</strong> _ 在 0（流动性池不平衡）和 1（平衡点）之间变化，</em><strong>χ</strong> _ 和 <em><strong>K</strong></em>（以_<strong>A</strong> _ 归一化）作为 <em><strong>K0</strong></em> 的函数绘制如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_gi6wm0iyee.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>我们可以从上图中了解Curve V2 如何使价格转变得平滑。它实际上使动态权重在远离平衡点时迅速下降。_<strong>γ</strong> _值越小，下降越快。使动态权重快速下降到零本质上相当于强制函数表现得更像 CPMM，即使流动性池只是有一点不平衡。</p>
+<p>DW 在 twitter¹² 上发布了一条很棒的推文，解释了相同的概念。</p>
+<blockquote>
+<p>DW 在 Twitter¹²的推文</p>
+<p><a href="https://twitter.com/dken">https://twitter.com/dken</a>_w/status/1422623679150649345</p>
+</blockquote>
+<p>价格过渡问题得到了解决。现在我们讨论 Curve V2 如何实现其他不是1的<strong>价格锚定</strong> 。有一个价格锚定（他们在白皮书中称之为<strong>价格标度</strong> ）意味着在做市曲线上存在一个平衡点，在平衡点处按价格标度缩放的代币数量相等：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_dg6r0tzfdw.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p><strong>Curve V2 在 2 代币池中的做市商函数：</strong></p>
+<p>缩放后的代币数满足与 StableSwap 类似的等式。以最简单的 2币流动性池为例，做市商函数可以用 <strong><em>A、γ、p、D、x、y</em></strong>  表示。该函数可以简化为关于 x, y 的三次函数（关于 D 的六次函数）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_p96wkcebsr.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>该函数的典型值图如下所示：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_wybs3rwdu5.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_0et1v2b7d0.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p><strong>与CPMM和StableSwap相比，Curve V2的价格函数：</strong></p>
+<p>也可以绘制代币 x 相对于代币 y 的价格曲线。在平衡点 (1000, 1000) 附近Curve V2 价格函数恒定。与 StableSwap 相比，Curve V2 略微延迟了价格变动，而不是完全延迟。与 CPMM 相比，随着交易量的增加，价格开始以较小的滑点做出反应。总而言之，Curve V2 在平衡点附近实现了非常小的滑点，并且在其他区域比 CPMM 实现了更好的滑点。至于其他非1的价格锚定，我们只需更改上面三次/六次方程中的 <em><strong>p</strong></em>。因此，<strong>锚定价格</strong> 的问题也解决了。</p>
+<p>我们可以使用类似的在StableSwap中的牛顿法来计算交换结果。首先，我们根据池中当前的代币数量计算 _<strong>D</strong> _（这次使用牛顿法，因为方程要复杂得多）。其次，如果我们想换出代币 i，我们再次使用牛顿法来求解 xᵢ。同样，xᵢ的差异（按其价格标度归一化）将是我购买的代币数量（所有 xᵢ 都是按价格标度缩放的代币数量）。</p>
+<p>为了确保多项式函数的根可以在设定的<strong>gas上限</strong> 内求解，Curve白皮书讨论了他们选择的起始猜测，以及函数中的参数。他们使用一种称为模糊测试（假设框架）的方法来确定这些最佳值。目前，我们不知道有关此方法的任何详细信息，并且很想了解更多信息。</p>
+<p><strong>价格重锚过程：Xcp 标准、EMA 价格预言机、相对价格变化步长 s：</strong></p>
+<p>为了确保小滑点（在平衡点附近交易）， Curve V2通过改变价格标度不断重锚做市商函数。然而，价格重锚可能导致流动性提供者承受价值损失。Curve V2 引入了一个名为 Xcp 的变量来缓解这个问题：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_50gzw1o5si.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>如果一次重锚后的损失大于累积的 Xcp 的一半（原始 Xcp 增加的价值），则该算法将保持做市商函数不变。有几个问题我们想在未来回答，因为白皮书只简要讨论了 Xcp。查看其源代码可能会有所帮助。</p>
+<ol>
+<li>
+<p>Xcp 值是否与用流动性池中当前代币数计算出的价值成正比？</p>
+</li>
+<li>
+<p>存入或取出流动性是否计入 Xcp？</p>
+</li>
+<li>
+<p>如果取出流动性计入Xcp，如果Xcp减少幅度过大会阻止取出流动性吗？</p>
+</li>
+</ol>
+<p>对于价格重锚，Curve V2 使用 EMA（注：指数移动平均线）价格预言机来确定预言机价格。新的预言机价格向量由最近一次交易价格向量和前一个预言机价格向量的线性组合确定。新价格标度向量的变化方向与预言机价格相似，但不完全等于新预言机价格。他们通过引入相对价格变化步长 s，将价格标度向量滞后于预言机价格。该方程可以使用欧几里得几何轻松导出。EMA 价格预言机和价格标度延迟是为了减少近期价格波动的影响并更好地代表长期市场价格。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_2qy7uhhktq.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>关于相对价格变化步长 _<strong>s</strong> _，根据我们“刷新Curve官网”的经验，部分流动性池的 <em><strong>s</strong></em> 变化频率至少为十分钟的量级以上。Curve V2 如何更新 _<strong>s</strong> _ 是一个有趣的问题，超出了我们当前知识的范围。查看其源代码也会有所帮助。</p>
+<p>下面显示了一个演示一次价格重锚过程的图：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_30qh0lr5fv.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>假设我们在 x = 1000 开始我们的交易，并在 x = 1400 结束我们的交易。最初，价格锚定于1 。交易后，价格移动到 0.6。为简化起见，仅出于演示目的，我们将新的价格标度设置为与现货价格相等（价格现在锚定于0.6），并求解六次方程以获得 _<strong>D</strong> _。现在做市商函数锚定于 0.6，如上所示。</p>
+<p>价格重锚本质上相当于找到一个新的做市商函数，该函数穿过当前代币数量位置（在 2 代币池情况下为 (_<strong>x, y</strong> <em>)），在 (</em><strong>x0, y0</strong> <em>) 处有一个平衡点，使得 <em><strong>y0/x0</strong></em> 为 等于 (</em><strong>x0, y0</strong> _) 处导数的绝对值。一个有趣的课题是获取真实的Curve流动性池参数，做一个更好的（可能是动画）价格重锚过程的演示。</p>
+<p><strong>Curve V2的动态交易手续费：</strong></p>
+<p>由于上面讨论的Curve V2 的做市商特性，将交易费用设为2级交易费用与动态权重的线性组合是合理的，衡量我们离平衡点有多远（当前价格变动是否更像是 StableSwap 或 CPMM）。Curve V2 选择的 <em><strong>fmid</strong></em> 和 <em><strong>fout</strong></em> 值分别为 0.04% 和 0.4%。下图展示了 2 代币池中的费用如何变化（假设没有价格重锚或流动性变化）：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_tbln0przbm.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p><strong>优点：</strong> 做市商函数可以锚定于任何价格，适合所有代币，而不仅仅是稳定币。价格过渡比 StableSwap 更平滑。Curve V2还根据其内部的价格预言机不断更新价格标度，以更好地代表市场价格，确保在平衡点附近交易。动态费用确保在此基础上提供甚至更好的价格。</p>
+<p><strong>缺点：</strong> 由于求解三次方程和六次方程，Gas 费用可能会更高。仅根据其内部价格预言机进行价格重锚可能存在风险。我们想知道在通过 <em><strong>Xcp</strong></em> 标准时，是否存在价格标度与市场价格明显不同的情况。如果是这种情况，与其他预言机交叉检查价格可能会有所帮助。</p>
+<p>Curve 的 StableSwap 和动态锚定 V2 是为了使交易滑点尽可能小。StableSwap 始终锚定于 1，而 V2 使锚定价格跟随市场价格。</p>
+<p>下面将讨论 AMM 算法的一些最新进展和可能的改进。</p>
+<p><strong>DEX聚合器：Balancer SOR算法的通用解决方案：</strong></p>
+<p>DEX 聚合器是聚合现有 AMM 协议以实现更好交易结果的协议。如上所述，Balancer 的 SOR 算法也适用于 DEX 聚合器，以确保数学上最优的交换策略。</p>
+<p>Balancer 的 SOR 算法的一般解决方案，没有任何价格函数近似，可以表示如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_qn8h89kgmt.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>因为价格函数可以是任何形式，具体取决于生成它们的 AMM 算法。这意味着满足总代币数量守恒和相等最终价格等条件的方程可能没有解析解。</p>
+<p>因此，我们引入了一种在机器学习等领域常用的技术，称为梯度下降。我们将损失函数定义为不同价格函数值的方差。在选择一个起始猜测（一个简单的、不知情的猜测可以是每个池中的交易量相等 _<strong>N/n</strong> _）后，我们可以迭代（通过损失函数相对于该变量的偏导数改变每个交换量，乘以学习率 <strong><em>l</em></strong> ) 以获得最佳结果，在一定的误差接受范围内。</p>
+<p>由于作为最终等价函数的总交易量是单调的，因此该方法应该能够找到全局最小值（方差 = 0）。同样，上面的计算假设没有简单的解决方案（没有价格函数总是大于或小于范围 (0, <em><strong>N</strong></em>) 上的其余价格函数）。</p>
+<p><strong>Pivot 算法：解决无常损失问题的一种尝试：</strong></p>
+<p>Pivot 算法试图通过使做市商函数经过一个固定点 (x0, y0) 来对其进行枢轴旋转。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_dotqqerz0q.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>(_<strong>x0, y0</strong> <em>) 处的价格将始终是设计的当前市场价格 Pt。这在概念上确保套利总是将流动性池带回到点 (</em><strong>x0, y0</strong> <em>)。由于此功能，无常损失将为零。然而，实际上，该算法没有足够的参数来拟合当前储备（</em><strong>x，y</strong> <em>）和（</em><strong>x0，y0</strong> <em>）。这意味着我们必须等待流动性池回到 (</em><strong>x0, y0</strong> _)，然后更改做市商函数。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_g58tywk63b.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>从上图中我们可以看出，交易后的点不在新的做市商函数上（蓝色和蓝色虚线）。如果当前市场价格低于当前储备的现货价格，则流动性池也可能没有任何动力回到 (<strong><em>x0, y0</em></strong> )。</p>
+<p>我们想知道是否存在这样的函数通过 (_<strong>x, y</strong> <em>) 和 (</em><strong>x0, y0</strong> <em>) 以及在 (</em><strong>x0, y0</strong> _) 处的可调导数来适应市场价格。如果我们假设函数是凸的，那么市场价格不能小于这两个点之间的线性段斜率。因此，如果做市商函数必须是凸函数，则此问题可能没有完整的解决方案。</p>
+<p><strong>单边流动性解决方案：</strong></p>
+<p>流动性提供者在存入流动性时可能不方便存入所有类型的资产。我想知道是否存在与 Bancor 采取的弹性供应方法不同的其他机制。直觉上，有两种解决方案：1. 首先使用相同的协议交换部分代币 2. 无论如何存入单边流动性，让套利将价格带回市场价格。</p>
+<p>例如，我们希望将流动性存入一个等值的 2 代币池中。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/15_e3y7b9z76l.png" alt="自动做市商（AMM）算法的数学原理及其未来发展"></p>
+<p>我们只有代币 x。不难计算我们需要交换多少，以便交换后每种代币的价值相等。也很容易证明 β 总是在 0 和 1 之间，这意味着一个合理的结果。但是，交易后的价格可能与存入流动性时的价格不同。因此，我想知道协议是否真的将交换和流动性存入作为一项原子操作。进行交易时也存在价格滑点。到目前为止，Balancer 和 Curve 等协议如何处理单边流动性存入仍然是我们的一个问题。如果滑点很小，则进行上述操作是合理的。</p>
+<p>Balancer and Curve 白皮书中描述的第二种方法是是直接存入单边流动性。这可能会大大改变价格。由此产生的套利也可能使无常损失变得重大。我们个人在 Balancer 白皮书和文档中没有看到任何惩罚措施。另一方面，Curve 在存入单边流动性时引入了一种称为不平衡费的东西，其范围从 0% 到 0.02%。在现实中，由于套利和无常损失，在第二种方法下存入单边流动性并没有真正的动机。</p>
+<p>了解更多与单边流动性相关的其他创新将会很有趣。</p>
+<p>由于本论文过长， AMM 算法的一些最新进展和可能的改进及后续内容将于<strong>下篇</strong>  公布。</p>
+<p>原文链接：https://link.medium.com/ynEydZUihjb      </p>
+<p>作者：Leo Liu, Guangwu Xie</p>
+<p>翻译：Vanessa Cao</p>
+<p>校对：Leo Liu, Guangwu Xie</p>
+<p>排版：Jane Hu</p>
+<p>感谢：Fangyuan Zhao, Showen Peng, DW, Lianxuan Li, Dave White, Dan Robinson, Vanessa Cao, Jane Hu</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/28736/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">中币（ZB）研究院：G20将讨论数字货币 美养老金拟投资加密货币</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/28698/">
+                <span class="next-text nav-default">《失控玩家》：元宇宙内 人类的失控焦虑</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

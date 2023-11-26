@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Uniswap V3第一时间上手教程：全新的做市体验 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="由于新版本的用户界面与做市逻辑都较 V2 版本发生了很大改变，许多用户反映在 V3 中提供流动性的操作复杂度大大提升" />
+<meta name="keywords" content="undefined" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/21806/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Uniswap V3第一时间上手教程：全新的做市体验" />
+<meta property="og:description" content="由于新版本的用户界面与做市逻辑都较 V2 版本发生了很大改变，许多用户反映在 V3 中提供流动性的操作复杂度大大提升" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/21806/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-06T00:00:00+00:00" />
+
+<meta itemprop="name" content="Uniswap V3第一时间上手教程：全新的做市体验">
+<meta itemprop="description" content="由于新版本的用户界面与做市逻辑都较 V2 版本发生了很大改变，许多用户反映在 V3 中提供流动性的操作复杂度大大提升"><meta itemprop="datePublished" content="2021-05-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4752">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Uniswap V3第一时间上手教程：全新的做市体验"/>
+<meta name="twitter:description" content="由于新版本的用户界面与做市逻辑都较 V2 版本发生了很大改变，许多用户反映在 V3 中提供流动性的操作复杂度大大提升"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Uniswap V3第一时间上手教程：全新的做市体验</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-05-06">
+      2021-05-06
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4752 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>Uniswap V3 版本已经于北京时间 5 月 6 日凌晨正式上线。由于新版本的用户界面与做市逻辑都较 V2 版本发生了很大改变，许多用户反映在 V3 中提供流动性的操作复杂度大大提升。为了更好的帮助用户理解新版本的交互逻辑，律动 BlockBeats 将在本文中带你逐步体验，为用户献上第一时间的上手教程。</p>
+<h2 id="如何在-v3-中交易">如何在 V3 中交易</h2>
+<p>打开官网链接地址，首先跳出的依然是熟悉兑换界面：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_uzfn3afh83.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>可以看出，对于仅仅想要执行交易的用户来说，新版用户界面在前端方面，相对以前几乎没有任何变化。但是通过左下角箭头处的提示可以知道，此时用户再进行交易，背后使用的资金池已经被默认切换为了新的 V3 版本。</p>
+<p>当然，由于许多 V3 版本的资金池刚刚建立，部分交易对提供的交易价格及滑点，尚不如 V2 版本有优势。所以在这种情况发生时，界面会在左下方自动提供切换按钮，用户可一键切换到 V2 版本的资金池，以获取最优的交易价格。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_m8y2spcyvh.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<h2 id="如何在-v3-中提供流动性">如何在 V3 中提供流动性</h2>
+<p><strong>（1）如何选择不同的交易费率资金池</strong></p>
+<p>我们先从用户界面开始介绍，点击界面上方的 Pool 按钮，切换到资金池界面。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_z1cj1ujgrz.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>左上方为官方介绍文档的链接，这里不做过多介绍。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_qgdswsst5k.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>右侧为目前排名前 200 位的资金池详细信息，可以浏览主流交易对的及时数据信息。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_4sbdscukr9.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>点开后进入如下界面：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_87m0nso79h.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>界面最左侧显示的是资金池的具体交易对。在交易对名称的后边，显示的是这个交易对资金池对应的交易手续费率。<strong>这里要注意，由于 V3 版本中提供了 0.05%、0.3%、1% 三挡不同的费率，导致同一个交易对，可以在 V3 中分别建立三个不同费率的资金池。</strong></p>
+<p>那么，用户应该如何选择不同的资金池，来提供流动性呢？</p>
+<p>举个例子，从下图中可以看出，USDC/USDT 交易对至少已经在 V3 中被创建了两个资金池，一个的手续费率为 0.05%，另一个为 1%。可以看出，由于 USDC/USDT 是稳定币交易对，LP 基本不需要承担太多的无常损失风险，导致交易用户会更倾向于选择手续费率低的资金池进行交易，而 LP 为了赚取更多的手续费，则会更倾向于在交易者更集中的资金池中提供流动性。</p>
+<p>因此我们看到，费率为 0.05% 的资金池，无论是 TVL 还是 24 小时交易量，都远远好于费率为 1% 的资金池。<strong>在这里提醒广大用户，在提供流动性的时候，务必选择 TVL 与交易量更大的资金池，以免自己提供的流动性在不活跃的资金池被闲置，错失取得收益的机会。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_13a3grzh4w.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>那么，对于不同的交易对，应该如何选择费率，才能有效避免资金被闲置呢？</p>
+<p>我们再看一下这个按照 TVL 提供的及时排行榜。</p>
+<p>可以看出，<strong>凡是两边都是稳定币的交易对，排行靠前的无疑都是 0.05% 最低费率的资金池。而只要交易对中涉及一个价格波动较大的币种，则排行靠前的都是 0.3% 手续费的中间费率档。</strong> 由此可见，对于波动币交易对，LP 需要取得较高的手续费收入用于弥补自己在做市中遭受的无常损失。而稳定币交易对由于价格相对稳定，LP 遭受的无常损失较小，导致费率更低的交易对更有竞争优势。（1% 的最高费率等级主要应用于某些新币或山寨币等，由于价格波动极大，需要给做市的 LP 更高的手续费率，才能弥补其做市带来的无常损失。）</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_64vezyao47.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p><strong>（2）如何添加流动性</strong></p>
+<p>回到刚才的 Pool 界面，点击右上方 New Position 按钮，进入添加流动性的界面。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_bso2tmaso8.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p><strong>第一步：在最上方选择你要添加流动性的交易对。</strong></p>
+<p>我们这里选择添加 USDC/ETH 交易对的资金池。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_ce1d4vzvfz.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p><strong>第二步：选择资金池的费率</strong></p>
+<p>在这里，我们按照下方的提示，对于非稳定币交易对，一般选择中间档，费率 0.3% 的资金池添加流动性就可以了。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_265ttbhwhb.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>第三步：选择做市的价格区间</p>
+<p>这里我们要注意，V3 版的系统并不支持 LP 在选择价格区间时输入任意价格。</p>
+<p>V3 版本由于提供了流动性聚合功能，导致计算量较 V2 版本大为增加。所以为了尽量减少交易中的计算过程，降低交易者需要支付的 gas 费用，V3 版本将原本可选的完整的价格范围，人为的切分成了不同的价格点。</p>
+<p>以 0.3% 费率的资金池为例，价格的最小变动单位以临近价格点的 0.6% 作为最小变动区间。如在 3401.6USDC 的价格点后，就是 3422.1USDC（3401.6*（1+0.6%））。不同费率的资金池会对应不同的最小变动比例。比如 0.05% 费率的资金池，价格的最小变动比例是 0.1%，而 1% 费率的资金池，价格的最小变动比例是 2%。</p>
+<p>但是这里用户不需要担心，我们只要在其中输入自己想要的价格，系统就会自动帮你将你输入的价格调整为最近的一个可选价格点。如果认为不满意，只需要点按下方的粉色按钮进行微调即可。我们在这里选择输入 3165.3USDC 与 3590.3USDC，作为我们的做市范围。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_l73bp7aps9.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p><strong>第四步：选择做市币种的存入金额</strong></p>
+<p><strong>注意，这里是最容易让人产生困惑的地方，因为在 Uniswap V3 版本中，LP 做市需要提供的两个代币的市值比例，已经不再是简单的 50/50 比例了。</strong> 那么，LP 做市需要提供多少 USDC，以及多少 ETH，将由什么来决定的？</p>
+<p>这里，我们要关注以下三个重要的参数：</p>
+<p><strong>1. 做市区间的下限（Min Price）</strong></p>
+<p><strong>2. 做市区间的上限（Max Price）</strong></p>
+<p><strong>3. 交易对当前的市场价格（Current Price）</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_ar2h3l5fn8.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>最终 LP 需要提供的 ETH 与 USDC 占比各是多少，完全由以上三个参数决定。用专业一点的话说，LP 最终提供的 ETH 与 USDC 的比值，是<strong>做市区间的下限、做市区间的上限、现货价格</strong> 这三个变量的函数。其中，由于<strong>现货价格</strong> 完全由市场决定，用户无法调整。所以对于 LP 来说，只能通过调整价格区间的范围，来影响最终提供币种的比例。</p>
+<p>为了更直观的展示，我们通过实验说明这个问题。</p>
+<p>当前 ETH 市场价格为 3490USDC，价格区间的下限我们选定为 3165.3USDC，上限为 3590.3USDC。这时，如果我们手中有 1 个 ETH 准备做市，那么应该同时提供多少的 USDC？</p>
+<p>我们只需要在下方的 ETH 存入数量中输入 1，系统便会自动帮我们计算出对应需要提供的 USDC 的数量（见下图）。可以看出，两个币种的市值，一个是 3,491 美元，一个是 11,252 美元，已经不是原来 V2 版本中 1:1 的比例了。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_wvykghuyqm.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>当然，我们也可以输入 USDC 的数量，让系统自动算出 ETH 的数量。可以看出，虽然两个币种的数量都放生了变化，但是相对比例并没有改变。所以，一旦我们确定了之前提到的<strong>做市区间的下限、做市区间的上限、现货价格</strong> 三个关键参数。那么 ETH 与 USDC 的相对比例便已经固定下来。如果用户想要调整这个比例，只能通过调整做市价格范围区间实现。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_uen1agrpdk.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p><strong>（3）特殊情况：在现货价格以外的价格区间做市</strong></p>
+<p>在上文所举的例子中，我们选择的价格区间正好位于现货价格的两侧。但如果 LP 选择的做市价格范围完全高于当前现货价格，会发生什么情况？</p>
+<p>我们将做市价格区间的下限设为 4023.8USDC，上限设为 5024USDC，而现货价格依然是 3490USDC。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_639fyv2mwv.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>这时我们看到，上图中现货价格的下方出现了一行黄色的小字，提示用户在这个区间内做市，可能无法赚取手续费收入。但是不要紧，LP 依然可以在这个价格区间提供流动性，没准明天 ETH 就能涨到 4000 多美元呢。</p>
+<p><strong>这里需要注意的是，在这种情况下，我们提供的做市资金不再由两个币种组成。</strong></p>
+<p>先看下方截图，我们还是输入要提供的 1 个 ETH。这时可以看到，在原来会自动返回 USDC 数量的地方，已经变成了一把小锁。<strong>这时用户千万不要认为是自己做错了什么，也并不是因为你没有对交易对授权。</strong> 这里仅仅是因为做市价格区间完全高于现货价格，导致用户只需要提供单一币种就可以完成做市。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_8hbtza0ymt.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>是的，<strong>当做市价格区间的下限已经完全高于现货市场价格的时候，LP 只需要提供单一币种 ETH 就可以做市。</strong> 而当做市的价格价格区间完全低于现货市场价格的时候，LP 同样只需要提供单一的 USDC 就可以完成做市。</p>
+<p>具体见下图。这时，只要你的钱包中有足够多的 USDC 代币，就可以输入任意数量的 USDC 做市，而不必再关心 ETH 数量。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_02sp9wja5j.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<h2 id="如何构建范围订单">如何构建范围订单</h2>
+<p>范围订单（Range Order）是在 V3 版本中引入的一项新功能。新的范围订单可以一定程度上模拟传统订单簿交易平台中的限价单功能。假设用户手中有 10 个 ETH，计划在价格上涨到 4000 美元时售出为 USDC 止盈，那么他应该这样操作：</p>
+<p><strong>1. 选择在 ETH/USDC 资金池提供流动性，费率就选择资金规模最大的 0.3% 即可。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_530zs3gbpn.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p><strong>2. 将做市价格范围的上限与下限都尽量保持在 4000USDC 附近。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_giiibsr2gb.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>（由于在 3999.8 之上最近的一个可选价格点就是 4023.8（3999.8*1.006=4023.8），这里便选择 3999.8-4023.8 作为做市价格区间）</p>
+<p><strong>3. 在下方 Deposit Amounts 处输入存入的金额为：10ETH。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_1kosd608jn.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p><strong>4. 点击最下方的按钮，执行交易即可</strong></p>
+<p>（由于律动 BlockBeats 的账户中并没有这么多 ETH，这里就没法给大家亲自演示截图了。。。）</p>
+<p>如果用户成功完成了以上的步骤，那么当 ETH 的价格上涨到 3999.8 美元时，他存入的 10 个 ETH 头寸便会开始被兑换为 USDC，当价格上涨超过 4023.8 美元时，这时用户的头寸将全部转换为 USDC，这时如果用户即时的撤回流动性，那么便相当于通过 Uniswap V3 自动执行了一个价格大概等于 4011.78 美元的止盈卖单。</p>
+<p>关于范围订单的详细解析，可以参见律动之前发布的文章：<a href="https://www.theblockbeats.com/news/23833?search=1">《范围订单是限价单吗？| Uniswap V3 新特性解析系列二》</a></p>
+<h2 id="lp-token-nft">LP Token NFT</h2>
+<p>为了帮助用户更好的理解新的 NFT Token 形式。律动尝试向 ETH/USDC 资金池提供一些流动性，Gas 近 100 刀。由于账户中已经没有 USDC 的代币了，所以我们便选择了高于现货市场价格的做市范围区间，下限为 4000USDC，上限为 4994USDC。这时，我们可以以 ETH 单一币种进行做市。</p>
+<p>NFT 的展示界面也非常酷炫，界面最上方显示了交易对的名称：ETH/USDC，下面是资金池的费率：0.3%。NFT 卡片左下角显示的 ID 编号为 3045，律动猜测是按用户提供流动性的时间进行的排名。据说向每一个新的资金池提供流动性的前 100 位用户，有可能在卡片的右下角获得一个小太阳的稀有标志，这里律动还没能体验到。</p>
+<p>界面右侧上方显示的是这部分做市头寸中包含的代币数量，可以看出 USDC 的数量为 0，目前头寸全部由 ETH 组成。界面正上方用橙色字体提示了，当前的 ETH 现货价格并不在律动选择的做市价格区间之内。由此右下方显示的未申领手续费金额也同样是 0。</p>
+<p>但是不必担心，只要 ETH 的价格继续上涨并超过 4000 美元，律动的这个 NFT 头寸就可以开始赚取手续费了。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_4r9fkqsfqm.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<h2 id="如何浏览-v3-中的资金池数据">如何浏览 V3 中的资金池数据</h2>
+<p>还是以 USDC/ETH（0.3% 手续费）交易对为例。可以看出，界面详细的展示了这个资金池的最新交易量、锁仓数据以及最近的交易记录，这些都与 V2 版本中差异不大，这里不再做详细解释。用户需要注意的是界面右上角中箭头指出的 Liquidity 部分。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_kzjntrriir.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>我们点开链接，可以见到下方的流动性分布情况展示页面。</p>
+<p>这个页面展示了资金池的流动性，在不同价格区间的分布情况。我们将鼠标移到箭头处的曲线最高点位置。可以看出，目前在 3463.3623USDC/ETH 的价格点内，流动性最为集中。这与当天的 ETH 价格也高度相关，可以看出，LP 在当天的现货价格附近提供了最多的流动性，也意味着交易者在这个价格点附近交易，可以享受到更低的滑点。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0506/5_ecrfvkwh9s.png" alt="Uniswap V3第一时间上手教程：全新的做市体验"></p>
+<p>以上便是我们对 Uniswap V3 版本的第一时间上手教程，如果想要继续了解 V3 背后更深层的运作原理，可以参见律动研究院之前发布的两篇相关文章：</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/21814/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Uniswap V3 已上线，了解一下如何用模拟器最大化流动性效益</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/21788/">
+                <span class="next-text nav-default">Uniswap V3正式启用，开启Uniswap V2和Sushiswap流动性迁移门户</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#如何在-v3-中交易">如何在 V3 中交易</a></li>
+    <li><a href="#如何在-v3-中提供流动性">如何在 V3 中提供流动性</a></li>
+    <li><a href="#如何构建范围订单">如何构建范围订单</a></li>
+    <li><a href="#lp-token-nft">LP Token NFT</a></li>
+    <li><a href="#如何浏览-v3-中的资金池数据">如何浏览 V3 中的资金池数据</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

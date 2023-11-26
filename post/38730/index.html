@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          a16z：如何建立提高智能合约安全性的开发流程 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Web3 项目在开发生命周期的各个阶段都应考虑添加保障安全性的流程。" />
+<meta name="keywords" content="A16Z" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38730/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="a16z：如何建立提高智能合约安全性的开发流程" />
+<meta property="og:description" content="Web3 项目在开发生命周期的各个阶段都应考虑添加保障安全性的流程。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38730/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="a16z：如何建立提高智能合约安全性的开发流程">
+<meta itemprop="description" content="Web3 项目在开发生命周期的各个阶段都应考虑添加保障安全性的流程。"><meta itemprop="datePublished" content="2022-06-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4085">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="a16z：如何建立提高智能合约安全性的开发流程"/>
+<meta name="twitter:description" content="Web3 项目在开发生命周期的各个阶段都应考虑添加保障安全性的流程。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">a16z：如何建立提高智能合约安全性的开发流程</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-08">
+      2022-06-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4085 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>Web3 项目在开发生命周期的各个阶段都应考虑添加保障安全性的流程。</strong></p>
+<p>许多发生在 Web3 项目上的黑客攻击都可以通过加强智能合约的安全性进行避免。</p>
+<p>通常，攻击者会发现并利用整个软件开发环节中的一些缺陷 —— 从设计到部署和维护以及发布新代码等一系列步骤。如果拥有一套标准的智能合约开发和危险应对流程，我们相信安全事件会相应减少。</p>
+<p>本篇文章的目的是概述 Web3 建设者、开发人员和安全团队在设计、开发和维护智能合约系统时必须考虑的核心安全因素。以下框架讨论了应在整个软件开发生命周期中实施的八种核心安全因素 —— 从威胁建模到应急响应准备。</p>
+<p>在了解智能合约安全防护之前，要先了解软件的开发阶段。软件开发可以分为以下五个阶段：</p>
+<p><strong>设计</strong> ：开发人员描述系统所需的功能和操作，包括重要的基准和固定的属性。</p>
+<p><strong>开发</strong> ：开发人员编写系统的代码。</p>
+<p><strong>测试和审查</strong> ：开发人员将所有模块放在一个测试环境中运行，以此评估代码的准确性和稳定性。</p>
+<p><strong>部署</strong> ：开发人员将系统投入实际环境。</p>
+<p><strong>维护</strong> ：开发人员评估和修改系统以确保它执行预期的功能。</p>
+<p>有了这个基本开发周期的基础，现在我们可以深入了解每个步骤中影响智能合约安全的注意事项。下图将需要考虑的因素对应到相关的开发阶段。需要注意的是，环节中的某些步骤有多方面安全考虑： </p>
+<p><img src="https://img.bibiqing.com/news/2022/0608/20_pr004sn5tl.jpg" alt="a16z：如何建立提高智能合约安全性的开发流程"></p>
+<p>如上所示，软件开发生命周期不一定总是遵循线性路径。在实践中，可能出现重叠或延伸到其他阶段的情况。某些步骤可能在每个版本中都需要重复。一些任务 —— 例如测试和安全审查 —— 可能需要自始至终执行。</p>
+<p>上述的软件生命周期和相应的安全注意事项为促进智能合约的安全性提供了有用的基础信息，但我们将在下文中对其进行更详细地研究，使得理解、应用和分享这些实践变得尽可能简单，并具体分析关键问题：What、Why 以及 How。</p>
+<h2 id="设计阶段的智能合约安全注意事项">设计阶段的智能合约安全注意事项</h2>
+<h3 id="考虑威胁建模和安全设计">考虑威胁建模和安全设计</h3>
+<p>What：从开发生命周期的一开始就实施识别系统的潜在威胁并确定其优先级的具体方案是很重要的 —— 智能合约开发人员应确定要在开发中实施的所有安全控制以及应在开发中检查的所有威胁测试、审计和监控。所有的安全假设，包括攻击的预期复杂程度和手段，都应在设计阶段明确定义和阐明。</p>
+<p>Why：虽然开发人员倾向于只关注智能合约或协议的预期用途，但这种关注的单一性可能会给他们留下被攻击者利用的盲点。</p>
+<p>How：遵循已知的威胁建模实践。如果开发团队没有内部安全专业知识，那么它应该在设计阶段的早期与安全顾问合作。在设计系统时采用「攻击者」的心态，并假设任何个人、硬件或服务都可能受到攻击。</p>
+<h2 id="开发阶段的安全考虑">开发阶段的安全考虑</h2>
+<h3 id="考虑管理和访问控制">考虑管理和访问控制</h3>
+<p>What：实施访问控制，限制特权账户的权限和智能合约调用执行管理任务的特殊功能（例如升级合约和设置特殊参数）。遵循「最低权限原则」：每个参与者应该只拥有所需的最低访问权限。</p>
+<p>Why：通过升级和治理流程维护协议允许开发人员通过添加新功能、修补安全问题和优化不断变化的条件来改进协议。如果升级的能力没有得到适当的控制，这可能构成一个严重的安全漏洞。</p>
+<p>How：建立一个多重签名钱包或 DAO 合约，将对协议的更改透明化，并且应通过彻底的审查流程以及时间锁（故意延迟制定并具有取消能力），以确保可以验证它们的正确性并在发生治理攻击时回滚。确保特权密钥在自托管钱包或安全托管服务中，且可以被安全地存储和访问。</p>
+<h3 id="考虑集成可重复使用久经考验的模板">考虑集成可重复使用、久经考验的模板</h3>
+<p>What：尽可能利用现有的智能合约标准（例如 OpenZeppelin Contracts）并评估您可能需要与现有协议进行集成中可能出现的安全问题。</p>
+<p>Why：使用现有的经过实战检验、社区审核的标准在降低安全风险方面大有帮助。评估协议集成的风险有助于您进行安全检查，以防止针对外部组件的攻击，例如预言机操纵。</p>
+<p>How：导入经过安全审计的可信合约库和接口，毕竟 Crypto 和 Web3 的重点是开源、重用和可组合性。请务必在代码库中记录您的合约依赖项及其版本，并尽可能减少您代码的资源占用量；例如，导入大型项目的特定子模块而不是所有内容；了解您的风险敞口，以便监控攻击；使用官方接口调用外部协议，并确保考虑到潜在的集成风险；监控您重复使用的合约的更新和安全信息披露。</p>
+<h2 id="测试和审查阶段的安全注意事项">测试和审查阶段的安全注意事项</h2>
+<h3 id="考虑测试和项目文档">考虑测试和项目文档</h3>
+<p>What：创建清晰、全面的代码文档，并设置快速、全面、易于运行的测试套件。在可能的情况下，在测试网上或通过主网模拟设置测试环境中进行更深入的实验。</p>
+<p>Why：为预期行为编写假设不仅有助于确保威胁模型中的风险得到解决，也有助于用户和外部审计人员了解开发团队的意图。为代码创建测试套件有助于证明或反驳假设，并鼓励对威胁模型进行更深入的思考。该测试套件应包括在极端市场情景下检查项目代币经济学的机制设计测试，以及单元测试和集成测试。</p>
+<p>How：通过已知的测试框架和安全检查应用进行测试 —— 例如 Hardhat、 Mythril、 Slither、 Truffle 等；提供不同的测试技术，例如模糊测试（fuzzing）、属性检查（property-checking），甚至形式验证（formal verification）；全面记录您的代码，使用 NatSpec 注释来指定预期的副作用、参数和返回值。使用文档生成工具和高级设计说明生成实时文档。 </p>
+<h3 id="考虑内部审查和安全审计">考虑内部审查和安全审计</h3>
+<p>What：花时间通过内部和外部代码审计来发现错误。</p>
+<p>Why：从功能开发转移到安全问题上，让开发人员有时间发现潜在的安全问题。外部审计在这方面可能特别有用，因为它们可以带来开发团队没有的外部观点和专业知识。</p>
+<p>How：在项目开发的适当时刻，安排功能冻结，以便有时间进行内部审查，然后进行外部审计。这些动作应该在实时部署和升级之前进行，可以查看来自 ConsenSys、Nascent、OpenZeppelin 和 Trail of Bits 的指南，这些指南为开发人员提供了考虑事项清单 —— 包括时间安排 —— 供任何准备审计的人使用。还要确保查看部署事务以确保它们使用经过审核的代码版本并具有适当的参数，尤其是在升级软件时。</p>
+<h2 id="部署和维护阶段的安全注意事项">部署和维护阶段的安全注意事项</h2>
+<h3 id="考虑激励白帽社区参与">考虑激励白帽社区参与</h3>
+<p>What：创建鼓励社区参与开源代码库安全改进的计划。一种方法是建立漏洞赏金。另一种方法是鼓励社区开发协议监控检测机器人。</p>
+<p>Why：开发团队可以从更广泛的知识和经验中受益（同样，开源也有助于 Crypto 发展）。值得注意的是，此类程序可以帮助激发开发者对项目的热情，实质上将社区和白帽黑客变成了传道者。它们还可以通过为黑客提供成为防御者的途径来帮助将潜在的攻击者转变为守护者。</p>
+<p>How：使用漏洞赏金平台（例如 Code4rena、HackenProof、 Immunefi 或 Secureum）为赏金系统提供基于严重程度的奖励，以激励熟练的黑客披露漏洞。（披露：本文的一些共同作者为 Forta 工作，该网络有一个为创建去中心化高质量安全监控机器人提供代币激励结构的网络。）开发团队可以鼓励他们的协议社区利用传统和 Web3 原生的方法来激励对漏洞的寻找，并让参与者通过增强安全性来获得潜在奖励，从而为所有人带来双赢。</p>
+<h3 id="考虑实时监控">考虑实时监控</h3>
+<p>What：实施监控智能合约和关键运营组件（如预言机和跨链桥）的系统，并根据已知威胁模型向开发团队和社区报告可疑活动。</p>
+<p>Why：早期发现问题使团队能够快速对漏洞和错误进行响应，从而可能阻止或减轻损害。这似乎很容易想到，但在规划中可能会被忽略。</p>
+<p>How：使用监控平台或分布式节点运行实时监控智能合约事件的机器人。根据需要为开发团队和更广泛的社区建立仪表板和警报通知。</p>
+<h3 id="考虑事件应急响应流程">考虑事件应急响应流程</h3>
+<p>What：利用能够在出现任何安全问题时立即做出响应的工具和流程。</p>
+<p>Why：即使有最好的部署前保护措施，智能合约和关键组件（例如预言机和跨链桥）仍然可能存在临时问题。拥有专门的人员、清晰的流程和适当的自动化确保可以快速调查并尽快解决事件。</p>
+<p>How：通过计划如何响应事件或紧急情况以及最大程度地使得响应能力自动化，为最坏的情况做准备。包括为有能力的人员分配调查和响应责任，这些人员可以通过分布式安全邮件列表、代码存储库中的说明或智能合约注册表公开联系与安全问题相关的人员。根据协议的威胁模型，开发一套流程，其中可能包括场景演习和采取紧急行动的预期响应时间。考虑将自动化集成到事件响应中：例如，工具可以接收来自 Forta 机器人的事件并对其采取行动。</p>
+<p>对于安全的考虑应该是成功开发的一个组成部分，而不仅仅是事后的想法。 </p>
+<p>尽管上述框架为构建 Web3 协议和应用的团队在整个开发过程中提高安全性方面提供了一些快速指南，但简短概述不足以提供对智能合约安全性各个方面的详尽讨论。缺乏内部安全专业知识的团队应该联系合格的 Web3 安全专家，他们可以帮助团队将上述的通用指导应用于他们的具体情况。但最重要的是，请记住，安全绝不仅仅是在简单的清单中打勾以管理复杂的问题，它始终是一套永无止境、持续不断的实践过程。我们仍处于建立这些实践的开始阶段，因此现在是为所有开发人员协作创建和共享安全实践的时候了。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38745/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">a16z：给 Web3 项目的智能合约安全指南</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38704/">
+                <span class="next-text nav-default">DeFi 去风险：分析去中心化系统中的系统性风险</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#设计阶段的智能合约安全注意事项">设计阶段的智能合约安全注意事项</a>
+      <ul>
+        <li><a href="#考虑威胁建模和安全设计">考虑威胁建模和安全设计</a></li>
+      </ul>
+    </li>
+    <li><a href="#开发阶段的安全考虑">开发阶段的安全考虑</a>
+      <ul>
+        <li><a href="#考虑管理和访问控制">考虑管理和访问控制</a></li>
+        <li><a href="#考虑集成可重复使用久经考验的模板">考虑集成可重复使用、久经考验的模板</a></li>
+      </ul>
+    </li>
+    <li><a href="#测试和审查阶段的安全注意事项">测试和审查阶段的安全注意事项</a>
+      <ul>
+        <li><a href="#考虑测试和项目文档">考虑测试和项目文档</a></li>
+        <li><a href="#考虑内部审查和安全审计">考虑内部审查和安全审计</a></li>
+      </ul>
+    </li>
+    <li><a href="#部署和维护阶段的安全注意事项">部署和维护阶段的安全注意事项</a>
+      <ul>
+        <li><a href="#考虑激励白帽社区参与">考虑激励白帽社区参与</a></li>
+        <li><a href="#考虑实时监控">考虑实时监控</a></li>
+        <li><a href="#考虑事件应急响应流程">考虑事件应急响应流程</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

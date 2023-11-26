@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          为什么「桥」对 Layer 2 很重要？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="「桥」，决定了什么是 Layer 2。" />
+<meta name="keywords" content="跨链, layer2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/22920/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="为什么「桥」对 Layer 2 很重要？" />
+<meta property="og:description" content="「桥」，决定了什么是 Layer 2。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/22920/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-25T00:00:00+00:00" />
+
+<meta itemprop="name" content="为什么「桥」对 Layer 2 很重要？">
+<meta itemprop="description" content="「桥」，决定了什么是 Layer 2。"><meta itemprop="datePublished" content="2021-05-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-25T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3777">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="为什么「桥」对 Layer 2 很重要？"/>
+<meta name="twitter:description" content="「桥」，决定了什么是 Layer 2。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">为什么「桥」对 Layer 2 很重要？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-05-25">
+      2021-05-25
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3777 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>「桥」，决定了什么是 Layer 2。</p>
+<p>从社区角度而言，我们对以链下协议_（off-chain protocol）_作为区块链网络的扩容方式感到无比兴奋，因为这会让大多数交易从第 1 层区块链移至链下系统，从而避开了 L1 区块链上的网络费用和延迟问题。</p>
+<p>我想通过这篇文章来讨论一下有关<strong>链下协议</strong> 的一些基本知识，让大家更好的了解目前的「桥」和这些桥链接的二层_（L2）_技术的关系。</p>
+<h2 id="什么是桥-_-_"><strong>什么是「桥」</strong> _<strong>？</strong> _</h2>
+<p>回答这个问题前，我们应该谈谈「桥」这个经常被忽略、但对评估<strong>资金安全性</strong> 至关重要的基本组成部件：</p>
+<blockquote>
+<p>桥_（bridge）<em>负责将资产保存在 L1 区块链上，而相同的资产则在另一</em>（主要指外部）_服务上发布。桥定义了谁来<strong>保管资金</strong> ，以及在资产在解锁之前必须满足的条件。</p>
+</blockquote>
+<p>简而言之，每当像以太坊这样的 L1 区块链连接到任何其他系统时，都会使用桥。所有桥都有类似的动作：</p>
+<ul>
+<li>
+<p><strong>存入资产</strong> 。用户可以向桥存入资产，桥会给予在其它系统中代表这一资产的证明；</p>
+</li>
+<li>
+<p><strong>更新账户余额</strong> 。有关新帐户余额的信息将通知桥，这可用于辅助提款过程。</p>
+</li>
+<li>
+<p><strong>资产提取</strong> 。用户凭借在其它系统中的余额，以及在其它系统中销毁的所发行代币，可以从桥提取资产。</p>
+</li>
+</ul>
+<p>最常见的桥 <em>(人们在毫无觉察的情况下使用)</em> 是单一组织形态：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0525/4_mffqn6vuvd.png" alt="为什么「桥」对 Layer 2 很重要？"></p>
+<p>多数加密货币交易所（或许是全部）提供单一组织形态桥接服务</p>
+<p>如果我们仅考虑桥而不是其他任何东西，可以说<strong>中心化</strong> <strong>加密货币交易所是一个链下协议</strong> 。用户可以将资金锁定到中心化交易所的服务中，进行交易时绕过网络费用和延迟，并最终可以将其资金提取回 L1 区块链。 </p>
+<p>除这种单一组织形态的桥接之外，还存在另外两种依赖一组托管人的桥：</p>
+<ul>
+<li>
+<p><strong>多组织桥</strong> 。固定数量的一组独立个体_（N 中的 K 个代表）_保管被锁定的资金。</p>
+</li>
+<li>
+<p><strong>加密经济形态的桥</strong> 。动态数量的个体保管被锁定的资产，具体数量由其资产权重决定。</p>
+</li>
+</ul>
+<p>一个重要的洞察是，L1 区块链上的所有以上三种桥都<strong>无法验证</strong> 来自另一个系统的账户余额是否正确_（或者，如果在另一个系统中的负债超过了桥接中的资产）_。于是，将由一组<strong>托管人</strong> 确定是否<strong>所有提款</strong> 请求都根据另一个系统中的资产情况进行处理，他们最终决定了资金是否可以解锁，以及该由谁接收。</p>
+<h2 id="侧链和桥独立于任何区块链网络"><strong>侧链和桥独立于任何区块链网络</strong></h2>
+<p>在上文中，我们主要讨论考虑了采用诸如加密货币交易所之类的托管服务桥。桥越来越流行的一个用例是将<strong>一个区块链连接到另一个区块链</strong> <em>（顺便说一下，这是「侧链 sidechain」这一术语的起源）</em>。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0525/4_y18s7or24f.png" alt="为什么「桥」对 Layer 2 很重要？"></p>
+<p>侧链和桥接的安全独立于任何区块链网络</p>
+<p>还存在多个桥接的范例：</p>
+<ul>
+<li>
+<p><strong>WBTC</strong> ：一个单一组织形态的桥接，将 BTC 资产连接以太坊网络中。</p>
+</li>
+<li>
+<p><strong>Liquid 网络 或 RSK</strong> ：一个多组织桥接，拥有硬件安全模块_（HSM ）_的多方联盟，将 BTC 资产锁定/解锁资金到另一个区块链。</p>
+</li>
+<li>
+<p><strong>Polygon 桥</strong> ：一个加密经济形态的桥接，其中桥中锁定资产中的 2/3 + 1 定期就 Polygon 中所有用户的帐户余额达成协议，用户可以使用该协议在以太坊上提取资金_（实际上， Polygon  最终将由小的多签合约控制的，但是这一示例主要聚焦于长期目标）_。</p>
+</li>
+<li>
+<p><strong>Rainbow 桥</strong> ：一个加密经济形态的桥接，其桥接合约是一个轻客户端，可以验证其他区块链的进度。它不检查另一个区块链的有效性，资金的安全性最终取决于另一个区块链的持续发展_（通过加密经济学来保障）_。</p>
+</li>
+</ul>
+<p>至关重要的是，每个桥都有自己的<strong>安全模型</strong> ，并且不与任何区块链网络绑定。</p>
+<p>我们可以举一个简单的案例 <strong>WBTC</strong>  来做进一步阐述：<strong>BitGo Trust</strong>  托管着锁定在比特币区块链中的资金，他们负责在以太坊上发行相同数量的 WBTC。以太坊上的智能合约会跟踪 WBTC 所有转账的账户余额。BitGo 是守信方，管理着智能合约中记录的帐户余额。</p>
+<p>WBTC 一例中有几个方面需要考虑：</p>
+<ul>
+<li>
+<p><strong>单一托管人</strong> 。WBTC 的桥依赖于单一托管人来保证其完整性。他们理论上可以在以太坊上发行比所锁定比特币更多的 WBTC，并且他们可以决定不兑现将 WBTC 提取为 BTC 的行为。</p>
+</li>
+<li>
+<p><strong>独立安全模式</strong> 。以太坊拥有自己的、独立于比特币区块链的安全模型。桥又有自己的安全模型，该模型独立于上述两个区块链网络。</p>
+</li>
+<li>
+<p><strong>以太坊是侧链</strong> 。相对比特币区块链而言，交易已转移至链下，从比特币区块链转移至以太坊。</p>
+</li>
+</ul>
+<p>以上提到的三种桥的共同点是它们不检查侧链信息的<strong>诚信</strong> ，而且如果托管人_（或侧链）_下线，则没有自我执行的<strong>应急计划</strong> 来保护资金。他们只是受制于自己的安全模型，而不是桥所在的 L1 区块链中的安全机制。</p>
+<h2 id="ｌ2-协议跟本文有什么关系"><strong>Ｌ2 协议跟本文有什么关系？</strong></h2>
+<p>L2 可扩容性旨在将交易吞吐量从 L1 区块链移动到另一个链下系统，需要桥来保存在其他系统上发行的资产。</p>
+<p>但是，与本文探讨的所有其他桥类型不同，L2 协议致力于以与 L2 区块链相同的安全机制来保护资金，并且它不能依赖一组保管人_（或其他链下__系统）_保护资金。</p>
+<p>它需要一种新型的桥：</p>
+<ul>
+<li><strong>L2 桥</strong> 。L1 区块链拥有资金的保管权，而桥接必须相信 L2 协议的信息诚信不会被破坏。在最坏的情况下，桥将自动增强 L2 协议的活跃度，直到所有资金都可以提取。</li>
+</ul>
+<p>L2 桥是所有桥接中最强大的桥，它不依靠一组保管人来保护资金。取而代之的是，在释放资金之前，必须得让桥确信：链下系统一切都很好。如果出于某种原因，桥确信链下系统受到威胁，则该网只需要完全绕道另一个网络。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0525/4_5ra4temtpv.png" alt="为什么「桥」对 Layer 2 很重要？"></p>
+<p>有几家公司专注于打造 L2 桥，自然也会构建全新的区块链网络</p>
+<p>这就是 <strong>L2 协议</strong> 如此令人兴奋的原因，上述这些团队花了几年时间才提出解决方案。市场中率先出现的使用 L2 协议的竞争者主要集中在如何实现安全的 L2 桥上_（而不一定要部署其他区块链网络）_。</p>
+<p>这是进一步探讨技术问题和定义的好机会。我们明确表示：必须确保桥不会破坏 L2 协议，并且 L2 数据诚信被破坏的行为可以分为四个问题：</p>
+<ul>
+<li>
+<p><strong>数据可用性</strong> 。桥接如何确信另一个区块链网络的所有数据都是公开可用的，以便用户可以独立地重新计算 L2 数据库？</p>
+</li>
+<li>
+<p><strong>状态变化的诚信度</strong> 。我们如何使桥接相信 L2 网络的所有状态转换都是格式正确且有效？</p>
+</li>
+<li>
+<p><strong>提款的诚信度</strong> 。如果 L2 网络受到威胁，该桥接如何保证所有诚实用户的资金都能被提取？ </p>
+</li>
+<li>
+<p><strong>协议活跃性</strong> 。桥如何保证在 L2 协议停止或下线时仍可以执行交易？ </p>
+</li>
+</ul>
+<p>当然，以上问题必须得到解决，同时桥接合约具备的计算资源明显少于链下系统，因此桥接无法地还原地实时重新执行所有交易。否则，它不就是可扩容解决方案。</p>
+<p>解决以上问题可以让我们陷入<strong>兔子洞困境</strong> 。具体包括<strong>链上挑战</strong> 、<strong>欺诈证明</strong> 、<strong>有效性证明</strong> 、将交易数据发布到 L1 区块链_（rollups）_和链上世界。</p>
+<p>尽管我们的文章没有重点介绍各种解决方案，但我们强调所有解决方案都不相同。一些即将部署的 L2 协议将无法满足上述安全目标。由于缺少 L2 桥，因此它们不能被称为 L2 协议。 </p>
+<p>正如本文所探讨的情况，共有四种桥可以实现将资金锁定在区块链中，同时相同的资产在另一链下系统_（还可能是另一条区块链）_被代表。</p>
+<p><strong>托管桥</strong> 。上文最先提出的三类桥关注的是哪一组<strong>托管人控制了锁定的资金</strong> 。托管人的作用是在允许从桥中提取任何资产之前，先验证链下系统是否正确。假设前提是：链下系统的诚信度是客户一侧的问题，并且托管人有足够的计算资源来处理它。尽管有工作来减轻托管人的作用，并引入加密经济激励措施以鼓励保管人遵循协议，但该桥接协议<strong>无法完全约束保管人</strong> 。曾经发生过几例桥接丢失用户资金_（例如 Mt. Gox）_的事件，这是因为这种桥的诚信度最终取决于对人的信任。 </p>
+<p><strong>L2 桥</strong> 。L2 桥接取代了<strong>托管人</strong> 的角色，它们负责保管资金并检查链下系统的<strong>诚信度</strong> 。问题的核心是，这类桥接系统必须确信链下系统不会受到破坏，同时它缺乏独立检查每个交易的<strong>计算资源</strong> <em>（否则它就不是可扩容解决方案）</em>。除了所带来的高难度技术挑战外，它也不是免费的。要使 L1 区块链确信链下系统确实结构完善、且其诚信丝毫未受到破坏，则存在持续的财务成本。但是，最终将是由桥保管资金，而不是链下系统运营者。</p>
+<p>总体而言，对于用户是否真的在乎 L2 桥以及我们是否应将以太坊的安全模式扩展到链下系统上，尚无定论。</p>
+<p>就像生活中的所有事物一样，我怀疑所有四类桥<strong>都将继续存在</strong> ，因为它们对于在用户中推广都是不可或缺的。</p>
+<p>我唯一的要求是：您_（用户）_要以谨慎的态度考察您喜欢的协议所使用的桥的类型。重要的是：要更好地了解您的资金如何免受不良分子的染指。</p>
+<p><em>感谢 Hasu 和 Chris Buckland 。</em></p>
+<p>撰文： Patrick McCorry，PISA Research首席执行官</p>
+<p>编译：Perry Wang</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/22911/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">为什么「桥」对 Layer 2 很重要？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/22901/">
+                <span class="next-text nav-default">沃顿商学院与世界经济论坛联合发布DeFi报告:《DeFi-去中心化金融的新世界》</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是桥-_-_"><strong>什么是「桥」</strong> _<strong>？</strong> _</a></li>
+    <li><a href="#侧链和桥独立于任何区块链网络"><strong>侧链和桥独立于任何区块链网络</strong></a></li>
+    <li><a href="#ｌ2-协议跟本文有什么关系"><strong>Ｌ2 协议跟本文有什么关系？</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

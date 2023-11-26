@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          详解闪电网络的入账容量问题 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="几个星期以来，比特币社区的很多人一直在讨论闪电网络的 inbound capacity 问题。在本文中，我会解释这个问题的形式及其根源。" />
+<meta name="keywords" content="Lightning" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/27413/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="详解闪电网络的入账容量问题" />
+<meta property="og:description" content="几个星期以来，比特币社区的很多人一直在讨论闪电网络的 inbound capacity 问题。在本文中，我会解释这个问题的形式及其根源。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/27413/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-17T00:00:00+00:00" />
+
+<meta itemprop="name" content="详解闪电网络的入账容量问题">
+<meta itemprop="description" content="几个星期以来，比特币社区的很多人一直在讨论闪电网络的 inbound capacity 问题。在本文中，我会解释这个问题的形式及其根源。"><meta itemprop="datePublished" content="2021-08-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3093">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="详解闪电网络的入账容量问题"/>
+<meta name="twitter:description" content="几个星期以来，比特币社区的很多人一直在讨论闪电网络的 inbound capacity 问题。在本文中，我会解释这个问题的形式及其根源。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">详解闪电网络的入账容量问题</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-17">
+      2021-08-17
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3093 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原文标题：《The Inbound Capacity Problem in the Lightning Network》 </p>
+<p>几个星期以来，比特币社区的很多人一直在讨论闪电网络（Lightning Network）的 inbound capacity 问题。越来越难以收到闪电火炬，加上 Bitrefill 启动了 Thor，还有 LND 放出了 Lightning Loop，都让人们更加关注这个问题。在本文中，我会解释这个问题的形式及其根源。</p>
+<p>我们也会分享一些很容易被忽略的洞见。</p>
+<h3 id="本地和远端的余额">本地和远端的余额</h3>
+<p>要理解入账容量，我们得先深入了解闪电网络的第一个基本模块：支付通道。这个概念可能你在之前也听过了，所以我们直接跳到跟入账容量有关的部分。</p>
+<p>我们先考虑一个单独的通道，然后慢慢提高思考的复杂度。</p>
+<p>一个支付通道开通后，它就锁住了恒定数量的一些 btc，这个数量叫做「 通道容量 」。参与支付通道的双方各自拥有这个容量的一部分。在你自己这边的余额，我们叫「 本地余额 」，而在你的交易对手那边的余额，叫「远端余额 」。你的本地余额和远端余额在关闭通道之前可以更新任意次，但通道容量，如果你不关闭通道或者拼接通道，是无法改变的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0817/11_u4ls2argh5.png" alt="j27kiJxwt90Z7GCxfjfBUSZ9KRt8Y1fE0y6oLtMe.png" title="5519322">支付通道就像沙漏：虽然沙子的总量是恒定的，你可以任意把沙子移动到其中一端。但如果你想改变里面沙子的数量，那就非打破这个沙漏不可</p>
+<p><img src="https://img.bibiqing.com/news/2021/0817/11_7uhbucs1js.png" alt="uz7fy6RdJACIIxWjsoWbVUdIiT7LPfcauDaIxy25.png" title="5519323"></p>
+<p>你跟 Robert 的通道里面有 8 btc，你的本地余额是 5 btc，你的远端余额是 3 btc</p>
+<p>每次支付，都是把你的本地余额转一些给你的交易对手，也就是减少本地余额，增加远端余额。类似地，当你收到一笔支付时，你的本地余额增加，数额恰好等于你的远端余额减少的数额。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0817/11_u9ufhjc6m1.png" alt="Ieh25hEezOm59BLf8HjVeqEieKNusffX5ttqOJkb.png" title="5519324"></p>
+<p>当你给 Robert 支付 1 btc 之后，你的远端余额增加了 1 btc</p>
+<h3 id="入账和出账的容量">入账和出账的容量</h3>
+<p>现在，我们更清楚地理解了什么决定了通道的容量，以及本地和远端余额是怎么更新的，现在来想想，如果你是一个闪电网络的节点，是网络的一部分，将有何区别。</p>
+<p>两个交易方并没有直接相连的支付通道。但是，他们可以通过 路由节点 来支付。在整个支付路径上，每一次中转都要用到一个双向的支付通道。因此，我们刚刚讲到的支付通道特性适用于每一次中转。</p>
+<p>假设你想通过闪电网络来卖贴纸。那么，你需要与至少一个闪电网络节点建立连接。你仔细挑选了一个节点，保证这个节点可能跟你的潜在客户 Sophie 和 Angela 相连。我们把这个节点叫做「lnTop」。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0817/40mtzbvd1thqlw7" alt="图片"></p>
+<p>你跟 InTop 开启了一个通道，锁入了 2 btc。你的本地余额是 2 btc，远端余额是 0 btc</p>
+<p>现在，Angela 想要买一些你的贴纸，并通过 lnTop 来支付。但是，你跟 lnTop 的通道中，你的远端余额是 0 呀，lnTop 并不能给你支付。因此，lnTop 无法路由这笔交易。</p>
+<p>在一个时间点上，你可以收到的 btc 数量（也就是「入账容量」），是由你的远端余额决定的。很简单嘛，如果你相连的节点只能发送 1 btc 给你，你是没法收到比 1 btc 更大的数额的。类似地，你可以发送的 btc 数量（「出账容量」）是由你的本地余额决定的。</p>
+<p>在你决定跟 lnTop 开启一个通道时，你需要确定自己想锁定多少 btc 进去，也即你初始的本地余额是多少。lnTop 也一样，他们的选择决定了你初始的远端余额。这就有了一个重要影响。虽然你能够决定自己的初始本地余额（自己的初始出账容量），但你没法控制自己的初始远端余额（和入账容量）。</p>
+<p>如果你今天要启动一个自己的闪电网络节点，并且只是随随便便地选了一个节点来开启通道，你可能会发现，你根本没有入账容量可用，即，你压根没法通过闪电网络来收到支付。听起来对商人很不友好，对不对？</p>
+<p>好消息是，你有很多办法来提高自己的入账容量，比如自己先发起支付，或者请求其他节点提供容量（并付钱给他们）。这篇文章讲解了入账容量问题的不同解决方案。</p>
+<h3 id="就这么简单">就这么简单？</h3>
+<p>嗯 …… 也不是。即使你知道了自己如何能提高远端余额，可能也没法解决入账容量问题。关键在于：并非所有通道的入账容量都相同。要理解这一点，你要先理解，在支付路由的过程中，闪电网络的其它部分，发生了什么事情。我们把上图所示网络的通道容量都划出来，这样更好理解了。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0817/nvmsparraeh1ifd" alt="图片"></p>
+<p>这是 lnTop 往通道里充值了 3 btc 之后的情形。在网络中，所有节点都跟自己相连的节点有专门的本地和远端余额</p>
+<p>你从 lnTop 那里获得一些入账容量之后，Angela 最多也只能给你发 2 btc，因为你在 lnTop 那里的入账容量超过了 2 btc，但 lnTop 在 Angela 处的入账容量只有 2 btc。</p>
+<p>但是，在这个网络里，Sophie 就没法给你发送 1 btc。你可以看看 Sophie 给你支付的路径上的通道容量状态，你的确有 3 btc 的入账容量，但 lnTop 没有 lnFirst 的入账容量。对于支付，每个参与路由的节点和你（接收方）都必须跟上一个节点有足够的入账容量。所以，虽然你能解决跟相邻节点 lnTop 的入账容量问题，但 lnTop 可能跟相邻的节点没有足够的入账容量。Lightning Labs 的闪电网络基础设施总监 Alex Bosworth 几周以前指出了这个问题。还有一个事实，让这个问题很难解决。那就是，「揭示所有节点的本地和远端余额」这件事，在闪电网络上是做不到的。作为网络中的一个节点，你只知道通道容量，并不知道这部分容量在两个参与者之间是如何分布的。</p>
+<h3 id="谁会受这个问题影响">谁会受这个问题影响？</h3>
+<p>闪电网络中，并非所有的节点都有相同的需要。从上面的例子中，我们可以辨认出至少 3 类节点。</p>
+<p>商家节点我们用「商家节点」来称呼那些主要是收账的节点。在上面的例子中，「你」就是一个收账节点，因为你最关心的就是收到贴纸买家的支付。因此你需要入账容量。记住：不仅你要有足够的入账容量，买家到你的整个支付路径上的节点都必须有足够的入账容量才行。</p>
+<p>终端用户节点这些节点主要使用闪电网络来发账。偶尔他们会从朋友或者闪电应用处收到钱。Sophie 和 Angela 都是终端用户。对于这个群体，关键是要连上资金充足而又与商家相连的节点。他们既需要入账容量，也需要出账容量，全看他们在特定时间的需要。</p>
+<p>路由节点这些节点是路由支付并从中赚取手续费的节点。LnTop 和 lnFirst 都是这样的节点。他们的工作是发现有需要的收款方，比如你，小镇上最大的贴纸商家。对终端用户，他们需要足够的入账流量；对商家，他们需要出账容量。此外他们还得跟市场上的其他服务商竞争，要确保自己总是在线。赚点钱不容易，对吧？</p>
+<h3 id="结论">结论</h3>
+<p>我们从单一通道开始讨论，讲解了网络内通道的特点，最终使用「节点信息全公开」的假设讨论了入账容量问题。我们将入账容量定义为给定时间点在闪电网络中你可以收到的 btc 数量，并推论了它依赖于你的远端余额。入账容量问题可能是闪电网络在启动阶段会遇到的问题。因此，如果流动性在整个网络中的分布更充分、更好，问题将减轻。我们会继续撰文探讨闪电网络在早期会遇到的问题。</p>
+<p>原文作者：  Florencia Ravenna</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/27402/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">西班牙对12家比特币投资和交易服务平台发出警告</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/27360/">
+                <span class="next-text nav-default">Arbitrum将于8月下旬正式上线</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#本地和远端的余额">本地和远端的余额</a></li>
+        <li><a href="#入账和出账的容量">入账和出账的容量</a></li>
+        <li><a href="#就这么简单">就这么简单？</a></li>
+        <li><a href="#谁会受这个问题影响">谁会受这个问题影响？</a></li>
+        <li><a href="#结论">结论</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

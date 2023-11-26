@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          如何设计链游经济模型？这些Web2游戏付费策略值得借鉴 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="为游戏设计经济系统并非Web3游戏的独创，如何在不破坏游戏体验的同时为游戏开发商创造更多的收入，向来是付费游戏的重要课题。" />
+<meta name="keywords" content="Gamefi, 链游" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/33920/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="如何设计链游经济模型？这些Web2游戏付费策略值得借鉴" />
+<meta property="og:description" content="为游戏设计经济系统并非Web3游戏的独创，如何在不破坏游戏体验的同时为游戏开发商创造更多的收入，向来是付费游戏的重要课题。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/33920/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-09T00:00:00+00:00" />
+
+<meta itemprop="name" content="如何设计链游经济模型？这些Web2游戏付费策略值得借鉴">
+<meta itemprop="description" content="为游戏设计经济系统并非Web3游戏的独创，如何在不破坏游戏体验的同时为游戏开发商创造更多的收入，向来是付费游戏的重要课题。"><meta itemprop="datePublished" content="2022-02-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-09T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8333">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何设计链游经济模型？这些Web2游戏付费策略值得借鉴"/>
+<meta name="twitter:description" content="为游戏设计经济系统并非Web3游戏的独创，如何在不破坏游戏体验的同时为游戏开发商创造更多的收入，向来是付费游戏的重要课题。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">如何设计链游经济模型？这些Web2游戏付费策略值得借鉴</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-02-09">
+      2022-02-09
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8333 字 -
+        预计阅读 17 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>为游戏设计经济系统并非Web3游戏的独创，如何在不破坏游戏体验的同时为游戏开发商创造更多的收入，向来是付费游戏的重要课题。这篇文章，正是对过往Web2游戏各类付费策略的梳理，并从中探寻Web3游戏的借鉴与未来。</p>
+<p>译者导读：以Axie Infinity为代表，P2E（边玩边赚）游戏在过去一年里高歌猛进，但与此同时，有关其经济系统可持续性的争议也不绝于耳。大部分游戏开发者和玩家对此还是表现出了抵触情绪，例如，根据近期游戏开发者大会（GDC）的调查，72%的受访开发者表示自己和所在工作室对于将加密系统整合到游戏中不感兴趣。</p>
+<p>但其实，为游戏设计经济系统并非Web3游戏的独创，如何在不破坏游戏体验的同时为游戏开发商创造更多的收入，向来是付费游戏的重要课题。来自1kxnetwork的Terry Chung发布了这篇文章，正是对过往Web2游戏各类付费策略的梳理，并从中探寻Web3游戏的借鉴与未来。</p>
+<p><strong>以下为</strong> <strong>PAN</strong> <strong>ews翻译的</strong> <strong>全文：</strong></p>
+<p>一个虚拟的游戏经济要维持经济平衡——其核心货币和物品的相对稳定——就必须平衡资产的发行率和资产的消费/需求率。</p>
+<p>也就是，进出要基本平衡。</p>
+<p>要做到这一点，它有几个选择：</p>
+<ol>
+<li>
+<p>不断提升用户拉新速度，这样始终会有新玩家从老玩家手里买东西。</p>
+</li>
+<li>
+<p>不断引入更新的、更难的、资源更密集的“最终游戏内容”（PANews注：指在RPG或MMORPG中，当玩家达到一定等级上限之后，能提供给这一阶层玩家进行游戏的内容），让现有玩家消耗更多资源。</p>
+</li>
+<li>
+<p>让金币和物品的创造（水龙头）与从游戏中上述金币和物品的移除（水槽）相平衡。</p>
+</li>
+</ol>
+<p>如果这种平衡保持的不好，玩家的体验和留存就会受到影响。</p>
+<p>幸运的是，虚拟经济已经存在了几十年，有很多失败实验和恶性通胀的游戏先例，我们可以从中学习。我们希望介绍以前的虚拟经济是如何运用“水槽”来实现游戏货币回流的，以及不同策略的效果，和用户的接受度。此外，我们还会点评一些“社区和文化第一”的P2E游戏可用的新的平衡工具。</p>
+<p>目录</p>
+<p>Part1: 从以前的游戏中吸取经验教训</p>
+<p>1 公共设施、稀有收藏品和赌博机制</p>
+<p>2 贸易和土地的税收</p>
+<p>3 装备铸造</p>
+<p>4 质押，将高周转现金转为消耗品/物品</p>
+<p>5 解锁更多的游戏内容</p>
+<p>6 捐赠/活动</p>
+<p>Part2: Web3游戏独有的策略</p>
+<p>1 孵化MOB和分叉</p>
+<p>2 基于社区的燃烧机制</p>
+<p>3 建立和拥有关键的基础设施</p>
+<p>总结：“水槽”或者回流机制可以顺利实施的条件</p>
+<p><strong>从Web2游戏中吸取经验教训</strong></p>
+<p><strong>解决方案1:</strong>  <strong>公共设施的使用</strong></p>
+<p>向玩家收取费用来实现货币回流，玩家则可以享受一些小小的游戏体验改进，或者是使用某些公共物品。玩家通过这一操作可以取得成就感，并且节省时间。</p>
+<p>一些例子包括：</p>
+<p>魔兽世界中的飞行路线和坐骑/升级以提高旅行速度（OSRS中的魔毯）</p>
+<p>盔甲修理（《RuneScape》，《上古卷轴》），这主要是模仿现实生活中的折旧费用</p>
+<p>进入某些区域（《RuneScape》中的艾尔卡里德城），包括副本的费用</p>
+<p>可以改变角色外观或名字的虚拟发廊（Gaia的Durem发廊）</p>
+<p>花钱就可以重置你的状态/技能</p>
+<p>购买和装饰房屋（《上古卷轴》、《最终幻想》）</p>
+<p>以上类型的回流机制大多被接受为游戏的标准操作——类似一种常设税收，给玩家带来的痛苦可以忽略不计。另一方面，也有一些特殊的例子，因为税收太过粗暴，以至于赶走了许多玩家。</p>
+<p>在永恒之塔怀旧服游戏中，魔法石为你的武器和盔甲提供额外的属性提升。一个有竞争力的最终游戏角色，无论是PvE还是PvP，都需要至少+10的盔甲和武器的提升，而最大可能的提升是+15。超过+10后每次失败，武器/盔甲就会恢复到+10。玩家不仅要为魔法石刷上几百个小时，还经常失败，而且每次尝试重新加成，都需要氪金。</p>
+<p>梦幻之星Online 2也采用了同样的升级机制。对于最高级别的武器（11或12星），一次升级到+10的几率是0.0014%，每件武器需要+10三次才能完全升级。</p>
+<p>总结：刷级本身并不邪恶。它能让人感觉到进步，但要适可而止。困难重重的升级设计可以说是一个“黄金水槽”（PANews注：Gold sink是一个游戏术语，通过这个过程，视频游戏中的游戏货币或任何可以与之相对应的物品被移除），但那些令人更加沮丧而不是获得奖励的结果，会导致玩家流失。</p>
+<p><strong>稀有收藏品</strong></p>
+<p>定期拍卖/出售游戏中的稀有收藏品。这可以作为特别活动的一部分，通过一个奢侈品商人NPC持续进行，或者设计成一个赌博游戏。这是被玩家对社会影响和所有权的渴望驱动的。</p>
+<p>例子包括：</p>
+<p>《尼奥宠物》中的收藏品</p>
+<p>《无冬之夜》中由诺克斯中士主持的拍卖</p>
+<p>《RuneScape》中NPC出售的黄金，用于制作（字面意思上的）黄金水槽</p>
+<p>根据我们上面的投票，这是最适合社区的回收游戏金币的方式之一。</p>
+<p><strong>赌博</strong> <strong>机制</strong></p>
+<p>赌博游戏的预期回报被设计为负值，但玩家有动力去玩，因为这是获得稀有道具的唯一途径，要么这是获得极其稀有物品的一个简单方法，要么就很有趣。比如抽卡游戏。每次玩家参与，他们必须支付原生代币。因为预期报酬是负的，这会帮助游戏回收代币。这是由玩家对所有权的渴望驱动的。</p>
+<p>预期回报=乐趣-EV（货币损失）&gt; EV（货币收益）。</p>
+<p>例子包括：</p>
+<p>RuneScape3中的寻宝猎人</p>
+<p>《厌恶王国》中的抽奖屋</p>
+<p>从我们的调查来看，赌博机制是迄今为止最令人讨厌的游戏货币回收形式。我们猜测，这是因为许多游戏创造了付费获胜的途径。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0209/16_kvrscyo8dl.png" alt="如何设计链游经济模型？这些Web2游戏付费策略值得借鉴"></p>
+<p>图：“最不受欢迎的回流机制”调查</p>
+<p>总结：不要通过赌博游戏创造付费赢利的快速通道。将稀有的收藏品嵌入到设定和经验中，或者使之成为一种meme。人们喜欢炫耀自己的财富。</p>
+<p><strong>解决方案2：税收、贸易和土地</strong></p>
+<p>对拍卖行、市场、P2P交易和土地/房屋的拥有征税（以土地价值税为单一税的税收系统）。这首先需要游戏创造者控制市场。</p>
+<p>例子如下：</p>
+<p>网络游戏中的拍卖行费用（魔兽世界、暗黑破坏神、RuneScape）。特别值得注意的是，RuneScape中的拍卖行费用（2%的大交易所贸易税）被用来买回大交易所中的物品。这可以通过算法调整，以针对那些供应正在大幅上涨的物品。该税种还积极鼓励玩家之间的互动，为游戏增加社交深度。</p>
+<p>对闲置资源征税。Lars Doucet概述了亨利-乔治的单一土地价值税如何适用于Eve Online的工厂，以及如何成功打击猖獗的工厂投机问题。Star Atlas也将采取这种方法（见其经济学论文第6页）。</p>
+<p>对Axie在市场上的销售征收4.25%的税。</p>
+<p>在过去的两年里，交易税一直是ISK（Eve中的货币）的最大回收通道。经纪人的费用（另一种市场税）紧随其后，位居第三。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0209/16_i2j4lgbfg3.png" alt="如何设计链游经济模型？这些Web2游戏付费策略值得借鉴"></p>
+<p>图：2018.10-2022.01 Eve中排名前10的“水槽”和“水龙头”</p>
+<p>在一个游戏中，贸易在后期成为游戏的一个较大的部分&ndash;大多数MMO都属于这个类别——对交易课以重税，从而有效地从资格最老和最富有的玩家的库房中取出金币，即将货币从游戏中最丰富的地方取出，同时保证了刚刚上线的新玩家可以继续持有。</p>
+<p>总结：税收在最不受欢迎的游戏货币回流方式投票中不幸排在第三位，但它们非常有效。对市场、贸易和闲置资源征税，并将税收用于额外的燃烧，或社区导向的活动。也许我们可以从大量的最优税收文献中寻找并试验新的税收模型，找到比以前尝试过的更有效的模式。</p>
+<p><strong>解决方案3：装备铸造</strong></p>
+<p>装备铸造既可以为玩家供应道具，也可以作为一种货币回收途径。玩家使用较低级别的物品来创造较高级别的物品/消耗品/皮肤，这些物品既会消耗道具，有时还会消耗游戏中的货币。这是由玩家对掌控的欲望、探索新物品和经验的好奇心，以及寻找新组合的创造力所驱动的。</p>
+<p>《激战2》有一个铸造机制用于回收物品，这需要大量的材料，就像是一个吸收低等级和高等级材料的黑洞。</p>
+<p>另一个例子是《RuneScape》中的建筑技能。提高建筑等级需要反复建造然后破坏家具，从而破坏了制造家具所消耗的材料。建造家具所需的每块木板都需要花钱来打造，而钉子和其他部件则必须制造或购买。在存在应税市场的情况下，由难以训练的技能所激励的高价交易可以成为强大的货币回流途径。木板是大交易所中交易量最大的物品。请注意，要达到最高级别，建筑需要至少1亿GP的投资（最快的方法需要近4亿），这对普通玩家来说是一笔很大的金额。</p>
+<p>只有当通过建造生产的物品在市场上或通过其他方式无法广泛获得时，我们的回收机制才会发挥作用。如果一个物品可以花费比铸造更少的时间和金钱去获得，和/或玩家可以很容易地买到原材料，然后出售产品以获得利润，那最终结果有可能是产生更多的游戏货币而不是更少。</p>
+<p>总结：如果运用得当，装备铸造既是对游戏经验、设定和社交的补充，又可以提供健康的掌握/进步感，同时可以回收游戏货币。</p>
+<p><strong>解决方案4：质押游戏币</strong></p>
+<p>这对从事加密货币的人来说更为熟悉，但在Web2游戏中也存在类似的解决方案。</p>
+<p>管理杂物是《RuneScape》中的一个小游戏。一个玩家可以在国库中存入500到750万金币（取决于任务完成情况），然后每天从国库中取出5万到7.5万的金币，支付给收获资源的 &ldquo;工人&rdquo;，并获得相应的资源。这一过程往往是有利可图的，但需要产出的资源是被广泛需要的，并在技能训练时被消耗掉。玩家将金币存入国库是因为他们对成就的渴望——因为他们希望在技能上取得进步。</p>
+<p>这个小游戏有效地锁定和烧毁了数百万的游戏币，并将它们换成了在游戏中取得进展所需的低周转的物品或消耗品。</p>
+<p>总结：将高周转的货币转换为低周转的物品或消耗品。</p>
+<p><strong>解决方案 5：解锁更多的游戏内容</strong></p>
+<p>与其要求用户使用法币购买额外的游戏内容、会员、DLC（可下载内容），不如将其以大量的游戏内货币出售给玩家。内容质量和玩家体验，是影响玩家对不可预测性（好奇心）和成就感（完成所有的游戏）渴望的关键驱动力。</p>
+<p>《RuneScape》中购买一张“债券”可以拥有14天会员资格，但也可以每张4.7M GP的价格从其他玩家那里购买，通过法币购买1个月的会费为11美元。在过去的一个小时里（工作日美东时间晚上9点），有553张“债券”在大交易所被购买，总额约为25亿GP。按比例计算，这意味着债券约占每日GP交易的1.2%。</p>
+<p>如果使用游戏中最高的GP/小时产出速率来计算的话，25亿GP大约需要挖250小时的金矿.</p>
+<p>如果发行《RuneScape》的Jagex公司转而出售“债券” 换取GP，这将产生一个非常健康的货币回流机制。</p>
+<p>总结：将“付费-游戏”转变为”技能/游戏-游戏“，考虑到Web3游戏并不通过从制作者那里购买游戏来盈利，这一点可以做得特别好。</p>
+<p><strong>解决方案 6：捐赠/活动</strong></p>
+<p>根据我们的Reddit民意调查和我个人的经验，最有利于社区的货币回流是捐赠和举办活动。通过诱导人们对崇高意义或社会影响的渴望，激励人们为了声誉、稀有的收藏品或头衔而赠送/燃烧金币。</p>
+<p>例子包括：</p>
+<p>Gaia Online的2009年救助活动。为了配合NPC商店的改造，Gaia举办了2009年救助活动，据称每个商店都欠 &ldquo;GRS &ldquo;的税款，玩家需要向每个商店捐款，以确保它在更新中幸存下来。对该活动的一个批评是，无论捐款总额多少，结果都是预先确定的，而且较大的捐赠者没有得到额外的好处。在加密货币世界，如果没有达到捐赠设定的目标，很容易自动返还资金，所以对游戏开发者来说，依靠捐赠资金来进行更新并举办社区活动要更加容易。</p>
+<p>RuneScape3中的“善意之井”接受物品和金币捐赠。《RuneScape》的母公司Jagex将这些以GP为单位的捐款按比例换成英镑，然后捐给慈善机构。那些向 &ldquo;善意之井 &ldquo;捐款超过一定数额的人获得了稀有的头衔&ndash;也许是游戏中最稀有和最令人垂涎的物品。</p>
+<p>“善意之井”允许那些没有银行账户或难以汇钱的人以一种像是低成本的（通过接受游戏中的货币）、有趣且与社区相一致的方式进行捐赠。那些捐赠超过50亿GP的人（对于那些从未玩过游戏的人来说，这确实是一个惊人的数字）被授予 &ldquo;亿万富翁 &ldquo;的称号。</p>
+<p>尽管“善意之井”大受欢迎，但是这个设计已经从游戏里被拿掉了。</p>
+<p>与Reddit的投票一致，我个人非常喜欢这种类型的回流机制。它塑造了一种社区体验，与游戏设定相结合，在Gaia的案例中是对游戏的更新。在《RuneScape》的案例中，它使得用户可以自我标榜和炫耀，并为捐赠和氪金带来了乐趣和成就感。</p>
+<p>总结：将回流机制直接整合到社区活动/设定中，围绕其创造有趣的体验，并根据燃烧的金币数量给予玩家/公会</p>
+<p><strong>加密货币特有的解决方案</strong></p>
+<p>在上一节中，我们探讨了传统游戏尝试过的平衡解决方案。然而，Web3游戏有很多其他的机会来实现回流与平衡。这包括孵化MOD，和社区主导的回流机制的分叉。这两种方法都依赖于Web3游戏的开源、互操作性和社区优先的性质，并且只适用于真正的、去中心化的社区和文化优先的P2E游戏。</p>
+<p><strong>解决方案1：</strong></p>
+<p>从历史上看: 游戏的修改版本一直处于将游戏推向新领域和新类型的最前沿。事实上，一些有史以来最受欢迎的游戏就是在其他游戏的MOD中得到启发或直接创造的。——出自《玩家的力量：开源》</p>
+<p>例如，《僵尸末日》起初是《武装突袭2》的一个MOD。迪恩·霍尔吸取了《武装突袭2》的精华，对之进行了改造，使之成为一个有僵尸的生存游戏。很快又有了《僵尸末日》的衍生产品，包括由当时不知名的 &ldquo;未知玩家 &ldquo;开发的名为《僵尸末日：大逃杀》的MOD。这不仅普及了大逃杀类型，而且后来演变成《绝地求生：大逃杀》，成为历史上最受欢迎的视频游戏之一。</p>
+<p>由于Web3游戏可以通过二次销售和核心基础设施的税收来实现盈利，从而从整个游戏生态系统的扩展中受益，他们有强烈的动机来孵化新的MOD和玩家的创作，这反过来又为他们的生态系统代币创造了有机需求。这是对创新者困境的自然反击，可以创造出不断发展的游戏，从而使游戏更持久。</p>
+<p>这是Sandbox、Aavegotchi和Sky Mavis所采取的策略：他们开源了Axie SDK，并允许开发者在Ronin上做开发。核心团队在这三种情况下都建立了基础设施、深度流动资金，以及初始所有权基础。接下来，他们鼓励生态系统的创业者在他们的平台上建立MOD和子游戏，然后以活动税的形式收取费用。这就是为什么Axie将自己标榜成是一个 &ldquo;国家&rdquo;。</p>
+<p>你可以把Axie看成是一个拥有真实经济的国家。AXS代币的持有者是获得税收的政府。游戏的发明者/建造者，Sky Mavis，持有所有AXS代币的~20%。——出自Axie白皮书。</p>
+<p>Aavegotchi小游戏是社区开发的游戏，只有拥有Aavegotchi的人才能玩。因为每个游戏都是不同的，具有不同特质的Aavegotchis适用于不同的游戏。在很多情况下，一个低基数的稀有度分数的Aavegotchi，在某些小游戏中比稀有度分数较高的Aavegotchi表现要好，这也带来了对Aavegotchis白色品种的需求。在划定的短时间内，玩小游戏也能为你赢得XP，使你有更大的机会赢得排行榜上的GHST奖。根据Aavegotchi的说法：</p>
+<p>每个小游戏将使用不同的Aavegotchi特性，以使各种特性可以公平参与到游戏中。例如，一个超强的Aavegotchi可能在Aavegotchi战斗俱乐部中表现良好，但可能不适合烤蛋糕的小游戏。</p>
+<p>但为了使用上述策略，游戏必须去中心化，同时激励平台上的人才建设（见Roblox的DevEx计划）。他们还必须允许修改者和生态系统开发者从他们创造的经济产出中抽成（通过版税和与贡献相关的奖励），同时作为一个DAO运作。</p>
+<p>总结：允许社区开发者和游戏设计师创造游戏体验，从而推动对你的代币和基础设施的内生需求。</p>
+<p><strong>解决方案2：基于社区的燃烧机制</strong></p>
+<p>来自Sea Capital的Jonathan Huang估计，Axie的日活用户中大约98%是Axie学者。考虑到Axie的DAU为200万，YGG作为最大的公会拥有1万名学者，我们可以估计公会中的学者数量可能不超过5-10%。如果这个数字增加，或者如果还我们考虑到经理的角色，那么在“公会-学者”层面引入燃烧机制就变得非常重要。</p>
+<p>这种机制的一个例子是将学者持有的SLP（假定是高周转的）公平地转化为公会或协议持有的SLP。这可以通过公会级别的游戏来实现，学者们可以质押/交易SLP，以获得能取得更好的卡牌或物品的机会，尽管这种策略是否能让公会盈利还不好说。另外，Axie的“国库”可以为执行社区支持计划的公会分配AXS奖励，其中可能包括社区主导的燃烧机制。</p>
+<p>现有的社区燃烧机制的一个例子是，YGG承诺将其SLP的持仓抵押给RON，或之前将其SLP完全用于培育新的Axies。</p>
+<p>总结：孵化和支持那些具有长期主义文化的社区。</p>
+<p><strong>解决方案3：建设和拥有关键的基础设施，并收取费用实现货币回流</strong></p>
+<p>这是对第一部分中税收的延伸。</p>
+<p>P2E游戏可以通过拥有核心基础设施和对核心基础设施的使用征税来建设、治理和盈利。Sky Mavis拥有自己的链、市场和DEX（Katana），并针对使用协议收取gas费用（RON）和市场费用（ETH的4.25%）。这些协议都会产生费用，然后可以进行回购和燃烧，或者也可以直接燃烧税收收入。</p>
+<p>可以说，对于一个P2E游戏工作室来说，开发协议基础设施比试图无机地引导一个游戏的生态系统要容易得多（策略2）。如果P2E经济体是协议，那么他们能覆盖的协议范围和覆盖面越大，就能出现更多的价值累积。</p>
+<p>但在一个开源项目中，从长远来看，高转化率可能是不可持续的。只有当P2E游戏提供最高质量的核心基础设施，激励最好的运营商为他们的基础设施做出贡献（而不是建立他们自己的基础设施），他们才能证明关键的基础设施是一个好的货币回流机制，或作为其“国库‘运营的一个庞大的收入来源。</p>
+<p>总结：创建最好的关键基础设施，并收取费用以回流游戏货币，或将协议收入用于回购和燃烧。</p>
+<p><strong>结论</strong></p>
+<p>水龙头和水槽的平衡是必要的，这样才能保证虚拟经济中价格的健康平衡。然而，“水槽”即回流机制的存在永远不能保证任何游戏经济系统的代币可以回到价格高点。事实上，“水槽”只有在人们使用它们时才会发挥作用。</p>
+<p>Web2游戏受益于这样一个事实，即它们是封闭的经济体系，一旦资金进入，就很难离开（并不存在一个简单、透明、合法的交易所让用户交易美元和游戏币）。这意味着，这些游戏也受益于在玩家心目中游戏币与法币的脱钩。</p>
+<p>这意味着玩家除了在平台/游戏中花钱，别无选择，在从事任何活动时，不太可能去精密计算付出和回报，因此更有可能在一些随机的或者娱乐性的事情上花钱</p>
+<p>一个P2E游戏并不享有这些好处。为了鼓励玩家在一个投入和产出都被高度清晰货币化的环境中还愿意参与系统的货币回收机制，它要么得提供额外的货币用于燃烧（这进一步增加了供应），或者为用户提供其他形式的额外收益。</p>
+<p>因此，在一个开放的经济中，只有当以下公式成立时，“水槽”才会有效。公式为：</p>
+<p><strong>动机+使用“水槽”的额外效用&gt;使用“水槽”的成本（</strong> <strong>如下图所示</strong> <strong>）</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0209/16_fjblsaeiah.png" alt="如何设计链游经济模型？这些Web2游戏付费策略值得借鉴"></p>
+<p>决定“水槽”功效的是人们是否使用它，而人们只有在看到价值时才会使用它。</p>
+<p>&ldquo;最终，人们需要为乐趣、地位，方便、灵活地进行消费，以使经济学永久地发挥作用&rdquo;</p>
+<p>—Axie Infinity的 联合创始人Jihoz</p>
+<p>本文的贡献者包括：@dberenzon, @pet3rpan_, @nichanank 帮忙撰写了这篇文章, 以及和 @AxieSando, @CharlieSandor, and @StingRayL0 交流了P2E游戏。同时也从 @Jihoz_Axie, @0xRyze, @Tocelot, @RyanWatkins_, @fareastwitcher, @yukaichou学习了很多。</p>
+<p>原文：Terry Chung 1kx Network</p>
+<p>翻译：0xHY</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/33944/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">去中心化的VC：投资类DAO的TOP 5</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/33934/">
+                <span class="next-text nav-default">深圳：积极参与央行数字人民币跨境支付、国际合作试点</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

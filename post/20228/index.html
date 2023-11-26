@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          硬核：深入理解DAO2DAO关系的概念模型 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文介绍了我们的研究，将DAO定义为全球体系中一种新形式的非国家行为体。" />
+<meta name="keywords" content="DAO, 区块链网络" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/20228/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="硬核：深入理解DAO2DAO关系的概念模型" />
+<meta property="og:description" content="本文介绍了我们的研究，将DAO定义为全球体系中一种新形式的非国家行为体。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/20228/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-12T00:00:00+00:00" />
+
+<meta itemprop="name" content="硬核：深入理解DAO2DAO关系的概念模型">
+<meta itemprop="description" content="本文介绍了我们的研究，将DAO定义为全球体系中一种新形式的非国家行为体。"><meta itemprop="datePublished" content="2021-04-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="11595">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="硬核：深入理解DAO2DAO关系的概念模型"/>
+<meta name="twitter:description" content="本文介绍了我们的研究，将DAO定义为全球体系中一种新形式的非国家行为体。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">硬核：深入理解DAO2DAO关系的概念模型</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-04-12">
+      2021-04-12
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 11595 字 -
+        预计阅读 24 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>这篇作品是Token Kitchen、BlockScience和Curve Labs在PrimeDAO的资助下进行DAO2DAO研究合作的成果。虽然大多数DAO研究都集中在DAO内部的能力上，如DAO内的代理如何相互作用，但本研究的目的是理解DAO之间关系的复杂性。在本文中，我们确定了背景概念和应用研究领域，这些概念和领域与DAO必须相互作用或协作的新生生态系统中的动态关系相关。迄今为止所介绍的研究，以及Curve Labs制作的社区报告和相关文献综述，是这一合作的第一个周期的结果，并为后续PrimeDAO工作周期中更严格的分析奠定了基础。</p>
+<p><strong>摘要</strong></p>
+<p>本文介绍了我们的研究，将DAO定义为全球体系中一种新形式的非国家行为体。“非国家行为体”一词来源于国际关系研究，这也是我们研究的自然起点。我们提出，DAO在其制度结构上，与民族国家和全球市场的相似性大于与公司或企业的相似性。这种相似性与DAO的大小或规模无关，而是它们可以在没有嵌入更高级别的机构的情况下运作，这些机构执行特定的互动模式，例如，以共同的法律管辖区作为解决冲突的后盾。因此，了解国际关系（IR）和外交政策的工具是相关的。</p>
+<p>从我们的角度来看，Web3和由此产生的机构不会改变政治本身&ndash;政治是人类组织中固有的。问题是我们如何将国际关系领域的概念映射到DAO条约和联盟中，以便更好地映射DAO和Web3将如何改变我们全球社会经济体系的动态。在本文中，我们将以‘work-in-progress’的方式，涵盖几个广泛的主题，与PrimeDAO社区分享我们正在进行的研究的结果。本报告将分为三个主要部分：</p>
+<ol>
+<li>
+<p><strong>DAO的概念和历史</strong></p>
+</li>
+<li>
+<p><strong>用于理解DAO的概念模型</strong></p>
+</li>
+</ol>
+<p><strong>2a. 机构的规模间模型</strong></p>
+<p><strong>2b. 量化DAO的定性现象</strong></p>
+<ol>
+<li><strong>在国际关系的背景下制定发展DAO</strong></li>
+</ol>
+<p><strong>3a. 国际关系介绍</strong></p>
+<p><strong>3b. DAO中的相关IR研究问题</strong></p>
+<p>这项研究还建立在我们之前的一些出版物的基础上：Shermin Voshmgir撰写的《Token Economy》一书描述了目的驱动型代币的概念，这些代币引导集体行动，以共同创造区块链网络或其他DAO等公共产品，以及DAO的制度经济学和治理方面，这些内容也作为两部分系列在Medium上发表（第一部分和第二部分）。在《Foundations of Cryptoeconomic Systems》一文中，Shermin和Michael Zargham概述了DAO的系统观点以及合约理论和制度经济学的相关问题。Michael还与Kelsie Nabben一起在Algorithms as Policy上发表了一篇文章，以及与Jeff Emmett、Joshua Tan和Primavera de Filippi一起发表了围绕DAO作为一种新的制度形式的概念。我们还推荐阅读本次DAO2DAO研究合作的Curve Labs社区报告。这些资源可以作为任何寻求本文摘中所载研究的更大背景的人的额外阅读。</p>
+<p><strong>1.DAO的概念和历史</strong></p>
+<p>术语‘DAO’代表‘去中心化自治组织’，但组织的自主性和去中心化的概念在Web3之前就已经出现了。简单回顾一下这些概念，以作为讨论Web3中DAO的基础是很必要的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/e0tcsz59y8cdpby" alt="币世界-硬核：深入理解DAO2DAO关系的概念模型"></p>
+<p>各种形式的自治和去中心化的搜索趋势。请注意，’自治‘一词的使用比’自动/自动化‘一词的使用早了几十年&ndash;甚至在前计算时代。(来源：google ngrams)</p>
+<p>让我们从一些定义开始：</p>
+<p><strong>自治，来自Wikipedia：</strong></p>
+<p>’在发展心理学和道德、政治、生物伦理哲学中，自治是指做出知情的、不受胁迫的决定的能力。自治的组织或机构是独立的或自我管理的。自治也可以从人力资源的角度来定义，它表示在工作中给予员工的（相对较高的）自由裁量权。在这种情况下，众所周知，自治一般会提高工作满意度。自我实现的个人被认为是不受外界期望的自主运作。‘</p>
+<p>自治不应与自动化混为一谈，自动化是一个与控制工程领域相关的技术概念，其中包括机器人技术，但也包括更广泛的系统工程，这些系统在运行时很少或没有人的干预。</p>
+<p><strong>去中心化，来自Wikipedia：</strong></p>
+<p>’去中心化是指一个组织的活动,特别是有关规划和决策的活动,从一个中央的、有权威的地点或团体分散或下放的过程。去中心化的概念已被应用于私营企业和组织、政治学、法律和公共行政、经济学、货币和技术等领域的群体动态和管理科学。‘</p>
+<p>虽然去中心化和自治的概念在政治哲学中的历史已经延续了一个多世纪，但我们的写作将从Web3社区接受这些术语的地方开始。值得注意的是，Web3社区在使用自治一词时，常常融合了自治和自动化的概念。从技术角度来看，DAO包含自动化组件，或者说机器人，它与自动控制中的分布式系统有着相似的设计特征，比如传感器网络中的反馈回路。<strong>然而从政治哲学的角度来看，DAO的突出特征是自治，即组织层面的自我实现。</strong></p>
+<p>Web3背景下的DAO概念是由Dan Larimer在2013年提出的，他创造了去中心化自治公司（DAC）一词，但通常归功于Vitalik Buterin，他继承了Larimer的概念并将其概括，创造了去中心化自治组织（DAO）一词。然而，去中心化自动的概念要早得多&ndash;根据Vitalik Buterin的说法&ndash;部分灵感来自Daniel Suarez的小说《Daemon》。</p>
+<p>2013年，Dan Larimer将比特币比作一家公司，这家公司的股东是比特币代币持有者，而其“员工”将是矿工。“比特币有2100万股，这些股份由可以被视为比特币的股东拥有。它有员工，也有支付给他们的协议：大概每十分钟给一个员工随机发放25个BTC。它甚至有自己的市场部，很大程度上是由股东自己组成的。然而，它的能力也非常有限。除了当前的时间，它对这个世界几乎一无所知，除了困难之外，它没有改变任何方面的功能，而且它本身其实并没有做任何事情；它只是存在，让世界来认识它。”Larimer将原生区块链代币定义为“去中心化自治公司（DAC）中的股份，源代码定义了章程。DAC的目标是通过为自由市场提供有价值的服务，为股东赚取利润。”（LetsTalkBitcoin 2013）虽然他描述了一种新的公司/企业形式，但他也使用了许多市场隐喻。他将市场的概念（外部协调和生产）与公司的理论（内部协调和生产）融合在一起。</p>
+<p>在另一篇文章中，Larimer将DACs描述为“设计为社会提供有用商品和服务的去中心化系统的有用隐喻。如果像银行这样复杂的东西可以作为DAC来实现，那么显然可以作为DAC来实现许多其他的东西”（LetsTalkBitcoin，2013），例如新闻聚合、广告、域名、专利、版权和下一代知识产权、保险、法院、托管、仲裁、认证的匿名投票、预测市场或下一代搜索引擎。</p>
+<p>他的兄弟Stan Larimer定义了分布式自治公司（DACs），“在一套不可破坏的商业规则的控制下，并在没有任何人类参与的情况下运行（&hellip;&hellip;）这些规则作为公开可审计的开源软件，分布在其利益相关者的计算机上。”他将比特币描述为“一个股东拥有、员工经营、非盈利的加密公司！”(LetsTalkBitcoin 2013)。Stan提到了Asimov的《Three Laws of Robotics》。</p>
+<ul>
+<li>
+<p><strong>第一定律：</strong> 机器人不得伤害人类或因不作为而使人类受到伤害。</p>
+</li>
+<li>
+<p><strong>第二定律：</strong> 机器人必须服从人类的命令，除非这些命令与第一定律冲突。</p>
+</li>
+<li>
+<p><strong>第三定律：</strong>  机器人必须保护自己的存在，只要这种保护不与第一或第二定律相冲突。</p>
+</li>
+</ul>
+<p>他将这些定律映射到DACs上，并表示：“比特币已经证明了它有能力在一套基本的不可侵犯的核心定律基础上可信地实施社会合约：</p>
+<ul>
+<li>
+<p><strong>诚信：</strong> DAC必须始终遵守自己公布的业务规则！个别DAC机器人的恶作剧行为，只会被集体封杀，肇事者避之唯恐不及。不遵守规则是徒劳的。邪恶机构的胁迫是徒劳的。</p>
+</li>
+<li>
+<p><strong>廉洁性：</strong> DAC在没有得到利益相关者同意的情况下决不能改变规则，除非这种改变会与第一法则相冲突！未经大多数利益相关者同意，不得对DAC的任何源代码进行更新。除非有超过半数的集体劳动力同意采用，否则即使腐化大部分DACBOT也不会有任何效果。</p>
+</li>
+<li>
+<p><strong>自我保护：</strong> DAC必须保护自己的存在，只要这种保护不与前两条法律相冲突！</p>
+</li>
+</ul>
+<p>Vitalik Buterin采用了DAC的概念，他在2013年(a,b,c)和2014年就这一主题写了大量文章。他想象了一种新颖的业务自动化形式，并描述了一个公司如何在没有管理人员的情况下运作，用能够招聘和支付人员的软件取代管理，以执行有助于任何类型组织使命的任务。他将DAO定义为“一个生活在互联网上、自主存在的实体，但也严重依赖雇佣个人来执行某些自动化本身无法完成的任务。”Vitalik描述了“自治代理”的概念，它不需要像传统组织那样的人类参与。虽然他承认“构建代理运行的硬件可能需要一定程度的人类努力，但不需要有任何人类知道代理的存在”。他举例说，计算机病毒在机器与机器之间进行复制，不需要人类刻意的行动，其存在方式类似于生物有机体，或者是去中心化的自我复制云计算服务，一开始可以在一台虚拟私人服务器上运行自动化业务，并会租用其他服务器，在上面安装自己的软件，将它们加入到网络中。Vitalik描述了一些具有不同范围的（a）智能和（b）多功能性的自治代理。他承认，“自治代理是一些最难创造的东西，因为为了取得成功，它们需要能够在一个不仅复杂和快速变化，而且充满敌意的环境中航行。”</p>
+<p>Vitalik拾起了几十年来存在于更广泛的控制论中的思想，以及这些思想在科幻中的表现。他将去中心化组织（DOs）描述为“用一套智能合约将现有流程自动化的组织：去中心化组织不是由一组人类亲自互动管理的等级结构，也不是通过法律系统控制财产，而是由一组人类根据代码中指定的协议相互互动，并在区块链上执行。一个DO可能会也可能不会利用法律系统对其物理财产进行一些保护，但即使这种使用在那里也是次要的。”他提出，虽然在“一个DO中，人类是做决定的人，而一个DAO是以某种方式为自己做决定的东西。“<strong>在一个DAO中，合谋攻击被当作一个bug，而在一个DO中，它们是一个特征。</strong> ”</p>
+<p>”互联网让我们可以创造出去中心化的公司，这些自动化完全以去中心化的网络形式存在于互联网上，在成千上万的服务器上进行计算，使它们保持“活力”“。它们拥有”两种能力：思考的能力和维持资本的能力，理论上是一个经济主体在市场上生存所需要的全部能力，前提是它的思想和资本能让它足够快地创造出可销售的价值，以跟上自己的资源需求。但在实践中，仍然存在一个重大挑战：如何与周围的世界进行实际互动。“ Vitalik介绍了DAO如何获取外界数据的预言机问题。他还表示：”计算机软件正日益成为我们现代世界最重要的一个构件，但直到现在，对这一领域的搜索还集中在两个方面：<strong>人工智能，</strong> 即纯粹靠自己工作的软件，以及在人类手下工作的<strong>软件工具</strong> 。问题是：中间有没有什么东西？如果有的话，软件指导人类、去中心化公司的想法正是如此。“ (Bitcoin Magazine，2013年)</p>
+<p>简而言之，Vitalik阐述了一个世界的愿景，在这个世界里，网络物理系统(CPS)不仅仅是由人类监督的自动化组件的集合体，而是表现出作为机构的自治以及一种新兴的集体智慧。重要的是，这一愿景与国家和企业赞助的监控超级结构形成了鲜明的对比，而这些超级结构是中央机构资助和部署的人工智能进步的主要应用：西方的监控资本主义，以及东方的苏联控制论中央计划的技术先进重生。</p>
+<p><strong>2.用于理解DAO的概念模型</strong></p>
+<p>为了理解和推理DAO，这一研究领域引入了几个概念模型，以考虑各种机构内部和之间所涉及的互动模式和标准的层次。本节分为两个小节。(a) 机构的规模间模型和(b) 对DAO的定性现象进行量化。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/v3yfwjg7a1y4u5m" alt="币世界-硬核：深入理解DAO2DAO关系的概念模型"></p>
+<p>一个展示多尺度反馈的图。在加密经济网络中，系统层面的行为来自于作为加密经济政策设计的一部分而实施的规则和激励措施的代理人层面的行为。这里的 &ldquo;系统 &ldquo;指的是DAO，而 &ldquo;代理 &ldquo;则是DAO的利益相关者。资料来源：Voshmgir，S. and S: 资料来源：Voshmgir, S. 和 Zargham, M. (2020)。&ldquo;Foundations of Cryptoeconomic Systems&rdquo;.</p>
+<p><strong>2a.机构的规模间模型</strong></p>
+<p>规模间模型在许多不同领域得到广泛使用，对于理解复杂系统的新兴潜力至关重要。DAO是一些机构，它们可能或多或少在形式上已经制度化，但还是可以被代表为复杂的社会经济系统。在未来DAO扩散的全球生态系统中，DAO内部(inter)和DAO之间(intra)存在着各种层次的反馈，可以根据以下规模间的互动模式进行分类：</p>
+<ul>
+<li>
+<p><strong>代理人到代理人（A2A）</strong></p>
+</li>
+<li>
+<p><strong>代理人到机构（A2I）</strong></p>
+</li>
+<li>
+<p><strong>机构到代理人(I2A)</strong></p>
+</li>
+<li>
+<p><strong>机构到机构（I2I）</strong></p>
+</li>
+</ul>
+<p>虽然在我们的研究中，我们专注于机构之间的关系（I2I），但A2A动态和A2I动态也会影响I2I关系的动态。此外，互联网赋能的全球化社会共同体催生了个人（简单的代理人）成为网红。这些网红作为思想领袖也是一种新的制度形式。当他们在互联网上发表言论时，他们的言论会被认为是真的（被他们的粉丝）和假的（被他们的对手），并能影响文化、技术和经济政策的制定。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/u63eu1qd9y99iat" alt="币世界-硬核：深入理解DAO2DAO关系的概念模型"></p>
+<p>全球DAO生态系统中的多尺度反馈，反映了DAO和其他国家和非国家行为者的I2I动态。</p>
+<p>根据去中心化组织的目的及其协调结构，我们提出以下观点：<strong>DAO可以或多或少地自治，与民族国家、公司或市场有相似之处。</strong> 然后，这些DAO也会相互之间或与其他政府和非政府组织进行互动，这就形成了一定的（inter/intra）公司和（inter/intra）国家动态。</p>
+<p>然而，在现实世界中，我们并没有一个理想化的国家和一个理想化的市场。在地方层面上，市场是一个民族国家或地区的子系统。市场参与者（消费者和生产者及其所有的中间商）和公民（民族国家）之间的区别是一个人为的概念，因为任何市场都受制于隐性和显性的规范、规则和条例或一个地理区域及其管辖权和文化规范。</p>
+<p><strong>2b.对DAO的定性现象进行量化</strong></p>
+<p><strong>免责声明：</strong> 以下提出的概念是正在进行的研究的一部分，所提出的定义和属性/指标不是最终的，而是近似的假设，将通过进一步的研究和利益攸关方的反馈来完善和反映。</p>
+<p>在本节中，我们将利用理想化版本的制度形式作为构建定量度量的工具，探讨一些概念。为了利用这些度量标准，我们将需要使用这个视角对真实的机构进行考察，以了解它们的有用性。在这个阶段，我们将使用真实的系统来衡量度量标准的有用性，但随着度量标准的完善，我们计划使用它们来评估真实世界的机构。换句话说，我们计划用Wittgenstein’s Ruler来检验这些度量标准衡量现实的能力。</p>
+<p><strong>Wittgenstein’s Ruler：</strong> 除非你对尺子的可靠性有信心，否则如果你用尺子来测量桌子，你可能也是用桌子来测量尺子。</p>
+<p>我们的研究讨论探讨了DAO的一系列显著属性，并试图将这些属性嵌入一个矢量空间。我们考虑了一个概念框架，<strong>该框架由DAO的五个属性组成，可以用频谱来描述：(一) 交易成本，(二) 信息可得性，(三) 主权，(四) 信任度，(五) 刚性。</strong> 我们的工作定义如下：</p>
+<ol>
+<li>
+<p><strong>交易成本（从低到高）：</strong> 描述利益攸关方在发展DAO中的活动受到阻碍的程度。交易成本的概念是基于摩擦的概念：做出决策需要耗费注意力，需要建立注意力的pareto-optimal模型。例如，认知心理学和行为经济学一直在研究人类社会经济行为中的心理交易成本和对心理捷径的要求。但在参与DAO的背景下，注意力只是众多成本中的一种。交易成本可以反映自动化成本、共同引导和财务费用等协调成本。</p>
+</li>
+<li>
+<p><strong>信息可得性（从低到高）：</strong> 指的是哪些DAO参与者（代理人）可以获得哪些信息的问题。在极端情况下，我们会有低信息可得性（意味着所有信息都是私有的），或者高信息可得性（一切信息都是公开的）。当前的区块链网络和建立在其之上的应用往往具有高信息可得性（至少在涉及到公共交易数据时），但行为者身份的透明度很低。这里值得注意的是，在这种情况下，”设计隐私“是一个严重的问题，由替代区块链网络使用加密工具解决，允许混淆某些数据。在评估信息可用性问题时，信息溢出问题是另一个需要考虑的因素，因为在确定适当的信息共享水平时，需要考虑到参与者的心理交易成本和专业知识。</p>
+</li>
+<li>
+<p><strong>主权（从优先代理人到优先机构）：</strong> 指机构的<strong>规则</strong> 是否倾向于个人的优先权而非群体的结果。它指的是代理人和组织（可以是公司、民族国家或市场）之间的权力平衡。在这个频谱的一端，我们看到制度规则允许个人最大限度的自由，所采取的任何行动的反响都是规范的。在频谱的另一端，我们发现制度规则为机构提供了最大限度的控制，在这里，组织可以要求个人的任何行动，并强制其履行。</p>
+</li>
+</ol>
+<p><strong>请注意，</strong> 主权与民主不同，因为它指的是一个组织的成员/代理人的理论权利。民主程度（”民主性“）指的是个体代理人能在多大程度上影响系统的共同指导的反馈回路的强度（详见”刚性“）。</p>
+<ol>
+<li><strong>信任度（从竞争到合作）：</strong> 这个词反映了机构的<strong>规范</strong> 是有利于个体代理人还是群体优先权。一个代理人如何解释系统中其他代理人的行为。我们有多信任DAO的其他成员会合作和帮助他人，而不是竞争和“只为自己着想”。DAO中的成员是否与他人合作或竞争，取决于他们的规范和世界观。在一个加密无政府主义的DAO（或市场）中，代理人会认为每个人都会从自身利益出发，这将最终有利于整个系统。在一个更社会主义的DAO（或一个民族国家）中，代理人将把他们的行为建立在协作和信任DAO的其他成员也会协作的基础上。类似于主权，代理人与制度之间的相对一致，但频谱描述的是行为规范而不是法律条文。</li>
+</ol>
+<p><strong>请注意，</strong> 信任和主权之间可能会出现有趣的错位&ndash;例如，在一个社会信任度较低的社会主义DAO系统中，我们可能会遇到这样一个生态系统，其中的规则有利于整体，但所有个人都在为自己的利益而与这些规则进行博弈。</p>
+<ol>
+<li><strong>刚性（从适应性到不可改变）：</strong> 是指一个DAO的灵活性水平，以应对和适应系统内可能需要改变系统规则的事件，如DAO协议升级。它反映了“主动”民主的程度（“民主性”），代表了个体代理人对系统的共同指导的实际能塑造的反馈回路的强度。用上面介绍的说法，表现出强民主性的系统具有强A2I反馈回路（相对于强I2A反馈环，后者在大多数组织中更为常见）。频谱的一端呈现出更难改变的制度，而频谱的另一端则是更能适应参与者的既定需求的制度。</li>
+</ol>
+<p>下面我们已经开始分析‘理想化机构’的这些属性，因为它们在这些属性中往往会采取极端值。将这些概念量化为频谱的一个好处是，我们可以将它们绘制在雷达图上，以便从这些属性来推理机构的设计空间。比如说：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/837yu6c4doeuvkl" alt="币世界-硬核：深入理解DAO2DAO关系的概念模型"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/luszmhuzn45ki4a" alt="币世界-硬核：深入理解DAO2DAO关系的概念模型"></p>
+<p>雷达图：根据上面讨论的一系列机构属性，从0(低)到1(高)，考察了几个“<strong>理想化机构</strong> ”。</p>
+<p>一旦我们通过理想化的机构&ndash;现实世界中并不存在的机构&ndash;进一步强化了我们的定义并完善了我们对这些指标的解释，我们将建立一个现实世界的例子清单，其中将包括一些众所周知的DAO，但也可能包括国家和公司。作为这个过程的一个预告，我们将在进一步的实践中探索我们的概念框架，松散地研究一些与听众相关的DAO和公司。这些数字反映的是一种基于近似的假设，以便进一步研究，它们不是最终确定的科学研究过程的结果：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/600fbw0e9kksa4h" alt="币世界-硬核：深入理解DAO2DAO关系的概念模型"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0412/yy5df3og03abss8" alt="币世界-硬核：深入理解DAO2DAO关系的概念模型"></p>
+<p>雷达图：沿着上面讨论的一系列机构属性考察了几个“实用机构”。本研究计划的下一阶段将进一步挖掘这些定义，并充实更多的实例，以使这一框架更加强大。</p>
+<p>这一概念框架缺乏与DAO相关的一个非常重要的属性：DAO内部和之间的<strong>权力结构</strong> 。虽然权力结构的概念是最重要的，但它并不适合这个特定的框架，因为权力结构是“关系性的”，并没有很好地模拟成一个频谱。将一个概念表示为一个频谱（将其嵌入到一个连续的区间上），提供了一个与评价关系结构（表示为一个有向图）截然不同的视角。用有向图形式主义可以捕获DAO间的权力结构和DAO内的权力结构，然而这些图是不对称的。<strong>解决DAO内部和DAO之间的权力关系是一个重要的课题，这将是这个DAO2DAO研究计划中未来工作的重点。</strong></p>
+<p><strong>3.在国际关系的背景下制定发展DAO</strong></p>
+<p>上述理论框架所依据的概念是，DAO是一种新的机构形式，不仅相互之间，而且在全球范围内与其他机构相互联系，因此需要进行国际关系研究。本节分为两个小节。(a) 国际关系介绍和(b) 分析DAO背景下的相关IR研究问题。</p>
+<p><strong>3a.国际关系介绍</strong></p>
+<p>国际关系研究关注的是民族国家、非政府组织、政府间组织、国际非政府组织、跨国公司等经济和政治机构之间的关系，以及它们之间互动所产生的全球社会经济体系。相对于目前集中管理、私人所有的互联网平台，基于互联网的新机构的出现，在互动中更加自主、更加流动，我们认为，在全球化经济和互联网时代，需要用新的视角来看待国际关系的概念。</p>
+<p>前互联网时代的国际关系中最常见的课题是研究基于民族国家划分的模拟机构，包括“外交关系”、“民族国家的主权”、“国家利益”、“权力、权力集团和极性”、“全球化”、“相互依存”、“民族主义”、“经济发展”、“可持续性”、“国际安全”、“非国家行为者”等问题。下一章将结合DAO讨论部分概念和话题。然而，在分析这些议题时，并不存在一种观点或一种统一的理论。根据不同的思想流派，我们可以区分为：</p>
+<ul>
+<li>
+<p><strong>规范性观点</strong> （世界应该怎样）或</p>
+</li>
+<li>
+<p><strong>非规范性观点</strong> （描述世界是怎样的）。</p>
+</li>
+</ul>
+<p>我们还可以进一步区分：</p>
+<ul>
+<li>
+<p><strong>实证主义理论</strong> ，侧重于衡量和描述国家互动、权力平衡或军事力量等可客观的问题。</p>
+</li>
+<li>
+<p><strong>后实证主义理论</strong> 则反对社会经济互动不能以客观和无价值的方式研究的说法。它们侧重于限定问题，如界定对“权力”等概念的各种观点。</p>
+</li>
+</ul>
+<p>从这些角度出发，出现了一系列广泛的IR理论或思想流派，它们提供了不同的概念框架和工具，其中最重要的有：现实主义、新现实主义、自由主义(新自由主义、复杂的相互依存、后自由主义)、制度理论、建构主义、马克思主义和新马克思主义理论、女权主义、绿色理论、功能主义、后结构主义、后现代主义、后殖民主义、IR的进化论观点、IR的神经科学观点和其他替代方法。</p>
+<p><strong>3b.分析DAO背景下的相关IR问题</strong></p>
+<p>为了使这些联系更加具体化，我们将选定的国际关系核心概念与DAO的背景进行了映射，从而确定了未来的研究领域，将深入研究选定的主题：</p>
+<ul>
+<li>
+<p><strong>国家利益</strong> 是指一个民族国家为获得利益而采取的与其他国家有关的行动。同样，一个DAO的利益将由它的目的/存在的理由而产生，也将受到作为特定DAO一部分的代理人的现实权力结构（他们的哲学或经济利益）的影响。在存在集中化问题的DAO中，DAO的利益可能会被那些在网络中拥有更多权力的人不相称地玷污（见上节关于权力结构的评论）。</p>
+</li>
+<li>
+<p><strong>非国家行为者：</strong> 自工业化和全球化开始以来，随着互联网的出现，国际体系的现状不再仅仅由国家行为者垄断。在过去120年里，出现了新的、更占主导地位的非国家行为者，他们自主行动，对国际体系产生了不可预知的影响，例如：跨国公司、解放运动（女权主义、Fridays for Future、Black Lives Matter）、非政府组织和其他国际组织也会影响全球社会经济体系。社会化媒体的兴起，将传统的机构分散到了个人的“网红”身上。DAO是一种新形式的非国家行为者，随着其成熟，其重要性将越来越大。与其他国家和非国家行为者(不仅是DAO2DAO)的互动将是一个同样重要的研究领域。</p>
+</li>
+<li>
+<p><strong>外交政策</strong> 描述的是民族国家与其他国家互动的行动。这种互动可以表现在双边或多边层面。主要手段是外交、制裁或武装或经济冲突，大多由专业外交官进行谈判。在一个民族国家体系中，外交政策的工具包括外交，如果失败，则采取制裁、战争、国际耻辱、经济和外交特权的形式。DAO也需要一种形式的对外关系代表和/或机制来执行他们的利益。</p>
+</li>
+<li>
+<p>国际关系中的<strong>相互依存关系</strong> 是一个不断增长的研究机构，也是全球化（自由贸易和互联网以及国际/超国家组织）的自然结果。在Web3中，相互依存关系可以从DeFi（不同“金钱乐高”的相互依存，它们之间相互作用，也可能被利用）或一个区块链网络与第二层网络的相互依存、区块链互操作性标准等诸多方面得到最好的体现。</p>
+</li>
+<li>
+<p><strong>民族国家背景下的权力</strong> 描述了一个国家行为体或非国家行为体所拥有的资源和影响力。可以区分为硬实力和软实力，其中硬实力主要指强制力或武装力量，而软实力则指经济、外交或文化影响力。DAO没有武装力量(目前)，这意味着权力被“还原”为经济和文化形式的权力。</p>
+</li>
+<li>
+<p><strong>权力均衡理论</strong> 认为，民族国家可以通过防止任何一个国家获得足够的军事力量来建立国家安全。这一理论建立在这样的假设之上，即权力均衡体系比一个民族国家占主导地位的体系更稳定，因为当敌对联盟之间的权力均衡时，侵略是无利可图的。问题是账本互操作性可能会如何影响DAO的安全性，以及什么样的权力均衡策略可能会带来一个繁荣的DAO生态系统。</p>
+</li>
+<li>
+<p>国际关系中的<strong>多极性</strong> 是指所有国家或非国家行为者在区域或全球范围内的权力（文化、经济或军事）分配：(a) 单极性是指一个行为体对所有其他行为体的影响最大。(b) 两极性是指两个国家占主导地位的体系。(c )多极性是指两个以上的行为体具有同等权力或影响力的系统。(d) 非多极性是指存在不同的权力中心，但都不支配任何其他权力中心的体系。</p>
+</li>
+<li>
+<p>国际关系中的<strong>权力集团</strong> 是与极性概念相关的一个重要因素。矿业Cartels可以看作是DAO内的这样一种权力集团形式。问题是DAO之间什么样的战略联盟能够导致不同DAO的区块形成。这可能还将取决于DAO的目的。与代表社交网络的DAO相比，代表支付系统的DAO可能会有其他形式的权力集团产生。异质的DAO更有可能比同质的DAO有其他形式的区块建设。民族国家背景下的联盟是指为了互利或实现某种共同目的而联合起来的国家关系。这种协议可以是显性的，也可以是隐性的，可以集中在政治、军事或经济方面。这种联盟也可以成为发展中组织追求自身利益的工具，也可能形成权力集团。</p>
+</li>
+<li>
+<p><strong>衡量</strong> 国际关系中的<strong>权力集中度</strong> ：用“系统性权力集中度公式”来计算某个“大国体系”的极性。在DAO的背景下，有必要首先定义一个权力变量，以及与其他同类DAO、整个DAO生态系统或与其他国家和非国家行为体的全球背景下的衡量标准。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0412/qpkrh4c56koz7j1" alt="币世界-硬核：深入理解DAO2DAO关系的概念模型"></p>
+<p>衡量国际关系中的权力集中度，其中：</p>
+<p>t=计算资源(即权力)集中的时间。</p>
+<p>i = 测量系统功率控制比例的状态。</p>
+<p>Nt = 大国系统在时间t上的状态数。</p>
+<p>S=拥有的权力比例。</p>
+<p>Sit=时间t时i国拥有的权力比例。</p>
+<p>来源：https://en.wikipedia.org/wiki/Polarity_(international_relations)</p>
+<ul>
+<li>民族国家角色国际关系中的<strong>主权</strong> ，表现为主权国家（民族国家）“对其地理领土拥有绝对的权力，而且这种权力只受主权国家自身对其他主权国家和个人的义务的限制”。数字世界的主权问题已经完全不同&ndash;目前&ndash;仅限于对资产和数据的主权(也可以说是一种资产)，但与具体的民族国家监管的规则和条例相互依存，而这些规则和条例&ndash;在大多数情况下&ndash;将与个人的国籍或居住地相联系。</li>
+</ul>
+<p><strong>总结以及下一步</strong></p>
+<p>在这第一篇文摘中，我们公开分享我们对相关文献的早期研究协调，以更好地理解DAO2DAO互动的影响。我们讨论了DAO的历史和定义，它们沿着一系列指标的分类，并研究了国际关系和外交政策的考虑，以了解DAO2DAO互动的广泛影响。</p>
+<p><strong>与Curve Labs发布的社区报告和文献综述一起，该文摘代表了PrimeDAO x BlockScience合作的第一个工作周期的产出，并为后续工作周期的进一步研究铺平了道路，等待我们的下一个提案的批准。</strong></p>
+<p>作者 | BlockScience</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/20288/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">印度：政府对该国的比特币和加密货币保持开放态度</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/20311/">
+                <span class="next-text nav-default">又一算法稳定币项目“暴雷”，FEI的崩盘为算法稳定币带来哪些思考？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

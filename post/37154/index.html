@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          价格预言机的使用总结（二）：UniswapV2篇 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本篇先来聊聊如何使用 UniswapV2 作为价格预言机。" />
+<meta name="keywords" content="预言机" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/37154/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="价格预言机的使用总结（二）：UniswapV2篇" />
+<meta property="og:description" content="本篇先来聊聊如何使用 UniswapV2 作为价格预言机。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/37154/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-26T00:00:00+00:00" />
+
+<meta itemprop="name" content="价格预言机的使用总结（二）：UniswapV2篇">
+<meta itemprop="description" content="本篇先来聊聊如何使用 UniswapV2 作为价格预言机。"><meta itemprop="datePublished" content="2022-04-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4245">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="价格预言机的使用总结（二）：UniswapV2篇"/>
+<meta name="twitter:description" content="本篇先来聊聊如何使用 UniswapV2 作为价格预言机。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">价格预言机的使用总结（二）：UniswapV2篇</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-04-26">
+      2022-04-26
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4245 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="前言">前言</h2>
+<p>该系列的前一篇文章介绍了 <strong>Chainlink</strong>  价格预言机的使用，其目前也被大部分 DeFi 应用所使用，但依然存在局限性。首先是所支持的 Token 的覆盖率还不全，尤其是长尾资产，大多还未支持，比如 <strong>SHIB</strong> ，目前只在 BSC 主网有 <strong>SHIB/USD</strong>  的 <strong>Price Feed</strong> ，而其它网络的都还没有，连 <strong>Ethereum</strong>  的都还没支持。其次，有些资产的偏差阈值较大，价格更新也比较慢，可能长达十几二十个小时才会更新价格，比如 <strong>BNT</strong> 。</p>
+<p>这时候就需要考虑其它价格预言机了，而 UniswapV2 和 UniswapV3 都是不错的选择。</p>
+<p>本篇先来聊聊如何使用 UniswapV2 作为价格预言机。</p>
+<h2 id="uniswapv2-价格预言机">UniswapV2 价格预言机</h2>
+<p>UniswapV2 使用的价格预言机称为 <strong>TWAP（Time-Weighted Average Price）</strong> ，即<strong>时间加权平均价格</strong> 。不同于链下聚合的 Chainlink 取自多个不同交易所的数据作为数据源，TWAP 的数据源来自于 Uniswap 自身的交易数据，价格的计算也都是在链上执行的，因此，TWAP 属于链上预言机。</p>
+<p>TWAP 的原理比较简单，首先，在 <strong>UniswapV2Pair</strong>  合约中，会存储两个变量 <strong>price0CumulativeLast</strong>  和 <strong>price1CumulativeLast</strong> ，在 <strong>_update()</strong>  函数中会更新这两个变量，其相关代码如下：</p>
+<p>contract UniswapV2Pair {
+  &hellip;
+  uint32 private blockTimestampLast;
+  uint public price0CumulativeLast;
+  uint public price1CumulativeLast;
+  &hellip;
+  // update reserves and, on the first call per block, price accumulators
+  function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reserve1) private {
+    &hellip;
+    uint32 blockTimestamp = uint32(block.timestamp % 2**32);
+    uint32 timeElapsed = blockTimestamp - blockTimestampLast;
+    if (timeElapsed &amp;ampgt; 0 &amp;ampamp;&amp;ampamp; _reserve0 != 0 &amp;ampamp;&amp;ampamp; _reserve1 != 0) {
+      // * never overflows, and + overflow is desired
+      price0CumulativeLast += uint(UQ112x112.encode(_reserve1).uqdiv(_reserve0)) * timeElapsed;
+      price1CumulativeLast += uint(UQ112x112.encode(_reserve0).uqdiv(_reserve1)) * timeElapsed;
+    }
+    blockTimestampLast = blockTimestamp;
+    &hellip;
+  }
+}</p>
+<p>price0CumulativeLast 和 price1CumulativeLast 分别记录了 token0 和 token1 的累计价格。所谓累计价格，其代表的是<strong>整个合约历史中每一秒的 Uniswap 价格总和</strong> 。且只会在每个区块第一笔交易时执行累加计算，累加的值不是当前区块的第一笔交易的价格，而是在这之前的最后一笔交易的价格，所以至少也是上个区块的价格。取自之前区块的价格，可以大大提高操控价格的成本，所以自然也提高了安全性。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0426/21_noscm6y8rb.png" alt="价格预言机的使用总结（二）：UniswapV2篇"></p>
+<p>如上图所示，合约的第一个区块为 Block 122，这时候，价格和时间差都为 0，所以累计价格也为  0。到了下一个区块 Block 123，这时候取自上个区块的最后一口价格 10.2，且经过的时间差为 7，因此就可以计算出累计价格 priceCumulative = 10.2 * 7 = 71.4。再到下个区块 Block 124，取自上一口价格 10.3，两个区块间的时间差为 8，那此时的累计价格就变成了 71.4 + (10.3 * 8) = 153.8。Block 125 的时候也同理，上口价格为 10.5，区块时间差为 5，所以最新的累计价格就变成了 153.8 + (10.5 * 5) = 206.3。</p>
+<p>有了这个基础之后，就可以计算 TWAP 了。</p>
+<h2 id="固定时间窗口-twap">固定时间窗口 TWAP</h2>
+<p><img src="https://img.bibiqing.com/news/2022/0426/21_9rrsbg2iii.png" alt="价格预言机的使用总结（二）：UniswapV2篇"></p>
+<p>计算 TWAP 的原理也是非常简单，如上图所示，这是计算时间间隔为 1 小时的 TWAP，取自开始和结束时的累计价格和两区块当时的时间戳，两者的累计价格相减，再除以两者之间的时间差，就算出这 1 小时内的 TWAP 价格了。</p>
+<p>这是 TWAP 最简单的计算方式，也称为固定时间窗口的 TWAP。下面来讲讲具体如何实现。</p>
+<p>Uniswap 官方也有提供了一个示例代码来计算固定时间窗口的 TWAP，其代码放在 v2-periphery 项目中：</p>
+<ul>
+<li><a href="https://github.com/Uniswap/v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol">https://github.com/Uniswap/v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol</a></li>
+</ul>
+<p>该示例代码也比较简单，我们直接贴上代码看看：</p>
+<p>pragma solidity =0.6.6;
+import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol';
+import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
+import '@uniswap/lib/contracts/libraries/FixedPoint.sol';
+import '../libraries/UniswapV2OracleLibrary.sol';
+import '../libraries/UniswapV2Library.sol';
+// fixed window oracle that recomputes the average price for the entire period once every period
+// note that the price average is only guaranteed to be over at least 1 period, but may be over a longer period
+contract ExampleOracleSimple {
+    using FixedPoint for *;
+    uint public constant PERIOD = 24 hours;
+    IUniswapV2Pair immutable pair;
+    address public immutable token0;
+    address public immutable token1;
+    uint    public price0CumulativeLast;
+    uint    public price1CumulativeLast;
+    uint32  public blockTimestampLast;
+    FixedPoint.uq112x112 public price0Average;
+    FixedPoint.uq112x112 public price1Average;
+    constructor(address factory, address tokenA, address tokenB) public {
+        IUniswapV2Pair _pair = IUniswapV2Pair(UniswapV2Library.pairFor(factory, tokenA, tokenB));
+        pair = _pair;
+        token0 = _pair.token0();
+        token1 = _pair.token1();
+        price0CumulativeLast = _pair.price0CumulativeLast(); // fetch the current accumulated price value (1 / 0)
+        price1CumulativeLast = _pair.price1CumulativeLast(); // fetch the current accumulated price value (0 / 1)
+        uint112 reserve0;
+        uint112 reserve1;
+        (reserve0, reserve1, blockTimestampLast) = _pair.getReserves();
+        require(reserve0 != 0 &amp;ampamp;&amp;ampamp; reserve1 != 0, 'ExampleOracleSimple: NO_RESERVES'); // ensure that there's liquidity in the pair
+    }
+    function update() external {
+        (uint price0Cumulative, uint price1Cumulative, uint32 blockTimestamp) =
+            UniswapV2OracleLibrary.currentCumulativePrices(address(pair));
+        uint32 timeElapsed = blockTimestamp - blockTimestampLast; // overflow is desired
+        // ensure that at least one full period has passed since the last update
+        require(timeElapsed &amp;ampgt;= PERIOD, 'ExampleOracleSimple: PERIOD_NOT_ELAPSED');
+        // overflow is desired, casting never truncates
+        // cumulative price is in (uq112x112 price * seconds) units so we simply wrap it after division by time elapsed
+        price0Average = FixedPoint.uq112x112(uint224((price0Cumulative - price0CumulativeLast) / timeElapsed));
+        price1Average = FixedPoint.uq112x112(uint224((price1Cumulative - price1CumulativeLast) / timeElapsed));
+        price0CumulativeLast = price0Cumulative;
+        price1CumulativeLast = price1Cumulative;
+        blockTimestampLast = blockTimestamp;
+    }
+    // note this will always return 0 before update has been called successfully for the first time.
+    function consult(address token, uint amountIn) external view returns (uint amountOut) {
+        if (token == token0) {
+            amountOut = price0Average.mul(amountIn).decode144();
+        } else {
+            require(token == token1, 'ExampleOracleSimple: INVALID_TOKEN');
+            amountOut = price1Average.mul(amountIn).decode144();
+        }
+    }
+}</p>
+<p><strong>PERIOD</strong>  指定为了 24 小时，说明这个示例计算 TWAP 的固定时间窗口为 24 小时，即每隔 24 小时才更新一次价格。</p>
+<p>该示例也只保存一个交易对的价格，即 <strong>token0-token1</strong>  的价格。<strong>price0Average</strong>  和 <strong>price1Average</strong>  分别就是 token0 和 token1 的 TWAP 价格。比如，token0 为 WETH，token1 为 USDC，那 price0Average 就是 WETH 对 USDC 的价格，而 price1Average 则是 USDC 对 WETH 的价格。</p>
+<p><strong>update()</strong>  函数就是更新 TWAP 价格的函数，这一般需要链下程序的定时任务来触发，按照这个示例的话，就是链下的定时任务需要每隔 24 小时就定时触发调用 update() 函数。</p>
+<p><strong>update()</strong>  函数的实现逻辑也和上面所述的公式一致：</p>
+<ol>
+<li>
+<p>读取出当前最新的累计价格和当前的时间戳；</p>
+</li>
+<li>
+<p>计算出当前时间和上一次更新价格时的时间差 timeElapsed，要求该时间差需要达 24 小时；</p>
+</li>
+<li>
+<p>根据公式 TWAP = (priceCumulative - priceCumulativeLast) / timeElapsed 计算得到最新的 TWAP，即 <strong>priceAverage</strong> ；</p>
+</li>
+<li>
+<p>更新 priceCumulativeLast 和 blockTimestampLast 为当前最新的累计价格和时间戳。</p>
+</li>
+</ol>
+<p>不过，有一点需要注意，因为 <strong>priceCumulative</strong>  本身计算存储时是做了<strong>左移 112 位</strong> 的操作的，所以计算所得的 <strong>priceAverage</strong>  也是左移了 112 位的。</p>
+<p><strong>consult()</strong>  函数则可查询出用 TWAP 价格计算可兑换的数量。比如，token0 为 WETH，token1 为 USDC，假设 WETH 的价格为 3000 USDC，查询 consult() 时，若传入的参数 token 为 token0 的地址，amountIn 为 2，那输出的 amountOut 则为 3000 * 2 = 6000，可理解为若支付 2 WETH，就可根据价格换算成 6000 USDC。</p>
+<h2 id="滑动时间窗口-twap">滑动时间窗口 TWAP</h2>
+<p>固定时间窗口 TWAP 的原理和实现，比较简单，但其最大的不足就是价格变化不够平滑，时间窗口越长，价格变化就可能会越陡峭。因此，在实际应用中，更多其实是用滑动时间窗口的 TWAP。</p>
+<p>所谓滑动时间窗口 TWAP，就是说，计算 TWAP 的时间窗口并非固定的，而是滑动的。这种算法的主要原理就是将时间窗口划分为多个<strong>时间片段</strong> ，每过一个<strong>时间片段</strong> ，时间窗口就会往右滑动一格，如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0426/21_20yks0nalm.png" alt="价格预言机的使用总结（二）：UniswapV2篇"></p>
+<p>上图所示的时间窗口为 1 小时，划分为了 6 个时间片段，每个时间片段则为 10 分钟。那每过 10 分钟，整个时间窗口就会往右滑动一格。而计算 TWAP 时的公式则没有变，依然还是取自时间窗口的起点和终点。如果时间窗口为 24 小时，按照固定时间窗口算法，每隔 24 小时 TWAP 价格才会更新，但使用滑动时间窗口算法后，假设时间片段为 1 小时，则 TWAP 价格是每隔 1 小时就会更新。</p>
+<p>Uniswap 官方也同样提供了这种滑动时间窗口 TWAP 实现的示例代码，其 Github 地址为：</p>
+<ul>
+<li><a href="https://github.com/Uniswap/v2-periphery/blob/master/contracts/examples/ExampleSlidingWindowOracle.sol">https://github.com/Uniswap/v2-periphery/blob/master/contracts/examples/ExampleSlidingWindowOracle.sol</a></li>
+</ul>
+<p>我们也贴上代码看看：</p>
+<p>pragma solidity =0.6.6;
+import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol';
+import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
+import '@uniswap/lib/contracts/libraries/FixedPoint.sol';
+import '../libraries/SafeMath.sol';
+import '../libraries/UniswapV2Library.sol';
+import '../libraries/UniswapV2OracleLibrary.sol';
+// sliding window oracle that uses observations collected over a window to provide moving price averages in the past
+// `windowSize` with a precision of `windowSize / granularity`
+// note this is a singleton oracle and only needs to be deployed once per desired parameters, which
+// differs from the simple oracle which must be deployed once per pair.
+contract ExampleSlidingWindowOracle {
+    using FixedPoint for *;
+    using SafeMath for uint;
+    struct Observation {
+        uint timestamp;
+        uint price0Cumulative;
+        uint price1Cumulative;
+    }
+    address public immutable factory;
+    // the desired amount of time over which the moving average should be computed, e.g. 24 hours
+    uint public immutable windowSize;
+    // the number of observations stored for each pair, i.e. how many price observations are stored for the window.
+    // as granularity increases from 1, more frequent updates are needed, but moving averages become more precise.
+    // averages are computed over intervals with sizes in the range:
+    //   [windowSize - (windowSize / granularity) * 2, windowSize]
+    // e.g. if the window size is 24 hours, and the granularity is 24, the oracle will return the average price for
+    //   the period:
+    //   [now - [22 hours, 24 hours], now]
+    uint8 public immutable granularity;
+    // this is redundant with granularity and windowSize, but stored for gas savings &amp;ampamp; informational purposes.
+    uint public immutable periodSize;
+    // mapping from pair address to a list of price observations of that pair
+    mapping(address =&amp;ampgt; Observation[]) public pairObservations;
+    constructor(address factory_, uint windowSize_, uint8 granularity_) public {
+        require(granularity_ &amp;ampgt; 1, 'SlidingWindowOracle: GRANULARITY');
+        require(
+            (periodSize = windowSize_ / granularity_) * granularity_ == windowSize_,
+            'SlidingWindowOracle: WINDOW_NOT_EVENLY_DIVISIBLE'
+        );
+        factory = factory_;
+        windowSize = windowSize_;
+        granularity = granularity_;
+    }
+    // returns the index of the observation corresponding to the given timestamp
+    function observationIndexOf(uint timestamp) public view returns (uint8 index) {
+        uint epochPeriod = timestamp / periodSize;
+        return uint8(epochPeriod % granularity);
+    }
+    // returns the observation from the oldest epoch (at the beginning of the window) relative to the current time
+    function getFirstObservationInWindow(address pair) private view returns (Observation storage firstObservation) {
+        uint8 observationIndex = observationIndexOf(block.timestamp);
+        // no overflow issue. if observationIndex + 1 overflows, result is still zero.
+        uint8 firstObservationIndex = (observationIndex + 1) % granularity;
+        firstObservation = pairObservations[pair][firstObservationIndex];
+    }
+    // update the cumulative price for the observation at the current timestamp. each observation is updated at most
+    // once per epoch period.
+    function update(address tokenA, address tokenB) external {
+        address pair = UniswapV2Library.pairFor(factory, tokenA, tokenB);
+        // populate the array with empty observations (first call only)
+        for (uint i = pairObservations[pair].length; i &amp;amplt; granularity; i++) {
+            pairObservations[pair].push();
+        }
+        // get the observation for the current period
+        uint8 observationIndex = observationIndexOf(block.timestamp);
+        Observation storage observation = pairObservations[pair][observationIndex];
+        // we only want to commit updates once per period (i.e. windowSize / granularity)
+        uint timeElapsed = block.timestamp - observation.timestamp;
+        if (timeElapsed &amp;ampgt; periodSize) {
+            (uint price0Cumulative, uint price1Cumulative,) = UniswapV2OracleLibrary.currentCumulativePrices(pair);
+            observation.timestamp = block.timestamp;
+            observation.price0Cumulative = price0Cumulative;
+            observation.price1Cumulative = price1Cumulative;
+        }
+    }
+    // given the cumulative prices of the start and end of a period, and the length of the period, compute the average
+    // price in terms of how much amount out is received for the amount in
+    function computeAmountOut(
+        uint priceCumulativeStart, uint priceCumulativeEnd,
+        uint timeElapsed, uint amountIn
+    ) private pure returns (uint amountOut) {
+        // overflow is desired.
+        FixedPoint.uq112x112 memory priceAverage = FixedPoint.uq112x112(
+            uint224((priceCumulativeEnd - priceCumulativeStart) / timeElapsed)
+        );
+        amountOut = priceAverage.mul(amountIn).decode144();
+    }
+    // returns the amount out corresponding to the amount in for a given token using the moving average over the time
+    // range [now - [windowSize, windowSize - periodSize * 2], now]
+    // update must have been called for the bucket corresponding to timestamp `now - windowSize`
+    function consult(address tokenIn, uint amountIn, address tokenOut) external view returns (uint amountOut) {
+        address pair = UniswapV2Library.pairFor(factory, tokenIn, tokenOut);
+        Observation storage firstObservation = getFirstObservationInWindow(pair);
+        uint timeElapsed = block.timestamp - firstObservation.timestamp;
+        require(timeElapsed &amp;amplt;= windowSize, 'SlidingWindowOracle: MISSING_HISTORICAL_OBSERVATION');
+        // should never happen.
+        require(timeElapsed &amp;ampgt;= windowSize - periodSize * 2, 'SlidingWindowOracle: UNEXPECTED_TIME_ELAPSED');
+        (uint price0Cumulative, uint price1Cumulative,) = UniswapV2OracleLibrary.currentCumulativePrices(pair);
+        (address token0,) = UniswapV2Library.sortTokens(tokenIn, tokenOut);
+        if (token0 == tokenIn) {
+            return computeAmountOut(firstObservation.price0Cumulative, price0Cumulative, timeElapsed, amountIn);
+        } else {
+            return computeAmountOut(firstObservation.price1Cumulative, price1Cumulative, timeElapsed, amountIn);
+        }
+    }
+}</p>
+<p>要实现滑动时间窗口算法，就需要将时间分段，还需要保存每个时间段的 <strong>priceCumulative</strong> 。在这实现的示例代码中，定义了结构体 <strong>Observation</strong> ，用来保存每个时间片段的数据，包括两个 token 的 <strong>priceCumulative</strong>  和记录的时间点 <strong>timestamp</strong> 。还定义了 <strong>pairObservations</strong>  用来存储每个 pair 的 <strong>Observation</strong>  数组，而数组实际的长度取决于将整个时间窗口划分为多少个时间片段。</p>
+<p><strong>windowSize</strong>  表示时间窗口大小，比如 24 小时，<strong>granularity</strong>  是划分的时间片段数量，比如 24 段，<strong>periodSize</strong>  则是每时间片段的大小，比如 1 小时，是由 windowSize / granularity 计算所得。这几个值都在构造函数中进行了初始化。</p>
+<p>触发 <strong>update()</strong>  函数则更新存储最新时间片段的 observation，如时间片段大小为 1 小时，即每隔 1 小时就要触发 update() 函数一次。因为这个示例中是支持多个 pair 的，所以 update() 时需要指定所要更新的两个 token。</p>
+<p>而查询当前 TWAP 价格的计算就在 <strong>consult()</strong>  函数里实现了。首先，先获取到当前时间窗口里的第一个时间片段的 observation，也算出当前时间与第一个 observation 时间的时间差，且读取出当前最新的 priceCumulative，之后就在 computeAmountOut() 函数里计算得到最新的 TWAP 价格 priceAverage，且根据 amountIn 算出了 amountOut 并返回。</p>
+<h2 id="总结">总结</h2>
+<p>本文我们主要介绍了被广泛使用的一种链上预言机 <strong>TWAP（时间加权平均价格）</strong> ，且介绍了<strong>固定时间窗口</strong> 和<strong>滑点时间窗口</strong> 两种算法的 TWAP。虽然，TWAP 是由 Uniswap 推出的，但因为很多其他 DEX 也采用了和 Uniswap 一样的底层实现，如 SushiSwap、PancakeSwap 等，所以这些 DEX 也可以用同样的算法计算出对应的 TWAP。</p>
+<p>但使用 UniswapV2 的 TWAP，其主要缺陷就是需要链下程序定时触发 update() 函数，存在维护成本。<strong>UniswapV3</strong>  的 TWAP 则解决了这个问题，下一篇会来聊聊其具体是如何实现的。</p>
+<p>文章首发于「Keegan小钢」公众号：</p>
+<p><a href="https://mp.weixin.qq.com/s">https://mp.weixin.qq.com/s</a>?__biz=MzA5OTI1NDE0Mw==&amp;mid=2652494441&amp;idx=1&amp;sn=57a97690390b93770c5a906dce4157c8&amp;chksm=8b685079bc1fd96f9ab60cc1b41b8642abf807a13a37c12f05a280be2e03f3a9288a047b5739&amp;token=1584634265&amp;lang=zh_CN#rd</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/37199/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">灰度投资准备将其加密产品扩展至欧洲</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/37157/">
+                <span class="next-text nav-default">金色观察｜推特接受马斯克收购：或将算法开源 接受狗狗币支付</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#uniswapv2-价格预言机">UniswapV2 价格预言机</a></li>
+    <li><a href="#固定时间窗口-twap">固定时间窗口 TWAP</a></li>
+    <li><a href="#滑动时间窗口-twap">滑动时间窗口 TWAP</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

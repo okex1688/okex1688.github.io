@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          EVM等效性：开启以太坊增长的新范式 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="EVM 等效性：与 EVM (以太坊虚拟机) 规范完全一致。" />
+<meta name="keywords" content="EVM" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/37357/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="EVM等效性：开启以太坊增长的新范式" />
+<meta property="og:description" content="EVM 等效性：与 EVM (以太坊虚拟机) 规范完全一致。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/37357/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-30T00:00:00+00:00" />
+
+<meta itemprop="name" content="EVM等效性：开启以太坊增长的新范式">
+<meta itemprop="description" content="EVM 等效性：与 EVM (以太坊虚拟机) 规范完全一致。"><meta itemprop="datePublished" content="2022-04-30T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-30T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5769">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="EVM等效性：开启以太坊增长的新范式"/>
+<meta name="twitter:description" content="EVM 等效性：与 EVM (以太坊虚拟机) 规范完全一致。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">EVM等效性：开启以太坊增长的新范式</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-04-30">
+      2022-04-30
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5769 字 -
+        预计阅读 12 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原文标题：《EVM Equivalence》</p>
+<p>EVM 等效性：与 EVM (以太坊虚拟机) 规范完全一致。 </p>
+<p>EVM 等效性的设计理念是创建与以太坊有着「<strong>最小差异</strong> 」的 Optimistic Rollup。 </p>
+<p>EVM 等效性将以太坊的属性扩展到了 L2s 网络。它模糊了以太坊 L1 和 L2 Rollups 开始之间的界限。</p>
+<p> 这就是在「在以太坊上扩展」和「扩展以太坊本身」之间的区别。</p>
+<p> 完美克隆以太坊 EVM 的 Optimistic Rollups <strong>不仅共享以太坊的安全性，而且还共享以太坊网络效应的方方面面。</strong></p>
+<p> 其他 L2 设计结构不具有获取以太坊所有网络效应的同等特权，并且总是比具备 EVM 等效性的 L2 网络更加专门化。 </p>
+<p><img src="https://img.bibiqing.com/news/2022/0430/29_1sh8cqjdld.png" alt="图片"></p>
+<p>EVM 兼容性已死。EVM 兼容性要么通过坚持以太坊标准来优化通用性 (因此选择与其他所有人相同的标准)，要么构建完全不同的、为特定用例高度优化的东西 (比如 ZK-Rollups)。 </p>
+<p>想要将以太坊的全部力量完全延伸到 L2s 网络，我们需要的不仅仅是 EVM 兼容性。 </p>
+<p>我们需要 EVM 等效性。</p>
+<h3 id="1-兼容性-vs-等效性">1. 兼容性 vs 等效性 </h3>
+<p>当 Optimism 团队去年引入 EVM 等效性时，他们讨论了等效性和兼容性之间的技术差异。</p>
+<p>Rollups 被誉为我们的扩容救世主：「终于有一个可以运行 Uniswap 的 L2 网络了！」 </p>
+<p>最早的一些 Rollups 网络是通过完全重新创建 Uniswap 来实现的，也即在一个定制的 Rollup 之上使用定制的代码。 </p>
+<p>这还不够好。</p>
+<p>EVM 的网络效应远远超出了 Solidity。大量支持工具赋予了以太坊开发人员超能力。因为这些工具也运行在 EVM 标准上，所以它们不适合于定制的 Rollup。更不用说协议开发人员需要付出巨大的努力来创建一些与 Solidity 兼容的东西！ </p>
+<p>借助 EVM 等效性，EVM 本身就能够被复制粘贴到 L2 中。引擎盖下的一切都是一样的。</p>
+<h3 id="2-emv-是一座城市">2. EMV 是一座城市 </h3>
+<p>David Mihal 给了我这样一个比喻： </p>
+<p>「开源代码就像一座城市。它是由许多发现问题并构建解决方案的开发人员自发地自下而上创建的。随着时间的推移，城市变得优化、强健和高效……EVM 链就像拉斯维加斯版的巴黎；它们试图人为地复制有机的东西。」 </p>
+<p>开源软件是一种公共产品，由各自的社区维护和升级。</p>
+<p>使用开源软件的开发者在使用时会遇到各种各样的问题；有些问题微不足道，有些很关键，还有一些问题介于两者之间。有些开发者会花时间解决这些问题，然后游说社区接受他们的意见。如果社区看到了价值，那么该贡献就会被合并。新的标准被创建，软件的实用性和鲁棒性得到了提高。 </p>
+<p>就像一个新兴的城市，构建者们来到这里，生产出周围社区需要和重视的东西。共享的资源和实用程序被生产出来，并且由于它是代码，它永远不会衰减。这是一条增值的单行道；<strong>只要每个人都在同一个基础上工作</strong> 。 </p>
+<p>每个开发者都按照自己的方向进行构建，并发现自己的特定贡献可以添加到集体中。随着时间的推移，一个高度稳健的公共产品是由数千名开发者的共同贡献而产生的。 </p>
+<h4 id="geth">Geth </h4>
+<p>这正是 Geth 的故事。 Geth 在过去几年里慢慢吸收了以太坊开发者们有意义的贡献，并生产出了一款拥有以太坊内部和外部最强大网络的软件。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0430/29_0rb58ao3f9.png" alt="图片"></p>
+<p>这就是为什么 Geth 已经成为了加密行业中很大一部分的基础参考点。分叉 Geth 并创建出非以太坊的区块链仍然是在为以太坊所在的基础做出贡献。 </p>
+<p>如果 Geth 分叉偏离了这个参考版本，则相当于在偏离 Web3 中最大的网络效应。一次性复制越往不同方向移动，就需要越多的人力和资源来跟上核心网络的发展。 </p>
+<h3 id="3-evm-主车群">3. EVM 主车群 </h3>
+<p>在自行车赛事中，「自行车主车群」(Peloton) 是指由公路自行车手组成的一个团队。一个自行车主车群里的车手会通过紧跟在其他车手后面以节省能量。这种阻力的减少是显著的；骑在运作良好的主车群中间，阻力可以减少到 5%-10%。利用这种潜在的能量节省将带来车手和车队之间在比赛战术上形成非常复杂的协作和竞争性互动。 </p>
+<p><strong>如果你想走得快；那么你就一个人走。如果你想走得远，那么就一起走。</strong>  </p>
+<p>主车群的队伍越大，效率和速度就越快。空气阻力分布在更广泛的群体中；随着主车群规模的扩大，团队的效率也会提高。骑在一个主车群的中间基本上是毫不费力的，因为你可以紧跟在整个队伍的后面。由于主车群的领头人要承受顶风阻力的全部力量，必须花费额外的能量来设定自行车队的速度，所以车队的领头人经常会骑出去。 </p>
+<p>但是当领头人累了，节奏慢下来时，之前一直在车队后面的很多新的「贡献者」就会来取代其位置。 </p>
+<p><img src="https://img.bibiqing.com/news/2022/0430/29_7lo5likkqt.png" alt="图片"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0430/29_mfkz07prff.png" alt="图片"></p>
+<p>雨林中的毛毛虫成群移动的速度要快于个体</p>
+<p>开源社区的发展速度总是会超过中心化团队。这个行业发展如此迅速的原因在于它是一个协作性飞轮。我们建立在彼此的成功之上，当我们中的一个人前进到前线时，他会把我们一起带入前线——有点像这些毛毛虫。</p>
+<p>EVM 等效性是自下而上的、类似于新兴城市的公共产品。另一方面，EVM 兼容性只是它的一次性副本。 </p>
+<p>有无数种不同的方法可以偏离 EVM，但只有一种方法可以遵循 EVM。 </p>
+<h3 id="4-复制应用层">4. 复制应用层 </h3>
+<p>创建一个具有 EMV 等效性的 L2 生态系统对于维持可组合性和互操作性的网络效应至关重要！ </p>
+<p>具有 EVM 等效性的 Rollup 网络允许即时跨链复制粘贴代码库。在单个具有 EVM 等效性的 Rollup 网络中的开发和创新，能够无缝地转移到任何其他具有 EVM 兼容性的 Optimistic Rollups 以及以太坊本身之中。由于所有一切都是基于 EVM 标准来开发的，以太坊 L1 的网络效用能够延申到 L2s 网络中，并且 L2 上的创新也会反射回整个生态系统中。 </p>
+<p>当某一行代码被部署到一个 Optimistic Rollup 上时，该行代码的意义更大。如果你是一名开源开发者，你希望你的代码被广泛使用，你自然会想要使用一个具有 EVM 兼容性的 Optimistic Rollup，因为你的代码将可以立即兼容于所有其他具有 EVM 等效性的 Optimistic Rollups。 </p>
+<p>如果你只编写一次代码，但是该代码可以在 1000 条兼容链上无缝地运行，那么你生成的代码的价值就非常大了。</p>
+<p>EVM 等效性将 EVM 网络效应提升到一个全新的水平。 </p>
+<p>不具有 EVM 等效性的 Optimistic Rollups 将不能从这种共享的网络效用中受益。不具有 EVM 兼容性的 Optimistic Rollups 缺少了「最小差异」的设计哲学，打破了以太坊网络和有着 EVM 等效性的 Optimistic Rollups 与这些不具有 EVM 等效性的 L2s 网络之间的关系。 </p>
+<p>以太坊网络效应的巨大浪潮将随着每个具有 EVM 等效性的 Optimistic Rollup 的新增而变得更大。如果你不在这个浪潮中冲浪，那么你将不得不拼命游泳才能赶上。 </p>
+<h3 id="5-复制协议层">5. 复制协议层 </h3>
+<p>这些 EVM 网络效应不仅适用于以太坊应用层。它也适用于协议层本身；这才是真正有趣的地方。 </p>
+<p>由于具备 EVM 等效性的 Optimistic Rollups 与以太坊有着「最低限度的差异」，它们为以太坊提供了一个在实际生产环境中测试的新 EIPs 的平台。 </p>
+<p>当前，EIPs (以太坊改进提案) 使用以太坊测试网进行测试。EIPs 会在测试网上进行多次测试，以确保在最终集成到以太坊 L1 时不会出现任何故障。 </p>
+<p>这样做总是有风险的，因为测试网与以太坊之间没有「最低限度的差异」。在 Goerli 或 Koven 测试网中实现 EIP 与在以太坊中实现 EIP 是不同的；不同之处在于以太坊之上的经济活动的规模、重要性和性质，这些都是测试网络无法赶上的。在将某个 EIP 实现到以太坊 L1 上时，总会有一些「未知」。 </p>
+<p>EVM 等效性提供了一个解决方案。 </p>
+<p>当某个 EIP 在一个具有 EVM 等效性的 Optimistic Rollup 上成功实现时，这基本上就给以太坊 L1 链提供了一个强有力的保证，即同一个 EIP 也可以成功地集成到以太坊 L1 上，而不会出现错误。<strong>具有 EVM 等效性的 Optimistic Rollup 提供了一个真实的生产环境，其中存在着对 EIPs 进行测试的真实经济活动和真实资本风险。</strong> EIPs 可以在 Optimistic Rollup 层进行测试，而不会有损坏或影响整个系统的风险。 </p>
+<p>当 L2s 网络普遍采用同一个 EIP 时，这就向以太坊 L1 发出了一个信号，即该 EIP 受到了社区喜爱，并且可以安全地集成到以太坊 L1 中。 </p>
+<p>具有 EVM 等效性的 Optimistic Rollups 使以太坊能够感知到其 L2s 网络上参与者的意愿，使每个 L2 网络成为成为满足以太坊用户需求的天线。传统金融 (TradFi) 和 Web2 的支配 &amp; 控制治理转变成了 Web3 的感知 &amp; 响应范式。 </p>
+<p>由于每个 Optimistic Rollup 都有其自身的主权经济，它将根据用户的需要和愿望，独立地、异步地实现各种 EIPs，与以太坊生态系统的其他部分无关。 </p>
+<p>随着时间的推移，随着越来越多独立的 Optimistic Rollups 看到同一个 EIP 的价值，那些最好的 EIPs 将会主导 L2 Optimistic Rollups 的格局。<strong>当某个 EIP 开始在 Optimistic Rollups 的整个领域占据主导地位时，该 EIP 将向以太坊 L1 发出信号，表明它是一个好的 EIP，并且在 L1 协议层实现它是安全的。</strong> 如下图所示： </p>
+<blockquote>
+<p><img src="https://img.bibiqing.com/news/2022/0430/29_h6mj1gv8s5.png" alt="图片"></p>
+</blockquote>
+<h3 id="6-evm-等效性总结">6. EVM 等效性，总结 </h3>
+<p>EVM 等效性的意义：以太坊摆脱了其 L1 枷锁的束缚。以太坊得以向外延申到 L2s 网络中。以太坊 L1 与具有 EVM 等效性的 L2s 网络之间的分界线变得非常模糊。 </p>
+<h3 id="7空白恐惧">7.「空白恐惧」 </h3>
+<p>「自然界里是没有真空的。」- Aristotle </p>
+<p>大自然真的很擅长填补空白。一个生物越适应进化，它所占据的空间就越大。动物在环境允许的最大程度上进食和繁殖。所有的植物都是分形的体现，因为分形是使表面积最大化的算法。增加的植物表面积增加了它从叶子上吸收阳光和从根部吸收营养的能力。</p>
+<blockquote>
+<p>(编者注：分形 (fractals) 具有以非整数维形式充填空间的形态特征。) </p>
+</blockquote>
+<p><img src="https://img.bibiqing.com/news/2022/0430/29_sv0bo48mvu.png" alt="图片"></p>
+<p>亚马逊雨林是世界上生物多样性最丰富的地区之一，只有不到 2% 的光到达地面，因为树木非常有效地捕捉阳光。 </p>
+<h4 id="最后一英里问题">最后一英里问题 </h4>
+<p>最后一英里是一段旅程的最后一段，整段旅程包含了人员和货物从运输中心到最终目的地的移动。「最后一英里」(The last mile) 描述的是将人员和包裹从中心运输到最终目的地的最后一段艰难的路程。「最后一英里交付」的一些挑战包括降低成本、确保透明度、提高效率和改善基础设施。 </p>
+<p>大自然真的很擅长解决最后一英里的问题。这是「适者生存」的自然结果；能够最好地复制和繁殖的生物将会填补其生存环境的空白。 </p>
+<p>即使在一个有机体内，分形 (fractals) 也是增加有机体规模和效率的基本模式。肺负责捕获氧气并将其分配到血液中；循环系统负责将氧气和其他营养物质输送到生物体的最末端。 </p>
+<p><img src="https://img.bibiqing.com/news/2022/0430/29_dhtaes2mj0.png" alt="图片"></p>
+<p>分形 (Fractals) 是一种结构，其中每个子结构都具有与整体结构相同的性质。分形可以被认为是永无止境的模式，可复制性和可繁殖性构成了分形。 </p>
+<p>只有可复制和可繁殖的结构才能有效地填补自然界中的空白。Crypto 领域是一个巨大的空间；还有很多东西要构建。但如果想要用新的结构填补所有这些空白，我们需要能够复制和繁殖的系统。 </p>
+<p>EVM 等效性创造了产生这些特性所需的基础。 </p>
+<p>借助 EVM 等效性 Rollup 生态系统，以太坊可以以极快的速度进行复制和繁殖，聚焦于用户的需求，并更新代码以反映这些需求。 </p>
+<p>每个 L2 网络都可以朝着自己独特的方向前进，专攻任何它想专攻的领域。拥有许多用户和大量价值的成功 L2s 网络会向其他 L2s 发出信号，表明它们发现了一些有价值的东西。我们都知道 Crypto 行业真的很好，一旦某些东西被证明是有用的，就会被复制。 </p>
+<p>比如，2013 至 2015 年 PoW 型公平启动，2020 年 DeFi 之夏期间的收益耕作被抄袭，2021 年 L1 Geth 的分叉，等等。 </p>
+<p>一旦某个 L2 发现了新的价值来源，这个价值来源就可以在整个生态系统中复制和共享，并最终被引入到生态系统的中心。 </p>
+<p><img src="https://img.bibiqing.com/news/2022/0430/29_aeh3ryakb0.png" alt="图片"></p>
+<p>大卫·爱丁堡的声音：这个 app 开发者发现了食物！看，EVM 等效性将之带入 L1 进行共享。这位年轻的开发者肯定会获得无限的资助和 Twitter 粉丝。 </p>
+<h3 id="8-eips-是新的基因">8. EIPs 是新的基因</h3>
+<p>理查德·道金斯 (Richard Dawkins) 的《自私的基因》一书讨论了有机体的每个基因是如何成为最小的生命单位的，它在自身的保护和复制中固有的利己主义提供了所有生命赖以生存的基本模式。 </p>
+<p>好的基因将存活。不好的基因将死去。 </p>
+<p>随着生物体进化和适应，使生物体健康的基因随着时间的推移通过复制和繁殖在整个物种中繁殖。在个体有机体中有益的随机突变帮助它比其他生物更好地生存和发展，因此，这个基因从只存在于一个实例中到存在于所有可能的实例中，因为它是一个好基因。 </p>
+<p>在模块化以太坊的世界里，EIPs 是新的基因。 </p>
+<p>好的 EIPs 将有效传播。不好的 EIPs 将消逝。 </p>
+<p>以太坊是一个响应性自适应系统，具有 EVM 等效性的 Optimistic Rollups 允许新的基因 (EIP) 首先被实现，然后在这个新 EIP 证明其生存能力后，该 EIP 向外传播到其余的 Optimistic Rollups 中。如果该 EIP 足够好，它将一路回到以太坊跳动的心脏：L1。 </p>
+<p>以太坊成为能够响应和适应其环境的有机体，即使其环境随着时间而变化。生物有机体从起源起就有固定的基因，以太坊有能力根据需要来创造和整合新基因，以跟上世界不断变化的需求。 </p>
+<p>发现 EVM 等效性范式中的价值，能够将该价值转化为可以在整个以太坊生态系统中共享的公共产品，而不仅仅是针对某个特定的 L2 网络。 </p>
+<h3 id="9-追溯性公共产品为整个生态系统建设基础设施">9. 追溯性公共产品：为整个生态系统建设基础设施 </h3>
+<p>追溯性公共产品资助 (RPGF) 将使以太坊从一个响应其用户的系统变成一个可以采取主动行动的系统。 </p>
+<p>Optimism 正在开创一种资助公共产品的新模式，将硅谷式的资金激励注入到建设公共产品的项目中。 </p>
+<p>它具有作为科技初创公司的潜力，但作为产品的是公共产品。 </p>
+<p>来自 L2 区块空间费用的收入将直接流向为 Optimism L2 构建有用内容的创新者和创始人。RPGF 将资金投向未来，让公共产品的建设者有能力建设，并保证如果他们建造有用的公共产品，就会有资金等着他们。 </p>
+<p><img src="https://img.bibiqing.com/news/2022/0430/29_lpzqds7wlr.png" alt="图片"></p>
+<p> <strong>影响力 = 价值。</strong></p>
+<p> RPGF 和 EVM 等效性的结合意味着，当 Optimism L2 构建一些有用的东西时，它立即可以被具有 EVM 等效性的生态系统的所有其他部分使用。 </p>
+<p>在 Optimism 网络上的区块空间销售不仅会转变成 Optimism L2 的基础设施，而且会转变成所有 L2s 的基础设施，最终会转变成以太坊本身的基础设施。区块链生态系统以对基础设施和公共产品投资不足而闻名。 </p>
+<p><img src="https://img.bibiqing.com/news/2022/0430/29_sc3eopf7tz.png" alt="图片"></p>
+<p>图源: Vitalik </p>
+<p>RPGF 和 EVM 等效性的结合为我们提供了解决公地悲剧的第一个有希望的途径，不仅是为 Optimism，不仅是为 L2s，不仅是为以太坊，而是为整个星球： </p>
+<p>第一步：为 Optimism 上的公共产品提供资金；</p>
+<p>第二步：将这些公共产品 (免费!) 扩展到所有其他 L2s 网络。</p>
+<p>第三步：将这些公共产品集成到以太坊中；</p>
+<p>第四步：将这些公共产品的范围从以太坊扩展到世界。</p>
+<p>第五步：解决全球协调失败，开启星际迷航的未来。 </p>
+<p><img src="https://img.bibiqing.com/news/2022/0430/29_7n4jd2ksbe.png" alt="图片"></p>
+<p>原文作者：David Hoffman，Bankless 联合创始人</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/37344/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">BAYC系列NFT24小时交易额突破2000万美元</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/37358/">
+                <span class="next-text nav-default">Fei Protocol被攻击事件分析：“重入漏洞”如何破</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-兼容性-vs-等效性">1. 兼容性 vs 等效性 </a></li>
+        <li><a href="#2-emv-是一座城市">2. EMV 是一座城市 </a></li>
+        <li><a href="#3-evm-主车群">3. EVM 主车群 </a></li>
+        <li><a href="#4-复制应用层">4. 复制应用层 </a></li>
+        <li><a href="#5-复制协议层">5. 复制协议层 </a></li>
+        <li><a href="#6-evm-等效性总结">6. EVM 等效性，总结 </a></li>
+        <li><a href="#7空白恐惧">7.「空白恐惧」 </a></li>
+        <li><a href="#8-eips-是新的基因">8. EIPs 是新的基因</a></li>
+        <li><a href="#9-追溯性公共产品为整个生态系统建设基础设施">9. 追溯性公共产品：为整个生态系统建设基础设施 </a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

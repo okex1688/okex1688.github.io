@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          帝国理工学院DeFi研究论文：深入剖析收益聚合器 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="这些收益聚合器获得的收益到底从何而来呢？" />
+<meta name="keywords" content="DeFi, 聚合器" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/23705/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="帝国理工学院DeFi研究论文：深入剖析收益聚合器" />
+<meta property="og:description" content="这些收益聚合器获得的收益到底从何而来呢？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/23705/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-06T00:00:00+00:00" />
+
+<meta itemprop="name" content="帝国理工学院DeFi研究论文：深入剖析收益聚合器">
+<meta itemprop="description" content="这些收益聚合器获得的收益到底从何而来呢？"><meta itemprop="datePublished" content="2021-06-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4983">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="帝国理工学院DeFi研究论文：深入剖析收益聚合器"/>
+<meta name="twitter:description" content="这些收益聚合器获得的收益到底从何而来呢？"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">帝国理工学院DeFi研究论文：深入剖析收益聚合器</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-06">
+      2021-06-06
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4983 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>本文对论文“SoK：Yield Aggregators in DeFi”进行了总结，它是伦敦大学学院区块链数据中心（UCL CBT）和伦敦帝国理工学院的联合研究的成果。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0606/28_rspmts4zl5.png" alt="帝国理工学院DeFi研究论文：深入剖析收益聚合器"></p>
+<p>自2020年夏天去中心化金融（DeFi）爆发以来，Yield Farming一直是加密货币持有者非常受欢迎的活动。</p>
+<p>截至2021年5月，DeFi中的资产管理协议锁定了超过30亿美元，截至撰写本文时锁定金额达到了近20亿美元。</p>
+<p>尽管有很多（骗局）项目承诺用户在短时间内获得巨大收益，但诸如Idle Finance、Pickle Finance、Harvest Finance和Yearn Finance等收益聚合项目正试图为DeFi社区建立一个可持续的收益来源。这让我想知道：</p>
+<ul>
+<li>
+<p>收益到底从何而来？</p>
+</li>
+<li>
+<p>聚合器利用金钱搭起来的乐高所获得的收益有多少？</p>
+</li>
+<li>
+<p>所有这些聚合器（如果有的话）背后的一般机制是什么？</p>
+</li>
+<li>
+<p>把你的钱投入收益聚合器的好处和风险是什么？</p>
+</li>
+</ul>
+<p>我与伦敦大学学院区块链技术中心Jiahua Xu和伦敦帝国理工学院的Toshiko Matsui联合撰写了一篇关于DeFi中的收益聚合器（Yield Aggregators）的论文，这篇我论文回答了上面提出的所有问题。我们提出了一个广义的收益聚合器框架。现在让我们来深入研究DeFi中最赚钱的部分，即Yield Farming吧。</p>
+<h3 id="简介"><strong>简介</strong></h3>
+<p>正如你在我之前关于自动做市商（AMM）的文章中所读到的那样，自2020年夏天以来，DeFi实现了爆炸式增长。Yield Farming是DeFi中备受关注的应用之一。这个概念最初是由Synthetix引入的，但随着Compound的治理代币COMP的发布和分发，这个概念得到了人们更广泛的关注。</p>
+<p>从那时起，Compound的参与者们通过借贷活动获得新铸造的COMP代币作为奖励，这个过程后来被称为“流动性挖矿”。</p>
+<p>直到今天，这一过程仍在被其他项目复制着，它鼓励开发者去寻找一种方法去结合来自不同协议的奖励。Yield Farming就是在这样的背景下产生的。在这种背景下，构建在DeFi已有项目之上的聚合协议正试图为想要进行Yield Farming的人们提供一站式解决方案。</p>
+<h2 id="收益从何而来"><strong>收益从何而来？</strong></h2>
+<p>天下没有免费的午餐，那么这些收益聚合器获得的收益到底从何而来呢？它似乎有三个主要来源。</p>
+<h4 id="借贷需求"><strong>借贷需求</strong></h4>
+<p>随着加密资产贷款需求的增长，借贷利率会上升，从而导致贷款人获得更高的收益。特别是在牛市中，尽管利率很高，但投机者还是愿意借钱，因为他们预期使用杠杆做多的资产会升值。Aave和Compound的稳定币的年化收益在2021年4月达到了10%，当时市场情绪非常乐观。</p>
+<h4 id="流动性挖矿项目"><strong>流动性挖矿项目</strong></h4>
+<p>早期的参与者经常会收到代表协议所有权的治理代币。这激励人们将资金投入到协议中，因为奖励代币通常具有附加的治理功能。这种功能经常被认为是有价值的，因为代币持有者将在项目未来的战略方向上具有发言权。从本质上说，早期用户因为帮助项目成长并承担在智能合约早期阶段可能会出现的风险而获得了回报。Sushiswap和Finance Finance就是这样的例子。</p>
+<h4 id="收入共享"><strong>收入共享</strong></h4>
+<p>一些代币授权用户获得通过协议获得的部分收入。一个例子是自动做市商中的流动性提供者（LP）代币（关于它，你可以在这里阅读更多）。进行交易的人越多，流动性提供者的回报就越高。另一种收入份额代币是xSUSHI。Sushi代币的持有者将获得xSUSHI作为回报，这将使他们获得Sushiswap协议交易收入的0.05%。Vesper Finance的治理代币VSP可以纳入vVSP池，该池捕获了Vesper产生的约95%的费用。</p>
+<h2 id="收益聚合策略背后的机制"><strong>收益聚合策略背后的机制</strong></h2>
+<p>现在我们知道了聚合器的收益来自哪里，那用户是如何通过收益聚合器获得收益的呢？让我们以一个假想的收益率聚合器“SimpleYield”为例来解释下面的图表。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0606/28_ngrcikskao.png" alt="帝国理工学院DeFi研究论文：深入剖析收益聚合器"></p>
+<p>收益聚合器的机制</p>
+<p>在阶段0中，资金被放在在智能合约中。尽管较新的协议允许多资产池子出现，但通常情况下一个池子只包含一种资产。</p>
+<p>用户将资产存入一个池子中，作为回报，他们会收到代表他们在池中价值份额的代币。例如：将# ETH存入SimpleYiel dETH池，并接收返回的#syETH代币，表示池子锁仓总价值的x%。</p>
+<p>在阶段1，池子中的资金被用作抵押，通过Compound、Aave或Maker等贷款平台借入另一项资产。这个阶段并不总是必要的，可以跳过。此步骤的主要用途是允许使用另一种资产（而不是最初的集合资产）执行Yield Farming策略。例如：在SimpleYield ETH池子中用户充值的ETH可以放入Maker，从而借用稳定币DAI。</p>
+<p>阶段2包含收益生成策略，不同协议可以在复杂程度上有很大的区别。下图显示，该阶段的输入要么是不尝试收益的资产（红色币），要么是产生收益的资产（绿色币）。随着时间的推移，绿色币产生收益并不断增长。例如：SimpleYield ETH池使用ETH借入DAI，现在将该DAI用于Compound，在那里聚合器通过cDAI代币和COMP代币赚取收益，作为Compound流动性挖矿计划的一部分。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0606/28_ltywffmzka.png" alt="帝国理工学院DeFi研究论文：深入剖析收益聚合器">单一策略的执行过程。SC表示智能合约</p>
+<p>在最后阶段，即阶段3，阶段2产生的收益将在公开市场上出售原始池子的资产，并流回阶段0，在阶段1和阶段2中重新部署。池子在没有发行新份额的情况下增加了现有份额的价值。例如：在阶段2中生成的COMP代币在Uniswap出售换回ETH，然后流回阶段0。用户最初生成的#syETH代币现在有更多的价值，因为池子的价值在没有生成新的syETH代币的情况下出现了增长。</p>
+<h3 id="策略展示"><strong>策略展示</strong></h3>
+<p>现在我们已经了解到了收益聚合器通常是如何工作的，协议的要点主要在第二阶段，即实际生成收益的阶段。让我们来看一些Yield Farming策略的例子。注意，这里描述的示例相对简单，而这些策略在现实中可能要复杂得多。</p>
+<p>池子价值的演变是在受控的市场环境下进行模拟的。本文给出了仿真结果。</p>
+<h4 id="简单借贷"><strong>简单借贷</strong></h4>
+<p>上一部分中使用的示例是一个简单的贷款策略。作为流动性挖矿项目的一部分，资金被存入可借贷资金（PLF）协议，以获得利息和治理代币。</p>
+<h4 id="循环贷款"><strong>循环贷款</strong></h4>
+<p>该策略旨在通过循环借贷，将流动性挖矿计划获得的治理代币数量最大化。聚集器可以将DAI存入可借贷资金，用这笔存款借入更多DAI，并将该DAI再次提供给可借贷资金。这个周期可以重复多次，但根据供应和利率进行模拟后的结果表明，这种策略在循环借贷太多次时会变得非常危险。</p>
+<h4 id="使用自动做市商-lp代币进行流动性挖矿"><strong>使用自动做市商 LP代币进行流动性挖矿</strong></h4>
+<p>自动做市（AMM） LP代币具有收益，因为交易费用保留在自动做市商 池子中。当自动做市商还在运行流动性挖矿程序时，用户除了从交易费用中获得收益外，还会得到治理代币的奖励。这种策略也被认为是相对风险较大的，因为当标的资产的价格开始变化时，无偿损失可能会吃掉大量回报。</p>
+<h2 id="对经过实战考验的收益聚合器进行比较"><strong>对经过实战考验的收益聚合器进行比较</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2021/0606/28_qoo6lmyz9d.png" alt="帝国理工学院DeFi研究论文：深入剖析收益聚合器">主要现有和早期产收益聚合器汇总- 5月1日的数据</p>
+<h4 id="idle-finance"><strong>Idle Finance</strong></h4>
+<p>Idle Finance是首批收益率聚合协议之一，该协议于2019年8月推出。Idle目前只使用简单的借贷策略，在可借贷资金（Compound, Aave, Fulcrum, dYdX和Maker）上分配资金。该协议有“最佳收益”和“风险调整”两种策略。第一种是通过上述平台寻求最佳利率，而风险调整策略则考虑风险因素，进一步优化风险回报的评分。</p>
+<h4 id="pickle-finance"><strong>Pickle Finance</strong></h4>
+<p>Pickle于2020年9月推出，该协议通过两种产品提供收益：Pickle Jars （pJars）和Pickle Farms。Jar是Yield Farming机器人，它可以从用户的资金中获得回报，而Farm则是流动性挖矿的池子，用户可以通过不同类型的资产进行staking来获得PICKLE治理代币。pJars使用“自动做市商LP 代币的流动性挖矿”策略。农民充值Curve LP代币或Uniswap/Sushiswap LP代币，这些代币通过流动性挖矿项目用于生成治理代币。</p>
+<h4 id="harvest-finance"><strong>Harvest Finance</strong></h4>
+<p>Harvest于2020年8月推出，该协议通过自己的FARM流动性挖矿项目提供复利收益。该协议主要有两种策略：单一资产策略（包括“简单借贷”策略）和LP代币策略（包括“利用AMM LP代币挖掘流动性”策略）。产生的收益的30%用于在公开市场上买回FARM，并流向FARM的持有者，而不是原来的池子。</p>
+<h4 id="yearn-finance"><strong>Yearn Finance</strong></h4>
+<p>2020年7月，世界上最大的收益聚合器终于推出了。Yearn提供了多种产品，本文考虑的是Earn和Vaults。Earn池采用“简单借贷”策略，将资产以最高利率存入可借贷资金协议。Vaults允许使用更复杂的策略。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0606/28_tnusww5zcn.png" alt="帝国理工学院DeFi研究论文：深入剖析收益聚合器">总价值锁定，数据来自defillama</p>
+<h2 id="收益聚合器的优势和风险"><strong>收益聚合器的优势和风险</strong></h2>
+<h4 id="优势"><strong>优势</strong></h4>
+<ul>
+<li>
+<p>农民不需要主动制定自己的策略，但可以利用其他用户发明的工作流，将自己的投资策略从主动转变为被动。</p>
+</li>
+<li>
+<p>由于跨协议交易是通过智能合约进行的，资金转移是自动完成的，因此用户无需在协议之间手动转移资金。</p>
+</li>
+<li>
+<p>由于资金集中在合约中，因此减少了交互次数，降低了交互成本，这样gas成本就被稀释了。</p>
+</li>
+</ul>
+<h4 id="风险"><strong>风险</strong></h4>
+<ul>
+<li>
+<p>当Yield Farming策略将资产作为抵押来借入其他资产时，甚至当他们只向可借贷资金协议提供资产时，借贷风险就会始终存在。在高利用率的情况下（高借款/供资比率），当许多贷款人同时提线，他们中的一部分可能不得不等待一些借款人偿还他们的未偿贷款。这就是所谓的“流动性风险”。当借入资金时，当抵押品的价值低于预先确定的清算门槛时，就存在“清算风险”。</p>
+</li>
+<li>
+<p>由于Yield Farming策略通常建立在一系列的乐高积木上，因此存在组合风险。技术和经济上的弱点为恶意黑客提供了诱人的利用机会。</p>
+</li>
+<li>
+<p>一种策略的收益通常由很多因素决定，对于某些策略来说，这造成了不稳定的年化收益。由无偿损失、自动做市商的低交易活动或治理代币的价格变化引起的年收益率波动对许多潜在投资者是没有吸引力的。</p>
+</li>
+</ul>
+<h3 id="总结"><strong>总结</strong></h3>
+<p>在过去的一年中，涌现出了大量的收益聚合器协议，尽管它们背后的总体框架相似，但它们都有自己的风格。Idle Finance于2019年推出了第一个版本的产品，该产品将资金存入PLF，在给定时间提供最佳利率。</p>
+<p>受Compound流动性挖矿项目的启发，Yearn Finance在2020年7月扩展了这一模式，在他们的Earn产品发布的同时发明了更复杂的策略，称为Vault。随着更多形式的流动性挖矿项目的出现，Harvest Finance和Pickle Finance在去年夏天晚些时候专门使用LP代币进行Yield Farming。</p>
+<p>收益率聚合器过去是、现在仍然是用DeFi收集收益率的一种有吸引力的方式。但这种收益能持续多久呢？如我们所见，收益主要有三种来源。虽然关于收益可持续性的研究值得单独发表一篇论文，但我们可以认为来自本地代币分配收益的事件相对较短。</p>
+<p>一旦代币分配计划完成，这种收益就会消耗殆尽。尽管新协议可以随着新开始的代币分配计划而蓬勃发展，但这种收益的来源似乎不太可能是可持续的。在这方面，借贷需求可能更可持续，但它高度依赖于市场情绪，尤其是对于那些非稳定币来说。收入共享型代币的收益似乎是最持久的，尤其是如果DeFi能够保持最近的增长率。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/23721/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">从 “桥” 的角度思考Layer 2协议</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/23707/">
+                <span class="next-text nav-default">对话Vitalik Buterin：分片和Rollups的结合将带来10,000倍的扩容提升</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#简介"><strong>简介</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#收益从何而来"><strong>收益从何而来？</strong></a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#收益聚合策略背后的机制"><strong>收益聚合策略背后的机制</strong></a>
+      <ul>
+        <li><a href="#策略展示"><strong>策略展示</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#对经过实战考验的收益聚合器进行比较"><strong>对经过实战考验的收益聚合器进行比较</strong></a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#收益聚合器的优势和风险"><strong>收益聚合器的优势和风险</strong></a>
+      <ul>
+        <li></li>
+        <li><a href="#总结"><strong>总结</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

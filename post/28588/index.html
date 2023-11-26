@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          闪电网络深入解读（上）：支付通道 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="闪电网络是一种支付通道系统，与常见的多签名钱包没有任何区别。" />
+<meta name="keywords" content="Lightning" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/28588/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="闪电网络深入解读（上）：支付通道" />
+<meta property="og:description" content="闪电网络是一种支付通道系统，与常见的多签名钱包没有任何区别。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/28588/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-13T00:00:00+00:00" />
+
+<meta itemprop="name" content="闪电网络深入解读（上）：支付通道">
+<meta itemprop="description" content="闪电网络是一种支付通道系统，与常见的多签名钱包没有任何区别。"><meta itemprop="datePublished" content="2021-09-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-13T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5405">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="闪电网络深入解读（上）：支付通道"/>
+<meta name="twitter:description" content="闪电网络是一种支付通道系统，与常见的多签名钱包没有任何区别。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">闪电网络深入解读（上）：支付通道</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-13">
+      2021-09-13
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5405 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>闪电网络是一种去中心化的链下技术方案，可支持每秒上万笔交易并发，接近于 Visa 系统能做到的程度（举个例子）。而在当前的比特币（世界上最流行的密码学货币）区块链上，只能支持每秒处理约 7 笔事务，还要付出高昂的手续费，并等待很长时间来确认交易生效，这些因素都使得用比特币发送小额交易几乎不可能。<strong>而闪电网络把这两个问题都解决了</strong> 。</p>
+<h2 id="引言"><strong>引言</strong></h2>
+<p>闪电网络是一种支付通道系统，与常见的多签名钱包没有任何区别。所谓开启通道，就是参与方创建一个多签名钱包，并向该钱包充入资金。这个钱包接收到的资金数量就成为这个通道的余额。再然后，参与方之间的后续交易就全部在<strong>区块链以外的环境</strong> 中发生了。任一参与方都能随时关闭这个通道，这时候，最后一笔链下的交易（决定着该通道各参与方的余额）会被发送到区块链上，同时作废掉所有中间的交易，因为所有这些交易都使用同样的交易输出。结果是，我们只需一笔交易来开启通道、一笔交易来关闭通道，中间所有的中间交易都是即时收发的，无需记录在区块链上（因此无需等待）。</p>
+<p>（译者注：比特币不是账户里面的余额，是一张张的支票；所有的支票都是由具体的某笔交易创造的；每一张支票都只用一次就会作废（也即只能用在一笔交易中）。交易可以任意分配所用支票的价值来生产任意数量的新支票。）</p>
+<p>这样的通道所组成的网络使你可以向网络的另一个参与者发送资金，即使你们之间并无直接的通道。唯一的条件是你们之间要能形成一条 “路径”，即有通道能前后相接地把你和对方联系起来。此外，得益于特殊的智能合约（HTLC，哈希时间锁合约），你不需要信任网络中的任何人，合约会保证安全地交付你支付的资金。</p>
+<p>要理解闪电网络是如何运行的，首先要理解的是支付通道的运行以及构成支付通道基础的 HTLC。这些话题都不小，所以我把文章分成了两部分，从解释支付通道的工作原理开始。</p>
+<h2 id="支付通道"><strong>支付通道</strong></h2>
+<p>如上所述，连接两个参与者的支付通道实质就是一个普通的多签名钱包。第一笔交易决定了一个通道的余额，我们称为 “充值事务” 或者 “锚点事务”。这笔交易需要广播到网络中并记录到区块链上，以表明通道开启。</p>
+<p>做完了这一步之后，要更新通道双方的余额时，双方就需要手动交换签过名的 “承诺事务”。这些交易本身都是有效的，随时可以发送到比特币网络中，但双方都会暂时保存起来，不会广播出来，除非已准备关闭通道。如此一来，通道内双方的余额状态，一秒内变动几千次也没问题，更新的速度仅受限于双方创建、签名和向对方发送承诺事务的速度。</p>
+<p>每次双方交换了一笔新的承诺事务，他们也就把通道的前一个状态作废掉；因此，只有最新的一笔承诺事务可以 “执行”。这样设计的目的是防止某一方欺诈对方，把一个过时的但对自己有利的状态发送的链上来关闭通道。下文我会讲解几种防止这种欺诈的机制。</p>
+<p>最后，通道既可以双方一致同意关闭 —— 就是把一笔关闭事务（叫做 “结算事务”）发送到比特币网络中 —— 也可以单方决定关闭，就是把最后一笔承诺事务发送到网络中。这是为了防止某一方离线导致另一方在通道中的余额一直 “锁定” 的情形。</p>
+<p>在通道存在的整个生命周期里，只有两笔事务被发到了比特币网络中并记录到了比特币区块链上（就是充值事务和结算事务）。在这两笔事务之间，双方可以交换无数次承诺事务，这些事务都不需要提交到区块链上。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/3_c37bhfnshu.png" alt="闪电网络深入解读（上）：支付通道"></p>
+<h2 id="一个简单的支付通道案例"><strong>一个简单的支付通道案例</strong></h2>
+<p>在解释更加复杂的机制之前，我们先来考虑一个简单的、单向的通道的例子。为了简化这个解释，我们假设双方都是诚实的。后面我们会再考虑帮助我们阻止欺诈的机制。</p>
+<p>假设一个通道有两个参与者，Emma 和 Fabian。Fabian 提供付费的视频流服务，而观看者通过通道来实现小额支付 —— 每观看一秒就要付出 0.00001 btc，相当于每小时 0.036 btc 。Emma 是一个想看视频的普通用户。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/3_s08pkqlb8y.png" alt="闪电网络深入解读（上）：支付通道"></p>
+<p>Emma 和 Fabian 使用一个特殊的程序来同步播放视频和运行支付通道。Emma 在自己的网络浏览器中启动这个程序，而 Fabian 在自己的服务器上使用同一个程序。这个程序具有一个普通的比特币钱包软件的所有功能，它可以创建和签名交易。支付通道的整个机制可以完全隐藏起来，用户看到的事实就是这个视频是按秒计价的。</p>
+<p>现在我们来看看这个付费服务的具体工作流程。一开始，Emma 和 Fabian 要开启通道：建立一个 2-2 的多签名地址。从用户的视角来看，这个程序创建了一个 P2SH 地址（一个多签名钱包）并要求用户充入足以支付一个小时视频服务的资金。Emma 转了 0.036 btc 到这个地址，而这笔交易也就成了所谓的充值事务。</p>
+<p>充值事务被打包到某个区块之后，这个通道就算开启了，视频也就开始播放。在第一秒钟，用户创建并签名了一条承诺事务，改变了通道内的余额：现在 Fabian 有了 0.00001 btc，Emma 还剩 0.03599 btc 。这笔事务使用了充值事务的输出，并创建了两个输出，含义就如我们这里所述。从服务商的角度看，程序收到了这笔事务，于是也签上名、连同第一秒的视频发回给 Emma。现在双方都有了一笔对方手动签过名的、反映通道最新状态的承诺事务；如有需要，任何一方都可以把这笔交易发送到比特币网络中。</p>
+<p>到了第二秒，Emma 这边的程序又创建了一笔新的承诺事务，使用的同样是充值交易的输出（跟第一笔一样），这一次，承诺事务的第一个输出给了Fabian 0.00002 btc，把 0.03598 给了 Emma。这笔事务用来支付第二秒的视频下载。</p>
+<p>我们假设，Emma 看了 10 分钟的视频，然后就退出了。在这段时间里，她签名并发送了 600 笔承诺事务（600 秒的视频）。最后的一笔有两个输出：0.03 btc 给 Emma，和 0.006 给 Fabian。Emma 关闭了通道，把最后一笔承诺事务广播到了比特币网络中作为 结算事务。如此，<strong>这个通道只有一头一尾两笔事务记录到了区块链上</strong> 。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/3_9oif8o3e25.png" alt="闪电网络深入解读（上）：支付通道"></p>
+<h2 id="免信任的通道"><strong>免信任的通道</strong></h2>
+<p>当然，从这个例子来看，一切都好，但这是因为双方都是诚实的。不难想象某些时候，其中一方会欺骗对方，像上面这么简单的设计可能就不够用了。</p>
+<ul>
+<li>
+<p>虽然通道开启着，Emma 还是需要 Fabian 的签名来取出资金，因为这个通道是 2-2 的多签名地址。如果 Fabian 消失了，Emma 的资金可能会永远锁在这个通道里面。</p>
+</li>
+<li>
+<p>虽然通道开启着，Emma 可以使用任何一笔双方都签过名的承诺事务。在观看视频 10 分钟之后，她可以拿第一笔承诺交易上链，完全不需要经过 Fabian 的再次同意。</p>
+</li>
+</ul>
+<h3 id="时间锁"><strong>时间锁</strong></h3>
+<p>这些问题的一种解决方案是在承诺事务中使用时间锁（事务层面的时间锁（nLocktime））。为了保证资金不会在通道中永远锁定，Emma 使用她的充值事务的输出创建了一个退款事务。她先给 Fabian 发送这笔事务，等 Fabian 签名并发回后，Emma 才把充值事务广播到比特币网络中，开启他们的通道。</p>
+<p>这笔退款事务也成了第一笔承诺事务，而且它的时间锁为通道设置了一个存在时间的上限。假设 Emma 把时间锁设置为 30 天（4320 个比特币区块）（即 30 天之后这笔事务才能记录到区块链上）。接下来所有的承诺事务，所设置的时间锁会一个比一个短，这样更新的事务就能更早广播到网络中。</p>
+<p>现在 Emma 不用再担心了，她知道即使 Fabian 玩失踪，她也可以在 30 天之后取回自己的资金（如果这是一条双向的支付通道，即 Fabian 也会存钱进去，那他也从自己的角度提出一笔退款事务）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/3_5ses7tk1ba.png" alt="闪电网络深入解读（上）：支付通道"></p>
+<p>每一笔新的承诺事务的时间锁都比前一笔要短，因此，新一笔承诺事务总是能比旧的更早上链并使旧的事务作废（无法上链），这样就能防止任何一方恶意使用旧的承诺事务。如果一切顺利，Emma 和 Fabian 只需广播双方一致的普通结算事务，因此带时间锁的承诺事务只有一方下线时才会派上用场。</p>
+<p>举个例子，如果第一笔承诺事务的时间锁是 4320 个区块，那么第二笔承诺事务可以设成 4319 个区块，以此类推。如此一来，第 600 笔承诺事务可以比第一笔承诺事务早 600个区块上链。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/3_e0v9f49hl7.png" alt="闪电网络深入解读（上）：支付通道"></p>
+<p>你可能也注意到了，这种方法虽然有助于防止某一方把更早的承诺事务上链（欺诈），但它有两个明显的缺点：</p>
+<ul>
+<li>
+<p>第一笔承诺事务的时间锁限制了这个通道的寿命。如果这个时间锁设置的时间太长（比如 1 年），通道可以存在很久，但如果某一方玩失踪，另一方就不得不等待很长时间才能广播最后一笔承诺事务、取回自己的资金。</p>
+</li>
+<li>
+<p>第一笔承诺事务的时间锁也限制了可以在通道内发生的交易次数。在我们的例子中，这个数值是 4320，这个通道内只能发生 4320 笔事务，因为每一笔新事务都会把时间锁的时间减去 1 个区块。而且，以区块（10 分钟）为间隔，等于是强迫参与方要追踪比特币网络的区块，以免错过什么，以及在情形不对时尽早把最后一笔承诺事务上链。当然，这个间隔是可以延长的，但代价是通道内可以发送的交易数量会变得更少。</p>
+</li>
+</ul>
+<p>因此，时间锁让我们可以作废旧的承诺事务并保证通道双方都可以安全地关闭通道：如果他们都同意通道的最新状态，他们可以发送一笔不带时间锁的结算事务（与最后一笔承诺事务意思相同），关闭通道；如果某一方不在线，另一方也可等待最后一笔承诺的时间锁解锁，然后把该笔承诺事务广播到比特币网络中。</p>
+<h3 id="不对称的可撤销承诺"><strong>不对称的可撤销承诺</strong></h3>
+<p>另一种解决上述信任问题的办法是取消早前的承诺事务。实际上，“取消（cancellation）” 这个词是不准确的，因为在比特币网络中，一笔上链的事务（得到区块确认的事务）是永远不可取消的。不过，特殊的构造方式可以使得上链较早的承诺事务无利可图。只需给予各方一个 “撤销密钥（revocation key）” 即可。</p>
+<p>假设 Hitesh 和 Irene 决定开启一个通道。双方都充值了 5 btc 到这个通道中，确定了通道的初始余额。现在，双方不是签署同一笔标准的承诺事务，而是各自创建两笔不同的、不对称的承诺事务。</p>
+<p>Hitesh 拿到的由 Irene 签名的事务有两个输出，第一个输出不带时间锁，立即给 Irene 支付 5 btc，而第二个输出带有时间锁，支付 5 btc 给 Hitesh，但要等（这笔事务上链后的） 1000 个区块之后，这个输出才能花用。详情如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/3_bvsudbscp2.png" alt="6h6CubzDl0EUUhjctuaD5amcY66p5ILi9XLQnhC3.png" title="5603311"></p>
+<p>与此同时，Irene 也可拿到由 Hitesh 签名的一个承诺事务，有两个输出：一个立即给 Hitesh 支付 5 btc，另一个输出则给 Irene 支付 5 btc，但要等 1000 个区块之后才能花。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/3_vykhr7vm0y.png" alt="Tlfze1D5aQjVVUcbcsOLrH9c6mjO8l8rmGFDNKgX.png" title="5603319"></p>
+<p>因此，双方都拿到了一笔由对方签名的承诺事务。Hitesh 和 Irene 都可以随时把手上的承诺事务签名后广播出去，但是，一旦这么锁了，另一方都会立即拿到钱，而自己只能等到 1000 个区块之后才能拿到，这可是大大的不利。不过，这还不足以让双方都诚实守信。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0913/3_s3pfcufacv.png" alt="闪电网络深入解读（上）：支付通道"></p>
+<p>这就要讲到我们的最后一个功能了，可撤销的密钥，使得任一方如果试图欺诈，对方都可以惩罚 TA，使之血本无归。</p>
+<p>如上所述，每一笔承诺事务都有一个 “延后” 的输出，我们把这个输出做得再复杂一点：这个输出既可以被等待了 1000 个区块的承诺事务发送者使用，也可以被通道的另一方使用，如果 TA 持有撤销密钥的话。当 Hitesh 创建承诺事务并交给 Irene 时，他的第二个输出既可以为自己所用（要等待 1000 的区块）也可以为 Irene 使用，如果后者掌握了撤销密钥的话。</p>
+<p>Hitesh 会秘密地保管这个密钥，仅当他决定使用新的一笔承诺事务来更新通道内状态时才会发给 Irene。事务的详情如下：</p>
+<p>（译者注：看代码会更清晰一些：第一个输出是给立即 Irene 支付 5 btc；第二个输出则是带条件的，既可以使用撤销密钥，立即获得 5 btc，也可在 1000 个区块后，使用 Hitesh 的私钥来使用这个输出。注意这里的 “IF…ELSE…” 式条件，它跟我们在其它的计算机编程中的含义是一样的。）</p>
+<p>附带一个例子可能会更容易理解。假设 Irene 希望给 Hitesh 发送 2 btc，这时候他们要更新通道的状态，也就是要创建一笔新的承诺事务。双方各自创建一个不对称的承诺事务，并且，在签名之前，先把上一笔承诺事务的撤销密钥交给对方，如此便 “撤销” 了上一笔承诺事务。如果 Hitesh 希望以通道最后的余额来结算，而 Irene 看着觉得更旧的状态对自己更有利，她可以尝试把自己手中的上一笔承诺事务签名后广播到网络中，但这笔承诺事务的撤销密钥已经暴露给了 Hitesh；如果他发现这笔承诺事务上链了，他有足足 1000 个区块的时间可以把通道内的所有钱都拿走（第一个输出当下就给了他，而第二个输出只需他提供撤销密钥就可以立即使用）（没错，这个 “取消” 的动作没法自动化，Hitesh 必须关注 Irene 是否发送了旧的承诺事务到网络中，然后使用撤销密钥）。</p>
+<p>因此，这种使用不对称可撤销承诺的通道的效率要更高，因为它不限制通道的寿命，也不限制交易发送的次数。</p>
+<h2 id="结语"><strong>结语</strong></h2>
+<p>到这里，我们的第一篇文章就结束了，估计你也要一段时间来消化一下，你也可以在评论中提问。在下一篇文章，我们会解释 HTLC 的功能，最终解释闪电网络是如何工作的。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/28586/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">彭博社：今年开采比特币所消耗的能源已经超过2020年的水平</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/28590/">
+                <span class="next-text nav-default">深度探索以太坊2.0：速度、效率和可扩展性</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#引言"><strong>引言</strong></a></li>
+    <li><a href="#支付通道"><strong>支付通道</strong></a></li>
+    <li><a href="#一个简单的支付通道案例"><strong>一个简单的支付通道案例</strong></a></li>
+    <li><a href="#免信任的通道"><strong>免信任的通道</strong></a>
+      <ul>
+        <li><a href="#时间锁"><strong>时间锁</strong></a></li>
+        <li><a href="#不对称的可撤销承诺"><strong>不对称的可撤销承诺</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#结语"><strong>结语</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

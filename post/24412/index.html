@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          对DFINITY的去中心化身份、账户与钱包介绍 开发者能如何利用？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="第二期开发者电话会精华" />
+<meta name="keywords" content="项目, Dfinity" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/24412/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="对DFINITY的去中心化身份、账户与钱包介绍 开发者能如何利用？" />
+<meta property="og:description" content="第二期开发者电话会精华" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/24412/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-17T00:00:00+00:00" />
+
+<meta itemprop="name" content="对DFINITY的去中心化身份、账户与钱包介绍 开发者能如何利用？">
+<meta itemprop="description" content="第二期开发者电话会精华"><meta itemprop="datePublished" content="2021-06-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3804">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="对DFINITY的去中心化身份、账户与钱包介绍 开发者能如何利用？"/>
+<meta name="twitter:description" content="第二期开发者电话会精华"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">对DFINITY的去中心化身份、账户与钱包介绍 开发者能如何利用？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-17">
+      2021-06-17
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3804 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原文标题：《对DFINITY的去中心化身份、账户与钱包介绍 开发者能如何利用？》</p>
+<p>6月3号，ICP League 联合社区开发者举办了第二期的开发者电话会，探讨了 DFINITY 的底层账户结构，以及上层去中心化身份认证的方式，介绍了两者的联系方式。点击“阅读原文”可以查看视频回放。</p>
+<p>本期亮点：</p>
+<ul>
+<li>
+<p>DFINITY 的账户与身份是两个系统，其底层依然是加密原生的公钥/私钥/地址的账户，但在上层建立了去中心化身份系统；</p>
+</li>
+<li>
+<p>身份与账户并不耦合，账户写在链的底层，而身份是链上运行在 NNS 子网上的智能合约，通过合约与账户建立了联系；</p>
+</li>
+<li>
+<p>账户更像是银行卡，而身份更像是绑定了银行卡的支付宝，能方便地使用 DFINITY 的 dapp；</p>
+</li>
+<li>
+<p>身份系统的目的是为了帮助用户更好地管理账户，避免用户直接接触私钥；</p>
+</li>
+<li>
+<p>在使用 DFINITY 的身份登陆其他 DApps 时，如果 DApps 相关代码更新，容易丢失对这个 DApps 的子账户信息；</p>
+</li>
+<li>
+<p>开发者可以结合官方的命令行账户钱包实现客户端/网页钱包，或者基于互联网身份系统实现 web 3 逻辑下的业务，比如个人存储、链上分身、数据集市。</p>
+</li>
+</ul>
+<h2 id="账户地址"><strong>账户地址</strong></h2>
+<p>一般用户在互联网身份的包装下并没有接触到转账地址，但 DFINITY 作为区块链系统具备与比特币/以太坊类似的账户，账户验证的主要机制是经典的数字签名方案。即从种子派生公私钥对，并将公钥匙处理编码为字符串地址，通过私钥签名发送交易，使用公钥验证鉴别交易。</p>
+<p>在选取的算法上，DFINITY 的账户与比特币更相似， 以 Python ECDSA 和 secp256k1 为主，如果使用已有的比特币账户在 DFINITY 上能生成一样的公钥，但在地址表现形式上有所不同。</p>
+<p>DFINITY 的账户地址的长度为64个字符，这种格式只用于表示普通账户，DFINITY 容器（合约）使用专门的23位的容器 ID 表示，并5个字符串一组，用“-”隔开，如“h5aet-waaaa-aaaab-qaamq-cai.raw”，加上“https”与“.ic0.app”后可以在浏览器直接访问，如“https://h5aet-waaaa-aaaab-qaamq-cai.raw.ic0.app/”。这是其与以太坊账户体系一个很大的不同。</p>
+<p>在 nns.ic0.app 下的 Accounts 下能看到这些账户地址，可以直接用于 ICP 的转账，但目前还没有易用的加密原生钱包。</p>
+<p>但官方其实开源了这类钱包的实现方法， 在 keysmith 库（https://github.com/dfinity/keysmith）中实现了一个命令行钱包</p>
+<h2 id="互联网身份ii"><strong>互联网身份（II）</strong></h2>
+<p>DFINITY 在账户系统外又开发了一套身份系统称之为“互联网身份（Internet Identity）”，以下简称 II。II 是部署在 DFINITY 的一个智能合约，智能合约的状态存储中对地址与身份建立了映射。</p>
+<p>注意的是，身份和钱包账户是两回事。以太坊上钱包地址就是你使用应用的身份，但是在 DFINITY 中，身份是与钱包账户分开，两者不耦合的，但来自同一源头的公私钥对，而且可以互相演化的。</p>
+<p>在使用 II 时，用户会获得名为“user number”的一串数字，这其实是 II 合约内部的一个索引。这串数字来自一个63位的字符串，一般五个一组用“-”隔开，被称为“Principal ID”。</p>
+<p>用户身份其实是 II 智能合约中的一个实例化对象，II 是 DFINITY 推动的标准，目前 DFINITY 上的应用都可以通过引入几行代码，来允许用户使用 II 标准登陆应用。II 是一种中心化身份的标注，使用了具备高度安全性的双要素验证；并能在使用不同 dapp 时为用户创建衍生身份，来保护用户隐私防止被跨应用追踪账户；并能更方便的管理多账户，无需账户密码，也无需基础学习门槛高的私钥，通过面部识别、指纹扫描或 YubiKey 等安全终端轻松地使用。</p>
+<p>首先介绍一下 WebAuthn，符合了 W3C（万维网联盟）的 Web 验证的标准，也就是除去账户密码/私钥验证之外，还需要安全硬件的验证，这是为了避免钓鱼网站与恶意软件的侵害。因此在使用 II 时，用户必须具备安全硬件，这也是困扰早期用户的一个门槛，但目前我们的大部分手机、笔记本都装载了安全芯片，也可以外接 YubiKey。</p>
+<p>WebAuthn 验证流程：</p>
+<ul>
+<li>
+<p>用户启动登录过程后，DFINITY 的 II 智能合约将生成一个随机质询并将其发送到用户的浏览器；</p>
+</li>
+<li>
+<p>然后浏览器将质询转发到安全设备，用户在安全设备上进行交互验证，如指纹解锁、面部识别或轻触 YubiKey；</p>
+</li>
+<li>
+<p>完成验证，使用保存在安全设备中的私钥签名；</p>
+</li>
+<li>
+<p>然后将验证后签名的质询发送回 II 智能合约，II 智能合约进行验证，完成登陆。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0617/1_b0b2hvzb5n.png" alt="对DFINITY的去中心化身份、账户与钱包介绍 开发者能如何利用？"></p>
+<p>在我们使用 II 授权登陆一个 DApp 时，II 会自动产生一个子身份专门用于使用该 DApp。这为用户创建了多个链上分身，防止其身份被追踪；同时 DFINITY 对不同容器交互时都需要分别进行验证，一个容器无法盗用其授权权限与其他容器交互，来转走代币，而这种事曾在以太坊上发生过。</p>
+<p>同时，II 合约也对身份进行了一个抽象，因此即使你的私钥只存储在设备的安全芯片中，并不传输，但你能把多个设备绑定在一个主账户下，使用多个设备直接登陆主账户发送任意操作。这是一种对权限的管理，具体需要官方公布更多细节。</p>
+<h2 id="互联网身份与账户地址的联系"><strong>互联网身份与账户地址的联系</strong></h2>
+<p>DFINITY 在账户系统外又开发了一套身份系统称之为“互联网身份（Internet Identity）”，以下简称“II”。II 是部署在 DFINITY 的一个智能合约。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0617/1_v6rny3d3iw.png" alt="对DFINITY的去中心化身份、账户与钱包介绍 开发者能如何利用？"></p>
+<p>原始 ID 的产出：</p>
+<ul>
+<li>
+<p>首先对随机数 Rand 进行 Bip39，然后产出种子文件，再推断出私钥；</p>
+</li>
+<li>
+<p>通过私钥产出一个 DER 格式的公钥，长度为65字节；</p>
+</li>
+<li>
+<p>对公钥进行sha224得到28字节的字符串，然后加上一个字节判断其类型，产出29字节的原始 ID 以下称“blob”；</p>
+</li>
+</ul>
+<p>这里添加了一个字节可以表示其的类型，“0x01”为系统保留，“0x02”代表了这是主要 ID，即用户创建的；“0x03”表示该共钥是从主要 ID 派生的，一个主要 ID 具备一个空间，可以注册很多个派生 ID，去使用不同的 DApp；“0x04”为匿名 ID，不用签名也可以发送请求。</p>
+<p>此时，对 blob 的两种处理方式分别产出了用于 II 合约的63字节的“Principal ID”，和32字节的钱包账户“Account ID”。</p>
+<p>Principal ID 的产出：</p>
+<ul>
+<li>
+<p>对 blob 添加4个字节小大的 CRC-32 的纠错码（error detection code）；</p>
+</li>
+<li>
+<p>使用Base32对结果进行编码，每组五个字符，用“-”隔开；</p>
+</li>
+<li>
+<p>也可以使用 ASCII 表示，最大 63 个字符。</p>
+</li>
+</ul>
+<p>Account ID 的产出：</p>
+<ul>
+<li>
+<p>在 blob 前加入 Account 类型的特定字符串，后面加上序号；</p>
+</li>
+<li>
+<p>对这个字符串计算 sha224，得到 28 字节结果；</p>
+</li>
+<li>
+<p>对结果添加 4字节大小的 CRC-32 的纠错码，得到 32 字节结果；</p>
+</li>
+<li>
+<p>转化为64个字符的字符串。</p>
+</li>
+</ul>
+<p>Account ID 就是我们在交易所中使用的转账地址，而 Account ID 也可以衍生出多个子地址，之需要修改 blob 后的序号即可，被哈希后就能得出不同的地址，这个过程与之前的派生是有区别的。</p>
+<h2 id="注意问题"><strong>注意问题</strong></h2>
+<p>目前 DFINITY 官方鼓励开发者使用 II 去登陆 DApp，而 II 对身份与地址的衍生与存储都运行在智能合约中。</p>
+<p>而在 DFINITY 的合约中 Persistent 状态是允许被更新的，因此合约可以被升级，但这并不是一个持久化的状态，因此有可能会在更新中损失数据。这就意味着，在 II 合约自身，或者 DApp 合约更新后，可能会损失数据，导致过去使用 DApp 的身份丢失。</p>
+<p>这是所有开发者在使用 II 时需要注意的风险，但是这种情况往往是在使用 DApp 时会遇到的，而你持有的 ICP 代币不会受到影响。</p>
+<h2 id="注意问题-1"><strong>注意问题</strong></h2>
+<p>目前 DFINITY 的体验与加密原生用户中间有一个断层，II 对现在的加密原生用户的使用习惯来是超前的，因此大家很难接受。消除这个断层，改进这个机制是非常重要的一个工作，比如为 keysmith 命令行钱包做可视化页面等。</p>
+<p>还可以在登陆机制上进行探索，目前的 WebAuthn 登陆有一定硬件门槛，不是所有人都能很轻松的使用。比如使用 metamask 登陆，比如通过邮箱去做密码学验证。</p>
+<p>在开发 DFINITY 钱包时可以更好的去结合加密原生的账户地址与 DFINITY 的多身份系统。做一个比喻，账户地址像是银行卡账户，DFINITY 的 II 是微信的账户，也可以使用这个微信账户去登陆不同的应用，每个应用你都具备一个身份。</p>
+<p>因此将 MetaMask 还不足够，DFINITY 的体验与 Web3 中描述的“用钱包去完成所有的登录的操作”不同了，应用的连接感更像传统互联网的“一键登录”。</p>
+<p>同时，在不同的公链或平台上都有去中心化身份的项目，而因为没有深度耦合， DFINITY 官方推出的 II 也可以早期的身份项目，开发者可以着手去改进它，或者实现一个全新的更好的身份系统。</p>
+<p>同时也可以在 II 的上层搭建更多应用，比如为每一个账户建立独立的存储空间，作为数据确权的中心，或者去优化多身份系统，从多身份中衍生出交互的多样性。</p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzA4NjU1NzQyMA==&amp;mid=2247485251&amp;idx=1&amp;sn=7a77b2a3c83b3e8728644f68e7470fd4&amp;chksm=9fc790c0a8b019d60aeca60c469d08534b0b23bbd1d7d64df51835a22d028201f61aeb22b04c&amp;scene=21#wechat_redirect"></a></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/24478/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">对 Eth2 里 MEV 的初步探索 (上）</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/24474/">
+                <span class="next-text nav-default">粉丝经济革命的前夜：如何用 NFT 和代币经济玩转娱乐业 IP 运营？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#账户地址"><strong>账户地址</strong></a></li>
+    <li><a href="#互联网身份ii"><strong>互联网身份（II）</strong></a></li>
+    <li><a href="#互联网身份与账户地址的联系"><strong>互联网身份与账户地址的联系</strong></a></li>
+    <li><a href="#注意问题"><strong>注意问题</strong></a></li>
+    <li><a href="#注意问题-1"><strong>注意问题</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

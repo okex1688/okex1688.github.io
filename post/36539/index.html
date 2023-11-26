@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          解析Cosmos、Polkadot与Avalanche：异构区块链网络差异 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文希望帮助开发者、研究者、企业家、投资者和期待去中心化世界的到来的所有人理解加密货币网络的这一范式转移。" />
+<meta name="keywords" content="Avalanche" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/36539/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="解析Cosmos、Polkadot与Avalanche：异构区块链网络差异" />
+<meta property="og:description" content="本文希望帮助开发者、研究者、企业家、投资者和期待去中心化世界的到来的所有人理解加密货币网络的这一范式转移。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/36539/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-12T00:00:00+00:00" />
+
+<meta itemprop="name" content="解析Cosmos、Polkadot与Avalanche：异构区块链网络差异">
+<meta itemprop="description" content="本文希望帮助开发者、研究者、企业家、投资者和期待去中心化世界的到来的所有人理解加密货币网络的这一范式转移。"><meta itemprop="datePublished" content="2022-04-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="13619">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="解析Cosmos、Polkadot与Avalanche：异构区块链网络差异"/>
+<meta name="twitter:description" content="本文希望帮助开发者、研究者、企业家、投资者和期待去中心化世界的到来的所有人理解加密货币网络的这一范式转移。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">解析Cosmos、Polkadot与Avalanche：异构区块链网络差异</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-04-12">
+      2022-04-12
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 13619 字 -
+        预计阅读 28 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>随着比特币、以太坊等第一代加密货币网络出现性能、可用性、能源效率方面的问题，开放去中心化网络的愿景蒙上了一层阴霾。为了解决当前的性能问题，以太坊推出了新版本和相应的L2解决方案，更为重要的是，新一代区块链项目Cosmos、Polkadot、Avalanche相继启动，建立了出色的基础设施。这些项目旨在通过异步异构的网络模型实现横向扩容，即各app的专用区块链既能共存，又能在需要时互操作。为确保链间的经济安全，这些网络在设计上各显其能，做了各自的权衡和取舍，这也带来了不同的影响，后文将详细讨论。<strong>这些网络的目标是建立区块链互联网，达到容纳数百万日活用户而非今天的几十万日活用户的规模，并实现web3“互联网由用户拥有和控制”的愿景。本文希望帮助开发者、研究者、企业家、投资者和期待去中心化世界的到来的所有人理解加密货币网络的这一范式转移。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0412/4_1uqsqrnsk8.png" alt="网络"></p>
+<p> Cosmos、Polkadot和Avalanche的链间经济安全拓扑结构</p>
+<p>比特币打开了潘多拉的魔盒，并逐渐拥有了“数字黄金”的地位，这是当今时代的共识。以太坊开启了可编程互联网货币的时代，成为了加密经济创新的大本营。但比特币、以太坊和它们的变体距离大规模采用还有诸多障碍。本文将首先探讨这些障碍，再根据其中的要点比较新一代的区块链平台。</p>
+<p><strong>能源效率</strong> ：开放的去中心化计算机网络的正常运转，需要各独立参与者就共享状态达成一致。与此同时，网络需能在信息不完备或存在恶意节点（拜占庭容错）的情况下保持容错和有效共识。一方面，网络要保持开放，允许更多节点参与共识，另一方面，网络要防止同一实体操作多个身份（女巫攻击）——这些是通过一种称为工作量证明（PoW；1992年由Cynthia Dwork发明，最初用于防止垃圾邮件）的准入方法实现的。PoW需要节点使用大量算力，这会加剧全球变暖，也会带来高昂的电费单。显然，维护去中心化计算网络的安全[1]需要经济成本。新一代区块链项目用权益证明（PoS）取代PoW，作为验证节点的准入门槛，即要求网络的参与者存入并锁定代币。为了防止恶意行为和节点下线，这个经济门槛需要足够高。事实上，PoW和PoS适用于相同的规模经济原理：验证节点的运行成本由运营支出（OPEX）变为资本支出（CAPEX）。</p>
+<p><strong>交易透明度</strong> ：比特币、以太坊及它们的变体使用的都是中本聪共识，发送的交易需等到数个区块创建之后，才能进入不可逆转的状态。因此，这类区块链可用性高但速度慢，因为它们使用概率性最终性确认，需要等到区块链足够长为止。为了加快确认速度，不少区块链项目使用经典实用拜占庭容错算法（PBFT）共识，而这带来了其他问题，例如节点的规模可能会降低网络速度，导致网络优先安全性而非上线时间和活跃性。</p>
+<p><strong>计算吞吐量</strong> ：吞吐量即分布式计算机网络每秒可以完成的计算工作量，它决定了网络的扩容能力。但通量的常用单位“笔交易/秒”具有误导性，因为“交易”可以是简单的转账，也可以是复杂的财务计算，它们对算力的需求是不同的。吞吐量是由节点提供的，网络的实际吞吐量指网络每秒可以处理的计算工作量。提高吞吐量有两种方式，一是纵向扩容策略，它要求节点具备较高的计算性能，要求节点软件进行优化；二是横向扩容策略，即将网络分割为多个部分，平行处理交易。</p>
+<p><strong>交易成本</strong> ：区块链必须限制执行的数量，否则运行区块链的节点很容易遭到DoS攻击。为此，比特币只支持少量脚本语言，以太坊根据智能合约执行的gas计量收取交易手续费。问题在于，无论您的交易是简单转账还是复杂计算，它们都是由同一个网络执行的。因此，网络流量增加时，简单交易的gas费也会走高，只有财大气粗的人用得起。手续费会支付给矿工，作为优先交易的激励。在比特币网络，比特币发行量达到2100万的上限后，手续费将成为唯一的激励措施，而在以太坊，手续费完全用于优先交易（技术审订注：在以太坊1559协议升级后，手续费也都回收进行了销毁，只有用户额外增加的小费“tip”才归节点所有）。新一代的区块链项目则更多地采用了销毁手续费的机制。最近，以太坊也开始销毁部分手续费了。这样一来，随着网络活动的增加，代币稀缺性会上升，这将利好所有持币人。</p>
+<p><strong>去中心化水平</strong> ：和大部分人的想象恰恰相反，由于矿池的集中（截止2021年11月，比特币90%的算力是由11个矿池控制的，以太坊90%的算力是由16个矿池控制的），比特币和以太坊的去中心化水平其实是很低的。在中本聪共识，随着挖矿成本增加，出块难度扩大，这会进一步导致算力的集中。面对这个问题，新一代的区块链项目各显其能，下文将详细讨论。</p>
+<p><strong>公平分配</strong> ：随着网络的发展，区块链项目要怎样分配所有权份额（代币）呢？比特币的代币分配模式建立了区块链安全、挖矿和汇率相互依存的关系。它成为了许多项目的范本：矿工加入网络，赚取代币收益，网络更加去中心化、更加安全，进而吸引更多用户。需求的增加和币价的上涨将吸引更多矿工加入网络，维护网络安全。然而，随着挖矿成本的增加，出块的难度也日益提高。这会导致代币和算力的集中，造成矿工由少数几个实体运行的情况。不同于比特币，以太坊的策略是预先挖矿代币，取消发行量上限，通过非公开销售和众筹卖出部分代币，将部分代币分配给基金会，用于开发赠款和漏洞悬赏，再像比特币那样为矿工发放激励。很快，以太坊的代币也集中在了少数几个矿池里，交易所成了最大的代币持有者。最终，随着时间的推移，公平分配将决定网络中何人拥有权力，包括出块的权力（发起、接受或审查交易）、分叉网络的权力、参与协议升级决策的权力，以及对网络上的app进行投资和质押的权力。</p>
+<p><strong>治理</strong> ：网络协议的更改会对当前和未来的所有用户产生重大影响，无论他们是否知晓这些变化。在比特币和以太坊，核心专家社群会对提案进行讨论、决策、实施和执行，从而升级协议、调整参数。如果某组矿工的追求与多数人不同，他们可以分叉协议，启动新网络，其代价则是无法享受之前的网络效应。此外，它们通常设有中央基金会，负责管理研发基金的分配，其替代方案则是由DAO（分布式自治组织）负责资金的协调。多数代币持有者和用户在治理决策中的发言权非常有限，因为他们可能并不具备相关领域的专业知识、兴趣和意识。即便他们有这些信息，比起持有大量代币的人士，他们的发言权依然很小，因为投票通常是按代币持有量加权的。新一代区块链项目则将更为公平的链上治理（包括二次投票、时间锁投票、自适应投票偏见、投票委托、以去中心化身份认证为基础的一人一票）和链下治理（论坛签名投票）机制相结合，让代币持有者普遍参与到治理中来。</p>
+<p>这些问题不仅会制约去中心化网络的主流采用，也会导致现有用户继续依赖中心化交易所和托管钱包。非技术背景的用户很难固定地使用真正的去中心化app。另一方面，普通用户没有离开以太坊和比特币，是因为他们并不了解这些问题；企业和投资者没有离开这些网络，是因为他们追随流动性所在；早期用户和OG们维护这些网络，则是因为利益攸关。但是，区块链网络存在其他的可能性。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0412/4_qjo40qnfjr.png" alt="网络"></p>
+<p>以太坊日活地址。数据来源：Etherscan.io</p>
+<p>目前，以太坊拥有50万日均活跃地址，作为参考，推特的日活用户是2亿（以太坊的400倍），Facebook的日活用户接近20亿（以太坊的4000倍）。即便是把L2平台和比特币的用户全部加起来，也比这些主流应用差很多。扩容是开放去中心化互联网的关键瓶颈。这不是我们将来要面对的问题，而是此时此地迫切需要解决的问题。</p>
+<p>为解决扩容问题，以太坊也推出了新版本，尝试通过L2解决方案应对不断增长的需求。同时，陆续于2019年和2020年启动主网的新一代区块链平台Cosmos、Polkadot和Avalanche，让我们再次看到了真正的去中心化互联网的希望。我们先来看看以太坊的新版本是怎么做的。</p>
+<p><strong>以太坊新版本：EVM生态</strong></p>
+<p>上线以来，以太坊的新版本一直在参考新研究和新一代区块链平台的实践，采用各种新的机制。以太坊的新版本使用PoS，将网络拆分为同步的分片，以期提高总计算吞吐量。运行同一以太坊虚拟机（EVM）的验证节点将分配到不同的网络分片，它们将生成区块，累积不同的用户活动数据，再通过Beacon这条信标链互相同步。但是，对所有分片进行同步意味着完全复制，即所有节点储存相同的数据。这是会造成问题的，因为分片的目的是扩容，不是复制整个网络的所有数据。在同步模型或在异构网络拓扑模型中，如果一个分片（例如，一个非常受欢迎的DeFi分片）的用量远远高于其他分片，就会产生和今天的以太坊一样的速度、成本和扩容问题。分片间如何高效地同步数据也是一个问题。</p>
+<p>虽然以太坊表示要过渡到新版本需要1年左右的时间，面对用户需求的增长，rollup（Optimistic、zkSync）、plasma、状态通道这些L2解决方案已经纷纷启动，以期改善效率、提高速度。问题在于，L2的信任模型需要使用中央节点作为中介，或使用多个受激励节点（Polygon使用Tendermint共识构建，在多个验证节点上运行，Matter Labs希望在zkSync建立验证节点网络），前者会破坏去中心化和抗审查性，后者则相当于创建了一条拥有自己的代币（如MATIC）的新去中心化区块链，最终要加入L1平台的竞争。因此，随着用户数量的增加，这些单链基础设施迟早会面临相同的交易成本问题。</p>
+<p><strong>模块化区块链设计</strong></p>
+<p>最近，以太坊推出了“rollup中心路线图”这一新策略，即以太坊为数据可用性层（L1），其他L2项目为计算层。也就是说，以太坊希望作为基础层，为rollup保障数据可用性、共享安全性。 因此，以太坊在积极整合EVM链作为算力，这些EVM链可能由单个rollup主导，也可能是多个rollup共存（请参阅Vitalik Buterin的Endgame一文）。事实上，这种策略和新兴的模块化区块链设计不谋而合，即区块链可将数据可用性或执行外包给其他区块链。这一策略的通用模型由Celestia和EigenLayr开发。 此外，以太坊的新策略类似于 Polkadot和Avalanche现有的共享安全模型。</p>
+<p>另一方面，由于Cosmos、Polkadot和Avalanche都至少在一条EVM兼容链上部署了以太坊跨链桥，它们有时也会被看作L2平台。但是，这些项目通常称自己为L0平台，因为它们提供了开发互相连接的L1区块链的基础设施。</p>
+<p><strong>Cosmos、Polkadot和Avalanche</strong></p>
+<p>Cosmos、Polkadot和Avalanche都旨在通过异步异构网络模型进行横向扩容。在这三个网络，app专用区块链有不同的虚拟机，在需要时可以互操作。在这些基础设施平台，用户可以建立自己的个性化区块链，这为去中心化app和资产提供了更大的设计空间。通过自主区块链而非一组智能合约运行项目具备三大优势：</p>
+<ol>
+<li>
+<p><strong>性能隔离</strong> ：隔离您的区块链和其他区块链，确保您的用户体验不会受到无关的网络活动的影响，从而提升区块链性能。如有需要，您也可以桥接其他区块链。</p>
+</li>
+<li>
+<p><strong>手续费可预测、可自定义</strong> ：在共享的免许可网络上，您是无法控制手续费的，部分app的高交互量会推高整个网络的手续费，您的app也只能接受。自定义的费率结构意味着手续费更好预测，它也将消除底层平台的存在感。用户无需持有底层平台的代币，也能使用app专用区块链。允许用户用底层平台代币以外的货币支付手续费对主流采用至关重要。</p>
+</li>
+<li>
+<p><strong>验证节点可自定义</strong> ：您可以根据自己的app的需求，为自己的区块链设置相应的验证节点规则和要求。您可以要求验证节点遵守特定司法辖区的法律（如欧盟的《通用数据保护条例》），具备高性能硬件，或提供特定证明。   </p>
+</li>
+</ol>
+<p>这些新一代区块链网络已建立或即将建立连接以太坊和比特币的跨链桥。它们也在开发连接彼此的跨链桥，以期充分实现区块链互联网的愿景。</p>
+<p>Cosmos、Polkadot和Avalanche在协议层面（共识机制、经济安全拓扑结构等）有很大区别，因此，它们的功能（链间通信、代币经济模型、所支持的app类型等）和扩容方式（验证节点的参与、质押的归属等）也很不相同。下文将对三者进行对比，帮助开发者、企业家、投资者、研究人员和考虑在这些平台搭建项目的人士了解三者间的区别和它们各自的权衡取舍。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0412/4_jeszy2v0ci.png" alt="网络"></p>
+<p>Cosmos、Polkadot、Avalanche对比</p>
+<p><strong>共识机制</strong></p>
+<p>共识机制能在开放的计算机网络上安全而一致地复制应用程序的状态。与此同时，在信息不完备或存在恶意节点（拜占庭容错）的情况下，网络应保持容错和共识机制的有效性。 Cosmos和Polkadot使用实用拜占庭容错算法（PBFT），它要求所有参与共识的节点彼此通信。因此，网络决策具备绝对最终确定性。PBFT具备延迟低、确认速度快的特点，但它无法扩展到全球开放网络中的大量节点，因为随着验证工作的增加，每个验证节点的负担会指数级增长。比特币引入了最长链共识机制（中本聪共识），允许概率确定性，错误率极低。随着时间的推移，它会逐步建立一个可靠而可扩展的网络，但这个过程非常慢。</p>
+<ul>
+<li>
+<p>Cosmos主网于2019年3月启动，采用Tendermint PBFT共识，交易确认速度快。但是，由于所有节点必须相互通信，二次消息传递的复杂性导致每次只能确认一个块。   </p>
+</li>
+<li>
+<p>Polkadot主网于2020年3月启动，其共识机制对区块生产和交易确认进行了分离：BABE共识（Ouroboros Praos的变体）发起候选块，GRANDPA（PBFT的变体）对它们进行分批确认。这种混合式的共识机制对二次消息传递的复杂性进行了一定程度上的优化。   </p>
+</li>
+<li>
+<p>Avalanche主网于2020年3月启动，采用雪崩共识协议。这是一种结合了验证节点重复采样（Snowball）和传递性投票的独特共识机制，采用有向无环图（DAG）而非线性区块链。雪崩共识的消息传递复杂性是恒定的，因此它具备低延迟、大规模参与的特点。和中本聪共识一样，雪崩共识提供概率最终确定性，但具体参数可以调整，错误率极低。   </p>
+</li>
+</ul>
+<p><strong>验证节点准入</strong></p>
+<p>区块链使用PoW或PoS机制，在开放节点参与的同时，防止同一实体操作多个身份（女巫攻击）。和其他新项目一样，Cosmos、Polkadot、Avalanche均使用PoS机制，因为它能效更高，设计空间也更大。这些网络上也有部分项目使用轻量化的PoW机制或公平硬币分配机制。</p>
+<p><strong>交易延迟</strong></p>
+<ul>
+<li>
+<p>Cosmos确认交易需要6-7秒。</p>
+</li>
+<li>
+<p>Polkadot确认交易共需要12-60秒（技术审订注：大多数在5秒左右），区块生成和交易确认是分离的。</p>
+</li>
+<li>
+<p>Avalanche确认交易只需不到1秒。Avalanche和比特币一样采用概率最终性确认，错误率极低。   </p>
+</li>
+</ul>
+<p><strong>计算吞吐量</strong></p>
+<p>网络每秒处理的计算总量取决于网络使用的虚拟机和实际运行环境功能的复杂性。Cosmos、Polkadot和Avalanche都支持专用的异步区块链网络，最终它们的网络吞吐量都是无限的。重点在于这些网络能实现怎样的增长，它们的链间经济安全结构是怎样的。</p>
+<p><strong>交易成本</strong></p>
+<p>交易手续费随网络活动的增加而上涨。Cosmos、Polkadot和Avalanche都支持专用网络，即每条链都能根据其状态增长确定自己的费率机制。</p>
+<ul>
+<li>
+<p>在Cosmos，每条链都能定义自己的费率机制。   </p>
+</li>
+<li>
+<p>在Polkadot，每条链都能定义自己的费率机制。手续费通过一个权重系统预先计算。是否销毁手续费由各链自行决定。   </p>
+</li>
+<li>
+<p>在Avalanche，每条链都能定义自己的费率机制。在主网，部分功能手续费固定，其他功能手续费为0。所有手续费都将销毁，维护代币持有者的长期利益。</p>
+</li>
+</ul>
+<p><strong>去中心化水平</strong></p>
+<p>下列数据截至2022年3月17日。</p>
+<ul>
+<li>
+<p>Cosmos节点需进行二次信息传递，因此节点数量有限。Cosmos有150个活跃验证节点，IRIS有100个活跃验证节点，Osmosis有100个活跃验证节点。目前，用户需质押至少147,231 ATOM（约130万美元）方可成为Cosmos Hub的活跃节点，委托门槛则为1 ATOM。质押总额约为50亿美元。</p>
+</li>
+<li>
+<p>Polkadot优化了节点间的二次消息传递，节点数量较为有限。Polkadot有297个活跃验证节点，Kusama有1,000个活跃验证节点。目前，用户需质押至少175万 DOT（约3300万美元）方可成为Polkadot中继链的活跃节点，提名门槛则为120 DOT。质押总额约为120亿美元。</p>
+</li>
+<li>
+<p>Avalanche节点的消息传递量是恒定的，因此节点数量可以无限扩张。Avalanche主网有1,311个活跃验证节点。目前，用户需质押至少2,000 AVAX（约16万美元）方可成为Avalanche主网的活跃节点，委托门槛则为25 AVAX。质押总额约为160亿美元。</p>
+</li>
+</ul>
+<p>去中心化水平也取决于节点的权益和收益集中度（收益根据权益加权），它们通常呈现长尾分布——少数节点拥有大部分权益，多数节点拥有小部分权益。对于区块链平台来说，如何实现公平的权益分配是一个有待解决的问题，每个项目都在以自己的方式作出尝试。例如，由于Polkadot的核心是基于PBFT的共识，它的活跃节点数量有限，但这些节点能通过Phragmén算法获得相同的收益。Avalanche凭借新颖的共识机制，可以实现节点的无限扩张，同时，节点的平均权重正在逐步下降，从而提高去中心化水平。</p>
+<p><strong>链间网络拓扑结构</strong></p>
+<p>下列数据截至2022年3月17日。</p>
+<ul>
+<li>
+<p>Cosmos是一个分布式的区块链网络，各区块链可以拥有自己的验证节点。链间互操作通过链间通信（IBC）桥接协议实现。每条链都要实现IBC才能连接其他链。目前，IBC已在28条区块链上部署，它们专注于DeFi、EVM 智能合约、社交媒体、隐私、再生农业和游戏等领域。Cosmos正在开发以太坊、比特币跨链桥。   </p>
+</li>
+<li>
+<p>Polkadot允许平行链从中央中继链继承安全性。平行链没有自己的验证节点，但它们有收集交易并为中继链验证节点生成状态转换证明的核对节点（collator）。平行链通过跨链消息（XCM）格式实现互操作，安全性的继承机制则为任意数据传递提供了可能。目前，Polkadot拥有10条平行链，分别专注于DeFi、EVM 智能合约、社交媒体、隐私、游戏等。Polkadot正在开发以太坊、比特币跨链桥。</p>
+</li>
+<li>
+<p>Avalanche允许验证节点重合：子网在运行多条区块链的同时也为主网提供验证。同一子网中的不同区块链可以实现近即时资产转移（导出/导入）。子网间通信指某一子网中的一条链与另一子网中的另一条链进行通信，目前是通过跨链桥实现的（使用EVM链的ChainBridge-Solidity合约）。事实上，两个子网的验证节点重合越多，子网间通信的安全保证就越高，因为重合的节点在两个子网中都拥有利益。如果一组节点在某一子网出现恶意行为，它们在主网和其他子网的权益也将面临风险。虽然Avalanche尚未推出子网间的直接互操作方法，Avalanche主网完全可以作为子网间的中介。目前，Avalanche主网拥有3条区块链：X链用于转账，P链用于质押，C链用于EVM智能合约。其他区块链和子网也正在蓬勃发展。另外，与其他平台一样，Avalanche拥有Avalanche-以太坊跨链桥（AB桥），它通过受信任联邦运行，是今天的60个以太坊跨链桥中最常用的跨链桥之一。</p>
+</li>
+</ul>
+<p>在今天的Cosmos，在缺乏安全共享机制的情况下桥接安全级别不同的区块链，和普通的跨链操作并没有什么不同。因此，如果没有共同的确定性保证，链间通信的风险级别是不固定的。Polkadot的继承安全模型允许统一的确定性保证，在此基础上，平行链可以安全地互相传递任意数据。Avalanche的验证节点重合模型支持各链与主网共享安全性，不同子网内的区块链也将很快能直接共享安全性，无需使用跨链桥。因此，子网间重合的节点（在两个子网同时拥有利益的节点）越多，子网间通信的安全保证就越高。总体来看，不同区块链间重合的节点（类似于PoW机制中的合并挖矿）越多，链间通信的安全性就越强。</p>
+<p><strong>治理</strong></p>
+<ul>
+<li>
+<p>Cosmos通过链上机制调整共识参数、协调资金分配。</p>
+</li>
+<li>
+<p>Polkadot的运行环境逻辑全部以WASM二进制文件的形式存储在链上，允许无分叉runtime升级，也就是说决策将根据公投结果自动执行，不需要开发人员或验证节点进行任何操作。其治理模块包括代币加权投票、轮值委员会、时间锁代币投票和自适应投票偏见机制。   </p>
+</li>
+<li>
+<p>Avalanche可通过链上投票升级部分参数。其团队正在根据雪崩共识的特性，开发范围更大的治理机制。</p>
+</li>
+</ul>
+<p><strong>开发空间</strong></p>
+<p>所有区块链都具备以下核心组件：数据库、p2p网络、共识机制、交易处理机制和状态转换功能（运行环境或虚拟机）。 Cosmos、Polkadot、Avalanche提供上述核心组件，支持开发人员构建自定义状态转换函数。</p>
+<ul>
+<li>
+<p>Cosmos提供Cosmos SDK和Tendermint中间件，支持用任意编程语言执行交易。您可以开发自己的虚拟机，建立自己的节点集。如果要启动自己的区块链，您需要从头建立验证节点集，并吸引现有区块链的节点。您还能在EVM兼容链（Ethermint或CosmWasm）上部署智能合约。</p>
+</li>
+<li>
+<p>Polkadot提供了基于Wasm的元协议和Substrate开发工具包，其语言为Rust。您可以使用Polkadot提供的模块（如帐户、资产、治理、EVM等）和自定义模块开发自己的虚拟机。您还可以使用Substrate的链上调度、链下工作机和免手续费交易的免执行模型。   在平行链拍卖中竞拍到插槽后，便能启动自己的区块链，新区块链将继承中继链的安全性。或者，您也可以扩大自己的验证节点的规模。您还能在EVM兼容链（Moonbeam、Acala）上部署智能合约或使用Ink智能合约。</p>
+</li>
+<li>
+<p>Avalanche提供Avalanche虚拟机（AVM），供开发者克隆并自定义自己的实例，或建立全新的实例作为自己的虚拟机（开发虚拟机的模块SDK尚未发布）。启动一条区块链，需要启动子网并吸引验证节点，子网节点必须是Avalanche主网的节点。（技术审订注：子网节点现阶段是由子网创建者自己搭建或者招募，并非必须是Avalanche主网的节点）目前已有启动自定义EVM链的子网EVM代码，您可以在兼容EVM的C链上部署智能合约。</p>
+</li>
+</ul>
+<p><strong>异构区块链网络的拓扑结构</strong></p>
+<p>比起每条区块链都是同个虚拟机的实例的网络，由专用区块链组成的异步网络更具备应对大规模用户活动的潜力。本节将更加详细地探讨Cosmos、Polkadot、Avalanche各自的区块链网络和链间通信机制。</p>
+<p><strong>Cosmos生态</strong></p>
+<p>Cosmos生态采用分布式网络的拓扑结构，不同区块链用途各异，各自拥有自己的验证节点集。需要通信时，这些链将借助跨链桥进行通信。分析认为，这种拓扑结构“和最不安全的链一样安全”（最安全的链接受来自最不安全的资产后，其安全性会下降）。 但是，这种拓扑结构也赋予Cosmos网络以韧性，因为没有哪条区块链的安全问题会左右整个生态的存亡。但是，这样的Cosmos生态和其他依赖跨链桥的区块链有什么区别呢？Cosmos具有“无附加条件”的政策，Binance DEX、Oasis、Terra、Nym等项目都能使用Tendermint开发并启动自己的app专用区块链。 </p>
+<p>Cosmos生态中的区块链通过跨链通信（IBC）协议彼此连接（参见数据平台Map of Zones上的28条互联区块链）。实施IBC协议的区块链将彼此连接，提高整个Cosmos生态的流动性。IBC的运行方式和跨链桥非常类似。将资产从一条区块链转移到另一条区块链时，用户需要 1) 在转出链锁定资产；2) 监测各区块链的第三方（可能是联邦中继节点）发现该收据，将其送达目的链；3) 目的链验证收据，将资产表示反馈给转出链。在Cosmos生态，实施IBC的链拥有Tendermint轻型客户端验证工具，可以在通信中使用并验证这些收据。此外，IBC是一个通用协议，可以在不同的区块链架构中实现（参见Substrate的IBC实现）。另外，新版本的IBC将提供共享安全性方案（详见Billy Rennekamps的演讲）。</p>
+<p><strong>波卡的继承安全拓扑结构</strong></p>
+<p>Polkadot采用分层级的继承安全拓扑结构，平行链间的任意数据通信非常高效，但这些平行链依赖于从中央中继链租赁的安全性。在Polkadot，平行链不需要自己的验证节点，而是从中继链租赁安全性。具体而言，平行链需要在拍卖中拍得插槽（总计约100个插槽）并锁定DOT 代币（通过众筹筹集DOT）。平行链专注于各自的领域，当它们通过核对节点连接到中继链并与之同步后，它们的功能将立即可用。批评人士认为，不同区块链链可能并不需要相同的安全级别，另外，单条区块链的安全不应具备左右整个生态的存亡的能力。虽然目前Polkadot倡导的是没有验证节点的平行链，用户完全可以用Substrate启动区块链，建立自己的验证节点，而不是依赖中央中继链（参见Compound Gateway）。此外，平行链可以积累自己的验证节点，在租期结束时解锁DOT代币，并在需要跨链通信时使用跨链桥。此外，Polkadot可以设立多个中继链，这将利好整个Polkadot生态。不过，网络的分层级拓扑结构很可能会保留下来，因为以继承安全为基础的跨链通信比跨链桥效率高。</p>
+<p>Polkadot开发了跨共识信息交换格式（XCM），作为平行链、智能合约、跨链桥和Substrate pallet间通信的通用格式。此外还有垂直信息传递（VMP），用于中继链和平性链间的信息交换，以及跨链信息传递（XCMP），用于同一中继链下平性链间的信息交换。XCM中的信息是跨共识虚拟机（XCVM）上运行的程序（参见Gavin Wood的系列文章）。其他异构区块链网络也适用这种编写网络、构建可组合链间app的抽象方法。</p>
+<p>随着平行链社群的扩大，平行链也许会希望拥有自己的验证节点（参见Acala的ppt），这样一来，它们便会成为向其他链租借安全性的中继链。虽然嵌套的安全分享机制可能会变得很复杂，所有子平性链可以共享确定性保证，每秒处理的状态转换量也会增加，扩大Polkadot网络的总计算通量。</p>
+<p><strong>Avalanche的网络重叠拓扑结构</strong></p>
+<p>Avalanche具有网络互相重叠的拓扑结构。每个验证子网的节点都需要同时验证Avalanche主网。（技术审订注：现阶段没有这样的设定，并非强制节点是主网和子网的验证节点）子网由一组验证节点组成。一个子网可以验证多条区块链，但一条区块链只能由一个子网验证。也就是说，一个节点可以参与多个子网。启动新区块链时，您必须提供激励措施来吸引验证节点，且这些节点需同时验证主网或其他区块链。（技术审订注：参考上文备注，并非如此）如果您的链吸引到了新的验证节点，那么这些节点必须验证主网和运行您的区块链的子网。总体而言，子网架构决定了验证节点互相重合的网络结构（如上图所示），而这是由创新的雪崩共识决定的。雪崩共识对验证节点进行重复二次采样，不需要所有节点互相通信，只需要少部分节点互相通信，这大大降低了网络的信息传递复杂性。因此，即使验证节点增加到上万个，节点的带宽和处理能力要求都是恒定的。因此，从节点参与的角度看，Avalanche平台的区块链比Polkadot和Cosmos的区块链更具包容性，因为Avalanche每条链的验证节点都可以无限扩张。一个节点能运行多少条区块链，取决于区块链的runtime/虚拟机设计复杂度，目前还没有确定的答案。</p>
+<p>在Avalanche，跨链互操作十分高效，这不仅是因为Avalanche交易确认速度快，也是因为主网确保了共享确定性保证（目前X链、P链、C链间可以实现近即时资产转移）。Avalanche的安全共享模型不同于 Polkadot或以太坊最新的rollup系统。Avalanche新颖的子网架构支持密度更高的网络。这是因为安全共享不仅发生在主网的三条链之间，也发生在所有互相重叠的子网区块链之间。这赋予了Avalanche网络可组合性和可编程性，开辟了崭新的设计空间，并将支持可以指数级扩展到数百万日活用户的形成群体网络（GFN；参见里德定律），助力Web3愿景的实现。</p>
+<p><strong>应用程序</strong></p>
+<p>异构区块链网络Cosmos、Polkadot和Avalanche凭借核心基础设施的革新，提供了广阔的设计空间。截至目前，以太坊一直是加密经济创新的大本营。实际上，在这些异构网络上启动项目的团队，最初都是对以太坊上已有的项目（DEX、AMM、借贷、稳定币、聚合工具、保险、NFT平台等）进行优化。不过，也有团队在利用这些异构网络的独特优势，探索全新的应用场景。</p>
+<p>在Cosmos，Osmosis将交易隐私（使用门限解密交易防止抢跑）与跨链AMM相结合，并通过IBC实现跨链。Celestia对区块数据进行编码，提高轻型客户端的安全性，这对自主身份区块链的互操作性及其在分布式区块链生态中的安全等级差异具有关键意义。Regen通过加密经济平台激励再生农业，并利用附带审计生态的传感器和卫星数据。Nym启动mixnet来阻止攻击者分析网络流量，即使攻击者具备监视整个网络的能力。Nym使用Tendermint和Cosmwasm智能合约控制目录服务、节点绑定和mixnet委托质押。Penumbra保护跨链网络交易的隐私。Binance DEX和Terra这样的大型项目也使用了Tendermint。通过IBC实现互操作后，这些区块链将释放更大的价值。</p>
+<p>在Polkadot网络，Acala平行链是一个一站式的DeFi中心，提供从AMM到稳定币借贷的丰富功能。 Moonbeam是一个兼容EVM的智能合约链。Subsocial正在开发去中心化的社交网络平台。Robonomics则在开发自主机器人服务。Bit Country是启动特定社群的虚拟世界/元宇宙的平台。Integritee和Phala使用可信执行环境（TEE）实现去中心化机密计算和加密数据存储。Polkadot的开发框架Substrate也可以独立使用（并非作为平行链），用于运行Compound Gateway这样的区块链。虽然所有平行链在设计上都兼容Polkadot的跨链生态，它们应该更好地利用Substrate框架出色的可组合性、内存效率和自动升级的元协议治理能力，赋能全新的使用场景。</p>
+<p>Avalanche的EVM兼容链C链最初吸引到的是希望开发“高能效版”以太坊项目的团队。穿山甲是一个效仿Uniswap的高速AMM。Sherpa Cash效仿Tornado，负责提供隐私交易。Trader Joe最初是AMM，后来增加了借贷功能，现在正在迈向DeFi中心。Benqi是一个类似于Compound的借贷应用，最近推出了AVAX流动性质押。Platypus是Curve稳定币兑换的优化版本，增加了资产负债管理功能。Aave、Curve、Sushiswap这些采用多链策略的以太坊领军项目也纷纷在Avalanche C链启动，吸引大量流动性沿AEB桥跨链而来。Avalanche生态也有一些新的资产类型，例如诉讼融资，通过与DAO结合，该项目或能将法律体系接入加密货币网络。事实上，Avalanche的创新共识和子网互相重叠的拓扑结构为未来的创新项目打开了巨大的可能性。</p>
+<p><strong>结论</strong></p>
+<p>异构区块链网络Cosmos、Polkadot、Avalanche为区块链互联网提供了出色的基础设施，证明了异步异构网络模型的高效性，也对当前的比特币和以太坊网络进行了改进。这些网络最终将容纳数百万日活用户，实现web3“互联网由用户拥有和控制”的愿景。</p>
+<p>异构网络各显其能有助于实现真正的去中心化互联网，因为它们在设计上各具特色，做了各自的权衡和取舍。了解这些网络的异同点有利于开发面向未来的新系统。使用这些基础设施的项目将超越智能合约应用，成为拥有专用区块链和自己的社群的可扩展生产质量系统，应用于此前无法想象的场景。但现在说这些不免为时过早，还有一些问题没有解决，例如如何确保流动性在各链间高效流动，而不是孤立地存在于特定链中？跨链运行的开放组织将如何预防多链巨鲸的出现，确保财富和权力的公平分配？</p>
+<p>[1] 比特币网络建立在数十年的密码学研究上，详见Arvind Narayanan和Jeremy Clark的论文《比特币的学术起源》。</p>
+<p>特别感谢Sam Hart、İstem D. Akalp、Engin Erdogan、Joe Petrowski的反馈和审稿建议。</p>
+<p>披露：本文作者可能持有文中所述项目的资产。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/36577/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">灰度正与SEC合作将GBTC转换为现货比特币ETF</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/36571/">
+                <span class="next-text nav-default">金色Web3.0日报 | 美国《时代》杂志公开招聘六个Web3岗位需求</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

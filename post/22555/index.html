@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Vitalik：从技术角度揭秘“分片”的优势 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="介绍分片的特定属性，并与其他非分片技术加以区分" />
+
+  <meta name="keywords" content="区块大全, 区块链, 区块链资讯, 区块链快讯, 区块链新闻, 比特币行情" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/22555/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Vitalik：从技术角度揭秘“分片”的优势" />
+<meta property="og:description" content="介绍分片的特定属性，并与其他非分片技术加以区分" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/22555/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-20T00:00:00+00:00" />
+
+<meta itemprop="name" content="Vitalik：从技术角度揭秘“分片”的优势">
+<meta itemprop="description" content="介绍分片的特定属性，并与其他非分片技术加以区分"><meta itemprop="datePublished" content="2021-05-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="9177">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vitalik：从技术角度揭秘“分片”的优势"/>
+<meta name="twitter:description" content="介绍分片的特定属性，并与其他非分片技术加以区分"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Vitalik：从技术角度揭秘“分片”的优势</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-05-20">
+      2021-05-20
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 9177 字 -
+        预计阅读 19 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><em>来源：<a href="https://mp.weixin.qq.com/s/rfauL_yea4nZIugTyuVK8w">ETH中文站</a></em></p>
+<p><em>稿源：vitalik.ca</em></p>
+<p><em>作者 ： Vitalik Buterin</em></p>
+<p><em>此处特别感谢 Dankrad Feist 和 Aditya Asgaonkar 的校对工作</em></p>
+<p>分片是以太坊可扩展性的未来，是让以太坊生态系统实现每秒数千笔交易的关键，这样大部分人才能以负担得起使用成本，成为该以太坊的用户。然而，在以太坊生态系统中，分片是容易受到误解的概念之一，在更广泛的区块链生态系统中也是如此。它指的是一组非常特定的概念，这些概念都拥有自己的特质，但人们经常将前者与一些技术混为一谈，后者的安全特性更弱，且与前者不同。本篇文章的目的是介绍分片的特定属性，并与其他非分片技术加以区分，且为了实现这些属性，分片系统需要做出哪些牺牲。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0520/28_i7wfwjmmda.jpg" alt="Vitalik：从技术角度揭秘“分片”的优势"></p>
+<p>图注：以太坊分片系统，原图来自Hsiao-wei Wang，由Quantstamp设计</p>
+<h2 id="扩展性不可能三角"><strong>扩展性不可能三角</strong></h2>
+<p>要介绍分片，最佳方式是从描述一个问题开始，即<strong>扩展性不可能三角</strong> ，这个问题促成了该解决方案的诞生。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0520/28_ykasdi7grp.png" alt="Vitalik：从技术角度揭秘“分片”的优势"></p>
+<p>根据扩展性不可能三角，一个区块链想要实现三个特性，<strong>若使用简单技术手段，只能实现三个特性中的两个</strong> 。这三个特性如下：</p>
+<p><strong>➤</strong>  <strong>可扩展性：</strong> 该区块链可以处理和验证的交易比单个普通节点更多，例如一台消费级笔记本电脑。</p>
+<p><strong>➤</strong>  <strong>去中心化：</strong> 该区块链的运行可以不依赖于由大型中心化参与者组成的小群体。这通常理解为即使是大多数节点都是诚实的，也不应该信任不能用消费级笔记本电脑接入的节点群。</p>
+<p><strong>➤安全性：</strong></p>
+<p>该区块链可以抵御大量试图攻击的节点，理想情况下，要抵御50%的节点，一般情况下，要抵御超过25%的节点，但仅仅抵御5%的节点不能够保证安全性。</p>
+<p>以下是三种不同类型的“简单解决方案”，但是这些解决方案只能实现三个特性中的两个。</p>
+<p>➤ <strong>传统区块链</strong> 包括比特币、实现PoS/分片之前的以太坊、莱特币及其他类似区块链。这些区块链依赖于每个参与者运行全节点来验证每笔交易，因此保证了去中心化和安全性，但没有实现扩展性。</p>
+<p>➤ <strong>高TPS区块链</strong> 包含DPoS链，但也涵盖许多其他区块链。这种区块链依赖于少量节点维持共识，数量通常介于10-100个，用户必须信任大多数节点。根据上文的定义，该解决方案实现了扩展性和安全性，但没有实现去中心化。</p>
+<p>➤ <strong>多链生态系统</strong> 一般指让区块链“向外扩展”，即让各种应用程序在不同的链上部署，并使用跨链通信协议进行通信。这实现了去中心化和扩展性，但并不安全，因为攻击者只需要控制其中一个链的大多数共识节点 (通常数量小于整个生态系统1%的节点数) 就可以造成破坏，还可能引起连锁反应，对在其他链中的应用程序造成巨大损害。</p>
+<p><strong>分片技术能够同时实现上文提及的三个特性。一个分片型区块链拥有以下特征：</strong></p>
+<p>➤ <strong>可拓展性：</strong> 其处理的交易量远高于单一节点。</p>
+<p>➤ <strong>去中心化：</strong> 能够完全基于消费级笔记本电脑运行，无需依赖超级节点等。</p>
+<p>➤ <strong>安全性：</strong> 攻击者无法通过少数资源对系统发动局部攻击，只能尝试控制整个系统，以进行攻击。</p>
+<p>本文接下来的部分将讨论分片型区块链如何实现这些优势。</p>
+<p><strong>随机抽样分片</strong></p>
+<p>最容易理解的分片版本是通过随机抽样进行分片。与以太坊生态系统中构建的分片形式相比，随机抽样分片的信任属性更弱，但以太坊分片应用的技术更简单。</p>
+<p>下文阐述了分片的核心思想。假设有一个PoS区块链，其验证者数量非常多，例如10000位验证者，并且需要验证区块的数量非常庞大，比如100个区块。在下一组区块产生之前，没有一台计算机能够验证这100个区块。</p>
+<p>为了解决这个问题，我们需要<strong>以随机的方式，分配验证工作</strong> 。我们对验证者名单进行随机混洗，然后选取名单中前100个验证者来验证第一个区块，第二组100位验证者来验证第二个区块，以此类推。随机抽样分片通过这种方式来验证区块或执行其他任务，这些随机选出的验证者称为<strong>委员会 (committee)</strong> 。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0520/28_jqddg90iyp.png" alt="Vitalik：从技术角度揭秘“分片”的优势"></p>
+<p>验证者验证一个区块后，会通过发布一个签名来证明。其他所有节点都只需要验证10000个签名，而不是验证100个完整区块，这样会减少很多工作量，特别是应用了BLS签名聚合技术之后。每个区块的广播无需通过同一个P2P网络，而是通过不同子网，节点只需加入自己负责或其他想要验证的区块相对应的子网。</p>
+<p>想象一下，如果每个节点的算力增加2倍，会产生什么效果。对于每个节点，现在能够安全验证签名的数量增加了2倍，那么可以减低最小质押数量，让验证者的数量增加2倍，这样就可以产生200个委员会，而不是100个。所以，每个时隙的区块验证数量能够达到200个，而不是100个。此外，每个区块容量可以扩大2倍。因此，总体区块链容量会增加4倍。</p>
+<p>我们可以通过数学术语来解释其背后的原理。根据大O符号 (Big O notation)，我们用 <strong>“O(C)”</strong>  表示单个节点的算力。<strong>O(C)</strong>  代表传统区块链能够处理的区块大小。如上所述，分片链可以并行处理大小为 <strong>O(C)</strong>  的区块 (请记住，每个节点来验证每个区块的间接成本为<strong>O(1)</strong> ，因为每个节点只需要验证固定数量的签名)。因此，每个区块容量为<strong>O(C)</strong> ，分片链总容量是 <strong>O(C^2)</strong> 。这就是为什么这种类型的分片称为<strong>二次方分片 (quadratic sharding)</strong> ，基于二次方分片的关键作用，我们认为从长远来看，分片是扩展区块链的最佳方式。</p>
+<p><strong>人们经常会问这样一个问题：“随机组成100个委员会与分裂为100条独立区块链有什么不同？”</strong></p>
+<p>其不同之处主要在于以下两个方面：</p>
+<p><strong>1. 随机抽样能防止攻击者将算力集中于某个分片中。</strong> 在一个100条区块链组成的多链生态系统中，攻击者只要拥有总质押量的0.5%就可以造成破坏，意味着可以针对其中一个区块链发起51%攻击。在一个分片链中，攻击者必须拥有总质押量的30-40%，才能达到相同目标，换言之，<strong>该链的安全性能共享给分片</strong> 。当然，攻击者可以等到运气好的时候，偶然在单个分片中获得51%的算力，尽管拥有的质押量不到50%，但对于质押量远远低于51%的攻击者来说，发起攻击的难度呈指数型上升。如果质押量少于30%，几乎不可能发起攻击。</p>
+<p><strong>2. 若有一个分片出现了坏块，整个链会重组，以避免接受该区块，这称为紧密耦合性。</strong> 根据社会契约，即使单个分片中出现了一个坏块，也不能被主链接受，一旦发现坏块，分片会被拒绝，本文后面章节将介绍一些从技术上强制执行社会契约的方法。有了这一机制，从应用程序的角度来看，分片链享有完美安全性，合约A能够信任合约B，即使由于区块链受到攻击，合约B出现故障，并且回滚了整个历史，其中也包含合约A中由于合约B出现问题而受到影响的交易。</p>
+<p>这两种差异确保分片为应用创建了一个环境，该环境保留了单链条件下的关键安全属性，而多链生态系统则无法实现这一点。</p>
+<h2 id="通过更好的安全模型改善分片"><strong>通过更好的安全模型改善分片</strong></h2>
+<p>我完全同意比特币社区中的一种普遍看法，那就是<strong>像比特币（或以太坊）等区块链并不完全依赖“诚实的大多数”假设</strong> 。如果对这些区块链展开51％攻击，则攻击者可以做一些具有破坏力的坏事，例如回滚或审查交易，但不能插入无效的交易。而且即使他这么做了，运行常规节点的用户也可以轻松检测到这种行为，因此，社区若希望通过分叉来剥夺攻击者的力量，以协调的方式抵御攻击，可以迅速采取行动。</p>
+<p><strong>对于更为中心化的高TPS链，它们的主要弱点是缺乏这种额外安全性。</strong> 这种区块链没有，也不可能具有让普通用户运行节点的文化，因此主要节点和生态系统参与者可以更轻松地聚在一起，强制实行一项协议更改，即使社区非常不喜欢这个改动。更糟糕的是，在默认情况下，用户的节点会接受这项改动。一段时间后，用户会察觉到，但等到那时，这个更改已经成为既成事实，意味着其中主要的协调负担，即拒绝更改，将由用户承担，并且不得不做出痛苦的决定，回滚一天或更多的交易记录，而其他用户都以为这些记录已经得到了最终确认。</p>
+<p><strong>理想情况下，我们希望采用一种分片形式，其验证方式能避免上文提到的51%信任假设，并保留传统区块链的高安全性，这种安全性只有在经过完全验证的情况下才能实现。而这正是我们过去几年的大部分研究成果。</strong></p>
+<p><strong>可扩展计算验证</strong></p>
+<p>我们可以将能够抵御51%攻击的可扩展验证问题分为两种情况：</p>
+<p>➤ <strong>验证计算：</strong> 检查某些计算是否正确完成，并假设你拥有完成该计算的所有输入数据</p>
+<p>➤ <strong>验证数据的可用性：</strong> 检查计算本身输入的数据是否以某种形式存储，在必要情况下以供下载；执行此检查时，无需实际下载所有输入数据，因为数据可能太大，无法每个区块都进行下载。</p>
+<p>区块链中的区块验证同时涉及计算和数据可用性检查，即你需要确信区块中的交易有效，并且区块中的新状态根哈希是执行这些交易的正确执行结果，但是你还需要确信该区块中有足够多的数据实际得到发布，这样下载数据的用户可以计算状态，继续处理区块。第二点关系到一个非常微妙但重要的概念，即<strong>数据可用性问题 (data availability problem)</strong> 。下文会对这个问题进行探讨。</p>
+<p>可扩展计算验证相对容易实现，其中会运用两类技术：<strong>欺诈证明及ZK-SNARKs</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0520/28_bruija1jeb.png" alt="Vitalik：从技术角度揭秘“分片”的优势"></p>
+<p>欺诈证明能够验证计算的同时，保证扩展性</p>
+<p>以下是对两类技术的简单介绍：</p>
+<p>➤ <strong>欺诈证明 (fraud proof)</strong>  是一个接受计算结果的系统，你可以要求有质押存款的人签署以下形式的消息：“我证明，如果使用输入X进行计算C，则会得到输出Y”。你会默认信任该消息，但其他有质押存款的人会有<strong>挑战</strong> 计算结果的机会，他们可以签名一条消息，称“我不同意，输出结果应该为Z，而不是Y。”仅发起挑战后，所有节点才会进行运算。这两方中任何一方出错都会失去保证金，并且所有基于错误计算的运算都会重新进行。</p>
+<p>➤ <strong>ZK-SNARKs</strong>  是一种密码学证明形式，可以直接验证“输入X后，执行计算C，会输出Y”。在密码学层面，该验证机制是“可靠”的，因为如果输入X后，进行计算C，结果不等于Y，则无法通过计算生成有效性证明。即使运行计算C本身花费大量时间，该证明也可以很快得到验证。有关ZK-SNARK的更多数理解释，请参阅此文章。</p>
+<p>基于欺诈证明的计算之所以具有扩展性，是因为在“通常情况下”，你不用运行复杂计算，只需验证单个签名。在特殊情况下，挑战出现后，你必须在链上验证计算，但是特殊情况很少发生，因为触发这种情况的成本非常昂贵，因为最初的声明者或挑战者之一会失去大量保证金。ZK-SNARKs概念更简单，它们只是通过成本更低的证明进行验证，从而代替计算，但其背后的数学原理却要复杂得多。</p>
+<p>有一种半可扩展系统，它能以可扩展的形式验证计算，但需要每个节点验证所有数据。该系统若能通过一系列压缩技术，通过运算替换大部分数据，效率便可大大提高。这便是Rollup所做的事。</p>
+<h2 id="对数据可用性进行可扩展性验证难度更高"><strong>对数据可用性进行可扩展性验证难度更高</strong></h2>
+<p>欺诈证明不能用于验证数据可用性。运算的欺诈证明基于这样一种条件，即原始声明一旦提交，运算的输入数据要在链上发布，因此，如果有人发起挑战，该挑战的执行与原始执行的“环境”完全一致。对于数据可用性检查，上述操作无法实现，因为如果要在链上发布，需要检查的数据量太多。因此，针对数据可用性，如何生成欺诈证明方案变成了一个关键问题，有人可以声称“数据X可用”，但不在链上发布，等待挑战者出现，发起挑战后，再向整个网络发布该数据，使得网络中的其他参与者认为挑战者是不正确的</p>
+<p>下图的**“渔夫困境”** 能够很好阐释其中道理：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0520/28_ldeguum9k6.png" alt="Vitalik：从技术角度揭秘“分片”的优势"></p>
+<p>“渔夫困境”的核心理念涉及到两种情况，一种情况是V1是恶意发布者，但V2是一个诚实挑战者，而另一种情况是V1是诚实发布者，而V2是恶意挑战者。两种情况对于当时未尝试下载该特定数据的任何人来说都没有区别。当然，在可扩展的去中心化区块链中，每个个人节点只期望下载一小部分数据，因此只有一小部分节点能够了解分歧之外的所有状况。</p>
+<p>由于不可能辨识出哪一方是正确的，所以也无法为数据可用性生成有效的欺诈证明解决方案。</p>
+<p><strong>人们经常问道：“如果某些数据不可用怎么办？ZK-SNARK可以确保一切数据的有效性，但这还不够吗？”</strong></p>
+<p>不幸的是，仅仅保证数据有效性还不足以维持区块链正常运行。原因是如果区块链能经过验证，但所有数据均不可用，则用户将无法更新数据，生成证明验证未来的区块。攻击者如果能生成一个区块，该区块虽然能够经过验证，但数据不可用，可以有效阻碍区块链运行。有的攻击者还可以不上传特定用户的帐户数据，直到该用户支付赎金为止，因此这不仅仅是一个活性问题。</p>
+<p>有一些强有力的信息论观点认为这个问题是根本性问题，没有优良解决方案 (例如密码学累加器的应用)。有关详细信息，请参见本文。</p>
+<p><strong>那么，如何在不下载的情况下，检查1 MB数据是否可用？这听起来无法实现！</strong></p>
+<p>关键的解决方案是一种称为<strong>数据可用性采样 (data availability sampling)</strong>  的技术。该技术的工作方式如下：</p>
+<p><strong>1.</strong>  通过<strong>纠删码工具</strong> ，将具有N段的数据分成为2N段的数据，因此只需任意N个数据段都可以恢复整个数据。</p>
+<p><strong>2.</strong> 用户如果要检查可用性，无需下载全部数据，而是<strong>随机选择区块中的位置</strong> (常数，例如30)，并且仅当在区块中找到所有选定位置的数据时，才接受这个区块。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0520/28_3s30n082ry.png" alt="Vitalik：从技术角度揭秘“分片”的优势"></p>
+<p>通过纠删码，我们能够将问题从“检查100%数据可用性” (即保证每条数据均可用) 转变为“检查50%数据可用性” (即至少一半数据可用)。随机抽样则解决了50%可用性问题。如果可用数据量少于50%，那么这两种检查手段中至少一个不可行，并且如果至少50％的数据可用，那么，尽管某些节点可能无法得知一个区块的可用性，但只需要一个诚实节点运行纠删码重构程序，就能恢复剩余50%的区块数据。因此，为了检查1 MB区块的可用性，你无需下载1 MB数据，只需下载几KB。这样每个区块都能接受数据可用性检查。有关如何使用P2P子网有效进行数据检查，请参见这篇文章</p>
+<p>通过ZK-SNARK证明，数据纠删码的正确性也能够得到验证，然后利用默克尔树的分支来验证各个数据块。另一种验证方式是使用<strong>多项式承诺 (polynomial commitment)</strong> ，例如 Kate commitments (KZG承诺)，本质上，该承诺通过一个简单组件进行纠删编码，证明每个要素和正确性验证，这就是以太坊分片所使用的技术。</p>
+<h2 id="总结如何保证所有数据的正确性"><strong>总结：如何保证所有数据的正确性？</strong></h2>
+<p>假设有100个区块，并且你不想依赖委员会有效地验证所有区块的正确性。为了实现这个目标，我们需要进行以下措施：</p>
+<p>➤ 每个客户端在每个区块上进行<strong>数据可用性采样</strong> ，以验证每个区块中的数据是否可用，同时需要下载每个区块几KB的数据，即使区块的整体大小为MB或更大。仅在所有数据可用性挑战得到正确回应后，客户点才会接受区块。</p>
+<p>➤ 数据可用性得到验证后，那么验证其正确性将变得更加容易。验证正确性要通过以下两种技术：</p>
+<ul>
+<li>
+<p>我们可以使用<strong>欺诈证明</strong> ，一些质押了保证金的参与者可以提供签名，证明每个区块的正确性。其他<strong>挑战者</strong> 或者是<strong>渔夫节点</strong> 会进行随机检查，并尝试完整处理整个区块。因为数据可用性已经经过检查，所以其他节点始终可以下载数据，并对任何特定区块进完全处理。如果发现无效区块，节点会发布一个所有人都可以验证的<strong>挑战</strong> 。如果该区块被证明是坏块，则基于这一区块的所有区块都需要重新经过运算。</p>
+</li>
+<li>
+<p>我们可以使用 <strong>ZK-SNARK</strong>  技术。这样每个区块的正确性都能得到这种技术的验证。</p>
+</li>
+</ul>
+<p>➤ 在以上两种情况中，无论区块有多大，每个客户端仅需要对区块进行少量验证工作。对于欺诈证明，区块偶尔需要在链上得到充分验证，但这种情况很少发生，因为就算发起一个挑战，成本也十分高昂。</p>
+<p>以上就是全文的总结！就以太坊分片而言，短期计划是让分片中的区块<strong>只包含数据</strong> 。也就是说，这些分片的作用纯粹是“数据可用性引擎”，Layer2 rollup 的工作则是使用安全的数据空间，另外还会利用欺诈证明或 ZK-SNARK 技术，实现高交易吞吐量，同时维持安全性。但是，我们还可以创建一个内部系统，“原地”实现高吞吐执行，这是完全有可能实现的。</p>
+<h2 id="分片系统的关键特性是什么有哪些权衡"><strong>分片系统的关键特性是什么？有哪些权衡？</strong></h2>
+<p>分片的主要目标是尽可能地继承传统非分片区块链最重要的安全属性，同时无需每个节点验证每笔交易。</p>
+<p>分片基本可以满足这些要求。以下是传统区块链的特征：</p>
+<p>➤ <strong>无效区块无法添加到区块链中</strong> ，因为验证节点会检测到该区块是无效的，并忽略该区块。</p>
+<p>➤ <strong>数据不可用的区块无法添加到区块链中</strong> ，因为验证节点无法下载数据，并选择忽略。</p>
+<p>以下是强安全性的分片区块链特征：</p>
+<p>➤ <strong>无效区块无法添加到区块链中</strong> ，原因如下：</p>
+<ul>
+<li>欺诈证明会迅速检测到该区块，并告知整个网络其为不正确区块，并重罚创建者。</li>
+<li>或者通过ZK-SNARK验证其正确性，因为无法为无效区块生成有效ZK-SNARK证明。</li>
+</ul>
+<p>➤ <strong>数据不可用的区块无法添加到区块链中</strong> ，原因如下：</p>
+<ul>
+<li>如果区块可用数据量只有不到50%，几乎可以肯定的是，每个客户端至少有一次数据可用性抽样检查会失败，导致客户端拒绝该区块，</li>
+<li>如果至少有50％的区块数据可用，那么实际上整个区块数据都是可用的，因为仅需一个诚实节点即可恢复其余数据。</li>
+</ul>
+<p>传统高TPS链因为没有分片，无法实现上述特征。而多链系统面临的问题在于，攻击者如果选择一条链进行攻击，就可以轻易取得控制，系统中的链也可以共享安全性，但是如果安全性低，那将与传统高TPS链没有区别，还会继承传统区块链的所有缺点，若安全性较高，共享安全性只是上述分片技术的一种更复杂的实现。</p>
+<p><strong>侧链 (sidechain)</strong>  高度依赖于实现方式，如果它们共享矿工或验证者，通常它们容易面临传统高TPS链的弱点；如果它们不共享矿工或验证者，也会面对多链生态系统的弱点。分片链避免了这些问题。</p>
+<p><strong>但是，分片系统也有一些隐患。</strong> 尤其是在以下几个方面：</p>
+<p>➤ <strong>若遭遇适应性敌手攻击，仅依赖于委员会的分片链难以应付，并且较难追责。</strong> 也就是说，如果攻击者能够实时入侵或选择关闭任何节点集合，那么只需要攻击少量节点即可破坏一个委员会。此外，攻击者无论是应变能力强，还是拥有质押总数的50％，如果破坏了一个委员会，整个网络只能确认少数参与攻击的节点，即该委员会中的节点，结果处罚金额只占少量质押。这又是另一个关键原因，解释为什么数据可用性采样要与欺诈证明或ZK-SNARK结合，成为随机采样技术的重要补充。</p>
+<p>➤ <strong>仅在线客户端数量足够多，</strong> 能生成足够多数据可用性采样请求时，这些重复响应总是构成至少50%的区块数据。在实践中，这意味着<strong>必须有几百个客户端在线</strong> ，并且此数量越大，系统容量与单个节点容量的比率就越高。这是一个few-of-N信任模型——通常非常值得信赖，当然，它不如非分片链节点在数据可用性方面的0-of-N信任模式那么稳健。</p>
+<p>➤ <strong>如果分片链依赖于欺诈证明，那么它要基于时序假设，</strong> 即如果网络太慢，则在欺诈证明显示数据有误之前，节点可能已经敲定了某一个区块。幸运的是，如果你严格遵循规则，一旦发现了无效区块，就会回滚所有无效区块，该时段参数由用户设置，每个用户都能设置确认区块前的等待时间，如果他们不想等待太久可能会遭受损失，但更谨慎的用户也更加安全。即使如此，这一机制会削弱用户体验。<strong>使用ZK-SNARK验证有效性可以解决此问题。</strong></p>
+<p>➤ <strong>需要传输的原始数据量大得多，</strong> 增加了极端网络条件下发生故障的风险。与大量数据相比，少量数据更容易传输，如果强大的政府试图审查区块链，也更容易安全隐藏。若区块链浏览器想要维持整个链的信息，则需要存储更多数据。</p>
+<p>➤ 分片链依赖于分片式的P2P网络，并且<strong>每个单独P2P“子网”由于节点较少，更容易受到攻击。</strong> 因为子网之间存在一些冗余，数据可用性采样的子网模型可以缓解这种情况，但其中仍然存在风险。</p>
+<p>这些是数据验证需要关注的问题，尽管在我们看来，让更多应用程序在链上运行，而不是通过中心化layer 2服务，减少用户层的中心化，会比上述方面更值得注意。也就是说，实际上这些问题，特别是最后两个问题，会对增加分片链吞吐量造成真正限制，使其无法超过特定规模。二次方分片 (quadratic sharding) 只能实现有限二次方性。</p>
+<p>顺便说一句，如果吞吐量过高，分片链的安全风险将日益增大，很大程度上，这也是放弃扩展至超二次分片的主要原因。使二次方分片保持其有限二次方性似乎是合适的中间值。</p>
+<h2 id="区块生产中心化而验证分片化是否可行"><strong>区块生产中心化，而验证分片化是否可行？</strong></h2>
+<p>人们经常提出一种替代分片的方法，那就是使用类似于中心化高TPS链的结构，除此之外，利用数据可用性采样和分片以验证数据有效性和可用性。</p>
+<p>这种方案能够改善既有的中心化高tps区块链，但仍远没有分片系统强大。其中一些原因如下：</p>
+<p><strong>1. 在高TPS链中，更难监测到区块生产者的审查行为。</strong></p>
+<p>监测审查行为需要满足以下任一：(i) 能够看到每笔交易，并且验证没有合理交易莫名其妙未进入，或者（ii）在区块生产者中使用1-of-N信任模型，并验证没有区块无法上链。在中心化高TPS链中，第一点不可能实现，而实现第二点更困难，因为节点数少，甚至1-of-N信任模型都更容易被破坏，并且 如果该链的区块时间对于DAS (数据可用性采样) 来说太快 (就像大多数中心化高TPS链那样)，则很难证明节点的区块不会仅仅因为它们的发布速度太慢而被拒绝。</p>
+<p><strong>2.</strong>  如果大多数区块生产者和生态系统成员试图强制执行一项协议更改，虽然这项更改不受欢迎，用户的客户端肯定会检测到更改，<strong>但是对于社区，拒绝更改、进行分叉的难度要大得多，</strong> 因为需要运行成本高昂的新的高吞吐量节点，维持基于旧规则的区块链。</p>
+<p><strong>3.</strong>  <strong>在中心化基础设施中，外部攻击者更容易实施审查。</strong> 区块生产节点交易吞吐量高，非常易被检测到，关停这些节点也很容易。审查专用的高性能计算在政治上和后勤上比在单个用户的笔记本电脑上进行审查要容易得多。改：与追踪个人用户的笔记本电脑相比，对专用的高性能计算进行审查在逻辑和实践中都更加容易。</p>
+<p><strong>4.</strong>  <strong>高性能计算向中心化云服务转移会面对更大压力，增加了风险，</strong> 因为整个链将在1-3家公司的云服务中运行，如果许多区块生产者同时出现故障，会增大区块链崩溃的风险。验证节点都在个人硬件上运行的分片链不会那么容易受到这种攻击。</p>
+<p>系统适当分片化后，能更加适合作为基础层。基于一个分片化的基础层，你始终能够通过构建Rollup的方式创建一个中心化的产品系统 (例如用于DeFi的具有同步可组合性的高吞吐量领域)。但是，如果基础层依赖于中心化区块生产，则无法基于此构建一个更加去中心化的Layer2。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/22598/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Uniswap V3 成功打响第一炮 即将赶超V2？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/22557/">
+                <span class="next-text nav-default">暴跌风暴后 反思币圈金融行为</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#扩展性不可能三角"><strong>扩展性不可能三角</strong></a></li>
+    <li><a href="#通过更好的安全模型改善分片"><strong>通过更好的安全模型改善分片</strong></a></li>
+    <li><a href="#对数据可用性进行可扩展性验证难度更高"><strong>对数据可用性进行可扩展性验证难度更高</strong></a></li>
+    <li><a href="#总结如何保证所有数据的正确性"><strong>总结：如何保证所有数据的正确性？</strong></a></li>
+    <li><a href="#分片系统的关键特性是什么有哪些权衡"><strong>分片系统的关键特性是什么？有哪些权衡？</strong></a></li>
+    <li><a href="#区块生产中心化而验证分片化是否可行"><strong>区块生产中心化，而验证分片化是否可行？</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

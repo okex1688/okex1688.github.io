@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="如果基于智能合约的区块链要发展到支持数十亿用户的金融和Web3应用，就需要有扩展的解决方案，值得庆幸的是，最近有许多提议的解决方案正陆续上线当中。" />
+<meta name="keywords" content="Layer 2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/35789/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战" />
+<meta property="og:description" content="如果基于智能合约的区块链要发展到支持数十亿用户的金融和Web3应用，就需要有扩展的解决方案，值得庆幸的是，最近有许多提议的解决方案正陆续上线当中。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/35789/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-23T00:00:00+00:00" />
+
+<meta itemprop="name" content="区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战">
+<meta itemprop="description" content="如果基于智能合约的区块链要发展到支持数十亿用户的金融和Web3应用，就需要有扩展的解决方案，值得庆幸的是，最近有许多提议的解决方案正陆续上线当中。"><meta itemprop="datePublished" content="2022-03-23T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-23T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6486">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战"/>
+<meta name="twitter:description" content="如果基于智能合约的区块链要发展到支持数十亿用户的金融和Web3应用，就需要有扩展的解决方案，值得庆幸的是，最近有许多提议的解决方案正陆续上线当中。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-23">
+      2022-03-23
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6486 字 -
+        预计阅读 13 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>截至2021年底，以太坊（Ethereum）已经发展到支持成千上万个应用，包括去中心化金融（DeFi）、NFT、游戏……等，整个网路每年结算数兆美元的交易，<strong>平台上锁定的资金超过1700亿美元。</strong></p>
+<p>但俗话说，钱越多，问题越多，<strong>以太坊的去中心化设计最终限制了它能处理的交易量，每秒大约只能处理15笔交易。</strong></p>
+<p>由于以太坊的受欢迎程度远远超过了每秒15笔交易的负荷量，产生漫长的等待时间和每笔高达200美元交易费用。</p>
+<p>最终，该价格让许多用户放弃使用以太坊，并限制了该网路目前可以处理的应用类型。</p>
+<p>如果基于智能合约的区块链要发展到支持数十亿用户的金融和Web3应用，就需要有扩展的解决方案，值得庆幸的是，最近有许多提议的解决方案正陆续上线当中。</p>
+<p><strong>竞争还是互补？</strong></p>
+<p>这些解决方案的目标是帮助开放的智能合约平台增加可处理的交易数量，同时保留充分的去中心化。</p>
+<p>记住，通过一个由单一实体管理的中心化解决方案来扩大智能合约平台的规模是容易达成的（Visa可以每秒处理45,000笔交易），但那样就会让我们回到一开始的部分：一个由少数强大的中心化参与者拥有的世界。</p>
+<p>为解决这个问题而采取的方法有两个部分：<strong>建立能处理更多活动的全新网路与以太坊竞争，或建立可以处理以太坊过量产能的补充网路</strong> ，大致上它们分为几类：</p>
+<p><strong>1. 第1层区块链（Layer1block chains）：与以太坊竞争</strong></p>
+<p><strong>2. 侧链（Sidechains）：对以太坊有一定的互补性</strong></p>
+<p><strong>3. 第二层网路（Layer2 net works）：对以太坊的补足</strong></p>
+<p>虽然每一种在架构和方法上有所不同，但目标都是让用户实际使用网路的时候。</p>
+<p>例如：与DeFi、NFT互动，无需支付高昂的费用或经历漫长的等待时间。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0323/24_okpy3z6z1h.png" alt="区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战"></p>
+<p><strong>第一层区块链（Layer1）</strong></p>
+<p>以太坊被认为是第一层区块链，一个独立的网路，确保用户资金安全，并在一个地方执行交易，想要使用Uniswap（UNI）这样的DeFi应用程式将1000颗USDC换成另一种稳定币DAI吗？以太坊是可以达到这一切的地方。</p>
+<p>其他竞争的第一层区块链以一个全新的网路做到了以太坊可达成的一切，与以太坊区别在于新的系统设计，<strong>能</strong> <strong>够实现更高的吞吐量，从而降低交易费用，但通常代价会是中心化程度的提高。</strong></p>
+<p>在过去的10个月里，新的Layer1纷纷上线，这些网路的总价值在同一时期内从0美元飙升至约750亿美元。</p>
+<p>这个领域目前由Solana（SOL）、Avalanche（AVAX）、Terra（LUNA）和Binance Smart Chain（币安智能链）领先，每个生态系统都在不断增长，其价值已经达到100亿美元以上。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0323/24_4ujjh70qjj.png" alt="区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战"></p>
+<p>领先的非以太坊Layer1项目之总锁仓价值（TVL）</p>
+<p>所有的Layer1都在竞争，如果没有任何以太坊的工具和基础架构让开发者和用户轻松地建立和使用应用程式，发展上是很困难的，为了弥补这个差距，许多第一层区块链采用了一种称为“EVM兼容”的策略。</p>
+<p>EVM是以太坊虚拟机（Ethereum Virtual Machine）的缩写，它基本上是一种执行计算以达成交易的大脑，透过使他们的网路与EVM兼容。</p>
+<p>以太坊开发者基本上可以透过複制并贴上他们代码的方式，轻松地将他们现有的以太坊应用程式部署到新的第一层网路，用户也可以用他们现有的钱包轻松访问EVM兼容的第一层网路，使他们的迁移变得简单。</p>
+<p>以币安智能链（BSC）为例，透过推出EVM兼容网路和调整共识设计，以实现更高的吞吐量和更便宜的交易。</p>
+<p>去年夏天，BSC因为几十个DeFi应用下使用量产生了爆炸性成长，这些应用都类似于Uniswap和Curve（CRV）等流行的以太坊应用，Avalanche、Fantom（FTM）、Tron（TRX）和Celo（CELO）也採取了同样的方法，相反的，<strong>Terra和Solana目前不支持EVM兼容性。</strong></p>
+<p><strong><img src="https://img.bibiqing.com/news/2022/0323/24_7les4zt4vh.png" alt="区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战"></strong></p>
+<p>EVM兼容Layer1区块链与非EVM兼容Layer1区块链之TVL比较</p>
+<p><strong>互操作性的区块链</strong></p>
+<p>在稍微不同的Layer1当中，有像Cosmos（ATOM）和Polkadot（DOT）这样的区块链生态系统，这些项目没有建立新的独立区块链，而是建立了标准，让开发者能创建互相通讯的特定应用区块链。</p>
+<p>例如：允许一个游戏区块链的token在另一个独立的社交网路区块链上的应用中使用。</p>
+<p>目前，使用Cosmos标准构建的区块链已有超过1000亿美元的资金，这些资金最终可以交互操作，同时，Polkadot最近达到了一个里程碑，将类似地集结其区块链的生态系统。</p>
+<p>简而言之，现在有各式各样的以太坊直接竞争者，未来会有更多。</p>
+<p><strong>侧链</strong></p>
+<p>侧链和新的Layer1之间的区别被公认是模糊的，侧链与EVM兼容的Layer1非常相似，只是侧链是为了处理以太坊的过量产能而建立的，而不是与整个以太坊竞争，这些生态系统与以太坊社群紧密结合，以互补的方式承载以太坊应用程式。</p>
+<p>Axie Infinity（AXS）的Ronin侧链就是一个典型的例子，Axie Infinity是一个最初建立在以太坊上的NFT游戏。</p>
+<p>由于以太坊的费用让玩家望而却步，Ronin侧链的建立是为了让用户将他们的NFT和token从以太坊转移到一个低费用的环境，让更多的用户能够负担得起这个游戏，并让该游戏大受欢迎。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0323/24_3b0jqs83s1.png" alt="区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战"></p>
+<p>在截稿前，用户已经从以太坊转移了超过75亿美元到Ronin侧链游玩Axie Infinity。</p>
+<p><strong>Polygon POS侧链</strong></p>
+<p>像Ronin这样的侧链是特定的应用，而其他侧链则适用于更多的通用应用。</p>
+<p>目前，Polygon（MATIC）的权益证明（POS）侧链是行业的领导者，在100多个DeFi和游戏应用中部署了近50亿美元的价值，包括Aave（AAVE）和Sushiswap（SUSHI）等熟悉的名字，以及一个与Uniswap类似的Quickswap（QUICK）。</p>
+<p>同样地，Polygon POS看起来与EVM兼容的Layer1没有什么不同，然而，它是作为以太坊扩展框架的一部分，而不是与以太坊竞争。</p>
+<p>Polygon团队认为，<strong>以太坊在未来仍会是高价值交易和价值存储的主导区块链</strong> ，而日常交易则转移到Polygon的低成本区块链上。</p>
+<p>（Polygon POS还透过一个被称为“检查点（Check pointing）”的过程与以太坊维持特别的关联）。</p>
+<p>由于交易费用低于1分钱，Polygon对未来的愿景看起来是可行的，在激励计划的帮助下，用户已经涌向Polygon POS，每日交易量超过了以太坊（尽管一些无意义的交易膨胀了这个数字）。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0323/24_3ui0vthlvj.png" alt="区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战"></p>
+<p><strong>第二层网路（Layer2）</strong></p>
+<p>Layer1和侧链都有一个明显的挑战：<strong>确保其区块链的安全。</strong></p>
+<p>为了做到这一点，他们必须支付新一批矿工或权益证明验证人，以验证和保护交易，通常是以基础token（如Polygon的MATIC和Avalanche的AVAX）通货膨胀的形式。</p>
+<p>然而，这带来了明显的缺点：</p>
+<p>拥有一个基础token自然会使你的生态系统更具竞争力，而不是仅作为对以太坊的补充。</p>
+<p>验证和保障交易是一项複杂而具有挑战性的任务，你的网路要无限期地负责这项任务。</p>
+<p>如果我们可以借助以太坊的安全性创建可扩展的生态系统，那不是很好吗？加入第二层网路，特别是“Rollup”。</p>
+<p>简而言之，Layer2是一种在以太坊上构建的独立生态系统，依靠以太坊网路确保安全性。</p>
+<p>而关键点在于，这意味著Layer2扩展方案不需要有原生token，所以它们不仅是对以太坊的补充，本质上是以太坊的一部分，<strong>以太坊路线图甚至表示以太坊2.0将会“以Rollup为中心”，表达对这个方案的致敬。</strong></p>
+<p><strong>Rollup如何运作？</strong></p>
+<p>Layer2通常被称为Rollup，因为它们将交易“滚动”或捆绑在一起，并在新的环境中执行，然后将最新的交易数据发回以太坊，与其让以太坊网路单独处理1,000笔Uniswap交易（昂贵！），不如在提交结果回以太坊之前先在第2层Rollup上卸载计算（便宜！）。</p>
+<p>然而，当结果被发布回以太坊时，以太坊如何知道数据是正确和有效的？以及以太坊如何防止任何人发布不正确的讯息？</p>
+<p>这些都是区分两种Rollup的关键问题：<strong>Optimistic rollups和Zero Knowledge rollups（ZK rollups）。</strong></p>
+<p><strong>Optimistic rollups</strong></p>
+<p>当提交结果回以太坊时，Optimistic rollups“乐观地（optimistically）”假设结果是有效的，换句话说，他们让Rollup的操作者发布他们想要的任何数据（包括潜在的不正确/诈欺性数据），并假设它是正确的—毫无疑问，这是一个Optimistic的前景！</p>
+<p>但是，有一些方法可以打击诈欺，作为一种检查和制衡，在任何提款后都有一个时间窗口，任何观察者都可以在此查看诈欺行为（记住，区块链是透明的，任何人都可以观察正在发生的事情）。</p>
+<p>如果其中一位观察者能够以数学方法证明发生了诈欺行为（透过提交诈欺证明），那么Rollup就会恢复任何诈欺性交易，惩罚不良行为者并奖励观察者（一个聪明的激励系统！）。</p>
+<p>缺点是当你在Rollup和以太坊之间移动资金时，会有一个短暂的延迟，等待查看是否有观察者发现任何诈欺行为。</p>
+<p>在某些情况下，这可能长达一个星期，但我们预期这些延迟会随著时间的推移而减少。</p>
+<p>关键的一点是，Optimistic rollups与以太坊有内在的联繫，现今已准备帮助以太坊进行扩展。</p>
+<p>因此，我们已经看到了强劲的新生增长，许多领先的DeFi项目都已转移到了领先的Optimistic rollups项目——Arbitrum和Optimistic Ethereum。</p>
+<ul>
+<li><strong>Arbitrum和Optimistic Ethereum</strong></li>
+</ul>
+<p>由Off-chainLabs负责的Arbitrum和由Optimism负责的Optimistic Ethereum是目前实施Optimistic rollups的两个主要项目，值得注意的是，这两个项目仍处于早期阶段，两家公司都保持著中心化控制的水平，但都计划随著时间的推移进行去中心化。</p>
+<p>根据估计，一旦项目成熟，Optimistic rollups可以提供10到100倍的可扩展性改进，即使在早期，Arbitrum和Optimism上的DeFi应用就已经积累了数十亿的网路价值。</p>
+<p>Optimism的采用曲线较早，在7个DeFi应用中部署了超过3亿美元的TVL（总锁仓价值），其中最引人注目的是Uniswap、Synthetix（SNX）和1inch（1INCH）。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0323/24_7g5ls87fk1.png" alt="区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战"></p>
+<p>Arbitrum则更进一步，在60多个应用中拥有大约25亿美元的TVL，包括熟悉的DeFi协议，如Curve、Sushiswap和Balancer（BAL）。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0323/24_os7adp59cv.png" alt="区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战"></p>
+<p>Arbitrum也被选为社交媒体平台Reddit的扩展解决方案，用于他们期待已久的token化社区积分的行动，该平台的月活跃用户有5亿个。</p>
+<p><strong>ZK Rollups</strong></p>
+<p>Optimistic rollups假设交易是有效的，并为其他人留下诈欺证明的空间，而ZK Rollups则实际向以太坊网路证明交易是有效的。</p>
+<p>随著捆绑交易的结果，他们向以太坊智能合约提交所谓的有效性证明（validity proof），顾名思义，有效性证明让以太坊网路验证交易是有效的，使中继者无法欺骗系统，这消除了对诈欺证明窗口的需求，因此在以太坊和ZK-rollups之间移动资金是有效的即时操作。</p>
+<p>虽然即时结算和没有提款时间听起来很好，但ZK Rollups也不是没有代价的。</p>
+<p>首先，生成有效性证明需要密集的计算，所以你需要高效能的机制来使其运行，其次，围绕有效性证明的复杂性使得支援EVM兼容性更加困难，限制了可以部署到ZK-rollups的智能合约类型。</p>
+<p>因此，Optimistic rollups已经率先进入市场，并且更有能力解决以太坊今天的扩展问题，但从长远来看，ZK Rollups可能成为一个更好的技术解决方案。</p>
+<p><strong>ZK Rollup的采用</strong></p>
+<p>ZKrollup的应用范围很广，有多个团队和实施方案正在进行和开发当中，一些著名的参与者包括Starkware、Matter Labs、Hermez和Aztec。</p>
+<p>今天，ZK-rollup<strong>主要支持相对简单的应用</strong> ，如支付或交易（由于ZK-rollup现今能支援的应用类型限制），例如：衍生品交易所dYdX采用了Starkware（StarkEx）的ZK Rollup解决方案，支持每週近500万笔交易和10多亿美元的TVL。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0323/24_v1wvpwdso3.png" alt="区块链迈向普及应用的挑战 详解Layer1、侧链及Layer2扩展方案的发展与挑战"></p>
+<p>然而，真正值得争取的是与EVM完全兼容的ZK Rollup解决方案，这种方案能够支持热门的通用应用程式（如DeFi的全套应用），而没有Optimistic rollups的提款延迟。</p>
+<p>这一领域的主要参与者是MatterLab的zkSync 2.0、Starkware的Starknet、Polygon Hermez的zkEVM和Polygon Miden。</p>
+<p>它们目前都在努力实现主网的启动（同时，Aztec专注于将零知识证明应用于隐私）。</p>
+<p>业内许多人都把ZK rollups与Ethereum 2.0结合起来作为扩展以太坊的长期解决方案，包括Vitalik，主要是由于它们能够在不影响安全或去中心化的情况下从根本上处理每秒数十万笔的交易。</p>
+<p>随着寻求以太坊扩展方案的进展，即将推出完全兼容EVM的ZKRollup项目将是值得关注的关键事项之一。</p>
+<p><strong>一个分裂的世界</strong></p>
+<p>从长远来看，如果智能合约平台要扩展到数十亿用户，这些扩展解决方案是必要的。</p>
+<p>然而，从近期来看，这些解决方案可能会给用户和加密货币运营商带来重大挑战，从以太坊航向这些网路需要使用跨链桥。</p>
+<p>这对用户来说很复杂，而且有潜在的风险。</p>
+<p>例如：几个跨链桥已经成为价值1亿多美元漏洞的目标。</p>
+<p>更重要的是，多链的世界分割了可组合性和流动性，考量Sushiswap目前在以太坊、币安智能链、Avalanche、Polygon和Arbitrum上实施，Sushiswap的流动性曾经集中在一个网路上（以太坊），现在却分散在五个不同的网路上。</p>
+<p>以太坊应用<strong>长期以来一直受益于可组合性</strong> ，即以太坊上的Sushiswap与其他以太坊应用随插即用，像是Aave或Compound（COMP）。</p>
+<p>随着应用程式扩展到新的网路，在Layer1、侧链和Layer2上实现的应用程式不再与另一层网路上实现的应用程式兼容，限制了可用性并为用户和开发人员带来挑战。</p>
+<p><strong>一个不确定的未来</strong></p>
+<p>像Avalanche或Solana这样与以太坊竞争的新Layer1区块链会不会继续发展？</p>
+<p>像Cosmos或Polkadot这样的区块链生态系统会不会激增？</p>
+<p>侧链是否会继续与以太坊和谐地运行，承担其多余的产能？</p>
+<p>还是与以太坊2.0结合的Rollup会胜出？没有人可以肯定地说。</p>
+<p>虽然未来是不确定的，但每个人都可以感到欣慰，因为有这么多聪明的团队致力于解决开放、无须许可的网路所面临最具挑战性的问题。</p>
+<p>正如宽频（Broadband）最终帮助网际网路支持了YouTube和Uber等一系列突破性应用一样，我们相信，我们最终会以同样的眼光来看待获胜的扩展解决方案。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/35760/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">盘点国内数字藏品平台乱象：你中枪了没？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/35767/">
+                <span class="next-text nav-default">去全球化推动美元本位制终结 Web3成为新的全球化力量</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

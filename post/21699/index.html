@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          三分钟读懂ArcherDAO：套利者与矿工共同受益的MEV解决方案 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="ArcherDAO以更去中心化的方式平衡了套利者、矿工和普通用户之间的利益关系，从而降低了MEV的负面影响。" />
+<meta name="keywords" content="加密货币, DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/21699/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="三分钟读懂ArcherDAO：套利者与矿工共同受益的MEV解决方案" />
+<meta property="og:description" content="ArcherDAO以更去中心化的方式平衡了套利者、矿工和普通用户之间的利益关系，从而降低了MEV的负面影响。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/21699/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-02T00:00:00+00:00" />
+
+<meta itemprop="name" content="三分钟读懂ArcherDAO：套利者与矿工共同受益的MEV解决方案">
+<meta itemprop="description" content="ArcherDAO以更去中心化的方式平衡了套利者、矿工和普通用户之间的利益关系，从而降低了MEV的负面影响。"><meta itemprop="datePublished" content="2021-05-02T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-02T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2434">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="三分钟读懂ArcherDAO：套利者与矿工共同受益的MEV解决方案"/>
+<meta name="twitter:description" content="ArcherDAO以更去中心化的方式平衡了套利者、矿工和普通用户之间的利益关系，从而降低了MEV的负面影响。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">三分钟读懂ArcherDAO：套利者与矿工共同受益的MEV解决方案</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-05-02">
+      2021-05-02
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2434 字 -
+        预计阅读 5 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E7%9F%BF%E5%8C%BA/"> 矿区 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>随着以太坊应用层 DeFi 业务的大规模应用创新，区块空间开始被复杂的交易逻辑填满，而区块空间及未确认交易池的透明性和开放性，为价格发现过程的参与者带来了新的机会和挑战，MEV 就是这一特性的产物。</p>
+<p>MEV 很多时候是以矿工所获高昂 gas 费用和套利的形式出现，所以也常被称为矿工可提取价值，主要发生在 DeFi 领域的套利交易和清算方面。MEV 的出现并非一定是一个不利的影响，但套利者或机器人在追逐 MEV 时，因为以太坊的 PGA 交易机制（矿工会优先打包高 gas 的交易），为了完成抢先交易，让大量 gas 费用流向了矿工，同时也造成网络拥堵和 gas 高涨，从而对以太坊生态产生负面影响。</p>
+<p>目前对 MEV 负面影响的解决方案有两种，一种是让套利者和矿工合作，避免套利者间的恶意竞争；另一种是隐藏套利机会，将交易放于黑盒子中，并赋予 tip （额外收益），让矿工选择性打包。</p>
+<p>ArcherDAO 是一个让套利者和矿工直接合作的网络协议，它采用了与 PGA 不同的解决方案，优化了套利者和矿工的利益，避免了为实现套利而浪费的 gas 费用。目前它推出的 ArcherSwap 是一个不同于其他 DEX 的解决方案，比较符合未来一段时间的以太坊发展。</p>
+<h3 id="基本介绍">基本介绍</h3>
+<h4 id="团队">团队</h4>
+<p>官方展示的核心团队有 3 人。项目负责人和运营负责人曾经共事的公司 The Stars Group 是一个菠菜娱乐公司，技术负责人在数据分析及相关开发领域有一定的经验。整体团队实力方面，在区块链技术方面的经验并不多。</p>
+<h4 id="资金">资金</h4>
+<p>2020 年 10 月 6 日，由 Ascensive Assets 完成种子轮投资，额度未知。同时 ArcherDAO 在 ICO 中，以 130 万美元的价格售出了 1100 万个 ARCH 代币（每个代币的平均价格为 0.13 美元）。</p>
+<h4 id="业务机制">业务机制</h4>
+<p>ArcherDAO 中有 2 种参与角色：</p>
+<p>Supplier：在链上发现高价值（存在套利机会）的交易，并由 ArcherDAO 将该笔交易发送给矿工，让其优先执行。</p>
+<p>矿工：ArcherDAO 会将高价值的交易优先发送给参与 ArcherDAO 的矿工，矿工将该笔交易打包后，可以与 Supplier 平分该笔交易所获得的额外收益。</p>
+<p>ArcherDAO 的运转中，Supplier 就像是套利、清算机会的挖掘者，到处发现各种可能的获利机会。一旦发现可能的机会，就将其发给 ArcherDAO，ArcherDAO 会路由给矿工，让其优先打包，当最后套利成功，套利的收益会在 Supplier 和矿工之间按比例进行分配。</p>
+<p>这部分操作是面对 B 端的，即 Supplier 和矿工，不在官网有具体展示界面。目前面向 C 端的应用是 ArcherSwap，界面如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0502/2_k1vya54t5h.png" alt="Y4uxUTAYdeOUxQ30cL4K50kUFXI6kpoFOCSTxGq0.png" title="5102803">ArcherSwap界面</p>
+<p>ArcherSwap 提供的功能是允许 DEX 用户的交易 0 滑点，0 取消费用。0 滑点机制避免了三明治攻击，即交易只有成功的时候会被执行，避免价格波动导致交易失败产生大量费用。同时 ArcherSwap 的应用场景是：在其上面进行的交易，若存在套利机会，例如一笔大额交易让 Uniswap 的某代币价格短时间上升，这时 Supplier 会在对此机会进行套利，从 Sushiswap 上搬运，并让矿工优先打包这两笔交易，完成套利后，所获收益会返还一部分给用户，以作为补偿。 这一切运行的背后，都是由 Archer Relay 完成。Archer Relay 可以接受、协调和路由所有的交易，将签名的交易协调至各个项目、用户和矿工。</p>
+<h3 id="经济模型">经济模型</h3>
+<p>ArcherDAO 的代币 ARCH，总量为 1 亿，具体的分配计划如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0502/2_ug03q1j5eh.png" alt="dOG8cZjJlb50d9MFldLD0YXonTWm5fQAt9De33oo.png" title="5102804">ARCH 代币分配</p>
+<p>ArcherDAO 是一个自治社区，ARCH 在 ArcherDAO 生态中，目前没有具体的应用场景，只是社区的治理代币。其中：</p>
+<ul>
+<li>
+<p>质押 2 万枚以上 ARCH，可以对 ArcherDAO 提出新提案；</p>
+</li>
+<li>
+<p>质押 1 万枚以上 ARCH，可以参与私有的 Discord 群组；</p>
+</li>
+<li>
+<p>质押 ARCH，可以与 ArcherDAO 的提案提行投票。</p>
+</li>
+</ul>
+<p>通过自治的 ARCH 提案和投票，ArcherDAO 的生态和程序可能会得到持续的拓展和完善。</p>
+<p>ARCH 的释放如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0502/2_h1vyiy3fpc.png" alt="qUiBkrEP4EcaW5d9BB8MoU0Yxx3VLVwH2kr1xqLz.png" title="5102805">代币解锁</p>
+<p>ARCH 目前的流通量为：10,072,761 枚，流通市值 2,173 万美元，预计到 2021-07-01 的流通量为 25,572,761 个，按照 2.15 刀的价格，流动市值为 5,498 万美元。2021-12-31 的流通量为 41,072,761 个，按照 2.15 刀的价格，流动市值为 8,831 万美元。</p>
+<h3 id="综合评价">综合评价</h3>
+<p>1） ArcherDAO 采用了不同于 PGA 的方式，让 Supplier 和矿工直接合作，优化 MEV 中各方的利益。避免了套利者之间的竞争而产生的收益浪费，同时矿工也能获得相应的 MEV 收益。</p>
+<p>2）相比竞品 KeeperDAO，其采用 hiding order book 的白名单形式，即隐藏套利交易，让 trader 和套利机器人处于一个阵营，避免套利机器人为抢先交易而产生高额手续费。但 KeeperDAO 没有改变套利机器人需要在 mempool （交易池）进行 PGA 的机制。虽然有白名单，但矿工会根据 tip 的大小来选择交易打包，而套利机会是具有时效性，套利者为了快速完成交易，仍需要较高的 tip 来让矿工打包。</p>
+<p>3） ArcherDAO 和 KeeperDAO 本质都是在解决 MEV 的负面问题，只是方式不同。KeeperDAO 因为只有白名单上矿工才能打包交易，目前缺乏流动性和实效性，后续可以增加和其他项目合作，来减缓该问题。而 ArcherDAO 的 Supplier 和矿工直接合作方式，效率上更优，可实现的潜在 MEV 可能会更高。</p>
+<p>4） MEV 是 DeFi 领域的补充，并非是对以太坊的不利发展。目前 KeeperDAO 在市值和业务上相对领先，占据先发优势。ArcherDAO 刚起步，未来两者如何演变，更多取决于项目的落地和 DAO 治理的把控。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/21693/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">芒格：我不喜欢虚拟货币绑架我们现有的金融产品</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/21700/">
+                <span class="next-text nav-default">土耳其政府要求加密交易所报告可疑客户交易活动</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#基本介绍">基本介绍</a></li>
+        <li><a href="#经济模型">经济模型</a></li>
+        <li><a href="#综合评价">综合评价</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          以太坊将会如何变化：读懂合并、扩容与L2之争 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="以太坊的「共识逻辑改变」与「扩容」，构成了以太坊升级的两大主题，本文也从这两部分展开，分别介绍了共识逻辑的变化与影响、多种扩容方案及其落地程度。" />
+<meta name="keywords" content="ETH" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38544/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="以太坊将会如何变化：读懂合并、扩容与L2之争" />
+<meta property="og:description" content="以太坊的「共识逻辑改变」与「扩容」，构成了以太坊升级的两大主题，本文也从这两部分展开，分别介绍了共识逻辑的变化与影响、多种扩容方案及其落地程度。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38544/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-03T00:00:00+00:00" />
+
+<meta itemprop="name" content="以太坊将会如何变化：读懂合并、扩容与L2之争">
+<meta itemprop="description" content="以太坊的「共识逻辑改变」与「扩容」，构成了以太坊升级的两大主题，本文也从这两部分展开，分别介绍了共识逻辑的变化与影响、多种扩容方案及其落地程度。"><meta itemprop="datePublished" content="2022-06-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="9798">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="以太坊将会如何变化：读懂合并、扩容与L2之争"/>
+<meta name="twitter:description" content="以太坊的「共识逻辑改变」与「扩容」，构成了以太坊升级的两大主题，本文也从这两部分展开，分别介绍了共识逻辑的变化与影响、多种扩容方案及其落地程度。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">以太坊将会如何变化：读懂合并、扩容与L2之争</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-03">
+      2022-06-03
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 9798 字 -
+        预计阅读 20 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原定于今年6月的以太坊合并（The Merge）又一次推迟。尽管如此，合并作为以太坊升级进程上的重要里程碑，依然是今年最值得关注的事件之一。</p>
+<p>有人可能会将「合并」与「扩容」混淆，但这其实是以太坊升级的两个阶段。「合并」解决的核心问题是将共识机制从POW切换到POS，减少能源消耗，本身并不能带来扩容；而扩容则是解决以太坊可扩展性问题、提升吞吐量的关键。</p>
+<p><strong>以太坊的可扩展性不足，历来是其发展的最大掣肘，也给了其他公链充足的竞争窗口期。</strong> 如果以太坊扩容成功，将会释放巨大潜能，这一全球性基础设施的进化也必然会影响公链格局，甚至孕育新的应用赛道。</p>
+<p>那么，以太坊扩容要解决的核心问题有哪些，目前的主流方案是什么，又如何理解即将发生的「合并」、你方唱罢我登场的多种Layer2项目呢？链茶馆梳理以太坊升级进程，汇总如下。</p>
+<p><strong>本文目录：</strong></p>
+<p>1. 「合并」的逻辑与影响</p>
+<p>1.1 共识机制改变：从POW到POS</p>
+<p>1.2 合并影响之一：TPS与手续费基本不变</p>
+<p>1.3 合并影响之二：ETH将会微通缩</p>
+<p>2. 以太坊的可扩展性困境</p>
+<p>3. 以太坊扩容路线——Rollups+Sharding</p>
+<p>3.1 链下扩容：各类Layer2及Rollups的胜出</p>
+<p>3.2 链上扩容：Sharding的原理及意义</p>
+<p>3.3 L2龙头项目一览</p>
+<p>4. 小结</p>
+<p><strong>1. 「合并」的逻辑与影响</strong></p>
+<p><strong>1.1 共识机制改变：从POW到POS</strong></p>
+<p>以太坊主网当前采取工作量证明（POW）共识机制，矿工们必须首先对一个特定值进行暴力求解，通过消耗的算力证明自己付出了代价，才有资格产出新的区块。POW会带来大量的能源消耗，历来为人诟病，而POS则通过验证者的资产抵押来代替算力消耗，不会消耗过多能源。以太坊路线图中最重要的两个部分，一是从POW切换到POS、避免过多能源消耗，二是上述的扩容路径，而共识机制的改变将会优先落地。</p>
+<p>在2020年12月，作为未来主网的「信标链」已经上线，独立于主网运行。信标链稳定出块，验证者也可质押挖矿、获得信标链增发的区块收益，但还没有承担实际功能。「信标链」也将会是「扩容」路线中的重要组成部分，将在下文详细介绍。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_g61ioejg4m.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>来源：https://beaconscan.com/</p>
+<p>「合并」的目标，是将以太坊主网的「共识」逻辑放在信标链上，而「执行」逻辑仍然在原来的主网运行。要理解这一变化对于以太坊运行而言意味着什么，需要先理解以太坊的出块流程。</p>
+<p>以太坊的一个完整出块周期，包含如下步骤：</p>
+<p><strong>1）「执行」：</strong> 矿工在新的交易请求中挑选部分并执行交易，验证交易是否均有效，更新本地的EVM副本，产生潜在区块；</p>
+<p><strong>2）「工作量证明」：</strong> 矿工完成本地的执行和验证后，会开始进行工作量证明，以获得出块资格；</p>
+<p><strong>3）「共识」：</strong> 最终会有一名获得出块资格的矿工，将已经执行完的交易广播给全网节点，其他节点会在本地重新验证和执行，确认区块有效性；</p>
+<p><strong>4）「多方存储」：</strong> 完成共识后，所有节点都会更新EVM副本状态，保存最新的交易历史[1]。</p>
+<p>在合并之后，上述的「执行」和「多方存储」维持不变，仍在原来的以太坊主网上运行，而矿工则会被信标链上的ETH质押者所替代，质押至少32个ETH即可参与出块和验证。在每个出块周期内（设定为12秒），将会由算法选出一个区块生产者，在区块经过生产和广播后，信标链将会分配一组验证者，验证区块并完成共识[8]。</p>
+<p>对比原先的流程，矿工由质押者所替代，矿工的信任成本从消耗算力变成了质押资产。「工作量证明」被取消了，因此减少了~99%的能源消耗。</p>
+<p>由于出块成本大幅下降，因此很多人误认为这会带来ETH手续费的下降甚至性能的提升，但这其实是一个误解。接下来，我们将会介绍合并所带来的影响。</p>
+<p><strong>1.2 合并影响之一：TPS与手续费基本不变</strong></p>
+<p>可能和很多人的直觉相反，合并后虽然出块成本降低，但是TPS和手续费基本保持不变，其核心原因在于区块大小和出块速度基本没有变化。了解TPS的逻辑和手续费的定价机制，可以更好地理解这一点。</p>
+<p>TPS即每秒交易笔数，等于每个区块能够容纳的交易笔数➗出块时间。在去年8月实施EIP-1559后，单个区块的基准空间为1,500万gas（gas是以太坊上操作消耗的计量单位），当需求增加时，单个区块的空间上限可以达到3,000万gas。</p>
+<p>由于合并后的「执行」环节并没有改变，因此单个区块的空间大小也没有改变，仍然遵循原先的1,500万基准、3,000万上限。至于出块速度，目前以太坊主网基本维持在~13秒出一个区块，合并后将会改变为每12秒出一个区块。也就是说，TPS最多可能会由于出块速度提升~1秒，带来&lt;10%的提升。</p>
+<p>以太坊的区块大小和出块速度之所以有局限，是为了保证节点可以全量验证、并且即时同步，达到足够的安全和去中心化。TPS的局限是以太坊的可扩展性问题，并不能通过改变共识机制来解决。</p>
+<p>理解了TPS，手续费的逻辑也就显然了。以太坊的手续费定价机制在去年EIP-1559实施后有重大变化，分为两部分：基础费用（Base Fee）和小费（Tips）。基础费用完全按照供需关系来确定，需求即用户提交的交易请求，供给则是以太坊能够提供的计算空间。如果这一个区块所收到的交易请求量大于上一个区块实际处理的请求量，那么下一个区块的基础费用就会最多增加12.5%。小费则是给矿工的奖励，本质上也是一种吸引矿工的竞价机制，同样由需求决定。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_6lg3z575fy.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>基础费用攀升示例，来源：https://ethereum.org/en/developers/docs/gas/</p>
+<p>由于TPS没有本质变化，计算空间仍然受限，因此合并也并不能改变供需关系，无法对手续费产生影响。</p>
+<p><strong>1.3 合并影响之二：ETH将会微通缩</strong></p>
+<p>ETH当前同时具有增发和燃烧机制，整体而言呈微通胀；而在合并之后，由于增发率降低，整体将呈1%~2%的微通缩。</p>
+<p>目前ETH的增发机制为：每个区块产生2个ETH的矿工奖励，根据当前出块速度和流通总量估算，年增发率大约在4.3%。其燃烧机制为：1.2小节中所述的「基础费用」均会燃烧，每年约燃烧290万枚ETH。综合估算整体的通胀率在~2%。</p>
+<p>合并之后，最大的变化在于区块奖励会大幅降低，约为原先的~90%，假定年燃烧量不变，整体将会达到~2%的通缩。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_pprh04v8re.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>POS和POW两种机制下的ETH通胀模型，链茶馆制作</p>
+<p><strong>2. 以太坊的可扩展性困境</strong></p>
+<p>以太坊作为最主流的智能合约平台，以其安全和去中心化的特征著称，然而在可扩展性方面仍然落后：以太坊目前的TPS（每秒可处理的交易笔数）在10~15之间，供给不足、需求旺盛，导致依靠竞价确定的手续费居高不下，每笔交易需要花费数美元~数十美元。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_cu3o0saipu.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>以太坊近一周TPS，来源：https://ethtps.info/Network/Ethereum</p>
+<p>作为对比，BNB的TPS在40~50之间，Solana更是达到了1,000+，和Visa在同一水平。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_e8lcheuslz.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>BNB、Sol的TPS，来源：https://bscscan.com/；https://explorer.solana.com/</p>
+<p><strong>去中心化（Decentralization）、安全（Security）、可扩展性（Scalability），三者只能择其二，这也被称为区块链不可能三角。以太坊最初的选择是放弃可扩展性，使之符合Web3最重要的价值观。</strong></p>
+<p>如果以简洁粗暴的方式实现可扩展性，那么就会牺牲安全性或者去中心化。如下图所示：第一种方法是扩大区块容量，但这样会导致验证者的工作量也同样扩大，最终能够承受工作量的验证者就会集中在数据中心，由巨头把控，失去了去中心化特征，这也是为什么以太坊目前的区块容量和出块速度都是有限的，只有这样才能让普通人也可参与验证；第二种方法即拥有更多的山寨币（公链），但这样会由于验证分散、导致安全性也成比例降低。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_48szn7ihyb.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_unm72du529.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>来源：https://www.youtube.com/watch?v=OJT_fR7wexw</p>
+<p>尽管如此，以太坊一直在积极寻找可扩展性的解决方案，并且在2020年就确定了以Rollups（打包）+Sharding（分片）为中心的扩容路线[2]。</p>
+<p><strong>3. 以太坊扩容路线——</strong></p>
+<p><strong>Rollups+Sharding</strong></p>
+<p>根据以太坊官网的现行分类，「扩容」分为链上和链下扩容，其中链上扩容即「分片」（Sharding），是对以太坊主网的变更；链下扩容即Layer2及其他各类独立于以太坊主网的方案。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_fd1e7v9pmv.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>链茶馆制作，依据：https://ethereum.org/en/developers/docs/scaling/#layer-2-scaling</p>
+<p>由于链上扩容的Sharding是对以太坊主网的变更，将会对所有历史数据进行迁移，因此进程缓慢，官方预期Sharding会在2023年实现；而链下扩容的多种方案已经落地，其中的Rollups是以太坊社区选定的主要路线、也是扩容路线图的短期重点。下文将分别介绍链下和链上扩容。</p>
+<p>  <strong>3.1 链下扩容：各类Layer2及Rollups的胜出</strong></p>
+<p>以太坊官网的分类中，对Layer2的定义相对狭隘，仅仅将Rollups和State Channels这两种通过主网来完成共识的方案称为Layer2。通常在广义上，所有的链下扩容都可以称为Layer2。</p>
+<p><strong>简单介绍下几类方案：</strong></p>
+<p><strong>1）Rollups：</strong> 在以太坊主网之外（即链下）完成交易的执行，之后将多笔交易打包发布到主网上，由主网完成共识。通过将计算执行放在链下、并打包压缩部分数据返回链上，减少了对主网空间的利用。</p>
+<p>需要注意的是，Rollups打包发布的信息中必须包含：a)<strong>状态根</strong> （State Root），代表交易完成后的所有账户余额，也就是交易结果状态；b)<strong>交易信息</strong> ，即A给B转账多少的交易指令。通过这两部分信息，主网节点可以对Rollups上的交易历史做全量验证，因此Rollups的安全性能够得到主网的保证。这一点非常关键，也是Rollups区别于Plasma/Validium、安全性得到认可的原因。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_uic9rsdssb.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>来源：https://vitalik.ca/general/2021/01/05/rollup.html</p>
+<p><strong>Rollups中又分为两类，一类是Optimistic Rollups，采用欺诈证明（Fraud Proof），即设置挑战机制，允许验证者对有问题的交易进行挑战</strong> ，受到挑战的交易需要在L1主网上重新执行，由于假定所有交易在正常情况下合法，因此称为「乐观Rollups」；另一类是ZK Rollups，采用有效性证明（Validity Proof），即所有提交到L1主网的交易都需要通过零知识证明。</p>
+<p>Optimistic Rollups的加密技术方案成熟，可以兼容EVM，也是落地最早的Rollups，典型项目为Arbitrum和Optimism。ZK Rollups需要打包上传到L1的数据更简洁，因此执行交易更为快速高效，但技术难度较大，并不天然兼容EVM，对开发者来说迁移成本高</p>
+<p><strong>2）State Channels：</strong> 参与者可以通过多签合约在链下完成多笔交易，将金额累计，以最终的一笔交易记录在主网上。但是这类方案的应用场景非常局限，只有网络参与者能够使用，而且在复杂交易中需要质押非常大量的金额。</p>
+<p><strong>3）Sidechains：</strong> 独立于主网的EVM兼容链，通过双向桥可以和主网桥接，但是其共识逻辑、区块参数均与主网无关。由于完全独立，因此安全性无法得到主网的保证，典型项目如Polygon。</p>
+<p><strong>4）Plasma：</strong> 类似安全级别更低的Optimistic Rollups。Plasma本身是一个可以有无穷个子链的区块链，每一个子链都类似一棵树上的树枝，执行部分交易，所有的交易状态最终会汇总成一个hash值，发布到L1上。但是通过这个hash值并不能复原所有的交易历史，因为过程中的交易信息会存储在各个子链、即各个树枝上，而验证节点无法确信子链上的所有区块都有足够的数据有效性证明。一旦有任何一个区块的信息无法确认是否有效，那么整条链上的交易历史都会陷入危机，这也被成为<strong>数据可用性问题</strong> （The Data Availability Problem）[3]。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_vnksst5twz.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>来源：http://plasma.io/plasma-deprecated.pdf, P10</p>
+<p>Plasma和Optimistic Rollups有两个相似之处，<strong>一是都将计算放在了链下，二是都采取欺诈证明。</strong> 但其中的关键区别在于，Rollups压缩后上传的数据仍包含了全量交易历史，Plasma却不包含。</p>
+<p>5）Validium：类似安全级别更低的ZK Rollups，同样采取零知识证明，但是数据并不存储在L1上，典型项目如采用了StarkWare技术的Immutable X、DeversiFi。</p>
+<p>整体上来看，Rollups是安全性最高、且应用场景广泛（不像State Channels那样只允许网络参与者使用）的链下扩容解决方案。因此，在分片实现之前，Rollups被认为是最重要的扩容路径。</p>
+<p>下图展示了部分主流Layer2项目，可以看到，事实上Rollups也是最广为采用的技术，其中技术成熟的Optimistic Rollups应用场景更广泛，可以面向任何智能合约；而ZK Rollups由于在兼容EVM方面的局限性，使用场景往往受限。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_qwgqph38az.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>来源：https://l2beat.com/</p>
+<p>值得注意的是，TVL排名第5的Metis，由于没有将全部交易数据放在链上、而是通过链下的去中心化存储项目MEMO来保存，在实现了超低手续费的同时牺牲了数据可用性，因此被排斥为「Optimistic Chain」而非「Optimistic Rollup」。</p>
+<p>Metis的取舍也反映了Rollups的一个问题：由于仍然需要在L1上发布交易数据，<strong>因此其可扩展性受限于以太主网的存储空间</strong> 。Rollups所能做的，就是将尽可能少的数据压缩上传至L1，以此来提升吞吐量。</p>
+<p>在这一方面，ZK Rollups比Optimisitc Rollups更具有优势。由于ZK Rollups通过零知识证明解决验证问题，所有发布到L1的交易数据都已经得到了验证，所以如果有部分交易信息仅仅是用来验证、而非计算最新结果，那么在ZK Rollups中这部分信息可以放在链下，但是在Optimistic Rollups中则必须放在链上，以便在欺诈证明中查询[4]。ZK Rollups比Optimistic Rollups更节省链上空间。</p>
+<p>下图展示了多个L2的手续费对比（假设将Metis仍归类为L2），可以看到，除了主打隐私的Aztec和存在争议的Metis相对特殊外，ZK系的Loopring/ZKSync/Polygon Hermez手续费均低于OP系的Optimism/Boda/Arbitrum。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_su3m6m7t04.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>来源：https://l2fees.info/</p>
+<p>那么，Rollups到底能在多大程度上提升TPS呢？简单来说，假设Rollups占用了主网的全部空间，那么<strong>理论上限大约能达到主网的100倍</strong> [5]。以ZK作为上限来估算，一笔发送ETH的交易大概需要~12字节，而在主网则需要~110字节，而ZK所需要的证明空间极少，单个ZK的打包数据在验证上所需的额外空间只占以太坊区块空间的不到5%，因此粗略来算TPS为主网的100倍。目前主网日常TPS约15、理论上限TPS约100，因此ZK Rollups的理论上限TPS约10,000。</p>
+<p>当然，10,000TPS是一个非常理想的数字，几乎不可能达到：首先，单个以太区块内只存在单笔打包交易就很难实现，存在多笔则验证所需的空间也会增加；其次，主网不太可能持续维持理论上限，因为在EIP-1559实施后，如果对区块空间的需求持续攀升，那么手续费就会不断攀升，直到用户无法承受[6]。</p>
+<p>从Optimism的近期转账数据来看，最简单的ETH转账大约能提升5~6倍TPS。以下是一笔最简单的ETH转账交易，如果发生在以太坊主网需要消耗21,000gas，通过OP则只消耗了主网~3,800gas。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_zaqj9qkwwc.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>来源：https://optimistic.etherscan.io/tx/10153071</p>
+<p>总结而言，<strong>Rollups理论上能将主网TPS提升100倍，但务实一些估算，Optimistic Rollups大约能提升数倍，ZK Rollups应该能提升数十倍。</strong></p>
+<p>有没有一种方法，能够在保持安全性和去中心化的同时，扩大以太主网的存储空间，进一步提升TPS呢？这就是Sharding的意义。</p>
+<p><strong>3.2 链上扩容：Sharding的原理及意义</strong></p>
+<p>要继续突破TPS，就需要扩充主网的存储空间，Sharding就是实现这一目的的技术方案。</p>
+<p>在Sharding方案中，主网被称为信标链（Beacon Chain），在主网之上有64个分片（Shards）用以产生区块、存储信息。在每个出块周期内（Slot，设定为12秒），每个分片内都会随机产生一个提议者（Proposer），产出一个分片块（Shard blob）并广播到主网[7]。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_7qb3ugzz44.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>来源：https://hackmd.io/@vbuterin/sharding_proposal</p>
+<p>Sharding的思想和Rollups有些类似，都是通过主网外的数据层来存储数据，释放空间，但是Sharding运用了两个技术，使之有别于Rollups，也实现了这样一个目的：<strong>单一节点不需要下载全量数据来验证交易历史</strong> 。</p>
+<p>第一个技术是验证委员会的随机选取。对于每个分片块，都会将全量的验证者随机打乱，组成一次性的验证委员会，来对这一个分片块进行验证。这一随机性保证了作恶者难以将其买通的验证者都放入同一个委员会进行验证，除非作恶者掌控了1/3以上的验证者。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_571q9elfwn.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>来源：https://hackmd.io/@vbuterin/sharding_proposal</p>
+<p>第二个技术是数据可用性的随机抽取，即每个客户端在验证分片块时，并不需要下载全量数据，而只需要随机抽取分片块的部分，来验证至少50%的数据有效性。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_ktbqj5zib0.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>来源：https://hackmd.io/@vbuterin/sharding_proposal</p>
+<p>通过上述步骤，Sharding实现了随机抽样的部分节点、对随机抽样的部分数据的验证，而不再像目前一样需要节点对主网的全量数据进行验证，由此实现主网的扩容。</p>
+<p>那么，Sharding能贡献多少扩容呢？按照目前的设计，共有64个分片，每个分片在每12秒的出块周期内会产出~250KB的数据块，也即每12秒能够承载16MB数据、每秒能承载~1.3MB数据。对比当前ETH主网状态，每个区块的目标承载空间为1,500万gas，一笔最简单的ETH转账需要~110字节，消耗2.1万gas，按平均13秒出一个区块，可以估算得出当前主网每秒能够承载~77KB数据。因此，Sharding大约能带来~17倍（1.3MB/77KB）的性能提升。</p>
+<p><strong>Sharding还没有明确的时间预期。虽然官方给出的计划是2023年，但是鉴于合并仍未按计划落地，2023年的预期恐怕过于乐观。目前的扩容，需要依靠L2实现。</strong></p>
+<p><strong>3.3 L2龙头项目一览</strong></p>
+<p>Arbitrum、Optimism、ZKSync、StarkNet是目前最主流的四个L2项目。梳理项目基础信息，可以发现：</p>
+<p>1）OP系更成熟，Arb占据TVL之首，和ZK系的ZKSync、StarkNet远远拉开差距。ZK系技术难度高、并不天然兼容EVM，生态发展较慢。</p>
+<p>2）不论是OP系还是ZK系，背后都有强大的资本力量。在去年9月，Arbitrum的估值就达到了12亿美元，今年5月StarkNet母公司更是以80亿美元估值惊艳了Web3。头部Crypto投资机构如a16z/Paradigm，都同时押注了OP系和ZK系的项目。Optimism刚刚发币，虽然初期表现不佳，但是FDV仍然有50亿美元；除此之外三家都尚未发币，这也是接下来值得期待的一波潜在空投。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0603/6_oe3afd219g.png" alt="以太坊将会如何变化：读懂合并、扩容与L2之争"></p>
+<p>主流L2项目一览，链茶馆制作</p>
+<p><strong>4. 小结</strong></p>
+<p><strong>以太坊的「共识逻辑改变」与「扩容」，构成了以太坊升级的两大主题，本文也从这两部分展开，分别介绍了共识逻辑的变化与影响、多种扩容方案及其落地程度。</strong></p>
+<p>以太坊合并（The Merge）的目的，是将共识逻辑从POW转变为POS，从而大大减少能源消耗；但是由于执行逻辑并不改变、没有改变以太坊的计算存储空间，因此对于TPS和手续费基本没有影响，而在合并后ETH增发率将会大幅下降，造成微通缩。</p>
+<p>与此并行的，则是以太坊的扩容（Scaling）进程，旨在提升以太坊的处理性能/TPS，也只有在供给能力提升后，依靠供需关系定价的手续费才能下降。扩容分为链上和链下两类，链上即对于以太坊主网运行逻辑的变更，采用分片（Sharding）方案，在主网上分出64个子区块链分区而治，但是距离落地预期仍较远；在这一方案实现前，以太坊社区将链下扩容中的打包（Rollups）方案作为中短期路径，且这一赛道中已产生四大主流L2项目，当下单个项目估值在数十亿美元。</p>
+<p>有趣的问题是，Rollups和Sharding未来会如何结合？V神的理想假设是，两者的效用将会叠加：ZK Rollups理论上能将TPS提升~100倍，Sharding理论上提升~20倍，假设ETH的TPS为50（实际目前在~15），未来以太坊的TPS理论上限为~10万，远远超过1,000~4,000的Visa。不过这一假设太过理想，几乎不可能实现。</p>
+<p>务实的估算结果是，当前OP Rollups能将TPS提升~5倍，ZK Rollups应该能提升数十倍。尽管如此，ZK对于性能的提升能力依然瞩目，远远强过OP，但是由于其不天然支持EVM、使用场景受限，因此生态落后于OP。如果ZK实现了对EVM的友好兼容，潜力完全释放，OP的生态恐怕会受挫。甚至于，届时仅仅通过ZK就有可能实现~1,000的TPS，Sharding是否仍然必要也未可知。</p>
+<p>以太坊的合并虽然被推迟，但是应该会在2022年底前实现POW机制的终结。与此同时，L2项目蓄势待发，多个项目即将发币，可以预见将会吸引一波新的用户和资金。以太坊升级道路漫漫，但最终一定会影响公链格局。</p>
+<p>注释</p>
+<p>[1]Mining:</p>
+<p><a href="https://ethereum.org/en/developers/docs/consensus-mechanisms/pow/mining/">https://ethereum.org/en/developers/docs/consensus-mechanisms/pow/mining/</a>；</p>
+<p>参考《深度解读Optimism：基本架构、Gas机制与挑战 | CatcherVC Research》：</p>
+<p><a href="https://mirror.xyz/0x8C4d5E90196325FB22Fff37C97D7984a37e51D11/5Y8BUo8PvJe2xGKExbxmPBaYaInuaYZlFt8">https://mirror.xyz/0x8C4d5E90196325FB22Fff37C97D7984a37e51D11/5Y8BUo8PvJe2xGKExbxmPBaYaInuaYZlFt8</a>_KlW9UpA</p>
+<p>[2]A rollup-centric ethereum roadmap：</p>
+<p><a href="https://ethereum-magicians.org/t/a-rollup-centric-ethereum-roadmap/4698">https://ethereum-magicians.org/t/a-rollup-centric-ethereum-roadmap/4698</a></p>
+<p>[3]The Data Availability Problem: </p>
+<p><a href="https://www.youtube.com/watch?v=OJT">https://www.youtube.com/watch?v=OJT</a>_fR7wexw</p>
+<p>[4]An Incomplete Guide to Rollups：</p>
+<p><a href="https://vitalik.ca/general/2021/01/05/rollup.html">https://vitalik.ca/general/2021/01/05/rollup.html</a>, 「How does compression work?」</p>
+<p>[5]An Incomplete Guide to Rollups：</p>
+<p><a href="https://vitalik.ca/general/2021/01/05/rollup.html">https://vitalik.ca/general/2021/01/05/rollup.html</a>, 「How much scaling do rollups give you?」文中估算的依据是主网单个区块最大消耗空间为1,250万gas，因此Rollups TPS理论上限约5,000；而在EIP-1559实施后，单个区块空间上限提升到了3,000万gas。</p>
+<p>[6]Gas and fees: </p>
+<p><a href="https://ethereum.org/en/developers/docs/gas/#top">https://ethereum.org/en/developers/docs/gas/#top</a>,「Base fee」</p>
+<p>[7]An explanation of the sharding + DAS proposal:</p>
+<p><a href="https://hackmd.io/@vbuterin/sharding">https://hackmd.io/@vbuterin/sharding</a>_proposal</p>
+<p>[8]Rewards and Penalties on Ethereum 2.0 [Phase 0]: </p>
+<p><a href="https://consensys.net/blog/codefi/rewards-and-penalties-on-ethereum-20-phase-0/">https://consensys.net/blog/codefi/rewards-and-penalties-on-ethereum-20-phase-0/</a>,「On Block Minting and Consensus in Ethereum 2.0」</p>
+<p>文/echo_z</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38552/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">新加坡副总理王瑞杰：Web3.0 是好是坏 警告散户加密投资者 重点发展量子计算</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38558/">
+                <span class="next-text nav-default">预计到12月欧洲央行加息幅度将超过125个基点</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

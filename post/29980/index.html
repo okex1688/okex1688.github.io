@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          从Uniswap v3来看新的期权范式？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在这篇文章中，我们将展示如何将V(S)分解为一个短线看跌组件(对应于一个单刻度头寸)和一个范围组件(仅存在于上/下刻度之间)来实现这一点。" />
+<meta name="keywords" content="Uniswap" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/29980/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="从Uniswap v3来看新的期权范式？" />
+<meta property="og:description" content="在这篇文章中，我们将展示如何将V(S)分解为一个短线看跌组件(对应于一个单刻度头寸)和一个范围组件(仅存在于上/下刻度之间)来实现这一点。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/29980/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-10-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-22T00:00:00+00:00" />
+
+<meta itemprop="name" content="从Uniswap v3来看新的期权范式？">
+<meta itemprop="description" content="在这篇文章中，我们将展示如何将V(S)分解为一个短线看跌组件(对应于一个单刻度头寸)和一个范围组件(仅存在于上/下刻度之间)来实现这一点。"><meta itemprop="datePublished" content="2021-10-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4544">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="从Uniswap v3来看新的期权范式？"/>
+<meta name="twitter:description" content="在这篇文章中，我们将展示如何将V(S)分解为一个短线看跌组件(对应于一个单刻度头寸)和一个范围组件(仅存在于上/下刻度之间)来实现这一点。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">从Uniswap v3来看新的期权范式？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-10-22">
+      2021-10-22
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4544 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<ul>
+<li>
+<p>Uni v3 LP的头寸可以分解为看跌收益和范围组件。</p>
+</li>
+<li>
+<p>Uni v3头寸的值是以下两项的和：1)空头头寸的总和，其值由Black-Scholes模型给；2) 范围项，其闭合表达式由Feynman-Kac公式给出。</p>
+</li>
+<li>
+<p>这可以通过将Uni v3 LP头寸转换为“固定DTE”看跌期权来进一步简化，该看跌期权在到期时的价值收敛于T_r &gt; 0时刻的看跌期权。</p>
+</li>
+<li>
+<p>比较Uni v3头寸的预期收益和期权溢价可以帮助确定持有Uni v3头寸或将其“出借”给期权买家是否更有利。</p>
+</li>
+</ul>
+<p>为了建立Uniswap v3 LP头寸，必须在用户指定的范围内锁定资产（例如 ETH），在用户指定的范围(由低刻度tL和高刻度tH定义)之间。该Uniswap v3 LP仓位的取值为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_ld40c9dvny.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>其中，S是资产的现金价格，K是执行价格√(tL*tH)， r是范围因子√(tH/tL)。范围因素决定了持有资产和numéraire之间的过渡有多“尖锐”。</p>
+<p>那么多头期权呢？如果一个人能够借入一个Uni v3 LP头寸，并在以后偿还，这相当于购买了一个看跌期权。用户在借入LP头寸时将支付固定的溢价。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_6sdb9yn9vo.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>溢价应该是多少？我们能否使用Black-Scholes模型这样的既定框架来直接为Uni v3头寸定价?</p>
+<p>答案是肯定的。</p>
+<p><strong>在这篇文章中，我们将展示如何将V(S)分解为一个短线看跌组件(对应于一个单刻度头寸)和一个范围组件(仅存在于上/下刻度之间)来实现这一点。</strong></p>
+<h3 id="feynman-kac的期权定价"><strong>Feynman-Kac的期权定价</strong></h3>
+<p>在推导Uni v3期权的价格之前，有必要回顾一下常规期权的定价方式。利用Black-Scholes模型，有许多方法可以得出常规看涨期权的价格。我最喜欢的方法是使用Feynman-Kac公式，该公式表示期权u(S,t)的值为:</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_mc2jz8i5h5.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>其中V(x, T)是到期时的收益函数，平均 ⟨ ⋅ ⟩ 是几何布朗运动的概率度量。</p>
+<p>理解Feynman-Kac公式的含义很简单：期权在T时刻的价值是通过计算从现在到未来T时刻所有可能价格变动的收益函数的平均值来确定的。</p>
+<p>物理学家Richard Feynman最初在量子力学的路径积分形式中提出了一个类似的方程，在这个方程中，一个粒子的“预期”头寸是由该粒子可能采取的所有路径的加权和决定的。Mark Kac意识到他们正在研究一个类似的问题，当时他们都在康奈尔大学，他听了Feynman的演讲，那次合作产生了Feynman-Kac公式。</p>
+<p>因此，直接计算 Feynman-Kac 公式，得到:</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_2v9tkp56su.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>对于看涨期权，收益V(S,T) = max(SK,0)，对于看跌期权，收益V(S,T) = max(KS, 0)，因此，时间 t 的看涨看跌期权的价值为:</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_svwhs7z6oy.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>要证明这与Black-Scholes定价相一致。</p>
+<h3 id="定价uniswap-v3期权"><strong>定价Uniswap v3期权</strong></h3>
+<p>Feynman-Kac公式使计算奇异期权的价值变得容易。我们将应用Feynman-Kac公式来计算Uniswap v3期权的值。</p>
+<p>为了让事情变得简单一点，我们首先将Uni v3 LP的价值分解为两个不同的部分 V(S, t) = V_p(S, t) + V_ρ(S, t)，其中 V_p=-max( KS, 0) 是看跌期权的收益，范围收益V_ρ是由以下式给出的：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_h36j8a40qs.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>我们可以图形化地看到看跌期权和范围收益如何与Uni v3头寸的价值相关:范围收益在执行价格时是最大的，在上/下刻度处为零(为了简单，我画出了范围收益的负值)。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_34f434zztt.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>使用这个分解，我们可以使用Feynman-Kac公式明确求解在时间 t的Uni v3期权的值。这样做，我们得到：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_6tmcfung9i.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>其中，Put(S, t) 是 Black-Scholes 给出的执行 K 处的时看跌期权的熟悉价格。</p>
+<p>“范围期权”ρ(S,t)分量是严格正项，对应于LP头寸的范围部分的值。通过求解Feynman-Kac公式，得到了ρ(S,t)的一个相当复杂的表达式:</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_no6srp5wcg.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>虽然我们现在对ρ(S,t)的细节不感兴趣，但我们可以从图形看到，ρ(S,t)是这样的:</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_2cjhm885zv.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p><strong>我们能让这个表达式更简单吗?</strong></p>
+<p>Uni v3头寸值的表达式相当复杂。幸运的是，我们可以大大简化分析。</p>
+<p>正如我关于在Uniswap v3中创建永久期权的文章所示，一个具有范围因子r的Uni v3 LP头寸的良好近似是在时间T_r的常规看跌期权，其中</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_qqrfvseij7.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>因此，我们可以将Feynman-Kac公式给出的期权定价表达式简化为一个更简单的表达式，该表达式利用了上面的范围因子/DTE关系。具体来说，我们得到：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_sn96osyimb.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>换句话说，Uniswap v3期权的值相当于一个以固定的到期天数 (DTE) 到期的看跌期权，因此在到期时DTE &gt;为0。</p>
+<p>在到期前，Uni v3期权的价格仍然受theta衰减的影响，但gamma将被限制在45DTE期权的gamma。</p>
+<p>这个近似有多精确?我们可以在下图中看到，将固定DTE近似值与Uni v3期权的计算值进行比较，当范围因子小于2时，固定DTE看跌期权近似值与精确解之间的差异并不显著：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_3wuc5aviin.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<h3 id="uni-v3的返回值是否匹配它们的期权值"><strong>Uni v3的返回值是否匹配它们的“期权”值?</strong></h3>
+<p><strong>目前，对于Uni v3的LP来说，唯一的选择是持有他们的头寸，直到他们积累了足够的费用来盈利。没有协议允许用户轻松地借入/出借Uni v3 LP头寸。</strong></p>
+<p>但是，如果有这样的一个协议，那么 Uni v3 流动性提供者借出其 LP 头寸所收到的溢价将由 Black-Scholes 模型给出，该模型具有取决于范围因子 r 的“固定 DTE”。相比之下，如果不考虑头寸并简单地收取费用，费用也会累积。</p>
+<p>因此，在Uni v3 LP头寸被铸造/出借/借入并作为期权交易的世界中，一个关键的问题是，是否这样做会更好：</p>
+<blockquote>
+<p>持有LP头寸一段时间T，收取0.05- 0.3% -1%的费用</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p>“出借”期权期限为T，收取固定的保费</p>
+</blockquote>
+<p>让我们通过分析这两个场景的预期收益率来探讨这个问题。</p>
+<p><strong>保持LP头寸</strong></p>
+<p>首先，如果将流动性部署到单次报价，则单位流动性 ΔL 的预期 LP 回报为：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_kkealvscjb.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>其中γ是费用等级(如:0.01、0.003或0.0005)，“Tick Liquidity”是当前价格池中的流动性数量。√(8/π)=1.5957691216…的因子来自假设价格遵循几何布朗运动的情况下推导出在价内花费的时间。</p>
+<p>这里的关键是，预期收益的增长是√T。因此，由于对于更广泛的头寸，费用随时间线性累积，我们将只考虑单点头寸。</p>
+<p>重要的是，这意味着LP回报将取决于池的总规模和部署的 tick 处的总流动性。</p>
+<p>在下面的示例中，我们考虑在ETH-DAI-0.3%池中的3990刻度处部署一个头寸。由于该池的日交易量为1571万美元，3990点的锁定价值为70.60ETH = 281694美元，相对LP回报应该是每√天约1.6%或每年约30%(假设年化波动率为100%)。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_bs1r8lyjct.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>相比之下，将相同的流动性配置到ETH-USDC-0.03%这类资产池中，LP头寸每√天的回报率为1.37%，即每年26.2%。一些池子产生的收益比其他池子多。</p>
+<p>一些池的预期回报率非常高，主要是因为与交易量相比，它们的每点流动性相对较低。</p>
+<p>例如，一个新上市的代币，如RBN，在当前的价值为2500万美元的情况下，只有50万美元的锁定价值。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_yw6i2j7f57.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<h3 id="向期权买家出借uni-v3-lp头寸"><strong>向期权买家出借Uni v3 LP头寸</strong></h3>
+<p>另一方面，用户可能希望创建一个Uni v3 LP头寸，并将其借给另一个用户一段时间 T 以获取溢价。</p>
+<p>具体而言，收到的保费将为:</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_unzowmt2yf.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>除了时间按照t→(t+T_r)转换外，这是对空头看跌期权价值的熟悉表达式。</p>
+<p>这个表达式将取决于特定的底层证券，执行价格K，隐含波动率σ和到期时间t .如果我们认为期权是“平价”铸造的，LP头寸执行价格的K等于当前价格，然后看跌期权的价值是：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_cc8ghnsjtz.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>有趣的是，这个表达式也依赖于时间的平方根。这意味着我们可以直接将每单位部署流动性收到的溢价与通过持有 LP 头寸和收取费用获得的预期回报进行比较。</p>
+<p>如果我们考虑一个单次报价仓位，那么T_r将为0，(Tt)将是该仓位的持有时间（如果持有至到期）。</p>
+<p>因此，我们只需要比较√T项相乘的因素，就能找到哪种策略最有利：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_kkegahzedm.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>假设年波动率为100%，这意味着如果每日交易量/即时流动性比率大于以下值，持有期权只会产生大于借出期权的回报：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_iyhqllj4sn.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>可能需要计算每个池的实际日交易量、tick流动性和已实现的波动性，以准确判断是否满足上述标准(每个池可能会发生变化)。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1022/19_lofm02b7az.png" alt="从Uniswap v3来看新的期权范式？"></p>
+<p>与它们锁定的流动性相比，一些池子的日交易量确实很大。只有当持有比率大于1时，持有这些资产池的头寸才会产生高于期权溢价的预期收益。</p>
+<p>目前，只有上面强调的UNI/ETH, HEX/USDC和RBN/ETH池可以产生更高的投资回报。持有比率 &lt; 1 的任何货币对都会表现不佳，将它们作为期权出借。</p>
+<p>换句话说，将大多数Uni v3交易对的Uni v3 LP头寸作为ATM期权出借，比持有+收取费用更有利可图。</p>
+<h3 id="要点"><strong>要点</strong></h3>
+<p><strong>我们的结果表明，Uni V3头寸类似于卖空看跌期权，在大多数情况下，将其借给期权买家并收取溢价，而不是简单地持有它并收取费用。</strong></p>
+<p>这意味着什么?首先，这表明，建立一个基于Uniswap v3(或SushiSwap即将推出的集中流动性池)的健康期权市场，可能会增加流动性提供者收集的收益率。</p>
+<p>其次，LP不仅可以产生更多的收益，期权买家还可以通过购买看跌期权来保护自己的投资。ETH-稳定币对期权可以有效地由 Opyn、Pods Finance或 Lyra Finance等协议有效处理，但它将挑战建立智能交易合约存在的每个可能的资产对的期权(成千上万的市场存在Uniswap长尾结束的加密资产)。</p>
+<p>最后，<strong>人们在解释Uniswap v3或SushiSwap上集中流动性头寸部署的方式时，需要进行文化上的转变。</strong> 虽然恒定产品 AMM 更易于理解和管理，但与集中流动性 AMM 相比，它们容易出现重大的非永久性损失，并且资本使用效率非常低。</p>
+<p>做空期权交易本质上是一种有利可图的行为(因为隐含波动率往往高于实际波动率)，但管理做空期权投资组合不是一种买入并持有的被动策略。做空期权和Uni v3 LP头寸必须被积极管理，但积极投资并不意味着每天每时每刻都在观察图表和交易。有了正确的工具，成为一个积极的投资者每天只需要不到5分钟。</p>
+<p>Source：https://lambert-guillaume.medium.com/pricing-uniswap-v3-lp-positions-towards-a-new-options-paradigm-dce3e3b50125</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/29968/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">部分矿场停电 哈萨克斯坦矿工迎来“艰难冬季”</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/29987/">
+                <span class="next-text nav-default">邓建鹏：虚拟货币交易乱象的法律规制研究</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#feynman-kac的期权定价"><strong>Feynman-Kac的期权定价</strong></a></li>
+        <li><a href="#定价uniswap-v3期权"><strong>定价Uniswap v3期权</strong></a></li>
+        <li><a href="#uni-v3的返回值是否匹配它们的期权值"><strong>Uni v3的返回值是否匹配它们的“期权”值?</strong></a></li>
+        <li><a href="#向期权买家出借uni-v3-lp头寸"><strong>向期权买家出借Uni v3 LP头寸</strong></a></li>
+        <li><a href="#要点"><strong>要点</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

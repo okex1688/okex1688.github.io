@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          以太坊社区的研究者们如何看待 MEV？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="EthSign 创始人闫欣、HashKey 研究员曹一新、以太坊研究者姚翔、DODO CEO 雷达熊分别从各自角度分享对 MEV 的看法。" />
+<meta name="keywords" content="MEV" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/30342/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="以太坊社区的研究者们如何看待 MEV？" />
+<meta property="og:description" content="EthSign 创始人闫欣、HashKey 研究员曹一新、以太坊研究者姚翔、DODO CEO 雷达熊分别从各自角度分享对 MEV 的看法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/30342/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-11-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-01T00:00:00+00:00" />
+
+<meta itemprop="name" content="以太坊社区的研究者们如何看待 MEV？">
+<meta itemprop="description" content="EthSign 创始人闫欣、HashKey 研究员曹一新、以太坊研究者姚翔、DODO CEO 雷达熊分别从各自角度分享对 MEV 的看法。"><meta itemprop="datePublished" content="2021-11-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-11-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="9362">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="以太坊社区的研究者们如何看待 MEV？"/>
+<meta name="twitter:description" content="EthSign 创始人闫欣、HashKey 研究员曹一新、以太坊研究者姚翔、DODO CEO 雷达熊分别从各自角度分享对 MEV 的看法。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">以太坊社区的研究者们如何看待 MEV？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-11-01">
+      2021-11-01
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 9362 字 -
+        预计阅读 19 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>EthSign 创始人闫欣、HashKey 研究员曹一新、以太坊研究者姚翔、DODO CEO 雷达熊分别从各自角度分享对 MEV 的看法。</p>
+<p>原文标题：《2021 以太坊社区 Meetup - MEV Panel》</p>
+<p>10 月 26 日，ECN 携 togETHer 的社区伙伴 (ETHPlanet/DAOSquare/ 原语里弄 /Hiblock/Rebase/BTCU) 在上海举办了以太坊社区 Meetup，现场气氛活跃，干货满满，对多个主题进行了讨论，包括 EIP-1559、以太坊 2.0、MEV、DAO、区块链安全等。ECN 特此将这些内容整理成文分享给大家，希望能增进社区对以太坊的了解和思考。</p>
+<p>以下是本次活动的第二场 Panel，<strong>我们邀请到了潘致雄、闫欣、曹一新、姚翔以及雷达熊</strong> 几位嘉宾来一同对以太坊的 MEV (矿工可提取价值) 话题进行了研讨。以下为 MEV Panel 转录文本：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1101/735qh4ll3e4loc7" alt="以太坊社区的研究者们如何看待 MEV？"></p>
+<p><strong>潘致雄：</strong> 我们今天想聊一下更难，或者是更不被重视到的一个话题 —— MEV。我们今天邀请了做项目的专门的研究者，来和我们做一些 MEV 近期的一些进展、一些分享，和从他们角度的一些看法。下面先有请嘉宾做一下自我介绍。</p>
+<p><strong>闫欣：</strong> 大家好，我是闫欣，EthSign 的创始人。我来这个 Panel 是因为，之前我做投资的时候，MEV 看得比较多，而且我们做 EthSign 的时候，也会考虑到怎么让隐藏的用户更好的使用以太坊这个问题。所以，很高兴来到这里。</p>
+<p><strong>曹一新：</strong> 大家好，我叫曹一新。我平时主要是做行业研究，跟姚老师在」原语里弄「里面做一些研究项目的合作，又有涉及到 MEV 相关的，很高兴能参加这次讨论。</p>
+<p><strong>姚翔：</strong> 大家好，我是姚翔。我们也主要在做研究，研究一些行业的公共问题吧，跟投资没有任何关系，所以就比较独特的一点。然后，MEV 也是我比较关注的一个方向，但是我个人研究比较散，所以跟一新一起在这方面做一些探索。</p>
+<p><strong>雷达熊：</strong> 大家好，我是雷达熊，是 DoDo 的 CEO。</p>
+<p><strong>潘致雄：</strong> 谢谢大家分享，我先开个头，先给大家做一些 MEV 的一些基本的企业的介绍，让大家有一些概念。可能有很多朋友都知道是什么，但对不少朋友来说应该还是一个比较新的名词，对吧？我关注到 MEV 其实是在 2020 年初。当时非常有名的一个概念叫黑暗森林，有一系列文章。是由 Flashbots 他们那个团队主要在在研究的。他们发现了链上的顺序是可以用来进行攻击的，无论是你去找这个顺序的市场，还是根据三明治攻击 (我们现在所知的三明治攻击)。我们可以在内存池里面优先看到某些交易，我们根据这笔交易的顺序，根据控制这个 gas 的大小。我们可以在它前面构造到一些其他的攻击方式，或者是它之后再构造一些攻击的方式。所以说这个 2020 年的这篇文章让大家都开始知道了 MEV。但其实我，我们去看这个历史，看到 2019 年 Flashbots 团队其实已经在写一些相关的研究文章了，但是还没有最终的实践。但是 2020 年的 DeFi Summer，让所有人都感受到了以太访的 DeFi 的顺序是多么的重要。</p>
+<p>DeFi 交易的顺序是有非常大的商机，所以说不同的矿工或者是科学家，都可以利用这些顺序来从中获取非常大的价值。那到 2021 年，Flashboys 这个团队就改名为 Flashbots。然后又同时推出了 MEV Geth 客户端，通过他们的一些技术的方式和一些设计，让整个以太坊交易排序变成了更市场化排序的规则。所以 2020 年越来越多的矿池加入到 MEV Geth 的使用，它们的使用量也越来越多了。那这个 MEV 的情况相对而言会好一些，比之前的会好很多。不会有很多矿工或科学家都来竞价之类的。然后，最有意思的是发生了一件 SushiSwap 类似的事情。有一个项目叫 Eden，他们很多业务都使用了 Flashbots 开源的一些东西，然后他们比 Flashbots 更早的去发行了 token。因为市场这个时候并没有相关的东西，导致 Eden 得到了非常大的市场关注和非常好的收获。所以，这个有点像 Sushi 之前对 UniSwap 做的事情一样。所以这个也是 2021 年在 MEV 事件里面非常重要的一件事情。在上周 Eden 决定要更新他们的代币经济学。Flashbots 团队对他们也是有各种各样的吐槽，因为他们觉得还没有想清楚，不应该这么早去做代币经济。这些就是目前我能看到的一些进展。但是呢，其他嘉宾可以来分享一下，从这个大家关注到的进展。以及我觉得闫欣可以聊聊对 Eden 的看法，我刚刚只是讲了一些简单的基础。然后，其他两位研究员可以讲他们的角度。然后 DoDo 可以从应用角度来出发，怎么看待 MEV 之类的，谢谢。</p>
+<p><strong>闫欣：</strong> ok，谢谢。那我先说下 Eden 以及跟 Eden 相关的，我有几个想法。首先呢，就是我们可以亲切观察到，西方的比权，他们经常就是有政治正确跟政治不正确，两两派之间互相打。打得特别凶，比如说，Multicoin 和 Paradigm。但其实我个人是非常支持 Eden 这样，因为其实 token 最好的地方就是让社区参与，并能够在参与的过程中也获利，还成为你项目的一部分，对吧？比如说我 stake 100 个 Eden，然后就可以用这个 Network 了，对吧？那么其实对于用户来讲，Flashbots 其实没有很好的 innerface。我是一个散户，我想用 Flashbots，然后你直接给我 Github 的链接我根本啥也看不懂。但是 Eden 其实是在解决这个问题，然后 Eden 也确实让，虽然用户也不是很多，可能也就一两千个，但确实让这一两千个人有了更多的选择。</p>
+<p>另外，我觉得他最好的一个地方是他其实用这种方式我我觉得主要是他捕获了更多算力。就是他现在可能他对外声称应该是占分之 50 以上的。嗯。对他有了这些算力以后呢，他做一个事就是他把一个区块里面的空间分了几个层，就是说就像比如说我们坐高铁的头等舱、一等座、二等座一样。他们也是这样的，反正一层是 Flashbots，一层是 Eden 的 token holder，然后一层是什么东西。我觉得这个东西这种非常高级，然后我也认为他是很面向未来的。因为，我们过去的方法就是让大家去野生的竞价，他就像一个黑暗森林一样，没有任何的组织。但是，我个人认为这种公共资源应该有些顶层设计。特别是比如说以后 rollup 越来越多以后，有些跨链桥越来越多以后。这种交易的竞价能力不是很强，但是他又很重要，就是跟整个社区很多东西息息相关。比如说你这个数据的毛病，那很重要就是，你如果非要逼他一定，如果他因为出不起价，然后整个链的安全性跟不上就问题很大，。所以我觉得在未来肯定会有一个人提出一个类似的这么一种方式，比如说分成几个仓，然后每个仓有自己不同的功能。我就分享这么多。</p>
+<p><strong>曹一新：</strong> 那我可能从更宏观的角度去看 MEV 这个话题吧。我会去想 MEV 为什么会在 DeFi 火了之后被越越来越多的人关注。我的思考是，本身 DeFi 完成的，或者解决的一个问题就是用智能合约去解决了交易过程中交易撮合这个环节的去信任化。再往前退一步的话，比特币用一个区块链经济解决的是交易环节之中执行这一阶段的去信任化。这样的话，整个交易的撮合、执行都不需要依赖一个新人方来完成。但是整个交易还有最早的一个步骤 —— 交易机会的发现。原来的话，如果在传统的金融活动中，交易机会的发现可能需要很漫长的时间，需要非常多信息来源和比较专业化的操作。然后现在，区块链本身有一个 mempool，所有的交易信息都是公开透明的呈现在那里的。这个既有好的一面又有坏的一面：好的一面就是大家都可以去发现这里面的交易机会，包括好的套利、清算的机会，可以更好的让这个金融系统快速磨合中间的信息不对称性；另外，反面肯定就是，这里面会有很多啊，利用这些信息去做一些搭便车或者攻击行为。然后，我认为从广义上讲，MEV 指的是从区块链所呈现出来的事物信息里面，可以非许可提取的任何价值。</p>
+<p>我提的定义跟 @phildaian 他们提出来的定义相比会更广，但是我愿意把这个价值扩大化。因为，这价值是一直存在那里了，就来自于那些事物的信息。但是它的流转根据机制的不同是会发生变化的。如果一个套利机器人的交易上成功上链了，那这个价值就是一笔套利所得的收益来源；但如果这个套利被一个抢跑机器人抢走了，那它就变成了一个搭便车之后的利益来源。它性质会发生变化，但它的本质还是一直会存在在链上。所以我后面一直关注的就是那些解决方案，他是怎么去引导这些价值的分配的？</p>
+<p>在我看来，现在的解决方案可能分 3 个层面。比较多的是 P2P 协议层的，比如说 Flashbots 做的自定义的那些节点。刚刚说的 Eden 其实也是类似的，它把区块空间分成不同的等级，让所有想要去获得更多性价比的那些机器人或者参与者去通过拍卖的形式来竞争这个区块空间。这是一种利益分配的方式。另外一种解决方案是应用层面的，比如说那些隐私 DEX，包括 Flashbots，它推出了叫做 mistX 的隐私 DEX，这也是一种。还有一些应用层其实是用了传统的解决高频量化中间发生的抢跑事件。常用用的一种叫 batchoption (批量拍卖)，高频批量拍卖的方式，比如说 CowSwap 之类解决方案。但是我更希望看到的一些是 protocol 层面的解决方案，通过一些密码学，或者隐私的技术能够让这里面的交易信息，至少能够让发现这个信息价值的所有者能够保有他自己的一个所有权。这是我想见到的一个解决方案，但目前这方面可能还需要很大的进展。暂时就分享这些了。</p>
+<p>MEV 出现的根源可能是透明性，透明的话，一旦有人付出了劳动，搜索者们发现了这个价值，就比如说我们发现了数字世界是一个新大陆，上面有很多金矿、银矿，有人通过他的智慧或者什么其他手段找到了一个金矿的所在地，他马上跑过去了。这个信息就公开了，其他人都可以用更快的速度，或者他本身就有寻租能力的那个人，他可以提前攫取这个价值。希望通过一些隐私或者软件结合密码学的技术把这个价值能够更好的保存起来。</p>
+<p><strong>姚翔：</strong> 两位说的都很好，一新说得非常全面啊，看上去就像是论文的每个章节对吧。我最早关注其实也是大概去年，然后年初的时候 Tina 还找我说要不要一起研究这个事情。我说我学艺不精，我就帮你们传播传播成果。但我正好顺着一新的话说，就是一个核心的问题，我们想他的本质是什么？有一句话叫：权力导致腐败，绝对的权力导致绝对腐败。那么排序的这个权利，我不是说他导致腐败，因为这是在这个共识里面，我没有去限制你，我们就完全可以这么做，那也就意味着可以排序的人，他就可以做任何的事情。那你们这个权利关系是不对等的，对吧？那我只有把这个东西隐藏起来，我让你不知道我在干什么，才有可能对吧。那几条路线，比如说，一个已经不存在提供的一个服务，叫太极网络。现场有没有人用过太极？如果你去用 Uniswap，你怀疑有可能会被 frontrun 的时候，你可以连上太极的节点。因为这个已经不存在矿池承诺，他不会强迫你，只有当他出块的时候，你这笔交易就进去了，他不会向全网广播，但是你的 tradeoff 是什么呢？就是你只享有了全网的一部分算力，所以你平均的 inblock 时间会变长。它不是一个 Protocol 层面，它仍然是一个道德层面，就是说如果我被 frontrun，那只有是我，我给你承诺提供这样一种服务。这个其实是对包括 Flashbots，包括 Eden 这些方案的一个反抗。这很像一个理想主义者的一种挣扎。那我们能不能做的更极致一点？就像我今天穿这个 T-恤，我也是我特意选的。我这上面写的是 Being simulated with zero knowledge proof。只有密码学才能给我们这个武器，对吧？你不知道我干什么，你就对我没有任何办法，对吧。我要去哪里，你不知道我要干什么，如果你要知道我干什么，你又有这个权利，那你就一定可以在前面挡住我。道德是没有用的，而且这里你去谈道德没有任何意义。</p>
+<p>那么，我想到的还有一点呢，就是比较好玩的事，就我最近读一篇论文。他们分析了 Bitcoin 每一个区块的排序。你会发现，如果用广义的 MEV 定义，它的比例是非常惊人的。你会认为 Bitcoin 有什么好排序的？不，不是这样的。它的比例非常惊人，我不记得具体的数据，但应该是大于 11%。一定是这样。为什么 Bitcoin 的区块里会有那么多的不按交易手续费排序的交易呢？这个问题他们在那篇论文是做了很多讨论，但我还没有把全部读完，所以我想说的是什么？这里面还有很多很多你不知道的东西在那里，我们在这里说，可能在远方的一个电脑后面有个人正在笑。他说，你们讨论东西真的太无知了，你根本不知道我们是在这么干的。所以我想，最后可能还是密码学给我们武器，密码学才是最终我们尝试从根本上解决问题的一个工具啊。谢谢。</p>
+<p><strong>雷达熊：</strong> 我们作为项目方理应是说一些应用层面的，但其实我们对 MEV 的思考起源于一些非常形而上的定义。第一个抛出来的问题是 MEV 是个 bug 还是个 feature。Vitalik 当然不会承认这是个 bug，但我认为他是个 bug。他的起源呢，应该说可信计算是一种有价值的资源，矿工掌握了它，他要从中收税。这种税呢，他可以直接地收，也可以间接地收。譬如说我们听过那个高频交易的故事。我在服务器旁边租一个地方，放我的机器，我就快一点。那这笔钱其实是交给了那个在服务器旁的地产商，可能地产商也可能是开交易所的人的小舅子，所以他通过一些间接的方式把这个税收了。那我们回过头想他应不应该收？其实，我认为在大家共识里他不应该收。就是我们在分层，应用层是应用层，然后基础层是基础层，你不应该以此来收费。就好像说，谷歌这些 DNS 解析的服务商，它可以不正确地服务你的网站，以此来邀请你，让你给他钱。那么他这么做合不合适呢？我感觉出于常理来讲这是不合适的，这并不正义。我一直认为 MEV 是一笔不那么正义的钱。我们已经支付了 gas 给你，作为你的日常运营开销，你不应该再动用你手中的权力去额外敲诈一笔。就是相当于，有点敲鼓吸水的意思，就直到压榨到你们没有任何利润为止，我才停止。我认为这个是不正义的。</p>
+<p>然后那说回来，对于这种不正义的行为呢，大多数人其实都没有反抗的余地。但是有一些 Layer2，它是有改进空间的，比如说 Arbitrum 上面的那个 sequencer，就是定序器，不光是 Arbitrum，所有 rollup 方案，现在看来定序器都是一个标配。因为 sequencer 一旦出现，MEV 问题就消失了，不存在了。这潜台词是说，我作为 Layer2 的提供者，我主动放弃了对 MEV 价值的榨取。就是放利给大家了，你们也不用争抢了，大家谁也别内卷了。有点像说，以前班主任说谁给我送红包多，我就把谁孩子坐上前面去；现在班主任说我不收礼了，你们所有的孩子一视同仁。我当然认为是一种避免内卷的，然后对所有家长和孩子都好的方式。那么，如果不能反抗，譬如说我的业务就在以太坊上，那么我们就不得已要去抗 MEV。其实抗 MEV 有两种渠道：一种是你比别人跑得都快，另外一种是你让别人不知道你在做什么。比别人跑得都快这个是 Flashbots 他们在做的很多工作。然后，让别人看不见，其实你只需要走矿池的隐私交易就行了。这两者其实是用于不同的场景。对于真的想套利的人来说，排在前面是最重要的，那么我需要付很多钱来使用这种解决方式。对于普通交易者而言，他并没有那么强的套利力需求，他只是希望自己不要被攻击，那么他就应该选择第二种，把自己藏起来。所以对 DoDo 来说，我们给交易者提供的是第二种，就是你在矿池的 mempool 里面不公开，仅此而已。这样就能在用户的需求和成本之间谋求平衡。说完了。</p>
+<p><strong>闫欣：</strong> 噢，那我说一下。其实我不是很同意这种说 MEV 不正义的这种想法。因为比如你刚说的一个问题，你说用户付钱给矿池，所以他应该正常打包你的交易，矿池也没说不打包。也就是说，想走密码学的人就走密码学，就像比如说你要去用 Tornado，你就去用 Tornado。但是还是要给一个不走这个的机会。这个是我的一个想法，包括 Sequencer 这种东西，你怎么保证 Sequencer 很正义的？这个可能需要更多密码学的东西，但这个要让这个沙漏哥来多讲。</p>
+<p><strong>姚翔：</strong> 我觉得这里面，其实最终大家讨论的问题有些是形而上的。形而上的，我们就很能得到结论。所以我的一般的方法呢，就是观察。那怎么说呢？为什么矿池一定会接受 MEV，这件事情非常简单，因为你不接受 MEV，你就没有客户了。因为所有支持 MEV 的矿池给矿工的收入会更高。那这件事情一定会发生，那我怎么办？对吧？那这样一个市场，你只有做出这样选择，要么你就说我就不做了，对吧？可能吗？不可能，对吧。同时，以太坊协议规定了不能这么做吗？也没有这么规定啊。我认为至少到今天这都是一个演化的结果。在目前这个状态下，我认为一定程度上，它是一个比较稳定的、一个平衡的状态。而是说，我们希望说去用一个更好的一个系统来去减少这种，我们在直觉上觉得应该去保护这些发交易的人。我还想到一件事情，就是在今年过年的时候，二月份在 clubhouse 上面我们有一个对谈。当时少平在，就是 Sparkpool 的负责人。然后有一个，应该是个 trader，他就来提问：「我觉得你们这些矿池很不正义，改我的顺序。」然后少平说，那你去抢跑别人，你觉得你正义吗？他觉得他很正义。所以我们对这个问题的看法，其实确实是很难达成一个共识。所以我觉得，我们就是面对现状。</p>
+<p>那密码学能做什么？其实现在有一些方案，比如说，我们就是用这种类似 commitment review 的这种方式对吧？我先把交易期限承诺上去，到下个 block 再打开。这个当然，你听上去就是金融性很差，会牺牲很多东西，而且万一我不打开呢，然后你要增加一个很复杂的机制，说不打开怎么办，对吧。那接下来我们就说我们可以用 VDF，对吧？VDF 是什么意思？就是，我发一个秘密，这个秘密反正过一段时间才能算出来，所以你打包的时候你不知道我要干嘛，可能过了十分钟，你知道我要干嘛了。这个听起来也是这个，放弃的东西太多对吧？妥协特别大。所以最终就是我们如果想有一个比较理想的状态。在排序这个层面我没有一个很坚实的支撑，就是我这种直觉。你在 Layer1 上，你让这种事情越少越好，Layer1 足够的简洁，你把你的业务搬到 Layer2 上。就是你有没有各种不同的方式来解决你不同意应用之间的需求的问题。因为现在的很大的问题是，在 Layer1 上不同的应用，它对技术的要求是不一样的，但是大家会受到同样一件事情的影响。比如说 NFT 就会造成 gas war，你们几个人搞得整个大家都那么贵。所以我觉得那 Layer1 是不是能足够简洁，这些事情都放到 Layer2 上去。</p>
+<p>第二种，从我的角度，我的感觉就是零知识整蒙的技术能不能在有限的未来，至少我们能看到的未来，提供一个可解决的方案。那最终就是怎么做呢？所有的人都不知道这个链要干什么，他只要知道最后结果是怎么样，就可以了。总体来说，我觉得就是去保护所有人，然后让这个系统在一个比较安全的状态下去发展。然后包括我最近对 MEV 的影响，我不太关心你们到底怎么解决这个方案。因为我觉得这种路径太多了，你很难说哪个是好的哪个是坏的？但有一点可能是比较确定，就是 MEV 对底层安全性造成了一个重大的影响。它导致你之前的 security assumption 完全变化了，你之前会觉得矿工只有这个收入，现在矿工有了新的收入。矿工有了新的收入，他就可能会为这个新的收入来攻击这个网络，增加他主要动力。这是一笔很大的钱，我发现我可以去把这笔钱拿到。那为什么不这么做？所以，这是我的一些思考吧，也并不是一个很成熟的想法，最终我可能跟一新，我们会把一个研究报告抛出来。希望这是一个靶子吧，让大家来提建议，谢谢。</p>
+<p><strong>雷达熊：</strong> 那我还是觉得它不正义，就还是那个很简单的例子。那个班主任收红包然后把孩子排前面坐。怎么讲呢？我感觉现在这是一种权力寻租吧，我们当然无法杜绝权力寻租。但是，我认为我们努力的方向应该是把 MEV 这个事情彻底干掉；而不是在谋求，那现在我必须送礼才能给孩子上户口。那么我们搞一个市场拍卖，谁送礼送的多，我就让谁家孩子上学。我觉得这个是不对的，你应该想办法把这个现象给杜绝掉。我比较推崇 Sequencer 这个方案。当然可能这个在 Layer1 上不太好实现，但这个毕竟不是我们的研究范畴，我只是持一种观点。</p>
+<p><strong>潘致雄：</strong> 其实第二个还想聊一下，MEV 最新的一些进展以及可能的解决方案，但是刚刚姚老师已经讲到一些。所以我们再聊一下 Eth2.0 相关的问题。想问下大家觉得 MEV 和 Eth2 上可能会有哪些关联，以及可能会带来哪些影响？它是会加大呢？还是削弱 MEV 的影响？</p>
+<p><strong>曹一新：</strong> 其实我刚刚听完上一个报告，就是讲 eth1-&gt;eth2 Merge 的这个过程，我其实还是有一个疑问没有得到解答。2.0 里面有 Validator 以及 execution layer，我不知道这两种节点是分开两种角色方在运行，还是同一个角色方同一个节点。(期间有嘉宾解答) 那就是说，validator 总的负责收集交易，然后执行验证，然后再打包。哦哦，那我懂了。那我觉得这里面差别可能就在于 PoS 和 PoW 的一个改变吧。PoW 的话，大家想要成为一个节点，它是有一个很高的硬件或者技术门槛的。就是我要进入这样一个打包者的一个角色，我要先投入很多的资本。而且这个资本是一个硬件的形式，它的退出可能会有一个退出风险。如果我变成了 PoS，那我只要拥有很多个 ETH 就行了，我就是一个资本方，那可能这里面会出现更多潜在的共谋机会吧。大家会不会局部地捞一笔钱，然后如果价格跌得话，我在场外做一个期货做空，是不是就可以避免我自己损失的这个风险？这是我自己胡乱想的一个问题。然后关于 MEV，我觉得到 PoS 之后，它的体量会更大。因为到时候可能 scaling 的问题暂时解决了，那各种形式的商业活动，包括 DeFi、NFT 以及其他非金融类的游戏，这类事务在上面处理得越来越多的话，中间有价值的信息肯定会越来越多。那么这个 MEV 是不可估量的。我期待看到以后发展的一些进展吧。</p>
+<p><strong>姚翔：</strong> 如果有朋友参加过我们去年的这个活动，其实当时我们也在讨论这个共识的切换。上次活动之后，Merge 这个工作开始疯狂加速。我的感觉是，切换之后，整个网络的安全性假设发生了重大的变化，以至于我没有办法去分析，它会发生什么。但有几件事情是可以确定的，就是以太坊 PoS 的共识下，你是知道什么时候谁出块的，这个点是一个比较危险的事情。什么意思呢，如果你在 PoW 中挖矿，你不知道下一个块是谁，也就是你并不能提前对一件事情进行共谋；但在 PoS 下，这件事情发生了。我知道下一个人是谁，我还知道下下个人是谁，在一个有限的时间里，我是知道应该是谁出块。虽然你不能违背共识，但你能够创造更多的 MEV 机会，甚至你们前后几个人可以发生共谋。我觉得这个事情已经变得足够的复杂，以至于没有办法去讨论。最终它可能是一个市场行为，按雷达熊的观点就是，这是个非正义的事情，对吧。但是对他们来说，并不重要，我只要在对网络的负面影响和我自己的利益之间取得一个很好的平衡就可以了，对普通人来说，根本不知道发生了什么。甚至这种行为变得隐藏。我举个例子，在 PoW 下，你想做 MEV，你会在自己的区块里完成，你不会赌下一个还是你对不对。但是在 PoS 网络，不一样了，下一个可能还是我，你甚至不知道是我的两个 Staking address，这两个区块都是我的，你看不出来这是一笔 MEV，但你连起来，它就是的。当然这是我的观点，谢谢。</p>
+<p><strong>潘致雄：</strong> 谢谢，我们今天的 MEV 主题到此为止，谢谢几位嘉宾。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/30359/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">一文看懂波卡平行链插槽拍卖</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/30350/">
+                <span class="next-text nav-default">以太坊智能合约中的ERC标准是什么?</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          TW-AMM：一种Dex高效处理大额订单的新构想 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文介绍了一种新型的自动化做市商（AMM），可以帮助以太坊上的交易者有效地执行大额订单。" />
+<meta name="keywords" content="AMM" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/26642/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="TW-AMM：一种Dex高效处理大额订单的新构想" />
+<meta property="og:description" content="本文介绍了一种新型的自动化做市商（AMM），可以帮助以太坊上的交易者有效地执行大额订单。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/26642/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-30T00:00:00+00:00" />
+
+<meta itemprop="name" content="TW-AMM：一种Dex高效处理大额订单的新构想">
+<meta itemprop="description" content="本文介绍了一种新型的自动化做市商（AMM），可以帮助以太坊上的交易者有效地执行大额订单。"><meta itemprop="datePublished" content="2021-07-30T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-30T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8373">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TW-AMM：一种Dex高效处理大额订单的新构想"/>
+<meta name="twitter:description" content="本文介绍了一种新型的自动化做市商（AMM），可以帮助以太坊上的交易者有效地执行大额订单。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">TW-AMM：一种Dex高效处理大额订单的新构想</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-30">
+      2021-07-30
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8373 字 -
+        预计阅读 17 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="概述">概述</h3>
+<p>本文介绍了一种新型的自动化做市商（AMM），可以帮助以太坊上的交易者有效地执行大额订单。</p>
+<p>我们称其为时间加权平均做市商，缩写为 TWAMM（发音为“tee-wham”）。</p>
+<p>TWAMM 的工作原理是将长期订单分解为无穷多的小订单，并随着时间的推移，针对嵌入式恒定产品自动化做市商而顺利地执行它们。</p>
+<h3 id="简介">简介</h3>
+<p>假设Alice想在链上购买价值 1 亿美元的 ETH，那么如果在像 Uniswap这种现有的 AMM 上执行这种规模的订单将是非常昂贵的，这是为了防止Alice知道一些他们不知道的内幕，所以它必须向 Alice 收取高昂的费用。</p>
+<p>现在，Alice 的最佳选择是手动将她的订单分成好几部分并在几个小时之内执行，让市场有时间意识到她并没有内幕消息，这样就可以给她一个更好的价格。</p>
+<p>假如她发送了几个大规模的子订单，那么每个订单仍然会对价格产生重大影响，并且容易受到对抗性交易者的三明治攻击。另一方面，如果她发送许多小规模的子订单，她将不得不承担主动交易的所有工作和风险，并将以交易gas费用的形式向矿工支付高额成本。</p>
+<p>如今，TWAMM通过代表Alice进行交易为她解决了这个问题。它将她的订单分解成无数个无限小的虚拟订单，以确保随着时间的推移可以完美地顺利执行，并且使用与嵌入式 AMM 的特殊函数关系，在这些虚拟订单中分摊 gas 成本。由于它处理的是区块之间的交易，所以它也不太容易受到三明治攻击。</p>
+<h3 id="两个与做市有关的基础概念">两个与“做市”有关的基础概念</h3>
+<p><strong>1. 做市商</strong></p>
+<p>考虑到这个市场有两种金融资产，例如 USDC 和 ETH。而做市商是这个市场的参与者，他希望能在任何时候用任意一种资产与另一种资产进行交易。</p>
+<p>假如你有 1 亿美元的 USDC 并想用它来购买 ETH，你可能无法在同一时间找到另一个想要做相反交易的人。取而代之的是，您很可能会进入到一个由一个或多个做市商组成的市场并与他们进行交易。</p>
+<p><strong>2. 逆向选择</strong></p>
+<p>做市商从价差中获得的利润，实际上是他们对每笔交易收取的费用。当价格走向与他们相反时，他们会赔钱——当他们购买了某种资产后价格随后下跌，或是出售了某种资产后价格随即上涨。</p>
+<p>不幸的是，对于做市商来说，价格走势往往与他们的操作相反，这种现象被称为逆向选择。 发生这种情况是因为获悉有关未来价格走势的交易者更有可能与做市商进行大额交易。</p>
+<p>最危险的订单是规模既大又紧急的订单，因为这些订单正是那些有内幕消息的交易者倾向于下的订单类型。 因此，最基本的做市策略是“淡入订单”（fade incoming orders），当有大买单时将价格调高，当有大卖单时将价格调低。</p>
+<h3 id="自动化做市商">自动化做市商</h3>
+<p>在过去的一年中，以 Uniswap 为代表的自动做市商 (AMM) 在以太坊上非常受欢迎，每天处理数十亿美元的交易。顾名思义，AMM就是自动化了大部分做市过程。</p>
+<p><strong>1. 常数交易公式</strong></p>
+<p>常数交易公式是一个简单的规则，它允许任何人立即为一对新资产创建新市场和新 AMM。</p>
+<p>为了在 X 和 Y 这两种资产之间创建新的常数交易 AMM (CPAMM)，被称为流动性提供者（LP）的用户会存入这两种资产的准备金 x 和 y。</p>
+<p>这些资产在任何给定时间内的比率代表着在 AMM 上的即时价格，或者是它向一个非常小的订单收取的价格。例如，如果 CPAMM 的储备中包含 2,000 USDC 和 1 ETH，则其 ETH 的瞬时价格将为 2,000 USDC。</p>
+<p>当交易者与 AMM 进行交易时，它会根据公式 **x * y = k 来决定给他们什么价格，其中 x 和 y 是储备规模，k 是常数。这意味着其储备规模的乘积在交易期间是保持不变的（忽略费用）。</p>
+<p><strong>2. 示例</strong></p>
+<p>比如一个 ETH/USDC的CPAMM，其储备中有 2,000 USDC 和 1 ETH，因此 x = 2,000、y = 1 ，因此 x * y = k = 2,000。 该 AMM 的瞬时价格就为每 ETH 2,000 / 1 = 2,000 USDC。</p>
+<p>如果交易者来购买价值 2,000 USDC 的 ETH，这就意味着他们将 2,000 USDC的押金存入了X进行储备，因此我们将有 x = 2,000 + 2,000 = 4,000。</p>
+<p>接着，由于 k = 2000，我们必须在交易后得到 y = x/k = 2000/4000 = 0.5。 由于 y 最初是 1，因此 1 – 0.5 = 0.5 ETH 一定已经流向了交易者。</p>
+<p>由于交易者用 2000 USDC 购买了 0.5 ETH，因此他们支付的平均价格为每个 ETH 4,000 USDC。这种相对于瞬时价格的高价反映出了有关AMM 流动性的大订单规模。</p>
+<p><strong>3. 价格影响和逆向选择</strong></p>
+<p>在上述情况下，当小订单的成本仅为每个ETH 2,000 USDC 时，交易者则必须为其大订单支付每个 ETH 4,000 USDC的费用。 这种价格差异称为订单的价格影响。当新进订单规模越大，对价格的影响就越大。</p>
+<p>这就是 AMM 对抗逆向选择的方式：大订单更有可能被告知，因此AMM会使他们付出高昂的代价。 </p>
+<h3 id="在当前-amm-上执行大订单">在当前 AMM 上执行大订单</h3>
+<p><strong>1. 手动拆分订单</strong></p>
+<p>正如我们所见，在AMM上执行单笔大订单的交易成本被设定得很高。这篇优秀的文章深入探讨了这个问题，并推荐了一些解决方案。</p>
+<p>简而言之，希望在 AMM 上执行大订单的交易者不应该在单个交易中执行：他们最好将订单分成几部分。这可能涉及一次向多个 AMM 发送订单，但这些 AMM 在任何给定时间点的流动性也是有限的。随着时间的推移，订单越大，将其拆分就越有意义。</p>
+<p>例如，假设一位投资者想在链上购买 1 亿美元的 ETH，但由于他们没有关于 ETH 价格的任何短期信息，因此他们的订单可能会需要一些时间来执行。在这种情况下，他们可能会将订单拆分成10单，每单1000万美元，并每隔一小时执行一单，从而减少每单的价格影响。</p>
+<p><strong>2. 对子订单大小的权衡</strong></p>
+<p>显然，如果将一个规模非常大的订单分成几部分，那么每个单独的子订单仍然会很大，并会相应地产生价格影响。这时候，要将订单拆分成得更小才会有用，不过这同时会带来两个新的问题。</p>
+<p>第一个问题是操作的复杂性，这意味着风险和工作量的增加。交易者可能会将他的交易拆分成错误的数量或是选择了错误的方向。另一方面，他的计算机为了阻止执行部分订单可能会发生崩溃。而即便一切都很顺利，这个过程也需要付出时间和精力，这会影响人们对于更有价值的东西的尝试。</p>
+<p>第二个问题是每笔交易都会产生固定的交易成本，例如支付给以太坊矿工处理交易的gas费用。如果交易者将他的订单拆分成太多部分，那么他最终可能会花费比实际购买 ETH 多得多的钱。</p>
+<h3 id="与传统金融类比">与传统金融类比</h3>
+<p>在传统金融领域，如果投资者或者机构想购买 1 亿美元的苹果股票，他们不会直接向交易所发送 1 亿美元的市场买单。同样他们也不会发送10个价值 1000 万美元得订单。对于没有专门的交易人员和基础设施的绝大多数人来说，将订单分成比这小得多的子订单是不切实际的。</p>
+<p>相反，他们很可能会将大笔订单发送给经纪人，经纪人会为他们进行算法交易以赚取费用。 经纪人将在指定的时间段内执行交易，比如八个小时，价格参考某个标准。经纪人拥有一个专门负责安全且经济地执行此类交易的团队。</p>
+<p><strong>1. TWAP 订单</strong></p>
+<p>也许最基本的算法交易类型是时间加权平均价格或是TWAP（发音为“tee-whap”）订单。顾名思义，就是假如在八小时内执行价值 1 亿美元的苹果股票的 TWAP 订单，那么最终将以该时段内接近苹果股票时间加权平均价格的价格成交。</p>
+<p>例如，若苹果股票在这段时间内在其中四个小时的价格为 100 美元，另外四个小时的价格为 120 美元，那么时间加权平均价格将为 ($100 * 4 + $120 * 4)/8 = $110，经纪人将执行接近该价格的TWAP订单。</p>
+<p>虽然操作起来细节各有不同，但经纪商们最有可能在一天内将其分成许多小份并将它们发送到市场来执行此交易。在 8 小时内购买 1 亿美元的苹果股票相当于每 100 毫秒购买大约 350 美元的苹果股票，我们应该都会期望经纪人能进行这样类似的操作。</p>
+<p>由于经纪商拥有专业的基础设施，这些设施可以减少或是消除如此多小额交易的操作复杂性，并且由于它们与市场有着直接联系，因此可能无需付出太多的交易成本。</p>
+<h3 id="时间加权平均做市商">时间加权平均做市商</h3>
+<p>时间加权平均做市商 (TWAMM) 提供了 TWAP 订单的链上等价物。 TWAMM 凭借自己独特的用于订单拆分的逻辑算法以及与嵌入式交易所的直接联系，通过较低的gas 费用执行平稳的交易。与此同时，套利者会将 TWAMM 嵌入式交易所的价格与市场价格保持一致，确保在资产的时间加权平均价格附近执行。</p>
+<p><strong>1. 概述</strong></p>
+<p>每个 TWAMM 都会促进特定的资产对之间进行交易，例如 ETH 和 USDC。</p>
+<p>TWAMM 包含一个嵌入式 AMM，这是这两种资产的标准常数产品做市商。任何人都可以随时使用这个嵌入式 AMM 进行交易，就好像它是一个普通的 AMM 一样。</p>
+<p>交易者可以向 TWAMM 提交长期订单，这些订单是在固定数量的区块上出售固定数量的一种资产的订单——例如，在接下来的 2,000 个区块中出售 100 ETH 的订单。</p>
+<p>TWAMM 将这些长期订单分解为无数个无限小的虚拟子订单，这些子订单将随着时间的推移匀速地与嵌入式 AMM 进行交易。要知道，单独处理这些虚拟子订单的交易将花费无限多的gas费用，但封闭式数学公式允许我们仅在需要时计算它们的累积影响。</p>
+<p>随着时间的推移，长期订单的执行将推动嵌入式 AMM 的价格远离其他市场的价格。发生这种情况时，套利者将根据嵌入的 AMM 价格进行交易，使其保持一致，从而确保长期订单的良好执行。</p>
+<p>假如长期出售使得嵌入式 AMM 上的 ETH 比特定中心化交易所要便宜，那么套利者将从嵌入式 AMM 购买 ETH，当其价格回升以后再在中心化交易所进行出售以获取利润。</p>
+<p><strong>2. 以太坊更新</strong></p>
+<p><strong>2.1 区块</strong></p>
+<p>以太坊将交易打包成连续的组块，这个组块也被称为是区块（block），大约每 13 秒进行一次。 在本文里，我们将对每个区块进行编号：区块 1 之后是区块 2，然后是区块 3，依此类推。</p>
+<p><strong>2.2 矿工</strong></p>
+<p>分散式的矿工组群开始竞相处理每一个区块，而任何能连接到互联网的人都可以成为矿工。 这意味着在以太坊上运行类似 AMM 这样的程序是不保密的：每个人都必须精确地计算出在给定输入的情况下会产出些什么。</p>
+<p><strong>2.3 Gas 费用</strong></p>
+<p>算力在以太坊上是一种稀缺资源，因此用户必须以 gas 费用的形式向矿工支付费用。 给定交易中涉及的计算量越大，它消耗的gas 就越多。而这笔gas费用完全是由提交交易的人支付的。</p>
+<p><strong>3. 基础交易设计概念</strong></p>
+<p><strong>3.1 长期订单</strong></p>
+<p>Alice 想在接下来的 8 小时内购买价值 1 亿 USDC 的 ETH，即大约 2,000 个区块。她在 TWAMM 中输入了一个长期订单来购买价值 1 亿 USDC 的 2,000 个区块ETH，相当于每个区块 50,000 个 USDC。</p>
+<p>如上所述，我们事先不知道哪些矿工将会在 TWAMM 上处理这些未来的交易。这也就意味着 Alice 的订单必须对所有人可见，从而引发了我们即将在下面讨论的信息泄漏问题。</p>
+<p><strong>3.2 订单池</strong></p>
+<p>假设 Bob 想要在接下来的 5,000 个区块中以 USDC 价格出售 500 ETH，相当于每个区块出售 0.1 ETH。</p>
+<p>而 Charlie想在接下来的 2,000 个区块中以 USDC 价格出售 100 ETH，即每个区块出售 0.05 ETH。</p>
+<p>等到Charlie的订单在 2,000 个区块内一到期，Bob和Charlie的订单就会被组合在一个池中。</p>
+<p>该 ETH 销售池将在接下来的 2,000 个区块中以每区块 0.15 ETH 的价格出售 ETH。Bob 将能获得该矿池赚取的USDC的66%（0.1/0.15 ≈ 66%）；Charlie 将获得该矿池赚取的 USDC 的33%（ 0.05/0.15 ≈ 33%）。</p>
+<p><strong>3.3 虚拟订单</strong></p>
+<p>对于接下来的 2,000 个区块，TWAMM 必须代表 Alice 购买价值 50,000 USDC 的 ETH，并代表 ETH 销售池以 USDC 的形式出售 0.15 ETH。</p>
+<p>我们可以想象，TWAMM 将这两个子订单再拆分为数万亿个微小的子订单的子订单，我们称之为虚拟订单（实际上，它将它们拆分为无数个无穷小的虚拟订单）。</p>
+<p>然后 TWAMM 轮流针对其嵌入的 AMM 执行这些虚拟订单：第一个是 Alice 的虚拟订单，然后是 ETH 销售池中的一个，再然后是 Alice 的另一个订单，依此类推。</p>
+<p><strong>3.4 套利</strong></p>
+<p>因为 Alice 购买的 ETH 比 ETH 池出售的多得多，因此嵌入式 AMM 上的 ETH 价格将在每个区块上上涨。</p>
+<p>当这个价格相对于其他地方的 ETH 价格足够高时，套利者将在其他交易所购买更便宜的 ETH 并在嵌入式 AMM 上出售，使其价格与市场平均水平保持一致并确保较好地执行Alice的订单。‘</p>
+<p><strong>3.5 订单到期</strong></p>
+<p>在第2,000 个区块之后，Alice 的订单将被完全执行，Charlie 的订单也是如此。而Bob 出售 ETH 的订单在接下来的 3,000 个区块内仍然有效，在此期间， TWAMM 将继续以每个区块 0.1 ETH 的速度执行着。</p>
+<p>除非有任何其它外部活动，否则随着时间的推移，这将迫使嵌入式 AMM 上的 ETH 价格走低，也将促使套利者一旦脱离价格后使得价格可以回升。</p>
+<p><strong>3.6 代币经济</strong></p>
+<p>因为 Alice、Bob 或 Charlie 都不急于执行他们的订单，所以其他市场参与者可以推断出他们的订单所代表的逆向选择比其他情况要少，并且可以为他们提供低价格影响的执行。</p>
+<p>由于TWAMM届时将成为 Alice、Bob 和 Charlie 等人进行交易的最佳场所，因此 TWAMM 嵌入式 AMM 上的 LP 可能会与像他们一样的大量不知情者进行交互。这也将有助于 LP 从费用中赚取利益，同时减少他们逆向选择的风险。</p>
+<p><strong>4. 无穷小虚拟订单（Infinitesimal Virtual Orders）</strong></p>
+<p>上面我们提到了TWAMM将长期订单拆分为无穷个无限小的子订单。这样做有两个原因：流畅性和效率。</p>
+<p><strong>4.1 流畅性</strong></p>
+<p>TWAMM 的主要目标是随着时间的推移平稳地执行长期订单，以便它们可以以接近现行时间加权平均价格的价格来执行交易。</p>
+<p>随着我们减少虚拟交易的规模，AMM 上的价格变动变得越来越平稳了。</p>
+<p>在极端情况下，由于有无数个无限小的交易，因此执行虚拟交易时价格变动非常平稳。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0730/svhj8qkvzbqc8ym" alt="TW-AMM：一种Dex高效处理大额订单的新构想"></p>
+<p><strong>4.2 效率</strong></p>
+<p>由于 TWAMM 设计初衷是用于以太坊区块链，因此为每个区块的多个虚拟交易明确计算交易的成本非常高。然而，当我们有无限多的无穷小交易时，我们可以在一次计算中计算交易者的结果，无论自上次检查以来已经有多少个区块。</p>
+<h3 id="执行">执行</h3>
+<p><strong>1. 惰性评估（Lazy Evaluation）</strong></p>
+<p>TWAMM 将虚拟子订单视为发生在区块之间的空间中，这对于躲避三明治攻击很重要。</p>
+<p>为了以一种节省gas费用的方式实现这一点，TWAMM 会使用惰性评估，仅在需要确定交互结果时才计算虚拟交易的影响。</p>
+<p>每次用户与 TWAMM 交互时（例如，通过使用嵌入式 AMM 进行交易或添加新的长期订单），TWAMM 都会追溯计算自上次交互以来发生的所有虚拟交易的影响。</p>
+<p>由于这些虚拟交易仅与 TWAMM 的嵌入式 AMM 交互，因此 TWAMM 行为在外部交互之间是完全确定的。即使 TWAMM 外部交互之间移动了 100 万个区块，下次有人与之交互时，它还是能够准确计算所有介入虚拟交易的结果。</p>
+<p>对于插入 TWAMM 的前端而言，可以通过跟踪当前区块编号并自行进行 TWAMM 计算来处理尚未在链上表示的虚拟交易。</p>
+<p><strong>2. Gas 优化</strong></p>
+<p><strong>2.1 资金池订单（Pooling Orders）</strong></p>
+<p>如示例所示，当我们在同一交易方向有多个长期订单（即以 USDC 出售 ETH）时，我们会将它们集中在一起，然后把它们拆分为虚拟订单。然后，TWAMM 可以使用算法来追踪余额，而这个算法与跟踪 Compound 和 Uniswap 等协议中数十亿美元LP代币激励的算法版本一样。</p>
+<p>从技术上讲，每个 TWAMM 总是有两个长期订单池，每个资产一个：例如，卖出 USDC 的订单池和卖出 ETH 的订单池。值得一提的是，在任何给定时间内，这些订单池中的一个或两个可能是空的。</p>
+<p><strong>2.2 长期订单过期（Long-Term Order Expiration）</strong></p>
+<p>将订单池与惰性求值结合使用时会出现一种复杂情况。</p>
+<p>想象一下，Bob 下了一个长期订单，将在接下来的 100 个区块中出售 100 ETH，而 Charlie 也下了一个订单，将在在接下来的 200 个区块中出售 200 ETH，两个订单都以每区块 1 ETH 的价格出售。</p>
+<p>假设在接下来的 150 个块中没有人与 TWAMM 交互，此时就会发生新的外部交互。在 Bob 和 Charlie 下订单后的前 100 个区块中，他们的订单将会汇集到一个共同订单中，每个区块出售 2 ETH。然而，对于之后的 50 个区块，Charlie的订单就变成是独立的了，每个区块只会出售 1 个 ETH。</p>
+<p>这意味着我们必须进行两次单独的交易计算才能找出发生了什么：</p>
+<blockquote>
+<p>* 一次计算前 100 个区块的结果；</p>
+<p>* 一次计算最后 50 个区块的结果。</p>
+</blockquote>
+<p>在最坏的情况下，如果过去 150 个区块的每个区块都有订单到期，这意味着 TWAMM 将不得不每个区块处理一笔交易，从而破坏了 gas 效率。</p>
+<p>针对这个问题，最简单的解决方法是限制符合订单到期条件的区块数量：例如，TWAMM 可以指定订单只能每 250 个区块到期一次，或者大约每小时到期一次。</p>
+<p><strong>2.3 长期订单取消（Canceling Long-Term Orders）</strong></p>
+<p>用户可以随时取消长期订单。在实践中，这将允许用户为他们自己的订单选择取消时间（cancelation time）直到区块完成订单交易。在这种情况下，系统的 gas 负担不会增加，因为所有取消操作都是用户自己做出的决定，因此需要他们自己支付 gas。</p>
+<p><strong>3. 虚拟交易数学（Virtual Trade Math）</strong></p>
+<p><strong>3.1 定义</strong></p>
+<p>假设自 TWAMM 上次执行任何虚拟交易以来已经产生了 t 个区块。</p>
+<p>为简单起见，假设没有长期订单过期，因此在整个时间段内，出售 X 的矿池每块出售 x_{rate}，而出售 Y 的矿池在整个时间段内每块出售 y_{rate}整个时间段。</p>
+<p>那么在此期间售出的 X 总量为 tx_{rate} = x_{in}，而在此期间售出的 Y 总量为 ty_{rate}=y_{in}。</p>
+<p>让我们将时间段开始时嵌入的 AMM 储备分别表示为 x_{ammStart} 和 y_{ammStart}。</p>
+<p><strong>3.2 公式</strong></p>
+<p>在处理完所有虚拟交易后，嵌入式 AMM 将会获得的储备资产 X 为</p>
+<p><img src="https://img.bibiqing.com/news/2021/0730/6nvdmobvnmyeyfv" alt="TW-AMM：一种Dex高效处理大额订单的新构想"></p>
+<p>其中</p>
+<p><img src="https://img.bibiqing.com/news/2021/0730/nzi8jc2hh0cci1p" alt="TW-AMM：一种Dex高效处理大额订单的新构想"></p>
+<p>从常数乘积公式，我们知道</p>
+<p><img src="https://img.bibiqing.com/news/2021/0730/z1yuj9q4tal32aj" alt="TW-AMM：一种Dex高效处理大额订单的新构想"></p>
+<p>出售 X 的矿池获得了所有没有出现在嵌入式 AMM 中的 Y——换句话说，</p>
+<p><img src="https://img.bibiqing.com/news/2021/0730/cse8cojhygmlf0t" alt="TW-AMM：一种Dex高效处理大额订单的新构想"></p>
+<p>同样地，</p>
+<p><img src="https://img.bibiqing.com/news/2021/0730/4ysovgsnfrtkgso" alt="TW-AMM：一种Dex高效处理大额订单的新构想"></p>
+<h3 id="潜在的攻击媒介">潜在的攻击媒介</h3>
+<p><strong>1. 三明治攻击</strong></p>
+<p><strong>1.1 描述</strong></p>
+<p>在三明治攻击中，攻击者 Atticus 看到交易者 Trey 即将在 AMM 上进行交易。 Atticus 发送了两个订单，夹住了 Trey 的订单，从而从中获利。</p>
+<p>想象一下，Trey 向 AMM 发送了一个用 USDC 购买 ETH 的订单，此时该订单被 Atticus 发现了，于是 Atticus 在 Trey 之前下单并在 AMM 上购买 ETH，推动价格上涨。由于他正在向 AMM 支付费用并产生价格影响，因此 Atticus 在此订单上正在亏损。</p>
+<p>当 Trey 的订单被执行时，他不得不以更高的价格购买 ETH，因为 Atticus 推高了价格，此时 Trey的实际订单价格又被进一步推高了。</p>
+<p>现在，Atticus 将他的 ETH 卖回给 AMM。由于自 Trey 买入以来，Trey 推高了 AMM 的价格，因此他卖出的价格其实是高于买入价格的，所以能够实现盈利。</p>
+<p>但是，只有当 Atticus 能够保证在 Trey 购买后立即将他的 ETH 卖回给 AMM，那么这种攻击对 Atticus 才有意义。在给定的区块内，如果 Atticus 是一名矿工、与某个矿工达成交易或使用 Flashbots 之类的服务时，这种类型的攻击其实是可能发生的。</p>
+<p><strong>1.2 夹心订单和虚拟订单</strong></p>
+<p>乍一看，虚拟订单似乎特别容易受到三明治攻击，因为每个人都知道他们会来。</p>
+<p>但是，由于它们在一定数量的区块之间执行，因此订单能得以保存。想要“夹住”TWAMM的虚拟订单攻击者，必须在一个区块的末尾与嵌入的 AMM 进行交易，这样会导致虚拟订单在区块之间以糟糕的价格执行，然后在在下一个区块开始时往另一个方向交易。</p>
+<p>目前，攻击者没有办法保证他们只会在给定区块末端进行交易，因为攻击实施的前提是他们必须在下一个区块开始时进行交易。当多个区块最大可提取价值（MEV）变得更加普遍且允许交易者夹在多个区块之间时，问题可能会变得更为严重。</p>
+<p><strong>2 信息泄露</strong></p>
+<p>长期交易者在 TWAMM 中可能遇到的最大权衡（tradeoff）是他们在下“公开可见”订单时会面临信息泄漏风险，由于以太坊性质，这种风险很难避免。</p>
+<p>如果交易者下了一个规模足够大的长期订单，其他交易者可能会想在他/她之前抢先交易并在 TWAMM 嵌入式 AMM 和其他地方购买资产，以便稍后将其作为长期订单卖回给交易者彬推高价格。</p>
+<p>由于用户可以随时取消他们的长期订单，我们预计过于激进的大订单交易者会被其他交易者利用，因此，我们需要控制信息泄漏的整体影响。</p>
+<p><strong>2.1 示例</strong></p>
+<p>想象一下，欺诈者 Sally 已经注意到 TWAMM 上出现了攻击性抢先交易机会。此时她可以从流动性聚合商那里购买了 100 万美元的 ETH，继而推高了整个市场的价格。然后，她可以在 TWAMM 上下了一个大额长期订单，然而在接下来的 24 小时内，在每个区块上购买 10 万美元的 ETH。</p>
+<p>Frank 很快看到了这个大额订单并通过聚合器购买了 100 万美元的 ETH，价格被进一步推高了。接下来，Sally 通过聚合器卖出她的 ETH 以获取利润，结果价格会被推低并让 Frank 蒙受损失。最后，她在订单完成之前取消了自己的长期订单。</p>
+<h3 id="python-参考实现">Python 参考实现</h3>
+<p>您可以在此处查看 TWAMM 的 Python 参考实现。</p>
+<p>GitHub 上的 Jupyter Notebook 展示了 TWAMM 的行为，其中包含多个被取消的长期订单和套利者的操作行为。</p>
+<p>为简单起见，这个 Python 版本没有实现像池化订单或真正的惰性评估之类的 gas 优化。</p>
+<h3 id="结论">结论</h3>
+<p>我们已经勾勒出了 TWAMM 的设计框架，但我们的工作才刚刚开始。</p>
+<p>如果您有兴趣解决此问题或类似问题，可以发送电子邮件或在 Twitter 上私信联系 Uniswap Labs。</p>
+<p>原文作者：Dave White、Dan Robinson、Hdyden Adams</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/26591/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">PayPal首席执行官：最快下个月在英国推出加密服务</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/26589/">
+                <span class="next-text nav-default">比特币成拖累特斯拉业绩唯一因素 背后原因是什么？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#概述">概述</a></li>
+        <li><a href="#简介">简介</a></li>
+        <li><a href="#两个与做市有关的基础概念">两个与“做市”有关的基础概念</a></li>
+        <li><a href="#自动化做市商">自动化做市商</a></li>
+        <li><a href="#在当前-amm-上执行大订单">在当前 AMM 上执行大订单</a></li>
+        <li><a href="#与传统金融类比">与传统金融类比</a></li>
+        <li><a href="#时间加权平均做市商">时间加权平均做市商</a></li>
+        <li><a href="#执行">执行</a></li>
+        <li><a href="#潜在的攻击媒介">潜在的攻击媒介</a></li>
+        <li><a href="#python-参考实现">Python 参考实现</a></li>
+        <li><a href="#结论">结论</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

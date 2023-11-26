@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Messari：详解 Mina 技术特点、运作机制与经济模型 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Mina 优先考虑去中心化。理论上，任何智能手机或浏览器都可以在 Mina 上运行完整的节点。" />
+<meta name="keywords" content="Mina" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/35974/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Messari：详解 Mina 技术特点、运作机制与经济模型" />
+<meta property="og:description" content="Mina 优先考虑去中心化。理论上，任何智能手机或浏览器都可以在 Mina 上运行完整的节点。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/35974/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-28T00:00:00+00:00" />
+
+<meta itemprop="name" content="Messari：详解 Mina 技术特点、运作机制与经济模型">
+<meta itemprop="description" content="Mina 优先考虑去中心化。理论上，任何智能手机或浏览器都可以在 Mina 上运行完整的节点。"><meta itemprop="datePublished" content="2022-03-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7348">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Messari：详解 Mina 技术特点、运作机制与经济模型"/>
+<meta name="twitter:description" content="Mina 优先考虑去中心化。理论上，任何智能手机或浏览器都可以在 Mina 上运行完整的节点。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Messari：详解 Mina 技术特点、运作机制与经济模型</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-28">
+      2022-03-28
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7348 字 -
+        预计阅读 15 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="重要见解">重要见解</h2>
+<ul>
+<li>
+<p>传统的区块链在存储不断增长的数据方面效率低下。这种状态膨胀问题会对网络的去中心化产生负面影响，因为能够参与链验证的用户更少。</p>
+</li>
+<li>
+<p>Mina 协议是解决状态膨胀问题的新一代 layer1 区块链。借助 zk-SNARK 的强大功能，Mina 保持了约 11 kB 的固定小尺寸。除了去中心化之外，zk-SNARKs 还使 Mina 比其他链更加私密和高效。</p>
+</li>
+<li>
+<p>其他新一代区块链已针对区块链三难困境中的可扩展性进行了优化，在此过程中影响了去中心化。Mina 优先考虑去中心化。理论上，任何智能手机或浏览器都可以在 Mina 上运行完整的节点。</p>
+</li>
+<li>
+<p>然而，Mina 的许多开创性功能仍在开发中。产品路线图雄心勃勃；团队的交付能力将决定协议的成功与否。</p>
+</li>
+</ul>
+<p>根据区块链三难困境，区块链的三个理想目标（可扩展性、去中心化和安全性）中的任何一个的改进都会以其他两个目标为代价。随着区块链技术多年来的进步，最新一代的区块链在克服三难困境方面取得了一些成功。他们专注于可扩展性，将吞吐量提高了几个数量级，但在去中心化和安全性方面做出了各种权衡。例如，Solana 的交易吞吐量是以太坊的 1,000 倍以上，但要求其验证者使用工业级硬件并承诺对其进行持续升级。这阻碍了去中心化，因为更广泛的社区无法参与链验证。</p>
+<p>比特币和以太坊等老一代区块链继续受到低可扩展性的影响，因为它们优先考虑去中心化。然而，即使这些区块链的去中心化也面临压力，因为它们的大小现在超过了数百 GB，从而提高了运行完整节点的要求。然后将责任留给有能力为去中心化的良好事业花费大量资源的爱好者。<strong>在博客文章“区块链可扩展性的限制”中，Vitalik Buterin 警告不要显著增加区块链的参数以满足对区块空间的需求，因为如果普通用户无法运行节点，这可能会导致“极端中心化”。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0328/15_nzgau6f4dw.png" alt="image"></p>
+<h2 id="mina-protocol">Mina Protocol </h2>
+<p>Mina Protocol 目前用作支付链，并于 2022 年 3 月 23 日完成其主网启动一周年。称为 zkApps 的智能合约在 2022 年第二季度的产品路线图上。本月早些时候，它从三箭资本和 FTX Ventures 等大型加密投资者那里筹集了 9200 万美元，以执行其为 web3 构建私有和安全层的愿景。</p>
+<p>虽然其它第 1 层区块链最近已经最大限度地提高了可扩展性，但 Mina Protocol 选择了最大限度地去中心化。作为一个简洁的区块链，Mina 使用递归加密技术将区块链的可验证版本限制在大约 11kB 的固定大小，而像 Solana 这样的 layer1 则为 PB。</p>
+<p>与其他随着每个区块添加而增长的第 1 层区块链不同，Mina 能够通过使用一系列自引用的密码证明来保持固定大小。将 Mina 的递归密码学过程视为拍摄区块链的照片会很有帮助。每当添加一个新区块时，都会用现有区块链拍摄新区块的另一张照片，将区块链的大小限制为一张照片，同时保留所有信息。</p>
+<p>通过该介绍，本报告更深入地探讨了困扰传统区块链的状态膨胀问题，以及 Mina 如何使用零知识证明来解决该问题，并在此过程中提供更隐私、去中心化和高效的区块链。它探讨了 Mina 的设计选择和关键参与者如何使其能够在其原生代币 MINA 的支持下作为一个简洁的区块链工作。最后，报告讨论了 Mina 的未来发展、产品路线图以及为实现其崇高愿景而正在建设的团队。</p>
+<h2 id="状态膨胀">状态膨胀</h2>
+<p>“区块链和状态膨胀将永远增加同步完整节点的成本，直到大多数用户无法进行验证并且我们降级为受信任的系统。这就是为什么拥有一个保守的区块大小上限如此重要的原因。”– Hasu，Flashbots 的战略</p>
+<p>状态膨胀是存储区块链产生的不断增长的数据以及交易、账户、代币、合同和其他信息增长的问题。为了以去信任的方式准确地到达当前状态，每个完整的区块链节点都必须存储每个使用的地址、交易的每个代币、铸造的每个 NFT 以及来自创世块的任何其他交易的历史记录。</p>
+<p>虽然较旧的区块链由于其悠久的历史而具有臃肿的状态，但较新的区块链由于其高吞吐量而面临这些问题。例如，以太坊最受欢迎的客户端 Geth 的状态大小约为 600 GB，每周增加约 11 GB。虽然理论上它仍然可以在消费级硬件上运行，但随着状态大小的不断增加，未来可能无法实现。以太坊计划在后来的一组名为“The Purge”的升级中解决状态大小问题。</p>
+<p>另一方面，Solana 作为高性能区块链，以每秒 1 GB 或每年 4 PB 的速度创建数据。它最初计划使用一组“存档器”” 来维护交易的历史记录，而节点只存储最近几天的数据。后来，它放弃了这个项目，计划使用Arweave 的 permaweb 来存储账本数据。然而，Arweave 目前只保存 52 TB 的数据，所以它需要显著扩展以满足 Solana 的需求。Solana 现在没有去中心化的解决方案来存储交易历史记录，同时使用Google 的 Big Table作为存储解决方案。</p>
+<p>Mina 解决了这个问题。Mina 通过称为递归 zk-SNARKs 的奇特密码学技术保持小而固定的大小，它代表零知识简洁的非交互式知识论证。</p>
+<h2 id="递归-zk-snark">递归 zk-SNARK</h2>
+<h3 id="零知识-zk">零知识 (zk)</h3>
+<p>零知识证明是一种证明某些事情的方法，验证者除了声明是真的之外没有其他信息。通过一个例子更容易理解。想象一下，你在一个游戏节目中，在你面前的一千扇门后面隐藏着一个奖品。要找到奖品，你最好的策略是按顺序打开大门。如果你想向某人证明你知道奖品在哪里，你可以告诉他们门牌号码，他们可以自己验证。这将是你有答案的简单证明，但它与验证者共享解决方案至关重要。</p>
+<p>但是，如果你在将他们带到奖品门口之前将他们蒙上眼睛并旋转他们，你仍然可以证明你知道奖品在哪里，而无需分享门号。这将是一个零知识证明。它确认你（证明者）知道解决方案，而不会将其泄露给验证者。值得注意的是，工作也存在不对称性。证明者为找到答案所做的工作量远远超过验证者为检查答案是否正确所做的工作量。证明者必须搜索每一扇门，直到找到正确的一扇门，而验证者只需要检查一扇门。</p>
+<h3 id="简洁的非交互式知识论证snark">简洁的非交互式知识论证（SNARK）</h3>
+<p>SNARK 是一种零知识证明。它们被称为简洁的，因为它们很小且易于验证。Mina 上的 SNARK 证明约为 7 kB，验证它只需要 200 毫秒。</p>
+<p>虽然一些 zk 证明可能需要证明者和验证者之间来回交换信息，但非交互式证明可以由验证者验证，而无需与证明者进行更多交互。</p>
+<p>Arguments 是证明的形式主义。在密码学中，只能生成有效陈述的证明，而使用过高的计算能力可能会生成无效的论据证明。然而，这只是理论上的差异，就我们的目的而言，我们可以将论证视为与证明相同。</p>
+<p>Knowledge 是指证明者有答案的事实。在我们的示例中，他们不仅证明有奖品，而且还证明他们知道奖品在哪扇门后面。</p>
+<p>因此，SNARK 是小型、易于验证的知识证明，不需要证明者和验证者之间的来回通信。</p>
+<h3 id="递归">递归</h3>
+<p>最后，Mina 使用了一种称为 Pickles 的 zk-SNARK，它可以递归地引用自身，从而创建证明的证明并保持区块链的大小固定。Pickles 的另一个特性是，与其他 SNARK 不同，它不需要受信任的设置。受信任的设置被认为不太理想，因为未来的用户必须相信原始设置是在适当的控制下公平执行的。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0328/15_ryaaddar0w.png" alt="image"></p>
+<h2 id="mina-和-zk-snark">Mina 和 zk-SNARK</h2>
+<p>在 zk-SNARKs 的帮助下，Mina 可以拥有一个保持较小且固定大小的区块链版本。每当添加一个新区块时，必须创建一个携带前一个区块的 zk-SNARK 的新 zk-SNARK 以证明它是有效的。只有在区块数据正确的情况下才能创建此 SNARK。因此，一个 SNARK 证明当前区块是有效的，并引用前一个区块的 SNARK 来证明它是有效的。这样，区块链的整个状态就可以通过验证当前的 SNARK 来确认，因为它必须是在一系列有效的 SNARK 之上生成的。</p>
+<p>然而，一个加密证明不足以运行一个完整的节点。仅凭证明不能让节点执行其基本功能，因为它不提供清晰的信息，例如账户余额。此外，一个节点还需要四条信息才能发挥作用。第一个是包含散列数据结构的协议状态，包括账本。第二个是 SNARK 证明和协议状态的验证密钥。接下来，节点还必须存储帐户信息和与协议匹配的Merkle路径，以不信任地确保帐户信息正确并与当前协议状态相关。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0328/15_jj1a47zmlf.png" alt="image"></p>
+<p>虽然 Mina 营销材料声称区块链约为 22 kB，但随着技术的改进，它将仅为 11 kB。</p>
+<h3 id="11-kb真的吗">11 KB，真的吗？</h3>
+<p>好吧，不完全是，现在也不是。由于此类节点不具备完整的交易历史，因此无法参与共识，因此被称为非共识节点。然而，它比传统区块链的轻节点更强大，因为它在没有信任假设的情况下运行。它可以独立验证区块链数据，提取其账户余额，并广播交易。在这方面，它类似于比特币或以太坊上的完整非挖矿节点。还有一点需要注意的是，非共识节点目前还没有上线，它们是由支持 Mina 协议的团队开发的。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0328/15_16h5bssqae.png" alt="image"></p>
+<h2 id="zk-snark-的好处">zk-SNARK 的好处</h2>
+<p>Mina 对 zk-SNARKs 的实施使其成为一个引人注目的替代方案，与传统区块链相比具有独特的优势。</p>
+<h3 id="去中心化的改进">去中心化的改进</h3>
+<p>运行一个非共识节点只需要很少的磁盘空间和计算能力。虽然其他区块链遭受状态膨胀并且可能需要强大的工业级硬件来运行完整节点，但 Mina 的非共识节点将在智能手机或浏览器上运行。每个用户都可以运行自己的节点，从而显著改善去中心化。超越自我监管的区块链理想是自我验证，而 Mina 是唯一能够实现它的区块链。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0328/15_gueosm2mro.png" alt="image"></p>
+<h3 id="工作不对称">工作不对称</h3>
+<p>对于传统区块链，每个节点都必须独立执行每笔交易，导致计算资源浪费和交易成本增加。验证交易的零知识证明比执行交易本身占用的资源要少得多。这是以太坊上 zk-rollups 的前提，Buterin 认为这是扩展以太坊之旅中最关键的部分。然而，Mina 在其协议设计中加入了零知识证明。</p>
+<h3 id="隐私">隐私</h3>
+<p>零知识证明通过不泄露任何不必要的信息来支持隐私。Mina 区块链的 zk-proof 仅证明状态有效，而不显示交互账户。即使是 Mina 的共识节点也只保留最后 290 个区块的历史记录。</p>
+<h2 id="共识">共识</h2>
+<p>Mina 使用一种名为 Ouroboros Samasika 的共识机制，它是 Cardano 共识机制 Ouroboros 的修改版本。Ouroboros Samasika 具有使用不保留整个交易历史的简洁区块链的附加属性。与其他权益证明链一样，被选为区块生产者的概率取决于节点质押的 Mina 数量相对于总质押的数量。与 Cardano 一样，Mina 不需要节点锁定资金，网络也不会削减资金。网络停止向离线或从事不良行为的节点分配奖励。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0328/15_nijgnv6mfk.png" alt="image"></p>
+<p>网络不知道也不宣布下一个区块生产者，并且可能有多个区块生产者符合条件。这种模糊性增加了协议的安全性，通过创建自然防御来抵御针对区块生产者的拒绝服务攻击。但是，它的缺点是有时会产生短期分叉。如果多个区块生产者产生不同的有效区块，则下一个区块生产者遵循标准共识规则并建立在最长链之上。如果只有相同长度的链可用，则区块生产者会在第一次看到的链之上构建，或者如果另一个具有更高的可验证随机函数输出，则替换它。</p>
+<p>这种设计选择也意味着 Mina 具有概率确定性。凭借 90% 的诚实质押和 4 分钟的出块时间，Mina 在 15 个区块（即 60 分钟）内达到 99.9% 的最终确定性。这比 Solana 和 Avalanche 等其他一些需要几秒钟才能完成交易的新区块链要长得多。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0328/15_aw4av0yph4.png" alt="image"></p>
+<h2 id="交易流程">交易流程</h2>
+<p>Mina 的交易执行过程中有两个重要的参与者：区块生产者和 SNARKers。区块生产者类似于其他权益证明链的验证者。他们被随机选择以根据他们的股份与总股份的百分比来产生一个区块。SNARKers 或 SNARK 工作人员生成区块链单个交易的 SNARK 证明。为了更好地理解他们的角色，让我们看一下 Mina 上的事务生命周期。</p>
+<ol>
+<li>
+<p>首先，为了执行交易，用户将其与他们愿意支付的费用信息一起广播到网络，这些费用被收集到交易内存池中。</p>
+</li>
+<li>
+<p>SNARKers 不断致力于独立提供这些交易的 SNARK 证明，以便它们可以包含在区块中。</p>
+</li>
+<li>
+<p>当一个区块生产者被选中时，他们会从内存池中的可用交易中将最有利可图且费用最高的交易排入队列。然而，区块生产者还必须添加相同数量的交易的 SNARK 证明，因为它们正在添加到队列中。他们可以自己制作 SNARK 证明，也可以从 SNARKers 购买 SNARK 证明。</p>
+</li>
+<li>
+<p>SNARKers 相互竞争，以最低的成本提供 SNARK 证明。根据 Mina 区块浏览器，在过去的 100 个区块中，所有 SNARK 证明都是由 SNARKers 免费提供的。SNARKers 以后可能会受到类似于挖矿的协议激励措施的补贴，称为 SNARK 挖矿。</p>
+</li>
+<li>
+<p>区块生产者然后更新队列，队列保持一个不变的大小，因为新的 unSNARKed 交易的数量等于被 SNARKed 后删除的交易数量。</p>
+</li>
+<li>
+<p>然后，区块生产者将 SNARKed 交易包含在区块中，并更新协议状态的 zk-SNARK 证明。</p>
+</li>
+<li>
+<p>新区块和 SNARK 证明通过网络传播并由其他节点确认。</p>
+</li>
+</ol>
+<p><img src="https://img.bibiqing.com/news/2022/0328/15_9wyu2ra7sc.png" alt="image"></p>
+<p>资料来源：Mina 协议白皮书</p>
+<h3 id="审查阻力">审查阻力</h3>
+<p>Mina 使用费用市场，与比特币类似，每笔交易都在内存池中等待，直到区块生产者添加它。通常，用户可以通过支付足够高的费用或等待足够长的时间来确保区块生产者将他们的交易添加到区块链中。</p>
+<p>对于要审查的交易，要么所有 SNARKers 都必须拒绝提供 SNARK 证明，要么所有块生产者都必须拒绝将 SNARKed 交易添加到块中。在 Ouroboros 下，我们可以假设网络是去中心化的，并且区块生产者没有串通。</p>
+<p>所有 SNARKers 之间的勾结非常困难。首先，任何人都没有进入 SNARK 交易的障碍。由于 SNARKing 的成本很小，任何人都可以制作 SNARK 交易证明并赚取 SNARKing 费用。即使交易费用很低，区块生产者也应该能够将 SNARKed 交易包含在一个区块中，从而获利。</p>
+<h2 id="网络统计">网络统计</h2>
+<p>Mina 是一个相对较新的区块链，具有独特的架构。因此，关于网络及其采用，只有有限数量的数据可用。我们从当前可用的资源管理器和仪表板中汇编了以下信息。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0328/15_kybs4iyav4.png" alt="image"></p>
+<p>Mina 的理论吞吐量是每秒一个事务。显然，Mina 不会在吞吐量方面与其他较新的区块链竞争。Mina 不只是比较区块链的吞吐量数量，而是试图在更全面的 ScaDe （scale per unit of decentralization）的规模指标上进行竞争。ScaDe 前沿是区块链三难困境的推论，它表明区块链的吞吐量与完整节点的数量成反比。因为 Mina 的目标是在理论上对节点数量没有限制的情况下最大限度地去中心化，所以它在 ScaDe 边界之外运行。</p>
+<h2 id="mina-代币">MINA 代币</h2>
+<p>MINA 作为区块链的原生代币，用于支付交易费用，并通过区块奖励激励共识参与。目前，无论是在链上还是在论坛上，治理过程都没有基于代币的投票，尽管有计划。</p>
+<p>MINA 是一种通胀货币，初始通胀率为 12%，主网启动四年后将降至 7%。通货膨胀是固定的，质押收益率随着质押参与率的变化而变化。虽然通货膨胀可能看起来很高，但它有助于保持链的安全，因为它鼓励参与赌注。</p>
+<p>有多种方法可以查看 MINA 的供应量，例如不包括时间锁定代币的循环供应量或包含它们的完全稀释供应量。最简单和最准确的方法是通过质押供应。MINA 的初始总供应量为 10 亿个代币，其中 8.06 亿个在发布时可用于质押。这些代币中的大多数都被锁定以供出售，但可以进行质押，从而获得了整体奖励。随着时间的推移，剩余的 1.94 亿个初始供应代币将以增压奖励、SNARK 挖矿奖励和生态系统赠款的形式分发给社区。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0328/15_yook2flnyh.png" alt="image"></p>
+<p>来源：Mina</p>
+<p>Mina 生态系统已累计筹集到 1.4 亿美元，最近一次筹集到 9200 万美元是在 2022 年 3 月。Mina 的支持者是一些最著名的加密风险基金，如 FTX Ventures、三箭资本、Paradigm、Coinbase Ventures、Polychain Capital、Electric Capital 和 Multicoin Capital。社区销售也引起了巨大的投资者兴趣，迫使 Coinlist 将每位投资者的最高上限从 1,000 美元降低到 500 美元。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0328/15_860m44mnhq.png" alt="image"></p>
+<h3 id="超值奖励">超值奖励</h3>
+<p>最近，Looks Rare 及其质押奖励出现了崩溃。与 Mina 类似，内部人员持有锁定的代币，这些代币不属于流通供应的一部分，但可以质押以获得奖励。这使他们能够在发布后的最初几天获得很大比例的质押奖励，因为他们的持股量远高于流通供应量。著名的 Twitter 人物 Cobie 在他最近题为“激励结构”的博客中对此进行了介绍。</p>
+<p>Mina 通过设计更好的奖励结构避免了这一争议。在发布后的前 15 个月内，质押未锁定代币的用户将获得更多的区块奖励，称为超额奖励。目前，解锁的质押者获得的奖励是锁定质押者的两倍，从而实现了更受社区青睐的奖励分配，并避免了 Looks Rare 团队面临的争议。</p>
+<h2 id="路线图">路线图</h2>
+<p>Mina 有一个令人兴奋的产品，但该团队仍在构建其最具开创性的功能。它目前仅用作具有数百个验证器的支付链。智能合约功能、非共识节点和可以从互联网上无需信任地提取数据的预言机是计划在 2022 年添加的有希望的功能。Mina 还计划开发一个在链下存储数据的 zk-Rollup，这将使它以扩展其吞吐量。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0328/15_q5io5zqqsp.png" alt="image"></p>
+<h2 id="团队和合作伙伴">团队和合作伙伴</h2>
+<p>有了基本的产品和雄心勃勃的路线图，贡献团队就成为成功的最关键因素。</p>
+<p>Mina 背后的核心团队是O(1) Labs，他们致力于向 Mina 添加智能合约和 zk-Oracle。Mina 基金会的现任 CEO Evan Shapiro曾是 O(1) Labs 的 CEO。Evan 毕业于卡内基梅隆大学，获得计算机科学硕士学位，并于 2017 年创立了 O(1) Labs。</p>
+<p>O(1) Labs 的临时 CEO 是Emre Tekişalp，他曾在 Coinbase 担任业务发展经理，并拥有哥伦比亚商学院的 MBA 学位。Izaak Meckler是 O(1) Labs 的 CTO，目前正在攻读博士学位。加州大学伯克利分校密码学专业。</p>
+<p>=无；基金会正在搭建从 Mina 到以太坊和其他 EVM 链的桥梁。2021 年 9 月，以太坊基金会和米娜基金会向它提供了 120 万美元的赠款，用于建造这座桥。</p>
+<p>Chainsafe正在用 Rust 重新实现 Mina，并为基于浏览器的节点构建 MVP。</p>
+<p>Polygon和 Mina 正在合作在 Polygon 的权益证明链上构建对 Mina 的支持，这将使开发人员能够在 Polygon 上构建 dapp，从而利用 Mina 的 zk-SNARK 的优势。</p>
+<h2 id="结论">结论</h2>
+<p>虽然世界主要关注平台战争和以太坊的扩展解决方案，但 Mina 一直在构建一个有前途的解决方案，以利用零知识证明空间的潜力，同时不影响去中心化。凭借强大的团队、令人印象深刻的合作伙伴和支持者以及新的资金储备，Mina 可以开始执行其雄心勃勃的路线图。Mina 的贡献者可以从 Solana、Avalanche 和 Terra 等替代型平台链在 2021 年取得的成就中汲取灵感。获胜者尚未确定，如果 Mina 能够构建强大的产品，用户和投资者都会来。</p>
+<p>相关阅读：</p>
+<p>《Mina 基金会 CEO：零知识证明将成为 Web3 的杀手级功能》</p>
+<p>《头等仓深度报告：Mina》</p>
+<p>《对话Mina：竞争风起云涌，公链的护城河在哪里？》</p>
+<p>原作者：Kunal Goel</p>
+<p>原标题：《Mina Protocol - Small but Mighty》</p>
+<p>编译：胡韬，链捕手</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/36000/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">ETHDenver线上黑客松落幕 一文速览30个入围项目</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/35982/">
+                <span class="next-text nav-default">Nansen：从NFT mint数据看市场短期趋势</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#重要见解">重要见解</a></li>
+    <li><a href="#mina-protocol">Mina Protocol </a></li>
+    <li><a href="#状态膨胀">状态膨胀</a></li>
+    <li><a href="#递归-zk-snark">递归 zk-SNARK</a>
+      <ul>
+        <li><a href="#零知识-zk">零知识 (zk)</a></li>
+        <li><a href="#简洁的非交互式知识论证snark">简洁的非交互式知识论证（SNARK）</a></li>
+        <li><a href="#递归">递归</a></li>
+      </ul>
+    </li>
+    <li><a href="#mina-和-zk-snark">Mina 和 zk-SNARK</a>
+      <ul>
+        <li><a href="#11-kb真的吗">11 KB，真的吗？</a></li>
+      </ul>
+    </li>
+    <li><a href="#zk-snark-的好处">zk-SNARK 的好处</a>
+      <ul>
+        <li><a href="#去中心化的改进">去中心化的改进</a></li>
+        <li><a href="#工作不对称">工作不对称</a></li>
+        <li><a href="#隐私">隐私</a></li>
+      </ul>
+    </li>
+    <li><a href="#共识">共识</a></li>
+    <li><a href="#交易流程">交易流程</a>
+      <ul>
+        <li><a href="#审查阻力">审查阻力</a></li>
+      </ul>
+    </li>
+    <li><a href="#网络统计">网络统计</a></li>
+    <li><a href="#mina-代币">MINA 代币</a>
+      <ul>
+        <li><a href="#超值奖励">超值奖励</a></li>
+      </ul>
+    </li>
+    <li><a href="#路线图">路线图</a></li>
+    <li><a href="#团队和合作伙伴">团队和合作伙伴</a></li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

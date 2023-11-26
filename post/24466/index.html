@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          为以太坊引入 KZG 承诺：工程师视角（上） - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文希望帮助读者熟悉、总结以太坊背景下 KZG10 承诺的提议用法，并提供深入理解的指南。" />
+<meta name="keywords" content="ETH, 默克尔树" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/24466/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="为以太坊引入 KZG 承诺：工程师视角（上）" />
+<meta property="og:description" content="本文希望帮助读者熟悉、总结以太坊背景下 KZG10 承诺的提议用法，并提供深入理解的指南。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/24466/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-17T00:00:00+00:00" />
+
+<meta itemprop="name" content="为以太坊引入 KZG 承诺：工程师视角（上）">
+<meta itemprop="description" content="本文希望帮助读者熟悉、总结以太坊背景下 KZG10 承诺的提议用法，并提供深入理解的指南。"><meta itemprop="datePublished" content="2021-06-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4264">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="为以太坊引入 KZG 承诺：工程师视角（上）"/>
+<meta name="twitter:description" content="本文希望帮助读者熟悉、总结以太坊背景下 KZG10 承诺的提议用法，并提供深入理解的指南。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">为以太坊引入 KZG 承诺：工程师视角（上）</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-17">
+      2021-06-17
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4264 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>（译者注：本文所介绍的技术在密码学社区里一般称为 “KZG10 承诺”，得名于论文三位作者的姓氏首字母。但在介绍到以太坊生态中时，被简化成了 “Kate 承诺”，甚至连核心开发者也是这么称呼的。这是对另外两位作者的不尊重，不应该继续下去。在本译文中，凡原作者使用 “Kate commitment” 的地方，都一律译为 “KZG10 承诺”。）</p>
+<p>免责声明 ：本文仅仅是汇集、链接了许多已经公开的成果，对应的荣誉（包括本文所链接的图片）应归属于相应的 作者/开发者。</p>
+<p>P.S. ：特别感谢 Ethereum R &amp; D discord 频道（尤为感谢 @vbuterin 和 @piper）帮助我理解 KZG10 承诺的某些方面。此外，还要感谢 @vbuterin 帮忙审校本文。</p>
+<p>PPS ：本文是出于 lodestar 团队的利益而撰写的；lodestar 是一个很棒的 ETH PoS 客户端，基于 typescript，可以让以太坊的服务 无处不在，也开启了作者对以太坊生态和创新的理解。</p>
+<p>我希望本文也能对全世界的其他 开发者/技术人员 有所帮助。本文遵循 CC0 自由创作公约，作者已放弃所有权利。</p>
+<h2 id="动机"><strong>动机</strong></h2>
+<p>作为一个有益的指南，帮助读者熟悉、总结以太坊背景下 <strong>KZG10 承诺</strong> 的提议用法，并提供深入理解的指南。</p>
+<p>本文的目的更多是总结，而非严谨，不过，<strong>您可以点击文中所附的链接</strong> ，它们会有更详细的解释。</p>
+<h2 id="基础原理"><strong>基础原理</strong></h2>
+<p><strong>注-1：哈希值就是一个对被哈希的原像的承诺，用于检验被哈希的数据的完整性。</strong> （译者注：这话其实不是很严谨。因为哈希函数往往难以满足 “承诺方案” 所需的性质。）</p>
+<p>举个例子，假设 <code>h1 = H(t1, t2, t3..)</code>，然后把 h1 交给验证者（比如，把它放在区块头内），然后给出一个伪造的区块 <code>(t1,t2',t3...)</code>，对方快速计算这个伪造区块的哈希值之后，发现两者对不上，就可以合理地拒绝你的伪造区块。</p>
+<p>类似的，一棵默克尔树的根节点，就是对按特定索引（路径）组织起来的所有叶子节点的承诺。或者简单来说，是对 <code>indexes =&gt; values</code>（从索引值到数值）的映射的承诺。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0617/13_wmtwhe90gq.png" alt="为以太坊引入 KZG 承诺：工程师视角（上）"></p>
+<p>而这里的 “证明” 就是一个叶子的 默克尔分支（merkle branch） 以及（这个分支在每一层上的） 兄弟哈希值（sibling hashes），凭借这些数据，可以逐级向上哈希，并通过最终的哈希值是否与根节点一致来判断该叶子是否与这棵默克尔树一致（存在于这棵默克尔树上）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0617/13_fidfk6j1m5.png" alt="为以太坊引入 KZG 承诺：工程师视角（上）"></p>
+<p>可看看这里的介绍 : )。</p>
+<p><strong>注-2：数据映射与一个多项式的对应关系</strong></p>
+<p><code>indexes =&gt; values</code> 这样的数据映射可以表示为一个多项式 f(x)，并且 <code>f(index)=value</code>（由拉格朗日插值法可知满足这个条件的多项式必定存在）。“ f(index)=value ”通常被称为 <em>求值形式</em>，而 “ f(x)=a0+ a1.x + a2.x^2&hellip; ” 则是其 <em>系数形式</em>。直观来说，我们其实是根据映射中所有的 <code>(index,value)</code> 点，拟合出了一个多项式。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0617/13_nbkba6u3h8.png" alt="为以太坊引入 KZG 承诺：工程师视角（上）"></p>
+<p>为了简便计算，并确保多项式与数据映射的一一匹配，我们不使用索引值来作为 f(x) 的 x，用的是 <code>w^index</code>，也就是 <code>f(w^index)=value</code>，其中 w 是 d 次单位根（即 <code>w^d = 1</code> 且 w 是一个复数），而 d 是该多项式的次数（也是我们能够包含的索引值的个数上限）。因此，我们可以使用快速傅立叶变换来实现高效的多项式计算，比如乘法和除法，在求值形式下其计算复杂度会是 <code>O(d)</code>，而且可以在 <code>O(d*log(d))</code> 的复杂度内转化回系数形式。所以保持 <code>d</code> 数值较小还是很有好处的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0617/13_h0noez6ksi.png" alt="为以太坊引入 KZG 承诺：工程师视角（上）"></p>
+<p><strong>注-2.1：以太坊的状态是一个从地址到账户状态（</strong> <strong><code>addresses =&gt; (version,balance,nonce,codeHash,storageRoot)</code>）的映射。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0617/13_msnoe72tau.png" alt="为以太坊引入 KZG 承诺：工程师视角（上）"></p>
+<h2 id="背景知识"><strong>背景知识</strong></h2>
+<p>以太坊当前使用默克尔树（更具体一些是 “帕特里夏默克尔树”）作为 EVM 数据（EVM 状态、区块事务及事务收据，也许还有最近的合约代码）的承诺。此种承诺方式可以：</p>
+<ul>
+<li>
+<p>逐个区块地 插入/更新 数据，以增量的方式产生新的根哈希（即承诺）</p>
+</li>
+<li>
+<p>验证者可以逐个区块（甚至逐笔事务）地校验和证明</p>
+</li>
+</ul>
+<p>前缀树结构在这里提供了这种逐块更新的特性。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0617/13_u94w5tr7qt.png" alt="为以太坊引入 KZG 承诺：工程师视角（上）"></p>
+<p>给定一个 <code>d</code> 叉的、有 <code>N</code> 个叶子的前缀树，任意更改一个叶子节点，都需要更新 <code>O(log-d(N))</code> 个节点（也就是该叶子与根节点相连路径上的节点数量）以计算反映新状态的新根值；而这需要额外的 <code>(d-1)*O(log-d(N))</code> 个 兄弟节点哈希值/承诺 来用作时间和空间（假设要服务于轻节点）的见证数据（witness）。一个区块可视为一个需要更改 <code>m</code> 个随机叶子的批量更新，且 <code>m&lt;&lt;N</code>。因为预计只有一小部分的节点可以共享 witness 和计算，所以，每次更新的 <code>Order</code>（复杂度）不会有太大改变。</p>
+<p>在下列情况下，问题还会变得更加严重（因为见证数据的规模）：</p>
+<ul>
+<li>
+<p>部分采用快速同步的协议，比如 <em>beam sync（光子同步）</em>，会下载并快速验证区块头来追上最新的主链顶端并参与网络的共识，注意，它不会先行构建好完整的状态再参与共识，而是（在共识中）通过获取 错过的/未加载的 状态的见证数据，来逐步构建出完整的状态</p>
+</li>
+<li>
+<p>为 <em>轻节点</em> 服务的时候，他们只关心自己，只想获得区块链状态的特定部分</p>
+</li>
+<li>
+<p><strong>网络走向完全无状态时，所有的事务和合约操作，都要附带相关的见证数据，来证明数据输入和输出的正确性</strong> （译者注：粗体为译者所加）</p>
+</li>
+<li>
+<p>在验证者会被混洗到不同分片的区块链分片模型中，要让验证者每到一个分片就构建完整状态是不现实的</p>
+</li>
+<li>
+<p>代码默克尔化，访问代码时需要附带这些代码块的见证数据</p>
+</li>
+<li>
+<p>在状态保质期协议中，访问过期的账户需要重新附带状态见证数据，以便重建该账户的状态</p>
+</li>
+</ul>
+<p>（译者注：需要解释的是，在当前的以太坊网络中，事务和区块不会附带上文所述的见证数据。即，网络所传播的见证数据规模与 事务/区块 的规模无恒定的关系。前两种情形恰好是在当前以太坊协议下为数不多的、需要传播见证数据的情形。我们关心状态数据的规模，完全是出于一种协议改进方向 —— “无状态性” 的需要。后面四种情形都跟无状态性有关，当然都比理论上要传播的数量更多。但是，以上述的理论计算来作为基准点去比较，本身是不合适的 —— 连代码默克尔化这种在无状态下节省状态数据的方案，也会被归为让情况更严重的方案。）</p>
+<p>在无状态以太坊项目的一个实验中，出现了 <em>1 MB</em> 的区块证据（其中大部分都是_默克尔证据_），在发生攻击的时候还会膨胀好几倍。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0617/13_slze0dfsaf.png" alt="为以太坊引入 KZG 承诺：工程师视角（上）"></p>
+<p>其中一种解决办法是转为使用 “二进制默克尔树”，也就是把 <code>d</code> 降下来，这样虽然树的深度（高度）会增加，但仍然是 <code>O(log(N))</code> 的规模。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0617/13_oyvr76luhi.png" alt="为以太坊引入 KZG 承诺：工程师视角（上）"></p>
+<h2 id="为什么要使用-kzg10-承诺"><strong>为什么要使用 KZG10 承诺？</strong></h2>
+<p>对于要放在区块头内承诺数据的承诺方案来说，以下特点是理想属性：</p>
+<ol>
+<li>
+<p>证据的数据量较小，可以塞进区块头里，且仍具有很强的安全保证</p>
+</li>
+<li>
+<p>易于证明某个承诺是使用分组化数据（chunkified data）的一个子集生成出来的</p>
+</li>
+<li>
+<p>足够小，最好证据的数据量是恒定的</p>
+</li>
+<li>
+<p>为了跟踪数据，承诺应当易于以增量的形式变更</p>
+</li>
+</ol>
+<p>基于KZG10 承诺的方案就是大家一番搜寻的结果。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0617/13_y3ynnquti2.png" alt="为以太坊引入 KZG 承诺：工程师视角（上）"></p>
+<p>译者注：可以看到，作者有三个 </p>
+<h2 id="什么是-kzg10-承诺"><strong>什么是 KZG10 承诺？</strong></h2>
+<p>KZG10 承诺可以视为另一种哈希方案，只不过它哈希的不是 “字节”（数据），而是多项式。</p>
+<p>实际上，它就是 <em>计算（evaluation）</em> 多项式 <code>f(x)</code> 在秘密的定点 <code>s</code> 上的值，只不过 它们都是表示在一条椭圆曲线上的，也即 <code>[f(s)]=f([s])</code>。这需要一个受信任的启动设置（跟 zcash 区块链的创世活动一样），来生成<code>[s]</code>、<code>[s^2]</code>、… <code>[s^d]</code>（以便在多项式需要 <code>x^i</code> 的地方插入），而 <code>d</code> 就是多项式的最大阶数。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0617/13_05tdph9wam.png" alt="为以太坊引入 KZG 承诺：工程师视角（上）"></p>
+<p>这里的 <code>[t]</code> 表示点 t 处的椭圆曲线值，也就是 <code>t[1]</code>，是椭圆曲线加法群的生成点（<code>[1]</code>）相加 t 次（等同于对 Fp 求模，<code>modulo Fp</code> ）。椭圆曲线上的所有计算都是对 Fp 求模，Fp 给曲线施加了一定的范围（译者注：Fp 是一个由 p 个元素组成的有限域，限制了该椭圆曲线值的范围）。</p>
+<p><strong>注 3.0：在</strong>  <strong><code>indexes=&gt;values</code> 的映射中，所有的 值 都要表示为一条椭圆曲线上的元素，即 [value]，以便计算承诺（后文有详述）。这就使得 value 的大小有了限制（为了要成为 <code>modulo Fp</code> 的值）。在 BLS 曲线上，大概在 31～32 字节之间。为了简便，value 的大小就限制在 31 字节，任意更大的 值 都要分块化，并用其索引值来恰当地表示（或者截断）。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0617/13_o5wo2yd9kr.png" alt="为以太坊引入 KZG 承诺：工程师视角（上）"></p>
+<p><strong>注 3.1：[t] 可以被视为 t 的哈希值，因为从 [t] 找回 t 是个离散对数问题_（discrete log problem）_，对于安全的曲线来说，是很难做到的。</strong></p>
+<p><strong>注 3.2：s 是一个秘密的数值，永远不应泄漏给 任何人/所有人，但椭圆曲线点</strong>  <strong><code>[s]</code>, <code>[s^2]</code>…<code>[s^d]</code> 及其在另一条椭圆曲线上的值 <code>[s]'</code> （其生成点为 <code>[1]'</code> 且只需知道 <code>[s]'</code> ）则应生成并公开出来，让所有人知道。这就是启动设置要做的事。</strong></p>
+<p>这些 <em>系统参数</em> 定义了整个系统的安全性，因为 <code>s</code> 暴露会使得攻击者可以构建任意内容的 <em>证据</em>。因此，一个有 N 个参与者共同参与的启动设置仪式中，他们要通过协议把本地的 s 结合起来，这样只要有 1 个参与者是诚实的、在参与之后就销毁掉了自己提供的 s，这个系统就会是安全的。即，信任模型是 1/N 模型，N 越高，风险就越低。</p>
+<p><strong>注 3-3：</strong> <strong><code>[]</code> 是一个线性的操作，即<code>[x]+[y]=[x+y]</code>，而且 <code>a[x]=[ax]</code>。</strong></p>
+<p>如果上所述，我们将数据映射（索引值 =&gt; 数值）表示为 <code>f(w^index)=value</code>，即一个多项式的求值形式，也可说，我们用这些 <code>(w^index,value)</code> 点拟合出了一条曲线（多项式）。</p>
+<p>所以，一个多项式 f(x) 的 KZG10 承诺<code>c(f)</code> 是一个椭圆曲线点 <code>f([s])</code>，这个点可以靠在 f(x) 的展开式中插入 <code>[s]</code>,<code>[s^2]</code> … 计算得出。</p>
+<p><strong>注 3-4：f(s) 是无法计算的，因为 s 是个秘密值。但是</strong>  <strong><code>C(f)=[f(s)]=f([s])</code> 是可以计算的。</strong></p>
+<p><strong>注 3-5：</strong> <strong><code>f(x)</code>的承诺 <code>C(f)=[f(s)]</code> 也是一个线性的运算符，即，<code>C(f+g)=C(f)+C(g)</code>。</strong></p>
+<p><em>Rollup/聚合器</em> 可以使用这一属性来更新承诺。在求值形式下，更新一个求值点将导致 f(x) 完全改变，但因为有这个属性，其承诺 c(f) 仍然是易于更新的。</p>
+<p>（未完）</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/24438/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">为什么有人将「区块链法币」称作最大的泡沫？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/24440/">
+                <span class="next-text nav-default">西班牙NFT艺术家Oscar的反乌托邦艺术</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#动机"><strong>动机</strong></a></li>
+    <li><a href="#基础原理"><strong>基础原理</strong></a></li>
+    <li><a href="#背景知识"><strong>背景知识</strong></a></li>
+    <li><a href="#为什么要使用-kzg10-承诺"><strong>为什么要使用 KZG10 承诺？</strong></a></li>
+    <li><a href="#什么是-kzg10-承诺"><strong>什么是 KZG10 承诺？</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

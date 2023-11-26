@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          科普：zkSync 的三重安全性方案 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在为 NFTs、swaps 和 zkEVM 上线做准备的过程中，我们注意到 zkSync 的用户和资金量迎来了指数级增长。" />
+<meta name="keywords" content="扩容方案, Layer 2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/23514/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="科普：zkSync 的三重安全性方案" />
+<meta property="og:description" content="在为 NFTs、swaps 和 zkEVM 上线做准备的过程中，我们注意到 zkSync 的用户和资金量迎来了指数级增长。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/23514/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-02T00:00:00+00:00" />
+
+<meta itemprop="name" content="科普：zkSync 的三重安全性方案">
+<meta itemprop="description" content="在为 NFTs、swaps 和 zkEVM 上线做准备的过程中，我们注意到 zkSync 的用户和资金量迎来了指数级增长。"><meta itemprop="datePublished" content="2021-06-02T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-02T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2737">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="科普：zkSync 的三重安全性方案"/>
+<meta name="twitter:description" content="在为 NFTs、swaps 和 zkEVM 上线做准备的过程中，我们注意到 zkSync 的用户和资金量迎来了指数级增长。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">科普：zkSync 的三重安全性方案</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-02">
+      2021-06-02
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2737 字 -
+        预计阅读 6 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><img src="https://img.bibiqing.com/news/2021/0602/7_ynn7ftkvr9.png" alt="科普：zkSync 的三重安全性方案"></p>
+<p>“唯有偏执狂才能生存下来。” </p>
+<p>—— Intel 的 CEO Andy Grove</p>
+<p>在为 NFTs、swaps 和 zkEVM 上线做准备的过程中，我们注意到 zkSync 的用户和资金量迎来了指数级增长。然而，处于早期开发阶段的新协议往往存在一些风险和信任假设，我们认为有必要提醒新老用户注意这点。</p>
+<p>风险一方面来自应用于 Layer 2 的创新技术，另一方面来自这些解决方案的潜在中心化趋势。就像大多数务实的团队那样，zkSync 踏上了渐进式去中心化道路，并积极开拓创新，增强以太坊生态的安全性和可扩展性。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0602/7_6wuuru0tvp.png" alt="科普：zkSync 的三重安全性方案"></p>
+<p><strong>这里需要注意的几点是：</strong></p>
+<ol>
+<li>
+<p><strong>我们无法保证项目没有漏洞</strong> 。但是，我们会参照业内最新最好的安全实践，并联合顶级审计公司对项目的合约、电路和底层密码学技术进行审计，将出现漏洞的可能性降至最低。所有基于以太坊构建的新项目都存在这一风险。我们的项目更是如此，因为零知识证明技术增加了项目的创新性和复杂性。</p>
+</li>
+<li>
+<p><strong>在功能范围稳定之前，zkSync 将保持可升级状态</strong> 。但是，升级与否将由协议治理机制控制，而且需要经历为期 4 周的锁定期（详见下文）。</p>
+</li>
+<li>
+<p><strong>zkSync 目前依赖于可信设置</strong> 。我们使用的是超过 200 位参与者（包括 Vitalik Buterin、以太坊基金会、Consensys、Argent 和 Matter Labs 等）通过多方计算仪式得出的结果。只要有一位参与者是诚实的，我们的系统就是安全的。虽然这个信任假设目前看来还不是什么大问题，但是我们依然打算将来切换至 RedShift，这样就不再需要任何可信设置了。</p>
+</li>
+</ol>
+<p>为了降低 （1）和 （2） 的影响，我们现采取多层安全策略。</p>
+<h2 id="zksync-的三重安全方案"><strong>zkSync 的三重安全方案</strong></h2>
+<ol>
+<li>
+<p>通过隔离和冗余实现的安全性</p>
+</li>
+<li>
+<p>信任最小化的可升级性</p>
+</li>
+<li>
+<p>zkSync 安全委员会</p>
+</li>
+</ol>
+<h3 id="1-通过隔离和冗余实现的安全性"><strong>1. 通过隔离和冗余实现的安全性</strong></h3>
+<p>由于我们的 Layer 1 智能合约在设计上非常轻量级（只有几百行代码），我们预期这部分不会出现严重问题。但是，零知识证明技术部分不仅代码更多，而且复杂性更强，因此风险会更高。</p>
+<p>实际上，密码学部分也不太可能出现问题。如果我们将智能合约漏洞比作突然爆发的海啸，那么密码学漏洞就就像是由连天暴雨引发的洪灾：地面很快就会被淹没，但是人们实际上都集中在摩天大楼楼顶，有足够的时间疏散。通常情况下，新发现的漏洞只有在安全性较低的环境下才有利用价值，因为实际生产环境的安全阈值要高得多，从而导致攻击成本倍增。以著名的 RSA 破解挑战赛为例，破解 100 位密码仅花了一个月，但是破解 250 位密码花了近 30 年。然而，在现实世界中，系统使用的都是 2048 位及以上的密码。</p>
+<p>为了在零知识证明技术部分增加额外的保护层来抵御漏洞攻击，我们采用了双保险措施：</p>
+<ol>
+<li>
+<p><strong>隔离</strong> ：只有得到授权的定序器提交的区块才能向 zkSync Layer 1 智能合约提交状态转换。我们很快就会转向由多名验证者的 PoS 共识保护的集体定序器。</p>
+</li>
+<li>
+<p><strong>冗余</strong> ：在被打包进区块之前，提交至定序器的每笔交易都将通过简单的执行进行验证。</p>
+</li>
+</ol>
+<p>因此，即使零知识证明电路或底层密码学技术存在漏洞，以至于做恶者可以为无效交易生成零知识证明，也不容易利用这个漏洞。</p>
+<p><strong>若想将无效区块提交至 rollup，攻击者必须同时攻破密码学和 定序器/PoS 共识。</strong></p>
+<p>为了尽早发现潜在漏洞，我们将为白帽黑客推出低安全阈值的漏洞赏金计划。</p>
+<h3 id="2-信任最小化的可升级性"><strong>2. 信任最小化的可升级性</strong></h3>
+<p>在 zkSync 协议的早期阶段，可升级性有助于我们创新、快速迭代，更快修复漏洞。如果每次升级（就像 Uniswap V2 升级到 V3 那样）都需要用户迁移资产，用户体验会很差。但是，可升级性是一把双刃剑：它会引入额外的信任假设和风险。</p>
+<p><strong>我们坚信用户不应该只依赖于开发者团队或治理来保障安全性。</strong> 因此，我们的 zkRollup 采用优先队列/紧急出口机制来保护用户免受验证者的审查：<strong>无论验证者的协作情况如何，你都能自由退出 zkSync</strong> 。但是，如果存在未被发现的可升级性后门，就凉凉了。</p>
+<p>为了帮助 zkSync 2.0 实现良好的平衡：</p>
+<ol>
+<li>
+<p>初期，升级可以通过 <strong>zkSync 治理机制</strong> 发起，在部署之前需要经历 4 周的锁定期。即使治理机制遭到极大程度上的破坏，锁定期也可以让用户有足够的时间通过优先队列/紧急出口机制退出。</p>
+</li>
+<li>
+<p>协议经过充分检验后就会固定下来（再也无法升级），并要求用户选择新的版本。</p>
+</li>
+</ol>
+<h3 id="3-zksync-安理会"><strong>3. zkSync 安理会</strong></h3>
+<p>我们最后还要考虑的一种情况是，从理论上来说，某些交易可能会导致 zkEVM 内部出现故障。如果这类交易被提交至优先队列，且无法得到处理，系统就会停止运行并进入紧急模式。即使我们通过升级来修复这个问题，至少也要等到 4 周的锁定期结束。也就是说，zkSync 内的所有资金都要被冻结 4 周乃至以上。</p>
+<p>为了避免这种情况，以太坊社区内 15 位备受尊敬的成员将在紧急情况发生时介入。zkSync 安理会由以下成员组成：</p>
+<ol>
+<li>
+<p>Aave</p>
+</li>
+<li>
+<p>Itamar Lesuisse (Argent)</p>
+</li>
+<li>
+<p>Mike McDonald (Balancer)</p>
+</li>
+<li>
+<p>James Prestwich (cLabs)</p>
+</li>
+<li>
+<p>Michael Egorov (Curve)</p>
+</li>
+<li>
+<p>Jack Baumruk (Dekrypt)</p>
+</li>
+<li>
+<p>Haseeb Qureshi (Dragonfly)</p>
+</li>
+<li>
+<p>Justin Drake (Ethereum Foundation)</p>
+</li>
+<li>
+<p>Stefan George (Gnosis)</p>
+</li>
+<li>
+<p>Baek Kim (Hashed)</p>
+</li>
+<li>
+<p>Chris Burniske (Placeholder)</p>
+</li>
+<li>
+<p>Nick Grossman (USV)</p>
+</li>
+<li>
+<p>Will Harborne (ZK Validator)</p>
+</li>
+<li>
+<p>Sergej Kunz (1inch)</p>
+</li>
+<li>
+<p>Lasse Clausen (1kx)</p>
+</li>
+</ol>
+<p>如果出现无法通过正常升级流程解决的问题，安理会将发挥作用。安理会的权力仅限于缩短 4 周的锁定期，<strong>但它不属于 zkSync 治理的一部分，无法绕过治理机制发起升级</strong> 。</p>
+<p>在 Gnosis Safe 多签机制的帮助下，zkSync 安理会将遵守以下规则：</p>
+<ul>
+<li>
+<p>8/15 签名可以将锁定期缩短至 2 周。</p>
+</li>
+<li>
+<p>10/15 签名可以将锁定期缩短至 1 周。</p>
+</li>
+<li>
+<p>12/15 签名可以将锁定期缩短至 3 天。</p>
+</li>
+</ul>
+<p><strong>为了防止最坏的情况发生，任何升级都有一个最低锁定期</strong> 。安理会只是为了让人们相信零知识证明安全性的临时措施。等到我们切换至纯选择性升级机制后，就不再需要安理会了。</p>
+<h2 id="结语"><strong>结语</strong></h2>
+<p>我们始终将用户资金的安全性放在首位。当 Matter Labs 于 3 年前成立时，我们就选择只聚焦于 zkRollup —— 唯一具备与 Layer 1 相同安全属性的 Layer 2 可扩展性技术。我们希望通过用户教育、信息透明和三重安全方案，让用户可以放心与 zkSync 交互。</p>
+<p>如果您有任何关于资产安全性的问题，请加入我们在 Discord、Telegram 和 Twitter上的讨论。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/23513/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">科普 | Layer 2方案zkSync的三重安全性方案</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/23482/">
+                <span class="next-text nav-default">可选用的DAOs投票机制汇总</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#zksync-的三重安全方案"><strong>zkSync 的三重安全方案</strong></a>
+      <ul>
+        <li><a href="#1-通过隔离和冗余实现的安全性"><strong>1. 通过隔离和冗余实现的安全性</strong></a></li>
+        <li><a href="#2-信任最小化的可升级性"><strong>2. 信任最小化的可升级性</strong></a></li>
+        <li><a href="#3-zksync-安理会"><strong>3. zkSync 安理会</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#结语"><strong>结语</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

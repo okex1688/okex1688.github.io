@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          简明理解零知识证明历史、原理与发展现状 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="零知识证明已在区块链领域大放异彩，包括第一个实现 zkSNARK 的匿名加密货币 Zcash 和 Layer 2 的主要解决方案 ZK Rollup。" />
+<meta name="keywords" content="零知识证明" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25881/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="简明理解零知识证明历史、原理与发展现状" />
+<meta property="og:description" content="零知识证明已在区块链领域大放异彩，包括第一个实现 zkSNARK 的匿名加密货币 Zcash 和 Layer 2 的主要解决方案 ZK Rollup。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25881/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-15T00:00:00+00:00" />
+
+<meta itemprop="name" content="简明理解零知识证明历史、原理与发展现状">
+<meta itemprop="description" content="零知识证明已在区块链领域大放异彩，包括第一个实现 zkSNARK 的匿名加密货币 Zcash 和 Layer 2 的主要解决方案 ZK Rollup。"><meta itemprop="datePublished" content="2021-07-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-15T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5186">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="简明理解零知识证明历史、原理与发展现状"/>
+<meta name="twitter:description" content="零知识证明已在区块链领域大放异彩，包括第一个实现 zkSNARK 的匿名加密货币 Zcash 和 Layer 2 的主要解决方案 ZK Rollup。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">简明理解零知识证明历史、原理与发展现状</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-15">
+      2021-07-15
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5186 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原文标题：《零知识证明最简介绍：历史、原理、实现》</p>
+<p>密码学可以说是区块链技术的基石，而其中的零知识证明更是因为深度契合区块链的技术特点，而得到了广泛的应用和关注。</p>
+<p>本文旨在用最简单的语言和形式，向大家介绍零知识证明相关的历史、概念、原理、技术实现以及发展现状。</p>
+<p>那么让我们开始吧。</p>
+<h3 id="历史和起源">历史和起源</h3>
+<p>密码学是一门可以追溯到 2000 多年前的古老学问，其发展历史主要可以划分为以下几个阶段：</p>
+<h4 id="古典密码学">古典密码学</h4>
+<p>这一时期的密码学主要被应用于军事领域，如何有效的传递密文，又能防止被敌人截获后破解，是其主要考量。16 世纪由法国人发明的「维吉尼亚密码」是古典密码理论发展上的一个重要里程碑，它使用一个词组作为密钥，词组中每一个字母都将确定一个替换表，「维吉尼亚密码」循环的使用每一个替换表完成明文字母到密文字母的变化。</p>
+<ul>
+<li>
+<p>明文：ilovebitcoin</p>
+</li>
+<li>
+<p>密钥：satoshi</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0715/4_dzafw45vnj.png" alt="简明理解零知识证明历史、原理与发展现状"></p>
+<p>对于第一个字母 i，取第 i 行第 s 列，得到 A；第二个字母 l，取第 l 行第 a 列，得到 L…依次循环，最后得到密文：ALHJWIQLCHWF。可见，在不知道密钥的前提下，不借助计算机已经非常难以破解这样的密码。</p>
+<h4 id="近代密码学">近代密码学</h4>
+<p>这一阶段真正的开始源于香农在 20 世纪 40 年代末发表的一系列论文，特别是 1949 年的「Communication Theory of Secrecy Systems （保密系统通信理论）」，把已有数千年历史的密码学推向了基于信息论的科学轨道，密码学终于从艺术转向科学。</p>
+<p>这一时期的重要突破是 DES 的出现，直至今日也只能用穷举法对其进行破解。DES 加密算法风行世界，并在金融等商业领域得到了广泛的应用。</p>
+<h4 id="现代密码学">现代密码学</h4>
+<p>1977 年，麻省理工学院的 Ron Rivest、Adi Shamir、Leonard Adleman 提出的非对称加密算法 RSA，有效的解决了密钥传送的问题，标志着密码学进入了百家争鸣的现代阶段。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0715/4_7z9pd8fpsb.png" alt="简明理解零知识证明历史、原理与发展现状"></p>
+<p>1989 年，由麻省理工学院研究人员 Goldwasser、Micali 及 Rackoff 提出了「零知识证明」的概念，当时的他们一定不曾想到，若干年后出现的区块链技术彻底激活了零知识证明的应用，而零知识证明则为区块链技术提供了一种绝佳的解决方案。零知识证明的方法特点和区块链技术的系统特点达成了完美的契合。</p>
+<h3 id="零知识证明及-zksnark">零知识证明及 zkSNARK</h3>
+<p><strong>零知识证明是指，在不揭晓我所知道或拥有的某样东西的前提下，向别人证明我有很大概率确实知道或拥有这样东西。</strong></p>
+<p>zkSNARK 则是在区块链中应用最广泛的一种零知识证明，其全称是「zero-knowledge Succinct Non-Interactive Arguments of Knowledge （简洁非交互式零知识证明）」。</p>
+<p>光听定义，大家一定一头雾水，本节将借用一个例子，尽可能接地气的向大家介绍这两个概念。</p>
+<p>Alice、Bob 和 Charlie 都是数独爱好者，所谓数独是这样一种游戏，玩家需要根据 9×9 盘面上的已知数字，推理出所有剩余空格的数字，并满足每一行、每一列、每一个粗线宫（3x3）的数字均含 1 到 9，且不重复。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0715/4_5gbomqmt9p.png" alt="简明理解零知识证明历史、原理与发展现状"></p>
+<p>有一天 Alice 设计了一道巨难的数独题目来考 Bob 和 Charlie，Bob 苦思冥想了几天也做不出，便向 Alice 抱怨这肯定是道无解的题目。Alice 不想将实际的解告诉 Bob，但是又需要证明她确实知道解，于是她设计了一种巧妙的「零知识证明」的方式。</p>
+<ul>
+<li>证明（The Proof )</li>
+</ul>
+<p>Alice 拿出 81 （9x9）张空白的卡片，并在每张纸上写上 1-9 中的一个数字，接着她将代表谜面的卡片数字面朝上、代表谜底的卡片数字面朝下都放在桌上，并组成了 9x9 的矩阵。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0715/4_w0ws771se7.png" alt="简明理解零知识证明历史、原理与发展现状"></p>
+<ul>
+<li>随机挑战（The Random Challenge）</li>
+</ul>
+<p>接下来怎么让 Bob 确认这就是正确的解呢？很简单，由 Bob 随机选择行、列或是粗线宫中的一种进行验证，假如选择行，则将这 81 张卡片按 9 行分别放到 9 个麻布袋中，摇匀并确保卡片次序打乱。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0715/4_45215prvc5.png" alt="简明理解零知识证明历史、原理与发展现状"></p>
+<ul>
+<li>验证（The Verify）</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2021/0715/4_irwfj5bqli.png" alt="简明理解零知识证明历史、原理与发展现状"></p>
+<ul>
+<li>简洁（Succinct）</li>
+</ul>
+<p>虽然数独游戏有 3 种情况需要验证（行、列、粗线宫），但每次验证时 Bob 实际只需要验证其中的一种，这有效减少了验证工作量，提供给验证者的实际是一个比原命题小的多的证明，这就是所谓的简洁。</p>
+<ul>
+<li>重复（Repeat）</li>
+</ul>
+<p>之后重复这个随机验证步骤，我们假设 Alice 运气很好，每次都能提前猜中 Bob 会选择哪种验证方式，并以此来模拟一个解，那么她通过 1 次验证的概率为 1/3，通过 2 次验证的概率为 1/9，通过 10 次验证概率就只有 1/59049 了。在不厌其烦的进行了 20 次验证之后，Bob 无奈的承认，Alice 是真的知道这个答案的解，因为 Alice 凭运气通过验证的概率只有 35 亿分之一！（这也是为何我们说零知识证明是在概率上成立的证明）</p>
+<ul>
+<li>模拟（The Simulation）</li>
+</ul>
+<p>这个时候，Charlie 也来向 Alice 抱怨这个题目的无解，Alice 和 Bob 又重复了刚才的证明，没想到却没有得到 Charlie 的认可。Charlie 提出了这个证明中的漏洞，如果 Bob 和 Alice 是一伙的，每次 Bob 都会提前告诉 Alice 他要选择的验证方式，那么 Alice 就可以很容易的在没有解的情况下模拟出一个证明来通过这些测试。</p>
+<ul>
+<li>非交互式证明（Non-Interactive Proofs）</li>
+</ul>
+<p>不可能让每个持有这种怀疑的人都重复一遍 Bob 进行的随机验证，于是三个小伙伴设计了一台神奇的机器，Alice 只需要提交一次卡片，这台机器就可以按照初始设置好的验证序列，自动化的对这些卡片进行重复验证。验证从交互式的，变成了非交互式的。这里我们要注意，并不是说非交互式证明就没有重复随机实验这个过程。实际上，只不过是随机点不由验证者给出，而是由一个可信的第三方在初始化阶段就给出，这样一来，证明者就可以直接给出证明，验证者只需要验证证明即可，验证者和证明者之间不再需要交互。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0715/4_sn09ynscru.png" alt="简明理解零知识证明历史、原理与发展现状"></p>
+<ul>
+<li>可信设置仪式（Trusted Setup Ceremony）</li>
+</ul>
+<p>其中最有趣也最重要的环节就是验证序列的初始设置。在机器启动前，会有一排设置旋钮，通过这些旋钮可以选定每一轮的验证方式。在设置这些旋钮时，每个人依次进入放置机器的房间，选择一个旋钮并设置好，之后就用一个铁盒子彻底焊死这个旋钮，让其他人无法看见也无法改变这个旋钮的选择。为了让初始设置尽可能的可信，小伙伴们邀请了镇长、小学校长和警察局长这三位小镇上最德高望重的长者来参加设置仪式，大家都相信他们绝对不可能参与作假，因此他们称之为「可信任的初始设置仪式」。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0715/4_p3g5qznfjs.png" alt="简明理解零知识证明历史、原理与发展现状"></p>
+<p>一台数独游戏的简洁非交互式零知识证明机，诞生了！</p>
+<h3 id="zksnark-的技术实现">zkSNARK 的技术实现</h3>
+<p>通过上一节我们已经弄明白了零知识证明和 zkSNARK 的基本概念和原理，这一节我们再来一窥 zkSNARK 的技术实现。可以说整个实现过程相当的繁琐晦涩，且需要一定的背景知识，因此本小节只力图讲清楚其核心思想，而不拘泥于过分复杂的数学推导。</p>
+<p>我们从一个方程式开始，X^3 + X + 5 = 35，显然解是 3。那么现在，证明者如何向验证者证明自己知道方程的解是 3，而又不告诉验证者这个解呢？</p>
+<p>首先，我们将方程转化为计算机语言，这很容易实现：</p>
+<blockquote>
+<p>y = x*3<br>
+return x + y + 5</p>
+</blockquote>
+<p>接着，我们将上面的代码拍平。所谓将代码拍平，是指让代码一次只做一件事，形如 x = y op z。</p>
+<p>拍平后，代码变成以下语句：</p>
+<blockquote>
+<p>sym_1 = x * x<br>
+y = sym_1 * x<br>
+sym_2 = y + x<br>
+~out = sym2 + 5</p>
+</blockquote>
+<p>然后，我们引入 R1CS 一阶约束系统（rank-1 constraint system），R1CS 是一个由三向量组（a, b, c）组成的序列，同时有一个解向量 s，s 满足 s·a * s·b - s·c = 0。</p>
+<p>在本例中，s 的结构为（~one\, x\, ~out\, sym_1\, y\, sym_2），可见其由一个特殊的 ~one、方程的解 x、方程的输出 ~out 和一系列中间变量（拍平后的语句等号左边的变量）构成，其顺序不重要，只要保证有序即可。</p>
+<p>我们把语句变换成如下形式，来方便我们求解 abc：</p>
+<blockquote>
+<p>x * x - sym_1 = 0<br>
+sym_1 * x - y = 0<br>
+y + x - sym_2 = 0<br>
+sym_2 + 5 - ~out = 0</p>
+</blockquote>
+<p>我们很容易得出第一个式子对应的三个向量：</p>
+<blockquote>
+<p>a = [0, 1, 0, 0, 0, 0]<br>
+b = [0, 1, 0, 0, 0, 0]<br>
+c = [0, 0, 0, 1, 0, 0]</p>
+</blockquote>
+<p>推导过程其实很简单，我们知道要满足 s·a * s·b - s·c = 0，那么对应第一个式子 x * x - sym_1 = 0，只需要 s·a = x、s·b = x、s·c = sym_1 即可，而 s =（~one\, x\, ~out\, sym_1\, y\, sym_2），那么 a 只要在 x 的位置等于 1，其余位置等于 0，即得出（0，1，0，0，0，0）。</p>
+<p>大家可能对上面一系列眼花缭乱的变换感到莫名其妙，我们究竟在做什么？这里要揭晓谜底了，我们对每个式子验证 s·a * s·b - s·c = 0，其本质是在验证每一步都得到了正确的计算，也即如果我们可以验证每一步都是正确的，那么最终结果也一定是正确的。</p>
+<p>以上的每一步，看似都在舍近求远，因为 s 里本身就包含了方程的解 x，验证者只需把 x 代入就能进行验证。但从另一个角度看，通过这一系列的转换，我们构建了一种将证明和验证分离的方式。在证明过程中，证明者需要知道解并生成一系列中间结果，而验证者则只需要验证其一系列结果构成的解向量是否满足一系列约束，而不需要关心这个解到底是多少。</p>
+<p>现在只剩一个问题留待解决，就是能否通过一种方式，让验证者看不到裸着的解 x，同时依然可以进行验证过程。答案是肯定的，借由椭圆曲线、双线性对运算和指数知识假设这一系列数学手段我们就可以做到这一点，因为其推导过程过于复杂，本文不做赘述。整个 zkSNARK 的技术实现流程参见下图，需要了解更多细节的同学可以阅读参考资料中给出的 Vitalik 的文章。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0715/4_ssg6nowh7k.png" alt="简明理解零知识证明历史、原理与发展现状"></p>
+<h3 id="零知识证明发展现状">零知识证明发展现状</h3>
+<h4 id="零知识证明协议">零知识证明协议</h4>
+<p>零知识证明目前有如下几种协议，每个协议代表一条实现零知识证明的道路，不同道路最后会产生不一样的效果。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0715/4_mzsswbtpil.png" alt="简明理解零知识证明历史、原理与发展现状"></p>
+<p>其中，安全性最高的是 STARKs 算法，其不依赖数学难题假设，具有抗量子性，并实现了透明通用字符串；Proof size 最小的 snarks 协议是 groth16 算法；Plonk 是 SNARK 协议中的一个算法，Proof size 和安全性处于适中状态。</p>
+<h4 id="snarks-协议算法">SNARKs 协议算法</h4>
+<p>作为区块链技术中应用最广泛的 SNARKs，已经发展出了诸多各具特点的协议算法：</p>
+<ul>
+<li>Groth16：Groth16 是目前最快、数据量最小的 zk-SNARK，被用于 Zcash 等。Groth16 的 CRS （the Common Reference String）不是通用的，其设置需要绑定到一个特定的电路。由于其速度和证明的小数据量，因此常常被新的 zk-SNARK 拿来比较性能。</li>
+</ul>
+<blockquote>
+<p><a href="https://eprint.iacr.org/2016/260">Groth16 论文链接</a></p>
+</blockquote>
+<ul>
+<li>Sonic：Sonic 是一种早期的通用 zk-SNARK 协议，支持通用、可升级的参考字符串，论文发表于 2019 年 1 月。Sonic 的证明大小固定，但是验证成本高，理论上可以将多个证明分批验证以获得更好的性能。下面列举的许多新的 zk-SNARK 都是基于 Sonic。</li>
+</ul>
+<blockquote>
+<p><a href="https://eprint.iacr.org/2019/099">Sonic 论文链接</a></p>
+</blockquote>
+<ul>
+<li>Fractal：Fractal 是一种允许递归的 zk-SNARK。通过对电路的预处理实现了透明设置。证明最大 250KB，这比其他构建生成的证明都要大的多。</li>
+</ul>
+<blockquote>
+<p><a href="https://eprint.iacr.org/2019/1076">Fractal 论文链接</a></p>
+</blockquote>
+<ul>
+<li>Halo：Halo 支持递归证据组织，无需可信设置，与其他新的 zk-SNARK 构建不同，Halo 的验证时间是线性的。</li>
+</ul>
+<blockquote>
+<p><a href="https://eprint.iacr.org/2019/1021">Halo 论文链接</a></p>
+</blockquote>
+<ul>
+<li>SuperSonic：Sonic 的改进版，是第一个在验证时间和证明数据量方面实用化的透明 zk-SNARK。</li>
+</ul>
+<blockquote>
+<p><a href="https://eprint.iacr.org/2019/1229">SuperSonic 论文链接</a></p>
+</blockquote>
+<ul>
+<li>Marlin：Sonic 的改进版，证明时间缩短 10 倍，验证时间缩短 4 倍。</li>
+</ul>
+<blockquote>
+<p><a href="https://eprint.iacr.org/2019/1047">Marlin 论文链接</a></p>
+</blockquote>
+<ul>
+<li>Plonk：Sonic 的改进版，证明时间缩短 5 倍。</li>
+</ul>
+<blockquote>
+<p><a href="https://eprint.iacr.org/2019/953">Plonk 论文链接</a></p>
+</blockquote>
+<h3 id="硬件成本">硬件成本</h3>
+<p>当前零知识证明缺乏专用硬件，导致硬件成本偏高，租用云服务器满负荷下成本约为 0.002 元 / 笔，有空载情况下约为 0.02 元 / 笔。Vitalik 曾提出一个设想，当以太坊共识机制改为 PoS，不需要那么多挖矿硬件后，这些算力可以经改造后转向支持零知识证明，这可能有效降低零知识证明的运行成本。</p>
+<h3 id="写在最后">写在最后</h3>
+<p>如今，零知识证明已经在区块链领域大放异彩，包括第一个实现 zkSNARK 的匿名加密货币 Zcash （ZEC）、Layer2 的主要解决方案 zk Rollup 等等。</p>
+<p>DeGate 团队也将在产品实现中大量应用零知识证明，藉由其强大特性，我们将 Orderbook 的撮合交易转到 MatchNode （Layer3）中进行，使用户可以实时的挂单、撤单和成交，且其中挂单撤单免费；之后再将订单批量结果生成证明，传回 Layer2 上进行验证，这让 DeGate 在继承以太坊安全性的同时，既可以隐藏下单关键信息又可以有效降低 Layer2 上的 Gas 费消耗。而我们的最终目标是，无论在操作体验上，还是手续费消耗上，都使 DeGate 达到媲美中心化交易所的水平。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25851/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">甲骨文子公司与Everest合作将区块链引入全球银行</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25907/">
+                <span class="next-text nav-default">金色DeFi日报 | DeFi Education Fund回应UNI抛售</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#历史和起源">历史和起源</a></li>
+        <li><a href="#零知识证明及-zksnark">零知识证明及 zkSNARK</a></li>
+        <li><a href="#zksnark-的技术实现">zkSNARK 的技术实现</a></li>
+        <li><a href="#零知识证明发展现状">零知识证明发展现状</a></li>
+        <li><a href="#硬件成本">硬件成本</a></li>
+        <li><a href="#写在最后">写在最后</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

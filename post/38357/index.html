@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文梳理 DAO 计算治理流程 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="DAOrayaki社区对DAO计算治理流程进行梳理。本篇概述旨在通过提供一个更高层次的视角，以便对计算机辅助治理（CAG）的地图和流程（MAP）有更加直观的认识。" />
+<meta name="keywords" content="DAO" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38357/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文梳理 DAO 计算治理流程" />
+<meta property="og:description" content="DAOrayaki社区对DAO计算治理流程进行梳理。本篇概述旨在通过提供一个更高层次的视角，以便对计算机辅助治理（CAG）的地图和流程（MAP）有更加直观的认识。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38357/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-29T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文梳理 DAO 计算治理流程">
+<meta itemprop="description" content="DAOrayaki社区对DAO计算治理流程进行梳理。本篇概述旨在通过提供一个更高层次的视角，以便对计算机辅助治理（CAG）的地图和流程（MAP）有更加直观的认识。"><meta itemprop="datePublished" content="2022-05-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7406">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文梳理 DAO 计算治理流程"/>
+<meta name="twitter:description" content="DAOrayaki社区对DAO计算治理流程进行梳理。本篇概述旨在通过提供一个更高层次的视角，以便对计算机辅助治理（CAG）的地图和流程（MAP）有更加直观的认识。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文梳理 DAO 计算治理流程</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-05-29">
+      2022-05-29
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7406 字 -
+        预计阅读 15 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>这是一个参与式决策的框架</strong></p>
+<p>对于由系列算法构成的DAO而言，计算治理是不可忽略的一个趋势。因此，DAOrayaki社区对DAO计算治理流程进行梳理。本篇概述旨在通过提供一个更高层次的视角，以便对计算机辅助治理（CAG）的地图和流程（MAP）有更加直观的认识。由于计算机辅助治理是一个不断发展的领域，CAG MAP也是一项持续进行的工作。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0529/18_a7wz1d4g73.png" alt="一文梳理 DAO 计算治理流程"></p>
+<h2 id="动机"><strong>动机</strong></h2>
+<p>计算机辅助治理的地图和流程（CAG MAP）探索了我们如何使用计算机来更好地理解和引导复杂的系统。具体来说，它发掘了人类起草和分析治理建议的工具和技术。它并不对一个系统的动态或治理机制作出假设。然而，它确实假设那些起草和分析提案的人是在为他们的利益代言。</p>
+<p>这很重要，因为一个有不同利益相关者的系统意味着观点更多样化，也意味着不存在“最好”的客观观点。这都是相对的。</p>
+<p>如果是这样的话，那么决定是如何做出的呢？这其实是一个妥协的政治过程。需要满足几个要求：</p>
+<ul>
+<li>
+<p>首先，利益相关者需要能够参与到政治进程中。这可能看起来像直接投票、授权或其他任何东西——总之利益相关者需要有一个有意义的声音来影响系统内的变化（而不仅仅是退出或忠诚）。</p>
+</li>
+<li>
+<p>第二，必须以基本事实为导向。。这就是数据驱动决策的数据部分。我们可能对数据有不同的解释，但需要有一个我们都能认同的数据来源。</p>
+</li>
+<li>
+<p>第三，利益相关者之间作为主观现实而共享的假设，虽然不是客观现实，也需要被明确地陈述。这样利益相关者就能在战略（使命/愿景）上达成一致，即使他们在战术（实现目标的具体步骤）上有分歧。</p>
+</li>
+</ul>
+<p>如果这些东西不存在，那么你的第一步就是把它们搞清楚。如果没有一个基本的治理基础，其他的东西都不会起作用。然而，如果这些要求都满足了，那么这个CAG MAP可能会帮助利益相关者（比如你）参与到数据驱动的决策中。这里的关键词是“可能”。CAG MAP是一个正在进行的研究项目，所以和你的要求可能有偏差。</p>
+<p>值得注意的是，辅助是计算机辅助治理的一个关键词。这描述了通过计算机和数据增强人类的决策过程，而不是通过计算机或算法进行治理。这类似于空中交通管制员在他们指尖的数据驱动工具的帮助下做出关键决策。</p>
+<h2 id="cag过程"><strong>CAG过程</strong></h2>
+<p>计算机辅助治理的地图和流程分为八个递归部分：</p>
+<ol>
+<li>
+<p>观察：自然状态下的系统，其存量和流量</p>
+</li>
+<li>
+<p>发问：谁，是什么/如果，什么时候，哪里，为什么？（who, what/what if, when, where, why?）</p>
+</li>
+<li>
+<p>地图：画出代表相互联系的图片</p>
+</li>
+<li>
+<p>模型：用代码来进行思想实验</p>
+</li>
+<li>
+<p>展示：与你的社区分享你的想法</p>
+</li>
+<li>
+<p>辩论：集体应用批判性思维</p>
+</li>
+<li>
+<p>执行：做出决定并采取行动</p>
+</li>
+<li>
+<p>监控：记录学习结果</p>
+</li>
+</ol>
+<p>然后重复这一过程：反馈会引向新的问题、出现新的建议等等。</p>
+<p>请记住，这只是一张地图，而不是全局。这个概述的目的是提供一些关于概念和工具的直觉。你应该自己决定什么对你有用，以及如何在你所从事的现实世界系统中应用它。</p>
+<h2 id="观察"><strong>观察</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0529/18_l4i41cw37s.png" alt="一文梳理 DAO 计算治理流程"></p>
+<p>在社会经济系统的背景下，第一步是了解治理对象，以及如何治理。即使看起来“没有治理”也是一种治理，是非正式的治理。当你探索时，你会发现很多信息。有些为真，有些为假。知道区别是关键。一些可以帮助你弄清楚的常见资源是白皮书、文档库、源代码、地图/模型、研究报告、系统数据和社区聊天。这些资源都有关于系统的观点，但只有结合多种观点，你才能开始了解真正发生了什么。如果有疑问，就去找数据的来源，从第一性原理出发建立你的思维。</p>
+<p>在做了一些研究之后，你会开始从技术层面了解事情是如何运作的，人们在情感层面是如何认为它们可以/应该/需要运作的，以及人们的行动（基于他们的看法和偏好）是如何在一个反射性的循环中塑造系统的基本面。如果激励机制是一致的，有共同的知识基础，并且权力结构是透明的——那么也许你的社区可以从使用计算机辅助治理中受益，以帮助做出全局和全知的决定。如果一个参与式社区缺少上述任何一项，请注意：里面有龙。（译注：指可能有危险或未知）</p>
+<h2 id="发问"><strong>发问</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0529/18_jtzgm6s0a3.png" alt="一文梳理 DAO 计算治理流程"></p>
+<p>当你开始观察和探索一个系统时，你可能会有一些问题。其中一些未能回答的问题可能就是系统中可以改进的那些部分。如果是这样，那么下一步就是要弄清楚问题是什么，以及如何解决它。在这方面花大量的时间是很重要的，因为解决问题要从提出问题开始。你无法解决你不了解的东西。</p>
+<p>最重要的是要对你要解决的问题有一个清晰、简洁的定义。它应该是显而易见的。如果你不清楚你在做什么，其他的事情就会更加困难。一旦你对问题有了明确定义，你就可以发现类似的问题。类似的问题如何被解决以及不同的实施结果，可能会提供借鉴。然后，这可以帮助你形成一个假设，即什么可能有助于解决你的问题。</p>
+<p>有几种工具和技术可以帮助你定义你的问题并确定可能的解决方案。首先是把它写下来。试着用一句话来定义问题，并列出类似问题的事情和它们的解决方案。然后问一个朋友，看看他们怎么说。应用苏格拉底式的提问，进一步探讨问题和你围绕问题的思考。然后，一旦你有了一些好的想法，就提出一个设计理由，解释你的思考过程，纳入的想法，以及为什么你认为一个特定的解决方案可能会很有效。然后，你就会有一个清晰的问题定义和解决方案的假设来进行测试。</p>
+<h2 id="地图"><strong>地图</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0529/18_ucl5d1uo9n.png" alt="一文梳理 DAO 计算治理流程"></p>
+<p>地图可以帮助你快速地、直观地传达很多信息。毕竟，一图胜千言。</p>
+<p>地图不能完美地代表事物。它是一种抽象的、传达主要思想的东西。可以使你的听众更容易快速理解和记住正在发生的事情。它还可以显示出你的想法如何与系统的其他部分相适应。</p>
+<p>地图不需要花哨，它们只需要清晰。它们应该只包括最重要的东西。这通常包括一个系统的组成部分，以及它们之间的关系。这可能看起来像一个简单的草图、利益相关者地图、流程图、功能框图、因果循环图、存量和流量图，甚至是互动媒体。有时，使用不同的图表/绘图工具来帮助你理解系统的各个方面是很有帮助的——不要试图把所有的东西都放在一张地图上！重要的是要清楚地说明你的系统，清楚地说明你想要传达的想法。</p>
+<h2 id="模型"><strong>模型</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0529/18_f5fcc6czu3.png" alt="一文梳理 DAO 计算治理流程"></p>
+<p>模型就像思想实验，但有算力支持。它有点像介于白皮书和工作实施之间的东西。如果你想在实现一个想法之前测试它，或者想测试一个想法的变体，这就很适合。</p>
+<p>当创建一个模型时，重点是帮助你探索一个想法，而且也能帮助其他人理解。因此，它需要是可读的。模型所依赖的假设以及模型所具体探索的东西都应该被明确。这样，就更容易对模型的假设和参数进行A/B测试。</p>
+<p>有很多工具可以创建模型。MatLab很流行，但比较贵。cadCAD比较新，而且开源。一些独立的框架，如tokenSPICE，开始将EVM测试网纳入建模。还有即将推出的cadCAD服务，如BlockScience Labs，更容易基于现实世界的数据自动运行模型。哪一款最适合你的，将取决于你所处的情境。无论你选择什么工具，模型都应该易于阅读和运行。这样人们就可以参与并为你的工作做出贡献。</p>
+<h2 id="展示"><strong>展示</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0529/18_e4sqt66q4k.png" alt="一文梳理 DAO 计算治理流程"></p>
+<p>在社会经济体系中，政治可行性和激励相容性都很重要。要打赢战斗，数据只能帮一半。什么样的行动会被优先考虑，不仅取决于谁能最好地定义目标（战略）和达到目标的步骤（战术），而且还取决于谁能最好地传达它并使相关的权力围绕它保持一致，换句话说，就是政治。在计算机辅助治理的背景下，这是至关重要的。如果人们不明白你在说什么，他们就不能有效地参与贡献。较少的参与会降低你的想法传播的机会，你的提案通过的机会也会降低。要通过展示你的工作，使人们容易参与你的工作。列出参考文献，明确假设，并使你的数据和代码可供查阅。你成功的一个重要因素就是让人们容易理解和参与你的提案。</p>
+<p>一旦你有了一个具有明确目的和过程的提案，请分享你的工作。这里隐含的前提是你知道你的受众是谁。你不是在真空中为自己写作，你有一个重要的信息，既有趣又有信息量。你清楚地知道这是为谁写的，以及他们为什么如此关心这个话题。你简单的结构化信息会引起他们的共鸣，激发他们的行动，就像你写提案时受到的启发一样。对吗？</p>
+<p>对的，所以有许多工具可以帮助你改善你的写作以达到这个目的。有些侧重于机械性，有些则更多地是针对整体结构。两者都很好。从检查你的拼写、语法和冗长句子开始。此外，阅读好文章会有很大帮助。好的写作是主观的，所以这将取决于你的个人喜好，更重要的是，你的读者。</p>
+<h2 id="辩论"><strong>辩论</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0529/18_ddr9emeezr.png" alt="一文梳理 DAO 计算治理流程"></p>
+<p>很多想法在理论上听起来不错（比如这个CAG MAP！）。但直到你测试它们，你才知道它们是否有用。分享你的想法并从现实世界得到反馈，可以帮助你的想法变得更好。</p>
+<p>好的反馈需要批判性思维，而批判性思维意味着人们会提出批评。让我们希望这种能量是冲你的想法，但它也可能会冲着你。如果你能通情达理地内化前者而忽略后者，你的生活将是美好的。如果不能，你将疲于应对，或者死于非命。</p>
+<p>发表这些批评意见的舞台被称为政治。在一个开明的社会中，这是我们辩论思想和裁决不同利益相关者偏好的方式。在大多数社会中，它是我们争夺权力的方式。这并不是因为人是邪恶的，而是因为我们是人。这就是我们会做的。用客观的数据、主体间的社会协议（inter-subjective social agreements）和一个能表达你的利益相关者群体以及整个系统（又称其他利益相关者）利益的提案来武装自己，是一个很好的开始。接下来你要为一些可行的方案而战斗。</p>
+<h2 id="执行"><strong>执行</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0529/18_0vlimfritv.png" alt="一文梳理 DAO 计算治理流程"></p>
+<h2 id="decisions决策">Decisions（决策）！</h2>
+<p>行动是创造变化的必要条件。一旦一个想法被辩论和完善，它就需要被颁布执行。理想情况下，这个过程被系统的利益相关者视为合法。如果是这样，那就参与到这个过程中来，表达你的偏好。如果这个过程不被认为是合法的，那就找一个新的系统来参与，因为如果没有一个合法的治理过程，你就生活在一个纯粹的权力世界里，由800磅的大猩猩统治。</p>
+<p>在任何特定的系统中，用来做决定的具体机制都将是独特的。非常重要的是，你要了解它们是如何工作的，这样你才能有效的参与。你要靠自己来弄清楚这一点。</p>
+<p>另外，要注意的是，做出一个正式决定并不意味着它将创造你想要的结果。你可能有一个关于可能、应该或将要发生什么的理论——但没有测试之前，你不知道会怎样。即便执行了，你也常常看不清楚。对于有执行风险的非确定性决策（non-deterministic decisions），可能很难说成功或失败是由决策的执行或决策本身造成的。</p>
+<h2 id="监控"><strong>监控</strong></h2>
+<p><img src="https://img.bibiqing.com/news/2022/0529/18_0a1go0qqee.png" alt="一文梳理 DAO 计算治理流程"></p>
+<p>如果我们做了实验却懒得记录结果，科学就不会起作用。治理也是如此。决策和结果之间需要有一个反馈回路。监控使你能够验证决策的结果，看看它们是否达到了预期的效果。</p>
+<p>如果一个提案成功了，你会想看看它是否真的达到了你预期的效果。如果是，那就太好了。如果没有，那就弄清楚原因。</p>
+<p>如果一个提案没有成功，那也没关系。如果你有一个假设，即如果你的提案没有通过会发生什么，那么你可以验证这个假设。你可以提供数据来支持你的原始提案，这可能让你重新提交一个有更多证据的修改版本（“我早就说过！”）。</p>
+<p>监控复杂的系统会涉及到大量的工作，有一些工具可以提供帮助。一些事情可以自动化，比如把原始数据喂入递归模型，然后自动运行并基于关键指标发出警报——你也可能想亲自阅读社区讨论，以了解动态和情绪。分析客观数据和主观社会活动，对于了解一个系统的全局是很重要的。缺少两者之一，很可能导致局部而非整体的优化。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0529/18_6u1ybu3f14.png" alt="一文梳理 DAO 计算治理流程"></p>
+<p>TL;DR:（太长不看版）</p>
+<p>CAG MAP是一个依靠数据驱动的政治过程。其目的是帮助利益相关者了解、改进和维护他们所关心的系统。</p>
+<p>在一个多元化的社会中，不存在无可争议的公共利益。这取决于利益相关者为他们自己的利益进行辩护。如果利益一致，事情可能会顺利进行，但如果不一致，那么事情可能非常艰难。因为大家需要不断地协调利益。</p>
+<p>要创造出符合利益的提案，需要批判性思维。批判性思维要求具有批判性。CAG MAP可以帮助你使用一个数据驱动的过程来撰写、分析和评论提案。它不能保证产生正确结果，但保证可以比在没有可靠数据的情况下相互争论要好。</p>
+<p>祝你们好运，参与式治理系统看起来也不简单！</p>
+<p>作者为Burrrata，特别感谢Jeff Emmett, Jessica Zartler, Kelsie Nabben, Matt Stephenson, Dr. Michael Zargham以及BlockScience的所有人，感谢他们在CAG MAP发展过程中的反馈和评价。</p>
+<p>同时，感谢Brian Douglas创建了控制理论地图，为CAG MAP提供了灵感。</p>
+<h2 id="参考"><strong>参考</strong></h2>
+<p>1. 工作手册：https://github.com/BlockScience/cag-map</p>
+<p>2. 退出或忠诚：https://en.wikipedia.org/wiki/Exit,_Voice ,_and_Loyalty</p>
+<p>3. 反射性的循环：https://www.georgesoros.com/2014/01/13/fallibility-reflexivity-and-the-human-uncertainty-principle-2/</p>
+<p>4. 激励机制：https://en.wikipedia.org/wiki/Incentive</p>
+<p>5. 权力：https://en.wikipedia.org/wiki/Power_(social _and_political)</p>
+<p>6.里面有龙：https://en.wikipedia.org/wiki/Here_be_ dragons</p>
+<p>7.如何解决：https://en.wikipedia.org/wiki/How_to_ Solve_It</p>
+<p>8.提出问题：https://fs.blog/2019/09/power-questions/</p>
+<p>9. 解决：https://en.wikipedia.org/wiki/Problem_solving</p>
+<p>10. 定义：https://en.wikipedia.org/wiki/Problem_ statement</p>
+<p>11. 假设：https://en.wikipedia.org/wiki/Hypothesis</p>
+<p>12. 苏格拉底式的提问：https://en.wikipedia.org/wiki/Socratic_questioning</p>
+<p>13. 设计理由：https://en.wikipedia.org/wiki/Design_ rationale</p>
+<p>14. 草图：https://en.wikipedia.org/wiki/Sketch_(drawing)</p>
+<p>15. 利益相关者地图：https://en.wikipedia.org/wiki/Stakeholder_analysis#Stakeholder_mapping</p>
+<p>16. 流程图：https://en.wikipedia.org/wiki/Flowchart</p>
+<p>17. 功能框图：https://en.wikipedia.org/wiki/Functional_ block_diagram</p>
+<p>18. 因果循环图：https://en.wikipedia.org/wiki/Causal _loop_diagram</p>
+<p>19. 存量和流量图：https://en.wikipedia.org/wiki/Stock_ and_flow</p>
+<p>20.互动媒体：https://distill.pub/2020/communicating-with-interactive-articles/</p>
+<p>23. 模型：https://en.wikipedia.org/wiki/Modeling _and_ simulation</p>
+<p>24. 思想实验：https://en.wikipedia.org/wiki/Thought _experiment</p>
+<p>25. A/B测试：https://en.wikipedia.org/wiki/A/B_testing</p>
+<p>26.MatLab：https://www.mathworks.com/products/matlab.html</p>
+<p>27. cadCAD：https://cadcad.org/</p>
+<p>28.tokenSPICE：https://github.com/oceanprotocol/tokenspice</p>
+<p>29. BlockScience Labs：https://blocksciencelabs.com/</p>
+<p>30. 政治可行性：https://en.wikipedia.org/wiki/Political_ feasibility_analysis</p>
+<p>31. 激励相容性：https://en.wikipedia.org/wiki/Incentive _compatibility</p>
+<p>32. 战略：https://en.wikipedia.org/wiki/Strategy</p>
+<p>33. 战术：https://en.wikipedia.org/wiki/Tactic_(method)</p>
+<p>34. 权力 ：https://en.wikipedia.org/wiki/Power _(social_and_political)</p>
+<p>35. 政治：https://en.wikipedia.org/wiki/Politics</p>
+<p>36. 你知道你的受众是谁：https://seths.blog/2017/07/in-search-of-the-minimum-viable-audience/</p>
+<p>37. 语法：https://www.grammarly.com/</p>
+<p>38. 冗长句子：https://hemingwayapp.com/</p>
+<p>39. 批判性思维：https://en.wikipedia.org/wiki /Critical _thinking</p>
+<p>40. 政治：http://character</p>
+<p>41. 科学：https://en.wikipedia.org/wiki/Science</p>
+<p>42. 反馈回路：https://en.wikipedia.org/wiki/Feedback</p>
+<p>43. 局部而非整体的优化：https://en.wikipedia.org/wiki/ Maxima_and_minima</p>
+<p>44. https://www.youtube.com/watch?v=xQuuQvEDwkY</p>
+<p>来源：DeFi之道-全部</p>
+<p>原文作者: DC</p>
+<p>创作者：xinyang@DAOrayaki.org</p>
+<p>审核者：Shaun@DAOrayaki.org</p>
+<p>原文:  Mapping the Computer-Aided Governance Process</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38358/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">一度暴跌40%又见币圈大热门闪崩 网友担忧：下一个Luna？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38349/">
+                <span class="next-text nav-default">以太坊合并 如何影响显卡和区块链行业？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#动机"><strong>动机</strong></a></li>
+    <li><a href="#cag过程"><strong>CAG过程</strong></a></li>
+    <li><a href="#观察"><strong>观察</strong></a></li>
+    <li><a href="#发问"><strong>发问</strong></a></li>
+    <li><a href="#地图"><strong>地图</strong></a></li>
+    <li><a href="#模型"><strong>模型</strong></a></li>
+    <li><a href="#展示"><strong>展示</strong></a></li>
+    <li><a href="#辩论"><strong>辩论</strong></a></li>
+    <li><a href="#执行"><strong>执行</strong></a></li>
+    <li><a href="#decisions决策">Decisions（决策）！</a></li>
+    <li><a href="#监控"><strong>监控</strong></a></li>
+    <li><a href="#参考"><strong>参考</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

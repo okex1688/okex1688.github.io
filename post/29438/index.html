@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          a16z：我们设计了一套双代币信誉激励系统 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="信誉系统可以激励参与者的高质量贡献，包括内容创造、内容调节、社区构建和规则设置。这对任何Web 3项目的发展和持续十分关键。" />
+<meta name="keywords" content="通证" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/29438/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="a16z：我们设计了一套双代币信誉激励系统" />
+<meta property="og:description" content="信誉系统可以激励参与者的高质量贡献，包括内容创造、内容调节、社区构建和规则设置。这对任何Web 3项目的发展和持续十分关键。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/29438/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-10-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-09T00:00:00+00:00" />
+
+<meta itemprop="name" content="a16z：我们设计了一套双代币信誉激励系统">
+<meta itemprop="description" content="信誉系统可以激励参与者的高质量贡献，包括内容创造、内容调节、社区构建和规则设置。这对任何Web 3项目的发展和持续十分关键。"><meta itemprop="datePublished" content="2021-10-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-09T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5418">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="a16z：我们设计了一套双代币信誉激励系统"/>
+<meta name="twitter:description" content="信誉系统可以激励参与者的高质量贡献，包括内容创造、内容调节、社区构建和规则设置。这对任何Web 3项目的发展和持续十分关键。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">a16z：我们设计了一套双代币信誉激励系统</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-10-09">
+      2021-10-09
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5418 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>信誉系统可以激励参与者的高质量贡献，包括内容创造、内容调节、社区构建和规则设置。这对任何Web 3项目的发展和持续十分关键。</p>
+<p>但要设计一套好的信誉系统，需要考虑信誉情况、可信度等诸多方面。尽管许多人都在探索这一领域，从FWB（基于Discord私人服务器的私人社交平台）的DAO到像Axie Infinity这样的“边玩边赚”游戏，但目前行业也没有就这些信誉系统的最佳设计达成一致。</p>
+<p>基于我们的经济理论和游戏设计知识，我们提出了信誉系统的双代币设计：一种代表信誉，另一种用于提供流动性，可以作为有意义贡献的象征。</p>
+<h2 id="信誉系统的三段式演变">信誉系统的三段式演变</h2>
+<p>早在文明初期，我们就会授予市场信誉，比如为某些优质服务颁发奖章。在企业里，员工也有职位高低，这种等级“代币”决定着薪资水平。</p>
+<p>游戏算是数字信誉系统里的先驱，玩家赢取游戏币，进而可以购买游戏皮肤、武器、角色等。</p>
+<p>到了加密世界，信誉主要借鉴着社交代币的形式。这些代币可以由各种实体（个人、社区、游戏和应用程序）发行，用于获取社会资本、获取服务或转换成奖励。而且在加密货币的技术支持下，社交代币通常代表着所有权和独特性，比如NFT。基于区块链技术，社交代币是去中心化和流动的，因此可以在全球互联网经济中使用，而不仅仅是在单一平台或决策者的控制范围内。</p>
+<h2 id="信誉代币的悖论它是挣来的还是买来的">信誉代币的悖论：它是挣来的还是买来的？</h2>
+<p>数字平台上的信誉代币通常有两个目的：</p>
+<ul>
+<li>
+<p>识别并奖励对平台有贡献的用户，用户可以利用这种方式获得公众信誉；</p>
+</li>
+<li>
+<p>提供一种补偿形式，使贡献者能够将他们创造的部分价值转换为可交换货币。</p>
+</li>
+</ul>
+<p>然而，这两个功能是对立的。代币需要可交换才能具有流动性。但代币的流动性越高，它作为纯粹的信誉信号的效力就越小。</p>
+<p>例如，慈善机构可以铸造NFT，奖励那些完成超过500小时社区服务的人。但如果这些接受者可以把他们的NFT卖给任何他们想要的人，那么任何时候你遇到一个持有者，你就不得不想：“那个人是自己赚来的还是买的？”即使没有人公开交易他们的社区服务NFT，私下出售的可能性也会降低信号的价值。而在此类代币的完全流动性市场中，信号价值完全被冲刷掉。</p>
+<p>这就产生了一个悖论：如果一个代币可以很容易地转移，那么那些没有信誉的人就可以简单地购买它，这降低了代币作为信誉信号的能力。</p>
+<p>还记得人们很容易在微博上买到僵尸粉吗？这使得追随者成为衡量影响力的弱指标，以至于品牌寻找粘性用户变难。</p>
+<p>同时，高价格也会降低可转让性。</p>
+<p>例如，CryptoPunks现在非常昂贵，几乎所有持有者都必须抢先下手。这似乎可以消除悖论，即恢复代币的信誉价值。但由于一些人愿意以过高的价格购买CryptoPunks以获得信誉，信号价值仍然会下降。</p>
+<p>此外，依附于代币的信誉成本的下降将反馈到代币的市场价值。如果代币失去了表明信誉的能力，那么人们对交易它的兴趣就会降低。事实上，随着人们开始大量购买微博关注者，这些关注者失去了其信号价值，这使得人们对这些买到的关注者不感兴趣。这为购买其它形式的信誉打开了市场（比如点赞）。</p>
+<p>由此可见，<strong>信誉代币的可转让性不仅降低了它们作为信誉信号的能力，也会降低它们作为有价值的补偿的能力。</strong> 因此，建立信誉资本需要完全（或至少大部分）不可转让的代币。因此，新的问题在于如何将信誉转化为流动性。</p>
+<h3 id="社会资本不应该被购买但这并不意味着它不能产生流动性">社会资本不应该被购买，但这并不意味着它不能产生流动性</h3>
+<p>当一个代币由一个可信的来源（如品牌、大学或政府）授予时，它就具有信号价值。但在加密和区块链环境中，不一定有中心化第三方来源授予这种权力。</p>
+<p>因此，传递信号价值的第二种途径是，如果某人具有某些潜在特征，则使代币更容易被获得。例如，如果你非常熟练或努力，在游戏中获得高分则更容易。高分意味着技能和努力的结合。YouTube等平台的高浏览量也同理。</p>
+<p>既然信誉代币的可转让性使它们与作为信号价值来源的基础机构脱钩。那么，如果我们将可转让性与代币本身分开又会怎样呢？这也是为什么许多游戏已经将游戏点数与代币分开。</p>
+<p>我们提出了一个双代币信誉系统：其中一个代币，我们称之为“点数”，作为不可转让的信誉信号；第二种代币，是一种可转让资产，按常规周期分配给积分持有者。实际上，点数会以代币的形式产生分红，这些代币可以作为可交易货币使用。此外，由于代币是由持有点数的人积累的，所以代币与潜在的信誉也有关联。</p>
+<p><strong>这种设计促进了反馈循环，用户通过对平台的高质量贡献（如贡献内容、审核或获胜玩法）获得点数。然后，当拥有点数的用户获得代币时，它们就可以作为货币进行交易。用户对货币的需求推动了点数的获取，从而激励了高质量的贡献。</strong></p>
+<p>请注意，虽然我们使用的点数是不可替代的，代币是可替代的，但更精确的落地可能因应用程序而异。关键是贡献者接收一个非交易代币，它派生出可交易代币。</p>
+<h2 id="点数应该奖励给贡献行为">点数应该奖励给贡献行为</h2>
+<p>为了让积分（点数）保持信号价值并激励高质量的参与，它们必须以某种方式与用户的贡献联系起来。在游戏环境中，分数可能只是基于算法进行奖励。在YouTube或抖音等创作者平台上，积分可能是人们与给定创作者内容互动的直接功能。在其他情况下，比如像Mirror这样的发布平台，可能会有一组用户被赋予奖励点数的能力，或者有一个决定点数分配的治理/投票过程。</p>
+<p><strong>重要的是，积分必须可靠地将持有者与信誉的来源（或驱动因素）联系起来。此外，分数奖励率要作为贡献指标，这样用户才能知道他们需要付出多少努力才能达到给定的分数水平。换句话说：参与者在开始游戏前需要知道游戏规则。</strong></p>
+<p>在很多情况下，分数没有上限。例如，Discord给楼主的徽章数量没有上限。然而，稀缺性可以提高或加强系统的信誉价值。例如，Discord服务器上的“楼主”角色只被指定给少数人，所以拥有楼主徽章的人在服务器上的声望更高。如果服务器开始让太多的人同时担任主持人，那么这个角色的意义和价值就会降低。物以稀为贵。</p>
+<h2 id="规模很重要关注分红供应和分配">规模很重要，关注分红、供应和分配</h2>
+<p><strong>为了创造一种与信誉相关的流动价值，积分持有者应该通过一系列分红而获得代币，即每个积分持有者都可以根据自己拥有的积分数量获得代币奖励。</strong></p>
+<p>在设计这样一个系统时，有三个关键问题:</p>
+<ol>
+<li>
+<p>规模：分红有多少？</p>
+<p>每次分红的总规模，即每次发放分红时分配多少代币，取决于系统的宏观经济目标。</p>
+<p>与点数不同的是，为了让它们具有货币价值，这种货币必须相对稀缺。许多货币（如比特币）受益于代币供应的长期限制，可以被铸造货币数量有限。在这种情况下，平均总分红一定会随着时间的推移而减少，除非有某种机制使代币被吸收回系统（例如通过平台内支付）。</p>
+<p>即使如此，代币供应也不一定是有限制的。例如，如果代币可以兑换平台资金库的一部分，那么总代币供应可以随着资金库的增长而扩大。在这些情况下，分红的总规模可以相同，甚至可以随着时间的推移而增长，只要分红的间隔足够大，不超过资金库的增长速度。</p>
+</li>
+<li>
+<p>供应：应多久发放一次分红？</p>
+<p>对于参与功能类似就业的平台，如零工或创造者平台，最佳策略是定期向积分持有者分发代币：例如每月，甚至每天。这意味着用户做出有价值的贡献，从而保持一定的积分水平，从而获得稳定的收入。</p>
+<p>不经常或不定期地安排分红更适合贡献不定期的平台，如在某些DAO中。例如，当成员贡献了一篇文章或参与了一个编码项目时，前端就会发出它的$FF代币。另一种选择是，只有在平台参与度、生产率或资金超过某个阈值时才发行代币。这类似于上市公司的分红，我们在Mirror的$WRITE空投中也看到了这种情况。</p>
+</li>
+<li>
+<p>分配：分红的大小应该如何与点数持有量相关？</p>
+<p>也许将代币与点数联系起来的最简单方法是通过线性分红，即每个点数都允许用户获得相同份额的分红。但这并不是唯一的选择。</p>
+</li>
+</ol>
+<p><img src="https://img.bibiqing.com/news/2021/1009/1hezv8efdgsnp4o" alt="a16z：我们设计了一套双代币信誉激励系统"></p>
+<p>在凸函数下，分数越大的用户获得的分红份额越大。也就是说，从1点到2点的红利增量大于从0到1的红利增量。这样的曲线奖励那些长期参与系统的用户，提供更多的动机去维持状态。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1009/dtkaynqp03hsdj4" alt="a16z：我们设计了一套双代币信誉激励系统"></p>
+<p>相反的方法是凹函数，从0点到1比从1到2更有价值。这种是吸引新用户的理想方法，因为它奖励最初的贡献比之后的贡献（无论是第二、第三还是第27个）更多。但如果用户是匿名的，这样的曲线很难维持，因为在这种情况下，用户可以创建许多账户，并在每个账户上获得“早期”积分。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1009/6b57f2m23kadeoj" alt="a16z：我们设计了一套双代币信誉激励系统"></p>
+<h2 id="经济奖励应该与贡献相一致">经济奖励应该与贡献相一致</h2>
+<p>分红设计的三个特征分别是：大小、供应和分布。这决定了点数持有者在每个时间段内收到的代币数量。这种关系直接影响获得积分的动机。</p>
+<p><strong>理想情况下，应该校准代币的分布，使用户获得点数的边际回报与平台的点数生成活动的边际效益相对应。</strong> 人们应该根据他为平台创造的价值获得积分。</p>
+<p>此外，边际收益=边际效益的原则意味着可能必须调整点数分配规则。这使得平台能够给予早期贡献者不成比例的份额，这与他们对系统的贡献的重要性相称，而这些贡献在尚未得到证实时。也就是说，平台可能对贡献的价值没有清晰的认识，特别是在早期，所以需要有一种机制来围绕代币分发进行试验和重新校准。</p>
+<p>点数和代币之间的联系提供了一种自然机制，奖励那些做出高质量贡献的用户。但由于点数是不可转让的，因此存在滞后因素：那些提前积累点数的人最终可能拥有不成比例的分红份额，尤其是在渐进的代币供应是固定的情况下。</p>
+<p>在许多加密项目中，最大的持有者最终只是那些最早知道该项目的人。但是那些早期的采用者并不一定是未来生态系统最有价值的。因此，保持对持续贡献和参与的激励机制至关重要。在双代币框架中实现这一点的一个自然方法是让点数随着时间的推移而降低或贬值。这可以通过减少红利来实现。但更简单的做法是让用户的积分总数下降，或者是随着时间的推移或用户粘性水平的变化。</p>
+<h2 id="信誉激励必须持续进行">信誉激励必须持续进行</h2>
+<p>这也类似于游戏中的情况：如果玩家没有保持自己的贡献，那么他们最终会失去自己的地位，因为其他玩家会赶超他们。在创造平台上也是如此，通过竞争获得消费者的关注来激励玩家持续参与游戏。</p>
+<p>但即使积分池本身在增长，仅仅为了创造参与动机而机械性地降低积分也可能是有价值的，因为它可以帮助用户优化他们的贡献级别。</p>
+<p>点数下降意味着，代币分红就像股票分红一样，随着时间的推移会自动稀释，就像传统的上市公司在需要新投资来增加价值时，通过发行新股稀释股权一样。从这个意义上说，点数下降反映了用户对平台持续投资的需求。</p>
+<p><strong>当然，与任何货币系统一样，代币的实际价值取决于社区对其价值的看法。因此，社区对代币价值的认知至少需要高到足以支持流通中的代币总量。</strong></p>
+<p>这意味着该平台可能需要对货币政策进行调整，比如通过回购或临时交易限制来调整货币供应量。例如，在发行后的前几周，去中心化社交平台BitClout不允许将BitClout兑换成其它代币。我们所描述的双代币系统提供了一个简单的替代方法：调整计分率或分红流率。例如，管理游戏的委员会可以让游戏稍微困难一些，这是一种减慢积分积累的方法，或者可以减少总分红规模，这是一种减少长期代币供应的方法。</p>
+<p>但构建者必须谨慎对待这类干预，因为贡献者总体激励结构的每一个变化都会影响贡献者的行为。特别是，任何意外降低积分值的事情都可能损害用户的信任。</p>
+<h2 id="不要过度榨取价值">不要过度榨取价值！</h2>
+<p>我们已经概述了社交代币设计的一些核心原则，但同样重要的是，要将这些设计与产品市场相结合，从本质上激励用户。举个例子，如果一款游戏专注于让用户获利，但却没有正确把握“玩法”，那么它就忽略了一个要点，即游戏首先应该是为了乐趣而玩。</p>
+<p><strong>如果一款产品是围绕着一个信誉体系来启动的，但却缺乏真正的产品与市场的契合度，那么它就有可能创造出一群投机者，而不是真正的用户。</strong></p>
+<p><strong>但一旦达到产品与市场的契合度，激励机制就会起作用。如果一个平台不能给予用户适当的奖励，那么它将很难扩大规模。为了使激励机制发挥作用，信誉体系应该将社会资本与金融资本分开，尤其是当前者为后者提供了清晰的发展道路。</strong></p>
+<p>设计要考虑的因素还有很多，比如治理和信誉之间的关系；使信誉系统响应贡献者社区的发展；让所有类型的贡献者都能建立起自己的信誉。但我们相信，如果构建者在高水平上接受双代币系统设计，他们将能够用真实的信誉信号奖励贡献者，即使在产生流动性的同时也保持其价值。这正是这些项目推动增长所需要的。</p>
+<p>本文来自a16z，原文作者：Jad Esber &amp; Scott Kominers，由 Odaily星球日报译者 Katie 辜编译。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/29404/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">“电子证照区块链”应用案例发布</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/29401/">
+                <span class="next-text nav-default">BlockFi向SEC申请推出基于比特币期货的ETF</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#信誉系统的三段式演变">信誉系统的三段式演变</a></li>
+    <li><a href="#信誉代币的悖论它是挣来的还是买来的">信誉代币的悖论：它是挣来的还是买来的？</a>
+      <ul>
+        <li><a href="#社会资本不应该被购买但这并不意味着它不能产生流动性">社会资本不应该被购买，但这并不意味着它不能产生流动性</a></li>
+      </ul>
+    </li>
+    <li><a href="#点数应该奖励给贡献行为">点数应该奖励给贡献行为</a></li>
+    <li><a href="#规模很重要关注分红供应和分配">规模很重要，关注分红、供应和分配</a></li>
+    <li><a href="#经济奖励应该与贡献相一致">经济奖励应该与贡献相一致</a></li>
+    <li><a href="#信誉激励必须持续进行">信誉激励必须持续进行</a></li>
+    <li><a href="#不要过度榨取价值">不要过度榨取价值！</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          从真金白银的资金易手 看Luna崩盘的底层数学规律 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="截止目前，我还没看到有哪篇文章，从资金易手（也就是真金白银去哪了）的角度谈这次Luna归零事件的，那我就来谈一谈吧。这将是我写的最深的一篇文章之一，请各位跟上。" />
+<meta name="keywords" content="Terra" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/37840/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="从真金白银的资金易手 看Luna崩盘的底层数学规律" />
+<meta property="og:description" content="截止目前，我还没看到有哪篇文章，从资金易手（也就是真金白银去哪了）的角度谈这次Luna归零事件的，那我就来谈一谈吧。这将是我写的最深的一篇文章之一，请各位跟上。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/37840/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-14T00:00:00+00:00" />
+
+<meta itemprop="name" content="从真金白银的资金易手 看Luna崩盘的底层数学规律">
+<meta itemprop="description" content="截止目前，我还没看到有哪篇文章，从资金易手（也就是真金白银去哪了）的角度谈这次Luna归零事件的，那我就来谈一谈吧。这将是我写的最深的一篇文章之一，请各位跟上。"><meta itemprop="datePublished" content="2022-05-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8018">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="从真金白银的资金易手 看Luna崩盘的底层数学规律"/>
+<meta name="twitter:description" content="截止目前，我还没看到有哪篇文章，从资金易手（也就是真金白银去哪了）的角度谈这次Luna归零事件的，那我就来谈一谈吧。这将是我写的最深的一篇文章之一，请各位跟上。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">从真金白银的资金易手 看Luna崩盘的底层数学规律</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-05-14">
+      2022-05-14
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8018 字 -
+        预计阅读 17 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="目录">目录</h2>
+<p>一、UST稳定币的机制<br>
+二、虚市值<br>
+三、如何利用虚市值赚钱<br>
+四、Luna中的虚市值<br>
+五、Luna创始人Do Kwon的巨额套现<br>
+六、Do Kwon买入的8万个BTC<br>
+七、Do Kwon用8万个BTC救市了吗？<br>
+八、Luna&amp;UST归零中，损失的资金都到哪去了？<br>
+九、如何在UST脱锚中赚钱？</p>
+<p>这两天币圈发生了有史以来数得着的天量财富转移，你在这次转移中，是赚了还是亏了？如果你不懂数学，那肯定是会亏的，因为这次Luna归零的例子非常极端，400亿美元在2天内彻底归零。</p>
+<p>截止目前，我还没看到有哪篇文章，从资金易手（也就是真金白银去哪了）的角度谈这次Luna归零事件的，那我就来谈一谈吧。这将是我写的最深的一篇文章之一，请各位跟上。</p>
+<p>不要问我为什么鸽了11号的文章，凡是市场情绪极端时（恐慌或狂热），就是到处都能轻松捡钱的时候，相信很多人和我一样，这两天都只睡了几个小时。能在昨天晚上挤出时间，写了一篇《USDT在近期没有脱锚的风险》来避免市场过度恐慌，就已经不错了。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_js3y2qjwoz.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<h2 id="一ust稳定币的机制">一、UST稳定币的机制</h2>
+<p>要说明这次Luna归零事件，得先讲一下UST稳定币的稳定机制。UST是一个目标锚定1美元的算法稳定币。锚定机制是：双币销毁铸造：</p>
+<p>① Luna是UST的项目币，自由涨跌。</p>
+<p>② UST通过和Luna的 “双向销毁铸造” 来锚定1美元：</p>
+<p>a、当UST价格大于1时（例如1.01美元），可以通过销毁价值1美元Luna，来得到1个UST，然后卖出1UST得到1.01美元，获利0.01美元。</p>
+<p>b、反过来，当UST价格小于1时（例如0.99美元），可以用0.99美元买入1UST，销毁1个UST，来得到价值1美元的Luna，然后卖出Luna得到1美元，获利0.01美元。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_jznmsksvk2.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>套利机制如上图所示，当然其中有一些摩擦费用（例如系统铸造费用，交易费等），1.01是不够套利成本的，要再高一些才够。</p>
+<p>因此，通过套利者的不断套利，只要Luna的总市值正常，UST就能稳定在1美元。而UST生态的发展，又会将交易费手续费等利润，反哺给Luna（Luna本质上是这套系统的股权），提高Luna的总市值。</p>
+<p>那Luna这次为什么归零了？要深刻理解其本质，得先了解 “虚市值” 这个基础概念。虚市值 的概念我在之前2019年10月29日的文章（BTC那时候价格9204美元）《比特币涨到十万美元需要多少资金？》中讲过一次，如果没看过的话，我简单讲一下。</p>
+<h2 id="二虚市值">二、虚市值</h2>
+<p>简单一句话：</p>
+<p>“总市值” 只是个统计值，不是真金白银。</p>
+<p>举一个最简单的例子：张三发行了一个有1亿发行量的币，然后以10元卖了1个给李四，那么这个币的总市值就是1亿个*10元=10亿元，但如果张三这时候说，我这个币总市值10亿元，我打一折，1亿卖给你，你会买吗？</p>
+<p>你肯定不会买对吧？因为这个币的交易量远低于总市值，根本不值钱。</p>
+<p>这是第一步，基本没人会上当，但稍微换了下花样，就会有很多人掉坑里了。我在《比特币涨到十万美元需要多少资金？》里举了一个例子：</p>
+<blockquote>
+<p>一家股票型基金，基金历史成长性很好，每年都赚10%~30%，到现在基金持有的几只股票，净值100亿。请问，基金打个5折，50亿整个（包括股票一起）卖给你，你愿意买吗？</p>
+</blockquote>
+<p>给你1分钟时间思考</p>
+<p>这个坑和前一个问题是一样的：你手上有1亿股票，每股价格10元，那就值10亿元真金白银（红色面积）吗？</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_ceongb1kd2.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>当然不值10亿元，你要把这10亿市值股票在市场上卖出，换回的真金白银（红色部分），可能远远不到10亿。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_kov0ptcqp2.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>你要卖出1亿股，愿意10元买的可能只有300万股，9元500万股，价格越往下，买单越多，可能要卖到2元，才能把这1亿股卖完。卖完加一起，你总共只拿到了3亿的真金白银。</p>
+<p>那剩下7亿元的 “财富” 哪去了？不不不，这7亿元只是个虚值，从来都不是真金白银。把一股的最后成交价10元乘以数量1亿股，得到的总市值10亿元，和真正的10亿真金白银，中间的差距从1%到100%都有可能。1亿股占总股本的比例越大，差距百分比也越大，总共就1.1亿股的话，卖掉1亿股足以砸掉90%以上的价格。</p>
+<h2 id="三如何利用虚市值赚钱">三、如何利用虚市值赚钱</h2>
+<p>其实很简单，只要用 “总市值” 这个统计值，去换低认知的人的真金白银就行了。比如一开始举的例子，基金这100亿股票怎么来的？可能只是基金只花30亿元，购买控盘几只股票，逐渐做出来的。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_3fp8w2rstl.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>再复习一下这个图，既然市值10亿的股票砸下来，最后只能卖出3亿真金白银，也就意味着如果花3亿真金白银逐步吸筹，在控盘度越来越高的情况下，只要花少量的钱，就能推高很大的总市值。</p>
+<p>不过到最后，这10亿市值做出来了，但只是虚的，要是再卖出去，又只能卖出3亿真金白银，白忙乎一场，那怎么办呢？</p>
+<p>简单，这股票是用基金逐渐买入的，把基金卖给低认知的散户好了：看看，我这基金（山寨币）很优质的，每年都盈利20%哦，现在基金持有市值100亿元的股票，卖你100亿真金白银，你不亏的哦。看到了吧？不好好学习，提高认知能力，就是这个后果，被卖了还不知道是怎么卖的。</p>
+<h2 id="四luna中的虚市值">四、Luna中的虚市值</h2>
+<p>Luna在脱锚前，最高到过400亿美元的总市值</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_iekrwr656z.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>但根据虚市值，假设有人用无限多的Luna砸盘，那能卖出来的美元，是远低于400亿美元的，具体能卖出多少，这次就发生了一次极其罕见的社会实验，后面给出数据。</p>
+<p>UST在Luna生态发展的过程中，逐渐通过Luna销毁生成，在5月9日脱锚前，总市值为187亿美元，此时Luna总市值为204亿美元。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_c2eahquhaw.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>有人这时候就说，Luna总市值快小于UST了，UST快锚定不住了，这说法对吗？</p>
+<p>给你1分钟时间思考，看你是否真正理解了 “虚市值” 这个概念（而不是仅仅 “知道”）。</p>
+<p>这说法当然不对，因为Luna在1:1之前，早就锚定不住UST了，Luna能卖出的真金白银远小于总市值。从这次社会实验的结果来看，Luna总市值要至少10~20倍于UST才可能锚定住。</p>
+<p>Luna协议要能长时间运行，必须设置UST总市值小于Luna总市值10%的硬顶（最好是5%），并在Luna总市值下跌时，对应销毁UST，当然这也无法防止Luna在总市值下跌时，发生死亡螺旋并最终归零，但至少不会那么惨烈，近400亿美元市值在2天内归零（204亿美元的Luna和186亿美元的UST）。</p>
+<p>五、Luna创始人Do Kwon的巨额套现</p>
+<p>那么，就有了一个很有趣的问题，Luna什么时候跨过了 “UST总市值占比过大” 这个鬼门关的？</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_watw6ccky6.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>下图这段UST发行量直线飙升，就是Do Kwon将大量Luna销毁铸造成UST。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_jq2iscy6i3.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>增发前2021年11月9日，Luna总市值201亿美元，UST总市值28.8亿美元，占比14%。</p>
+<p>11月20日UST增发完成后，Luna总市值180亿美元，UST发行量71.7亿美元（增发了42.9亿美元），占比40%，Luna进入 “一碰就倒” 的归零倒计时。</p>
+<p>这些Luna名义上是社区池的，但实际上是Do Kwon自己控制的，本质上就是Do Kwon自己的。</p>
+<p>这是一个非常高明的套现行为，如果Do Kwon在Luna总市值201亿美元（总币量4亿个）时，卖掉8867万Luna（占总量22%）的话，最多只能卖20亿美元。因为按5月11日的实际砸盘结果，8120万Luna币就能把Luna总市值从196亿美元，砸到25亿美元（砸掉了87%），同时只销毁了19.4亿UST。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_17z7fornyw.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>而Do Kwon通过将Luna的虚市值，铸造为UST的方法，在市场毫无波动的情况下，获得了40亿UST。这时候，最迷惑人的一个障眼法就来了：</p>
+<blockquote>
+<p>UST是Luna虚市值的一部分，有很大折扣，</p>
+<p>UST不是真金白银。</p>
+<p>但UST看起来又很像美元，</p>
+<p>在少量兑换时也可以按1:1兑换为美元。</p>
+</blockquote>
+<p>这时候，就看哪些数学不好的人，愿意接受 “假币” UST了。</p>
+<h2 id="六do-kwon买入的8万个btc">六、Do Kwon买入的8万个BTC</h2>
+<p>那么Do Kwon销毁Luna产生的40亿UST “假币” 都花到哪了呢？</p>
+<p>手上有假币，当然要去买保值的硬通货，所以Do Kwon都去买了BTC。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_y4ops9y64e.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>从Luna基金会（LFG）公布的一个存币地址查看bc1q9d4ywgfnd8h43da5tpcxcn6ajv590cg6d3tg6axemvljvt2k76zs50tv4q</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_kfbmqfzite.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>42530个BTC的买入均价是42152美元（假设转入时间等于买入时间），乘以8.04万BTC就是33.89亿美元，接近铸造的UST金额，剩下的USDT估计是Do Kwon留着备用的（Do Kwon还用UST换了12亿美元的USDT）。</p>
+<p>更讽刺的是，Do Kwon还卖了10亿美元的Luna给机构。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_sdsuhynp26.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>Jump Crypto、三箭资本、Republic Capital、GSR这些机构将被永远地钉在耻辱柱上，这么简单一个数学障眼法，内部流程没有一个人审出问题。为什么这些机构看不懂这么简单的一个数学障眼法呢？不要迷信机构，圈外再牛逼的机构，在币圈都是大号韭菜，这些机构里的分析管理人员，也只是普通人而已，很多也是不懂数学的傻逼。</p>
+<p>那么，下一个万众瞩目的问题就是：</p>
+<h2 id="七do-kwon用8万个btc救市了吗">七、Do Kwon用8万个BTC救市了吗？</h2>
+<p>要是传统资金市场，这就是个谁也不知道的黑箱，可惜Do Kwon操纵的是一切透明的区块链，那就一目了然了。</p>
+<p>Do Kwon于5月10日2~4点（UTC+8 北京时间，下同）移动了</p>
+<p>bc1q9d4ywgfnd8h43da5tpcxcn6ajv590cg6d3tg6axemvljvt2k76zs50tv4q 里的42530 BTC和<br>
+bc1qkhl4pt957urd8sleys3p00ua2h23nl3hghhtkyaatgzapj9kflhqar0jdv 里的12581 BTC<br>
+以上的5.5万BTC是从Luna基金会地址打出去的，另外还有2.5万BTC只是Do Kwon声称有，不能确认是否真实存在。</p>
+<p>这些币充入了各大交易所，例如根据 bitinfocharts.com 的标记，其中的3万BTC最终进入了OKEX的地址 1NYAd6fA2dc5xowuweFUSDRqRTEzDwk28</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_u4usaenkn9.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>但10日2点后的BTC价格却没有明明显下跌，一直在横盘，完全不是8万个BTC砸盘的表现。一直到11日晚上8:30（美国公布4月CPI通胀数据）后，BTC价格才出现剧烈波动。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_a0z22wssy3.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>另一个更坚固的数学证据是：假设Do Kwon真的用了这20~30亿美元资金，在脱锚点（5月10日0点）后的2~4小时内救市，那在各种数据统计曲线上将能看到明显的痕迹，尤其是在脱锚刚开始的数据段，毕竟UST到现在总共也就逃了（销毁了）74亿美元出来，20~30亿美元的救市资金，足以造成明显的曲线变形。</p>
+<p>但是，以下从脱锚点（5月10日0点）开始的数据统计曲线都非常顺滑，符合自由落体脱锚的表现。</p>
+<p>例如 “UST累计币数销毁量” 开始慢（因为市场还没恐慌），中间快，最后慢（因为Luna都被换完了），基本对称。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_agpdm64tgv.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>这是什么？这就是个标准的 皮尔曲线。 </p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_qs0q4rgrac.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<blockquote>
+<p>解释一下皮尔曲线：</p>
+<p>当经济变量的发展变化表现为初期增长速度缓慢，随后增长速度逐渐加快，达到一定程度后又逐渐减慢，最后达到饱和状态的趋势，即原时间序列倒数的一阶差分的环比为一个常数，可以用皮尔曲线来描述。</p>
+</blockquote>
+<p>这次脱锚后UST的销毁，完美适合这种数学模型，并且画出了一个标准的皮尔曲线。这哪里有20~30亿美元人为救市干预的痕迹？我估计Do Kwon就用小指头象征性地救了一下市，把8万个BTC全部装进了自己的腰包。</p>
+<p>“UST累计币数销毁量 占 Luna总市值减少 百分比”  这个指标也基本平滑，说明销毁的UST均匀地由Luna总市值减少来吸收。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_wwgp5sj03j.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>据说现在韩国有人线下去堵Do Kwon肉身，Do Kwon已经向警方求助了，我只能说，这条路对了。Do Kwon手上肯定还有很多BTC，甚至没有将任何BTC用于救市，自己搞出来的局，自己还不清楚结果吗？各大交易所有义务调查Do Kwon充入BTC后的交易行为。</p>
+<p>Do Kwon如果要自证清白也很简单，公布由交易所联合作证的UST买入记录，并把救市买入的至少40~50亿UST提现到链上地址，向全网证明即可。</p>
+<h2 id="八lunaust归零中损失的资金都到哪去了">八、Luna&amp;UST归零中，损失的资金都到哪去了？</h2>
+<p>损失中的一半是持有Luna的人，不过这些人本来就是Luna投资者，盈亏同源。</p>
+<p>比较惨的是在Luna下跌过程中接死亡螺旋的人。他们以为Luna这样一个市值前十，数百亿美元的项目，在跌掉90%，99%，99.9%后会止跌。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_nt7dpt8lre.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>还有满仓进去赌一把的</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_fc58bph0gm.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>但经过上面的分析，大家应该知道，在187亿美元的UST全部逃出之前，Luna将有无限增发的抛压，所有在中途接盘Luna的人，他们买入Luna的真金白银，实际上是在解救持有UST的人，除非接盘资金大于187亿美元，否则Luna只有归零的一个结局。</p>
+<p>而204亿美元市值的Luna，有可能有187亿美元真金白银的接盘资金吗？当然不可能，Luna在从57美元跌到4.1美元，总市值缩水90%后，仅仅逃出了23.8亿美元的UST。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_kyo9n0hg6k.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>从23.8亿到74亿之间逃出来的UST，就要感谢各路看Luna便宜，又不懂数学的抄底资金了：</p>
+<blockquote>
+<p>57美元到4.1美元之间的买入资金，解救了23.8亿美元的UST。</p>
+<p>4.12美元到1美元之间的抄底资金，解救了29.2亿美元的UST。</p>
+<p>1美元到0.1美元之间的抄底资金，解救了16.8亿美元的UST。</p>
+<p>0.1美元以下的抄底资金，解救了4.2亿美元的UST。</p>
+</blockquote>
+<p>以上慈善资金共解救了74亿美元的UST，最终剩下了113亿美元的UST归零。</p>
+<p>所以，我5月11日课后作业第2问考察的是：</p>
+<p>你是否理解，抄底资金本质上是去解救UST的，而币价越低，能吸引的抄底资金越多。</p>
+<p>Luna币价 0~1美元（对应市值变化11.3亿美元）的抄底资金，解救了21亿美元的UST。</p>
+<p>这几乎和 Luna币价 57~4.1美元（对应市值变化176.7亿美元）解救的23.8亿美元一样多，</p>
+<p>所以答案是小于。</p>
+<h2 id="九如何在ust脱锚中赚钱">九、如何在UST脱锚中赚钱？</h2>
+<p>这是我5月11日课后作业第1问。赚钱的方法，可以大体分为四层：道体用术。</p>
+<p>道：</p>
+<p>① 能量守恒。</p>
+<p>② 熵增不可逆，减熵（秩序）无法凭空产生。</p>
+<p>所有的系统都会往混乱发展，除非有外部能量的注入。例如你的房间永远会变得更乱，除非你消耗能量整理房间。这里我要再强调一次，知道某些规则（例如能量守恒）和理解这些规则，中间差距的鸿沟大于十万八千里。</p>
+<p>为什么理科生收入比文科生更高，并且更多地主导了社会？虽然理科生和文科生都知道能量守恒，但理科生通过数以万计的题目练习，将 “能量守恒” 这样世界运行的基本规律，深刻写入本能。</p>
+<p>在面对同一个坑时，理科生更容易看出：这里不守恒。</p>
+<p>体</p>
+<p>① 因为熵增不可逆，所以将 “算法稳定币” 作为一个独立系统，除非有源源不断的外部能量注入（例如外部持续输入的增长、救市等资金），否则算法稳定币必将归于混乱（脱锚）。</p>
+<p>② 虚市值 导致死亡螺旋发生时，10倍的Luna也托不住1倍的UST市值，更不用说UST市值甚至接近Luna市值。</p>
+<p>用：</p>
+<p>① 获利方法：在课后作业中，很多人都说应该做空Luna，这个回答对吗？</p>
+<p>给你1分钟时间思考。</p>
+<p>错误，因为在任何时间点，都不能预测Luna的涨跌，除了在刚脱锚时，Luna下跌的概率比较大以外，其余时间点Luna做空的赢面都不稳，举一个做空Luna反被爆仓的例子：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_yc6w3f0bnf.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>Luna在这次归零前的死猫反弹中，反弹了11倍，爆了无数的空军。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_4z1vg2dcmi.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>在这次大反弹中，</p>
+<p>第一个做多亏光A8的兄弟，逃出了一个A7，</p>
+<p>而第二个做空爆光A8的兄弟，靠套利赚回了一个A7。</p>
+<p>不同的选择，同样的命运，生活真是戏剧性。</p>
+<p>当然，太阳底下没有新鲜事，我在2016年的《给Zcash泼泼冷水——有了深黑，市场真的需要纯黑吗？》中，写了一段自己亲身经历：在Zcash刚开始挖矿，从零点几BTC涨到3200BTC的时候，先被爆了一个小仓位，然后靠着Bitmex期货的10BTC限价，赚了100BTC回来。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_2kj21uksna.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>虽然一开始被爆的仓位很小，但这是我错得最离谱的一次，Zcash按理性预测，参考门罗币、达世币这两个已有的匿名币，合理估值应该在0.01~0.03BTC之间。我在1.7 BTC时做空，已经是超过合理价格100倍的泡沫，但万万没想到，市场还能在100倍泡沫之上，再涨2000倍。</p>
+<p>虽然我最后赚了，但那是靠Bitmex期货限价规则赚的，从此以后，我再也不做空任何加密货币。所以建议大家：</p>
+<p>不要做空任何加密货币，</p>
+<p>做多最多跌100%，做空可能涨10万倍，</p>
+<p>觉得会跌回来吗？</p>
+<p>市场不理性的时间，</p>
+<p>总是会超过你撑着不破产的时间。</p>
+<p>所以，正确的获利方法是：加杠杆做空UST。UST锚定1美元，几乎不可能 长时间&amp;大幅 高于1美元，因此杠杆倍数越高越好，可以高至10~20倍。</p>
+<p>② 预测UST脱锚时间：</p>
+<p>《稳定币利率长期高达20%，Anchor也是庞氏吗？》这篇文章提出了一个观点，认为UST提供了一个年利息20%的理财协议Anchor，而Anchor本身的经营收入达不到20%，每日将亏损418万美元。亏损要消耗Luna基金会提供的补贴，现在还剩3.6亿美元，按照目前的烧钱速度，大概只能再支撑 3 个月。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0514/15_jw5jzg1avl.png" alt="从真金白银的资金易手 看Luna崩盘的底层数学规律"></p>
+<p>因此这篇文章认为：</p>
+<blockquote>
+<p>按照目前 Anchor 储备金的消耗速度，我们大概率会在今年等来这个金融游戏的破局时刻</p>
+</blockquote>
+<p>这个观点对吗？给你1分钟时间思考……</p>
+<p>虽然结果对了，但是逻辑是错的。Anchor高达20%的高息存款，确实加速了UST的死亡，但死亡的逻辑传导并不是利息不够。Do Kwon能轻易地从系统中抽出40亿美元，买入8万个BTC，在系统规模继续扩大的情况下，抽几亿美元出来付利息，在3年内毫无问题。</p>
+<p>并且还有一点，Anchor付的利息还是UST，只要UST的信用不破，实际上甚至不需要用多少真美元付利息。这是央行套利学的一个常识：本国货币国债永远不会违约，如果还不上，直接印更多本国货币就行了。</p>
+<p>所以，关键还是UST的信用什么时候破？或者说，市场什么时候开始普遍怀疑UST的兑付能力？</p>
+<p>虽然如前所述，根据本次真实的砸盘数据，无法兑付的时间点是：UST总市值超过10%的Luna后。但市场上绝大部分人数学不好，不懂虚市值，并不知道2021年11月20日，Do Kwon增发40亿UST，UST市值占比达到Luna的40%后，UST就无法兑付了。</p>
+<blockquote>
+<p>聪明人要跟着傻逼走，</p>
+<p>傻逼的共识也是共识。</p>
+</blockquote>
+<p>所以，UST信用破产的时间点是：UST总市值接近、甚至超过Luna时。</p>
+<p>在最近一两周，我已经多次看到有人指出风险：UST总市值已经接近Luna了。再迟钝、再傻逼的人，也会意识到：这样Luna总市值好像不够UST兑付了？</p>
+<p>死亡的逻辑传导并不是利息不够，</p>
+<p>而是高利息快速吸引大量UST，</p>
+<p>提高了UST总市值占比，</p>
+<p>直到高到能警醒市场上绝大部分傻逼为止。</p>
+<p>所以，真正的聪明人，</p>
+<p>是知道傻逼在哪错了的人吗？</p>
+<p>当然不是，真正的聪明人，</p>
+<p>是知道傻逼傻到什么程度，</p>
+<p>并能和傻逼同步的人：）</p>
+<p>术：</p>
+<p>如何加杠杆做空UST，例如伞形资金，在交易所加杠杆借出UST卖出，如何在Luna归零过程中通过销毁UST套利 等等。</p>
+<p>虽然昨晚我睡了13个小时，但现在已经很晚了，术都是一些琐碎的知识点，写起来没意思，套利也有很多人说了，并且本文已经写了8000字，加上图片上万字，再长阅读体验就不好了。</p>
+<p>所以本文就到此为止吧。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/37844/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">爱优腾亏损、电影院倒闭 电影的出路在元宇宙？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/37856/">
+                <span class="next-text nav-default">反驳CME执行长 SBF在国会捍卫FTX的新「清算模式」</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#一ust稳定币的机制">一、UST稳定币的机制</a></li>
+    <li><a href="#二虚市值">二、虚市值</a></li>
+    <li><a href="#三如何利用虚市值赚钱">三、如何利用虚市值赚钱</a></li>
+    <li><a href="#四luna中的虚市值">四、Luna中的虚市值</a></li>
+    <li><a href="#六do-kwon买入的8万个btc">六、Do Kwon买入的8万个BTC</a></li>
+    <li><a href="#七do-kwon用8万个btc救市了吗">七、Do Kwon用8万个BTC救市了吗？</a></li>
+    <li><a href="#八lunaust归零中损失的资金都到哪去了">八、Luna&amp;UST归零中，损失的资金都到哪去了？</a></li>
+    <li><a href="#九如何在ust脱锚中赚钱">九、如何在UST脱锚中赚钱？</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

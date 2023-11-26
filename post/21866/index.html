@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文详解，Filecoin与Chia之间的区别 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="不少人认为Chia是与Filecoin极为相似的POC项目" />
+<meta name="keywords" content="undefined" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/21866/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文详解，Filecoin与Chia之间的区别" />
+<meta property="og:description" content="不少人认为Chia是与Filecoin极为相似的POC项目" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/21866/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-07T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文详解，Filecoin与Chia之间的区别">
+<meta itemprop="description" content="不少人认为Chia是与Filecoin极为相似的POC项目"><meta itemprop="datePublished" content="2021-05-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5324">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文详解，Filecoin与Chia之间的区别"/>
+<meta name="twitter:description" content="不少人认为Chia是与Filecoin极为相似的POC项目"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文详解，Filecoin与Chia之间的区别</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-05-07">
+      2021-05-07
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5324 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>随着生态产业链的持续扩大，技术空间的不断拓宽，存储、公链、NFT等各个赛道都蓄势待发，玩法新颖、种类繁多的项目陆续登场，整体呈现出一片欣欣向荣的状态。近日，被各大网站、社区、朋友圈霸屏的Chia，热度一路飙升，据说是把硬盘价格拉到了一个新高度。也由于Chia采用的空间+时间证明机制，让普通电脑可利用硬盘的剩余空间挖矿参与出块这一点，让不少人误认为Chia是与Filecoin极为相似的POC项目，通过本文，一起来看看他们的区别到底在哪：</p>
+<h2 id="所属赛道不同"><strong>所属赛道不同</strong></h2>
+<p><strong>两者各司其职，Chia做的是支付领域，而Filecoin属于区块链底层基础板块项目。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0507/15_azi5lmwk4d.webp" alt="一文详解，Filecoin与Chia之间的区别"></p>
+<p>Chia 成立于 2017 年 8 月，是一条全新的公链，旨在开发一个能够优化区块链和智能交易的平台，成为全球通用型数字货币，以改善全球金融和支付系统。 Chia 拥有一种全新开发的创新型区块链编程语言，即 Chialisp。这个区块链编程语言的功能十分强大、易于审核且安全。Chialisp 也是一种出色的链上智能交易开发环境，能够释放加密货币所承诺的安全性、透明性和易用性，当前可支持的参考智能交易包括：原子兑换、授权收款人、可恢复钱包、多重签名钱包和限价钱包。</p>
+<p>此外：Chia 采用全新的中本聪共识算法，该算法可以彻底消除区块链系统工作量证明的能耗需求；</p>
+<p>Chia 区块链更加去中心化，安全性也得到大幅提高；</p>
+<p>Chia 还采用了更先进的加密工具来实现丰富的智能交易功能。</p>
+<p>Filecoin存在的本质是IPFS的激励层，是在IPFS基础之上构建的分布式存储网络，为现有的互联网发展带来了“信任”，旨在成为Web 3.0的重要基石。</p>
+<p>Filecoin是一个存储文件的对等网络，具有内置的经济激励机制，可确保随着时间的推移可靠地存储文件。Filecoin是IPFS网络的价值体现：IPFS网络上所有的价值服务都通过Filecoin进行交易，存储矿工通过提供存储空间的业务，获得区块打包奖励，同时用户通过储存和检索需求向矿工支付FIL。</p>
+<p>对于用户而言：一方面可以通过选择最适合存储需求的矿机，花费 FIL雇佣矿工来存储或分发文件，另一方面还能验证文件是否正确存储。</p>
+<p>对于矿工而言：Filecoin网络目前主要分为两种类型的矿工：</p>
+<p>①　存储矿工是Filecoin网络的心脏，负责在网络上存储文件和数据。</p>
+<p>②　检索矿工是Filecoin网络的脉络，负责提供快速通道来检索文件。</p>
+<h2 id="共识机制不同"><strong>共识机制不同</strong></h2>
+<p><strong>Chia采用的空间证明和时间证明，与Filecoin的共识机制完全是不同的概念。</strong></p>
+<p>Chia的空间证明是一种加密技术，如果要作为一种共识机制，必须与其时间证明一起捆绑。空间证明过程中，证明人需要证明他们将未使用的硬盘驱动器空间分配给存储空间，Chia则根据矿工所拥有的存储空间大小和整个网络空间的大小比例分配赢得一个区块的概率。时间证明则是确保区块之间的时间保持一致，继而提高整体的安全性。</p>
+<p>Filecoin创新开发采用了一种混合共识机制——复制证明 （PoRep）+时空证明（PoSt）+预期共识机制（Expected Consensus)。</p>
+<p>Filecoin中矿工需通过复制证明（PoRep），来证实该部分数据已经封存完毕、妥善存储，此外复制证明能有效阻止女巫攻击、外包攻击和代攻击；</p>
+<p>Filecoin的时空证明 = windowPoSt + winningPoSt。时空证明（PoSt）本质是PoS的一种，但可以在一定程度上降低资源浪费，节约计算资源和能源，将硬盘上存储数据的大小作为算力，而不用进行巨量的哈希计算。</p>
+<p>①windowPoSt指矿工每24小时需要在当日有效扇区提交windowPoSt消息，证明数据正确妥善存储在扇区内；</p>
+<p>②winningPoSt则是指获得出块权时需要完成的PoSt消息，证明自己有能力获得出块权。Filecoin的预期共识（EC)目标是使得矿工出块的权益，与对应的存储贡献成正比。</p>
+<h2 id="经济模型不同"><strong>经济模型不同</strong></h2>
+<p><strong>Chia的经济模型类似BTC，而Filecoin融入了更多的激励、惩罚机制。</strong></p>
+<p>在Chia网络中，矿工通过一块硬盘向网络提交证明，承诺获得计算的能力，然后竞争生成区块。代币（XCH：发行总量无上限）的生产竞争与BTC相似，矿工的收益由整个网络计算能力的半分比确定。同时，Chia的经济模型耕种奖励(farming)采用类似比特币的区块奖励减半措施，由于加入网络的空间和Timelord速度增加或减少的波动，实际的发放时间表会像比特币的发放时间表在历史上一样略有不同。但是由于Chia主要消耗的是硬盘空间，不需要消耗太多的功率和带宽，所以整个挖矿过程较BTC也更绿色环保。</p>
+<p>此外，白皮书目前只看到 XCH 的产出机制，没有关于 XCH 的回收机制详细的描述，所以对于未来Chia的走势，大家也充满了期待。</p>
+<p>Filecoin经济模型的本质是以数据存储为基础，提供一个‘基于区块链并有望彻底改变全球存储经济的的市场’，旨在为人类社会的信息提供高效、强大的、分布式的存储，创建一个去中心化的存储网络，让世界上的任何人存储或检索文件。其经济模型，希望通过一套机制或规则来激励、约束、支持或惩罚不同的行为。Filecoin存储矿工在确保链上共识和提供存储服务方面发挥着至关重要的作用。短期来看，矿工主要是通过链上共识参与和提供可用的存储服务来获得区块奖励。长远来看，参与 Filecoin 经济不一定需要补贴也可以盈利，未来 Filecoin 还会新增更多功能，促使整个生态经济生产变得更加高效，如维修矿工、检索市场、借贷市场、通用智能合约等。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0507/15_ndelsssl3a.webp" alt="一文详解，Filecoin与Chia之间的区别"></p>
+<h2 id="质押机制与释放规则的差异"><strong>质押机制与释放规则的差异</strong></h2>
+<p><strong>Filecoin有前置质押、有释放规则，Chia 挖矿当前无质押和锁仓。</strong></p>
+<p>Filecoin 网络设计了三种不同的质押机制：</p>
+<p>初始质押：由存储质押和共识质押两部分组成：</p>
+<p>①存储质押中小到可以让任何矿工加入网络，同时可以应对早期故障、罚款等。</p>
+<p>②共识质押则取决于该扇区加权字节算力（QAP）和网络流通供应量。相当于20天的区块奖励+相当于FIL流通供应量的30%的份额。</p>
+<p>区块奖励质押：通过区块奖励锁仓来减少初始代币质押的要求。为了保证激励兼容，Filecoin会对未能完成承诺期限的矿工进行处罚。因此区块奖励解锁方案是一个短期延迟加一个固定期限的线性释放来实现的必要亚线性释放。初始参数为解锁延迟期定为20天+线性释放期定为延迟期后180天。</p>
+<p>存储交易提供者质押：在矿工和用户之间建立激励机制，使得矿工在市场上脱颖而出。协议要求一个最低质押以提供最低存储保障，如果交易订单提取终止，这部分质押将被惩罚。</p>
+<h2 id="挖矿门槛"><strong>挖矿门槛</strong></h2>
+<p><strong>Filecoin 挖矿门槛远高于 Chia 挖矿。</strong></p>
+<p>Chia 硬件要求相对较低。Chia 算力需要经过 P 盘。（P 盘对 CPU、内存、SSD 有一定的要求），其特点主要是维护的算力成本低，所以矿工选择自建机房较多。</p>
+<p>Filecoin 对挖矿硬件要求很高。Filecoin 算力封装需要 进行P1、P2、C1、C2 等一系列复杂计算，同时需要高配的 CPU、GPU 参与计算。由于Filecoin整个挖矿对矿场的环境等要求以及运维成本都相对较高，所以业内主流都是选择部署在 t3+级以上的数据中心。</p>
+<h2 id="惩罚机制的差异"><strong>惩罚机制的差异</strong></h2>
+<p><strong>Filecoin挖矿有罚没机制，而Chia没有惩罚机制。</strong></p>
+<p>Chia 挖矿更像是BTC挖矿，算力掉线后最多就是没有收益，无惩罚机制。</p>
+<p>Filecoin重点惩罚内容在于扇区连续错误，网络就会产生逐级惩罚：</p>
+<p>第一次掉算力，没有罚金。第一次不做惩罚，主要是为了避免链同步的问题等非数据问题导致的误惩罚；</p>
+<p>第二次掉算力（第一天和第二天连续掉），当次惩罚扣除扇区中对应3.51天的区块奖励。假设单T收益为0.2FIL，那就是每个扇区扣除0.2/32*3.51=0.0219375FIL；</p>
+<p>连续第三次掉算力惩罚扣除的方法如第二条。持续错误，每天都扣除相同区块奖励；</p>
+<p>如果连续14天错误，扇区终止。除去已扣除区块奖励外，连带扣掉扇区的质押币，不退回。</p>
+<h2 id="矿工共识偏差"><strong>矿工共识偏差</strong></h2>
+<p><strong>Chia利用低门槛吸引大量用户，而Filecoin从长远利益留存矿工。</strong></p>
+<p>整体来说，Chia的大部分矿工是由其他项目的矿工逐利迁移过来。由于Chia 挖矿门槛低，吸血Crust、BHD 、Filecoin等硬盘挖矿项目：BHD 作为老牌 POC 项目，全网算力大幅波动，BHD 矿工对机器稍加配置便转向 Chia 挖矿（BHD 挖矿需要显卡，Chia 挖矿则只需要用 CPU 即可）。</p>
+<p>Crust 矿工由于 CRU 的价格大涨，因借不到质押币，而转向 Chia 挖矿。</p>
+<p>此外，Filecoin 矿机的配置天然适合 Chia 挖矿，在参与成本上具有较大优势。</p>
+<p>未来也许将会有越来越多的 Fil 矿商参与 Chia 挖矿，同时 Fil 矿商势必会将 Chia 的相关算力或矿机产品推给其 Fil 客户，迅速扩大 XCH 的传播度，加大 Fomo 情绪。</p>
+<p>Filecoin的矿工激励机制表面看起来对矿工不友善（矿机配置高、质押币压力、为了促使矿工长期在线、提供稳定的存储服务，还设定了严苛的惩罚机制），但是一方面：随着时间的往后推进，前期单T质押FIL数高、FIL价高、gas费用高导致设备成为沉没成本，但后期单T质押FIL数将逐步减少，矿工的金融成本也会越来越低；另一方面：Filecoin拥有优质的资源优化机制、有上百亿的基建投入、更独特的安全隐私方式，为后期Filecoin生态应用落地打下夯实基础，将会为矿工带来更多维度的长远收益，从根本上降低自身矿工的流失率。</p>
+<h2 id="市场共识"><strong>市场共识</strong></h2>
+<p><strong>Chia 与Filecoin各自发光。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2021/0507/15_l27g6hztk0.webp" alt="一文详解，Filecoin与Chia之间的区别"></p>
+<p>单从收益率来看，Chia 全网算力急剧增长、散户和 Fil 等其他项目矿工的疯狂涌入、高话题度等，无一不体现Chia 目前短期挖矿表现不错。长远来看，Chia 的价值体现在它是否真的实现能“绿色比特币”这个目标以及项目自身的天花板，它也需要找到自己更实际的应用场景。</p>
+<p>Filecoin并不是第一个基于区块链的分布式存储项目，在它之前还有Storj，Sia，MaidSafe等项目，但Filecoin经过三年时间的潜心研发，经历上线初期的价格泡沫和2021年年初的价值低谷，再到如今的爆发，实现从量变到质变的飞跃，重塑poc挖矿产业链的价值主张。Filecoin结合区块链技术，在项目本身生态配套完善的情况下，通过自己的独特优势，保持主网有效算力快速增长，为数字化新基建带来延伸性经济增长，获得了众多用户和矿工的支持。充分证明Filecoin已经凝聚了很多共识，是目前去中心化存储发展的重要方向。</p>
+<p>随着资本的加大投入，无论是Chia还是其他各个生态赛道的竞品会不断抢占加密货币的市场热度，但Filecoin会根据自身的技术优势、经济模型优势、矿工共识与市场共识以及不断调整的战略部署，来调节市场流通水平和巩固买方市场，以促进自身的长远发展。</p>
+<p>Filecoin通过持续推进扩大合作领域，与Chainlink（行业领先的去中心化预言机解决方案）集成，以实现Filecoin网络与以太坊等支持智能合约的区块链之间的双向连接。未来将聚焦更多优质项目，储备大量优质资源，积极开发渠道型、战略型合作新伙伴，在更多领域开展深度对接，找准合作切入点，共享发展新机遇，培养新的突破点。</p>
+<p>Filecoin重视科技创新、研发，保持高水准的技术更新迭代成果转化，按照市场需求导向、用户问题导向、目标收益导向，从项目发展需要出发，提升技术创新能力，加强技术研究，努力获取重大原创性突破。通过采用EIP-1559来提升Filecoin的稳定性和安全性，升级版本，以及把时空证明的验证转移到链下进行，提升Filecoin系统性能，并在一定程度上降低网络Gas费消耗。</p>
+<p>Filecoin丰富生态内容调整战略部署，通过涉足在国债、遗嘱、金融管理等领域的应用，丰富生态内容，逐步调整战略部署，通过为用户和矿工创造互动性极高的空间，在内容上调动用户的积极性，打破传统壁垒，促进更具包容的分布式存储生态。</p>
+<p><strong>总的来说</strong> ，Filecoin在夯实基础业务的同时加大市场开发力度，以满足不断扩张的市场规模及层出不穷的项目更替。未来Filecoin会随着多元化的生态发展和用户需求，透过全方位的服务、多维度的合作与创新的技术，为用户带来更多福利。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/21868/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">行业观察 | 比特币哈希算力正从中国向北美转移</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/21875/">
+                <span class="next-text nav-default">以太坊价格突破3500美元再创新高 多个大户集中抛售或套现逾40亿美元</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#所属赛道不同"><strong>所属赛道不同</strong></a></li>
+    <li><a href="#共识机制不同"><strong>共识机制不同</strong></a></li>
+    <li><a href="#经济模型不同"><strong>经济模型不同</strong></a></li>
+    <li><a href="#质押机制与释放规则的差异"><strong>质押机制与释放规则的差异</strong></a></li>
+    <li><a href="#挖矿门槛"><strong>挖矿门槛</strong></a></li>
+    <li><a href="#惩罚机制的差异"><strong>惩罚机制的差异</strong></a></li>
+    <li><a href="#矿工共识偏差"><strong>矿工共识偏差</strong></a></li>
+    <li><a href="#市场共识"><strong>市场共识</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

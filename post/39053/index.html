@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          全面解析跨链桥：设计、权衡及机会 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本报告将涵盖跨链桥的定义、不同跨链桥架构设计的分类、不同设计之间的权衡、与跨链桥相关的风险以及我们对跨链桥生态系统前景的看法。" />
+<meta name="keywords" content="跨链桥" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39053/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="全面解析跨链桥：设计、权衡及机会" />
+<meta property="og:description" content="本报告将涵盖跨链桥的定义、不同跨链桥架构设计的分类、不同设计之间的权衡、与跨链桥相关的风险以及我们对跨链桥生态系统前景的看法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39053/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-16T00:00:00+00:00" />
+
+<meta itemprop="name" content="全面解析跨链桥：设计、权衡及机会">
+<meta itemprop="description" content="本报告将涵盖跨链桥的定义、不同跨链桥架构设计的分类、不同设计之间的权衡、与跨链桥相关的风险以及我们对跨链桥生态系统前景的看法。"><meta itemprop="datePublished" content="2022-06-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8458">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="全面解析跨链桥：设计、权衡及机会"/>
+<meta name="twitter:description" content="本报告将涵盖跨链桥的定义、不同跨链桥架构设计的分类、不同设计之间的权衡、与跨链桥相关的风险以及我们对跨链桥生态系统前景的看法。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">全面解析跨链桥：设计、权衡及机会</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-16">
+      2022-06-16
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8458 字 -
+        预计阅读 17 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>去年，作为主流智能合约区块链的以太坊，其主导地位受到了替代性 L1 区块链的挑战。多链世界已成为不争的事实。随着这些新链的导入，它们的异构共识机制、智能合约语言以及社区价值将 Web3 拆分成各种生态系统。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_wyf43nok91.png" alt="全面解析跨链桥：设计、权衡及机会"></p>
+<p>L1 区块链市场份额（按照聚合 TVL 占比计算），来源: Defi Llama</p>
+<p>这些分隔开来的生态系统为各自的社区创造了价值，但由于彼此之间缺乏互操作性，使得大部分的跨链协同价值丧失。这种碎片化还导致部落主义抬头、攻击载体增多以及用户体验感恶化。</p>
+<p>为了推进行业发展和获取数十亿新用户，必须要减少链之间的摩擦。这就是加密跨链桥的主要目标。</p>
+<p><strong>本报告将涵盖跨链桥的定义、不同跨链桥架构设计的分类、不同设计之间的权衡、与跨链桥相关的风险以及我们对跨链桥生态系统前景的看法。</strong></p>
+<h3 id="heading"></h3>
+<p><strong>跨链桥的定义及分类</strong></p>
+<p>最概括的来讲，跨链桥在两个或多个区块链之间传输信息。此功能最常用于将一条区块链（“源”链）上的资产兑换为另一条链（“目标”链）上的资产。同时，跨链桥也可用于将数据或消息从源链传递到目标链。在撰写本文时，目前有超过100 个区块链跨链桥用于在 Layer1 和 Layer2 的生态系统中传输信息。</p>
+<p>这种日益复杂的环境使得新参与者很难理解该板块，因此通过建立整体框架来简化各种设计可能会对此有所帮助。最近，Arjun Chand 构建了一个有用的框架，将多种类型的跨链桥整理成不同的类别。我们也采用类似的方法对多种多样的跨链桥进行分类。</p>
+<p>跨链桥可以根据其多种特征进行分类。这些特征包括跨链传输信息的方式、信任假设及其连接对象的类型。</p>
+<p>我们认为最重要的特征是跨链桥如何将数据从一条链传输到另一条链。</p>
+<h3 id="heading-1"></h3>
+<p><strong>跨链机制</strong></p>
+<h4 id="heading-2"></h4>
+<p><strong>1）流动池模式跨链桥</strong></p>
+<p>为了理解流动池模式跨链桥是如何工作的，让我们来假想一个用户，他想要将 USDT 从以太坊转移到 Polygon。用户首先要将以太坊版本的 USDT 存入以太坊上的指定合约地址（流动池），并指定该 USDT 在 Polygon 上的接收地址，也就是 USDT 将在 Polygon 上记入的地址。跨链桥使用此信息将 Polygon 版本的 USDT 传输至指定的 Polygon 地址。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_c4za8sjbpg.png" alt="全面解析跨链桥：设计、权衡及机会"></p>
+<p>流动池模式跨链桥的桥接机制</p>
+<p>这种设计的一个主要缺陷是，跨链桥必须保证其在目标链上持有的单边流动池中有足够的资产，以便用户实际完成资金转移。在上述示例中，如果跨链桥在 Polygon 上的 USDT 流动池为空，则存放在以太坊流动池中的 USDT 将被“卡住”，直到有其他用户请求从 Polygon 向以太坊反向转移 USDT，并有足够的 USDT 补充进 Polygon 的 USDT 流动池中。</p>
+<p>此外，该类型的跨链桥仅允许进行单一类型资产的跨链转移（例如，仅将 USDT 从以太坊转移至 Polygon）。如果想将以太坊上的 USDT 兑换成 Polygon 上的 MATIC，只能在 Polygon 上收到 USDT 后再进行兑换。</p>
+<p>这种设计的主要优点是，用户在目标链上收到代币后便不再需要依赖单边流动池的安全性。用户收到的资产是目标链上的原生资产，因此不需要依赖标的资产的赎回能力来确保其资产价值。这与“锁定&amp;铸造 / 销毁&amp;赎回”的另一种常用桥接设计形成鲜明对比。</p>
+<h4 id="heading-3"></h4>
+<p><strong>2）锁定&amp;铸造 / 销毁&amp;赎回</strong></p>
+<p>另一种常见的跨链桥使用“锁定”或“销毁&quot;机制，然后分别进行铸造或赎回。让我们再次使用上一节中将 USDT 从以太坊转移至 Polygon 的示例来描述该机制的工作原理。如同之前，用户首先将以太坊版本的 USDT 存入跨链桥持有的指定合约地址，并在 Polygon 上指定接收地址。此步骤称为“锁定”。</p>
+<p>然而，与之前不同的是，该类型的跨链桥在 Polygon 上“铸造”或发行 Polygon 版本的存入资产，并将其记入接收账户。这些铸造的代币通常被称为“封装”代币，它们的价值取决于最终将它们赎回为源链上标的资产的能力。当用户想转移回以太坊时，封装代币被简单地发送到 Polygon 上的跨链桥合约地址并“销毁”。这使以太坊上的标资产被赎回并发送到指定的接收地址。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_7uc7khg3bl.png" alt="全面解析跨链桥：设计、权衡及机会"></p>
+<p>锁定 USDT 来铸造封装的 USDT</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_dszikz6i1u.png" alt="全面解析跨链桥：设计、权衡及机会"></p>
+<p>销毁封装的 USDT 来解锁 USDT（即，铸造交易的逆向）</p>
+<p>由于封装代币依赖其可赎回性来维持其价值，因此封装资产的持有者面临智能合约风险。如果源链上的流动池被窃取并致使标的资产被掏空，则封装代币将变得毫无价值。这正是近期 Wormhole 跨链桥遭受的攻击事件中所发生的情况，该事件导致损失超过 3.2 亿美元。</p>
+<p>尽管如此，锁定/销毁&amp;铸造机制的优势在于，此类跨链桥始终流畅地允许将资产从源链转移到目标链，反之亦然。这是因为它们不需要在跨链桥合约中部署目标链上的流动代币池。这促使该类型的跨链桥在可扩展性方面具有优势。</p>
+<h4 id="heading-4"></h4>
+<p><strong>3）原生跨链交换桥（带有去中心化的中间链）</strong></p>
+<p>在过去一年左右的时间里，该类型的跨链桥越来越受欢迎，THOR 链的壮大是其中一个促进因素。原生跨链交换桥允许用户将源链上的原生代币交换为目标链上的不同原生代币。例如，用户可以在无需封装资产的前提下，在各自的链上将原生 BTC 换成原生 ETH。这是通过利用跨链自动化做市商 (AMM) 和中间链来实现的，该中间链用来监控和记录源链和目标链的状态。尽管跨链交换不同原生资产的功能非常有用，但该类型的跨链桥使用了堪称最复杂的传输机制。</p>
+<p>为了简单地解释它的工作原理，让我们来看一个将原生 BTC 兑换成原生 ETH 的示例，我们将使用 THOR 链架构的基础版本作为参考。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_ul7aragc09.png" alt="全面解析跨链桥：设计、权衡及机会"></p>
+<p>通过去中心化的中间链和内置的 AMM 将原生 BTC 兑换为原生 ETH</p>
+<p>在该示例中，持有 BTC 的用户首先将 BTC（连同以太坊接收地址）发送到比特币金库地址。该金库由多个节点控制和监控，这些节点观测传入的交易并记录中间链（例如 THOR 链）上比特币金库的状态更新。</p>
+<p>一旦节点确认金库收到了 BTC，节点就会计算出适当数量的 ETH，记入给以太坊区块链上的用户。与其他任意 AMM 兑换类似，跨链兑换的执行价格取决于兑换额，这与两条链上金库中可用的 BTC 和 ETH 的相应数量有关。与使用少量流动性的小额兑换相比，“用尽”大量流动性的大额兑换将以更高的价格执行。一旦计算出兑换额，中间链就会向以太坊网络发送一条消息，使其将适当数量的 ETH 从金库地址发送到用户的接收地址。</p>
+<p>与流动池模式跨链桥相比，带有中间链的原生跨链交换桥具有更高水平的去中心化和抗审查能力。对于跨链桥用户来说，虽然流动性提供者仍可以通过黑客或漏洞从 AMM 的流动性池中窃取资产，但它能够规避封装资产带来的智能合约风险。</p>
+<p>尽管有这些优点，但此类跨链桥远比其他跨链桥的架构设计复杂得多。创建一个可信的去中心化原生跨链交换桥需要大量的资本投入和时间投入。例如，为了实现从 BTC 到 ETH 的原生兑换，THOR 链上每个节点都必须运行一个完整的比特币网络节点以及一个完整的以太坊网络节点。此外，必须激励 THOR 链上的每个节点保持诚实及可靠。为了实现单个兑换，必须完成上述所有。</p>
+<h4 id="heading-5"></h4>
+<p><strong>4）原生跨链交换桥（以稳定币交换为媒介）</strong></p>
+<p>该类型的跨链桥旨在借鉴流动池模式跨链桥的简单架构，在此基础上提供交换原生资产的便利性。从本质上讲，此类跨链桥的工作方式很像流动池模式跨链桥，但增加了一个额外步骤，以此允许用户在目标链上接收的资产与他们在源链上存放的资产可以是不同类型的资产。LayerZero Labs 的 Stargate 跨链桥就是该类型的一个例子。我们将再次使用一个示例来解释它的工作原理。这次，让我们来考虑用原生 SOL 兑换原生 ETH。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_jhedfdwto2.png" alt="全面解析跨链桥：设计、权衡及机会"></p>
+<p>通过使用两个 AMM 和一个跨链稳定交换桥将原生 SOL 兑换为原生 ETH</p>
+<p>再次，用户首先将其资产 SOL 存入 Solana 上的指定合约地址，该地址由跨链桥持有。然而，与之前的例子不同，这笔存款实际上触发了 AMM 将 SOL 兑换为 Solana 上的稳定币。例如，它可能将 SOL 兑换成 USDC。从这步开始，跨链桥的功能将与流动池模式跨链桥极其相似。Solana 合约地址中的稳定币余额由跨链桥提供商划转至用户在以太坊的合约地址。</p>
+<p>最后，一旦 USDC 记入以太坊上的用户名下，跨链桥就会触发 AMM 执行从 USDC 兑换到 ETH。然后将此 ETH 记入用户指定的接收地址。从本质上讲，此类跨链桥的功能相当于流动池模式跨链桥，只不过仅跨链转移稳定币，以便在跨链转移过程中提供更优的执行价格。通常，两条链上的 AMM 兑换执行价格由一个计算兑换额规模的函数得出，该函数与两个单边池中的可用流动性相关。</p>
+<p>这种架构规避了封装资产的智能合约风险，并且提供了比中间链架构更简单的跨链通信机制。但是，由于执行价格取决于每个 AMM 的可用流动性，因此存在兑换执行价格不理想的风险。</p>
+<h4 id="heading-6"></h4>
+<p><strong>5）主（Home）合约/副本（Replica）合约传输消息（以Optimistic Fraud Proofs为媒介）</strong></p>
+<p>这种特殊类型的跨链桥利用位于不同链上的两个合约地址（称为主合约和副本合约）以及四个接受激励的链下不同参与者，实现跨链发送消息。该类别中最著名的协议或许是 Nomad，它使得多链应用程序实现更轻松地跨区块链生态系统进行通信。让我们通过一个从以太坊向 Polygon 发送消息的简化示例来解释它的工作原理：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_l018vspf8s.png" alt="全面解析跨链桥：设计、权衡及机会"></p>
+<p>由受激励的链下参与者更新、监控和传播的主合约和副本合约实现跨链发送消息</p>
+<p>以太坊上的用户首先会向以太坊上的主合约地址提交一条消息。主合约采集此消息并将其与接收到的其他消息一起放入队列中。此时，称为“更新者”的链下参与者签署该消息组以更新主合约的状态。为了签署这些消息，更新者必须向主合约质押保证金，如果之后证明更新者有任何恶意行为，该保证金将被没收。第二个链下参与者为“观察者”，监控主合约和 Polygon 上的副本合约，以确保所有消息都被正确记录和发送。</p>
+<p>由于跨链桥依赖于optimistic fraud proofs，所以为了防止恶意行为被执行和惩罚恶意更新者，由观察者负责提交恶意行为证明。若无恶意行为证明，跨链桥将假定消息已正确记录和发送（因此得名“optimistic乐观的”）。假设观察者没有检测到更新者有操作问题，第三个链下参与者“中继器”将把消息传输至 Polygon 上的副本合约。最后，第四个链下参与者“处理器”，将消息从副本合约传播到消息的最终接收者。</p>
+<p>这种架构更适合区块链之间的消息传递/数据传输，但因为资产转移最终也不过是以数据来体现账户余额的变化，所以理论上这种架构也可以用于转移资产。</p>
+<p>这种桥接设计的一个主要缺点是存在持续约 30 分钟的欺诈证明延时（DTD），为观察者扫描可疑行为并质疑恶意交易提供窗口期。Connext 和 Hop 这两个协议通过允许其他市场参与者在欺诈证明窗口期结束之前直接向最终接收者发送代币来缩短等待时间。实际上，这两个协议替接受者承担了恶意交易的相关风险，以此从希望获得更高流动性的接收者处收取费用。</p>
+<h3 id="heading-7"></h3>
+<p><strong>需信任 vs. 无须信任</strong></p>
+<p>在该分类中，跨链桥分为两类。它们要么是 1) 需要信任的，要么是 2) 无须信任的。换言之，用户要么信任某个第三方来操作跨链桥并确保安全，要么依赖分布式设计和运行的软件，这样任何单一实体都无法更改其状态或进行操作。需信任的跨链桥包括 xPollinate、Matic Bridge 和 Binance Bridge。无须信任的跨链桥包括 THOR链、Ren 和 Cosmos IBC。</p>
+<p>重要的是，需信任和无须信任之间的区别不是非黑即白，而是循序渐进的。与具有规模更大、更异构的运营商集合系统相比，运营商集合规模更小或地理上更集中的分布式软件协议将更容易受到单点故障的影响。同样，需要用户将资产锁定在合约地址中以换取封装资产的跨链桥也需要用户相信代码的编写方式能够防止攻击或窃取。非托管跨链桥则不需要这种信任，即便它们通常由中心化实体运行。</p>
+<h3 id="heading-8"></h3>
+<p><strong>连接对象是什么</strong></p>
+<h4 id="heading-9"></h4>
+<p><strong>1）从 Layer 1 到 Layer 1</strong></p>
+<p>从 Layer 1 到 Layer 1 的跨链桥允许用户将资金在两个 L1 生态系统间进行转移。例如，Wormhole 的 Portal 跨链桥支持从 Solana 到以太坊的资产转移。通过促进 Layer 1 生态系统间的互操作性，使得 web3 用户可以在他们喜欢的链上自由地花费时间和资源，同时又保持灵活性来随时选择切换链。</p>
+<h4 id="heading-10"></h4>
+<p><strong>2）从 Layer 1 到 Layer 2</strong></p>
+<p>从 Layer 1 到 Layer 2 的跨链桥接允许如以太坊的 L1 链与构建在 L1 链上的 L2 链进行通信。例如，用户可能希望将 ETH 从以太坊主网转移至 Arbitrum、Optimism 或 ZkSync。用户可以通过使用每个 L2 的原生跨链桥转移其代币，或者可以使用如 Across 的第三方跨链桥。随着 L2 生态系统的不断壮大，在将以太坊的主网活动转移至 L2 方面，此类跨链桥将发挥重要作用。  </p>
+<h4 id="heading-11"></h4>
+<p><strong>3）从 Layer 2 到 Layer 2</strong></p>
+<p>随着 2022 年上半年接近尾声，Layer 2 路线图变得越来越清晰。Polygon 的各种 Layer 2 扩展解决方案（Miden、Hermez、Nightfall）、Starkware 的零知识汇总 Starknet 和 Matter Lab 的 ZkSync 2.0，这些都将为开发人员构建不受高昂 gas 费困扰的应用程序提供必要的核心组块。然而，这些不同的 L2 本身并不兼容，因此它们有可能呈现我们在 L1 中看到的碎片化。L2 生态系统拥有高吞吐量、低 gas 费和强大安全性的好处，L2 到 L2 的跨链桥旨在减少 L2 间潜在碎片化的同时，发扬 L2 的上述好处。包括 Hop Protocol 和 Orbiter Finance 在内的一些项目正积极致力于实现这一目标。</p>
+<h3 id="heading-12"></h3>
+<p><strong>跨链桥设计的权衡</strong></p>
+<p>尽管有数十种跨链桥的架构设计，但没有一个跨链桥能拥有“互操作性三难困境”的所有三个属性。互操作性三难困境是 Arjun Bhuptani 提出的一个术语，它指出跨链桥只能具有以下三个属性中的两个：通用性、可扩展性和无须信任性。</p>
+<p><strong>1. 通用性:</strong>  在两条链之间传递任意数据的能力</p>
+<p><strong>2. 可扩展性:</strong>  在异构链上快速部署的能力</p>
+<p><strong>3. 无须信任性:</strong>  最小化信任假设</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_9nltq45n1w.png" alt="全面解析跨链桥：设计、权衡及机会"></p>
+<p>互操作性三难困境，来源：Arjun Bhuptani</p>
+<p>与可扩展性三难困境类似，当跨链桥选择其中两个属性时，最后一个属性就会难以满足。例如，Connext 是一个无须信任的跨链桥，可以在两个 EVM 兼容链之间转移代币。目前，它不能实现任意数据的传递，这意味着它优先考虑可扩展性和无须信任性而非通用性。如 ZetaChain 的其他跨链桥优先考虑可扩展性和通用性，但需要通过跨链桥的验证器集合提供额外的信任层，从而牺牲了无须信任性。</p>
+<p>由于跨链桥的主要使用场景是两个区块链之间的代币转移，因此大多数项目选择通用性和可扩展性来实现异构链上的快速部署，并能保持传递任意数据的灵活性。这使得该类型的跨链桥能够比许多竞争对手更快地完成部署，并满足转移代币的市场需求。虽然这给他们的许多用户带来了不为人知的成本（将在风险部分中介绍），但该类型的跨链桥可将应用场景从执行简单的代币转移扩展到更为全面的开发者平台。</p>
+<p>为了描述跨链桥从代币转移机制扩展到应用平台，我们可以通过一个类比，跨链桥类似于连接两个高度拥挤城市的收费公路。每次当用户想从 A 市驱车到 B 市时，收费公路都会收取费用。跨链桥一直在慢慢地将这种收费公路模式转向城镇模式，即开发人员在跨链桥上构建应用程序，如同在 A 市和 B 市之间创建一个城镇。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_34pafa4k7j.png" alt="全面解析跨链桥：设计、权衡及机会"></p>
+<p>庞大的城镇（生态系统）最终将在连接不同城市（区块链）的公路收费站（跨链桥）处发展</p>
+<p>因为一些跨链桥拥有数以万计的独立用户并已实现数十亿美元的转移量，他们可以利用现有用户活动来激励开发人员在他们的跨链桥上构建应用程序。继续考虑收费公路的类比，开发人员好比雄心勃勃的企业家，他们在目睹有钱人（用户）涌入此地后决定搬到该小镇。在看到该镇的更多动向后，其他企业家也搬入该镇并开始创建更大规模的业务（应用程序）。不久，这个小镇取得了发展，曾经作为两个大城市之间交通媒介的公路收费站现在成为了通往这个蓬勃发展的小镇的门户。</p>
+<h3 id="heading-13"></h3>
+<p><strong>作为应用平台的跨链桥或 “Layer Zeros”</strong></p>
+<p>有一些值得关注的项目正试图成为前面类比中所示的蓬勃发展的城镇。这些项目在为 dapp 生态系统提供基础的同时，专注于开发跨链连接数据的新方法。这些项目包括：</p>
+<h4 id="heading-14"></h4>
+<p><strong>1）RenVM</strong></p>
+<p>RenVM 和 Catalog 协议就好比上述例子中的收费公路和城镇。RenVM 使用前面描述的“锁定和铸造/销毁和赎回”机制支持跨链交易。目前，它允许用户以封装 BTC 代币&quot;renBTC&quot;为媒介，将 BTC 移入和移出以太坊和 Polygon。跨链桥可以被认为是构建在 RenVM 之上的一个应用程序。在此之上，Catalog 是一个推广 RenVM 模块的先驱性协议，其在 RenVM 内部构建自动化做市商 (AMM) 解决方案。Catalog 是有史以来第一个使用“无界流动性”机制来构建的协议。这种 AMM 设计不仅使用了 Catalog 自己的流动性池，还利用了第三方 DEX 的流动性池，而无需考虑它们在哪个链上。在此示例中，Catalog 与 RenVM 及其现有的用户生态系统合作，在熟悉的用户体验中提供更复杂的交易类型。</p>
+<h4 id="heading-15"></h4>
+<p><strong>2）LayerZero</strong></p>
+<p>LayerZero 是一个通信原语，允许在拥有 LayerZero 端点的 EVM 链上发送数据和信息。LayerZero 端点本质上是一个链上客户。任何具有 ZRO 端点的链都可以进行跨链交易。在端点之间需要使用诸如 Chainlink 之类的第三方预言机服务，来充当交易和消息传递的安全机制。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_ojtuywctn0.png" alt="全面解析跨链桥：设计、权衡及机会"></p>
+<p>LayerZero 通过要求两个独立的实体(Oracle和Relayer)确认交易，来确保跨链通信的有效性，来源：LayerZero 白皮书</p>
+<p>部署在各种 L1 区块链上的应用程序会发现这是一种非常简单的方式。例如，如果一个 Dapp 构建在 Polygon 上，那么使用端点将这个 dapp 快速加载到 LayerZero 是一项相当简单的任务。如 Stargate 的去中心化应用程序利用 LayerZero 制定的通信标准来创建去中心化交易所/跨链桥。</p>
+<h4 id="heading-16"></h4>
+<p><strong>3）Zeta 链</strong></p>
+<p>Zeta 链是一个 Layer 1 区块链，它既不需要封装资产来实现跨链转移资产，也不需要每对区块链的跨链桥。这是通过 Zeta 链跨链传递消息的功能来实现的，Zeta 链允许跨链和跨层发送数据及值。利用全链智能合约，开发人员可以对 Zeta 链进行编程，用来侦听已连接区块链上的事件并执行相应操作。Zeta 链依靠验证节点共识来确保自身安全性，并依靠分布式阈值签名方案来确保已连接链上的私钥安全性，以此避免单点故障。PoS 激励验证者采取正确行为。</p>
+<p>Zeta 链与 LayerZero 等其他竞争对手的不同之处在于，即便是如比特币网络的没有智能合约的区块链，也可以并入多链网络。</p>
+<p>这些跨链桥平台实现了链间的互操作性，并允许在此之上建立新的生态系统。除了从链 A 到链 B 发送代币之外，还解锁了新的应用场景。尽管如此，跨链桥/跨链桥平台的每个独特机制都有一定程度的风险。</p>
+<h3 id="heading-17"></h3>
+<p><strong>跨链桥的相关风险</strong></p>
+<p>鉴于引导消息实现跨链传递存在技术复杂性，使用跨链桥时会涉及各种风险。一些主要风险包括：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_pkhvksb5zm.png" alt="nouNa5Doj36CfmSEwTee5TdCb2jt1d6RUzIRz2it.png" title="6233600"></p>
+<p>跨链桥风险</p>
+<p>为了缓解审查风险和停止风险，用户可以简单地少使用需信任的跨链桥和“乐观的”跨链桥。然而，永远无法完全规避安全风险，因此通过了解可能的攻击载体来评估哪些安全系统更强大是非常重要的。</p>
+<p>破坏跨链桥安全性的两个主要攻击载体是 1) 智能合约漏洞和 2) 信任根漏洞。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_wupsjia3nh.png" alt="全面解析跨链桥：设计、权衡及机会"></p>
+<p>跨链桥的两个主要攻击载体</p>
+<p>恶意行为者在应用层成功攻击跨链桥时利用了智能合约漏洞。由于大多数跨链桥必须在它们连接的所有链上部署安全智能合约，因此较新的区块链是更容易攻击的目标。</p>
+<p>虽然 Rust、CosmWasm 和 Substrate 等语言都拥有不断壮大的开发者社区，但它们拥有的开发者工具和审计公司的数量却不如 Solidity 等成熟语言，因此主网出现漏洞的可能性更高。考虑到开发跨链桥时团队会考量开发速度和市场竞争等因素，这就很容易理解为什么智能合约漏洞成为最常见的黑客攻击载体。</p>
+<p>至于利用信任根漏洞，恶意行为者需要成功攻击跨链桥使用的底层验证方式。在 Ronin 黑客事件中，恶意攻击者通过获取 Sky Mavis 的 9 个验证器中的 5 个的私钥实现对大多数诚实假设的攻击，Sky Mavis 是 Axie Infinity 背后的工作室。一旦黑客入侵了 Sky Mavis 的中心化安全系统，一切都将灰飞烟灭。</p>
+<p>正如人们所看到的，在外部这些漏洞不易察觉，但与糟糕的安全系统相关的成本可能是巨大的。去年，跨链桥攻击事件的累计成本已超过 15 亿美元。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0616/12_vhwd08wtof.png" alt="全面解析跨链桥：设计、权衡及机会"></p>
+<p>过去一年中著名的跨链桥漏洞攻击事件，来源: Decrypt,  Kudelski Security Research, The Verge, VentureBeat</p>
+<p>雪上加霜的是，不知情的 web3 用户很容易感到使用 TVL/TVB 更高的跨链桥更安全，因为这些跨链桥似乎足够强大来处理大量的代币转移；然而，TVL/TVB 与安全性之间并没有明确的相关性。事实上，有人可能会提出反面看法，随着 TVL/TVB 的增高，恶意行为者利用漏洞的经济激励也会增大，因此跨链桥面临的安全性风险也更高。</p>
+<p>因此，在转移资金时应考虑了解一下跨链桥使用的底层安全系统。如果零散交易者需要快速发送 0.5 ETH 以确保完成 NFT 铸造，那么安全性就无足轻重了。但是，如果 DAO 计划要将 10,000 ETH 转移到不同链上的合约时，则有必要仔细检查跨链桥的底层安全性。</p>
+<h3 id="heading-18"></h3>
+<p><strong>结语</strong></p>
+<p>随着加密行业的不断发展，将探索出新的跨链桥设计，将试验出新的安全模型，基于跨链桥的全新应用程序也将出现。兼具安全性、灵活性和高效性的跨链桥的成功涌现将允许协议和社区间实现更广泛的互连。因为我们正处在过滤和淘汰不安全跨链桥的时期，所以会有短期的阵痛，但跨链桥行业的未来将充满光明。</p>
+<p>撰文：Amber Group</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39025/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">美联储将基准利率上调75个基点至1.50%-1.75%区间，加息幅度为1994年以来最大</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39052/">
+                <span class="next-text nav-default">三个指标表明比特币价格的暴跌还没有结束</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#heading"></a></li>
+        <li><a href="#heading-1"></a></li>
+        <li><a href="#heading-7"></a></li>
+        <li><a href="#heading-8"></a></li>
+        <li><a href="#heading-12"></a></li>
+        <li><a href="#heading-13"></a></li>
+        <li><a href="#heading-17"></a></li>
+        <li><a href="#heading-18"></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          闪电网络的漏洞？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在本文中，将介绍为什么BTC闪电网络是错误的、中心化的，并且有许多安全漏洞。" />
+<meta name="keywords" content="Lightning" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/29128/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="闪电网络的漏洞？" />
+<meta property="og:description" content="在本文中，将介绍为什么BTC闪电网络是错误的、中心化的，并且有许多安全漏洞。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/29128/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-28T00:00:00+00:00" />
+
+<meta itemprop="name" content="闪电网络的漏洞？">
+<meta itemprop="description" content="在本文中，将介绍为什么BTC闪电网络是错误的、中心化的，并且有许多安全漏洞。"><meta itemprop="datePublished" content="2021-09-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3394">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="闪电网络的漏洞？"/>
+<meta name="twitter:description" content="在本文中，将介绍为什么BTC闪电网络是错误的、中心化的，并且有许多安全漏洞。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">闪电网络的漏洞？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-28">
+      2021-09-28
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3394 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>每当有人提到比特币网络是多么的缓慢和昂贵，最常见的反对比特币论点是闪电网络——“比特币是更好的!”闪电网络是即时的，而且不收费!”</p>
+<p>这是一个典型的转移注意力的方法，因为它试图将我们的注意力转移到一个腐败的、中心化的第三方网络上，而这个第三方网络甚至根本没有与比特币连接。</p>
+<p>在本文中，将介绍为什么BTC闪电网络是错误的、中心化的，并且有许多安全漏洞。</p>
+<p><strong>闪电网络是中心化的。</strong></p>
+<p>中本聪非常清楚转移到第三方网络的潜在风险，但有一群所谓的“比特币最大化者”正在破坏中本聪的真实愿景，试图获得控制权。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0928/11_y43wl5ffg4.png" alt="闪电网络的漏洞？"></p>
+<p>BTC闪电网络声称使用一个小额支付渠道网络，使比特币每天的交易规模达到数十亿笔。但他们没有告诉你的是，这只在他们的中心化银行中心起作用。</p>
+<p>在最近发表的一篇题为《闪电网络：比特币经济中心化的第二条道路》(由研究人员Jian-Hong Lin、Kevin Primicerio、Tiziano Squartini、Christian Decker和Claudio J. Tessone撰写)的论文中，他们发现了许多危险信号。通过对总容量变化的研究，研究者发现了闪电网络协议中的许多漏洞。</p>
+<p>他们发现，大约10%的节点控制着网络上80%的资金。这是很危险的，因为如果大部分比特币仅由几个节点持有，网络就更容易受到黑客的攻击，因为移除这些路由节点会留下巨大的漏洞。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0928/11_a95sqysesa.png" alt="闪电网络的漏洞？"></p>
+<p>“移除集线器会导致网络崩溃成许多组件……这表明这个网络可能是所谓的分裂攻击的目标，”可能会导致闪电被一分为二。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0928/11_jpt5qpjb1c.png" alt="闪电网络的漏洞？"></p>
+<h2 id="闪电网络无法在全球范围内运行"><strong>闪电网络无法在全球范围内运行</strong></h2>
+<p>比特币闪电网络容量被定义为网络在任何给定时间可以处理的比特币数量。要让这个平台在全球范围内被数十亿人使用，就需要将其扩大到不切实际的更高水平，而这根本是不可能的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0928/11_ducrpy0nnu.png" alt="闪电网络的漏洞？"></p>
+<p>截至目前，该网络仅能处理约2800枚比特币，约占比特币总供应量的0.0001%。由于每天都有价值数十亿美元的比特币交易，这一点都不现实。</p>
+<p>闪电网络上的支付通道也需要通过昂贵的L1比特币交易来打开和关闭。该网络每区块可以处理约2000笔交易，每天产生约144区块交易，这意味着为地球上的每个人打开一个支付通道需要约72年，假设在此期间没有人死亡或生子。</p>
+<p><strong>比特币的波动性使得LN不可行。</strong></p>
+<p>撇开其他缺点不谈，我们就当闪电网络运行得很完美吧。为什么会有人或公司选择使用它呢?</p>
+<p>比特币的剧烈波动让很多人望而却步，尤其是那些对使用它作为支付方式感兴趣的人。</p>
+<p>比特币价格的波动性使得企业在为产品定价、向客户出售产品、甚至从供应商那里购买库存时，很难使用比特币作为支付方式。</p>
+<p>让我用一个例子来更好地解释这个问题:让我们假设“WhaleCorp”公司必须向其比特币供应商支付发票。一般来说，供应商会给客户付款的时间，比如30天。如果比特币的价格在30天内上涨了10%，WhaleCorp就必须再拿出价值10%的法定货币或其他加密货币来转换成比特币，并向供应商支付发票。</p>
+<p>这种交易风险的存在，是因为企业的客户可能会用法定货币而不是比特币支付。消费者交易也存在交换风险，因为大多数个人的工资不是以比特币支付的，导致交易从法定货币转换为比特币。</p>
+<p>闪电网络声称不收取任何费用，如果他们的网络没有完全中心化，如果比特币不是地球上最不稳定的资产之一，这将是令人惊讶的。</p>
+<h3 id="萨尔瓦多闪电网络的使用"><strong>萨尔瓦多闪电网络的使用</strong></h3>
+<p>萨尔瓦多前段时间成为世界上第一个采用比特币作为法定货币的国家。</p>
+<p>这一受到比特币社区大多数人欢迎的举措，后来被证明不过是一个萨尔瓦多政府对前所未有控制权的攫取。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0928/11_lueqhtokgs.png" alt="闪电网络的漏洞？"></p>
+<p>当萨尔瓦多总统纳伊布·布克尔(Nayib Bukele)在2021年迈阿密比特币大会上表示支持比特币时，人们兴奋不已。</p>
+<p>他没有提到的是，人们将被迫使用Chivo，一个完全中心化的LN钱包。在最近的一条推特中，布克尔说“Chivo不是一家银行”，他是对的。Chivo比世界上任何一家银行都要中心化1000倍。</p>
+<p>萨尔瓦多政府现在完全直接控制所有资金，可以随时打开或关闭他们的钱包。我们亲眼目睹了这一点，当他们推出的那天，他们很快就因为“技术困难”而关闭了。</p>
+<p>我们还在社交媒体上收到了数十份他们的交易没有通过闪电网络的报告。为什么?因为LN只适用于1-5美元的小额交易，不能超过400美元。</p>
+<p>一个限制人们只花400美元的中心化网络?也许我漏掉了什么，但这怎么能算是银行的升级呢?</p>
+<h2 id="闪电网络的漏洞"><strong>闪电网络的漏洞</strong></h2>
+<p>独立的闪电网络开发者Joost Jager在过去的几年里表达了许多对网络的担忧。他声称，虽然他们构建的许多功能都很棒，但它确实会带来一些严重的威胁。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0928/11_u3q6kh76r2.png" alt="闪电网络的漏洞？"></p>
+<p><strong>闪电网络漏洞#1:悲伤攻击</strong></p>
+<p>Jager 的帖子详细介绍了自 Lightning 成立以来就可能发生的所谓“悲痛”攻击，并影响了正常和新推出的 wumbo 频道。</p>
+<p>闪电通道使用一个名为哈希时间锁定合约(HTLC)的加密功能在网络上执行支付。闪电通道只能容纳几百台HTLC。一旦达到上限，渠道将无法再处理支付——资金将被卡住，渠道必须关闭。</p>
+<p>悲伤可能是混乱的：考虑到几乎没有人真正使用闪电网络，这并不是一个大问题到目前为止。但它可能是…</p>
+<p>它将允许攻击者通过发送小额支付垃圾邮件来冻结储存在闪电通道的任何比特币。虽然他们无法窃取比特币，但这可能会破坏其他人的交易。</p>
+<p><strong>闪电网络漏洞#2:时间膨胀日食</strong></p>
+<p>如果攻击者将数百个节点旋转起来，并以一种使受害者不再与任何诚实用户连接的方式聚集所有闪电节点的连接，攻击者就可以隔离该节点，使其无法接收真实的网络数据。</p>
+<p>随着节点的连接“重叠”，攻击者可以以比正常情况更慢的速度提供节点交易数据。一旦攻击者关闭其与受害者的闪电通道，他或她可以从该通道窃取资金，因为其主机节点不会看到该通道在区块链上的关闭交易，因为区块链接收数据的速度不够快。</p>
+<p>这次攻击很严重，受害者可能会损失资金。也就是说，攻击确实需要恶意行为者操作和协调数百个节点才能成功地掩盖受害者。</p>
+<p><strong>闪电网络漏洞#3:固定</strong></p>
+<p>另一种需要不一致的交易数据的攻击称为“固定攻击”。</p>
+<p>为了利用这个漏洞，老练的攻击者通过将冲突交易广播到具有不同内存池的单独节点来阻止通道的关闭交易。(比特币网络上没有统一的待完成交易池；一些节点接收交易，而另一些节点不基于点对点网络连接的分布，因此每个内存池是不同的)。</p>
+<p>使用多种技术，其中一种包括为关闭交易设置足够低的费用，以确保在通道的时间锁定到期前交易不会被确认，攻击者可以欺骗受害者以不正确的方式关闭他或她的通道，从而窃取单个交易。</p>
+<h2 id="结论"><strong>结论</strong></h2>
+<p>比特币闪电网络不仅仅是一个失败。这是一个欺骗陷阱，与中本聪用比特币网络建立的一切背道而驰。</p>
+<p>它通常是由铁杆的比特币极端主义者推动的，这些人要么从未读过白皮书，要么对LN的工作原理一无所知，要么是有意试图引诱新用户进入一个错误的、中心化的局面。</p>
+<p>随着最近 Twitter 增加了一个比特币闪电网络 Tip Jar 的消息，人们应该知道这个系统的真相，我相信这个系统在未来会面临很多失败。</p>
+<p>Source：https://cryptowhale.medium.com/why-the-bitcoin-lightning-network-is-satoshi-nakamotos-worst-nightmare-8402be4a4e73</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/29121/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">女孩瞥视表情包变NFT 售出58000美元</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/29126/">
+                <span class="next-text nav-default">数字科幻卡牌销售进入尾声 彩蛋回馈看点十足</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#闪电网络无法在全球范围内运行"><strong>闪电网络无法在全球范围内运行</strong></a>
+      <ul>
+        <li><a href="#萨尔瓦多闪电网络的使用"><strong>萨尔瓦多闪电网络的使用</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#闪电网络的漏洞"><strong>闪电网络的漏洞</strong></a></li>
+    <li><a href="#结论"><strong>结论</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

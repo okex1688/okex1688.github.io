@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文看懂波卡平行链插槽拍卖 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="本文将对波卡的架构、平行链插槽拍卖以及其影响进行全面的解读，便于各位读者对这一事件有更为深入的了解。" />
+<meta name="keywords" content="Polkadot" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/30359/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文看懂波卡平行链插槽拍卖" />
+<meta property="og:description" content="本文将对波卡的架构、平行链插槽拍卖以及其影响进行全面的解读，便于各位读者对这一事件有更为深入的了解。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/30359/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-11-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-01T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文看懂波卡平行链插槽拍卖">
+<meta itemprop="description" content="本文将对波卡的架构、平行链插槽拍卖以及其影响进行全面的解读，便于各位读者对这一事件有更为深入的了解。"><meta itemprop="datePublished" content="2021-11-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-11-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3967">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文看懂波卡平行链插槽拍卖"/>
+<meta name="twitter:description" content="本文将对波卡的架构、平行链插槽拍卖以及其影响进行全面的解读，便于各位读者对这一事件有更为深入的了解。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文看懂波卡平行链插槽拍卖</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-11-01">
+      2021-11-01
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3967 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>随着波卡第一次平行链拍卖公投被DOT持有者投票通过，备受期待的波卡平行链插槽拍卖即将正式开启。在过去一两年的时间里，波卡的开发进程取得了显著进展，包括其金丝雀网络Kusama也顺利开始了第12次插槽拍卖。截至10月29日，目前波卡的总市值已达到了448.6亿美元，Kusama达到33亿美元，Kusama网络上的平行链已上线了11 条。当前，波卡生态系统项目已超500个，验证节点的数量已突破1200个。</p>
+<p>波卡平行链插槽拍卖作为行业重要的里程碑事件，对区块链领域意义重大，这意味着跨链时代即将拉开帷幕。本文将对波卡的架构、平行链插槽拍卖以及其影响进行全面的解读，便于各位读者对这一事件有更为深入的了解。</p>
+<h2 id="波卡区块链架构"><strong>波卡区块链架构</strong></h2>
+<p>在介绍波卡插槽拍卖机制之前，首先需要了解波卡的背景和架构。</p>
+<p>波卡之所以成为如今备受关注的跨链明星项目，主要与其创始人Gavin Wood博士带领的技术团队以及其宏大的Web3.0愿景有关。</p>
+<p>2015年，Gavin Wood离开以太坊之后创建了Parity Technologies公司，并且提出了关于“Web3.0”的构想。2016年，随着波卡白皮书《波卡：可扩展的的异构多链框架》的发布，以及平行链的概念产生，标志着波卡项目的推出和诞生。2018年，Gavin针对波卡推出了可扩展、模块化、通用的区块链技术框架Substrate，致力于帮助开发者实现“一键发链”。</p>
+<p>波卡在架构上主要有三部分，分别是平行链、中继链、转接桥。中继链（Relaychain）是一条基于substrate创建的区块链，作为波卡网络的中心，负责信息交互的验证，保护和协调平行链，维护整个网络的安全；平行链（Parachain）通过插槽接入中继链运行，并与中继链进行交互，负责处理各种“琐事”，目前来看，这个平行链既可以是智能合约平台、DeFi中心，也可以是任何专注于不同业务的协议。</p>
+<p>转接桥主要用来帮助波卡系统链接外部的区块链系统，允许波卡网络和独立的区块链网络通信。这些独立的区块链网络不通过波卡中继链进行安全验证，而是使用自己的安全机制，例如比特币和以太坊网络。而与拍卖相关的还有一个关键构成——平行链插槽（Parachain Slots），它是中继链和平行链的接口。要想共享波卡网络的安全，与其他平行链进行业务交互，必须通过插槽来实现。插槽分为社区测试型插槽（community beta slots）、商用插槽（commercial slots），20%的槽位预留给 Web3 基金会来部署和支持，作为社区测试型平行链促进整个波卡生态的发展，余下80%的插槽作为商用插槽，通过拍卖方式来开放。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1101/10_bsnsdohcwj.png" alt="一文看懂波卡平行链插槽拍卖"></p>
+<p>基于这些，波卡是一条可扩展的异构多链的区块链，波卡网络的主要作用其一是为区块链提供可操作性，其二是为区块链提供安全性。</p>
+<p>波卡网络的治理主要有四种角色：提名者（Nominator）、验证者（Validator）、核对者（Collator）、钓鱼人（Fisherman）。持有DOT的用户可以以提名者的角色参与治理，通过质押代币并投票支持验证者；而验证者则负责封装波卡网络上的新区块，要成为验证者需要质押一定的DOT代币，也可以通过由提名者委托的方式当选；核对者主要帮助验证者生产有效的平行链区块，负责完全同步数据库，运营全节点（可以把验证者理解为PoW矿池，核对者理解为矿工）；钓鱼者则有点类似于轻节点，主要通过发现行为不端的验证者来获得丰厚回报。</p>
+<p>总的来说，波卡遵循去中心化原则主要靠链上投票。除了以上几个重要角色，波卡还成立了理事会，理事会的成员由选举产生，可以优先投票，也有权直接否决提案。</p>
+<h2 id="插槽拍卖机制和方式"><strong>插槽拍卖机制和方式</strong></h2>
+<p>从波卡的架构可以看出，区块链项目可以通过平行链或者是转接桥的方式接入波卡进行交互。要成为波卡的平行链，则必须通过插槽来接入。但平行链数量只有100 条左右，且一次只释放一条，故而波卡设计了拍卖机制允许项目方通过竞拍来获得插槽的使用权。</p>
+<p>波卡的平行链竞拍所采用的是“蜡烛拍卖+随机参数”机制，在区块链上模拟“蜡烛拍卖”的过程中，还结合了“二阶密封价格拍卖”的思想。那么具体怎么运作呢？</p>
+<p>“蜡烛拍卖”起源于16世纪出售船只时，从决定拍卖开放期的“一寸蜡烛”而名。当蜡烛火焰熄灭时，拍卖会突然终止，此刻的竞价者将获胜。当蜡烛拍卖在网上使用时，通常需要一个随机数来决定终止时间。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1101/10_75tj2uopqq.png" alt="一文看懂波卡平行链插槽拍卖"></p>
+<p>但平行链插槽拍卖又与普通蜡烛拍卖略有所不同，因为它不使用随机数来决定其开盘阶段的持续时间。而是有一个已知的开放阶段，“在正常结束时，追溯性地确定在过去的某个时候结束”。波卡将使用一个基于VRF的随机信标，来追溯确定拍卖的“结束时间”。也就是说，蜡烛拍卖的过程中每个人都知道竞拍的状态，包括其它平行链的出价情况，但没人能提前知道拍卖结束的时间。这样能有效防止“拍卖狙击”，且促使项目方尽早参与出价。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1101/10_q1dr1qiotg.png" alt="一文看懂波卡平行链插槽拍卖"></p>
+<p>整个拍卖过程被分为安全期和随机期两个阶段，两个阶段内都可以自由质押DOT，在安全期内，项目方有更大可能会竞相出价，等进入随机期后，拍卖会根据链上随机数随时落锤结束拍卖，届时，谁质押的DOT数量多，谁就能租到这个插槽。</p>
+<p>插槽持续时间上限为2年，每个租赁周期为6个月。参与出价的项目方必须竞拍单个或相邻的多个租赁期，这意味着它们可以通过租赁一个连续的插槽将其租约延长到2年的插槽期限。中标人需要在相应周期内锁定（质押）其DOT。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1101/10_vstjbwj1jq.png" alt="一文看懂波卡平行链插槽拍卖"></p>
+<p>而普通投资者若想参与插槽竞拍，可以通过Crowdloan（众贷）的途径，将DOT锁定给自己支持的项目方来帮助他们参与竞拍。需要注意的是，若你支持的项目竞拍成功，那么这些DOT资产将会在项目方的相应租期内锁定，若竞拍失败，将会全部返还。欧易平台将会支持此次波卡平行链插槽拍卖，届时投资者可以通过欧易一键式参与。</p>
+<h2 id="对市场和投资者有何意义"><strong>对市场和投资者有何意义？</strong></h2>
+<p>平行链插槽拍卖作为波卡的重要节点，对波卡及整个区块链领域来说颇具意义。</p>
+<p>首先，对于波卡而言，平行链是其实现跨链的重要基础，平行链的接入意味着波卡将能够实现不同区块链之间进行数据、资产的通信和互操作性。而对波卡生态来说，平行链插槽拍卖这个机制，能够帮助波卡筛选出优质的、得到市场认可且能够可持续发展的项目，助力波卡未来的发展落地。</p>
+<p>此外，平行链插槽拍卖也是DOT在波卡生态的价值体现，能够丰富DOT的使用场景。由于竞拍平行链插槽的项目方以及参与投票的投资者都需要质押DOT，这将直接增加DOT的锁仓量和市场需求。随着平行链插槽拍卖启动，预计将会锁定大量DOT的流动性，这在一定程度上赋予了DOT价值升值的空间。</p>
+<p>其次，对项目方而言，平行链插槽拍卖为其提供了一个公平开放的机会，成为波卡平行链，将能够共享波卡网络共识与安全性，并能够在实现各自不同业务线同时实现业务共享和交互，使其具备极大的先发优势，有利于尽早推进开发工作，以及后期生态建设。预计此前成功获得Kusama插槽拍卖的项目，有很大可能会继续“冲刺”波卡的插槽竞拍。</p>
+<p>最后，对投资者而言，Crowdloan为其提供了“轻松”参与波卡生态的方式和机会，投资者通过在竞拍模块中选择支持的项目并质押DOT，助力项目参与拍卖。同时，若项目竞拍成功，投资者将获得项目方的激励或回报，但同时需要牺牲一定的机会成本以及持有资产在一段时期内的流动性。若项目方竞拍失败或者租赁期满，DOT才会退还。</p>
+<p>但值得注意的是，波卡生态中项目目前已超500个，投资者如何去验证和筛选优质的项目？结合波卡中文社区给出的官方建议，我们总结了几点，分为“硬指标”、“软指标”，硬指标包括：1）是否开源以及代码的活跃度；2）信誉良好的团队；3）获得了Web3 基金会Grant或是Substrate Builders Program的项目；4）与 Polkadot 有明确的集成关系。软指标包括：1.）网站质量如何以及是否专业；2）社交媒体的真实性；3）媒体内容是否是客观信息。如果你确认了这个项目是合格的波卡生态项目，那么最后你需要了解的是该项目的用途以及它可以为波卡生态系统带来什么新事物。</p>
+<p>此外，DOT持有者可以关注的一点是，近期波卡创始人Gavin Wood在推特上表示，Polkadot财政部已将超过1890万个DOT分配给一个将通过社区治理支付的发展基金，并表示将动员资金来实现社区“建设、改善、教育”波卡生态系统的愿景，以及“波卡治理认为有价值的任何其他事情”。由此可见波卡对生态建设的重视以及DOT的分配价值。随着波卡跨链进程的加快，波卡是否有望和以太坊再一决高下，DOT又是否能创下新高？让我们拭目以待。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/30362/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">晚间必读5篇 | Plan B：坚信BTC12月将达到$13.5万</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/30342/">
+                <span class="next-text nav-default">以太坊社区的研究者们如何看待 MEV？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#波卡区块链架构"><strong>波卡区块链架构</strong></a></li>
+    <li><a href="#插槽拍卖机制和方式"><strong>插槽拍卖机制和方式</strong></a></li>
+    <li><a href="#对市场和投资者有何意义"><strong>对市场和投资者有何意义？</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

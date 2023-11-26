@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文读懂Schnorr签名如何提升比特币 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在验证区块链上的一个区块时，我们需要验证区块中所有交易的签名都是有效的。如果其中一个是无效的，无论是哪一个 —— 我们都必须拒绝掉整个区块。" />
+<meta name="keywords" content="Schnorr" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/28444/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文读懂Schnorr签名如何提升比特币" />
+<meta property="og:description" content="在验证区块链上的一个区块时，我们需要验证区块中所有交易的签名都是有效的。如果其中一个是无效的，无论是哪一个 —— 我们都必须拒绝掉整个区块。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/28444/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-09T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文读懂Schnorr签名如何提升比特币">
+<meta itemprop="description" content="在验证区块链上的一个区块时，我们需要验证区块中所有交易的签名都是有效的。如果其中一个是无效的，无论是哪一个 —— 我们都必须拒绝掉整个区块。"><meta itemprop="datePublished" content="2021-09-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-09T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4869">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文读懂Schnorr签名如何提升比特币"/>
+<meta name="twitter:description" content="在验证区块链上的一个区块时，我们需要验证区块中所有交易的签名都是有效的。如果其中一个是无效的，无论是哪一个 —— 我们都必须拒绝掉整个区块。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文读懂Schnorr签名如何提升比特币</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-09">
+      2021-09-09
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4869 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%AF%94%E7%89%B9%E5%B8%81/"> 比特币 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原文标题：《干货 | Schnorr 签名如何提升比特币》，作者Stepan</p>
+<p>在阅读 Blockstream 撰写的 MuSig 论文时，我一直在想象，这对于我一个比特币用户来说，到底意味着什么。我发现 Schnorr 签名的一些特性实在是非常棒而且便利，但某一些特性则非常烦人。在这篇文章里，我希望能跟各位分享我的想法。不过，我们先快速回顾一下。</p>
+<h2 id="椭圆曲线签名算法">椭圆曲线签名算法</h2>
+<p>当前比特币的所有权体系用的是 ECDSA（椭圆曲线签名算法）。在签名一条消息 m 时，我们先哈希这条消息，得出一个哈希值，即 z = hash(m) 。我们也需要一个随机数（或者至少看似随机的数）k 。在这里，我们不希望信任随机数生成器（有太多的错误和漏洞都与不合格的随机数生成器有关），所以我们通常使用 RFC6979，基于我们所知的一个秘密值和我们要签名的消息，计算出一个确定性的 k。</p>
+<p>使用私钥 pk ，我们可以为消息 m 生成一个签名，签名由两个数组成：r（随机点 R = k * G 的 x 坐标）和 s = (z + r*pk)/k。</p>
+<p>然后，使用我们的公钥 P = pk * G ，任何人都可以验证我们的签名，也就是检查 (z/s)×G+(r/s)×P 的 x 坐标确为 r。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0909/gm3l6wst4e32d9f" alt="一文读懂Schnorr签名如何提升比特币"></p>
+<p>ECDSA 算法图解。为便于说明，椭圆曲线作在实数域上 </p>
+<p>这种算法是很常见的，也非常好用。但还有提升空间。首先，签名的验证包含除法（1/s）和两次点乘法，而这些操作的计算量都非常大。在比特币网络中，每个节点都要验证每一笔交易，所以当你在网络中发出一笔交易时，全网几千个节点都要验证你的签名。因此，即使签名的过程开销变得更大，让验证签名变得更简单也还是非常有好处的。</p>
+<p>其次，节点在验证签名时，每个签名都要单独验证。在一个 m-n 的多签交易中，节点必须多次验证同一个签名。比如一笔 7-11 的多签名交易，里面包含了 7 个签名，网络中的每个节点都要分别验证 7 个签名。另外，这种交易的体积也非常大，用户必须为此付出多得多的手续费。</p>
+<h2 id="schnorr-签名">Schnorr 签名</h2>
+<p>Schnorr 签名的生成方式有些许不同。它不是两个标量 (r, s)，而是一个点 R 和一个标量 s 。类似于 ECDSA 签名，R 是一个椭圆曲线上的随机点 R = k * G。而签名的第二部分 s 的计算过程也有一些不同： s = k + hash(P,R,m) ⋅ pk 。这里 pk 就是你的私钥，而 P = pk * G 是你的公钥，m 就是那条消息。验证过程是检查 s * G = R + hash(P,R,m) * P。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0909/odfiqy23nec2dbb" alt="一文读懂Schnorr签名如何提升比特币"></p>
+<p>图解 Schnorr 签名和验证 </p>
+<p>这个等式是线性的，所以多个等式可以相加相减而等号仍然成立。这给我们带来了 Schnorr 签名的多种良好特性。</p>
+<h3 id="1-批量验证">1. 批量验证</h3>
+<p>在验证区块链上的一个区块时，我们需要验证区块中所有交易的签名都是有效的。如果其中一个是无效的，无论是哪一个 —— 我们都必须拒绝掉整个区块。</p>
+<p>ECDSA 的每一个签名都必须专门验证，意味着如果一个区块中包含 1000 条签名，那我们就需要计算 1000 次除法和 2000 次点乘法，总计约 3000 次繁重的运算。</p>
+<p>但有了 Schnorr 签名，我们可以把所有的签名验证等式加起来并节省一些计算量。在一个包含 1000 笔交易的区块中，我们可以验证：</p>
+<p>(s1+s2+…+s1000) × G=(R1+…+R1000)+(hash(P1,R1,m1)×P1+ hash(P2,R2,m2)×P2+…+hash(P1000,R1000,m1000)×P1000)</p>
+<p>这里就是一连串的点加法（从计算机运算的角度看，简直是免费的）和 1001 次点乘法。已经是几乎 3 倍的性能提升了 —— 验证时只需为每个签名付出一次重运算。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0909/47yenu84dvneqw8" alt="一文读懂Schnorr签名如何提升比特币"></p>
+<p>两个签名的批量验证。因为验证等式是线性可加的，所以只要所有的签名都是有效的，这几个等式的和等式也必成立。我们节约了一些运算量，因为标量和点加法比点乘法容易计算得多。</p>
+<h3 id="2-密钥生成">2. 密钥生成</h3>
+<p>我们想要安全地保管自己的比特币，所以我们可能会希望使用至少两把不同的私钥来控制比特币。一个在笔记本电脑或者手机（在线钱包，热钱包）上使用，而另一个放在 硬件钱包/冷钱包 里面。即使其中一个泄露了，我们还是掌控着自己的比特币。</p>
+<p>当前，实现这种钱包的做法是通过 2-2 的多签名脚本。也就是一笔交易需要包含两个独立的签名。</p>
+<p>有了 Schnorr 签名，我们可以使用一对密钥 (pk1,pk2)，并使用一个共享公钥 P = P1 + P2 = pk1 * G + pk2 * G 生成一个共同签名。在生成签名时，我们需要在两个设备上分别生成一个随机数 （k1, k2），并以此生成两个随机点 Ri = ki * G，再分别加上 hash(P, R1 + R2, m)，就可以获得 s1 和 s2 了（因为 si = ki + hash(P, R, m)* pki ）。最后，把它们都加起来即可获得签名 (R, s) = (R1+R2, s1+s2)，这就是我们的共享签名，可用共享公钥来验证。其他人根本无法看出这是不是一个聚合签名，它跟一个普通的 Schnorr 签名看起来没有两样。</p>
+<p>不过，这种做法有三个问题。</p>
+<p>第一个问题是 UI 上的。要发起一笔交易，我们需要在两个设备上发起多轮交互 —— 为了计算共同的 R，为了签名。在两把私钥的情况下，只需访问一次冷钱包：我们可以在热钱包里准备好待签名的交易，选好 k1 并生成 R1 = k1 * G，然后把待签名的交易和这些数据一同传入冷钱包并签名。因为已经有了 R1，签名交易在冷钱包中只需一轮就可以完成。从冷钱包中我们得到 R2 和 s2，传回给热钱包。热钱包使用前述的 （k1，R1） 签名交易，把两个签名加总起来即可向外广播交易了。</p>
+<p>这在体验上跟我们现在能做到的没有什么区别，而且每当你加多一把私钥，问题就会变得更加复杂。假设你有一笔财富是用 10 把私钥共同控制的，而 10 把私钥分别存放在世界各地，这时候你要发送交易，该有多麻烦！在当前的 ECDSA 算法中，每个设备你都只需要访问一次，但如果你用上 Schnorr 的密钥聚合，则需要两次，以获得所有的 Ri 并签名。在这种情况下，可能不使用聚合，而使用各私钥单独签名的方式会好一些 —— 这样就只需要一轮交互。</p>
+<p>文章完成后，我得到了 Manu Drijvers 的反馈：在一个可证明安全性的多签名方案中，你需要 3 轮交互：</p>
+<ul>
+<li>
+<p>选择一个随机数 ki 以及相应的随机点 Ri = ki \ G，然后告诉每一个设备 Ri 的哈希值 ti=hash(Ri)，然后每个设备都能确保你没有在知道其他人的随机数之后改变主意*</p>
+</li>
+<li>
+<p>收集所有的数字 Ri 并计算公共的 R</p>
+</li>
+<li>
+<p>签名</p>
+</li>
+</ul>
+<p>第二个问题是已知的 Rogue 密钥攻击。这篇论文讲解得非常好，所以我就不赘述了。大概意思是如果你的其中一个设备被黑（比如你的热钱包被劫持），并假装自己的公钥是 （P1 - P2），那就可以仅凭私钥 pk1 便控制两个私钥共享的资金。一个简单的解决方案是，在设置设备时，要求使用私钥对相应的公钥签名。</p>
+<p>还有第三个重大问题。你没法使用确定性的 k 来签名。如果你使用了确定性的 k，则只需一种简单的攻击，黑客即可获得你的私钥。攻击如下：某个黑客黑入你的笔记本电脑，完全控制了其中一把私钥（比如 pk1）。我们感觉资金仍是安全的，因为使用我们的比特币需要 pk1 和 pk2 的聚合签名。所以我们像往常一样发起交易，准备好一笔待签名的交易和 R1，发送给我们的硬件钱包，硬件钱包签名后将 （R2, s2）发回给热钱包 …… 然后，热钱包出错了，没法完成签名和广播。于是我们再试一次，但这一次被黑的电脑用了另一个随机数 —— R1&rsquo; 。我们在硬件钱包里签名了同一笔交易，又将 （R2, s2&rsquo;）发回给了被黑的电脑。这一次，没有下文了 —— 我们所有的比特币都不翼而飞了。</p>
+<p>在这次攻击中，黑客获得了同一笔交易的两个有效的签名：（R1, s1, R2, s2） 和 （R1&rsquo;, s1&rsquo;，R2，s2&rsquo;）。这个 R2 是一样的，但是 R = R1 + R2 和 R&rsquo; = R1&rsquo; + R2 是不同的。这就意味着黑客可以计算出我们的第二个私钥：s2-s2&rsquo;=(hash(P,R1+R2,m)-hash(P,R1&rsquo;+R2,m))⋅pk2 或者说 pk2=(s2-s2&rsquo;)/(hash(P,R1+R2,m)-hash(P,R1&rsquo;+R2,m))。我发现这就是密钥聚合最不方便的地方 —— 我们每次都要使用一个好的随机数生成器，这样才能安全地聚合。</p>
+<h3 id="3-musig">3. Musig</h3>
+<p>MuSig 解决了其中一个问题 —— rogue key 攻击将不能再奏效。这里的目标是把 多方/多个设置的签名和公钥聚合在一起，但又无需你证明自己具有与这些公钥相对应的私钥。</p>
+<p>聚合签名对应着聚合公钥。但在 MuSig 中，我们不是把所有联合签名者的公钥直接相加，而是都乘以一些参数，使得聚合公钥 P = hash(L,P1)×P1 + … + hash(L,Pn)×Pn 。在这里，L = hash(P1,…,Pn) —— 这个公共数基于所有的公钥。L 的非线性特性阻止了攻击者构造特殊的公钥来发动攻击。即使攻击者知道他的 hash(L,Patk)×Patk 应该是什么，他也无法从中推导出 Patk 来 —— 这就跟你想从公钥中推导出私钥是一样的。</p>
+<p>签名构造的其它过程跟上面介绍的很像。在生成签名时，每个联合签名者都选择一个随机数 ki 并与他人分享 Ri = ki * G。然后他们把所有的随机点加起来获得 R=R1+…+Rn ，然后生成签名 si = ki + hash(P,R,m) ⋅ hash(L,Pi) ⋅ pki 。因此，聚合签名是 (R, s)=(R1+…+Rn, s1+…+sn) ，而验证签名的方法与以前一样：s×G = R + hash(P,R,m)×P 。</p>
+<h3 id="4-默克尔树多签名">4. 默克尔树多签名</h3>
+<p>你可能也注意到了，MuSig 和密钥聚合需要 *所有签名者签名一个交易*。但如果你想做的是 2-3 的多签名脚本呢？这时候我们能够使用签名聚合吗，还是不得不使用通常的 OP_CHECKMULTISIG 和分别签名？（译者注：OP_CHECKMULTISIG 是比特币验证椭圆曲线多签名脚本的操作码）</p>
+<p>先说答案，是可以的，但是协议上将有些许的不同。我们可以开发一个类似于 OP_CHECKMULTISIG 的操作码，只不过是检查聚合签名是否对应于公钥默克尔树上的一个元素。</p>
+<p>举个例子，如果我们想用公钥 P1、P2 和 P3 组成一个 2-3 的多签名脚本，我们需要用这几把公钥的所有两两组合 （P1, P2）、（P2, P3）、（P1, P3） 来构建一棵默克尔树，并把默克尔树根公布在锁定脚本中。</p>
+<p>在花费比特币时，我们需要提交一个签名和一个证据，证明这个签名所对应的公钥位于由这个树根标记的默克尔树上。对于 2-3 多签名合约来说，树上只有 3 个元素，证据只需 2 条哈希值 —— 那个我们想用的公钥组合的哈希值，还有一个邻居的。对于 7-11 多签名脚本来说，公钥组合有 11!/7!/4!=330 种，证据需要 8 条哈希值。通常来说，证据所包含的元素数量与多签名的密钥数量大体成正比 ，为 log2(n!/m!/(n-m)) 。</p>
+<p>但有了默克尔公钥树，我们就不必局限于 m-n 多签名脚本了。我们可以做一棵使用任意公钥组合的树。举个例子，如果我们有一个笔记本电脑，一个手机，一个硬件钱包和一个助记词，我们可以构建一棵默克尔树，允许我们使用 笔记本电脑 + 硬件钱包、手机 + 硬件钱包 或者单独的助记词来使用比特币。这是当前的 OP_CHECKMULTISIG 做不到的 —— 除非你使用 “IF - Else” 式的流程控制来构造更复杂的脚本。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0909/fr2q0ug3e6ameq1" alt="一文读懂Schnorr签名如何提升比特币"></p>
+<p>聚合公钥的默克尔树。不仅仅是多签名 </p>
+<h2 id="结论">结论</h2>
+<p>Schnorr 签名很棒，它解决了区块验证中的一些计算开销问题，也给了我们密钥聚合的能力。后者在使用时有些不便利，但我们不是在强迫大家使用它 —— 无论如何，我们都可以仍旧使用普通的多签名方案，使用单独的、不聚合的签名。</p>
+<p>我迫不及待想使用 Schnorr 签名，希望比特币协议能尽快纳入这种签名方案。</p>
+<p>另外，我也真心喜欢 MuSig，它是个优雅的方案，论文也浅显易懂。我强烈建议各位有闲之时通读全文。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/28437/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">一文带你了解dYdX经济机制</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/28450/">
+                <span class="next-text nav-default">以太坊的工具：深度解析DAO组织</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#椭圆曲线签名算法">椭圆曲线签名算法</a></li>
+    <li><a href="#schnorr-签名">Schnorr 签名</a>
+      <ul>
+        <li><a href="#1-批量验证">1. 批量验证</a></li>
+        <li><a href="#2-密钥生成">2. 密钥生成</a></li>
+        <li><a href="#3-musig">3. Musig</a></li>
+        <li><a href="#4-默克尔树多签名">4. 默克尔树多签名</a></li>
+      </ul>
+    </li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

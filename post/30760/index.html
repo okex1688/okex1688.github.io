@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文说透元宇宙与Web3时代的重要基础设施：Rollup、波卡、Cosmos等 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="多链目前出现的模型，大概率将来的多链场景基本会集中在这三种模式，本文我们将结合ETH单链上的侧链与Rollup，用一个村庄和集市的比喻，给大家讲讲它们之间的区别。" />
+<meta name="keywords" content="Rollup, Polkadot, COSMOS" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/30760/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文说透元宇宙与Web3时代的重要基础设施：Rollup、波卡、Cosmos等" />
+<meta property="og:description" content="多链目前出现的模型，大概率将来的多链场景基本会集中在这三种模式，本文我们将结合ETH单链上的侧链与Rollup，用一个村庄和集市的比喻，给大家讲讲它们之间的区别。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/30760/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-11-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-12T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文说透元宇宙与Web3时代的重要基础设施：Rollup、波卡、Cosmos等">
+<meta itemprop="description" content="多链目前出现的模型，大概率将来的多链场景基本会集中在这三种模式，本文我们将结合ETH单链上的侧链与Rollup，用一个村庄和集市的比喻，给大家讲讲它们之间的区别。"><meta itemprop="datePublished" content="2021-11-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-11-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3284">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文说透元宇宙与Web3时代的重要基础设施：Rollup、波卡、Cosmos等"/>
+<meta name="twitter:description" content="多链目前出现的模型，大概率将来的多链场景基本会集中在这三种模式，本文我们将结合ETH单链上的侧链与Rollup，用一个村庄和集市的比喻，给大家讲讲它们之间的区别。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文说透元宇宙与Web3时代的重要基础设施：Rollup、波卡、Cosmos等</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-11-12">
+      2021-11-12
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3284 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>8月底以来，公链市场持续火热，引起不少关注。另外，多链这边Cosmos生态取得持续进展，波卡插槽拍卖也已经开始了。</p>
+<p>这期我们来讲讲多链目前出现的模型，大概率将来的多链场景基本会集中在这三种模式，本文我们将<strong>结合ETH单链上的侧链与Rollup，用一个村庄和集市的比喻</strong> ，给大家讲讲它们之间的区别。</p>
+<h2 id="未来会是应用链当道吗"><strong>未来会是应用链当道吗？</strong></h2>
+<p>先说说前提，那就是未来三五年的区块链世界，是否会是一个Appchain（应用链）当道的年代。</p>
+<p>要不说AXIE厉害，之前虽说Cosmos已经给大家建立了一个多链世界的模型，但大家对于区块链DAPP的理解，大多还是集中在“某一条链上的一个或是多个智能合约”，这条链可以是ETH，也可以是BSC，或者SOL……</p>
+<p>直到Ronin侧链的火爆，让大家发现，原来一个区块链项目是可以通过一条单独的Appchain来实现的。</p>
+<p><strong>有人问，Appchain和像是以太坊这样的Layer1公链区别在哪？</strong></p>
+<p>简单来说，<strong>Layer1公链像是淘宝</strong> ，各个商户都可以上去开个网店。安全方便，但可定制性也局限在淘宝给的那些选项里面。</p>
+<p>而<strong>应用链就像是一家企业自己的官网</strong> ，这个网站你想怎么搭建完全看你，从服务器的架构到前端网页的设计，到后端数据库的选择，但做出来也只能服务你自己一家公司。</p>
+<p>而看看当前的互联网时代，淘宝网店与单独的企业网站并存，不难推演得出，未来的区块链世界，也一定是Dapp与Appchain并存的世界。</p>
+<p>那么通过一个简单的比喻，我们来看看未来多链宇宙下的各种模型比较，不过请注意，这里只是从安全的视角去出发，但这也可以说是最为重要的一个视角。</p>
+<p>毕竟，区块链解决的是信任问题，而要信任，首先你得安全。<strong>今天要聊的模型分别是：</strong> 单链（侧链与Rollup）、多链（非共享安全，插槽式共享安全，租赁式共享安全）。</p>
+<h2 id="单链侧链与rollup"><strong>单链：侧链与Rollup</strong></h2>
+<p>首先，我们来做两个前置性类比，ETH是一个功能齐全性的村庄，有保安；Dapp是村庄里的某一项设施，比如集市，酒馆，农场……</p>
+<ul>
+<li><strong>从这个类比出发，来看看侧链（比如Matic）是什么。</strong></li>
+</ul>
+<p>显然，侧链是另一个与ETH非常类似的村庄，里面功能同样齐全，也有集市，酒馆，农场……还有一条通往ETH村的主干道。</p>
+<p>那么区别在哪？ETH那个村儿，人太多了，而且地方也小，去集市买个菜或是去酒馆喝个酒，经常得排队，不光排队，价格也贼贵。侧链这个村人少地大，干啥基本都不用排队，物价还便宜，听起来像是天堂。</p>
+<p><strong>但ETH村安保力量强大，保安到处都是，人人手里一把“手枪”。</strong> 更重要的是，这些保安都经过了历年时间的考验，各个人品正直，几乎不存在徇私枉法的事儿，在ETH村生活工作，你可以把心放在肚子里，安全感爆棚。</p>
+<p>侧链这个村，安保是当然不如ETH村的，具体来说，侧链村自己请的保安，装备和水平比ETH差了一截，再就是还没有经过时间的检验，人品咋样不知道。所以你在侧链村生产生活的时候，虽然体验更好，但是安全感，确实是比不上ETH村的。</p>
+<ul>
+<li><strong>Rollup</strong></li>
+</ul>
+<p>最近ETH村旁边新修了几个Rollup村，他们和侧链村很像，但是和侧链村又有点不一样。</p>
+<p>他们村子里面没请保安，但是雇了ETH村的保安定期过来巡逻，所以在这些个村里，安全感几乎和ETH村差不多，<strong>而生活成本比ETH村大幅降低，只比侧链村略高</strong> ，所以很多商人都说等Rollup村修好了，要把店搬过去，或是在Rollup村开个分店。</p>
+<ul>
+<li><strong>Appchain</strong></li>
+</ul>
+<p>像是Ronin这种Appchain，这就是一个功能单一的村子，比如只能酿酒，不能做其他的，这里的保安跟侧链村一样，都是自己请的，但因为功能非常单一，所以安全性不是第一重要的，<strong>让酿酒厂成本更低，产酒效率更高</strong> 才是这个村村民最为关心的事。</p>
+<h2 id="多链宇宙cosmos-波卡"><strong>多链宇宙：Cosmos 、波卡</strong></h2>
+<p>说完了单链，再来看看多链宇宙。</p>
+<ul>
+<li><strong>Cosmos（非共享安全）</strong></li>
+</ul>
+<p>Cosmos是一个超大村子，但它里面却基本上没什么店铺，有的只是路和建筑样式（Cosmos SDK）。它自己定义了建一个村子，路多宽，盖房子用什么材料，还提供了详细的图纸，<strong>鼓励大家出去多建村子，只要建完了修一条路回Cosmos就成。</strong></p>
+<p>于是Cosmos周边那些拿Cosmos村图纸修建的村子，干什么的都有，唯一相同的是，他们都有一条路回Cosmos村，所以他们之间也可以互相走街串巷了。</p>
+<p>Cosmos村是有保安的，装备挺不错。Cosmos周边那些拿图纸修建的村子，也同样有保安，不过都是各自花钱雇的，水平参差不齐。</p>
+<p>这也导致有些村子治安比较好，有些治安比较差，好处就是大多数村子的生活成本都不高。坏处就是有些治安较差的村子，可能会有些“不法商人”偷偷跑去那些治安较好的村子坑蒙拐骗，算是个安全隐患。</p>
+<ul>
+<li><strong>波卡 （拍卖式共享安全）</strong></li>
+</ul>
+<p>波卡同样是个超大村子，里面没什么店铺，有的只是路和建筑样本（Substrate），还有 保安。Dot也定义了建一个村子，路多宽，盖房子用什么材料，提供了详细的图纸，鼓励大家出去多建村子，只要建完了修一条路回Dot就成。</p>
+<p>但是和Cosmos村几乎无限的路不太一样，波卡村可以通往外面的路，是有限的。<strong>这也决定了想要在波卡周边建村子的，他们必须得争夺波卡那数量有限的道路，这也就是俗称的“插槽拍卖”。</strong></p>
+<p>想要赢得插槽拍卖的村子，经济实力必须得强，毕竟拍卖拼的就是钱。好处就是只要你赢得拍卖，有一条路去波卡村，那么除了可以享受到与其他波卡相连村子的便捷往来之外，你还有个很大的好处，不用担心安全问题。</p>
+<p><strong>因为波卡村会把自己的超强保安派去每一个赢得插槽拍卖，和波卡村有道路连接的村子。这些村子都不需要自己找保安，波卡村把安全工作包圆了。</strong></p>
+<p>波卡的建村子模板和图纸因为直观又好用，很快成为所有想要建村子的部落首选。然而他们面临一个问题，很多小部落没钱不太可能赢得插槽拍卖，他们的村子是能建起来，然而没有波卡村的保安，很多村子的安全和治安会是个不小的问题。</p>
+<p>于是Near村的一个卫星村（章鱼村）发现了这个商机，给这些小部落提供了一个新的选项，那就是<strong>提供了一个类似于波卡村的道路接入方案，所有拿波卡村图纸建的村子，都可以修一条来章鱼村的路</strong> ，因为章鱼村也是按照波卡那边的图纸设计的道路接口。</p>
+<p>这也把章鱼村和波卡村区分开来，波卡村那边接入的通常都是经济实力强的大部落，但因为需要为波卡村的保安付出高昂的费用，<strong>所以通常接入波卡村的村子，都是以综合型村子为主</strong> ，里面有多个设施，比如平台型的Acala，Moonbeam……多个设施分摊安保费用，经济上才相对合理。</p>
+<p>而接入章鱼村的，通常都是经济实力一般的小部落，也通常只负责一种设施，比如种植，或是酿酒，也就是我们之前提到的Appchain，但至少，这给了这些想用波卡村建筑图纸，又无法赢得拍卖，还需要一定安全性的小村子部落，提供了一个容身之地。</p>
+<p><strong>这大概就是多链目前出现的三种模型，Web3时代的多链宇宙，你更看好哪一种形态呢？</strong> 欢迎在留言区分享你的观点。</p>
+<p><strong>END</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/30767/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">一文看懂 Layer 2 如何解决区块链「不可能三角」问题？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/30756/">
+                <span class="next-text nav-default">以 GameFi土地资产为例分析游戏经济模型的转变</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#未来会是应用链当道吗"><strong>未来会是应用链当道吗？</strong></a></li>
+    <li><a href="#单链侧链与rollup"><strong>单链：侧链与Rollup</strong></a></li>
+    <li><a href="#多链宇宙cosmos-波卡"><strong>多链宇宙：Cosmos 、波卡</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

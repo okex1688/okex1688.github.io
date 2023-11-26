@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          NFT 开发者：谈谈我对 ERC-4907 的三点疑问 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Double Protocol 是一个基于以太坊的 NFT 租赁协议，NFT 的所有者可以通过该协议授权自己的 NFT 给租赁者使用，而 NFT 本身无需被转让。" />
+<meta name="keywords" content="NFT" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39682/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="NFT 开发者：谈谈我对 ERC-4907 的三点疑问" />
+<meta property="og:description" content="Double Protocol 是一个基于以太坊的 NFT 租赁协议，NFT 的所有者可以通过该协议授权自己的 NFT 给租赁者使用，而 NFT 本身无需被转让。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39682/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-01T00:00:00+00:00" />
+
+<meta itemprop="name" content="NFT 开发者：谈谈我对 ERC-4907 的三点疑问">
+<meta itemprop="description" content="Double Protocol 是一个基于以太坊的 NFT 租赁协议，NFT 的所有者可以通过该协议授权自己的 NFT 给租赁者使用，而 NFT 本身无需被转让。"><meta itemprop="datePublished" content="2022-07-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-07-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3187">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NFT 开发者：谈谈我对 ERC-4907 的三点疑问"/>
+<meta name="twitter:description" content="Double Protocol 是一个基于以太坊的 NFT 租赁协议，NFT 的所有者可以通过该协议授权自己的 NFT 给租赁者使用，而 NFT 本身无需被转让。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">NFT 开发者：谈谈我对 ERC-4907 的三点疑问</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-07-01">
+      2022-07-01
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3187 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>作者：小野</p>
+<p>昨天，我被朋友圈里铺天盖地的 ERC-4907 和 Double Protocol 刷屏了。</p>
+<p>作为一个从事 NFT 相关开发工作的以太坊社区开发者，笔者非常关注 NFT 生态相关的最新发展，因此在获取到该消息的第一时间，在好奇的驱动下，便对其定义的标准和具体实现进行了一番研究。然而，笔者在深入探究的过程中，碰到了几点疑惑。</p>
+<p><strong>首先，什么是 Double Protocol 和 ERC-4907</strong></p>
+<p>Double Protocol 是一个基于以太坊的 NFT 租赁协议，NFT 的所有者可以通过该协议授权自己的 NFT 给租赁者使用，而 NFT 本身无需被转让。由于这种特性，Double Protocol 可以实现无抵押的 NFT 租赁。该协议可以支持所有 ERC-721 NFT，支持分租等具体 NFT 租赁场景。</p>
+<p><strong>NFT 租赁，这是一个真命题吗？</strong></p>
+<p>随着 GameFi 和 NFT 的发展，NFT 被用于越来越多的场景，被赋予了更多的用例。我们看到 NFT 从单纯的头像小图片，发展到承载更多的接近于现实世界的功能与用途，也就是所谓的“Utility NFT（功能性 NFT）”，这就好比汽车可以开，房子可以住。NFT 越来越接近于现实世界的”商品或服务“。而一个商品除了可以买卖（发生物权转移）以外，当然也可以通过租赁来实现使用价值的转移。所以笔者认为，NFT 租赁这一场景不但站得住脚，而且未来将会越来越扩大，并且场景会越来越具体，就好比我们时间线中的租车、共享汽车、短租房等等。</p>
+<p>然而，在详细阅读 Double Protocol 以及 EIP-4907 文档的过程中，笔者发现了几个问题，并且不禁对于该协议的原创性，可使用性和可靠性，产生了一些疑问。本文仅提出笔者发现的疑问，并欢迎整个加密社区对此进行更广泛的讨论：</p>
+<h2 id="疑问一erc-4907-协议是否不完备">疑问一：ERC-4907 协议是否不完备</h2>
+<p>ERC-4907 在 ERC-721 的基础上增加了名为 user 的用户权限，该权限具有一段有效期，NFT 的持有人和被授权的人都可以在任意时刻对 NFT 的 user 进行设置。不难理解，ERC-4907 拓展了一个新角色并以此来记录 NFT 的租赁人信息，但租赁人本身不具有任何权限，其权限由支持该 NFT 的应用自行赋予和定义。</p>
+<p>这是一个思路上比较灵活的方案，但以此来实现租赁的功能，依然存在非常多的问题。在 ERC-4907 的实现里，User 的信息会在每一次 transfer 时被重置，且 User 随时可以被 NFT 的持有者或者已授权的人设置或更新。如果我们把设置 user 的行为视作租约的签订，那么随时可以更新 user 的行为就意味着这一租约是可以随时被破坏的，这显然侵犯了租赁人该有的权益，并且为整个租赁关系带来很大的不确定性。在这样的前提下，即租赁合约随时可以被改动的情况下，租赁期限（expires）已经毫无存在的必要性。</p>
+<p>对于这一问题，社区中也有人提出。对此，ERC-4907 的发起人回应道，真正的租赁功能需要再通过一个租赁合约来实现。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/23_bemv3retpc.png" alt="NFT 开发者：谈谈我对 ERC-4907 的三点疑问"></p>
+<p>也就是说，ERC-4907 协议本身不实现租赁功能，在进行租赁时，还需要引入一个应用级别的租赁合约。如此，笔者对 ERC-4907 协议本身的完备性提出质疑。如果这套协议本身不是一个完备的协议，无法在用户和应用之间直接实现租赁功能，必须再有一个应用级别的合约介入，则这套协议不能称为真正意义上的协议。此外，即使在这种情况下，expires 依然是一个无存在必要的信息，看起来这更像是以一种强耦合的方式，把一个应用级产品可以实现的字段信息，记录在了协议里。</p>
+<h2 id="疑问二以太坊社区中已有人提出高度类似的提案">疑问二：以太坊社区中已有人提出高度类似的提案</h2>
+<p>为了解决上述疑惑，笔者对此进行了一番搜索。在寻找资料的过程中，笔者发现两个与 EIP-4907 设计思路高度相似的提案。第一个是 AFKDAO 项目的 ERC-4610。该提案提出在 ERC-721 的基础上拓展一层名为 delegator 的角色，并通过租赁合约最终实现完整的租赁功能。据信目前有超过 30 个游戏项目采用该协议。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0701/23_mjmoq6t29q.png" alt="NFT 开发者：谈谈我对 ERC-4907 的三点疑问"></p>
+<p>图为 ERC-4610 技术文档基于游戏用例给出的技术示意</p>
+<p>在 AFKDAO 项目中，笔者也找到了符合 Double Protocol 描述的特性“与 ERC-721 完全适配，无抵押，可分租”的应用实例，这就是 AFKDAO 中采用 ERC-4610 协议的 Aggregator。</p>
+<p>Aggregator 的用途主要是允许游戏 NFT 的所有者将 NFT 以无抵押的方式授权给租赁者，并且可以直接获得游戏 P2 E 收益的分成。该应用于 2022 年 3 月上线，根据链上记录已有相当数量的交易完成。</p>
+<p>EIP-4907 提案实现租赁功能的方式，以及用 WNFT 向前兼容的方案都与 EIP-4610 提出的方案如出一辙。这让笔者好奇二者之间是否存在某种借鉴？对比二者提出时间，EIP-4907 在 22 年 3 月提出，EIP-4610 在 21 年 12 月提出（读者可自行查阅：https://GitHub.com/AFKDAO/EIPs/blob/master/EIPS/eip-4610.md）。</p>
+<p>关于这个问题，笔者在一篇文章中找到了相关的说明：</p>
+<blockquote>
+<p>Double Protocol is not the first of its kind to utilize the Dual-Role model to separate the usage and ownership of NFTs. Nevertheless, the team noticed a lack of consensus on naming and implementing the Dual-Role mechanism, which makes collaboration difficult. This is why Double Protocol proposed EIP-4907.</p>
+</blockquote>
+<p>由此可见，ERC-4907 的提出者借鉴过其他同类型协议的设计，但因为名字的命名不同，选择自行提出了 EIP-4901 提案。</p>
+<p>第二个是 EnterDAO 的 EIP-4400，协议的核心思想与 ERC-4907 一致，于 21 年 10 月提出。EnterDAO 提出了两款产品：LandWorks 和 MetaPortal。值得一提的是 LandWorks 与 Double Protocol 一样，选择了从 Decentraland 租赁开始入手。并且也有一个与 Double Protocol 相同的土地地块 P2 P 租赁市场。</p>
+<p>同时 EIP-4400 也是目前笔者能找到的最早提出以权限拓展的方式实现租赁的提案，也是目前以太坊开发社区中讨论活跃度最高的。</p>
+<h2 id="疑惑三提案讨论是否充分">疑惑三：提案讨论是否充分</h2>
+<p>对于 ERC-4907 协议完备性及其实现存在诸多考虑不周的问题，笔者也尝试在社区中寻找相关的讨论。但结果出乎意料，关于 ERC-4907 的讨论非常少，笔者也在这个过程中注意到另一问题：EIP-4907 提案从提出到审核通过进入 final 状态，仅仅用时三个月。</p>
+<p>熟悉以太坊社区工作效率的朋友都知道，这个时间快得有些不符合常态。举几个例子，ERC-1155 从提出到进入 final 用了 12 个月，ERC-777 用了 18 个月，ERC-820 则花了 15 个月。</p>
+<p>对此，笔者感到甚是疑惑。在提案通过前，社区中就有人对这一提案提出了包括关于 user 的命名是否足够清晰等等问题，但没有得到回复和响应。整个提案似乎是在一种没有充分讨论和验证的情况下进入 final 状态的，这多少显得有些匆忙了，不太符合对于以太坊提案需要社区反复讨论、battle、修改的一贯认知。</p>
+<p>笔者认为，EIP 协议讨论沟通的过程是与社区建立广泛共识的过程。广义上来，协议总是建立在共识而非提案状态的基础上。而像 ERC-4907 这类如此仓促通过的提案能否建立起广泛共识还有待考察。</p>
+<h2 id="结语">结语</h2>
+<p>NFT 租赁无疑是未来 NFT-DeFi 的重要组成部分。就协议而言，EnterDAO，AFKDAO，Double Protocol 都是这一领域的先行者。但就开发者层面而言，实现互操作性的前提是协议的一致性。如同 ERC-721 和 1155 这样高开发者共识的协议开启了 NFT 的大规模应用一般，笔者希望这三个项目的开发者可以达成某种程度的协同，完善出一个统一的、高可采用性的 NFT 租赁协议，而不是各自为战，让 NFT DeFi 又回到当前 GameFi 项目那样“一个项目一标准”的老路上。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39658/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Meta已开始在Facebook上测试以太坊和Polygon NFT</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39705/">
+                <span class="next-text nav-default">NFT的未来在哪里？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#疑问一erc-4907-协议是否不完备">疑问一：ERC-4907 协议是否不完备</a></li>
+    <li><a href="#疑问二以太坊社区中已有人提出高度类似的提案">疑问二：以太坊社区中已有人提出高度类似的提案</a></li>
+    <li><a href="#疑惑三提案讨论是否充分">疑惑三：提案讨论是否充分</a></li>
+    <li><a href="#结语">结语</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          全面解读ZK-Rollup的现状、前景和痛点 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="以太坊基金会表示，Rollup是目前解决可扩展性问题的首选的L2解决方案。" />
+<meta name="keywords" content="Rollup, ETC" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39923/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="全面解读ZK-Rollup的现状、前景和痛点" />
+<meta property="og:description" content="以太坊基金会表示，Rollup是目前解决可扩展性问题的首选的L2解决方案。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39923/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-07T00:00:00+00:00" />
+
+<meta itemprop="name" content="全面解读ZK-Rollup的现状、前景和痛点">
+<meta itemprop="description" content="以太坊基金会表示，Rollup是目前解决可扩展性问题的首选的L2解决方案。"><meta itemprop="datePublished" content="2022-07-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-07-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7970">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="全面解读ZK-Rollup的现状、前景和痛点"/>
+<meta name="twitter:description" content="以太坊基金会表示，Rollup是目前解决可扩展性问题的首选的L2解决方案。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">全面解读ZK-Rollup的现状、前景和痛点</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-07-07">
+      2022-07-07
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7970 字 -
+        预计阅读 16 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="背景">背景</h2>
+<p>最近，像Solana和BNB Chain这样受欢迎的第1层(L1)，由于在各自的网络上同时运行DeFi协议、NFT市场和Web3游戏而导致了网络中断。与此类似，以太坊也因网络拥塞和昂贵的gas费用而不断受到批评。使得业界逐步意识到L2扩展性解决方案的重要性。</p>
+<p>以太坊基金会表示，Rollup是目前解决可扩展性问题的首选的L2解决方案。除了Rollup，还有其他L2解决方案，如侧链和子网，它们都试图解决可扩展性三难困境。</p>
+<p>特别是，随着今年早些时候DeFi Kingdoms和Crabada子网的部署，Avalanche 的 L2 可扩展性解决方案 Subnets 最近获得了相当高的人气。在某些情况下，子网本质上是侧链，但子网可以选择使用来自主网的验证者。目前，子网和侧链似乎是Web3游戏的首选的L2扩展解决方案。</p>
+<p>在本文中，我们将深入讨论Rollup的最新发展和痛点。我们还将分析与自定义链(子网或侧链)相关的Rollup，并看看这些不同的L2解决方案是如何相互叠加的，特别是在GameFi领域。</p>
+<h2 id="zk-rollup的前景近期发展和痛点">ZK-Rollup的前景、近期发展和痛点</h2>
+<p>Rollup将压缩的链下交易捆绑到L1网络的单个订单中，这样可以降低gas费用，并扩大任何给定L1的交易能力。L2执行计算，而L1只需要验证它们。由此，gas费用被大量交易分摊，数千笔交易将可以被集体完成。</p>
+<p>Rollup有两种不同的变体：Optimistic Rollup和零知识Rollup (“ZK-Rollup”)。两者的验证方法不同。</p>
+<p>Optimistic Rollup假设所有交易都是有效的，并且不经验证就将它们发布到基础层。然后会在七天的质询期内修改有争议的交易。</p>
+<p>另一方面，ZK-Rollup创建一个证明，并将其作为有效性证明的一种形式发布到主网。目前，使用ZK-Rollup的交易可以在大约10分钟内完成。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0707/2_n2qfufiv6s.png" alt="全面解读ZK-Rollup的现状、前景和痛点"></p>
+<p>资料来源：preethikasireddy.com；ethereum.org</p>
+<p>从上图中可以看出，与Optimistic Rollup相比，ZK-Rollup似乎将赋予以太坊一个更快、更可扩展的生态系统。</p>
+<p>然而，值得注意的是，ZK-Rollup仍然是一种新兴的技术形式，缺乏EVM兼容性。尽管zkSync今年早些时候在他们的公共测试网上发布了一个兼容EVM的zkEVM，但是要实现ZK-Rollup的EVM兼容性，还有很长的路要走。如果不这样做，ZK-Rollup将仅限于代币转账和交换。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0707/2_59oj9020bs.png" alt="全面解读ZK-Rollup的现状、前景和痛点"></p>
+<p>资料来源：l2beat.com（截至 2022 年 6 月 7 日）</p>
+<p>从上图可以看出，目前Optimistic Rollup在TVL方面占据了72%的市场份额。前面提到的缺乏EVM兼容性似乎让ZK-Rollup处于次要地位，因为这个原因，很多DeFi玩家在扩展到Rollup时选择退出ZK-Rollup。</p>
+<p>随着Optimistic Rollup的成熟，大多数大型DeFi项目已经根据自己的需要采用了这个解决方案。然而，一周的等待时间往往会让新用户感到失望。但当考虑到GameFi可扩展性、NFT市场和Web3应用时，ZK-Rollup可能会成为需要更高吞吐量和更低交易费用的网络的可选解决方案。</p>
+<h2 id="zk-rollup的全景">ZK-Rollup的全景</h2>
+<p><img src="https://img.bibiqing.com/news/2022/0707/2_9ub13jweq8.png" alt="全面解读ZK-Rollup的现状、前景和痛点"></p>
+<p>资料来源：l2beat.com 和协议的网站（截至 2022 年 6 月 7 日的数据）</p>
+<p>截至撰写本文时，该领域已有超过12个的ZK-Rollup解决方案，底层技术由StarkWare、Loopring、Matter Labs和Polygon Hermez开发。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0707/2_vf9qdvdsh2.png" alt="全面解读ZK-Rollup的现状、前景和痛点"></p>
+<p>ZK-Rollup中有两种主要的加密证明方法。Loopring和zkSync采用的技术创建了一个零知识、简洁、非交互的知识论证(ZK-SNARK)证明，以验证主网中的大量交易。ZK-SNARK于2012年成为公众关注的焦点，并被ZK-Rollup的先驱们广泛采用。</p>
+<p>另一方面，零知识、可扩展、透明的知识论证(ZK-STARK)技术相对较新，于2018年由StarkWare发布。ZK-STARK被认为比ZK-SNARK更透明和可扩展。这项前景广阔的技术最近推动StarkWare的估值达到80亿美元，该轮融资由Tiger Global领投。</p>
+<h2 id="starkware">StarkWare</h2>
+<p>StarkWare提供两种主要的ZK-STARK解决方案：StarkEx和StarkNet。</p>
+<p>StarkEx是为特定应用程序 ZK-Rollup设计的Validium解决方案，被衍生品交易平台dYdX、Web3游戏和NFT市场 Immutable X采用。</p>
+<p>Validium是一种可扩展的解决方案，它采用与通用ZK-Rollup相同的有效性证明，但不将数据存储在主网上。链下数据存储绕过了主网上的交易处理，与通用ZK-Rollup相比，它显著提高了可扩展性。但是，采用Validium的风险在于，数据可用性管理人员可能会控制用户的资产，从而引发安全问题。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0707/2_osimtkees5.png" alt="全面解读ZK-Rollup的现状、前景和痛点"></p>
+<p>资料来源：l2beat.com（截至2022年6月8日）</p>
+<p>StarkNet是由StarkWare推出的一个通用Rollup，于今年2月完成了发布。值得一提的是，Immutable X采用了一个Volition模型，允许用户在Validium模型或通用ZK-Rollup之间进行选择。随着TVL的逐步提升，StarkWare一直致力于将StarkNet的TPS提升到优化水平。</p>
+<p>Cairo是StarkNet的编程语言。StarkNet并不支持EVM，在撰写本文时，Nethermind的Warp团队正在开发一个Solidity-to-Cairo的转译器。</p>
+<h2 id="starkex的web3游戏足迹">StarkEx的Web3游戏足迹</h2>
+<p>借助ZK-Rollup的力量，Web3游戏可以显著降低用户的交易成本，并避免拥塞。因此，像Sorare, Immutation X等生态系统都采用了StarkWare的可扩展性解决方案来支持他们平台上的Web3游戏。</p>
+<p>Sorare 是一款著名的足球卡牌游戏，在以太坊主网上很受欢迎，他们就是通过采用StarkEx来转移到L2的。Sorare选择ZK-Rollup来扩大规模，同时又确保了安全性和去中心化。</p>
+<p>Immutable X是基于以太坊的NFT市场的L2平台。它通过将计算转移到链下来提供零gas费和即时交易。根据DappRadar，目前有4款活跃的Web3游戏在Immutable X的帮助下进行NFT交易，Gods Unchained便是其中最突出的一款，它拥有大约5000名用户和150万美元的日交易量。</p>
+<p>Illuvium是最新一款加入Immutable X平台的Web3游戏，在其正式游戏发布之前通过销售价值超过 7200 万美元的数字土地而成为头条新闻。</p>
+<p>总之，在 ZK-Rollup 中构建游戏可以通过两种方式完成。第一种方法是通过Immutable X这样的解决方案，第二种方法是构建一个独立的ZK-Rollup，就像Sorare。比较这两种方法，Immutable X的解决方案被证明更具成本效益。然而，我们需要注意的是，Immutable X仍然缺乏采用，而ZK-Rollup到目前为止还没有在Web3游戏领域获得吸引力。</p>
+<h2 id="loopring">Loopring</h2>
+<p>Loopring是内部开发的ZK-Rollup解决方案。截至撰写本文时，该协议是 TVL 最大的通用 ZK-Rollup 链。他们的战略重点是交易和支付，而它在支持Web3游戏方面的努力只体现在与Gamestop合作建立Gamestop NFT市场上。目前该平台还没有运行Web3游戏。</p>
+<h2 id="matter-labs-zksync背后团队">Matter Labs (zkSync背后团队)</h2>
+<p>Matter Labs是zkSync扩展解决方案背后的团队。它使用ZK-SNARK，并提供链下Validium解决方案zkPorter和链上通用Rollup zkSync。</p>
+<p>ZKSpace 是从 zkSync分叉出来的，采用了同样的ZK-SNARK技术来解决可扩展性问题。正如zkSync所指出的，ZKSpace自分叉以来一直是封闭状态，因此可能存在安全风险。截至撰写本文时，ZKSpace(以前称为ZKSwap)拥有协议ZKSpace、ZKSwap和ZKSea(尚未上线)。</p>
+<p>Matter Labs 于 2022 年 2 月在公共测试网上推出了 zkEVM，这是第一个与 EVM 兼容的 ZK-Rollup。zkEVM 仍在开发中，其旨在运行99%的Solidity合约。这意味着ZK-Rollup将与以太坊主网并行运行，并与Optimistic Rollup进行竞争，这是一个重要的里程碑。</p>
+<p>Matter Labs目前也在设计一个Validium 解决方案—zkPorter。如果Matter Labs打算将Web3游戏吸引到自己的平台上，zkPorter可能正是它所需要的。然而，Matter Labs似乎仍然专注于构建通用ZK-Rollup。</p>
+<h2 id="polygon">Polygon</h2>
+<p>Polygon一直在积极地创建自己的L2可扩展性解决方案。其ZK-Rollup产品包括Polygon Hermez (ZK-SNARK)、Polygon Zero (ZK-SNARK)和Polygon Miden (ZK-STARK)。Polygon在2021年收购了ZK-Rollup规模化项目Hermez和初创公司Mir，并获得了构建其ZK-Rollup的专业知识。</p>
+<p>截至撰写本文时，只有Polygon Hermez是活跃状态。它可用作 DeFi 项目的通用 ZK-Rollup，TVL 仅为 366,000 美元。Polygon Hermez 尚未吸引很多项目，可能是由于缺乏 EVM 兼容性。然而，Polygon可能已经通过其PoS侧链或超级网络战略瞄准了Web3游戏开发者，且尚未将其重点转移到 ZK-Rollup上。</p>
+<h2 id="痛点和简要总结">痛点和简要总结</h2>
+<p>对于通用ZK-Rollup来说，一个反复出现的问题在于它们的EVM兼容性。我们注意到，以太坊中的大多数DeFi玩家都选择了Optimistic Rollup或Polygon PoS作为他们的L2扩展解决方案。例如，Curve选择了Optimism；Aave V3的Polygon，Optimism和Arbitrum；Uniswap已经扩展到Optimism和Polygon。zkEVM正在被Matter Labs测试，Nethermind正在为StarkNet开发一个转译器。EVM兼容性方面的任何突破都有可能最终有助于将DeFi项目吸引到ZK-Rollup中。</p>
+<p>另一个问题是ZK-Rollup中缺乏通信。这会导致流动性断裂和可能引发安全问题的集中排序过程。然而，Immutable X最新推出的跨Rollup流动性解决方案可能预示着一个流动性更强的Rollup生态系统。</p>
+<p>ZK-Rollup还没有在NFT和Web3游戏领域获得吸引力，这是有原因的。Gods Unchained在不断地失去用户，自从它采用了Immutable X的解决方案后，它的交易量急剧下降。Sorare在转入Rollup后也无法在以太坊主网重复其成功。尽管ZK-Rollup在上述例子中没有取得成功，但相比之下，Avalanche的子网在NFT和Web3游戏中都找到了更坚实的基础。</p>
+<h2 id="avalanche子网和polygon">Avalanche子网和Polygon</h2>
+<h3 id="avalanche子网简介">Avalanche子网简介</h3>
+<p><img src="https://img.bibiqing.com/news/2022/0707/2_jb8sqrf9fl.png" alt="全面解读ZK-Rollup的现状、前景和痛点"></p>
+<p>Avalanche的主要网络由三个区块链组成——X、P和C链。每条链在维护Avalanche的完整性和创建新资产或区块链方面都有不同的用途。</p>
+<ul>
+<li>
+<p>Exchange链(X-chain)是Avalanche的默认资产区块链，支持创建新资产、交换和跨子网转账。</p>
+</li>
+<li>
+<p>平台链(P-chain)是元数据区块链，用于协调验证者，跟踪活动子网并创建新的子网。</p>
+</li>
+<li>
+<p>合约链(C-chain)是智能合约区块链。它支持创建与EVM兼容的智能合约。</p>
+</li>
+</ul>
+<p>Avalanche 使用扩展方法创建子网以进行水平扩展。子网不同于单个区块链，它们之间的关系如下：</p>
+<ul>
+<li>
+<p>子网是区块链上的一组验证者。</p>
+</li>
+<li>
+<p>每个区块链只有一个子网(一组验证者)，而每个子网可以同时维护多个区块链。</p>
+</li>
+</ul>
+<p>每个子网一开始可以有5个验证者，但是为了网络健康和安全，建议最好有10个。在Avalanche上创建子网只需要一个AVAX。然而，子网的每个验证者也需要验证主网络——需要2000个AVAX代币，截至2022年6月9日，其价值约为5万美元。</p>
+<p>子网创建被设计为无需许可，并足够灵活，这样就可以满足不同的用例。例如，私有区块链可能要求只由子网验证者查看交易；或验证者必须先经过 KYC/AML 验证，然后才能进入子网。</p>
+<h2 id="子网上的web3游戏">子网上的Web3游戏</h2>
+<p>子网一直是L2可扩展性的圣杯，尤其是在Web3游戏领域。Avalanche一直在支持和发展它的GameFi生态系统，并在子网中为它们找到一个归宿。Crabada和DeFi Kingdoms是他们的两个先驱，Castle Crush目前正在开发其测试网。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0707/2_orbrcgd7w5.png" alt="全面解读ZK-Rollup的现状、前景和痛点"></p>
+<p>资料来源：https ://cryptodaily.io/how-crabada-is-paving-the-way-for-p2e-games-on-avalanche/</p>
+<p>从上表中可以看出，Crabada在Avalanche公司C链的gas费用中所占份额最高，为38.93%。然而，与许多Web3游戏类似，Crabada也面临着主网网络拥塞的问题，这促使它们转向自己的链，如子网。最近，Crabada从 Avalanche C 链转移到了他们自己的子网Swimmer Network。随着向 Swimmer Network 的迁移，Crabada玩家的gas费降低了 85%，交易时间也大大缩短。</p>
+<p>除了较低的gas费用和较高的TPS，还有其他好处可以吸引 web3 游戏采用子网。通过拥有自己的子网，Web3游戏基本上可以更好地控制区块链的预定参数。他们可以用自己选择的代币支付gas费用。现在，Crabada使用$TUS而不是$AVAX作为gas代币，在网络扩展过程中燃烧高达80%的gas。销毁代币抑制了代币通胀，提高了代币效用。</p>
+<p>需要注意的是，游戏工作室一直在为整个游戏生态系统构建子网，而不是Crabada或DeFi Kingdoms采用的典型的每个子网一个游戏的模型。</p>
+<p>Avalanche还表示支持在其子网上创建Web3游戏。在最初计划的1.9亿美元的Avalanche Rush启动了DeFi生态系统之后，接下来的2.9亿美元的Multiverse计划旨在加速生态系统的增长。</p>
+<h2 id="polygon超级网络和侧链">Polygon超级网络和侧链</h2>
+<p><img src="https://img.bibiqing.com/news/2022/0707/2_e7lv5qnj4o.png" alt="全面解读ZK-Rollup的现状、前景和痛点"></p>
+<p>来源：多边形博客/超网</p>
+<p>Avalanche子网的竞争对手是Polygon supernet，这是一种来自Polygon Edge和Polygon PoS的扩展解决方案。正如前面所提到的，Polygon已经在他们的扩展解决方案上非常积极，试图让ZK-Rollup与超网和侧链共存。</p>
+<p>Polygon supernet在Web3游戏领域仍然是一个新事物，并且还没有过很多的实际应用。然而，超级网络解决方案被定位为具有更多功能的Avalanche子网的替代方案。Polygon supernet提供采用权威证明(PoA)或权益证明(PoS)链；从一组专业的验证者中进行选择，来增强去中心化；以及与Polygon主网共享安全的可能性。</p>
+<p>Polygon PoS是Web3游戏的中心，Aavegotchi和Crypto Raiders等游戏在2021年取得了巨大的成功。受欢迎的游戏会带来大量的交易量和交易问题。与Avalanche中的Crabada类似，Sunflower Land也引发了严重的网络拥堵问题，在峰值时耗掉了Polygon 42%的gas。</p>
+<p>简单地说，Polygon的各种扩展解决方案(Rollup和supernets)都还为时过早。托管无数Web3游戏的侧链Polygon PoS是其中最优质的选择。然而，Polygon PoS与第1层通用侧链有更多的相似之处，它拥有自己的一组验证者，也仍然受到网络拥塞的困扰。我们认为它的超级网络更类似于Avalanche的子网。</p>
+<h2 id="将自定义链与zk-rollup进行比较">将自定义链与ZK-Rollup进行比较</h2>
+<p>本质上讲，L2的ZK-Rollup和自定义链(Avalanche子网和Polygon超级网)都是它们各自L1区块链上的可扩展性问题的解决方案。两者都有非常不同的技术规范和好处，我们将尝试分解它们以更好地理解这些差异。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0707/2_q0pt1ge40t.png" alt="全面解读ZK-Rollup的现状、前景和痛点"></p>
+<p>如果我们只关注Web3游戏的技术方面来决定是在L2或Avalanche子网上构建，有人可能会说L2提供了更好的解决方案。然而，L2解决方案仍在开发中，还没有经过实战检验。由于对自己的链的需求，子网似乎在Web3游戏中越来越受欢迎。</p>
+<p>一般来说，与DeFi项目相比，Web3游戏不需要与更大的生态系统进行太多互动。他们通常有闭环生态系统，其中他们的代币和NFT相互支持。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0707/2_k55nyljt29.png" alt="全面解读ZK-Rollup的现状、前景和痛点"></p>
+<p>来源：https ://myria.com/games/</p>
+<p>另一方面，顶级Web3游戏工作室Gala Games或即将发布的Myria更喜欢建立自己的区块链。这两家工作室的多款游戏在某种程度上相互影响；因此，他们更有可能在同一个区块链上创建游戏。</p>
+<p>尽管如此，考虑到目前大多数游戏都是由单个项目团队制作，游戏之间的合作很少，所以对于小型游戏工作室来说，采用子网而不是建立自己的链可能看起来更合理。</p>
+<p>除了技术规格之外，Avalanche子网和 ZK-Rollup之间的核心区别是，Web3 游戏在各个子网或侧链上的隔离。在这个阶段，Immutable X 仍然是一个生态系统，其中 web3 游戏和 NFT 可以交互并相互构建，而 Avalanche 子网被单独隔离到模块化区块链中。</p>
+<h2 id="项目如何在zk-rollup和子网之间进行选择">项目如何在ZK-Rollup和子网之间进行选择?</h2>
+<p>由于缺乏与主网的可组合性，子网和超级网不是为DeFi项目设计的。与 EVM 兼容的 ZK-Rollup适合部署智能合约并同时需要高级别安全性的项目。然而，由于ZK-Rollup的EVM兼容性仍然处于萌芽状态，对于DeFi项目来说，Optimistic Rollup似乎是唯一可用的选择。</p>
+<p>显然，在Web3游戏中，子网已经成为比ZK-Rollup更好的选择。正如Avalanche子网的流行所表明的那样，单游戏/单链模型的单独自定义链已经获得了发展。</p>
+<p>ZK-Rollup和Validium可能有比自定义链更好的技术规格，但它们仍在开发中。ZK-Rollup可扩展性解决方案不提供单独的自定义链。此外，创建一个单独的Rollup(如Sorare)需要高昂的成本并体验过渡痛苦。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0707/2_flwrc4q73z.png" alt="全面解读ZK-Rollup的现状、前景和痛点"></p>
+<p>另一方面，Immutable X最近为Web3游戏发布了一个创新的第三层解决方案。有了这种方法，游戏工作室将能够在不牺牲安全性和可组合性的情况下享受第 3 层中的超大规模解决方案。第2层和第3层的整合巩固了跨Rollup解决方案的流动性，并加强了DeFi和Web3游戏之间的交互。虽然它似乎仍处于开发的早期阶段，但我们很期待看到Immutable X提供的其他功能。</p>
+<p>综上所述，StarkWare和Immutable X在风投中的高估值让机构投资者在他们身上投入了大量资金。反过来这又增强了人们对ZK-Rollup能够在以太坊生态系统中发挥作用的信心。此外，Polygon仍然在ZK-Rollup方面很积极。因此，我们可以很明显的看出ZK-Rollup的潜力还没有完全释放出来——我们将密切关注ZK-Rollup在未来如何蓬勃发展。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39921/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">链游的发展现状及各国监管</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39910/">
+                <span class="next-text nav-default">如何在加密世界建立银行系统？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#zk-rollup的前景近期发展和痛点">ZK-Rollup的前景、近期发展和痛点</a></li>
+    <li><a href="#zk-rollup的全景">ZK-Rollup的全景</a></li>
+    <li><a href="#starkware">StarkWare</a></li>
+    <li><a href="#starkex的web3游戏足迹">StarkEx的Web3游戏足迹</a></li>
+    <li><a href="#loopring">Loopring</a></li>
+    <li><a href="#matter-labs-zksync背后团队">Matter Labs (zkSync背后团队)</a></li>
+    <li><a href="#polygon">Polygon</a></li>
+    <li><a href="#痛点和简要总结">痛点和简要总结</a></li>
+    <li><a href="#avalanche子网和polygon">Avalanche子网和Polygon</a>
+      <ul>
+        <li><a href="#avalanche子网简介">Avalanche子网简介</a></li>
+      </ul>
+    </li>
+    <li><a href="#子网上的web3游戏">子网上的Web3游戏</a></li>
+    <li><a href="#polygon超级网络和侧链">Polygon超级网络和侧链</a></li>
+    <li><a href="#将自定义链与zk-rollup进行比较">将自定义链与ZK-Rollup进行比较</a></li>
+    <li><a href="#项目如何在zk-rollup和子网之间进行选择">项目如何在ZK-Rollup和子网之间进行选择?</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

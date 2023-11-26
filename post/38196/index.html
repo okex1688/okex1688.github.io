@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="原生 zkEVM 是区块链的未来 通用 zkVM 是 Web3 的未来。" />
+<meta name="keywords" content="Web 3.0" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38196/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来" />
+<meta property="og:description" content="原生 zkEVM 是区块链的未来 通用 zkVM 是 Web3 的未来。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38196/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-24T00:00:00+00:00" />
+
+<meta itemprop="name" content="Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来">
+<meta itemprop="description" content="原生 zkEVM 是区块链的未来 通用 zkVM 是 Web3 的未来。"><meta itemprop="datePublished" content="2022-05-24T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-24T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3694">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来"/>
+<meta name="twitter:description" content="原生 zkEVM 是区块链的未来 通用 zkVM 是 Web3 的未来。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-05-24">
+      2022-05-24
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3694 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E8%A7%82%E7%82%B9/"> 观点 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>TL; DR</p>
+<ul>
+<li>
+<p>零知识证明技术, 可以保证计算的完整性、正确性和隐私, 在区块链扩容和隐私中有应用.</p>
+</li>
+<li>
+<p>zk-SNARK 和 zk-STARK 各有优点, 而它们的合理结合更加有潜力.</p>
+</li>
+<li>
+<p>zkVM 能赋予应用零知识证明能力, zkVM 分为使用主流、EVM 或全新指令集.</p>
+</li>
+<li>
+<p>EVM 的适配包括 EVM 兼容性、等同性和 Specification 上的适配.</p>
+</li>
+<li>
+<p>zkEVM 是兼容 EVM 而又零知识证明友好的环境, 主要分为原生和编译流派.</p>
+</li>
+<li>
+<p>基于原生的 zkEVM 是以太坊和区块链的未来.</p>
+</li>
+<li>
+<p>支持 Solidity 生态的通用 zkVM 是 Web3 的未来.</p>
+</li>
+</ul>
+<h2 id="0-零知识证明">0. 零知识证明</h2>
+<p>不严谨但简单易懂地来介绍一下零知识证明:</p>
+<p>你在上小学. 老师是验证者, 你作为学生是证明者. 你如何证明你掌握了一元二次方程的求解公式呢? 那就需要数学考试.</p>
+<p>老师会随机出 10 道相关的题目, 而你如果掌握了, 则可以把他们都做出来. 在这个过程中, 你没有背诵或者默写求解公式的具体内容, 但是老师却可以很简单地验证你的知识掌握程度.</p>
+<p><img src="https://img.bibiqing.com/news/2022/0524/12_vpp9ylpiy6.png" alt="Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来"></p>
+<p>其实这就是 Tartaglia 与 Cardano (对的, 就是这个名字) 争夺谁是一元三次方程发现者时所采用的方法. 他们都不想告诉对方自己公式的内容, 但是通过做题, 就可以很容易地验证且过程中不透露知识地, 判断他们是否掌握了这一知识.</p>
+<p>零知识证明有什么用呢? 用处就是, 整个过程可以节省计算算力和压缩链上空间, 同时也可以对隐私有保护, 符合区块链去信任的特点以及密码学的基因.</p>
+<h2 id="1-snark-和-stark">1. SNARK 和 STARK</h2>
+<p>区块链领域中所用到或者提到的 “zk” 通常不是真正的零知识证明, 而经常是 Validity Proof. 由于相关词汇的混乱, 所以本文中的某些地方会延续这些 “误用”.</p>
+<p><img src="https://img.bibiqing.com/news/2022/0524/12_5yp5eb2wpj.png" alt="Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来"></p>
+<p>在目前的区块链版图中, zk 可以说是区块链扩容 (不 zk 的 Validity Proof) 与隐私技术 (真正的 zk) 的最前沿与最优解决方案, 在 Tornado.cash, ZCash, zkSync, zk.money, Filecoin, 和 Mina 等项目中都有使用.</p>
+<p>目前的技术方案主要分为 SNARK 以及 STARK 两类. STARK 中的 S 代表可扩展的, 意味着被证明的语句有重复的结构, 而 SNARK 支持任意的电路, 这些电路被预处理以实现简洁的证明. 其中对 SNARK 的技术实践占据了主导地位, STARK 主要有 StarkWare 在已上线的产品中大规模采用. 以下是它们之间的对比.</p>
+<p><img src="https://img.bibiqing.com/news/2022/0524/12_2onuyqrh7c.png" alt="Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来"></p>
+<p>从 Meme 的角度而言, STARK 比 SNARK 优秀 (?, Star Wars, Star Trek).</p>
+<p>如果 SNARK 是以太坊 2.0 的未来, 那么 STARK 就会是以太坊 3.0 的未来. 正经的来说, STARK 的优势在于</p>
+<ul>
+<li>
+<p>更低的 gas (更能 scale)</p>
+</li>
+<li>
+<p>更大的 batch size (更能 scale * 2)</p>
+</li>
+<li>
+<p>更快的证明 (更能 scale * 3)</p>
+</li>
+<li>
+<p>没有 trusted setup (生成的参数仅对当前的应用有效, 若出现了修改需要重新 setup)</p>
+</li>
+<li>
+<p>后量子安全</p>
+</li>
+</ul>
+<p>但是 STARK 生成的证明的体积更大, 并且还大不少, 由于比如 WASM 的一些限制, 可能会在构建时需要额外的操作 (这里是 SNARK). Mir 前段时间在 Starky 给出了一个 AIR-based STARK 的实践, 是 Plonky2 的一部分(Plonky2 和 Starky 的关系比较复杂&hellip;). 我个人认为, 体积大可以通过各种手法来优化, 但是算法本身的时间复杂度是很难再进一步压缩的.</p>
+<p>这些零知识证明技术可以通过合理的结合来构建更强大的应用. 比如 Polygon Hermez 就通过 SNARK 来证实 STARK 的正确性, 从而减少最终发布证明时的 gas fee.</p>
+<p>总结来说, SNARK 和 STARK 都是优秀的零知识证明技术, 各有千秋, 而它们的合理结合更加有潜力.</p>
+<h2 id="2-zkvm">2. zkVM</h2>
+<p>前面所说到的 Tornado.cash 和 zk.money 类似都是仅支持转账操作的零知识证明应用, 不支持通用的计算. 类比来说, 这些应用都只有比特币的功能, 远远不及以太坊的图灵完备, 更不要说建生态了 (比特币上的智能合约一直没做出生态来).</p>
+<p>zkVM 就是一个由零知识证明来保证安全可验证可信特性的虚拟机, 简单来说就是, 输入旧状态和程序, 返回新状态. 它能让所有的应用都被赋予零知识证明的超能力.</p>
+<p>Miden 在 ETH Amsterdam 的演讲用一张图很好概括了 zkVM 到底是什么.</p>
+<p><img src="https://img.bibiqing.com/news/2022/0524/12_sdajo3rt58.png" alt="Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来"></p>
+<p>zkVM 的优点:</p>
+<ul>
+<li>
+<p>易用: 开发者不用学密码学或者零知识开发就可以使用 zkVM 来运行程序保证计算安全 (不代表完全无门槛)</p>
+</li>
+<li>
+<p>通用: zkVM 可以给任何程序和计算生成证明.</p>
+</li>
+<li>
+<p>简洁: 相对比较少量 constraints 就可以描述整个 VM (不用重复生成整个 VM 的电路).</p>
+</li>
+<li>
+<p>递归: 免费的递归特性. 和通用性一样, 对 VM 的验证可以通过 VM 来进行. 这个就挺好玩, 比如你可以在 zkVM 里放一个 zkVM, 就类似 StarkWare 说的 L3 的概念.</p>
+</li>
+</ul>
+<p>zkVM 的缺点:</p>
+<ul>
+<li>
+<p>计算架构特殊: 并非所有零知识证明系统可以被用来做 zkVM.</p>
+</li>
+<li>
+<p>性能问题: 电路需要优化, 可以为特定计算进行针对性优化.</p>
+</li>
+</ul>
+<p>现在主流的 zkVM 有三大类, 括号中是它们的指令集: 主流 (WASM, RISC-V)、EVM (EVM bytecode)、ZK-Optimized (全新指令集, 针对零知识证明所优化, 比如 Cairo 和 zkSync). 以下是根据 Miden 在 ETH Amsterdam 的演讲所整理的类型对比图:</p>
+<p><img src="https://img.bibiqing.com/news/2022/0524/12_m6ys6awgy3.png" alt="Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来"></p>
+<p>很多零知识证明开发生态所做的事情大多是让开发者能用 Circom 库 (以及 snarkyjs 这种) 或者其他新创造的语言 (Leo 或者 Cairo 这种语言都有奇奇怪怪的限制) 来做通用 zk DApp 的开发, 但是没有像以太坊上用 Solidity 那么直接和易学.</p>
+<p>除此之外, 还有很多项目, 比如 zkSync, Scroll, 或者 Polygon 旗下的好多家都在尝试做 zkEVM 或者其他的 zkVM.</p>
+<h2 id="3-evm">3. EVM</h2>
+<p>EVM 就是以太坊的虚拟机, 也可以理解为运行智能合约的一套执行环境.</p>
+<p>数年来, 各个公链都在不停尝试着去兼容 EVM, 从而接入到以太坊的开发生态当中. 对于这个概念, 衍生出了 EVM 兼容, 等同和其他一些定义.</p>
+<ul>
+<li>
+<p>EVM 兼容性: Solidity 等语言层面的适配.</p>
+</li>
+<li>
+<p>EVM 等同性: EVM 字节码层面的适配.</p>
+</li>
+<li>
+<p>EVM Specification 适配: 也就是通常所说的真正的 zkEVM, 大多情况下甚至是向后兼容的优化后的超集, 能提供账户抽象 (就是每个账户都是一个智能合约) 等 EVM 没有提供的特性.</p>
+</li>
+</ul>
+<h2 id="4-zkevm">4. zkEVM</h2>
+<p>我们再来解读一下 zkEVM. 定义上来说, zkEVM 是一种兼容 EVM 同时又对零知识证明友好的虚拟机, 能保证程序, 操作, 和输入输出等的完全正确性.</p>
+<p>对于实现通用计算来说, 要做 zkEVM 主要需要解决两个难点:</p>
+<h3 id="a-电路复杂">a) 电路复杂</h3>
+<p>不同的合约需要生成不同的电路, 而且这些电路很 “复杂”.</p>
+<p>这方面主要就要靠各种优化了, 比如 Aleo (不过它不是 direct ZK 这一类&hellip; 只是为了举例说明优化) 通过分布式 Cluster 来并发计算 Proof, 或者通过各种硬件上的优化来加速.</p>
+<h3 id="b-设计困难">b) 设计困难</h3>
+<p>zkEVM 不止要对 EVM 进行重构, 对以太坊的整体状态转换都要用零知识证明技术进行重构.</p>
+<p>EVM 设计的时候就没想到后面要做 zkEVM, 造成了非常大的困难. 导致了有两个门派的路线, 都在图里了.</p>
+<p><img src="https://img.bibiqing.com/news/2022/0524/12_hop52sn9tl.png" alt="Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来"></p>
+<p>或者说按 VM 的架构来分, 就长这样 (超级感谢 Scroll Tech 的原图总结!). Opcode 指的是 EVM Opcode. 其中 StarkWare 部分是用 Warp 来将 Solidity 转成 Cairo 合约, 或者直接用 Cairo 写合约, 一样能获得不错的开发体验和全套工具.</p>
+<p><img src="https://img.bibiqing.com/news/2022/0524/12_2cy02peqzb.png" alt="Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来"></p>
+<p>在开发者和用户层面, 这几个方案其实我认为是基本无差别的, 但是在基础设施上, 越靠右的方案 EVM 兼容性越好, 可以无缝接入 Geth 等基础设施, 但开发进度基本上也越慢.</p>
+<h2 id="5-zkevm-和-zkvm">5. zkEVM 和 zkVM</h2>
+<p>zkEVM 的存在我认为是在以太坊生态上去翻新和打补丁, 能为以太坊及其生态的繁荣添砖加瓦, 而 zkVM 的存在却不一定是给以太坊做加强, 同时也具有更大的想象力.</p>
+<p>StarkNet 的 Cairo VM 尽管可能不是我想象中最完美的 zkVM, 但它能比 EVM 或者 zkEVM 干更多的事, 同时这些不止是停留在 EIP 级别的功能拓展. Cairo VM 上可以跑机器学习模型, 甚至现在还有机器学习模型平台正在 StarkNet 上建设.</p>
+<p>相比 zkEVM, 一个 zkVM 会更加容易被构建 (无需担心 EVM 的技术债), 更加灵活 (无需担心 EVM 的更新), 更加容易优化 (电路和证明器的软硬件优化比构建 zkEVM 简单和便宜非常多).</p>
+<p>当然 zkVM 的一个最微小但很致命的缺点就是, 如果 zkVM 无法支持 EVM 兼容 (Solidity 语言层面), 那么 zkVM 就很难像 EVM 一样有最完备和成熟的 Web3 开发生态.</p>
+<p>zkVM 或许是更大的趋势, 能让对 EVM 的纵向优化, 变成 EVM 生态的横向拓展, 跳出了 EVM 的限制.</p>
+<h2 id="6-zkvm-的未来">6. zkVM 的未来</h2>
+<p>如果能有一种通用的 zkVM 能够让所有编程语言的智能合约, 不止是 Solidity, 不止是 Cairo, 而是 Rust, C++, Go,在零知识证明的加持下安全运行呢? (Stellar 尝试过, 但失败了.)</p>
+<p>正如 @kelvinfichter 所说的: Why zkEVM if zkMIPS? 正如 @KyleSamani 所说的: EVM is a bug not a feature. Why zkEVM if zkVM?</p>
+<p>Winterfall 或者 Distaff 或者 Miden VM 等 zkVM 都没有做到非常好的开发友好度. Nervos 有 RISC-V 的 VM, 但是 Nervos 没有用零知识证明技术.</p>
+<p>现状下最优解的方案就是构建一个 WASM 或者 RISC-V 的 zkVM, 最好能支持 Rust, Go, C++, 甚至 Solidity (zkSync 好像可以立大功) 等语言. 如果有这么一个通用 zkVM, 那么对于 zkEVM 会是降维打击.</p>
+<p>Web3 开发者的数量大概占所有开发者的 0.07%, 也就可以推断出, Solidity 开发者的数量实际上会比 0.07% 更少, 会用 Cairo 写合约或者用 Leo 写电路就更少了. 这样完美的 zkVM 所针对的是几乎 100% 的开发者, 任何开发者用几乎任何语言都可以得到一个完美的零知识运行环境.</p>
+<p><img src="https://img.bibiqing.com/news/2022/0524/12_ge58lffzbc.png" alt="Foresight Ventures: 解读 zk, zkVM, zkEVM 及其未来"></p>
+<p>如果 Web3 和 Crypto 有统治世界的一天, 我认为绝对不会是 EVM 生态占据 100% 的所有开发者, 而是所有的开发者会慢慢转化为 Web3 和 Crypto 开发者. 这就是通用的 zkVM 的绝妙之处.</p>
+<p>原生 zkEVM 是区块链的未来.</p>
+<p>通用 zkVM 是 Web3 的未来.</p>
+<p>作者: Suning Yao @ Foresight Ventures</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38211/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">DID 与 SocialFi 将走的路：找寻 Web3 的灵魂</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38184/">
+                <span class="next-text nav-default">IMF和法国央行：未来三到五年内将出现更多的CBDC</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#0-零知识证明">0. 零知识证明</a></li>
+    <li><a href="#1-snark-和-stark">1. SNARK 和 STARK</a></li>
+    <li><a href="#2-zkvm">2. zkVM</a></li>
+    <li><a href="#3-evm">3. EVM</a></li>
+    <li><a href="#4-zkevm">4. zkEVM</a>
+      <ul>
+        <li><a href="#a-电路复杂">a) 电路复杂</a></li>
+        <li><a href="#b-设计困难">b) 设计困难</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-zkevm-和-zkvm">5. zkEVM 和 zkVM</a></li>
+    <li><a href="#6-zkvm-的未来">6. zkVM 的未来</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

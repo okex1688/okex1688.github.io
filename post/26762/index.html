@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          DeFi智能合约自动化赛道解读 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="DeFi的智能合约自动化竞赛：Gelato 、Keep3r 与 Chainlink Keepers" />
+<meta name="keywords" content="DeFi, 智能合约" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/26762/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="DeFi智能合约自动化赛道解读" />
+<meta property="og:description" content="DeFi的智能合约自动化竞赛：Gelato 、Keep3r 与 Chainlink Keepers" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/26762/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-03T00:00:00+00:00" />
+
+<meta itemprop="name" content="DeFi智能合约自动化赛道解读">
+<meta itemprop="description" content="DeFi的智能合约自动化竞赛：Gelato 、Keep3r 与 Chainlink Keepers"><meta itemprop="datePublished" content="2021-08-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5348">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DeFi智能合约自动化赛道解读"/>
+<meta name="twitter:description" content="DeFi的智能合约自动化竞赛：Gelato 、Keep3r 与 Chainlink Keepers"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">DeFi智能合约自动化赛道解读</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-03">
+      2021-08-03
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5348 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>DeFi的智能合约自动化竞赛：Gelato 、Keep3r 与 Chainlink Keepers</strong></p>
+<p>一场关于DeFi创新的竞赛正在展开，老牌玩家和新贵都在奔跑。</p>
+<p>以太坊智能合约自动执行工具 Gelato 自 2019 年以来一直在拓展场景，并于去年 7 月推出了其V1版本。与此同时，Keep3r 自 2020 年 10 月下旬以来，一直在执行自己的解决方案。就在上个月，Chainlink 也发布了 Chainlink Keepers 在智能合约自动化领域的公开测试版。<strong>这场竞赛的奖品是自动化，从用户友好的交易策略到基础设施级别的清算保护，其巨大潜力现在才刚开始实现。</strong></p>
+<p>“自动化”可以定义为使用机器人自动执行软件流程。有时，这些机器人被称为“执行者”（executors）或“守护者”（keepers），它们是区块链堆栈中间件基础设施的一部分。中间件基础设施是支撑区块链生态系统的支柱，DApps 借助其可以专注构建核心产品，让终端用户能够顺利进行交互。中间件最著名的一个例子是预言机——从外部世界获取信息并将其发布在链上节点，为智能合约的不同应用提供数据。目前仅预言机项目的总市值就已达到 99 亿美元，由此可以预料自动化市场的潜在规模会有多大。</p>
+<p><strong>一、DeFi缺乏自动化</strong></p>
+<p>谈到智能合约，许多人认为它们已经是自动化构建的。这与事实相去甚远，在清算和套利之外，DeFi 显然缺乏自动化。Gelato 的白皮书中写道：</p>
+<p>「自动化是缺乏的，原因在于以太坊虚拟机（EVM）本身：程序一次只运行几毫秒；传统操作系统中常见的持续循环或不断重复的“cron”作业，限制了矿工完成状态转换并挖出区块。因此，这些称为智能合约的程序仅限于存储状态和逻辑，如果没有外界的推动，它们在功能上是不活跃的。为了执行这些程序的逻辑并改变这一状态，首先需要一个外部方给其发送一个交易。」</p>
+<p>最早自 2015 年起，以太坊社区就已尝试和讨论了智能合约级别的自动化。第一次尝试是以太坊闹钟（Ethereum Alarm Clock），它由开发者 Piper Merriam 创建，产品描述是“一种允许安排交易稍后在以太坊区块链上执行的服务。”在被称为 TimeNodes 的去中心化机器人网络的激励下，这些执行代理在链下执行简单的自动化任务，例如在特定的时间发送交易。</p>
+<p>2018 年，以太坊闹钟的合作伙伴 ChronoLogic 就该主题采访了以太坊社区的几位领导人，他们谈到了自动化的潜力。<strong>Vitalik Buterin 称自动化“似乎是非常有价值的东西”</strong> 。MyCrypto 创始人 Taylor Monahan 则表示，她设想自动化可以促进多步骤交易，包括执行来自现实世界的信号（比如一条推文）。此外，ERC-20 代币标准的作者 Fabian Vogelsteller 认为自动化是刺激去中心化交易所交易活动的一种方式，这一观点在后来得到证实。</p>
+<p>然而，以太坊闹钟的开发活动后来并不活跃，一年多前开发者在 Github 上进行了最后一次更新。但以太坊闹钟的价值不应被低估——它是第一次真正意义上，尝试在以太坊上实现交易自动化。</p>
+<p>最大的问题或许是以太坊闹钟太过超前。该项目的开发活跃时间集中在2016-2018 年，但那时DeFi 基本还未出现，因此严重限制了以太坊闹钟可以应用的场景数量。此外，这一协议仅能执行简单流程，而无法处理需要与智能合约深度集成的复杂任务。</p>
+<p><strong>二、Maker 清算人</strong></p>
+<p>DAI 的推出是自动化在智能合约层面的首批广泛应用之一，这是一种去中心化的超额抵押稳定币。Maker 系统通过生成 DAI 来运作，用户必须超额抵押资产的150%，也即，如果你想生成价值 1000 美元的 DAI，那么至少需要将价值 1500 美元的代币锁定在保险库中。如果资产低于 150% 的抵押额，那么所有者就有可能因清算、支付罚款而损失资产。</p>
+<p><strong>Maker 系统自身并不处理清算，而是交由一个外部的“Maker 清算人”系统来处理。</strong> 在这一系统中，Maker清算人通过Gas费出价来竞拍清算金库的权利，获胜者将实施清算并获得利润。通过允许任何人参与清算拍卖，Maker自身退出了其生态系统中最重要的一个方面，使其实现自动化，而该自动化系统如今在 DeFi 中支撑着数十亿美元的总锁仓量。如果 Maker 自己处理清算，一旦协议失败，他们作为中心方，就需承担最重要的责任。</p>
+<p>尽管 Maker 有其外部清算系统，但在 2020 年 3 月，该系统遭遇了系统性故障，协议共计损失了 567 万个 DAI。原因在于因Gas费高昂，Maker 的预言机安全模块更新较晚，从而给了少数清算人可趁之机——以接近零的 DAI 出价来清算金库。这一臭名昭著的黑色星期四惨败表明，自动化还处于发展早期，仍需不断完善。如果 Maker 作为 DeFi 生态中最大和最成熟的项目之一，仍容易遭受如此广泛的失败，那么其他规模要小得多的项目将如何应对这类系统性的冲击呢？</p>
+<p>如今DeFi领域对自动化的需求越来越明显，<strong>其两个最大的痛点在于：如何以经济可持续的方式激励机器人，以及如何适应波动强烈且不可预测的Gas费价格。</strong>  Maker 的 Gas 拍卖系统旨在同时解决这两个障碍，但实际最终表明，机器人生态系统的设计并不协调。</p>
+<p><strong>三、机器人操作员</strong></p>
+<p>假设有 10 个机器人竞标清算1个金库的权利，尽管 1 个机器人能够在出价最高后获得清算权利从而回本，但其他9个机器人即便输了，仍必须支付Gas费用。一旦长时间重复此过程，大多数机器人操作员继续参与清算在经济上并不可行。</p>
+<p>Gas拍卖是一个赢家通吃的系统，具有竞争性强、资本密集型的特点。因此，只有一小部分机器人操作员能够生存下来，大多数机器人无法参与。此外，由于缺乏协调，Gas 拍卖非常耗费资源，宝贵的区块空间被失败的交易填满。这也导致矿工从清算中获取了大部分价值，因为他们决定了Gas拍卖的赢家，而非希望进行清算的机器人操作员。</p>
+<p>除了链下订单簿中继器、Maker 清算系统和套利机器人在 DEX 上狙击订单等场景外，智能合约系统层面上一直没有其他广泛的自动化应用，直到 2019 年 Gelato 的出现。这是第一次真正意义上尝试通过智能合约协议，以协调的方式组织机器人操作员，而非Gas拍卖机制的不协调方式。</p>
+<p><strong>Gelato 开创性的举措在于提供通用的自动化服务，并以互利的方式将 DApp 开发者与机器人操作员相匹配，从而大大减少了协调不当以及价值向矿工流失的情况。</strong> 与 Maker 以 Gas 拍卖为中心的清算人模型不同，Gelato 的机器人被协调在各个插槽中，只有在轮到他们时，才能执行交易。</p>
+<p>与 Gas 拍卖相比，这种将交易任务循环式分配的方式使得自动化广泛应用的效率显著提高，因为它以相互协调的方式汇集了机器人资源，消除了机器人之间的竞争。此外，Gelato 还开始寻求在整体网络中协调机器人，得以让各种规模类型的机器人操作员都能长期参与，且经济上也很可行。由此，该系统愈发强大和去中心化。</p>
+<p>Gelato 由 Hilmar Orth 和 Luis Schliesske 于 2019 年 4 月在柏林的 Gnosis 全节点联合工作空间中创立。Gelato 可以理解为以太坊闹钟的天然继承者——它没有仅限于简单的交易，而是从一开始就专注深度的智能合约自动化集成。</p>
+<p><strong>四、修补和迭代</strong></p>
+<p>在获得由Galaxy Digital 和 IOSG Ventures 领投的 120 万美元种子轮融资并经过多年的完善和迭代后，Gelato 现在已经在 DeFi中有了几个用例。尤其Instadapp（目前在 DeFi 的总锁仓量中排名第三）以多种方式应用了 Gelato。双方的第一个合作项目为Instadapp 的“债务桥”，该应用可自动将不健康的 Maker 保险库头寸再融资给 Aave 和 Compound。</p>
+<p>Gelato 和 Instadapp 即将合作的下一个应用是将 Aave 头寸从以太坊主网迁移到 Polygon。近期，随着 INST 代币的推出，Instadapp 已将 Gelato 的 G-UNI 池用于其流动性挖矿计划。G-UNI 池允许用户在 Uniswap v3 中提供流动性，并自动执行多项功能，包括资产再投资、自动再平衡头寸等。</p>
+<p>上个月，Gelato 获得了 Aave 的 5 万美元赠款，用于构建“自动健康因素维护”保护用户免遭清算。此外，Gelato 一直在多个区块链网络部署其限价单功能。该功能最先在 Sorbet Finance 产品上应用，该产品利用了以太坊上 Uniswap 和 Polygon 上 QuickSwap 的深度流动性，允许成千上万的用户逢低买入。6 月初，其限价单功能原生集成到 Fantom上领先的 AMM 项目SpookySwap上。未来，Gelato 还计划推出 GEL 代币以及 Gelato DAO。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0803/11_884shto6yq.png" alt="DeFi智能合约自动化赛道解读"></p>
+<p>Source: Gelato 推出的 Sorbet Finance</p>
+<p>如果说 Gelato 证明了什么，那就是自动化不能仅归为有限的一个用例。<strong>自动化涵盖了从自动交易策略、债务再融资到流动性提供者管理的多种用途。</strong> 根据 Gelato 的白皮书，自动化的未来用例还可能包括自动化的 DAO 资金管理，以及使用真实世界事件（比如一条推特）触发链上交易。它还可以根据链上条件（如访问某DApp达到一定次数）为 NFT 奖励的铸造提供动力。</p>
+<p>然而，Gelato 只是通向自动化的其中一种路径，与此同时其他团队也在尝试。Andre Cronje 是Gelato的早期粉丝，他发布了自己的 Keep3r Network，他将其描述为“一个去中心化的清算人网络，面向需要外部开发的项目和寻求清算工作的外部团队。”与 Gelato 一样，Keep3r 旨在成为一个基础设施级别的项目，它不会直接惠及终端用户，而是让DApp 开发人员和整个生态系统受益。</p>
+<p><strong>该系统的工作原理是，任何人都可以设置和维护清算人，他们可以通过在 Keep3r 注册表中发布的信息竞标执行工作。</strong> 目前，基于Keep3r 的项目包括 Yearn 生态的多个协议，如 Yearn、Sushi、Pickle等。自网络启动以来，只有4到5个清算人每周执行网络中提供的任务。据keep3r.live，清算人共计完成了30,327 项工作并获得了 38,027.93 KP3R的奖励。</p>
+<p>最近，Keep3r 治理论坛中出现了两则提案：“Keep3r V2：优化协议增长能力”和 “STABLE：改进的基于 Keep3r 的代币经济学系统”。两则提案的作者均为 DeFi Wonderland 的 Luciano 。其中在 Keep3r V2 提案中，Luciano讨论了许多改进建议，包括提高 Gas 效率、用循环执行代替 Gas 拍卖、合约结构分离、更快的工作绑定/解除绑定、弃用预言机、后端改进等。</p>
+<p>STABLE 提案旨在创建一种与 KP3R 的铸造/销毁机制挂钩的新稳定币（STABLE），并将STABLE替代KP3R作为工作奖惩代币。鉴于KP3R 代币波动性较大、流动性不足，这一提案的目的在于提高清算人的稳定性。截至目前，这些提案仍在讨论阶段。</p>
+<p>Chainlink是自动化最新的竞争者，并已为此投入了大量资源。6 月 7 日，Chainlink 推出了 Chainlink Keepers 的公开测试版，该系统能自动化执行智能合约功能并定期进行合约维护，后者被Chainlink团队视为阻碍智能合约发展的一大障碍。</p>
+<p>Chainlink Keepers采用循环系统执行交易，这一方案早已成为Gelato的标准，近期在Keep3r 的治理提案中也被提到。此外，Chainlink Keepers正在处理的一些用例与 Gelato 上已经存在的用例相似，如限价单、自动交易策略、监控代币余额等。</p>
+<p>但Chainlink更进一步在于，Chainlink Keepers已经与包括 Base Protocol 在内的多个项目建立了合作关系。Base Protocol是一种与所有加密货币的总市值挂钩的代币，兑换比例为 1:1 万亿。通过该合作，Chainlink Keepers可自动定期维护其 rebase 功能，并集成到 OpenZepplin Defender 中，允许项目直接在 Defender 平台内注册和管理作业。最近，他们与 BarnBridge 开始合作运营 SMART Exposure，该产品可自动实现再平衡功能。</p>
+<p><strong>五、智能合约自动化</strong></p>
+<p>Chainlink 过去曾以不同的身份与 Gelato 及 Keep3r 合作。 2020 年 7 月，Gelato 率先使用了 Chainlink 的 Gas 价格预言机，让 Gelato 网络的智能合约能够代表开发者和用户维护Gas费的公平定价，以防止 Gelato 自动化机器人过度收取Gas费。 而在Keep3r方面，2020 年 12 月，Keep3r 创始人 Andre 发表了一篇关于打算如何使用 Chainlink 扩展 Keep3r 的博客。在文章中，他设想 Chainlink 节点运营商最终会执行清算人的工作，而现有符合条件的清算人则将成为 Chainlink 的节点运营商。</p>
+<p>那么这一切意味着什么？</p>
+<p>自动化能显著增强 DeFi 协议，但相对而言，仍然是一片待开发的蓝海。多年来，人们对自动化进行了多次尝试，从简单地安排交易，到举办Gas拍卖。但似乎，协调循环模型是目前最有效的解决方案。</p>
+<p>目前，DeFi 市值已经超过 750 亿美元，还有各种借贷协议、AMM项目的总锁仓量接近 1000 亿美元，所有这些项目其功能都可以被自动化。他们很有可能成为 Gelato、Chainlink 和 Keep3r 等自动化解决方案的潜在用户。未来，任何可以自动化的事情都会自动化，问题只在于哪一个协议会做到这一点。</p>
+<p>本文作者David Liebowitz，The Defiant</p>
+<p>感谢Richard Lee，链捕手编译</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/26768/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">CryptoPunk为何屡拍天价：投资者现身说法</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/26778/">
+                <span class="next-text nav-default">Filecoin网络目前全网有效算力为8.486EiB</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          三分钟读懂 EIP-1559 对以太坊经济模型的改变 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="EIP-1559 提案希望通过取消以太坊的 Gas 费用拍卖系统，并以基本费用机制取而代之，从而改变这一现状。" />
+<meta name="keywords" content="EIP, ETH, Gas" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/26858/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="三分钟读懂 EIP-1559 对以太坊经济模型的改变" />
+<meta property="og:description" content="EIP-1559 提案希望通过取消以太坊的 Gas 费用拍卖系统，并以基本费用机制取而代之，从而改变这一现状。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/26858/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-05T00:00:00+00:00" />
+
+<meta itemprop="name" content="三分钟读懂 EIP-1559 对以太坊经济模型的改变">
+<meta itemprop="description" content="EIP-1559 提案希望通过取消以太坊的 Gas 费用拍卖系统，并以基本费用机制取而代之，从而改变这一现状。"><meta itemprop="datePublished" content="2021-08-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2898">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="三分钟读懂 EIP-1559 对以太坊经济模型的改变"/>
+<meta name="twitter:description" content="EIP-1559 提案希望通过取消以太坊的 Gas 费用拍卖系统，并以基本费用机制取而代之，从而改变这一现状。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">三分钟读懂 EIP-1559 对以太坊经济模型的改变</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-05">
+      2021-08-05
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 2898 字 -
+        预计阅读 6 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>DeFi 媒体平台 The Defiant 社区人士可能是一群与众不同的、固执己见的群体，但有一件事我们都同意——Gas 价格对以太坊经济是一个真正的拖累。</p>
+<p>看看过去几个月发生的事情：Gas 价格在飙升，使用户无法进行以太坊旨在支持的所有酷事，例如铸造 NFT、汇款或玩 DeFi 应用和服务。以太坊 Gas 费用的波动性对于企图与以太坊一较高下的 Solana 和 Cardano 等其他区块链项目来说也是一个福音。</p>
+<p>最糟糕的是 Gas 价格——这本质上是处理交易的成本——正在阻止以太坊真正成为以太坊。不过本周我们可能终于有了一个解决方案：它被称为 ，它是迄今为止以太坊区块链所有更新的汇总。</p>
+<p><strong>目标结果：以太坊用户应该摆脱在使用自己钟爱的网络时遭遇成本刁难的窘境了。</strong></p>
+<p>这一升级提案 2015 年于英国首都伦敦举行的以太坊开发者大会上被提出，因此被称为「伦敦」升级，它将是比特币之后最有价值的加密货币协议硬分叉。</p>
+<p>它旨在使 Gas 价格更可预测、且不易受到操纵。伦敦升级期待实现的目标：以太坊用户应该摆脱在使用自己钟爱的网络时遭遇成本刁难的窘境。</p>
+<p>要了解这一变化的重要性，您必须了解目前如何计算「Gas」费用：对于在以太坊上执行的每笔交易，您都需要向矿工支付「Gas」或称「交易费」。矿工在验证交易区块时获得这一费用作为区块奖励。当交易堆积增多时，网络就会陷入拥堵，Gas 费用也会攀升。</p>
+<h2 id="gas-价格极具波动性">Gas 价格极具波动性</h2>
+<p>过去几年来，Gas 交易费用变化很大：最低费用约为 2 gwei （10^9 gwei = 1 ETH），但 一度高达 500 gwei。这意味着交易费用高达数百美元。</p>
+<p>作为用户，如果您没有为自己的交易设置高过平均水平的 Gas 费用，有时交易就会延迟。也就是说，Gas 费用波动很大，可能会让用户无法在网络上进行交易。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0805/jmkk6s820vji3l6" alt="三分钟读懂 EIP-1559 对以太坊经济模型的改变"></p>
+<p>图片来源：Ycharts</p>
+<p><img src="https://img.bibiqing.com/news/2021/0805/s3by73eh47echdf" alt="三分钟读懂 EIP-1559 对以太坊经济模型的改变"></p>
+<p>过去 6 个月间的 Gas 费变化，来源 ：Ycharts</p>
+<p>目前有一个拍卖机制来确定 Gas 价格。如果 Gas 价格足够高，矿工将进行竞标，以将该交易包含在区块中。 因此如果用户愿意支付更多，矿工更有可能将相关交易包含在一个区块中。 意味着如果网络繁忙——每秒超过 15-20 笔交易，这是目前以太坊的峰值上限——用户必须激励矿来接受自己的交易，这会导致用户为交易增加更高的 Gas 费。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0805/hetenu820820hky" alt="三分钟读懂 EIP-1559 对以太坊经济模型的改变"></p>
+<p>图片来自 Metamask.com</p>
+<p>这种拍卖机制存在很多效率低下的问题。问题之一，是没有简单的策略来选择最佳出价。例如，假设您愿意为一笔交易出价 0.50 美元，但其他所有人都出价 0.05 美元，其实您出价 0.08 美元会更有意义。在今天的竞标系统中，这并不容易做到。如果您想对这一问题有更详细的了解，请查看 Vitalik 的这篇文章，其中有详细说明。</p>
+<p>矿工还可能通过将自己的交易包含在一个区块中，人为地提高 Gas 价格，也是现实存在的一个问题。</p>
+<p>以太坊每秒可以处理 15 到 20 笔交易，有时这会造成交易拥堵并使 Gas 价格上涨。有时候，仅仅链上转账的交易费用已飙升至数百美元。</p>
+<h2 id="gas-价格高企和不可预料所制造出的问题">Gas 价格高企和不可预料所制造出的问题</h2>
+<p>当 Gas 价格如此之高时，它可能会迫使开发者转投其他区块链，如 Solana 或 Cardano。如果用户可能需要支付高达 30-50 美元才能在 Uniswap 或 Sushiswap 上交换代币，他们自然也受到负面影响。</p>
+<p>Gas 价格高企并不是唯一的问题，另一个问题是费用非常难以预测。某些时候它们相当低，有时它们会飙升。截止我们发稿时，每笔交易的平均费用为 7.982 美元。</p>
+<p>您可以在下图看到过去 50 天左右的 Gas 费用是如何反弹的。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0805/jmkk6s820vji3l6" alt="三分钟读懂 EIP-1559 对以太坊经济模型的改变"></p>
+<p>图片来源： Ycharts</p>
+<p>EIP-1559 提案希望通过取消以太坊的 Gas 费用拍卖系统，并以基本费用机制取而代之，从而改变这一现状。这意味着，您现在不仅要向矿工支付费用，还需要支付一笔基本费用（该费用会被焚毁），然后您可以给矿工小费。</p>
+<h2 id="eip-1559-升级后-gas-费用水准将如何确定">EIP-1559 升级后 Gas 费用水准将如何确定？</h2>
+<p>放弃拍卖方式，EIP-1559 将推出基础 Gas 费，该费用将根据网络交易流量而变化。基本费用将被销毁，这意味着它不会流向矿工。</p>
+<p>另外还有一种叫做「优先费」的东西，可以用小费作为类比。因此，如果用户希望自己的交易排在队首，可以添加优先费。</p>
+<p>EIP-1559 还通过将每个区块的最大 Gas limit 从 12.5M 改为 25M 来增加网络容量。这意味着当网络利用率 &gt; 50% 时，基础费用会被逐步推高。 相反，当网络利用率 &lt;50% 时，基础费用会降低。因此以太坊网络将根据流量调整费用，来达到 50% 容量水准的平衡。</p>
+<p><strong>关于 EIP-1559 升级之后矿工收入会发生什么变化，相关讨论也非常激烈。显然，变化趋势倾向于减少他们的收入； 数字从 20% 到 35% 不等。</strong></p>
+<p>尽管如此，对于一个崭新的、更稳定时代即将到来的所有期许和承诺， 使 EIP-1559 的升级转变引来了很多疑问。</p>
+<p>首先，EIP-1559 会导致 Gas 价格降低吗？这是 Twitter、以太坊论坛和 Reddit 上的热门话题。答案是未知的。</p>
+<p>还有一点很重要，即对于 Gas 价格转起固定，EIP-1559 的主要目标是使费用可预测性更强，波动更小，而不是更便宜。</p>
+<p>尽管如此，某些交易的 Gas 价格可能会更低，而其他交易的 Gas 价格可能会更高。</p>
+<h2 id="eip-1559-会成为挖矿行业的坟墓吗">EIP-1559 会成为挖矿行业的坟墓吗？</h2>
+<p>The Defiant 社区的很多人预测 EIP-1559 升级之后 ETH 的价值将走高，理由是：<strong>销毁机制是让 ETH 成为</strong>  <strong>通缩资产</strong>  <strong>的一种方式。</strong> 但同样，很多其他因素也会影响加密货币的价格，因此在改变发生之前，我们无法确定。</p>
+<p>关于 EIP-1559 升级之后矿工收入会发生什么变化，相关讨论也非常激烈。显然，变化趋势倾向于减少他们的收入； 收入减少的数字预测 从 20% 到 35% 不等。</p>
+<p>因此，Flexpool 和星火矿池等一些最大的矿池已经 发布公告 称，他们不会支持该提案。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0805/q40o2pkabi7s6tt" alt="三分钟读懂 EIP-1559 对以太坊经济模型的改变"></p>
+<p>来源：星火矿池的 Medium 页面</p>
+<p>但是鉴于优先费机制的存在，矿工依然还有很多钱可以赚。此外，当 Eth2.0 上线时，挖矿将完全从网络中删除，因此在依然存在挖矿机制时，矿工拥抱 EIP-1559 是有意义的。</p>
+<p>一个更为迫在眉睫的的风险是：持不同意见的矿工可能对以太坊发动传说中的 51% 攻击，这可能会导致另一个分叉。</p>
+<h3 id="以太坊未来的可预测性">以太坊未来的可预测性</h3>
+<p>静静欣赏这一历史性时刻时，重要的是要意识到 EIP-1559 升级旨在提高交易费用的可靠性并降低交易拥堵。因此，The Defiant 社区的资深人士和萌新都对即将发生的事情感到兴奋也就不足为奇了。</p>
+<p>如果以太坊想继续成为 DeFi 和 NFT 的动力引擎，它就需要解决 Gas 费问题。希望 EIP-1559 是朝着正确方向迈出的一步。</p>
+<p>撰文： Marcus Sandstrom，The Defiant 作者<br>
+编译：Perry Wang</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/26893/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">区块链技术改进身份和访问管理（IAM）的10种用例</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/26878/">
+                <span class="next-text nav-default">视频：币点访谈 特斯拉降价再上热搜</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gas-价格极具波动性">Gas 价格极具波动性</a></li>
+    <li><a href="#gas-价格高企和不可预料所制造出的问题">Gas 价格高企和不可预料所制造出的问题</a></li>
+    <li><a href="#eip-1559-升级后-gas-费用水准将如何确定">EIP-1559 升级后 Gas 费用水准将如何确定？</a></li>
+    <li><a href="#eip-1559-会成为挖矿行业的坟墓吗">EIP-1559 会成为挖矿行业的坟墓吗？</a>
+      <ul>
+        <li><a href="#以太坊未来的可预测性">以太坊未来的可预测性</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

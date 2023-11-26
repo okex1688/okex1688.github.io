@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          详解通往Web3的护照：去中心化身份DID - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="互联网的创建没有为人们提供本地身份验证层。由此，数字身份问题被纳入网站和应用程序范畴。" />
+<meta name="keywords" content="Web 3.0" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/35043/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="详解通往Web3的护照：去中心化身份DID" />
+<meta property="og:description" content="互联网的创建没有为人们提供本地身份验证层。由此，数字身份问题被纳入网站和应用程序范畴。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/35043/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-06T00:00:00+00:00" />
+
+<meta itemprop="name" content="详解通往Web3的护照：去中心化身份DID">
+<meta itemprop="description" content="互联网的创建没有为人们提供本地身份验证层。由此，数字身份问题被纳入网站和应用程序范畴。"><meta itemprop="datePublished" content="2022-03-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7224">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="详解通往Web3的护照：去中心化身份DID"/>
+<meta name="twitter:description" content="互联网的创建没有为人们提供本地身份验证层。由此，数字身份问题被纳入网站和应用程序范畴。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">详解通往Web3的护照：去中心化身份DID</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-06">
+      2022-03-06
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 7224 字 -
+        预计阅读 15 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="介绍">介绍</h2>
+<p>互联网的创建没有为人们提供本地身份验证层。由此，数字身份问题被纳入网站和应用程序范畴。这种方法可能适用于互联网的早期阶段，但现在线上有数十亿人，但缺点正变得越来越明显。用户名和密码仍占主导地位，尽管这被反复证明是不安全的模型。普通人必须反复于70到80个密码之间，导致用户体验明显较差。毕竟有价值数百万美元的企业是围绕帮助企业和个人管理其分散的账户及密码而建立的，例如Okta、1Password和Dashlane。最重要的是，用户实际上并不真正拥有他们的线上身份。正好相反，这是从公司等实体那里租用的。因此，他们很容易面临其数字身份被黑客入侵、操纵或完全丢失的风险。</p>
+<p>Web3的出现重新强调了这一问题。尽管与DeFi、NFT和DAO相比，去中心化身份（DID）在很大程度上是一个被忽视的话题，但我们将其视为支持原生Web3应用的关键技术基础。如果我们创建一个灵活、有弹性的身份验证层，打开更宽广的设计空间，可以大步迈开创新的步伐。</p>
+<p>在本报告中，我们介绍了关键的DID概念和当前的DID生态系统，并深入研究了处于构建Web3身份基础前沿的优质项目。</p>
+<h2 id="去中心化身份did"><strong>去中心化身份（DID）</strong></h2>
+<p>W3C的DID规范是被广泛接受的标准，确保身份系统可以跨不同的网络和平台进行交互操作。</p>
+<p>DID架构的概述如下所示。DID是互联网上某人可以直接拥有和控制的地址。它可用于查找和连接DID文档，其中包含与DID相关的信息。DID文档包含的信息可以支持例如登录、数据加密、通信等用例。而加密证明（比如数字签名），允许相关实体对产权的声明。</p>
+<p><strong>DID 架构的基本构成</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_lhhi03mm8w.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>总之，DID充当身份中心。通过用户控制，他们可以决定何时、与谁以及在什么条件下展示其数字身份的某部分。随着DID标准的广泛采用，个人不会被限制在单一的生态、或者局限于小圈子中。</p>
+<p><strong>DID 为用户提供控制、安全、隐私和可移植性</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_b98rpstipr.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p><strong>DID在新领域的应用</strong></p>
+<p>在现实世界中，身份是一个社会能否良好运转的不可或缺的一部分。护照帮助政府用于识别公民，驾驶执照允许公民合法上路，大学学位则代表了资质授予等。</p>
+<p>同样，DID将促成更高价值的互联网经济活动。下面，我们重点介绍 DID可以解决的一些当前Web3的痛点。</p>
+<p><strong>NFTs——身份与真实性</strong></p>
+<p>诈骗和抄袭问题也困扰着艺术家或创作者。例如，Marvel超级英雄故事的设计者，数字艺术家Derek Laufman看到他的作品在他不知情的情况下在NFT平台Rarible上被拍卖。类似这样的故事很常见。</p>
+<p><strong>NFT欺诈困扰着艺术家</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_ovgkpanlrk.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>而DID基础架构可以解决这个问题。应用程序可以基于DID构建，以允许创建者可以证明这一NFT是由他们创建的。买家和卖家也将能够验证数字艺术品的出处。DID还可以强化艺术家和社区之间的纽带，例如将NFT所有权限制在社区成员中，以此限制黄牛的投机行为，或向特定持有者提供独享NFT内容。</p>
+<p>更广泛地说，NFT可以作为去中心化身份的一个锚点。现在的一些用户不仅仅通过用户名来展示自己，NFT形象也是重要体现。例如，Manifold联合创始人 @richerd 说自己曾经拒绝了950万美元的加密朋克NFT报价，因为他将加密朋克视为自己的身份和品牌。</p>
+<p><strong>NFT 作为线上身份</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_tm0sbzt0op.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p><strong>解锁 DeFi 的下一阶段</strong></p>
+<p>到目前为止，抵押借贷一直是DeFi增长的支柱。但由于加密金融协议旨在完全无需信任和许可，因此它们通常需要超额抵押。例如，MakerDAO上的ETH贷款要求抵押率在130-170%之间。这推动了去年DeFi的增长，但抵押品的要求将限制大多数希望利用杠杆的加密货币交易者。对于大多数人来说，他们想借钱的原因是他们还没有他们需要的钱。</p>
+<p>降低或完全取消抵押要求是将DeFi引入大规模采用的关键。DID层可以为“链上”信用评分，为用户提供基于信用的贷款。此外，由于用户直接控制自身的信用评分，可以更好地监控和调整自身的借贷行为。因此，DID提供了进一步民主化去中心化金融系统的机会。</p>
+<p>此外，为金融应用程序提供强大的身份验证层可以解决DeFi中当前的其他问题，例如：</p>
+<ul>
+<li>
+<p>通过对实际成员进行身份验证来减少机器人稀释空投事件的可能来改善代币空投的公平分配。</p>
+</li>
+<li>
+<p>使用DID限制对DeFi池的访问，以减少垃圾邮件/女巫攻击。</p>
+</li>
+<li>
+<p>指引可以信任的参与者以正和游戏方式行事，引导用户穿越以太坊的黑暗森林。</p>
+</li>
+</ul>
+<p><strong>去中心化自治组织 (DAOs)</strong></p>
+<p>DAOs通常使用基于代币的治理来进行投票、治理或判定优先级。这通常是有道理的——大型代币持有者在游戏中的利益最重——但它可能排除或取消没有大量资本的活跃贡献者的优先级。尽管成员可以在DAO中建立自己的声誉，但他们可能需要在新的环境中从头开始建立信誉。</p>
+<p>DID可以在多个DAO中维护用户的声誉。将凭证从一个 DAO 移植到另一个 DAO，从而避免了积极的贡献者从零开始的无意义消耗。此外，在其他Web3应用方向，例如参与Gitcoin、向Mirror发布或向Radicle贡献代码，可以进一步帮助 DAO 找到合格的贡献者与参与者。</p>
+<p><strong>DID 生态系统</strong></p>
+<p>DID 生态系统可以分为多层，其上的每一层都建立在底层的协议之上。我们利用并稍微修改了DIF的4层身份模型，按主要关注点来反应当前的DID项目，但需要注意的是，这是一个简化模型，大多数项目比这更复杂完善。</p>
+<p><strong>分层的去中心化身份生态系统</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_ioke4quh2i.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p><strong>第 1 层：标识符和标准</strong></p>
+<p>标准、标识符和命名空间创建公共信任层，确保标准化、可移植性和互通性。它们还允许网络注册和管理DID方法，为开发人员和用户提供网络ID系统的规则。</p>
+<p>去中心化身份基金会（DIF）是这一层的关键参与者，也是生态系统的基石。它充当开发、讨论和管理为DID堆栈创建活动以及维护可互通和开放的生态系统活动的中心。</p>
+<p><strong>第 2 层：基础设施</strong></p>
+<p>基础设施和代理框架允许应用程序和可验证的数据注册表之间彼此直接交互。这些解决方案包括通信、存储和密钥管理。我们将Ceramic和ENS列为构建DID基础设施的前沿项目（尽管ENS的分类可能存在争议，但我们将其置于基础设施层，因为我们预计未来将在ENS之上构建凭证和应用程序）。</p>
+<p><strong>第 3 层：凭证</strong></p>
+<p>凭证必须有管理、更新和交换。这一层旨在解决DID如何协调控制证明和进行身份验证，也包括在不同身份之间安全地传递数据。</p>
+<p>BrightID是该领域的一个著名项目。这是一个拥有超过30,000名用户的社交身份网络，允许人们向应用程序证明他们没有使用多个帐户，从而最大限度地减少女巫攻击的机会。</p>
+<p><strong>Vitalik Buterin谈BrightID的潜在应用</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_7df0qt9ht2.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p><strong>第 4 层：应用程序、钱包和产品</strong></p>
+<p>这一层可能是读者最熟悉的，旨在为消费者提供真实的使用价值。一些项目，如Goldfinch（无抵押贷款），使用专有的唯一实体验证方式，但仍希望在成熟时利用DID解决方案。相比之下，其他应用程序已经利用了现有的DID技术，例如TrueFi（具有链上信用评分的无抵押贷款）、Gitcoin（公共产品资金）和Ethsign（去中心化电子协议）。</p>
+<p><strong>X 层：横向</strong></p>
+<p>这些项目在很大程度上超越了任何单独的层面，并在多个层面产生影响。例如，欧洲的GDPR数据保护法对此系统中的所有领域都有影响。</p>
+<p><strong>DID生态系统中的代币估值</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_a3ur1ncvha.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p><strong>选择 DID 项目</strong></p>
+<p><strong>以太坊名称服务——以太坊的公共档案</strong></p>
+<p>以太坊名称服务（ENS）是一种基础工具，可将任何以太坊地址转换为公共配置文件。它的主要工作是将人类可读的名称映射成机器可读的状态。你可以使用amberfin.eth，而不是使用一长串依靠人脑无从记忆的地址来进行交易。并且由于ENS的分层性质，拥有该域的任何人也可能拥有子域。例如，因为Amber Group拥有“amberfin.eth”，它也可以创建“pay.amberfin.eth”。</p>
+<p><strong>Amber Group的ENS记录</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_ruc5pzq6wq.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>ENS的使用者继续增长。与ENS的完整DNS集成于今年8月启动，因此您可以将加密货币发送到“example.com”而不是“example.eth”。此外，.eth域名也可用于构建去中心化网站。例如，以太坊联合创始人 Vitalik Buterin利用这种DNS集成以及IPFS在https://vitalik.eth/创建了一个强大且抗审查的网站。</p>
+<p>ENS或许可以在去中心化身份的未来发挥关键作用。它被注册为DID 表示，允许将ENS名称包装为DID以促进互通性。许多Web3用户已经使用ENS作为他们的标识符。一项对约300名以太坊用户的调查发现，约64%的人已经拥有ENS，链上分析表明，ENS用户平均拥有2.5个域名。随着其他功能的推出（例如NFT头像支持）和dApp越来越多地采用ENS，Web3用户很可能会越来越多地使用ENS作为他们在以太坊上的身份象征。</p>
+<p><strong>Uniswap 上的ENS名称</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_sz6ud35bi1.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p><strong>ENS 生态系统</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_lr3gvhofrs.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>11 月 2 日，ENS宣布通过接受DAO成员申请，以及空投$ENS治理代币来完成去中心治理。空投占最大供应总量的25%；余额将流向社区金库和贡献者。该分配基本将一半的代币提供给过去（先前的贡献者和用户），一半提供给未来（社区金库）。</p>
+<p><strong>ENS 代币分发</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_z1il6hiy0r.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>$ENS代币持有者仅有DAO的治理权，不会获得额外的收益。独特的是，$ENS 代币持有者必须签署ENS宪法，该宪法强调了关键原则——例如强制执行产权、避免寻租行为以及与全球命名空间集成——之后才能认领他们的代币。因此，$ENS代币最令人兴奋的一面是，它是关于市场如何为数字公共产品定价的一个伟大实验。</p>
+<p>ENS已经产生了近2000万美元的收入，主要来自新域名的注册，这些收入将进入DAO国库。</p>
+<p><strong>ENS月收入</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_cam28eqvm6.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>ENS每笔交易的收入也有所增加，这表明用户注册他们的域名的时间更长，和保护更高价值的域名（即较短的名称），或两者兼而有之。</p>
+<p><strong>ENS每笔交易收入</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_pjoiduubd7.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>在创下约84亿美元的盘中高点后，ENS的完全稀释市值目前为 42亿美元，这意味着基于过去12个月的市盈率是236倍。</p>
+<p><strong>ENS市值（完全稀释）</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_1ctz8edslm.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p><strong>Metamask——通向区块链应用</strong></p>
+<p>在新技术范式中，用户交互最频繁的解决方案往往对行业未来发展产生巨大影响。类似于浏览器是Web1（Netscape、Internet Explorer、Google Chrome）和Web2应用程序（Facebook、Instagram、Netflix、Spotify）的战场，钱包很可能成为Web3的战场。</p>
+<p>如果您曾经与Web3应用程序进行过交互，那么您很可能使用过 Metamask。它由ConsenSys于2016年推出，是一种非托管加密货币钱包，允许用户与以太坊区块链和任何与以太坊兼容的网络（例如Polygon、Arbitrum、Avalanche）进行交互。</p>
+<p>尽管不严格关注去中心化身份，但Metamask是每月超过 2100 万活跃用户访问其以太坊地址的应用程序。并行Web2单点登录 (SSO) 选项，几乎所有与EVM兼容的Web3应用程序都会提供“使用 Metamask 登录”。</p>
+<p><strong>Augur（左）和OpenSea（右）的注册登录选项</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_wmbznduwzg.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>Metamask展示了更广泛的DID解决方案可能是什么样子，并强调了自我主权的允许和危险。因为Metamask用户拥有自己的私钥，所以他们真正拥有钱包中的资产。无需信任第三方的安全和保管。此外，用户可以将资产从一个应用程序移动到另一个应用程序。例如，在SuperRare上购买的NFT可以在OpenSea上轻松出售，从而限制平台锁定并提供流动性。可以说，客户体验也得到了改善——用户无需处理复杂的注册程序和管理多个用户名及密码，只需连接他们的Metamask钱包即可尝试新的应用程序。</p>
+<p><strong>将帐户导入Metamask</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_gl4ulwmhjb.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>然而，黑客和诈骗比比皆是。Web3用户必须对其钱包的安全性保持高度警惕，以免失去对所有资产的控制。即使只是丢失钱包的种子短语也可能导致资金永久损失。因此，一些用户可能仍然更愿意将账户安全和管理委托给第三方托管。</p>
+<p>Metamask有望逐步过渡到去中心化治理。ConsenSys创始人Joseph Lubin最近表示Metamask将在不久的将来推出代币。Metamask的高级软件工程师Erik Marks表示，尽管该团队希望Metamask代币的使用方向具有吸引力，但该项目“对让项目由社区拥有的想法完全持开放态度”。一些人推测，如果Metamask确实执行了空投，使用过Metamask互换功能的用户将占主导。</p>
+<p><strong>Consensys首席执行官谈Metamask代币的发布</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_dt5i1z7dg8.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>Metamask主要通过嵌入互换功能（swap）获利，该功能聚合来自去中心化交易所聚合器、做市商和DEX的数据，并在此基础增加0.85%的互换费用。自今年年初以来，互换功能的采用率显着增长——Metamask上个月从其互换中赚取了大约4000万美元的互换费用。</p>
+<p><strong>以太坊L1上的Metamask Swap每日交易量和DAUs</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_opgfumbrsg.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>事实上，Metamask 互换功能的收入增长明显超过了Sushiswap和Curve的收入增长。</p>
+<p><strong>Metamask收入相对于DeFi协议的收入</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_i98jz87ibm.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>Uniswap和以太坊DEX及DEX聚合器1inch分别构成了Metamask的大部分流动性来源。</p>
+<p><strong>Metamask Swap的流动性来源</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_qiojdcjgl8.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>Metamask代币的潜在估值范围很广。股权估值无法直接比较，但ConsenSys最近的股权融资（2亿美元，估值3.2亿美元）可以粗略估计Metamask代币的价值（当Sky Mavis以30亿美元的估值筹集股权时，AXS代币价值约40至 50 亿美元）。按每个MAU价值500至1,000美元计算，估值范围为10.5至21亿美元。</p>
+<p><strong>对标ConsenSys的估值</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_vdbabdkgey.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p><strong>Ceramic</strong></p>
+<p>Ceramic是一个公共的、分散的数据网络，用于管理互联网上的动态和可变信息。它通过Ceramic streams使开发人员能够在没有数据库或服务器的情况下构建应用程序。</p>
+<p>在Ceramic上，每条信息都表示为一个提交日志，称为stream。每个stream都是存储在IPLD中的有向无环图 (DAG)，具有StreamID 的不可变名称和StreamState的可验证状态。stream在概念上类似于Git tree，每个流都可以被视为自己的区块链、账本或事件日志。Tile Documents是一种Ceramic StreamType，经常用作身份数据（例如，个人资料、社交图、链接的社交帐户）、用户生成的内容（例如，博客文章、社交媒体）、DID文档等。</p>
+<p>该协议不依赖于任何特定的区块链。相反，它可以被概念化为“文档链”，其中验证特定文档的状态只需要用户同步文档的数据。用户不需要像大多数区块链网络（比特币、以太坊）那样同步整个网络状态。</p>
+<p>Ceramic的一个关键工具是IDX，这是一种跨链身份协议，它提供了一个统一的存储库，所有应用程序都可以在其中注册和发现与用户的DID关联的数据。它可以被认为是一个去中心化的用户表。因此，IDX允许用户控制他们的身份和数据，而无需锁定任何单个应用程序，并轻松保护和跨应用程序移植他们的数据。同时，它允许开发人员构建数据丰富的应用程序，而无需强迫用户在每个应用程序上重新创建相同的数据。</p>
+<p>Ceramic是DID技术堆栈中的关键。一些建立在Ceramic网络并已经具有吸引力和市场契合度的项目包括：</p>
+<ul>
+<li>
+<p>Boardroom：DAO的治理管理平台，使用Ceramic的平台存储提案。</p>
+</li>
+<li>
+<p>Rabbithole：通过允许人们赚取积分和加密货币来鼓励人们使用 Web3 项目的应用程序。Rabbithole使用Ceramic的网络将多个 Web2和Web3帐户链接到一个统一的跨链DID中，并允许用户的声誉跨越其他Web3应用程序。</p>
+</li>
+<li>
+<p>ArcX：一个去中心化的应用程序，通过发行“DeFi 护照”来提供链上信用评分和身份。</p>
+</li>
+</ul>
+<p><strong>结论</strong></p>
+<p>互联网可能是本世纪最重要的发明。在过去的二十年里，它改变了社会信息流的基本性质：媒体、政治、新闻、教育、社会互动等。然而，即使经济活动越来越多地从原子转移到字节，我们的在线身份仍然缺乏真正的所有权，所有权在平台内才有效。</p>
+<p>随着互联网价值的涌现，我们需要强大的DID解决方案引入新的用例、来让 Web3 成为主流。我们仍处于早期阶段，但未来是光明的。并且由于DID标准的可组合性和互通性，每个新型应用带来的能量具有涟漪效应。我们预计DID解决方案将在未来几年内迅速走入大众视野，并开启Web3应用程序的下一个周期。</p>
+<p>附录 I：ENS初学者指南</p>
+<p>首先，将您的钱包连接到ENS 应用程序。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_zhjs5gfb8t.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>搜索您要注册的域名。ENS域名的价格因长度而异——域名越短，价格越高。如果可用，您可以注册多年。每次注册和续订都将花费gas费，因此注册至少几年是最具效益的。单击“请求注册”，等待一分钟，然后完成注册以保护您的ENS域。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0306/24_mig2nem5l9.png" alt="详解通往Web3的护照：去中心化身份DID"></p>
+<p>进入“我的账户”设置反向记录。每个以太坊地址只能有一个主ENS名称。之后，与您进行交易的任何一方都可以参考您的.eth地址。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/35049/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">为什么NFT头像爆火？一文解答你的疑惑</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/35032/">
+                <span class="next-text nav-default">详细盘点2022可能爆发的热门游戏公会</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#介绍">介绍</a></li>
+    <li><a href="#去中心化身份did"><strong>去中心化身份（DID）</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

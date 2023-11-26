@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          创建 ERC20 代币支付拆分智能合约 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="今天，我们将学习如何创建自己的ERC20代币支付拆分器，它可以合并到任何项目中！" />
+<meta name="keywords" content="ERC20" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/28743/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="创建 ERC20 代币支付拆分智能合约" />
+<meta property="og:description" content="今天，我们将学习如何创建自己的ERC20代币支付拆分器，它可以合并到任何项目中！" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/28743/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-17T00:00:00+00:00" />
+
+<meta itemprop="name" content="创建 ERC20 代币支付拆分智能合约">
+<meta itemprop="description" content="今天，我们将学习如何创建自己的ERC20代币支付拆分器，它可以合并到任何项目中！"><meta itemprop="datePublished" content="2021-09-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5344">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="创建 ERC20 代币支付拆分智能合约"/>
+<meta name="twitter:description" content="今天，我们将学习如何创建自己的ERC20代币支付拆分器，它可以合并到任何项目中！"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">创建 ERC20 代币支付拆分智能合约</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-17">
+      2021-09-17
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5344 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>在加密货币的几乎每个领域，支付都是一个反复出现的话题，特别是向多个质押者提供支付。例如，DAO希望为多个计划提供资金，DEX希望合并向某些参与者分配交易费用，或者团队希望将代币作为月薪分发给团队成员。</p>
+<p>智能合约使我们能够自动化这些类型的支付功能，这就限制了人工管理支付所导致的潜在错误，并允许我们将宝贵的时间花在其他生产性任务上。</p>
+<p>今天，我们将学习如何创建自己的ERC20代币支付拆分器，它可以合并到任何项目中！</p>
+<h3 id="先决条件和设置"><strong>先决条件和设置</strong></h3>
+<p>下面的内容要求你对Solidity有点熟悉，不过任何人都可以学习。</p>
+<h4 id="项目架构"><strong>项目架构</strong></h4>
+<p>我们将创建两个合约。第一个将是ERC20代币支付拆分智能合约，第二个将是模拟池智能合约。ERC20代币支付拆分器智能合约将是抽象的，并持有用于管理收付方及其各自支付部分的逻辑和数据。模拟池将继承ERC20代币支付拆分器，以便我们可以自动将支付分发给多个质押者。在两个合约中拆分支付功能的原因有两个：</p>
+<ul>
+<li>
+<p>展示在真实世界的用例中代币支付拆分合约的使用</p>
+</li>
+<li>
+<p>确保代币支付拆分合约足够灵活，任何人都可以选择并集成到自己的项目中</p>
+</li>
+</ul>
+<p>OpenZeppelin已有一个名为PaymentSplitter.sol的智能合约。用于以太坊支付拆分。我们将利用这个现有的功能并对其进行定制，使其能够与ERC20代币一起工作。</p>
+<h3 id="设置开发环境"><strong>设置开发环境</strong></h3>
+<p>本教程中的工具：</p>
+<ul>
+<li>
+<p>安全帽——智能合约开发环境</p>
+</li>
+<li>
+<p>OpenZeppelin -经过审计的智能合约模板</p>
+</li>
+</ul>
+<p>现在在一个空目录中使用NPM init -y启动一个NPM项目</p>
+<p>设置项目后，使用以下命令安装 Hardhat：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/6_j2u3vs48op.png" alt="创建 ERC20 代币支付拆分智能合约"></p>
+<p>在安装了Hardhat之后，输入npx Hardhat并选择创建基本示例项目的选项。这将包括一个方便的文件结构，可以轻松地创建、测试和部署您自己的合约。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/6_mvs7314d6t.png" alt="创建 ERC20 代币支付拆分智能合约"></p>
+<p>选择创建基本示例项目</p>
+<p>可以删除contract 文件夹中的Greeter.sol文件，并从test文件夹中删除sample-test.js文件。</p>
+<p>我们还将安装安全帽插件库，它们是Hardhat插件。它们允许我们添加用于测试和部署智能合约的工具。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/6_f0sr4s6syv.png" alt="创建 ERC20 代币支付拆分智能合约"></p>
+<p>在hardhat.config.js文件的顶部，添加</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/6_9u9bo5gqgq.png" alt="创建 ERC20 代币支付拆分智能合约"></p>
+<p>需安装一个叫chai的包，用来测试我们的智能合约。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/6_hsqqh2llme.png" alt="创建 ERC20 代币支付拆分智能合约"></p>
+<p>需安装OpenZeppelin合约库。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/6_cbshsujfe1.png" alt="创建 ERC20 代币支付拆分智能合约"></p>
+<h3 id="创建代币支付拆分器"><strong>创建代币支付拆分器</strong></h3>
+<p>这个代币支付拆分智能合约将提供逻辑来设置和存储涉及收款人列表和每个收款人份额的数据。每个收款人持有的份额数等于他们应该获得的资金比例(例如，如果有4个收款人，每个人持有5份额，那么他们每个人将获得任何支出的25%)。</p>
+<p>要开始这个合约，我们将在我们的合约文件夹中创建一个新文件，并将其命名为TokenPaymentSplitter.sol。</p>
+<p>设置pragma line和contract shell。</p>
+<pre><code>pragma solidity ^0.8.0;abstract contract TokenPaymentSplitter {
+</code></pre>
+<p>注意，这是一个抽象合约，我们稍后将把它导入模拟池合约。使它成为抽象的，也允许我们在未来轻松地将这个合约导入到任何其他真实的项目中。</p>
+<p>现在让我们从OpenZeppelin导入一个有用的工具。</p>
+<pre><code>pragma solidity ^0.8.0;import &quot;@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol&quot;;abstract contract TokenPaymentSplitter {    using SafeERC20 for IERC20;
+</code></pre>
+<p>SafeERC20.sol 提供了ERC20接口，该接口允许我们从任何ERC20智能合约调用标准函数，并将这些调用包装在附加功能中，以提供更安全的方式传输代币。</p>
+<p>现在，我们将创建变量来存储合约数据。</p>
+<pre><code>abstract contract TokenPaymentSplitter {    using SafeERC20 for IERC20;    address internal paymentToken;    uint256 internal _totalShares;    uint256 internal _totalTokenReleased;    address[] internal _payees;    mapping(address =&gt; uint256) internal _shares;    mapping(address =&gt; uint256) internal _tokenReleased;
+</code></pre>
+<p>paymentToken是我们用于支付的ERC20代币的地址。</p>
+<p>_totalShares提供来自所有收款人的份额相加。</p>
+<p>_totalTokenReleased是已支付给所有收款人的支付代币总额。</p>
+<p>_payees提供了当前所有收款人地址的数组。</p>
+<p>_shares是收款人地址与分配给他们的份额数量的映射。</p>
+<p>_tokenReleased是收款人地址到支付代币数量的映射。</p>
+<p>现在放置一个接受三个参数的构造函数。第一个参数是我们希望在合约部署中初始化的收款人的数组。第二个参数是每个收款人的份额数组。第三个是将用于支付的ERC20代币的地址。</p>
+<pre><code>pragma solidity 0.8.0constructor(    address[] memory payees,     uint256[] memory shares_,    address _paymentToken) {    require(        payees.length == shares_.length,        &quot;TokenPaymentSplitter: payees and shares length mismatch&quot;    );    require(payees.length &gt; 0, &quot;TokenPaymentSplitter: no payees&quot;);    for (uint256 i = 0; i &lt; payees.length; i++) {        _addPayee(payees[i], shares_[i]);    }    paymentToken = _paymentToken;
+</code></pre>
+<p>构造函数包含一个require语句，以确保两个数组具有相同的长度，以便每个收款人都有分配给他们的份额。还有另一个require语句，以确保合约初始化与至少有一个收款人。</p>
+<p>还有一个for循环，它将每个收款人及其份额分配我们上面创建的变量。这是通过一个名为_addPayee的函数完成的，我们将很快创建这个函数。</p>
+<p>构造函数就绪后，再添加几个函数来调用和获取合约变量。</p>
+<pre><code>pragma solidity 0.8.0function totalShares() public view returns (uint256) {    return _totalShares;}function shares(address account) public view returns (uint256) {    return _shares[account];}function payee(uint256 index) public view returns (address) {    return _payees[index];
+</code></pre>
+<p>现在我们将创建用于添加收款人的函数。</p>
+<pre><code>pragma solidity 0.8.0;function _addPayee(address account, uint256 shares_) internal {    require(        account != address(0),        &quot;TokenPaymentSplitter: account is the zero address&quot;    );    require(shares_ &gt; 0, &quot;TokenPaymentSplitter: shares are 0&quot;);    require(        _shares[account] == 0,        &quot;TokenPaymentSplitter: account already has shares&quot;    );    _payees.push(account);    _shares[account] = shares_;    _totalShares = _totalShares + shares_;
+</code></pre>
+<p>_addPayee是我们在构造函数中调用的用于设置收款人数组的函数。这个函数有两个参数，收款人的帐户和与其相关的份额数量。然后它会检查账户是否为零地址，份额是否大于零，以及该账户是否已经注册为收款人。如果所有检查都通过，那么我们将数据添加到各自的变量中。</p>
+<p>现在让我们添加一个函数来支持将代币分发给收款人。</p>
+<pre><code>pragma solidity 0.8.0;function release(address account) public virtual {    require(        _shares[account] &gt; 0, &quot;TokenPaymentSplitter: account has no shares&quot;    );    uint256 tokenTotalReceived = IERC20(paymentToken).balanceOf(address(this)) + _totalTokenReleased;    uint256 payment = (tokenTotalReceived * _shares[account]) / _totalShares - _tokenReleased[account];    require(payment != 0, &quot;TokenPaymentSplitter: account is not due payment&quot;);    _tokenReleased[account] = _tokenReleased[account] + payment;    _totalTokenReleased = _totalTokenReleased + payment;    IERC20(paymentToken).safeTransfer(account, payment);}
+</code></pre>
+<p>Release是一个任何人都可以调用的函数，它接受一个现有收款人帐户的参数。来分析一下这个函数中发生了什么。首先，它检查帐户是否有分配给它的份额。然后，它创建一个名为tokenTotalReceived的变量，该变量将合约的当前代币余额与之前释放的代币总数相加。创建另一个称为payment的变量，该变量确定收到的代币总额中有多少是欠账户的，然后减去多少已经释放到账户。然后，一个require语句检查当前支付金额是否大于零(即，当前是否欠下了更多代币)。如果该检查通过，则更新账户的_tokenReleased，并更新_totalTokenReleased。最后，支付给账户的代币金额被转账。</p>
+<p>现在函数已经就位了！但是这个合约还有一件事要做&hellip;.事件!</p>
+<p>我们将在合约中添加两个事件，将事件添加到合约顶部是一个良好的实践。</p>
+<pre><code>pragma solidity 0.8.0;event PayeeAdded(address account, uint256 shares);
+</code></pre>
+<p>合约中包含这些事件之后，我们将在适当的函数中发出它们。</p>
+<pre><code>pragma solidity 0.8.0;function _addPayee(address account, uint256 shares_) internal {    ///existingFunctionCode    emit PayeeAdded(account, shares_);}function release(address account) public virtual {    ///existingFunctionCode    emit PaymentReleased(account, payment);
+</code></pre>
+<p>现在代币支付拆分合约已经建立!为了理解这在真实场景中是如何工作的，让我们创建一个模拟池合约，它将导入代币支付拆分器。</p>
+<h3 id="创建模拟池合约"><strong>创建模拟池合约</strong></h3>
+<p>这个合约不会很复杂，因为我们只是想演示如何集成代币支付拆分器。这个合约定期收到我们想分发给收款人列表的特定ERC20代币。这个ERC20代币可以通过不同的场景到达，比如用户存款或来自另一个智能合约的重定向费用。在现实生活中，根据不同的项目，可能会有一个更复杂的合约，包含更多的功能来满足用户的用例。</p>
+<p>在合约文件夹中，创建一个名为 MockPool.sol 的新文件。然后添加以下代码。</p>
+<pre><code>pragma solidity ^0.8.0;import &quot;@openzeppelin/contracts/access/Ownable.sol&quot;;import &quot;@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol&quot;;import &quot;./TokenPaymentSplitter.sol&quot;;contract MockPool is Ownable, TokenPaymentSplitter {    using SafeERC20 for IERC20;    constructor(        address[] memory _payees,        uint256[] memory _shares,        address _paymentToken    ) TokenPaymentSplitter(_payees, _shares, _paymentToken) {}    function drainTo(address _transferTo, address _token) public onlyOwner {        require(        _token != paymentToken,        &quot;MockPool: Token to drain is PaymentToken&quot;        );        uint256 balance = IERC20(_token).balanceOf(address(this));        require(balance &gt; 0, &quot;MockPool: Token to drain balance is 0&quot;);        IERC20(_token).safeTransfer(_transferTo, balance);    }
+</code></pre>
+<p>在这份合约中，导入三样东西。首先是OpenZeppelin的Ownable实用程序，它在某些函数上使用唯一的onlyOwner 修饰符。第二个是SafeERC20，它允许安全的ERC20代币转账，正如将在合约中看到。第三个是我们的TokenPaymentSplitter合约。</p>
+<p>在MockPool构造函数中，我们需要TokenPaymentSplitter提供相同的三个参数，我们只是将它们传递给我们继承的合约。</p>
+<p>在这个合约中添加了另一个函数，drainTo。它实际上与TokenPaymentSplitter合约没有任何关系。它只是在另一个没有设置为支付代币的ERC20代币被发送到池时的一种安全机制，然后有一种方法让合约所有者释放该代币。</p>
+<h3 id="测试合约"><strong>测试合约</strong></h3>
+<p>测试智能合约与创建它们同样重要。这些合约处理的资产通常是属于其他人的，所以作为开发人员，我们有责任确保这些资产按照他们应该的方式工作，并且我们的测试可以覆盖几乎所有的边缘情况。</p>
+<p>将在这里进行的测试是一些示例，以显示TokenPaymentSplitter智能合约按照我们的预期工作。在处理自己的项目时，可能希望创建专门适合自己的用例的测试。</p>
+<p>为了支持我们的测试，我们希望包含一个ERC20代币，为此，我们将创建一个新的solididity文件，该文件导入OpenZepplin ERC20模板以供我们的测试使用。在合约文件夹中，创建一个名为Imports.sol 的新文件，并包括以下代码:</p>
+<pre><code>pragma solidity ^0.8.0;import &quot;@openzeppelin/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol&quot;;
+</code></pre>
+<p>现在，在test文件夹中创建一个名为test.js的文件。在这个文件的顶部，我们将导入支持我们的测试的包。</p>
+<pre><code>const { expect } = require('chai')
+</code></pre>
+<p>现在，为了设置测试，我们将首先创建必要的变量，创建beforeEach函数，该函数在每次测试之前调用，并创建一个空的 describe 函数，该函数将很快包含我们的测试。</p>
+<pre><code>describe('TokenPaymentSplitter Tests', () =&gt; {let deployerlet account1let account2let account3let account4let testPaymentTokenlet mockPoolbeforeEach(async () =&gt; {    [deployer, account1, account2, account3, account4] = await ethers.getSigners()    const TestPaymentToken = await ethers.getContractFactory('ERC20PresetMinterPauser')    testPaymentToken = await TestPaymentToken.deploy('TestPaymentToken', 'TPT')    await testPaymentToken.deployed()})describe('Add payees with varying amounts and distribute payments', async () =&gt; {}
+</code></pre>
+<p>在这些部分就位后，让我们进入这些测试的核心部分!</p>
+<h4 id="支付代币平均分配给多个收款人"><strong>支付代币平均分配给多个收款人</strong></h4>
+<p>在我们的第一个测试中，我们想看看当我们部署一个包含平均分配份额的收款人列表的合约时会发生什么。下面是测试代码。</p>
+<pre><code>it('payment token is distributed evenly to multiple payees', async () =&gt; {    payeeAddressArray = [account1.address, account2.address, account3.address, account4.address]    payeeShareArray = [10, 10, 10, 10]    const MockPool = await ethers.getContractFactory('MockPool')    mockPool = await MockPool.deploy(        payeeAddressArray,        payeeShareArray,        testPaymentToken.address    )    await mockPool.deployed()    await testPaymentToken.mint(mockPool.address, 100000)    await mockPool        .connect(account1)        .release(account1.address)    await mockPool        .connect(account2)        .release(account2.address)    await mockPool        .connect(account3)        .release(account3.address)    await mockPool        .connect(account4)        .release(account4.address)    const account1TokenBalance = await testPaymentToken.balanceOf(account1.address)    const account2TokenBalance = await testPaymentToken.balanceOf(account2.address)    const account3TokenBalance = await testPaymentToken.balanceOf(account3.address)    const account4TokenBalance = await testPaymentToken.balanceOf(account4.address)    expect(account1TokenBalance).to.equal(25000)    expect(account2TokenBalance).to.equal(25000)    expect(account3TokenBalance).to.equal(25000)    expect(account4TokenBalance).to.equal(25000)
+</code></pre>
+<p>在这个测试中，我们将合约分配给4个收款人，每个人都有10个相同的份额。然后我们向合约发送100000单位的testPaymentToken，并向每个收款人发放付款。在测试中可以注意到，每个收款人都在调用函数来向自己释放代币。</p>
+<h4 id="支付代币不均匀地分配给多个收款人"><strong>支付代币不均匀地分配给多个收款人</strong></h4>
+<p>在第二个测试中，我们希望确保即使每个收款人的份额分配不均，数学计算仍然有效。</p>
+<pre><code>it('payment token is distributed unevenly to multiple payees', async () =&gt; {    payeeAddressArray = [account1.address, account2.address, account3.address, account4.address]    payeeShareArray = [10, 5, 11, 7]    const MockPool = await ethers.getContractFactory('MockPool')    mockPool = await MockPool.deploy(        payeeAddressArray,        payeeShareArray,        testPaymentToken.address    )    await mockPool.deployed()    await testPaymentToken.mint(mockPool.address, 100000)    await mockPool        .connect(account1)        .release(account1.address)    await mockPool        .connect(account2)        .release(account2.address)    await mockPool        .connect(account3)        .release(account3.address)    await mockPool        .connect(account4)        .release(account4.address)    const mockPoolTestPaymentTokenBalance = await testPaymentToken.balanceOf(        mockPool.address    )    const account1TokenBalance = await testPaymentToken.balanceOf(account1.address)    const account2TokenBalance = await testPaymentToken.balanceOf(account2.address)    const account3TokenBalance = await testPaymentToken.balanceOf(account3.address)    const account4TokenBalance = await testPaymentToken.balanceOf(account4.address)    expect(mockPoolTestPaymentTokenBalance).to.equal(1)    expect(account1TokenBalance).to.equal(30303)    expect(account2TokenBalance).to.equal(15151)    expect(account3TokenBalance).to.equal(33333)    expect(account4TokenBalance).to.equal(21212)
+</code></pre>
+<p>看起来收款人还能拿到钱，但注意到什么了吗？合约中还剩下一个单位的支付代币！由于Solidity没有小数，当它达到最低单位时，它通常会四舍五入，这可能会导致合约尘埃飞扬，就像我们在这里看到的。不过不用担心，因为我们预计未来会有支付代币流入合约，所以它将继续分发。</p>
+<h4 id="支付代币不均匀地分配给多个收款人并将额外的支付代币发送到池中"><strong>支付代币不均匀地分配给多个收款人，并将额外的支付代币发送到池中</strong></h4>
+<p>这与之前的测试类似，不过在资金被释放给收款人之间增加了更多支付代币发送到池中。这表明，随着支付代币不断流入模拟池合约，数学仍然可以确保收款人收到正确的金额。</p>
+<pre><code>it('payment token is distributed unevenly to multiple payees with additional payment token sent to pool', async () =&gt; {    payeeAddressArray = [account1.address, account2.address, account3.address, account4.address]    payeeShareArray = [10, 5, 11, 7]    const MockPool = await ethers.getContractFactory('MockPool')    mockPool = await MockPool.deploy(        payeeAddressArray,        payeeShareArray,        testPaymentToken.address    )    await mockPool.deployed()    await testPaymentToken.mint(mockPool.address, 100000)    await mockPool        .connect(account1)        .release(account1.address)    await mockPool        .connect(account2)        .release(account2.address)    await testPaymentToken.mint(mockPool.address, 100000)    await mockPool        .connect(account3)        .release(account3.address)    await mockPool        .connect(account4)        .release(account4.address)    await mockPool        .connect(account1)        .release(account1.address)    await mockPool        .connect(account2)        .release(account2.address)    const mockPoolTestPaymentTokenBalance = await testPaymentToken.balanceOf(        mockPool.address            )    const account1TokenBalance = await testPaymentToken.balanceOf(account1.address)    const account2TokenBalance = await testPaymentToken.balanceOf(account2.address)    const account3TokenBalance = await testPaymentToken.balanceOf(account3.address)    const account4TokenBalance = await testPaymentToken.balanceOf(account4.address)    expect(mockPoolTestPaymentTokenBalance).to.equal(1)    expect(account1TokenBalance).to.equal(60606)    expect(account2TokenBalance).to.equal(30303)    expect(account3TokenBalance).to.equal(66666)    expect(account4TokenBalance).to.equal(42424)
+</code></pre>
+<p>现在所有的测试都就绪了，是时候运行它们了，看看它们是否工作!在项目根文件夹中，使用npx hardhat test启动测试。如果一切都是正确的，那么你应该看到如下图所示的所有绿色格子。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0917/6_swkmvh7wcg.png" alt="创建 ERC20 代币支付拆分智能合约"></p>
+<p>如上所述，我们需要做更多的测试，以确保整个项目/协议按照预期工作，支付拆分器是它的集成部分。这将意味着更多的单元测试来覆盖所有可用的功能，以及更复杂的集成测试，这取决于具体用例。</p>
+<h3 id="总结"><strong>总结</strong></h3>
+<p>支付是许多加密协议的一个常见方面，有几种方法可以解决它们。今天我们学习了一种管理支付的方法，尽管用户甚至可以在此合约的基础上构建以满足您的特定需求，如跨多个代币启用支付，添加额外的收款人或移除收款人，或在一个函数调用中同时分发所有支付。</p>
+<p>Source：https://medium.com/coinmonks/create-an-erc20-token-payment-splitting-smart-contract-c79436470ccc</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/28746/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">比特币安全吗？深入探索比特币的安全模型</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/28735/">
+                <span class="next-text nav-default">从EVM到Wasm的范式转换 为什么波卡会成为公链的常青树？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#先决条件和设置"><strong>先决条件和设置</strong></a></li>
+        <li><a href="#设置开发环境"><strong>设置开发环境</strong></a></li>
+        <li><a href="#创建代币支付拆分器"><strong>创建代币支付拆分器</strong></a></li>
+        <li><a href="#创建模拟池合约"><strong>创建模拟池合约</strong></a></li>
+        <li><a href="#测试合约"><strong>测试合约</strong></a></li>
+        <li><a href="#总结"><strong>总结</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

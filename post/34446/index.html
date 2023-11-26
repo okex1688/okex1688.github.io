@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Cosmos是如何实现链与链的“港口”相连的？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="虎符研究院（Hoo Research）致力于研究区块链行业发展过程中具有前瞻性和战略性的重大课题，解决行业内信息不对称问题，助推区块链行业综合发展。虎符投研团队" />
+<meta name="keywords" content="商务" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/34446/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Cosmos是如何实现链与链的“港口”相连的？" />
+<meta property="og:description" content="虎符研究院（Hoo Research）致力于研究区块链行业发展过程中具有前瞻性和战略性的重大课题，解决行业内信息不对称问题，助推区块链行业综合发展。虎符投研团队" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/34446/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-21T00:00:00+00:00" />
+
+<meta itemprop="name" content="Cosmos是如何实现链与链的“港口”相连的？">
+<meta itemprop="description" content="虎符研究院（Hoo Research）致力于研究区块链行业发展过程中具有前瞻性和战略性的重大课题，解决行业内信息不对称问题，助推区块链行业综合发展。虎符投研团队"><meta itemprop="datePublished" content="2022-02-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6982">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cosmos是如何实现链与链的“港口”相连的？"/>
+<meta name="twitter:description" content="虎符研究院（Hoo Research）致力于研究区块链行业发展过程中具有前瞻性和战略性的重大课题，解决行业内信息不对称问题，助推区块链行业综合发展。虎符投研团队"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Cosmos是如何实现链与链的“港口”相连的？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-02-21">
+      2022-02-21
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6982 字 -
+        预计阅读 14 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_v84nong00i.png" alt="FK7b44n2MJaz4qTQXSgXmU7Bxvg1m2GRJJqngjSh.png" title="5795062"></p>
+<p>随着Kava 9主网对Cosmos IBC的成功整合及知名公链Terra、Binance Chain等在Cosmos生态上的部署，Cosmos生态得到了越来越广泛的关注。</p>
+<p>Cosmos引入BPOS（Bonded Proof of Stake的共识协议），也称之为Tendermint。这个共识协议相对于PoW来说，性能有了提升，同时具有抗审查属性，这是单个验证者所不具备的。Cosmos network还旨在实现区块链的互操作性，它也是第一个发布这种功能的平台。</p>
+<p>Cosmos也和Polkadot比肩被称为跨链双雄，Cosmos生态不断繁荣，有望成为2022年最具成长潜力的公链。</p>
+<p>1、Cosmos三大技术创新</p>
+<p> Cosmos网络由许多独立的并行区块链组成，网络中第一个区块链是Cosmos Hub，其他的并行链称为Zone，通过跨链协议（IBC）与Hub进行跨链操作。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_obq694ukfe.png" alt="EO7Tsh8y0rjNl2CoOb2Lfs47GyQ7CpfTOSV8rGuR.png" title="5795076"></p>
+<p>SDK以及IBC协议。</p>
+<p>1.1 Tendermint共识</p>
+<p>Tendermint 包括两个主要技术组件：区块链共识引擎（Tendermint Core）和通用应用程序区块链接口（Application BlockChain Interface，ABCI）。Tendermint Core 是基于 Tendermint 共识算法的底层共识引擎，保证所有节点按照相同的顺序记录交易。Tendermint 共识算法采用了非常典型的拜占庭容错方案，是一种 PBFT+Bonded PoS（有质押的权益证明）混合共识。</p>
+<p>Tendermint 协议中有两个角色，验证人：协议中的角色或者节点，不同的验证者在投票过程中具备不同的权力（vote power）；提议人：由验证人轮流产生。验证人轮流对交易的区块提议并对提议的区块投票。区块被提交到链上，且每个区块就是一个区块高度。但区块也有可能提交失败，这种情况下协议将选择下一个验证人在相同高度上提议一个新块，重新开始投票。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_pwzvs48667.png" alt="XLnQXmDQdheHT1Svl6ptUT1bEsQGkdfhJ78MrzZF.png" title="5795099"></p>
+<p>从上图可以看到，成功提交一个区块，必须经过两阶段的投票，称为pre-vote和pre-commit。当超过2/3 的验证人在同一轮提议中对同一个块进行了pre-commit投票，那么这个区块才会被提交。Tendermint中允许由于离线或者网络延迟等原因，可能造成提议人提议区块失败，验证人会在进入下一轮提议之前等待一定时间，用于接收提议人提议的区块。</p>
+<p>假设少于三分之一的验证人是拜占庭节点，Tendermint能够保证验证人永远不会在同一高度重复提交区块而造成冲突。为了做到这一点，Tendermint 引入了锁定机制，一旦验证人预投票了一个区块，那么该验证人就会被锁定在这个区块。然后该验证人必须在预提交的区块进行预投票。当前一轮预提议和预投票没成功提交区块时，该验证人就会被解锁，然后进行对新块的下一轮预提交。</p>
+<p>1.2  Cosmos SDK</p>
+<p>Cosmos SDK 是一个帮助开发者加快开发进程的工具包，其典型特点是模块化和可插拔。通过使用 Cosmos SDK，开发者可以在 Tendermint 共识算法的基础上构建自己的区块链或功能组件。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_me30jumowa.png" alt="nKcpyUX0DexwnU5OH2is1c0alv2CnRsCTZaTE1fd.png" title="5795102"></p>
+<p>Cosmos SDK是目前最先进的构建可定制化专用区块链的框架，Cosmos SDK的优势可以总结为以下几点：</p>
+<p>Cosmos SDK 默认的共识引擎是Tendermint Core。Tendermint是目前最成熟的、唯一的BFT共识引擎。它被广泛应用于行业中，被认为是构建POS系统的最佳标准共识引擎。</p>
+<p>Cosmos SDK是开源的，你可以通过组合式模块轻松地构建出区块链。随着SDK生态中各种开源模块的发展，通过Cosmos SDK构建复杂的去中心化平台会变得越来越容易。</p>
+<p>Cosmos SDK 受基于功能的安全性所启发，并受益于多年来在区块链状态机领域的经验。这让Cosmos SDK成为一个非常安全的构建区块链的环境。</p>
+<p>Cosmos SDK已经构建出了多个正在运行中的专用区块链。例如，Binance Chain, Terra 和 Kava等。</p>
+<p>Cosmos SDK 为开发者提供了很大的便利性，缩短了开发者的开发周期。公有权益证明及私有许可权威证明区块链都可使用Cosmos SDK进行构建。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_ejgr3mu90d.png" alt="bjt2NYjec68QHbY5XoPMySDrhQnheQKlvUbCiL2V.png" title="5795103"></p>
+<p><strong>1.3  IBC</strong> <strong>协议</strong></p>
+<p>IBC 是 Cosmos 设计的跨链通信协议，用于 Hub 与 Zone 之间进行通信，以实现跨链交互，IBC 是Cosmos 最核心的部分。2021年4月，IBC协议正式运行，这是一个里程碑事件。IBC上线后数据非常可观，截止到2022年1月28日，已有28条主链在IBC上运行，近30天内累计发生 510 万笔IBC交易。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_29dwc56gbn.png" alt="Zt3ORmySMV8Rz3BVzC5Bf56L9Jvn2u7OH7YZ8f2G.png" title="5795104"></p>
+<p>IBC的目标是在两个独立的七层网络之间传递应用信息，所以需要链外的relay把数据包在链A和链B的网络之间做中继。链B收到链A的数据后必须能独立验证它所包含的证明信息，该证明代表了链A上的某个状态（及其对应操作）的真实性。为了让IBC协议能够工作，必须依赖基础的信任机制，要相信链A和链B里各自的共识算法，也要相信轻客户端验证，通过对区块头信息的验证，证明在区块链上曾经发生过的事情</p>
+<p>IBC 的原理是区块链独立验证跨链传输来的事务信息。任何区块链上的事务信息都可以基于 IBC 跨链协议进行传输和交互。因此，除了最简单的 token 的转移之外，还可以支持 NFT 的转移、还可以支持智能合约的调用等等。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_t0syl10fc9.png" alt="kFi7mnPCImjx2ba532zNWscwFdlN5QiLhDf4beRB.png" title="5795112"></p>
+<p>2022年，IBC 协议还计划跨链连接比特币、以太坊、Polkadot 、Avalanche 、Harmony 和 Celo 等网络，进一步释放区块链的大量流动性。</p>
+<p>2、Cosmos经济模型</p>
+<p>ATOM初始供应量达2亿枚，截止到2022年1月28日，阿童木 (ATOM) 最新的价格是 $29.62，24 小时的交易量是$1,732,782,563. ATOM的价格在过去 24 小时内下跌了-2.33%。Cosmos的流通量为：2.26亿 ATOM，最大供应量：2.84亿，总供应量：2.84亿，流通率为：79.65%，流通市值为：$6,701,878,211，总市值排名20。 </p>
+<p>2.1 分配机制</p>
+<p>Atom代币及验证人的初次分布会是Cosmos 公募参与者占75%，预售5%，团队占10%，Cosmos基金会10%。从创世块开始，总Atom总量的1/3将作为奖励发放给每年绑定的验证人以及委托人。ICO（种子轮、战略轮及公开销售）的基准价为 0.1，战略投资人和种子投资者分别有25%和15%的折扣。</p>
+<p>2.2 释放机制</p>
+<p>ATOM 采用的模型是通胀增发型，增发率在7%~22%，具体的比例根据当前Atom Staking的数量。当Stake数量大于整体Atom总量的1/3时，增发率为7%；Stake数量小于1/3时，增发率为20%~22%。</p>
+<p>2.3 ATOM使用权、收益权和治理权</p>
+<p>2.3.1 使用权</p>
+<p>对于使用权，在 Cosmos Hub 中执行交易等操作都需要用到 ATOM。虽然 Cosmos 未来的生态里会有其他 Hub，但 Cosmos Hub 一定是最核心的 Hub。IBC 实现后，Cosmos Hub 的应用价值会显著提升，生态中很大部分的价值会汇聚到 Cosmos Hub，用户对 ATOM 的使用也会随之增多。</p>
+<p>2.3.2 收益权</p>
+<p>收益权主要体现在用户通过质押 ATOM 获得通胀收益，以及一部分投机者持有 ATOM 等待升值。</p>
+<p>2.3.3 治理权</p>
+<p>对于治理权，一是用户质押 ATOM 给验证人投票，二是用户参与生态中各种治理提案的投票。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_pyvvdb1lsb.png" alt="wro5rgQ17waGhHlbUgW6T2cbMstI8WkWtrR5ERzS.png" title="5795114"></p>
+<p><strong>Cosmos Hub 的治理机制是链上治理。</strong> 任何用户都可以提交治理提案，然后由 ATOM 持有者进行投票表决，如提案通过，则进行相应的升级。目前，Cosmos 已经进行了多次治理提案的投票，投票参与率基本都高于50%，社区对治理的参与热情比较高。</p>
+<p>3、值得关注的项目</p>
+<p>截止2022年到1月28日，Cosmos官网显示资产已经超过了1300亿，Dapp已经超过262个。含IRISnet、Starname、Sentinel、Crypto.org、Regen Network等项目都已经在Cosmos搭建，本报告重点从Secret Network、Osmosis、Juno Network、 kava、Terra来解析。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_kl7h6lbfwg.png" alt="CF39W9xuesPleWBB2JCQGLsRr2oHH10uf3bO14gS.png" title="5795115"></p>
+<p><strong>3.1</strong>  <strong>隐私赛道 — Secret Network</strong></p>
+<p>Secret Network是第一个具有隐私保护智能合约的区块链，它是基于Cosmos技术开发的，在Cosmos生态系统中扮演重要作用。基于 Secret 构建的应用程序可以使用加密数据，无需任何人（甚至网络中的节点）许可。这种独特的功能可以保护用户、保护应用程序并解锁数百个前所未有的 Web3 项目。</p>
+<p>Secret Network还有一个值得关注的点是它前身是Engima，Egnima诞生于2015的麻省理工学院，即MIT Media Lab，创始人和CEO为Guy Zyskind。Guy Zyskind是美国顶级名校出身，在MIT Media Lab创立Engima成为2017年的明星项目。</p>
+<p>此外，Secret Network还获得顶级机构的投融资。2022年1月20日，Secret Network宣布获得 4 亿美元的生态系统资金，其中包括新的2.25亿美元生态基金和1.75亿美元的加速器池。投资方包括DeFiance Capital、Arca、Alameda Research、ArkStream Capital、Bison Fund、CoinFund、Dragonfly Capital、Fenbushi Capital、HashKey Capital、Huobi Capital、Kucoin Labs、NGC等。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_jgbgn82cm4.png" alt="SOycxmPqmwrNhu9bo9LTSZ9uubbdc26rOtY9imCa.png" title="5795116"></p>
+<p>截止到1月28日，Secret Network (SCRT) 最新的价格是 $5.67，24 小时的交易量是$31,811,697. SCRT的价格在过去 24 小时内上涨了2.78%。Secret Network的流通量为：1.5亿 SCRT，最大供应量：1.9亿，总供应量：1.9亿，流通率为：78.78%，流通市值为：$849,769,796，总市值排名97。 </p>
+<p>3.2 DEX - Osmosis</p>
+<p>Osmosis是一款以AMM(自动做市商)模式的去中心化交易所(Dex)，把AMM的使用范围扩展到Cosmos生态。简单来说，自动市商就是让用户可以以非托管的形式在市场上提供流动性(Liquidity)，成为一个小做市商，然后分享交易手续费。而其他的用户则可以透过现有的流动性去自由交易不同的代币，过种模式便是去中心化交易所。</p>
+<p>现在Osmosis已经支援了32种代币：ATOM、OSMO(Osmosis的原生代币)、 ION,、AKT、DVPN IRIS、CRO、XRPT,、REGEN、UST等，真正实现了不同链之间的自由转换，且亲测到账速度可以以秒为单位，手续费也几乎可以忽略。此外，Osmosis上质押的APR非常可观。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_fs340spbtn.png" alt="A8utvT2KxTsjynGc3iIWiUF1UuW9Br053ZolaSYm.png" title="5795117"></p>
+<p>截止到1月28日，(OSMO) 最新的价格是 $7.88，24 小时的交易量是$214,427. OSMO的价格在过去 24 小时内下跌了-4.37%。Osmosis的流通量为：1.86亿 OSMO，最大供应量：10亿，总供应量：3.25亿，流通率为：57.32%，流通市值为：$1,468,387,592，总市值排名56。 </p>
+<p>3.3 智能合约平台 - Juno Network</p>
+<p>Juno主网于 2021 年 10 月 1 日正式上线，是一个完全可互操作的智能合约网络，由Cosmos SDK构建，作为Cosmos生态系统中的枢纽启动。Juno的目标是从Cosmos Hub本身减轻智能合约的计算负担，Cosmos Hub可以专注于更广泛的Cosmos生态系统的核心活动，安全性等。</p>
+<p>作为一条以承载智能合约应用生态为主要宗旨的平台级公链，Juno 也在不断推动其生态的发展。在经历过几次黑客松活动后，目前 Juno 上的生态已经初具规模。虽然许多项目依然处于开发早期，但已经出现了不少值得关注的项目。</p>
+<p>Junoswap 是 Juno 链上的原生资产交易平台，与 Osmosis 面向这个那个 Cosmos 生态资产交易需求不同，Junoswap 的目标更多是针对 Juno 生态中的本地 CW20资产交易。</p>
+<p>JunoMint 是 Juno 上 CW20Token 的一键式发行平台。通过 JunoMint，用户不再需要直接部署智能合约，而是可以通过直接填写如 Token 名称、小数位数、总供应量等核心参数，一键式发行自己项目的 Token。此外，JunoMint 还提供了多种模板供用户选择。</p>
+<p>DAO DAO 是一个 Juno 上的去中心化协作组织创建工具。与 JunoMint 的设计逻辑类似，都是将原本复杂的智能合约部署工作简化为了标准的用户一键部署用户界面。用户在其中可以直接创建 DAOToken，设定投票规则等。</p>
+<p>目前Juno已经部署了44个应用，另外，Juno还有一个值得关注的是在Juno主网参与质押等，有可能会获得空投。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_553j3v0iwf.png" alt="3O3f0qoMw1zexcrQgXpkUuDpEZSEjzZzqxi4QqmK.png" title="5795119"></p>
+<p>截止到1月28日，Juno(JUNO)最新的价格是 $16.44，24 小时的交易量是$3,622,083. OSMO的价格在过去 24 小时内下跌了-2.2%。JUNO的流通量为：39,103,717 JUNO，最大供应量：185,562,268，总供应量：71,739,986，流通市值为：$643,146,212，总市值排名118。 </p>
+<p>3.4 DeFi应用 - kava</p>
+<p>Kava（zh.kava.io/）是依托于Cosmos跨链的首个DEFI平台，基于Cosmos SDK搭建，并以基于Tendermint的股权证明（PoS）共识机制运行。在应用端，Kava打造了借贷平台CDP和跨链货币市场HARD Protocol两个应用，提供稳定币、贷款和计息账户，让用户可以用数字资产获取更多使用场景及价值。KAVA币与Maker机制大体类似，主要的不同点在于其抵押资产不同、以及原生代币质押验证交易的PoS机制、代币捕获价值机制的差异。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_der39df0fw.png" alt="jv10UgzZDhCcOPIoXkNOfWpOZxztQ9sVQjDwM1u4.png" title="5795120"></p>
+<p>2022年1月20日 KAVA9上线，KAVA9上线，Kava 9主网的升级将把Kava与cosmos连接，并通过IBC协议的整合释放新的资产和收益机会。基于Cosmos SDK的Layer-1公链，Kava 9的升级极大地扩展了Kava生态。IBC的整合让新的用户和项目都可以通过跨链获得更多高收益的机会，它还为现有的Kava原生资产开辟了新的使用场景。</p>
+<p>Kava 9主网的升级进一步繁荣了IBC生态，Cosmos主链也会得到反哺。但需要关注的是随着越来越多的链被添加，Cosmos hub 本身似乎最终将面临瓶颈问题，可能最后它们也将不得不转向扩展机制等。</p>
+<p>截止到1月28日，Kava (KAVA) 最新的价格是 $3.22，24 小时的交易量是$83,098,779. KAVA的价格在过去 24 小时内上涨了6.11%。Kava的流通量为：1.49亿 KAVA，最大供应量：无限量，总供应量：1.54亿，流通市值为：$478,374,513，总市值排名151。 </p>
+<p>3.5 Terra（UST）</p>
+<p>Terra是一个基于Cosmos IBC的Tendermint区块链，具有与Cosmos IBC中的任何其他IBC区块链互操作性的优势，允许在未来轻松地与 Cosmos 生态系统中的其他项目合作或配合。目前Terra生态已覆盖稳定币（UST）、合成资产、机枪池、现实世界支付等场景。Terra以稳定币为核心，通过与多元化的DeFi产品，将其稳定币与现实世界的连接，实现真正意义上的商业落地。</p>
+<p>目前来看，Terra是Cosmos生态系统的佼佼者。但Terra的稳定UST能否跳过稳定币的“死亡旋律”还需要进一步观察，尤其是在当前市场不稳定的情况下。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_gf74ptfdkv.png" alt="2ik9BzVgfDa9EayROMzb2FrXu4VP9f2cWHKFCqF1.png" title="5795121"></p>
+<p>截止到1月28日,Terra (LUNA) 最新的价格是 $53.67，24 小时的交易量是$2,575,455,758. LUNA的价格在过去 24 小时内下跌了-5.16%。Terra的流通量为：4.06亿 LUNA，最大供应量：10亿，总供应量：8.19亿，流通率为：49.56%，流通市值为：$21,774,023,748，总市值排名9。</p>
+<p>TerraUSD (UST) 最新的价格是 $0.9987，24 小时的交易量是$895,002,221. UST的价格在过去 24 小时内下跌了-0.25%。TerraUSD的流通量为：112.52亿 UST，总供应量：112.52亿，流通率为：100%，流通市值为：$11,239,931,013,总市值排名16。  </p>
+<p>4、Cosmos生态空投</p>
+<p>截止到1月28日，Cosmos生态的很多空投已经结束快照了，如Evmos等，但Cosmos生态未来还有更多空投值得我们关注，下图一些项目值得关注。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0221/13_k6nvypssyu.png" alt="CXUSkswTf8TmHf8UNZd1CNaheBjN4fLA4wHy92j6.png" title="5795123"></p>
+<p><strong>5</strong> <strong>、总结</strong></p>
+<p>经过近五年的发展，Cosmos生态布局已经逐步完善，本报告只是对Cosmos生态的一种鸟瞰。2022年随着跨链潮的兴起、IBC生态的完善、Interchain Security的上线及Cosmos生态下更多的空投，Cosmos生态也将会得到更多的关注。</p>
+<p>撰文：Hoo Research</p>
+<p>参考资料：</p>
+<p>1、Cosmos Official Website</p>
+<p>2、Cosmos WhitePaper</p>
+<p>3、Cosmos profile on Messari </p>
+<p>4、The Cosmos Hub Roadmap 2.0</p>
+<p>5、Why Blockchains Need Cosmos Proof-of-Stake for a Sustainable Environment</p>
+<p>6、blog.cosmos.network</p>
+<p>7、Deep Dive: How Will IBC Create Value for the Cosmos Hub?</p>
+<p>8、Build Your Blockchain with Starport and Connect to a $75B+ Ecosystem of Digital Assets</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/34461/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Circle 和 Tether 主宰市场？美联储：稳定币可能与 CBDC “互补”</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/34451/">
+                <span class="next-text nav-default">NFT防骗指南：归零也不能便宜了黑客</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

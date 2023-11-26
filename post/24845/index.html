@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          如何在DFINITY上铸造自己的Token？关于Token标准的讨论 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="第三期开发者电话会精华" />
+<meta name="keywords" content="DFINITY, 通证" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/24845/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="如何在DFINITY上铸造自己的Token？关于Token标准的讨论" />
+<meta property="og:description" content="第三期开发者电话会精华" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/24845/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-24T00:00:00+00:00" />
+
+<meta itemprop="name" content="如何在DFINITY上铸造自己的Token？关于Token标准的讨论">
+<meta itemprop="description" content="第三期开发者电话会精华"><meta itemprop="datePublished" content="2021-06-24T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-24T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3836">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何在DFINITY上铸造自己的Token？关于Token标准的讨论"/>
+<meta name="twitter:description" content="第三期开发者电话会精华"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">如何在DFINITY上铸造自己的Token？关于Token标准的讨论</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-24">
+      2021-06-24
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3836 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>6月10号，ICP League 联合社区开发者举办了第三期的开发者电话会，邀请了 DFinance 项目的开发者共同探讨了如何在 DFINITY 上发行代币，以及类似 ERC-20 代币标准的设计思路。点击“阅读原文”可以查看视频回放。</p>
+<p>本期亮点：</p>
+<ul>
+<li>
+<p>ICP 本身就是 DFINITY 的第一个代币，是以智能合约的形式部署在链上的，因此可以作为实现标准的参考；</p>
+</li>
+<li>
+<p>在 DFINITY 上实现类 ERC-20 标准时，与以太坊不同，DFINITY 的区块链上不会保留交易的 massage，因此需要在代币标准下记录交易记录；</p>
+</li>
+<li>
+<p>因为有限的容器空间中需要保存交易记录，因此代币合约存在扩容问题；</p>
+</li>
+<li>
+<p>DFINITY 使用了反向 gas 模型，用户使用无需消耗 gas，因此为了避免大量垃圾交易攻击，需要在代币标准中写入转账扣费或手续费；</p>
+</li>
+</ul>
+<h2 id="icp-代币的实现"><strong>ICP 代币的实现</strong></h2>
+<p>在以太坊网络中，ETH 代币是区块链底层的原生代币，其挖矿、转账、与合约交互、支付 gas 等交易事件也被打包放在区块中，与区块链耦合；而在 DFINITY 上，ICP 代币实际上搭建在网络上被称为“Ledger”的智能合约，ICP 代币的查询、转账、交易管理与质押等功能是现在智能合约中（archive_node.rs）。</p>
+<p>由于 DFINITY 的智能合约更类似于互联网微服务下的容器，而智能合约的状态是保存在 Ledger 容器内部。实际上，ICP 的所以交易记录是保存在智能合约内部的，需要使用该合约的函数进行查询。</p>
+<p>实际上，只有 DFINITY 的 gas 代币 cycles 是链上唯一的底层原生代币，而只有通过燃烧 ICP 才能获取 cycles。</p>
+<p>所有操作都记录为 Ledger 容器内的交易，同时 DFINITY 在 Ledger 容器中记录账本时使用了区块链式的数据结构。注意，这里的区块链只是存账本数据的格式，并不是我们理解的有共识的区块链。以下是实现的状态。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0624/28_9ef7aasfac.png" alt="如何在DFINITY上铸造自己的Token？关于Token标准的讨论"></p>
+<p>因此，ICP 可以看成 DFINITY 上第一个代币规范，他的代码已经开源，在实现类似 ERC-20 标准时最好沿用 ICP 代币的设计，开源链接：https://github.com/dfinity/ic/tree/master/rs/rosetta-api/ledger_canister。</p>
+<h2 id="沿用-erc-20-的代币标准"><strong>沿用 ERC-20 的代币标准</strong></h2>
+<p>访问 <a href="https://github.com/dfinance-tech/ic-token/blob/main/simple-erc20/src/token.mo">https://github.com/dfinance-tech/ic-token/blob/main/simple-erc20/src/token.mo</a>，可以查看 DFinance 沿用 ERC-20 的 DFINITY 代币标准的源码，使用了官方开发的语言 Motoko 编写。</p>
+<p>owner_ 表示 token 创建者，一般是容器的部署者；name_ 表示名称；decimals_ 表示代币的精确位数；symbol_ 是代币的标志；totalSupply_ 是代币的总供应量。以上是一些基础。</p>
+<p>但其实表示代币位数的 decimals_ 可以考虑删除，在以太坊合约中需要这个参数是因为以太坊使用的 solidy 无法支持浮点数的计算，但是 DFINITY 的语言是可以支持浮点数运算的。</p>
+<p>balances 是一个数据库下的类型，表示一个账户对应的余额是多少。这里使用了 DFINITY 的持久化数据库 HashMap，在账户与余额间建立了联系。allowance 记录的是 Approve，这在以太坊中经常使用，允许一个账户或智能合约使用你的余额。</p>
+<p>这个实现沿用了 ERC-20 的 transfer、transferFrom、balanceOf、allowance、approve 这些操作。关于代币的铸造与销毁功能，在以太坊上很多项目会选择直接把代币转入 0x0 地址进行销毁，因为不可能有人能逆向算出 0x0 地址的私钥，所以再也无法转出。但在 DFinance 的标准下并没有这么操作，因为 DFINITY 目前还没有公认的销毁地址，因此实现了一个 burn 方法，在数据库中直接减去余额。</p>
+<h2 id="更符合-dfinity-的代币标准"><strong>更符合 DFINITY 的代币标准</strong></h2>
+<p>从 DFINITY 上线后官方开源的了 ICP 的实现代码，在沿用 ERC-20 的情况下更贴近了官方的做法，尽量实现兼容，也变得更为复杂，开源代码：https://github.com/dfinance-tech/ic-token/tree/ledger/src。</p>
+<p>DFINITY 的 ICP 实现用中，账户使用的是 account ID，而在该实现中使用的是 Principal ID，关于两者区别我在《对DFINITY的去中心化身份、账户与钱包介绍，开发者能如何利用？》中有过介绍，关于两者的选择社区也不同的意见。</p>
+<p>最大的区别在于增加了记录转账历史消息的数据库：因为代币同样也是 DFINITY 上的智能合约的实现，因此和 ICP 存在同样的问题，即以数据最终一致性为先，而区块上查不到交易信息。因此必须在容器内建立数据结构来保存 message。在核心代码下找到 OpRecord.mo，每一次转账、铸造、销毁、approve 的操作都以一条 OpRecord 的记录，一条 OpRecord 下有详尽的相关信息，方便用户日后查询。</p>
+<p>在此前我们多次聊过扩容问题，同样在代币标准中又出现了。因为现在的需要在智能合约中保存代币的转账记录，这将是非常庞大的数据，而 DFINITY 目前只支持最大 4GB 的容量。</p>
+<p>实际上所有 DFINITY 的应用都会遇到容器容量限制的问题，终极解决方案是实现一套自动扩容的数据库基础设施，它会会在一个容器容量消耗殆尽前，把数据划分到新的容器里。</p>
+<p>这个基础设施相当于一个标准化的数据库中间层，上层 DApps 可以直接调用数据库中间层的接口，而数据库容器的扩容问题由中间层。目前虽然有尝试去实现数据库引擎的 sudograph，但他目前更多是方便开发者自定义数据类型，还没有去尝试自动扩容。</p>
+<p>当然短期内，也可以定期打包一些交易历史到外部静态存储中去，然后删掉 DFINITY 容器内的历史，只保留一段时间。而且 DFINITY 的 WASM 可能会支持 64 位，这样可以扩大单个容器的内存。</p>
+<h2 id="手续费抵抗垃圾交易攻击"><strong>手续费抵抗垃圾交易攻击</strong></h2>
+<p>在《为什么说是下一代区块链，DFINITY的8大核心优势！》中介绍过，DFINITY 使用了反向的 gas 模型，以太坊上用户为自己的发送的交易付 gas，而 DFINITY 上由部署合约的支付 gas，普通用户不需要付手续费就能享受合约的服务，当然包括代币转账。</p>
+<p>但可能会遭受潜在的攻击，如果有人恶意发出一大堆垃圾交易，或者不停地调用合约，又或者在你的合约里面塞满垃圾数据，消耗合约的存储空间与 gas，就会出现宕机。在代币合约上的直接表现就是所有人都无法转账，甚至可以利用这种 DDOS 攻击阻止大家交易，从而操纵市场。</p>
+<p>DFINITY 的 ICP 代币在实现时考虑到了这一点，每次调用转账都需要扣去手续费，现在一笔操作回固定扣走 0.0001，来防止攻击。而代币合约在设计时，可以衍生出更多有意思的设计：</p>
+<p>1、转什么币，扣什么币手续费。代币合约的每次转账、铸造等操作，都扣取或销毁一定的数量或比例的代币，这种方案非常简单，听起来很像以太坊上的通缩代币设计。</p>
+<p>2、转币扣 ICP 当手续费，类似 ICP 自身的实现。</p>
+<p>3、在以太坊上每个计算操作都有固定的 gas 消耗数量，开发者可以去估算一个操作消耗的 gas 数量。目前在 DFINITY 上还么有这样的接口，但是是可以实现的。而且 DFINITY 的 gas 是使用稳定价格的 cycles 支付。因此可以先估算操作需要消耗多少 cycles 来计算操作的单价，然后根据交易所中 cycles 与该代币的交易对，来扣取对应数量的该代币，实现手续费完全覆盖交易处理成本。</p>
+<h2 id="进一步优化-去掉-approve"><strong>进一步优化</strong>  <strong>去掉 Approve</strong></h2>
+<p>以太坊网络中因为 ETH 与 ERC-20 标准之间的差异，并且为了避免重入攻击，导致了 approve 这么一个额外的操作。但在 DFINITY 中，有人提议可以去掉 approve 功能，来提升使用体验，并提出来“订阅”的替代方案。并且这样也能防止攻击，因为在 DFINITY 模型下的 approve，攻击者可以发送一大堆 approve 来占满容器的内存让其宕机。当让也有一些人提出来反对意见，具体社区讨论可以查看：https://forum.dfinity.org/t/thoughts-on-the-token-standard/4694/4。</p>
+<p><strong>使用 Principal ID 节省空间</strong></p>
+<p>在《对DFINITY的去中心化身份、账户与钱包介绍，开发者能如何利用？》中我们介绍来 DFINITY 的 Principal ID 和 Account ID 两种类似的 ID：Principal ID 被用于容器的使用，而 Account ID 被用于账本，两者同源。目前 DFINITY 的 ICP 实现中使用的是  Account ID，但社区也有人提出希望在代币合约中使用 Principal ID。因为 Principal ID 更短，可以节省 25% 的空间。</p>
+<p><strong>语言选择</strong></p>
+<p>官方在 AMA 中表示，建议开发者使用 Rust 来编写对安全性要求更高的代码，比如代币合约。</p>
+<p><strong>管理合约控制者</strong></p>
+<p>因为 DFINITY 的合约允许升级，因此合约的控制者具备较大权力，甚至可以增发代币，回滚业务，因此需要更好的去管理控制者。可以把控制者分配给零地址让合约永远无法升级，也可以把控制者替换为一个 DAO，由社区集体管理。</p>
+<h2 id="关于-dfinance"><strong>关于 DFinance</strong></h2>
+<p>感谢 DFinance 开发者的分享，DFinanace 正在建立 DFINITY 的代币标准，并帮助用户一键发行代币，并建立 swap 等金融基础。可以通过关注 <a href="https://twitter.com/DFinance">https://twitter.com/DFinance</a>_AI 获取他们的消息，也可以通过后续的测试链接铸造自己的第一个代币。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0624/28_mohp7h9q9v.png" alt="如何在DFINITY上铸造自己的Token？关于Token标准的讨论"></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzA4NjU1NzQyMA==&amp;mid=2247485251&amp;idx=1&amp;sn=7a77b2a3c83b3e8728644f68e7470fd4&amp;chksm=9fc790c0a8b019d60aeca60c469d08534b0b23bbd1d7d64df51835a22d028201f61aeb22b04c&amp;scene=21#wechat_redirect"></a></p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/24813/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">如何通过链上分析追踪鲸鱼运动？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/24852/">
+                <span class="next-text nav-default">若Colonial Pipeline事件再现 我们如何找到Dark side？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#icp-代币的实现"><strong>ICP 代币的实现</strong></a></li>
+    <li><a href="#沿用-erc-20-的代币标准"><strong>沿用 ERC-20 的代币标准</strong></a></li>
+    <li><a href="#更符合-dfinity-的代币标准"><strong>更符合 DFINITY 的代币标准</strong></a></li>
+    <li><a href="#手续费抵抗垃圾交易攻击"><strong>手续费抵抗垃圾交易攻击</strong></a></li>
+    <li><a href="#进一步优化-去掉-approve"><strong>进一步优化</strong>  <strong>去掉 Approve</strong></a></li>
+    <li><a href="#关于-dfinance"><strong>关于 DFinance</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

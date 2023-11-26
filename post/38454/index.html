@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          思考 DeFi 代币经济学复杂的反身性设计：是否可持续？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="所有花哨的飞轮都是有价值的辅助功能。" />
+<meta name="keywords" content="DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38454/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="思考 DeFi 代币经济学复杂的反身性设计：是否可持续？" />
+<meta property="og:description" content="所有花哨的飞轮都是有价值的辅助功能。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38454/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-01T00:00:00+00:00" />
+
+<meta itemprop="name" content="思考 DeFi 代币经济学复杂的反身性设计：是否可持续？">
+<meta itemprop="description" content="所有花哨的飞轮都是有价值的辅助功能。"><meta itemprop="datePublished" content="2022-06-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4356">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="思考 DeFi 代币经济学复杂的反身性设计：是否可持续？"/>
+<meta name="twitter:description" content="所有花哨的飞轮都是有价值的辅助功能。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">思考 DeFi 代币经济学复杂的反身性设计：是否可持续？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-01">
+      2022-06-01
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4356 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>所有花哨的飞轮都是有价值的辅助功能。</strong></p>
+<p>你喜欢熬夜去思考因果关系困境吗？</p>
+<p>比如祖父悖论。假如你回到过去，在自己父亲出生前把自己的祖父杀死，但祖父死了就没有父亲，没有父亲也不会有你，那么是谁杀了祖父呢？或者你的存在表示祖父并没有因你而死，那你何以杀死祖父？</p>
+<p>如果你也喜欢 DeFi 的话，那么你一定也会喜欢思考代币价格和协议收入的因果关系是如何展开的。</p>
+<p>那么请你喝杯咖啡，舒舒服服地坐着，我来为你阐述 DeFi 中错综复杂的反身性。</p>
+<h2 id="什么是反身性">什么是反身性？</h2>
+<p>维基百科上说：「反身性是指因果之间的循环关系」。此外，「反身关系是双向的，即原因和结果相互影响，因此不能指定原因或结果」。</p>
+<p>「反身性」这个概念道出了科学和人类行为中广为人知的现象，最精妙的案例可以在痴迷于几何和悖论的荷兰艺术家 Escher 的作品中找到。</p>
+<p>那张名为《画手》的图片清楚地展示了反身性是如何工作的：不可能确定哪只手在画另一只手。因果关系如此紧密，以至于无法区分。</p>
+<p>说到艺术和反身性，在 DeFi 社区也创造出了一些强大的 Meme 来表达社区的反身性概念。比如：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0601/23_7q43a6eh8y.png" alt="思考 DeFi 代币经济学复杂的反身性设计：是否可持续？"></p>
+<h2 id="如何在项目中发现自反性">如何在项目中发现自反性？</h2>
+<p>在 DeFi 中，反身性也称为循环性或著名的飞轮效应。在对项目进行尽职调查时，我们可以通过以下问题来评估反身性程度：</p>
+<ul>
+<li>
+<p>是什么决定了原生代币价格的升值/贬值？</p>
+</li>
+<li>
+<p>原生代币价格的升值/贬值对项目的运作意味着什么？</p>
+</li>
+</ul>
+<p>如果这些问题的答案相同（或大部分重叠），则存在反身性。</p>
+<p>在某种程度上，反身性在每个好的商业模式中都存在，但它从一个事件传播到另一个事件的方式使世界变得不同。我们可以划分为「间接」和「直接」反身性。</p>
+<h2 id="间接反身性">间接反身性</h2>
+<p>由于协议的收入积累，间接反身性可以被视为原生代币价格的升值。</p>
+<p>「间接」在于原生代币的治理能力：如果代币持有者可以决定如何管理协议的资金，他们就可以从应计收入中受益。因此，代表对协议资金的索取权的代币价格，应该随着收入的增加而增加。</p>
+<p>可问题是收入对代币价格产生的影响并不是直接的，因为它涉及治理投票。</p>
+<p>我们都知道治理系统存在被恶意攻击的缺陷，并且还偏向于巨鲸。这就是为什么代币的「治理」功能经常被散户低估，却被鲸鱼赞赏。</p>
+<p>这里以 Uniswap 为例。</p>
+<p>2020 年 9 月，除了治理能力之外没有任何作用的 UNI 代币以 160 亿美元的市值上线，而 Uniswap 的国库拥有 47 亿美元的资金——几乎溢价了 4 倍。</p>
+<p>很难说这个溢价是否公平，但 Uniswap 在过去 12 个月中创造了 17 亿美元的收入（仅次于以太坊和 OpenSea 的前 3 名）。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0601/23_rqdfa95i56.png" alt="思考 DeFi 代币经济学复杂的反身性设计：是否可持续？"></p>
+<p>今年提出的 82 项治理提案无疑做出了贡献，尽管量化这种贡献与其说是一门科学，不如说是一门艺术。可以更确定一点的是，散户对治理并不感兴趣（可能是因为到目前为止 Uniswap 的所有收入都已返还给 LP）。</p>
+<p>我们怎么知道？看看治理投票的平均参与率。对于 Uniswap 来说，它仅占代币持有者总数的 1.9%。</p>
+<h2 id="直接反身性">直接反身性</h2>
+<p>假设 Netflix 推出了自己的代币 FLIX，并实现了以下定价和收益分享功能：</p>
+<ul>
+<li>
+<p>非代币持有者必须支付 1 美元的 FLIX 才能观看一集，而代币持有者只需支付 0.5 美元的 FLIX。</p>
+</li>
+<li>
+<p>Netflix 收集的 FLIX 的 50% 会自动按比例计入每个代币持有者的钱包。</p>
+</li>
+</ul>
+<p>这将给 FLIX 带来购买压力，因为投资者希望获得协议收入的一半，同时由于 50% 的折扣，它也会激励代币持有者成为用户。</p>
+<p>通过这样做，未来的收入与代币持有者的数量正相关，由于收入分享机制，代币持有者的数量与协议收入等正相关。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0601/23_1pklue7bin.png" alt="思考 DeFi 代币经济学复杂的反身性设计：是否可持续？"></p>
+<p>我们刚刚设计了一个直接反身性结构。那么让我们来回答：</p>
+<ul>
+<li>
+<p>是什么决定了原生代币价格的升值/贬值？收入增加。</p>
+</li>
+<li>
+<p>原生代币价格的升值/贬值对项目的运作意味着什么？收入增加。</p>
+</li>
+</ul>
+<p>一切看起来都很棒……直到收入停止增长。那么将会发生什么？</p>
+<p>随着收入的减少，50% 的利润将不足以补偿代币持有者，他们将出售 $FLIX 代币以从之前的价格上涨中获利。</p>
+<p>而这将对 FLIX 价格造成抛压，并减少未来的收入，因为更少的代币持有者意味着更少的用户。FLIX 价格的下降也将降低 Netflix 收入的美元价值，恶性循环由此开始。</p>
+<h2 id="反身性是好是坏">反身性是好是坏？</h2>
+<p>从绝对意义上说，反身性既不好也不坏。就像坐过山车一样：这样做很有趣，但要适度。</p>
+<p>反身性应该是商业模式的支柱，而不是商业模式本身。任何协议都应该能够将产生的价值的一部分返还给代币持有者，同时让他们作为用户或间接通过治理为进一步的发展做出贡献。在协议生命周期的早期阶段，反身性可以吸引来兴趣以及活动。</p>
+<p>然而，正如我们在 Netflix 的例子中所看到的，好时光不会永远持续下去，在市场低迷时期，反身性就是一把双刃剑。这就是为什么在熊市期间，那些除了反身性之外别无特色的协议，要远比其他协议遭受的损失要大得多，并且相当一部分从未从低谷中恢复过来。</p>
+<h2 id="defi-的反身性案例olympus-dao">DeFi 的反身性案例：Olympus DAO</h2>
+<p>该项目旨在建立一个社区拥有的去中心化和抗审查的储备货币，并拥有大量支持这种货币的资产。每个原生代币 OHM 可兑换 1 个 DAI。</p>
+<p>Olympus DAO 拥有一个由稳定币和波动性资产组成的丰富而多样化的资金库，因此 OHM 市场价值远远超过了对应的 DAI 。</p>
+<p>Olympus DAO 如何积累这些资产？</p>
+<p>通过所谓的债券机制：用户存入价值为 X 美元的资产（如 DAI、ETH 等），在一定时间（债券期限）后获得 X + 溢价 OHM。</p>
+<p>这意味着用户利润的溢价金额取决于 OHM 价格与每个 OHM 支持的美元价值之间的差异。如果 OHM 价格超过每个 OHM 支持的美元价值，则该差额的一部分可以作为溢价支付给债券持有人。</p>
+<p>因此 OHM 价格越高，支付给债券持有人的溢价就越高，预期的未来债券数量就越高。</p>
+<p>债券持有人如何处理他们的 OHM？他们为什么不简单地抛弃 OHM 来兑现呢？因为 Olympus DAO 曾经提供惊人的 APY 来激励代币持有者质押他们的 OHM。</p>
+<p>质押奖励以通货膨胀的 OHM 支付，因此它们会造成稀释。尽管如此，如果稀释被库存资产的增加所抵消，则较高的库存资产和较高的 OHM 购买压力的综合影响应该会增加。</p>
+<p>现在我们拥有了回答这两个决定性问题的所有要素：</p>
+<ul>
+<li>
+<p>是什么决定了原生代币价格的升值/贬值？债券交易量增加。</p>
+</li>
+<li>
+<p>原生代币价格的升值/贬值对项目的运作意味着什么？债券交易量增加。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0601/23_fbugrpnfap.png" alt="思考 DeFi 代币经济学复杂的反身性设计：是否可持续？"></p>
+<p>Olympus DAO 于 2021 年 3 月推出，在 2021 年 12 月之前实现了惊人的增长，市值达到顶峰，超过 40 亿美元，国债市值超过 8 亿美元。但从那时开始，整个市场开始下跌，OHM 的跌幅远超大多数同行。</p>
+<p>OHM 的表现不佳是由多种因素造成的，但反身性发挥了重要作用。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0601/23_5ui26k1iuz.png" alt="思考 DeFi 代币经济学复杂的反身性设计：是否可持续？"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0601/23_zifas1d3ce.png" alt="思考 DeFi 代币经济学复杂的反身性设计：是否可持续？"></p>
+<p>事实上，在 OHM 价格低于其支持价值的时期，该团队暂停了普通债券，因为没有空间对严重低于支持价值的代币给予溢价。</p>
+<p>他们引入了所谓的「反向债券」。这些债券允许投资者存入 OHM（将被销毁）并获得溢价的国库资产。尽管反向债券减少了 Olympus DAO 国库的规模，但它们增加了每个 OHM 的支持。</p>
+<h2 id="defi-的反身性案例convex-finance">DeFi 的反身性案例：Convex Finance</h2>
+<p>该项目旨在提高 Curve 上流动性提供者的流动性和收益。要了解此模型为何成功，让我们回到 Curve 的作用以及用户如何在 Curve 上赚取收益。</p>
+<p>Curve 是一个去中心化交易所，专门从事稳定币之间的互换。由于将一种稳定币换成另一种的风险相对较低，因此兑换费用远低于波动性资产的传统兑换费用（平均 5 个基点，而波动性资产为 25-30 个基点）。</p>
+<p>低费用并不是投资者在资金池中提供流动性的巨大动力。由于稳定币需要非常高的流动性才能以较低的价格影响进行交换，Curve 使用其原生代币 CRV 为 LP 提供激励。</p>
+<p>接收 CRV 代币是好的，质押它们甚至更好。CRV 质押者将其代币锁定一段时间（最长 4 年）并收到 veCRV 代币作为收据。他们锁定 CRV 代币的时间越长，他们在决定哪些池应该获得最多奖励时的治理能力就越高。</p>
+<p>Curve Stakers 和 LP 现在可以将他们的 CRV 或他们的 LP 代币存入 Convex，并获得以 CVX 代币支付的额外收益。</p>
+<p>Convex 能获得什么回报？权力！！！</p>
+<p>Convex 积累 CRV，CVX 持有者可以锁定他们的代币，以投票决定将 Curve 激励引导到哪里。</p>
+<p>这就是反身性的作用：CVX 价格越高，在 Convex 上质押 CRV 或 Curve LP 代币的人的收益就越高。这个收益率越高，将存放在 Convex 上的 CRV 和 LP 代币的份额就越高。</p>
+<p>反过来，这将增加 CVX 持有者拥有的 CRV 数量，以及将 CRV 激励引导到特定池的机会。更高的激励意味着更方便地质押 CRV 或为 Curve 池提供流动性。Curve 上更高的流动性意味着更好的交易体验，这意味着更多的交易量、更多的费用…… 然后循环再次开始。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0601/23_pousvtrlz2.png" alt="思考 DeFi 代币经济学复杂的反身性设计：是否可持续？"></p>
+<p>让我们完成这些问题：</p>
+<ul>
+<li>
+<p>是什么决定了原生代币价格的升值/贬值？Curve 流动性池的收益率增加。</p>
+</li>
+<li>
+<p>原生代币价格的升值/贬值对项目的运作意味着什么？Curve 流动性池的收益率增加。</p>
+</li>
+</ul>
+<p>Convex Finance 在过去 12 个月中创造了 12 亿美元的收入，市值达到 22 亿美元的顶峰。与 Uniswap 数据差不多的相当不错的数字。</p>
+<p>然而，就 Olympus DAO 而言，反身性通常意味着保持快速的代币发行速度以奖励代币持有者。</p>
+<p>Convex 于大约一年前推出，已经发行了超过三分之二的 CVX 总供应量，而 Uniswap 于 2020 年 9 月推出了 UNI 代币，其流通量不到其总供应量的 50%。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0601/23_ctv14cqyn8.png" alt="思考 DeFi 代币经济学复杂的反身性设计：是否可持续？"></p>
+<p>Convex 需要 Curve 24/7/365 全速运转以维持其市值。尤其是 Convex 需要有兴趣在 Curve 上列出其代币并支付大笔费用以在此类池中获得 CRV 激励的项目。</p>
+<p>4pool 是 CVX 代币的重要催化剂，因为 Do Kwon 据称与持有 DAO 拥有的 CVX 62% 以上的多个项目达成协议。</p>
+<p>Terra 的崩盘使 CVX 价格在几天内下跌了 50%，如果市场对 FRAX（第一个 CVX 持有者）等算法稳定币失去信心，负面溢出效应可能远未结束。</p>
+<h2 id="总结">总结</h2>
+<p>大多数对 DeFi 当前状态的批评者认为，对反身性的反复纠结是阻碍其发展的主要因素之一。这可能是因为绝大多数 DeFi 投资者要么不了解反身性是如何工作的，要么认为它可以永远持续下去。</p>
+<p>此外，始于 Andre Cronje 的 Solidly 项目的 ve (3,3) 趋势促使一长串协议采用基于反身性的代币经济学设计，该设计适合 Curve 和 DeFi 领域中极少数其他 dApp，但效果并不理想，对其他协议也是如此。</p>
+<p>缺乏耐心和长期承诺是 DeFi 中最明显的问题之一，这个问题可以通过激励、超额抵押、反身性和其他优雅的机制来临时修补，但需要在思维方式上进行更多的结构性改变才能解决一劳永逸。</p>
+<p>当前的熊市是反思当前缺陷并提出新设计的绝佳机会，其中投资者的意识是基础，所有花哨的飞轮都是有价值的辅助功能。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38479/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">数据视角：DAO 代币互换对财库多元化未必有效</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38481/">
+                <span class="next-text nav-default">晚间不读5篇 | 代币设计和发行的 30 个注意事项</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是反身性">什么是反身性？</a></li>
+    <li><a href="#如何在项目中发现自反性">如何在项目中发现自反性？</a></li>
+    <li><a href="#间接反身性">间接反身性</a></li>
+    <li><a href="#直接反身性">直接反身性</a></li>
+    <li><a href="#反身性是好是坏">反身性是好是坏？</a></li>
+    <li><a href="#defi-的反身性案例olympus-dao">DeFi 的反身性案例：Olympus DAO</a></li>
+    <li><a href="#defi-的反身性案例convex-finance">DeFi 的反身性案例：Convex Finance</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

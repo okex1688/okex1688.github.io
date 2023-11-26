@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Epic CTO：实现元宇宙的真正技术难题是什么？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Epic Games公司CTO Kim Libreri首次提到了这个问题，他用《堡垒之夜》狙击手射击所需要的数据以及网络问题，向人们展示了打造元宇宙的难题所在。" />
+<meta name="keywords" content="元宇宙" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/33964/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Epic CTO：实现元宇宙的真正技术难题是什么？" />
+<meta property="og:description" content="Epic Games公司CTO Kim Libreri首次提到了这个问题，他用《堡垒之夜》狙击手射击所需要的数据以及网络问题，向人们展示了打造元宇宙的难题所在。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/33964/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-10T00:00:00+00:00" />
+
+<meta itemprop="name" content="Epic CTO：实现元宇宙的真正技术难题是什么？">
+<meta itemprop="description" content="Epic Games公司CTO Kim Libreri首次提到了这个问题，他用《堡垒之夜》狙击手射击所需要的数据以及网络问题，向人们展示了打造元宇宙的难题所在。"><meta itemprop="datePublished" content="2022-02-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4540">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Epic CTO：实现元宇宙的真正技术难题是什么？"/>
+<meta name="twitter:description" content="Epic Games公司CTO Kim Libreri首次提到了这个问题，他用《堡垒之夜》狙击手射击所需要的数据以及网络问题，向人们展示了打造元宇宙的难题所在。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Epic CTO：实现元宇宙的真正技术难题是什么？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-02-10">
+      2022-02-10
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4540 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>作为近年来最热门的词汇，Metaverse（元宇宙）吸引了来自多个行业的目光，并且通过天文数字级别的投资并购一直热度不减。</p>
+<p>然而，随着元宇宙被越来越多的人熟知，人们开始探讨打造元宇宙的可能性，以及它所面临的挑战。不过，或许在诸多的观点当中，最有趣的可能是狙击手与元宇宙的问题。</p>
+<p>在VentureBeat的一次活动中，Epic Games公司CTO Kim Libreri首次提到了这个问题，他用《堡垒之夜》狙击手射击所需要的数据以及网络问题，向人们展示了打造元宇宙的难题所在。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0210/7_hjt9r8f606.png" alt="Epic CTO：实现元宇宙的真正技术难题是什么？"></p>
+<p>随后的谈话中，来自英特尔、英伟达、Subspace和英礴等多个公司的创始人或高级技术人才谈到了元宇宙打造所面临的数据处理以及网络时延问题。</p>
+<p>以下是GameLook编译的完整内容：</p>
+<p>据Libreri所描述，如在《雪崩》、《玩家一号》小说以及《黑客帝国4》电影那样的互联虚拟宇宙一样，Metaverse的挑战在于，它是一个网络问题。</p>
+<p>Libreri说，“通常情况下，人们想到分布一个巨大平行世界的方式是将它分割成为一个网格，玩家们在整个格子里的小区域，从一个格子移动到另一个格子。”</p>
+<p>在一款竞速游戏里，这种渲染一个游戏世界的方式非常不错，而且做起来也并不困难。赛车手会在一个格子里，并且可能会移动到相邻网格，但这种方式的移动是两台联网电脑就能做到的事情。不过，在一款战斗游戏里的狙击手就更难。</p>
+<p>“如果你在一个山顶，有一把强大的狙击枪，通过倍镜，你可以看到数英里之外的人。这种情况下你就不只是在这些网格位置之间交流简单的网络流量，你还需要处理来自完全不同机器的渲染。”</p>
+<p>游戏公司必须在不同玩家之间交换网络数据，以便他们的电脑能够渲染正确的视角。狙击手看到的所有东西都必须是有完整记录的，随着狙击手在游戏环境中移动，系统必须记录并发送它与其他移动物体之间的关系。</p>
+<p>说到这里，你可能会理解为什么《堡垒之夜》这样的战术竞技游戏只能容纳100人同时竞技，每个玩家的相对位置和移动都需要收集如此之多的数据，然后把这些数据传输给服务器、与所有玩家实时同步。如果你去掉大量的计算能力，通过虚拟现实环境增强3D图形需求，然后将这些电子产品装入一个像Facebook Meta Quest 2这样的无线便携式紧凑设备中，你会发现它在一款游戏里只能容纳16名玩家，比如《Population ：One VR》这样的游戏就是如此。</p>
+<p>这可不是什么元宇宙。</p>
+<p>现在，如果你试图在同一个格子（同一个服务器）允许1000或者10万个玩家进入，那么你的网络问题就会指数级增长。</p>
+<p>Libreri说，“关于如何在无限大的世界里处理大规模分布式游戏玩法这个概念，我们需要做的研究还有太多太多，我认为Tim（Sweeney，Epic Games 公司CEO）可能会认为，解决这样大规模的并行模拟玩法，我们或许需要一个新的编程语言。”</p>
+<p>Playable Words公司CEO、曾创造了《星球大战银河系》等多个虚拟世界的Raph Koster想要提醒人们，解决这些问题并不容易。他表示，解决同一空间中许多玩家的网络问题是个巨大的困难。</p>
+<p>比如，试想这些玩家之间必须解决的分秒计时问题，尤其是，如果体育场对面的这个人躲在门后，或者玩家在不同地形区域里。</p>
+<p>时延指的是互动延迟，或者用户输入的时候模拟当中的反馈。</p>
+<p>一场音乐会更容易渲染并同步给大量玩家，因为你可能只是看到自己附近的50个人，这几十个人是以高保真形象出现，他们并不会像战斗游戏里的玩家移动那么频繁。不过，这仍是个挑战，所有这些人可能会跳舞并且在同一个地方做大量动作。</p>
+<p>英礴（Improbable）公司CEO Herman Narula说，“我们已经尝试了这个（狙击手）问题的有效解决方案。”</p>
+<p>没有人真正解决了这个问题，但这是通往互联网的道路上必须解决的问题之一，我们将从Narula这样的技术人才那里听到可行的解决方案。</p>
+<h2 id="大规模模拟的难题"><strong>大规模模拟的难题</strong></h2>
+<p><strong>计算能力</strong></p>
+<p>元宇宙将会是一个巨型模拟或者大量的模拟设定，如Epyllion公司的Matthew Ball对元宇宙所做出的的解释那样，《微软飞行模拟器》是游戏史上最真实的消费者模拟游戏，它带有2万亿单独渲染的树木、15亿栋建筑和其他功能，需要25亿PB数据，没有任何一台消费者设备能够存储所有这些数据。</p>
+<p>你并不真正想要试图近距离看到这些树木（这样做很可能导致坠机），微软向你实时展示这些数据的唯一方式就是在需要的时候从互联网数据中心将数据传输到你的电脑里，数据是在游戏运行的时候实时传到玩家电脑上的。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0210/7_ist7rig0n2.png" alt="Epic CTO：实现元宇宙的真正技术难题是什么？"></p>
+<p>微软飞行模拟器</p>
+<p>虽然这看起来令人印象深刻，然而这些树木并不会移动。你不会看到风吹过树林的景象，它们都停留在一个网格里，开放咱们也不用担心当你飞行在旧金山上空的时候突然想要看到迪拜地形。现在，假设狙击手就在其中一架飞机上，或者你同时飞行多架飞机，随后你开始需要实时同步所有这些数据，并和其他机器一起移动。</p>
+<p>所以，你可能已经明白，元宇宙是有史以来最难解决的计算问题之一。因此不令人意外的是，芯片厂商英特尔首席架构师Raja Koduri预测，想要支撑数十亿人实时互动的元宇宙，我们将需要比现在强大1000倍的计算能力。当然，Koduri希望我们每个人都买大量的芯片，但是，就像你所看到的的那样，这是一个巨大的计算和网络问题。</p>
+<p>Koster说，“CPU本身甚至不是最大的挑战，实际上，网络是个更大的问题。因为你可以存储那个数据，这也是很多人尝试用并发性解决它的方式，如果森林里有一个人而且他们鼓掌，那么很好，你需要向一个人发送网络信息。”</p>
+<p>Koster补充说，“如果有两个人，一次鼓掌就生成了两次外向传递的鼓掌，如果有4个人，那就是四次传输，这时候就变得棘手。如果有4个人，但我拍了你的掌，那就是我和你各传递一次信息，那是不同的。第三方需要看到我拍了你的手掌。那么，这就不是相同的网络信息了，这会呈现指数级的增长。所以，当你把人数增加到100之后，就要向外传递超过1000种不同的信息。这就会造成并发性问题。”</p>
+<p><strong>网络难题</strong></p>
+<p>人们在努力寻找解决方案。Comcast本周表示，该公司完成了每秒4GB的带宽传输（甚至双向达到10 Gbps），随着时间的推移，该公司希望为所有家庭提供更好的带宽环境。</p>
+<p>带宽提供了更高的数据吞吐量，就像在高速公路上增加了更多的车道在互联网推送更多数据一样。时延指的是数据信号从互联网上的一个点传递到另一个点然后回传的时间，这是以毫秒（ms）计算的。如果延迟很严重，那么快速动作游戏就运行不好。你的帧率可以降到最低，或者射击别人的时候打不准，当你瞄准的时候，实际上那个人已经离开了。Subspace认为，该公司可以在全球60个国家降低80%的时延。</p>
+<p>过去几年里，Subspace用网络和硬件，并通过与暗光纤供应商合作的方式，或互联网的一些过剩容量，打造了自己的并行网络。如今，这家公司准备退出自己的自主网络服务，该网络可以让开发者们（比如实时游戏的开发商）为用户提供实时连接。</p>
+<p>创始人Bayan Towfiq开始从事这个问题，是因为公用互联网没能支持需要实时通信的应用，比如游戏。互联网从来都不是为实时互动打造的，而且深受延迟、抖动和丢包等问题的威胁，最终影响了用户参与度。</p>
+<p>Subspace部署了一个全球私有网络，包括一个专门的光纤主干网、获得专利的互联网气象图和数百个城市的定制硬件。这个网络将互联网上接近用户的流量拉开，确保最快最稳定的通道。</p>
+<p>该公司表示，Subspace首次允许现有游戏和互联网应用程序在不改变代码、VPN客户端或者内部硬件的情况下，为每一个连接互联网的设备提供私有网络，Subspace服务的客户已经覆盖数亿用户。</p>
+<p>Ball曾表示，一般人甚至不会注意到音频是否与视频不同步，除非它提前45毫秒或者延迟125毫秒（区间为170毫秒）。可接受范围甚至更广泛，在提前90毫秒和延迟185毫秒之间（区间为275毫秒），在数字按钮方面，比如YouTube的暂停按钮，如果200-250毫秒之后还没有看到反应，我们只会认为自己的点击失败了。</p>
+<p>还有更多的公司在解决网络延迟问题。RP1希望能够让10万人在同一个场景，以便让人们在元宇宙里举行超大音乐会，并且实时举办。</p>
+<p>RP1首席架构师Dean Abramson曾表示，他认为RP1可以用2500个服务器支持1亿用户，这比其他公司的效率高了200-500倍。这是令人鼓舞的，但或许想要真正实现很难，我们需要看到它在处理极其复杂的世界时表现如何，比如1亿用户每个人都有大量的细节展现。</p>
+<p>Libreri表示，为元宇宙开发许多跨云基础设施分布计算和数据管理的方法也是必要的，你可以看到这个问题的量级有多大。</p>
+<p>然后，你不仅面临在地图上这些网格间查找网络数据的挑战，还面临在世界之间建立网络数据的挑战。在元宇宙中，我们应该能够在不同的世界之间快速移动，计算机现在不知道你想要访问哪个世界，与在一个游戏世界中获得更新相比，它无法预测你想做什么，它不能预先下载一个世界，让你决定访问另一个世界的时候就能快速实现。</p>
+<p>这该如何克服呢？我试着从一个世界调到另一个世界，但等一等，我会在随后追上朋友，因为在加载下一个世界之前，我必须下载25亿PB的数据，或者至少要开始流媒体传输，Ball对需要的数据量做了一些计算，但并不乐观。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0210/7_ivwpmlnm69.png" alt="Epic CTO：实现元宇宙的真正技术难题是什么？"></p>
+<p>英伟达CEO黄仁勋最近表示，他的公司希望组织大量的超级计算机和AI专家，来创造世界气候模型，他们希望为地球打造一个精确到米为单位的“数字孪生”，预测地球的气候变化。这需要捕捉大量的数据，Koster指出，米级别的细节将会不断变化，这是很难建模的。但只要英伟达做了建模，在Omniverse里模拟的数字版地球元宇宙就将会向其他人免费开放。</p>
+<p>Koster说，“只要你想探索的元宇宙世界恰巧是英伟达拍摄地球快照时候的样子，这对你作为游戏开发者来说是很有帮助的。但我们都知道精确到米级别的模型会在30秒之后过时，不是吗？”</p>
+<p><img src="https://img.bibiqing.com/news/2022/0210/7_z2k8hpo5ld.png" alt="Epic CTO：实现元宇宙的真正技术难题是什么？"></p>
+<p>所以，我们该如何创造元宇宙？我的建议是，首先，灭掉所有的狙击手。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/33965/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">DAO迈向抗捕获治理框架</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/33997/">
+                <span class="next-text nav-default">ETH 2.0改头换面 六月份升级影响几何？</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#大规模模拟的难题"><strong>大规模模拟的难题</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

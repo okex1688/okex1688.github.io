@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          读懂 Uniswap 和 SushiSwap 的治理历史及演变 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="源代码几乎完全相同的 Uniswap 和 SushiSwap 在各自社区的指导下不断发展，形成了不同的治理结构。" />
+<meta name="keywords" content="Uniswap, Sushiswap" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39372/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="读懂 Uniswap 和 SushiSwap 的治理历史及演变" />
+<meta property="og:description" content="源代码几乎完全相同的 Uniswap 和 SushiSwap 在各自社区的指导下不断发展，形成了不同的治理结构。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39372/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-24T00:00:00+00:00" />
+
+<meta itemprop="name" content="读懂 Uniswap 和 SushiSwap 的治理历史及演变">
+<meta itemprop="description" content="源代码几乎完全相同的 Uniswap 和 SushiSwap 在各自社区的指导下不断发展，形成了不同的治理结构。"><meta itemprop="datePublished" content="2022-06-24T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-24T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5095">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="读懂 Uniswap 和 SushiSwap 的治理历史及演变"/>
+<meta name="twitter:description" content="源代码几乎完全相同的 Uniswap 和 SushiSwap 在各自社区的指导下不断发展，形成了不同的治理结构。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">读懂 Uniswap 和 SushiSwap 的治理历史及演变</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-24">
+      2022-06-24
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5095 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>源代码几乎完全相同的 Uniswap 和 SushiSwap 在各自社区的指导下不断发展，形成了不同的治理结构。</strong></p>
+<p>在加密领域，我们有一对重量级对决 ——Uniswap vs SushiSwap。这些 DeFi 协议一开始的源代码几乎完全相同，但后来在各自社区的指导下不断发展。它们不同的治理结构和过程构建了每个社区决定其底层协议未来的轨道。为了理解这些决策的影响，让我们深入研究一下这两个技术上类似的协议的治理历史和演变。</p>
+<h2 id="uniswap-和-sushiswap-的简史">Uniswap 和 SushiSwap 的简史</h2>
+<p>大多数加密老手都熟悉 Uniswap 和 SushiSwap 的传奇故事。</p>
+<p>那是 2020 年 8 月，DeFi Summer 正如火如荼地进行着。6 月，由 Compound 启动的 DeFi 协议终于解决了引导早期流动性的问题。此前，DeFi 一直面临着激励问题 —— 早期流动性提供者 (LP) 赚取的交易费很少，因为交易者会因高滑点而避开流动性不足的资金池。</p>
+<p>Compound 向 LP 提供自己的治理代币，同时奖励早期用户并将协议控制权移交给社区，试图用这些方式来解决问题。这种激励设计引起了一场革命 —— 早期的 LP 可以通过提高 APY 来为较小的资金池提供流动性，并对项目的未来拥有发言权，从中获得补偿。新的协议代币奖励迅速助燃了一波疯狂的流动性挖矿，使 DeFi 的 TVL 从 6 月的 10 亿美元增加到 10 月的 150 亿美元。</p>
+<p>Uniswap 享受到了 DeFi 新用户涌入带来的红利，其 TVL 从 6 月的 7000 万美元增长到 8 月底的 3 亿美元。这个开源协议是第一批使用自动做市 (AMM) 模式的交易所之一，在当年 6 月荣升到 DEX 的主导地位，并获得了顶级风投公司的大量支持。也许是由于新投资者的利益冲突，Uniswap 没有发布治理代币，也没有改变其激励结构来应对新兴范式。这种不作为创造了一个机会，SushiSwap 的匿名创始人 Nomi 很快就抓住了这个机会 (巧合的是，就在几天前，The Block 的研究主管发了下面的推文)。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0624/12_dwi5cp4knb.jpg" alt="读懂 Uniswap 和 SushiSwap 的治理历史及演变"></p>
+<p>Nomi 通过复制源代码并将其部署到以太坊上的新 Sushi 合约来分叉 Uniswap 以创建 SushiSwap。几乎相同的代码库，但拥有两个关键的新特性 —— 治理代币和更新的质押奖励。在 SushiSwap 上，用户可以通过向池提供流动性来赚取其治理代币 SUSHI。但最关键的是，这种流动性必须以 Uniswap LP 代币的形式出现。在大量 Sushi 奖励的激励下 (前两周内每个区块获得 1000 个奖励！)，用户争相前往 Uniswap，将资产存入符合条件的池中，以换取 Uniswap LP 代币，并迅速将这些代币投入 SushiSwap 合约中。Uniswap 的 TVL 从 3 亿美元迅速增长到 18 亿美元。</p>
+<p>上线两周后，SushiSwap 启动了流动性迁移，将所有 Uniswap LP 代币转移到 SushiSwap 上，在 Uniswap 上兑换相应的代币对，并使用代币来初始化新的 SushiSwap 流动性池。当迁移结束时，SushiSwap 已经获得了价值 8.1 亿美元的代币，约占 Uniswap 流动性的 55%。</p>
+<p>流动性虹吸 —— 现在被称为「吸血鬼攻击」—— 是 DeFi 的一个里程碑式事件，它强调了社区协议激励协调和社区拥有治理的重要性。这一事件给各个领域的项目都带来了压力，该事件要求它们引入治理代币，并将其协议的控制权交给社区。同年 9 月，Uniswap 发布了自己的治理代币 UNI，以增强社区参与度。</p>
+<p>今天，Uniswap 和 SushiSwap 仍然受到各自社区的指导。激励措施的调整、新产品的推出、合作伙伴关系和其他发展都由社区提出、投票和执行。尽管它们最初在技术上有相似之处，但这两个社区发展了不同的治理方式，使它们能够以去中心化的方式实现目标。</p>
+<h2 id="早期治理">早期治理</h2>
+<p>在项目启动几周后，SushiSwap 立即尝试了去中心化管理，但结果并不顺利。在迁移的前一天，Nomi 带着 1300 万美元的开发资金潜逃，在不到一周后就将其归还，并把项目密钥交给了 FTX 的创始人萨姆・班克曼 - 弗里德 (Sam Bankman-Fried)。SBF 在将密钥交还给社区之前成功地管理了迁移。</p>
+<p>第二年，SushiSwap 陷入了内部冲突、薪酬纠纷和腐败指控，导致包括首席技术官约瑟夫・德隆 (Joseph Delong) 在内的许多核心贡献者离职。批评者认为，SushiSwap 在管理内部冲突方面的无能凸显了 DAO 在经营竞争性业务方面的局限性。最终，社区通过了一项重组提案，建立了一个更传统的组织结构，由社区继续监督。</p>
+<p>Uniswap 在治理启动时就已经运行了两年多，从一开始就得到了专业的管理。由于早期的投票权分配，创始人、核心团队成员和投资者在指导现在社区中的角色基本保持不变，这可能是这次成功的关键因素。</p>
+<h2 id="启动和投票权分配">启动和投票权分配</h2>
+<p>SushiSwap 治理始于公平启动，90% 的代币分发给公众，只有 10% 保存在金库中。当时由风投支持的 Uniswap 公司只向社区分发 60% 的代币，21.5% 分给团队，17.8% 分给投资者。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0624/12_s1rltmsfuo.jpg" alt="读懂 Uniswap 和 SushiSwap 的治理历史及演变"></p>
+<p>今天，我们可以看到这种初始分配在投票权分配中的影响。SUSHI 的投票在社区中更加分散。请参阅下面的投票权比较：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0624/12_5jkgikv9yy.jpg" alt="读懂 Uniswap 和 SushiSwap 的治理历史及演变"></p>
+<p>以下是一些亮点:</p>
+<ul>
+<li>
+<p>SUSHI 有 75% 的投票权来自 100 个钱包，而 Uniswap 来自 24 个钱包。</p>
+</li>
+<li>
+<p>SUSHI 有近 450 个钱包拥有 90% 的投票权，而 Uniswap 只有 40 个。</p>
+</li>
+<li>
+<p>100 万以下的钱包在 SUSHI 中拥有 41.5% 的投票权，而 Uniswap 只有 5.3%。</p>
+</li>
+</ul>
+<p>代币初始分配的分布对投票权的分散有持久的影响。</p>
+<h2 id="投票资格">投票资格</h2>
+<p>谁有资格参与治理？</p>
+<p>对于 Uniswap 来说，所有 UNI 持有者必须在 Uniswap 投票面板上委托他们的代币，以行使他们的投票权。代币可以自行委托，也可以以 1 个 UNI = 1 票的转换比率委托给受信任方的地址。但是，必须在提案提交之前或提案延迟期间 (一个区块，或～15 秒) 完全委托代币，以便在投票中使用。</p>
+<p>SushiSwap 的投票指标是 SUSHIPOWAH，可以通过多种方式获得：</p>
+<ul>
+<li>
+<p>提供 SUSHI-ETH 流动性</p>
+</li>
+<li>
+<p>质押 SUSHI (xSUSHI)</p>
+</li>
+<li>
+<p>将 SUSHI 存入到 Tokemak</p>
+</li>
+</ul>
+<p>SUSHI-ETH LP 提供者每存入池中的 SUSHI 将获得 2 个 SUSHIPOWAH，而质押者和 Tokemak 存款人每个 SUSHI 将获得 1 个 SUSHIPOWAH。要成为合格的投票者，持有人必须在投票开始时从上述 3 个选项中的任何一个或所有选项中获得 SUSHIPOWAH。</p>
+<p>我们会立即注意到资格要求中的一个显著差异。SushiSwap 中参与治理与协议的特定方面 (如流动性) 的增长是保持一致的。在流通代币供应的背景下，这对资格意味着什么？有趣的是，约 28% 的流通 UNI 和约 37.5% 的流通 SUSHI 是符合治理标准的。然而，UNI 持有者必须积极委托他们的代币才有资格投票，这可能意味着这些持有者更有可能参与治理。合格的 SUSHI 持有人可能更感兴趣的是通过质押获得额外收益，而不是利用相关的治理权利。</p>
+<p>当我们看到最后 10 个提案时，我们可以看到这个理论在数据中的体现。下面左边的图表显示，平均 32% 的 UNI 选票用于治理，而 SUSHI 的选票中则只有 7% 用于治理。</p>
+<p>在右边的图表中，我们可以看到 UNI 和 SUSHI 在两个投票平台上的总投票人数的对比。数据好坏参半 —— 平均而言，参与 SUSHI 的最终提案的投票者多于 UNI。然而，UNI Snapshot 提案是提案过程中的一个初步步骤，却吸引了更多人的参与。这种差异可能是链上投票与链下投票成本造成的，我们稍后将对此进行探讨。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0624/12_12cmy9u8dg.jpg" alt="读懂 Uniswap 和 SushiSwap 的治理历史及演变"></p>
+<h2 id="链上治理-vs-链下治理">链上治理 vs 链下治理</h2>
+<p>Uniswap 治理发生在链上，而 SushiSwap 治理通过 Snapshot 发生在链下。由于 Uniswap 的提案是在链上投票和执行的，因此治理过程更加严格。</p>
+<p>Uniswap 的提案从 Temperature Check 开始，以确定社区是否有足够的资金来改变现状。任何社区成员都可以提交一份关于 Temperature Check 的提案，该提案将发布在一个由 Discourse 托管的论坛上，并通过 Snapshot 进行链下投票。提案必须以 25,000 票 UNI 赞成票作为门槛，才能进入下一阶段。</p>
+<p>如果满足了这个阈值，提案就会进入 Consensus Check，它会围绕提案建立正式的讨论。利用来自 Temperature Check 的反馈，成员重新向治理论坛提交更新后的提案和新的 Snapshot 民意调查。要通过 Consensus Check，就需要在 5 天内获得 50,000 UNI 的赞成票。</p>
+<p>链上治理提案是治理过程的最后一步。由于这些最终提案和投票发生在链上，因此必须编写和审核可执行代码才能将这些提案提交到治理门户。为了让投票通过，它必须在 7 天内达到全体 UNI (4000 万) 赞成票的 4% 的法定人数。如果提案成功通过，则会在执行提案代码之前进行两天的时间锁定。</p>
+<p>SushiSwap 治理流程不那么正式。任何社区成员都可以向 SushiSwap 论坛提交提案，让社区成员进行公开讨论，通常还可以通过投票来查看人们的情绪。进入下一阶段的指导方针没有被很好的定义。如果提案人认为社区对该提案的意见可以推进到下一阶段，则将正式提案发布到 Snapshot。需要 200k 的 SUSHIPOWAH 对 Snapshot 进行投票。在为期 7 天的投票期间，该提案需要达到 500 万 SUSHIPOWAH 的赞成票才能通过。</p>
+<p>这个过程可以总结如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0624/12_tlmuvad4rp.jpg" alt="读懂 Uniswap 和 SushiSwap 的治理历史及演变"></p>
+<p>由于投票发生在链下，由核心团队通过多重签名进行管理。任何使用 devfund 钱包的交易都需要 devfund 团队 6 个成员中的 3 个签名才能获得批准。任何属于核心团队权限范围内的变更，如管理池、使用增长基金，都必须通过运营多重签名，并至少获得 3 个签名。</p>
+<p>我们会注意到法定人数要求的显著差异。在 9000 万个合格的 SUSHI 选票中，需要 500 万个或 5.5% 才能通过提案，而 UNI 的则需要 4000 万票 (12.5%) 才能通过提案。UNI 要求持有者有意委托参与治理，而 SUSHI 的持有者可能因为各种与非治理相关的原因使得其有资格参与治理。其结果是合格投票者的参与率更高，从而可以使其拥有更高的法定人数门槛。</p>
+<p>链上和链下治理确实是有显著影响的。SushiSwap 提案最终由多重签名持有者决定执行，这意味着即使恶意提案被通过，其影响也是有限的。同时也可以降低提案门槛，让更多的社区成员有资格起草和提交提案。事实上，大约 有 90 名 SUSHI 成员有资格提交提案，而 Uniswap 只有 35 名。此外，Uniswap 的链上流程要求实施特定的安全机制，以防止恶意治理，包括:</p>
+<ul>
+<li>
+<p>时间锁延迟：所有治理和其他管理操作都需要在时间锁中停留至少 2 天。由于 UNI 是一种可自由交易的资产，任何人都可以通过市场购买来尝试接管治理。如果一个团体确实实现了恶意收购，时间锁的延迟将使受影响的各方有时间从协议中撤回其资产。</p>
+</li>
+<li>
+<p>前一个区块的委托余额检查：提交投票所需的 250 万 UNI 的余额检查恰好设置在过去一个区块中。这可以防止未完成的交易 (跨越多个区块) 影响投票过程。</p>
+</li>
+</ul>
+<p>SushiSwap 和 Uniswap 都要求在提交提案之前拥有投票权 (例如授权或 SUSHIPOWAH 要求)。这一要求防止了恶意行为者投机地购买资产和影响投票。</p>
+<p>还有一个成本差异：由于交易费用，链上投票更昂贵，而快照投票是免费的。链上投票进一步减少了较小钱包的参与，这可能会导致投票权更加集中。</p>
+<h2 id="文化差异">文化差异</h2>
+<p>治理上的差异通常反映了围绕项目形成的社区的差异。更多的权力分配和不那么严格的参与要求通常反映出的是一个欢迎新人并优先考虑建立关系的社区。恰如其分地，SushiSwap 的治理论坛感觉不那么正式，更年轻，更有趣。</p>
+<p>相比之下，Uniswap 的权力集中、昂贵的链上投票和严格的提案流程创造了一种更制度化和专业的环境。对于新人来说，似乎不太可能参与进去。然而，这种差异并不一定是坏事 ——Uniswap 已成为寻求最大化效率和优化决策的协议的蓝图。</p>
+<h2 id="衡量成功">衡量成功</h2>
+<p>尽管 SushiSwap 在早期取得了成功，但 Uniswap 仍然在 TVL、交易量和交易者数量方面位居前列。Uniswap 以极高的效率推出了更新的产品 (v3) 和新的用户体验，而且几乎没有什么问题。撇开这些批评不谈，治理模式 —— 更像是寡头而不是真正的民主 —— 已被证明是非常成功的。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0624/12_b0l6lkg3sl.jpg" alt="读懂 Uniswap 和 SushiSwap 的治理历史及演变"></p>
+<p>SushiSwap 走的是一条艰难的道路。</p>
+<p>现在来看看从我们的比较中得出的一些结论：</p>
+<ul>
+<li>
+<p>治理启动：如果没有一个公平的启动，就很难实现投票权的平等分配。Uniswap 最初 40% 的分配有持久的影响力 —— 前 10 名投票者 (其中许多人是投资者或顾问) 如今拥有 46% 的投票权。Sushi 的分布较为均匀，前 10 名钱包持有 29%。这显然是一个很难解决的问题。</p>
+</li>
+<li>
+<p>投票者资格：SushiSwap 的资格要求可能会刺激协议的发展 (那些想要参与治理的人必须质押或提供流动性)，但这虽然人为地增加了合格投票者的数量，却减少了参与度。Uniswap 的授权投票的要求，使其拥有更高的合格投票参与率 (32% vs 7%)。</p>
+</li>
+<li>
+<p>链上 vs 链下：链上提案减少了参与度。</p>
+</li>
+</ul>
+<p>实际上，关于治理结构的决定，总是伴随着权衡。对于希望开发去中心化治理的项目，评估这些权衡将对项目的未来以及围绕它形成的社区产生的影响是至关重要的。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39351/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">德意志交易所推出全面的加密货币数据源</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39374/">
+                <span class="next-text nav-default">分析 NFT 项目的 5 个指标</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#uniswap-和-sushiswap-的简史">Uniswap 和 SushiSwap 的简史</a></li>
+    <li><a href="#早期治理">早期治理</a></li>
+    <li><a href="#启动和投票权分配">启动和投票权分配</a></li>
+    <li><a href="#投票资格">投票资格</a></li>
+    <li><a href="#链上治理-vs-链下治理">链上治理 vs 链下治理</a></li>
+    <li><a href="#文化差异">文化差异</a></li>
+    <li><a href="#衡量成功">衡量成功</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          如何全面控制区块链上数据的“读”权限 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="怎么在合约里实现链上数据的读取权限？" />
+<meta name="keywords" content="数据" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/30176/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="如何全面控制区块链上数据的“读”权限" />
+<meta property="og:description" content="怎么在合约里实现链上数据的读取权限？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/30176/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-10-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-27T00:00:00+00:00" />
+
+<meta itemprop="name" content="如何全面控制区块链上数据的“读”权限">
+<meta itemprop="description" content="怎么在合约里实现链上数据的读取权限？"><meta itemprop="datePublished" content="2021-10-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-27T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3775">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何全面控制区块链上数据的“读”权限"/>
+<meta name="twitter:description" content="怎么在合约里实现链上数据的读取权限？"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">如何全面控制区块链上数据的“读”权限</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-10-27">
+      2021-10-27
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3775 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>经常有人问到一个问题：“怎么在合约里实现链上数据的读取权限？”</p>
+<p>这样的需求背后，是开发者想把一些数据上链，让智能合约管理和运算，以达成业务上的共识，但又不希望数据公开可见，避免链上其他未授权参与者读取，导致信息泄露。</p>
+<p>最直观的实现思路，就是在合约代码里写一段过滤逻辑，判断调用者满足某些条件（如在白名单里）才允许返回数据，否则拒绝。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1027/13_ik8khuo4sa.png" alt="如何全面控制区块链上数据的“读”权限"></p>
+<p>我们设定一个案例：有一个积分联盟链，链上参与者有Alice、Bob、Carl、Dave等多方以及他们的家人，每个人的积分余额希望设定只有自己和家人可见，其他参与者不可见。</p>
+<p>客户端通过区块链的应用级接口，发送请求到某个节点，调用智能合约的get方法查Bob的积分，智能合约写了权限控制逻辑，拒绝越权访问。</p>
+<p>因为智能合约在每个节点上的运行逻辑是一致的，因此无论请求发往哪个节点，结果都一样。这看起来貌似没啥问题，但实际是否也是如此？</p>
+<p>这里先说结论：这是个“<strong>治标不治本</strong> ”的做法，并<strong>不能</strong> 确保数据不泄露。</p>
+<p>现在开始我们要用“<strong>多中心、去信任</strong> ”的思维重新去审视这个案例。</p>
+<p>我们先分析下：<strong>链上数据是怎么存储？在什么情况下会被泄露呢？</strong></p>
+<p>区块链网络节点分布在不同参与者的环境里，出于区块链的数据一致性特性，每个节点都持有一份完整的数据副本。无论这个数据库是LevelDB/RocksDB这样的文件型数据库，还是Mysql这样的关系型数据库，数据都会落到每个节点的数据库实例里。</p>
+<p>也就是说Bob的积分余额，在所有的节点硬盘上都存了一份，在MySQL数据库工具里看，大概这个样子：</p>
+<p><img src="https://img.bibiqing.com/news/2021/1027/13_j3lcprn6ss.png" alt="如何全面控制区块链上数据的“读”权限"></p>
+<p>如果链上（小概率地）存在某个有点儿区块链技术经验的参与者，暗戳戳地怀揣“恶意”（也就是俗称的<strong>拜占庭玩家</strong> )，他可以用工具打开本地的数据库，直接查询Bob的余额。这样，用合约去防止数据泄露的控制逻辑就会完全被绕过。就这么简单。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1027/13_wbr23jgted.png" alt="如何全面控制区块链上数据的“读”权限"></p>
+<p>另外，区块链的数据不仅与合约相关，还和交易记录密切相关。</p>
+<p>在发送交易的时候，交易参数会包含一部分或全部数据（如Alice给Bob转账100），交易会打包进区块，最终也写入节点数据库里。</p>
+<p>对区块和交易数据的查询一般不会用合约逻辑实现，于是，仅仅在合约里写过滤逻辑并无法防止这些数据的读取。拜占庭玩家可以在本地数据库里遍历区块数据，获取交易历史明细，从头到尾回放交易流水，得知现在Bob的余额是300。</p>
+<p><img src="https://img.bibiqing.com/news/2021/1027/13_byhji9uuoj.png" alt="如何全面控制区块链上数据的“读”权限"></p>
+<p>从整个技术栈来看，拜占庭玩家用工具访问本地数据、遍历区块和交易都算是小意思了，他甚至可以修改区块链系统代码，从区块链网络接口、程序内存、智能合约引擎等层面切入，从协议包、区块、交易流水、合约上下文、状态数据等环节嗅探和拦截到明文数据，即使数据落盘是加密的，密钥也在节点持有人手里，他照样能解开。</p>
+<p>所以，从区块链底层代码入手去控制读数据的权限，同样也是不管用的，毕竟开源的代码，谁都可以改，俗话说：“坏人会武术，谁都挡不住”，而懂技术的“坏人”更是无所不能、防不胜防。</p>
+<p>总之，区块链强调“<strong>分享</strong> ”和“<strong>一致性</strong> ”，只要明文数据在链上广播，别人就有无数种方法去获取。无论是在合约层还是底层代码，几乎所有的读控制逻辑都像<strong>窗户纸</strong> 一捅就破，像<strong>马其诺防线</strong> 一样形同虚设。</p>
+<p>看到这里，有人可能会问：读数据如此不设防，那区块链上的“<strong>写</strong> ”权限还有意义吗？回答是：<strong>有的</strong> 。</p>
+<p>回到积分这个例子，我们设定Alice是积分管理员，她才能发起转移积分的交易，然后Bob也只接受Alice给自己的积分。转移积分的交易需要经过全网共识，所有共识节点会检查合约里写的规则，不符合就拒绝签名，越权交易无法得到共识，则数据不会被修改。</p>
+<p>这时即使有少量的拜占庭节点，无论在本地节点怎么折腾，也篡改不了全网数据。</p>
+<p><strong>“写”交易追求共识</strong> ，所以客户端发交易（sendTransaction或sendRawTransaction）时，要打上数字签名，区块链系统验证签名，确认是哪个外部账户发过来的交易，可以进行严格地校验和准确地追溯。</p>
+<p><strong>“读”操作更强调共享</strong> ，读数据的操作其实并不经过共识流程，在自己的节点翻翻数据就行了。通常区块链系统在读接口（call）并不用严格填写发送者，也无需打上数字签名，所以，在合约的读方法里判断外部账户，其实是无效的。</p>
+<p>综合以上种种分析，可以得出结论：在链上实现读控制并不是简单的事情。</p>
+<p>如果对读控制逻辑考虑不足，那么效果将是：你在自己的节点上读一下数据来测试验证，表象看起来OK，你以为岁月静好，却不知道在一个拜占庭玩家那里，数据已经被翻得底朝天了。</p>
+<p>考虑到多方协作中的去信任化，追求数据共享、公开、透明的取向，一般来说，如果是关键的、不能泄露的敏感数据，一定要慎重上链，能上链的，一定是大家说好可以分享的“最大公约数”。</p>
+<p>事实上很多区块链系统里的交易和余额等状态都是全网可见的，所谓的匿名性或隐私性，只是用公私钥和地址体系代替了明文账户，这个级别的“匿名”，在业务模型复杂且强调全面隐私的金融、政务等领域并不适用。</p>
+<p>那么我们还有什么方法，在兼顾共享、透明、开放的同时，适当地控制数据可见性呢？</p>
+<p>第一个思路是<strong>与链外治理结合</strong> ，约定责权利边界。我在合约、接口层面做好权限设计和实现，保证在我的业务系统里不泄露数据，我的区块链应用层、展示界面、报表、日志、数据库等环节都不会被越权访问，消除我内部操作风险。</p>
+<p>至于别人的节点，我管不着，那是他们的责任，谁泄露滥用数据，就重罚谁（取证、举证其实挺难的）。这种逻辑其实有点“<strong>各扫门前雪</strong> ”的意思，在这种模式下，我的敏感数据还是不能上链给到别人。</p>
+<p>第二个思路是<strong>引入密码学</strong> 。这里举几个例子。</p>
+<p><strong>非对称加密</strong> ：上链的数据用接受方的公钥加密，则只有接收方才能用自己的私钥解开。</p>
+<p><strong>密码信封</strong> ：上链数据采用某个口令加密，口令通过链外信道给到接收方，只有知道口令的接收方才能解密。</p>
+<p><strong>属性加密</strong> ：数据采用属性加密算法进行加密，符合指定属性（如具备管理员属性）的才能解密。这些方案的考量在于运算、传输、存储的开销都会大一点，另外加密的数据不支持明文运算，难以实现复杂的业务合约逻辑。还要注意的是，即使加了密，本质上数据的全部信息还是都上链了，随着时间推移，计算能力和算法（如量子密码）的进化，存在被暴力破解的可能性，或者因为密钥泄露/太简单被猜到，链上的数据又无法撤回，就有被昭告天下的风险。</p>
+<p>第三个思路是<strong>仅摘要上链</strong> ，数据明文根本就不上链。</p>
+<p>其实，区块链的作用并不一定是全面掌握数据和执行复杂的业务规则，而是凭借多方见证的公信力，验证数据的准确性、完整性，并起到存证和追溯的作用，事实上现阶段很多区块链系统主要是这么个逻辑，客观上已经能起到信任的锚点作用。</p>
+<p>如果需要明文数据，再通过摘要里的寻址信息去链外系统获取数据，在这个环节上做精细的权限控制，并和链上摘要进行互验。</p>
+<p>但，数据不上链还是有点不甘心呀，区块链这么创新的理念，智能合约这么强大的功能，怎么充分发挥呢？</p>
+<p>这就要讲到<strong>隐私计算</strong> 了，包括但不限于零知识证明、同态加密、安全多方计算、联邦学习等一系列重武器，可以做到隐秘数据、身份的同时，对加密数据进行<strong>加减乘除运算、逻辑运算、排序、统计分析</strong> ，更进一步还可以做到**“前台匿名，后台可审计”** 的效果，以符合监管合规要求。这就是在区块链上实现“<strong>可用不可见</strong> ”的最终奥义。</p>
+<p>限于篇幅，这里不展开隐私计算的细节，可以参考WeDPR隐私保护相关的开源场景方案，尤其是其中的几个场景，如VCL区块链可验证密文账本，可以用于解决前面提到的积分案例里的一些隐私问题。</p>
+<p>WeDPR隐私保护相关开源场景方案：</p>
+<p><a href="https://fintech.webank.com/wedpr/">https://fintech.webank.com/wedpr/</a></p>
+<p>VCL区块链可验证密文账本：</p>
+<p><a href="https://sandbox.webank.com/wedpr/confidentialpayment/#/start">https://sandbox.webank.com/wedpr/confidentialpayment/#/start</a></p>
+<p><strong>结语</strong></p>
+<p>本来只是想聊聊“怎么写合约读权限”这样一个小问题，结果变成了长篇。</p>
+<p>其实面对区块链编程和开发时，真的不能像写单机或集群软件那样考虑问题，而要充分考量多方参与、去信任环境下的协作关系，在共享、透明、可追溯的基本哲学之上，关注隐私保护诉求，掂量数据的重要性和敏感性，再深入到技术栈，考虑各种算法的功效和成本、综合现在和未来的风险和收益以选择合适策略，这样才能全面保护数据和隐私，安全地发展业务，维护自身和用户权益。</p>
+<p>来源 |  FISCO BCOS开源社区</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/30170/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">欧洲央行成立数字欧元市场咨询小组</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/30155/">
+                <span class="next-text nav-default">如何验证一个 Polkadot 生态项目？查看官方建议</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

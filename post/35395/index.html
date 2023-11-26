@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          剖析7种常见设计架构 为何说没有完美的去中心化稳定币？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="由于作者对各个 Token 机制进行了高度提炼总结，以下部分内容需要具备一定相关项目的基础知识。" />
+<meta name="keywords" content="稳定币" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/35395/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="剖析7种常见设计架构 为何说没有完美的去中心化稳定币？" />
+<meta property="og:description" content="由于作者对各个 Token 机制进行了高度提炼总结，以下部分内容需要具备一定相关项目的基础知识。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/35395/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-14T00:00:00+00:00" />
+
+<meta itemprop="name" content="剖析7种常见设计架构 为何说没有完美的去中心化稳定币？">
+<meta itemprop="description" content="由于作者对各个 Token 机制进行了高度提炼总结，以下部分内容需要具备一定相关项目的基础知识。"><meta itemprop="datePublished" content="2022-03-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="11679">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="剖析7种常见设计架构 为何说没有完美的去中心化稳定币？"/>
+<meta name="twitter:description" content="由于作者对各个 Token 机制进行了高度提炼总结，以下部分内容需要具备一定相关项目的基础知识。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">剖析7种常见设计架构 为何说没有完美的去中心化稳定币？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-14">
+      2022-03-14
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 11679 字 -
+        预计阅读 24 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>写在前面</strong></p>
+<p>作者在文中，分别对 DAI、MIM、alUSD、UXD、FRAX、FEI 和 UST Stablecoin 系列进行了深度分析，分别剖析了上述 Stablecoin 设计架构的优劣。作者指出当前的 Stablecoin 机制均需要在稳定性、资本效率、抗审查力和可扩展性四者之间作出一定的取舍和权衡，没有完美的去中心化 Stablecoin。</p>
+<p>由于作者对各个 Token 机制进行了高度提炼总结，以下部分内容需要具备一定相关项目的基础知识。</p>
+<p><strong>正文开始</strong></p>
+<p><strong>介绍</strong></p>
+<p>去中心化 Stablecoin 赛道目前是 DeFi 最热门的赛道之一，仅 USDC 和 USDT 就锁定了约千亿美元。当前 Stablecoin 生态严重依赖中心化系统，这与行业精神相矛盾，同时这也为那些能够提供真正去中心化解决方案的 Stablecoin 协议创造了巨大的机会。在本报告中，我们将重点介绍去中心化 Stablecoin 领域的一些领先者，并分析他们的设计架构。此外，类似于 L1 生态系统在吞吐量、安全性和去中心化之间的三难选择，Stablecoin 系统也必须在 4 个关键属性之间进行权衡：稳定性、资本效率、去中心化和可扩展性，没有完美的 Stablecoin 架构。</p>
+<p><strong>PART.01 MakerDAO (DAI Stablecoin)</strong></p>
+<p>MakerDAO 是迄今为止最古老的 DeFi 项目之一，它是一种去中心化的信用协议，可以抵押各种加密资产并铸造债务。这笔债务以 Stablecoin DAI 的形式存在，Maker 利用外部市场力量、激励机制和政策工具系统来维持 Dai 与美元 1:1 挂钩关系。</p>
+<p>与银行类似，用户通过抵押品进行贷款。在银行环境中，借款人可以将房子、汽车、应收账款等作为贷款的抵押品。</p>
+<p>对于针对数字资产的贷款，贷款的价值必须始终低于抵押品价值，以保护债权人免受违约风险或清算风险，这些风险同抵押品的流动性紧密相关。为了防范这种风险，借款人可以选择存入各种抵押资产（ETH、UNI、LINK、YFI 等）以铸造债务，各种资产根据其风险程度会有不同的保证金要求。流动性低、波动性高的资产大规模清算更加困难，如果其抵押品低于保证金要求，则需要更大的缓冲来保证头寸顺利平仓。</p>
+<p>让我们举一个保证金要求的简单例子。</p>
+<p>目前在 ETH-A 池中铸造 DAI 需要 145% 的最低抵押率。假设你存入 1ETH，1ETH = 4,000 美元，然后你借了 1,000 DAI 贷款。您的抵押比率是 4,000/1,000 = 400%。如果 ETH 开始崩盘并跌破 1,450 美元/ETH，那么您的金库将被清算。在清算期间，该协议将低于市场价格出售您的抵押品，从而激励套利者进入并偿还债务。</p>
+<p>我们如何偿还债务的呢？</p>
+<p>我们无法真正收回那些发给借款人的 DAI（DAI 是受用户私钥保护的 ERC20 Token ，而且借款人可能已经将其转移给其他人）。我们在公开市场上出售其 ETH 抵押品以换取 DAI。然后，我们将这 1,000 DAI 发回协议以销毁，同时关闭其未偿债务余额。与此同时，套利者执行此清算过程的动机是他们在清算过程中将收到一小部分抵押品作为奖励。</p>
+<p>这里真正酷的地方是该协议是无需许可的。没有信用记录检查，没有 KYC 流程，没有任何证书；只要你满足保证金要求，系统不管你是谁，没有人能阻碍你。</p>
+<p>另一个很酷的功能是，由于无需许可的性质，借款人同时作为债权人和借款人。协议的另一端并没有真正的直接交易对手（与传统金融相比，在贷款违约的情况下，银行充当直接交易对手）。</p>
+<p>与传统借贷系统不同的是，该违约风险是整个系统参与者共同承担的，如下图所示：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0314/22_dp3engicfc.jpg" alt="去中心化"></p>
+<p>如果协议无法在金库债务 &gt; 金库抵押品价值之前及时拍卖借款人的保证金抵押品，那么系统将凭空铸造 MKR 并将其出售给市场，直到未偿金库负债被重新注资偿还为止。如果由于某种原因 MKR 流动性消失，并且没有买家愿意购买 MKR，而金库中的负债仍然存在，那么 DAI 持有者最终会承担成本，因为他们的 DAI 不再得到充分支持，市场会相应地对其重新定价。</p>
+<p><strong>PART.02 Abracadabra (MIM Stablecoin)</strong></p>
+<p>从根本上说，Abracadabra 协议看起来与 MakerDAO 协议的系统机制极其相似。</p>
+<p>债务 (MIM) 是通过超额抵押金库无需许可铸造的。如果抵押品：债务比率低于某个阈值，则通过在公开市场清算借款人的抵押品，并用以回购 MIM 关闭金库和偿还债务。</p>
+<p>MakerDAO 和 Abracadabra 之间的主要区别在于 Abracadabra 保险库是通过存入 yvYFI、yvUSDT、yvUSDC、xSUSHI 等计息 Token 来获得资金。计息 Token 只是存放在货币市场协议中的普通对应物或者说是某种凭证（YFI、USDT、USDC 等），该类凭证可产生持续的利息。利息 Token 只是一个会计 Token ，代表在货币市场协议中用户所拥有的抵押品权益。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0314/22_nojgfrzqon.jpg" alt="去中心化"></p>
+<p>因此，我们可以使用它们来制造 MIM 债务，而不是简单地将这些利息 Token 被动地放在 Yearn 或 Compound 中。</p>
+<p>Abracadabra 提供的一个优势是，由于金库中的抵押品会随着时间的推移产生收益，因此贷款：价值比率往往会随着时间逐渐降低。</p>
+<p>从用户的角度来看，这很棒。这意味着他们的债务随着时间的推移而减少，并且用户可以因为债务减少而铸造更多的 MIM，且无需发布额外的抵押品（还能够保持与最初相同的贷款：价值比率）。或者，他们可以选择保持 MIM 债务不变，则他们在关闭金库时偿还的实际债务将减少。</p>
+<p>Abracadabra 提供固定利率，这和收取可变利率的 MakerDAO 不同。Abracadabra 也存在于多条链上，允许用户原生 MIM 跨链。然而，MIM 其中一个缺点是引入了额外的智能合约风险，因为抵押品最终保存在 Abracadabra 之外的收益生成协议中，相关的外部协议风险将对该协议用户产生直接影响。</p>
+<p><strong>PART.03  Alchemix (alUSD)</strong></p>
+<p>与 Abracadabra 类似，Alchemix 也是一种债务协议，允许用户将抵押品抵押到保险库并铸造相应的 Stablecoin 债务。两种协议都涉及将产生收益的资产（各种收益凭证）作为抵押品。Alchemix 提供的主要卖点是无需清算的贷款。让我们探索一下协议是如何提供该功能的：</p>
+<p>Alchemix 初始化时，用户将 y 资产超额抵押到 Alchemix 协议中，并针对它铸造 alUSD 债务（最低抵押债务比率为 200%）。其铸造 alUSD 接受的唯一抵押品是 yDAI。这在抵押品的波动性和债务的波动性之间产生了 1:1 的相关性。</p>
+<p>MakerDAO 或 Abracadabra 等协议中存在导致清算的唯一原因是防止系统产生负资产。如果我在 Maker 保险库中存入 200 美元的 ETH 以铸造 100 美元的 DAI，而该 ETH 的价值随后跌至 95 美元，现在，每个 Dai 只有 0.95 美元的抵押品支持，系统不再有足够的信用来保证 Dai 的 1 美元挂钩。</p>
+<p>这是任何债务协议在使用波动性抵押品来支持非波动性债务时遇到的必然困境。</p>
+<p>但是，如果我们撤销抵押品的波动性，我们将不再面临这一挑战，并且可以取消清算要求，让用户放心，不再需要监控金库的保证金。</p>
+<p>此外，由于我们的抵押品是在幕后为我们产生收益的生产性资产，我们可以使用这个应计收益来实际偿还贷款的基本本金！</p>
+<p>这就是 Alchemix 能够「自我偿还贷款」的本质原因。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0314/22_hskv0kqom5.jpg" alt="去中心化"></p>
+<p>如果没有清算的需求，为什么还需要超额抵押？</p>
+<p>如果没有超额抵押，我们就会陷入一个递归循环，存款人可以无限地发行债务。例如：</p>
+<p>1、用户将 100 yDai 存入 Alchemix，铸造 100 alUSD 债务</p>
+<p>2、在 Curve.fi 上卖出 100 alUSD 额外 100 Dai</p>
+<p>3、将新的 Dai 收益存入 Yearn，收到 100 yDai</p>
+<p>4、将新的 yDAI 带回 Alchemix，再铸造 100 个 alUSD</p>
+<p>5、无限循环</p>
+<p>200% 的超额抵押将总递归杠杆限制为存款的 1 倍。这意味着如果用户将 100 美元的 yDAI 存入协议，他们将永远无法铸造超过 100 美元的 alUSD 债务。</p>
+<p>PART.04 UXD 协议 (UXD)</p>
+<p>UXD 是一个基于 Solana 的 Stablecoin 协议，它提供了一种新颖的组合结构，不同于任何以前的去中心化 Stablecoin 替代方案。这里的关键创新是 UXD 是使用链上永续期货合约（也称为永续合约）来创建链上市场中性衍生品头寸，以避免单边市场波动的风险并产生稳定的 1 美元价值。</p>
+<p>让我们进一步分析其设计架构：</p>
+<p>Bitmex、Binance、FTX 等衍生品市场允许用户交易模拟现货市场的合成合约，称为永续合约。例如，Bitmex 的 XBTUSD 允许交易者获得 BTC/USD 价格的风险敞口，而无需实际拥有该比特币现货资产。永续合约在加密领域被广泛使用，主要是因为它们简单、方便（没有到期日，所以不需要滚动合约），最重要的是它还提供杠杆产品。尽管最近几个月很多人都缩减了规模，但对于该领域的交易所来说，100 倍的杠杆率在某些时刻都是普遍的。</p>
+<p>每个合成合约都面临着一个固有的困境——我们的工具如何才能将我们的衍生品价格同现货市场价格保持同等价格水平？</p>
+<p>虽然 XBTUSD 合约的目标是尽可能严格地模仿 BTCUSD 的价格动态，但最终这两种价格永远不会完美结合，除非现货和衍生品订单簿之间存在完美的供需平衡，这是一个不可能的假设。如果 Bitmex 的购买压力爆发，但当场保持相对稳定时，会发生什么？在这种情况下，XBTUSD 合约的价格将会上涨，而 BTCUSD 指数将保持平稳。衍生品将偏离基础价格预言机。</p>
+<p>为了克服这种情况，Bitmex 引入了一种称为「资金费率」的激励机制，该机制自然地将两者价格进行挂钩。资金费率是每 8 个小时结算支付一次，由溢价的多空某方支付对应的资金费用。</p>
+<p>如果资金费率为正（即衍生品价格 &gt; 现货价格），则多头将支付空头溢价。如果资金费率为负数（即衍生品价格 &lt; 现货价格），那么空头将支付多头溢价。</p>
+<p>示例：假设现货指数的价格为 50,000 美元/BTC，而衍生品交易价格为 55,000 美元/BTC。在这种情况下，资金费率是正的（衍生品价格 &gt; 现货价格）。因此，XBTUSD 多头将支付利率以维持其头寸，收益将归于他们的空头 XBTUSD 对手方。多头正在为交易对手的流动性买单。如果空头需求多于多头需求，这种关系将呈现为相反的方向；空头将支付多头。</p>
+<p>衍生品价格与现货价格之间的差异越大，支付的利息就越高。随着利率的升高，它会激励更多的交易对手方介入以平衡多空双方。</p>
+<p>但是，如果比特币的价格迅速升值，会发生什么？当然，您设置为每 8 小时支付一次边际利息，但如果空头的本金损失大大超过您的应计资金支付怎么办？</p>
+<p><strong>进入套利</strong>  </p>
+<p>这里存在一个有趣的套利机会——交易者可以对冲定向风险，将资金费用从资产波动风险中隔离开来。以下是它的工作原理：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0314/22_jpw5hz5vq1.jpg" alt="去中心化"></p>
+<p>假设交易者购买了 100,000 美元的 BTC，然后用它开立了 1 倍的空头头寸。要计算他将赚取/支付多少利息，我们只需将利率乘以交易者头寸的名义规模。假设「默认」资金利率为 0.01%，在 8 小时窗口内，交易者将收到：</p>
+<p>$100,000 * 0.01% = $10</p>
+<p>起初这似乎并不多，但如果我们将这个值年化呢？</p>
+<p>10 美元 * 3 = 30 美元/天</p>
+<p>$30 * 365 = $10,950/年</p>
+<p>$10,950/ $100,000 = 10.95% 定向无风险交易</p>
+<p>0.01% 是基准违约率，但很多时候资金支付可能要高得多。从历史上看，这种交易的年化增长率在 20-30% 的 APR 范围内。在牛市期间，它可能会更高，因为对杠杆的需求猛增，参与者愿意为交易对手流动性支付高额溢价。</p>
+<p><strong>UXD 机制</strong>  </p>
+<p>简单地说，UXD 协议接收资金，并代表其用户自动执行此套利策略。如果用户向协议发送 1 BTC，则 UXD 将把这 1 BTC 转移到去中心化衍生品交易平台（目前从 Mango Markets 开始，计划在未来扩展到其他市场），然后使用该平台执行 1 BTC 做空抵押品作为交易的保证金。</p>
+<p>假设 BTC 的市场价格为 50,000 美元，这实际上锁定了 50,000 美元的 Stablecoin 头寸。如果 BTC 的现货价格上涨，我们的空头头寸会产生负 PnL(profit and loss)，但它会被 BTC 现货抵押品价值的线性上涨所抵消。同样，如果 BTC 的现货价格下跌，我们的空头头寸会产生正 PnL，但这也会被支撑它的 BTC 价值损失所抵消。</p>
+<p>我们衍生品头寸的总价值保持在 50,000 美元。然后，UXD 向用户发行 50,000 个 Token ，代表他们从该头寸获得抵押品的权利。要赎回他们的抵押品，他们只需将 Token 发回铸币合约，协议将解除 Mango Markets 上的衍生品交易，将 BTC 抵押品返还给用户，然后销毁 UXD Token 。</p>
+<p>现在，市场中性衍生品头寸通常一直在累积利率。这些资金怎么办？</p>
+<p>社区治理流程仍在处理该模块，但预计这些收益的一部分将累积到 UXD 保险基金，以便在发生清算危机时提供系统保护（稍后会详细介绍）。另一部分将归 UXP 持有者所有，这是 UXD 协议的原生治理 Token 。因此，UXP 对通过 delta 中性利息产生的协议现金流提供准股权要求。此外，还有人谈论直接向 UXD 持有者提供部分应计利息，让他们能够自动收集其持有的 Stablecoin 的收益，类似于将其存入 Compound、AAVE 或 Yearn。</p>
+<p><strong>FRAX</strong>  </p>
+<p>目前状态下的 Frax 可以最好地描述为是混合中心化和去中心化的 Stablecoin。Frax 的核心创新在于它是用基于外部市场力量的信用模型来构建的 Stablecoin。</p>
+<p>简而言之，该协议使用一种算法来实现以下 3 种功能：</p>
+<ul>
+<li>
+<p><strong>提高抵押率</strong></p>
+</li>
+<li>
+<p><strong>降低抵押率</strong></p>
+</li>
+<li>
+<p><strong>维持当前平衡</strong></p>
+</li>
+</ul>
+<p>每个 FRAX 都有一定比例的 USDC 抵押品作为后盾。在系统启动时，为了铸造 1 个 FRAX，用户必须将 1 个 USDC 存入协议中。然而，随着时间的推移，FRAX 的价格将在 1 美元上下波动。中心化 Stablecoin USDC 和 USDT 的汇率也会有所波动，但最终套利过程都将 Stablecoin 价格重新收敛回 1 美元。</p>
+<p>以下是中心化 Stablecoin 机制下的套利过程：</p>
+<p>如果 USDC 的价格 = 1.05 美元，套利者通过将 1 美元存入 Circle 的银行账户来铸造 USDC，并在市场上出售，获得 0.05 美元的无风险利润。每次套利者向市场发送更多 USDC 时，都会增加其供应量，以压低价格。这个周期中不断迭代循环，直到 1 USDC 价格回到基础挂钩价格。</p>
+<p>如果 1 USDC = 0.95 美元，则存在反向套利。他们将在公开市场上购买 USDC，将其发送到 USDC 合约进行销毁，并在 Circle 的银行账户中赎回美元，从而获得 0.05 美元的差价。随着套利行为造成的 USDC 销毁，供应将减少，价格推高，直到 1 USDC 价格回到基础挂钩价格。</p>
+<p>对比上述机制，FRAX 的方式有所不同。当 FRAX 的价格偏离 1 美元并停留一段时间时，将启动一种算法，该算法将增加或减少创建 FRAX 的抵押率要求。</p>
+<p>例如，当 FRAX 的价格达到 1.05 美元时，这向算法发出了需求大于供给的信号，因为市场参与者实际上是以面值溢价 5% 的价格购买资产。USDC 中心化模型让套利者通过增加 USDC 的总供应量让价格向 1 美元靠近，并通过套利获得无风险利润。</p>
+<p>Frax 的运作方式有所不同，该协议不仅通过套利者的套利行为增加 FRAX 的供应量，而且还减少 Stablecoin FRAX 的抵押率 (降低 Stablecoin 的质押率有助于进一步抑制需求的增长，以达到供需平衡)。</p>
+<p>作一个简化的类比，假设一家餐馆面临食品成本增加 5% 的问题，他们面临着将这些费用转嫁给最终消费者的几种选择：</p>
+<ul>
+<li>
+<p>1）将膳食价格提高 5%； </p>
+</li>
+<li>
+<p>2）将膳食份量减少 5%。</p>
+</li>
+</ul>
+<p>或两者兼而有之。</p>
+<p>FRAX 以类似的方式响应供需变化，当价格高于目标价格时，套利者会增加一定比例的供应（增加餐费），同时由协议来减少质押率（使餐食尺寸更小）。</p>
+<p>Frax 协议的协议治理 Token 是 FXS，该 Token 在促进系统信用方面发挥着至关重要的作用。FXS Token 在信贷扩张期间积累价值，在信贷压缩期间流失价值。</p>
+<p>FXS 本质上是该生态系统中的一种信用支持机制，可确保 FRAX Stablecoin 的充分抵押价值。尽管支持每个 FRAX 的 USDC 数量可能只有 83%，但这并不意味着 FRAX 的抵押不足，其剩余的 13% 价值差被 FXS Token 背后的隐性信用担保所取代。如果市场开始要求更高的 USDC 抵押率（表现为 FRAX 在一段时间内交易低于 1 美元），那么该协议将通过通胀的方式铸造更多的 FXS，并通过这种方式在公开市场上获得更多的 USDC，以此加强 FRAX Token 的 USDC 抵押率。</p>
+<p><strong>译者笔记：</strong></p>
+<p>该协议每小时调整一次抵押率，每一次调整 0.25%。当 FRAX 价格在 1 美元或 1 美元以上时，函数每小时降低一次抵押比率，当 FRAX 价格在 1 美元以下时，函数每小时提高一次抵押比率。合约动态调整的抵押比率和实际上的总抵押品价值比率会出现偏差，为了将两者统一，该协议提供了再抵押和回购的功能。</p>
+<p><strong>再抵押：</strong></p>
+<p>任何人都可以调用 recollateralize 函数，然后检查整个系统中以美元计算的总抵押品价值是否低于当前的抵押品比率。如果是，那么系统允许调用者合计达到目标抵押品比率所需的金额，以一定奖励率来换取新铸造的 FXS。这约等于，当抵押率提高时，系统会通过铸造新的 FXS 在市场上购买相应的 USDC，以增加所需的储备资产。</p>
+<p>示例 A：有 1 亿 FRAX 在 50% 的担保比率下流通。整个 USDT 和 USDC 池的抵押品总价值为 5000 万美元，系统是平衡的。当 FRAX 的价格跌至 0.99 美金和协议会将抵押品比率提高到 50.25%。</p>
+<p>现在需要 25 万美元的抵押品才能达到目标比率。任何人都可以调用 recollateralize 函数，将至多 25 万美元的抵押品放入池中，得到等额的 FXS 以及 0.20% 奖金率的 FXS。</p>
+<p>再抵押的过程，就是 FXS 通胀的过程，将增长市场上的 Token 抛压。</p>
+<p><strong>赎回：</strong></p>
+<p>当系统中的抵押品超过保持目标抵押品比率所需的数量时，就会出现相反的情况。</p>
+<p>示例 B：有 1.5 亿 FXS 在 50% 的担保抵押比率下流通。USDT 和 USDC 的抵押品总价值为 7600 万美元。有价值 100 万美元的超额抵押品可供 FXS 回购。</p>
+<p>任何人都可以调用回购功能，烧掉价值高达 100 万美元的 FXS 来获得超额抵押品。</p>
+<p>与之相反，赎回过程，就是 FXS 的通缩过程，将超额抵押品用以购买 FXS，将增加市场上的 Token 购买力。</p>
+<p>当该协议处于顺周期时，即需求大于供给，随着抵押率的不断降低，FXS 将持续被协议回购；反之，抵押率不断上升，FXS 将持续通胀，并且市场抛压增大。</p>
+<p>在协议的整个生命周期中，我们经常看到 FRAX 交易价格 &gt; 1 美元，这使得该协议能够随着时间的推移在算法上摆脱 USDC。</p>
+<p>目前存在的每个 FRAX 只有 83% 由 USDC 支持。如上所述，这个值可能会在瞬间改变（尽管算法中内置了一个固有的时间延迟&hellip;&hellip; 即它不能在几分钟内翻转到 100% USDC 抵押品）。</p>
+<p>FRAX 面临的主要风险是 FXS 流动性危机。如果买方对 FXS 的需求因某种原因消失，该协议可能会继续铸造越来越多的 FXS 以尝试提高抵押品比率（从而恢复挂钩），但如果没有买方，它的边际收益就会递减。在这种情况下，协议将陷入困境，无法获得额外的 USDC 以增加储备。市场参与者可能会意识到这一点，并开始将他们的 FRAX 出售并持有其它类型的 Stablecoin，从而将 FRAX 价格推低至挂钩水平以下，并进一步放大问题。</p>
+<p><strong>Fei</strong>  </p>
+<p>Fei 是另一种算法 Stablecoin，与 FRAX 有一些相似的特征。然而，与 Frax 不同的是，FEI 渴望成为一个完全无需信任的 Stablecoin，而不依赖于中心化中介（USDC、USDT 等）。与 Frax 协议一样，Fei 协议在其设计架构中引入了 2 个独立的 Token ：FEI（Stablecoin）和 TRIBE（治理 Token ）。</p>
+<p>原始机制通过使用协议控制价值 (PCV) 来维持汇率的挂钩。PCV 只是出售其原生 Token (FEI) 以换取一些外生资本 (ETH) 的一个花哨术语。该协议现在拥有 ETH 抵押品，并且可以根据需要进行部署。这于大多数 Defi 项目典型的流动性挖矿模式不同，那些协议本质上是以昂贵的价格租用流动性，并被迫支付高额的 APY 以吸引流动性。一旦这些补贴消退，流动性就会蒸发，协议便无计可施了。</p>
+<p>在最初的设计中，用户会存入 100 美元的 ETH，协议将通过联合曲线铸造相应的 100 FEI 作为回报。然而，这种通过联合曲线铸造 FEI 的过程是单向通道；如果你想将你的 FEI 换回 ETH，你必须通过 Uniswap 等二级市场进行交易。该系统使用称为直接激励的某种方式来维持价格挂钩。</p>
+<p>1 FEI = 1 美元的 ETH 抵押品是市场均衡状态，但如果 ETH 抵押品跌破 1 美元会怎么样？Uniswap 池有一个自定义参数化，其中对水下价格出售 FEI 的交易行为，会产生罚款。罚款额度是当前 FEI 价格和 1 美元价差的双倍（价差越大，惩罚力度也越大）。因此，如果 FEI 的价格为 0.98 美元，则将被收取 ([1.0-0.98]*2) = 0.04 美元的罚款。</p>
+<p>同样，如果您在低于固定汇率的情况下购买 FEI，则将获得奖励，该奖励来自上述卖方的附加税。因此，在这种情况下，如果您以 0.98 美元的价格铸造了 1 个 FEI，您最终将获得价值 1.02 美元的价值。这些是直接激励机制的基础架构。</p>
+<p>事实证明，这些机制在维持价格汇率稳定方面效率低下，Stablecoin 价格曾多次脱锚并且难以收敛到平衡位置。此后，出现了一个 v2 版本，它利用完全不同的方法将 FEI 固定在 1 美元。</p>
+<p><strong>V2</strong>  </p>
+<p>该系统取消了直接激励作为维持挂钩的主要模块，取而代之的是 PCV 收益分配和 TRIBE Token 支持。该协议将风险敞口从仅 2 个狭窄集中的资产（ETH 和 FEI）增加到现在的 7 个（FEI、ETH、DAI、RAI、INDEX、DPI、LUSD）。此处的目标是在更广泛的资产基础上分散风险，以减少下行波动率以及在 ETH 价格崩盘时 FEI 的脱锚威胁。此外，PCV 正在各种货币市场协议（AAVE、Compound、Lido、Tokemak）中部署，以持续获得抵押品利息，从而提高抵押比率。在某种程度上，FEI 协议几乎看起来像一个投资 DAO，其投资任务是保持系统 PCV &gt; 用户流通的 FEI。</p>
+<p>如果该协议在 V2 机制下失败脱锚了，则 TRIBE 持有者将给予系统支持，以保持价格与 1 美元挂钩。如果发生抵押不足（即 PCV 的 $ 价值 &lt; 用户流通 FEI 的 $ 价值），则 TRIBE 将被铸造并在市场上出售以筹集资金弥补缺口。</p>
+<p>同样，如果 PCV：流通 FEI 比率继续扩大，TRIBE Token 将受益，因为一部分 PCV 将用于在公开市场上购买 TRIBE 并随后被烧毁，从而推高价格。</p>
+<p><strong>PART.05 Terra(UST)</strong></p>
+<p>UST 是一种去中心化的 Stablecoin，其价格由 Terra 区块链的原生 Token LUNA 支持。Terra 生态系统的核心是算法市场模块，该模块平衡系统激励以稳定挂钩汇率。</p>
+<p>由 2 个 Token 组成：</p>
+<ul>
+<li>
+<p><strong>Terra UST：与美元挂钩的 Stablecoin</strong></p>
+</li>
+<li>
+<p><strong>LUNA：Luna 智能合约区块链的底层 gas Token （即以太坊中的 ETH）</strong></p>
+</li>
+</ul>
+<p>LUNA Token 本质上吸收了 UST Stablecoin 的波动性。当 UST 的价格在其挂钩价格之外交易时，这就是激励措施发挥作用的地方；算法模块将激励套利者铸造更多的 UST 供应，从而将价格推回平价。无论 UST 的市场价格如何，1 UST 总是可以铸造/赎回价值 1 美元的 LUNA。两者的价差 (UST 市场价格与 1 美元的价差) 为套利者提供了无风险利润，同时有助于维持 1 美元的挂钩平价。</p>
+<p>举个例子，假设币安上 UST 的交易价格为 1.05 美元。</p>
+<ul>
+<li>
+<p><strong>套利者将价值 1 美元的 LUNA Token 发送到协议</strong></p>
+</li>
+<li>
+<p><strong>协议将烧掉这 1 美元的 LUNA Token ，同时铸造 1 个 UST</strong></p>
+</li>
+<li>
+<p><strong>然后，套利者将这 1 个 UST 发送给币安并以 1.05 美元的价格出售，从而获得 5% 的价差</strong></p>
+</li>
+</ul>
+<p><strong>最终结果：UST 通胀，而 LUNA 通缩</strong> 。UST 扩张与 LUNA 收缩同时发生，导致 LUNA Token 持有者随着价格上涨而增值。LUNA 持有者是 UST 增长和 DeFi 生态的啦啦队长，因为他们是这些生态发展价值的直接受益人。</p>
+<p>现在，假设币安上 UST 的交易价格为 0.95 美元。</p>
+<p>套利者将以 0.95 美元的价格在 Binance 上购买 1 个 UST 并将其发送到协议</p>
+<p>无论 luna 价格如何，该协议都将始终兑现 1 美元的 UST。套利者将 1 UST 换成 1 美元的 LUNA。</p>
+<p>然后套利者以 1 美元价格卖出手中的 LUNA，赚取 0.05 美元的价差。</p>
+<p>最终结果：UST 通缩，而 LUNA 通胀。UST 供应收缩推动价格回升至 1 美元。LUNA Token 持有者在此过程中遭受价值稀释，因为他们当前的持有量被新的 LUNA 稀释了。</p>
+<p>UST/LUNA 之间的互换在两个方向都受到高度反身的反馈回路影响。UST 已经证明了相对强劲的业绩记录，当压力增加威胁到价格脱锚时，看看它在熊市中的表现将会很有趣。最大的担忧是死亡螺旋的情况，即 LUNA 流动性枯竭时。</p>
+<p>PART.06 对比分析</p>
+<p><strong>稳定性</strong>  </p>
+<p>稳定性可以描述为协议维持其 1 美元挂钩价格的有效性。当价格 &gt; 1 美元时保持平价很容易，当价格低于 1 美元时保持平价是困难的部分。</p>
+<p>拥有有效的套利过程是稳定性最关键组成部分。这种套利过程完成得越快，协议就越健壮，因为它减少了挂钩之外的时间价格范围。在理想情况下，即使出现最轻微的偏差，我们也希望专业套利者能够进入并提取利润，立即将价格推回原来的水平。超出范围的长期偏差会增加协议风险，导致用户对市场机制失去信心，并加剧向下的反身性。</p>
+<p>我们不会试图为稳定性（过于主观）赋予排名指数，而是讨论每个项目在稳定性方面的优势/劣势：</p>
+<p>Dai : Keeper 机器人被激励通过调用清算功能来对抗抵押不足的保险库。超额抵押使 DAI 价格不会低于 1 美元，但从历史上看，很难阻止价格高于 1 美元，因为当 DAI &gt; 1 美元时不存在直接套利。</p>
+<p><strong>MIM :与 Dai 相同</strong>  </p>
+<p>alUSD：在 alUSD 价格脱锚时，并不存在重新平衡的套利机制，因此 alUSD 尤其面临挑战。</p>
+<p>在正常情况下，当卖出压力大于买入压力时，无论是否存在抵押品支持其 1 美元的内在价值，都将价格推低至 1 美元以下。这是因为人们铸造 alUSD 主要是为了获得杠杆，在铸造后用户将立即出售他们的 alUSD 以获得选择的 X 资产。同时，买方对 alUSD 的需求相对较低，对 alUSD 的 DeFi 应用程序支持很少，这意味着市场持有 alUSD 的需求也很少。因此，价格将继续缓慢下跌。为了克服这个问题，协议层的流动性奖励直接针对 3pool LP 保险库，这些保险库提供 alUSD 和 DAI、USDT、USDC 之间的流动性。</p>
+<p>UXD：UXD 可能具有所有非超额抵押 Stablecoin 中最强大的稳定性保证，其独特的结构甚至可以与超额抵押模型竞争。然而，与任何其他去中心化协议一样，UXD 在剧烈波动期间会受到挂钩不稳定的影响，在这种情况下，衍生协议可能无法正常清算，协议被迫承担损失。然而，这种风险的很大一部分是由各种系统利益相关者（包括 Mango Markets 衍生协议和 UXD 协议）在传递给 UXD Token 持有者之前便开始了。Mango Markets 保险基金提供第一道防线。如果第一道防线基金被耗尽，则 UXD 协议保险基金是第二道防线。最后，如果这两种资源都被耗尽而未偿还的债务仍然存在，则在支持协议风险的 UXP 治理令牌持有者中存在第三条防线（协议将凭空铸造 UXP 并在公开市场上出售以获取额外的抵押品填补空缺）。如果所有 UXP Token 的流动性完全蒸发，那么 UXD 本身将相应地在市场上被重新定价。我们认为所有 3 条防线都失败的可能性非常小，并且可能只会发生在行业终结事件中（例如，秘密机构开发了一台未公开的量子计算机，该机构通过每个加密协议窃取每个人的资产）。</p>
+<p>FRAX：FRAX 在支持其 Token 的外生 USDC 中具有「强」稳定性。如果价格低于 1 美元，则有直接激励措施，有助于重振挂钩，但其中一个固有问题是，这些激励措施通过协议设计需要一段时间才能生效。</p>
+<p>此外，在市场力量发出对更高 USDC 抵押品需求的信号时，FXS 持有人会保证「抵押不足」缺口。如果没有买家愿意进来并买入 FXS 同时出售 USDC，则系统本质上会因为 FXS 的无效价值而导致抵押不足。</p>
+<p>FEI：FEI 在稳定性方面可能是最弱的，因为 a) 支持 FEI 的质押资产本身具有较大的波动性，而不像 USDC/USDT 这类稳定资产 b) 缺乏超额抵押缓冲 c) 缺乏直接套利机制</p>
+<p>UST：与其他一些去中心化 Stablecoin 不同，UST 有一个非常健全和深思熟虑的机制，可以在价格突破平价时直接激励套利，同样重要的是，这种套利可以非常快速地执行。但是，系统将 UST 波动性转移到 LUNA 上以支持价格挂钩。如果 LUNA 的流动性枯竭，就会出现各种自反性向下循环。然而，流动性危机事件是影响所有 Stablecoin 协议的固有风险，因此它不是仅与 UST 隔离的独特风险。</p>
+<p><strong>审查阻力</strong>  </p>
+<p>在谈论区块链系统时，人们经常将抗审查和去中心化的特性交织在一起。但是为了去中心化而去中心化是没有意义的。相反，我们使用去中心化作为实现一个功能的工具：该功能是审查阻力。集中式系统是非客观上更好的性能引擎。它们比去中心化的同类产品更便宜、更快、更具可扩展性。但由于其专制性质，它们造成了一个失败的中心点，这为某些用户打开了大门，让控制所述权力的人对其进行利用。一旦系统将其设计架构分散到足以实现审查阻力，进一步的分散化将会边际收益递减。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0314/22_vy0ocs1ppy.jpg" alt="去中心化"></p>
+<p><strong>资本效率</strong>  </p>
+<p>需要超额抵押的协议本质上是资本效率的降低，这使得铸造新 Stablecoin 对普通用户的吸引力降低。事实上，铸造这些形式的 Stablecoin 的唯一且真正的功能是促进信贷，即有人持有这些现有的现货资产，并希望在未来偿还这些债务。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0314/22_j08z7s63dl.jpg" alt="去中心化"></p>
+<p><strong>可扩展性</strong>  </p>
+<p>Stablecoin 的优秀供应需要扩大，以应对需求的增加。如果与不同 DeFi 服务集成，相关 Stablecoin 的增长和采用率继续上升，但总供应量保持不变，则通过基本经济学我们可以得出，在这种情况下价格将不得不上涨。然而，这从根本上违反了 Stablecoin 令人垂涎的特性——实现与美元平价。因此，我们需要一种机制，让套利者和其他各种市场参与者可以通过向协议中存入新的抵押品并铸造新的 Token 来满足增长的市场需求（反映在价格 &gt; 1 美元）。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0314/22_4trmy5k6ml.jpg" alt="去中心化"></p>
+<p>2021 年，我们看到了许多新的去中心化 Stablecoin 模型的出现，并见证了该市场领域的快速发展过程。每个市场都在资本效率、抗审查力和可扩展性三难困境上做出了一定的权衡，没有一种解决方案可以成为「完美」的去中心化 Stablecoin。虽然很少有人证明他们已经实现了产品/市场契合，但去中心化 Stablecoin 的市值仅占法定支持的 Stablecoin（如 USDC 和 USDT）市值的一小部分，并且鉴于它的明确目标是针对更大的 TAM(90T+) 法定货币供应量，我们相信去中心化 Stablecoin 的发展空间只会随着原生互联网成功达到数万亿美元的供应量而扩大。</p>
+<p><strong>译者笔记：</strong></p>
+<p>不同于中心化 Stablecoin（如 USDC 和 USDT），去中心化 Stablecoin 机制目前主要是两种方式，一种是超额抵押+清算的模式；另一种是结合项目 Token 信用的流动性填补模式。后一种模式提高了资本利用效率，账面资产抵押率通常低于 100%，直接或者间接的通过治理 Token 公开市场操作来维持 Stablecoin 系统的阶段性稳定。Stablecoin 的流动性是非常关键的部分，当前的 Stablecoin 机制都有巧妙的通过各种方式去控制阶段性的稳定。但译者认为，从长远来看，成功 Stablecoin 的根本，是需要足够强大的生态支撑。就像 Alchemix，即使是 100% 的 Stablecoin 资产抵押保障，但如果其生成的 alUSD Stablecoin 没有相应的生态建立，也只会面临长期被抛售的情况。从这个角度来看，Terra 为 USTD 提供了其背后的一整个公链生态作为支撑，反而是基础支撑力最强的 Stablecoin。</p>
+<p>原标题：Exploring the Design Architecture of Decentralized Stablecoins</p>
+<p>作者：Joe Kendzicky</p>
+<p>编译：H.Forest Ventures,Nevermind</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/35367/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">彭博社：Tether间接拒绝了乌克兰屏蔽俄罗斯用户的请求</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/35375/">
+                <span class="next-text nav-default">浅谈当前玩赚公会设计的优缺点 以及改进建议</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="随着 Juno Network 17号提案的正式发布，持续两周的Juno巨鲸制裁事件似乎走到了新的转折点。" />
+<meta name="keywords" content="Juno Network" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/37215/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进" />
+<meta property="og:description" content="随着 Juno Network 17号提案的正式发布，持续两周的Juno巨鲸制裁事件似乎走到了新的转折点。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/37215/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-27T00:00:00+00:00" />
+
+<meta itemprop="name" content="复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进">
+<meta itemprop="description" content="随着 Juno Network 17号提案的正式发布，持续两周的Juno巨鲸制裁事件似乎走到了新的转折点。"><meta itemprop="datePublished" content="2022-04-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-27T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6547">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进"/>
+<meta name="twitter:description" content="随着 Juno Network 17号提案的正式发布，持续两周的Juno巨鲸制裁事件似乎走到了新的转折点。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-04-27">
+      2022-04-27
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6547 字 -
+        预计阅读 14 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>随着 Juno Network 17号提案的正式发布，持续两周的Juno巨鲸制裁事件似乎走到了新的转折点。</strong></p>
+<p>Juno 核心开发团队 Core-1 和日本巨鲸 CCN 的协调谈判，推特上各方阵营的高强度对线，加密领域影响力大的人物纷纷加入讨论，普通观众带着焦灼的心情，捧着爆米花观看这部奈飞网剧（一场开拓性的链上治理民主实验）。</p>
+<p><strong>Juno 网络一个可信验证节点@polka_chu 对巨鲸事件及其行为图景做了精准的解释</strong> ：https://twitter.com/polka_chu/status/1502880775460450305</p>
+<p>2021年10月1日，Juno 进行创世空投时，大部分初始供应给到了 ATOM 持有者（Cosmos生态原生代币），价值三千万美元的 JUNO 以 1:1 的比例分配给 46137 个唯一的 ATOM 地址。创世空投时，<strong>团队为避免大量空投代币集中在同一地址而造成网络不安全和抛售危险，书面规定了一个地址 5 万颗 JUNO 的“鲸鱼上限”。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0427/2_aif4ehafak.png" alt="复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进"></p>
+<p>（来源：Juno Network 官网）</p>
+<p>即便规定了“鲸鱼上限”，一日本鲸鱼（推特@takumiasano_jp , 地址以“juno1aeh”开头）还是借助创世空投漏洞博取了大量 JUNO 廉价筹码。</p>
+<p>据背景调查，鲸鱼是一家日本基金，业务是托管经营其日本客户（据说是带着老年人炒币，有点 cx 性质）的 ATOM 钱包，因此汇集了大量 ATOM 资产。鲸鱼通过将大量 ATOM 资产拆分为 50 个钱包来博弈 Juno 空投规则，从而规避了Juno空投设定的 5 万颗上限，最终从 50 个地址收集了 250 万颗 JUNO 代币到一个单一地址。巨鲸链上地址一系列操作：https://docs.google.com/spreadsheets/d/1McQE3Ot-QkAElou6_Qs1TS9ZaCHeTVp0dYRAWZ7TOYM/edit#gid=0</p>
+<p>这一行为很快被 Juno Core-1 团队监测到，C1 随后发起 4 号提案：https://www.mintscan.io/juno/proposals/4 。提案解释了该地址打破了“每个实体最多获得 5 万颗 JUNO”的规则，提议消减该地址 90% 的 JUNO 余额，以避免筹码集中化和倾销问题。然而在提案投票期间，鲸鱼联系了@wolfcontract（Juno Core-1 核心成员），表明自己是一家日本基金，并承诺会将非法得来的 JUNO 空投质押来支持网络安全。</p>
+<p><strong>整个事件的诡异之处就在于，当时 Juno 团队接受了鲸鱼的口头承诺（目前没有强有力的证据证明巨鲸和团队之间有黑幕交易）。</strong></p>
+<p>这种尝试建立“默契的契约关系”的话术，竟在信任感更脆弱的 web3 世界起了效果。Wolfcontract 接受了巨鲸的道歉，并在推特上发表意见，整个社区也接受了巨鲸的承诺，4 号提案最终以 56.4% 的反对率失败，社区逐渐遗忘了巨鲸的潜在威胁。</p>
+<p>但近几个月来，巨鲸开始大量倾销 JUNO，16号提案发生前，鲸鱼每天卖出 1.7 万颗 JUNO 换成 OSMO，再从 OSMO 换成 ATOM，并将 ATOM 发送到新地址上。巨鲸在链上地址的行为明显背弃了其最初承诺，此举再次引发了社区的恐慌。</p>
+<p>这促使 Wolfcontract 和 Core-1 团队于 3 月 11 日发起 16 号提案重新诉讼鲸鱼：https://www.mintscan.io/juno/proposals/16 。提议将巨鲸的 52 个账号持币数量从 300 万枚（当时总价值 1.2 亿美元）消减至 5 万枚，并向社区财库转移同等数量的资金。</p>
+<p>这一提案的发布，引爆了Juno代币持有者的讨论，Juno 因此出圈，在推特上获得热烈讨论，很多人因此了解 Juno 巨鲸事件。我整理了 Juno 提案事件中主要意见人物的 list：https://twitter.com/i/lists/1509897211739799552?s=20 。</p>
+<p><strong>3月11日，</strong> 提案发布的第一天，支持率曾超过 90%，支持率一度碾压反对率；</p>
+<p><strong>3月15日，</strong> Juno Network 开发团队 Core-1 发推表示，希望社区成员对有关移除巨鲸账户资产的16号提案投反对票，并将制定新的提案以提供更多的替代性解决方案；</p>
+<p><strong>3月16日凌晨，</strong> Cosmos 生态智能合约平台链 Juno Network 关于移除巨鲸账户资产的16号提案最终获得通过，最终提案投票率创 98.58%（前所未有的治理参与度），其中 40.85% 的投票者同意该提案。</p>
+<p>投票结果分布如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0427/2_qtza52su2u.png" alt="复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进"></p>
+<p>验证节点投票如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0427/2_o2vkpplesr.png" alt="复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进"></p>
+<p>（来源：mintscan.io）</p>
+<p>社区对削减没收鲸鱼资产提案上意见的分裂，导致 16 号提案通过后并没有立即执行。16 号提案发布后，巨鲸不断下场道歉解释，依然在使用 “trust me bro” 的口头承诺来争取社区原谅，并以基金公司的无辜客户利益来博取同情。（实际上鲸鱼早已通过 JUNO 空投质押奖励收获巨额利润，完全有能力用既得利润来补偿其客户）</p>
+<p>但随着越来越多巨鲸链下行为的挖掘，鲸鱼行为实质逐渐浮出海面。<strong>可信调查表明，此鲸鱼收获空投后，没有将 JUNO 收益告知客户，大多数客户并不知道存在空投。</strong> JUNO 实际归属于委托给此基金会的日本客户，但却变成了鲸鱼自己的暴利，鲸鱼本质经营着一家向客户隐瞒重要信息并将 Juno 空投利润留给自己的业务，这不公平。</p>
+<p>这样的行为引起社区的愤怒，<strong>提案反对者原本持有的 “打土豪分田地不正义，私有财产不可侵犯，空投漏洞的错误” 等观点，逐渐转向了 “这是一次正义的追缴行为，巨鲸玩弄了系统，欺骗了客户，burn the Token”。</strong></p>
+<p>Juno C1 团队为巨鲸事件不懈努力，和鲸鱼的协商谈判持续了两周多，试图寻找更安全干净的处理方式。千万只眼睛在看这部戏剧如何收场，以及JUNO代币价格将如何表现。</p>
+<p><strong>3月28日，C1 发表声明，拟通过 17 号提案进行 Lupercalia 升级</strong> ，升级的内容包括：性能改进、治理模块实例化和实现智能合约的调用等。提案细节表示，此升级不会对正在进行的 鲸鱼问题采取直接行动。</p>
+<p>升级包含：安全修复；性能改进；升级到 CosmWasm/wasmd 0.24.0；将 Juno 移动到主线 CosmWasm/wasmd 而不是分叉；升级到 Cosmos SDK 45 和 Tendermint 0.34.16。至关重要的是，对 CosmWasm 模块的升级允许治理执行智能合约。</p>
+<p><strong>3月30日，17号提案投票正式启动：</strong></p>
+<p><a href="https://www.mintscan.io/juno/proposals/17">https://www.mintscan.io/juno/proposals/17</a> ，4月4日投票结束，提案以 98.53% 的赞成票通过。从投票结果看，社区对于鲸鱼事件的意志似乎达到了高度统一，万众瞩目期待着 Lupercalia 第一阶段升级后 Core-1 的行动。虽然 Core-1尚未对本次升级做出细节阐述，但人们猜测 C1 或许是想通过代码和数学作为社区法律对鲸鱼进行制裁。</p>
+<p>投票结果分布：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0427/2_0nb70wfpsy.png" alt="复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进"></p>
+<p>节点投票分布：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0427/2_uq6b6lt8su.png" alt="复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进"></p>
+<p>（来源：mintscan.io）</p>
+<p>之后 Juno 社区又先后发起18号、19号提案。</p>
+<p>18号提案就 CCN 问题提出折中解决方案：</p>
+<p><a href="https://www.mintscan.io/juno/proposals/18">https://www.mintscan.io/juno/proposals/18</a></p>
+<p>投赞成票，“社区”（50％）和“CCN客户”（50％）之间平分所有JUNO，包括地址中的质押奖励。分配给 JUNO 的“社区部分”资金将用于智能合约，分配给 JUNO 的“CCN 客户部分”将由 CCN 在 20 个月内以每月 5% 的费率分配给 CCN 客户地址。但18号提案遭到社区投票拒绝。</p>
+<p>投票结果分布如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0427/2_tuweeqip3j.png" alt="复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进"></p>
+<p>（来源：mintscan.io）</p>
+<p>18号提案遭到社区拒绝后，19号提案又提出请中立的第三方审计员通过标准 KYC 系统确认 CCN 客户的身份，确认分配给每个地址的 JUNO 的适当数量。投赞成票意味着同意将代币分发到 CCN 客户的地址，投反对票意味着不同意分发到 CCN 客户的地址，即使客户地址已通过中立的第三方审计得到证实。19号提案将于4月24日截止，目前投票分布如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0427/2_w3j4m2immk.png" alt="复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进"></p>
+<p>验证节点投票：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0427/2_q74vz0cebh.png" alt="复盘 Juno 没收日本巨鲸 Token 始末：DAO 治理的缺陷与改进"></p>
+<p>（来源：mintscan, 2022/4/21）</p>
+<p>即便巨鲸从11号开始 Giveaway JUNO代币，每天为10位幸运获奖者送出 50 JUNO：https://www.mintscan.io/juno/txs/D3B59A483117173E3FD41FC7CCE2C55197D79C5F558AAD79B1CA6AB82A33DF86</p>
+<p>但社区意见已然走向极端。Juno 事件主要参与者之一@JoeAbbey 发起提案草案（更新于4月18日）：</p>
+<p><a href="https://commonwealth.im/juno/discussion/4044-softwareupgradeproposal-stakedrop-remediation-for-gameccndebo">https://commonwealth.im/juno/discussion/4044-softwareupgradeproposal-stakedrop-remediation-for-gameccndebo</a></p>
+<p>JoeAbbey 从日本《支付服务法》和鲸鱼 CCN 的公司注册地来讨论，指出 CCN 实际没有资格参加创世空投，理由如下：鲸鱼 CCN的业务符合日本支付服务法对“加密资产交换服务”的定义，CCN 代理接收客户的比特币存款并将其换成 $ATOM，CCN 曾表明其拥有验证节点 GAME（原CCN）和 DEBO 的所有权，因此这两个验证节点实际由交易所经营，而空投规则是质押在交易所节点的代币无资格获得空投。</p>
+<p>JoeAbbey 还提出了空投事件的修复措施，若对此草案投赞成票，即同意 CCN 本不应该收到创世空投，并同意进行软件升级以调整CCN 持有的 JUNO 余额。调整包括：取消 CCN 当前所有授权，解除所有委托（绕过28天的解锁期），将 CCN 地址余额发送到公钥为 0 的地址。</p>
+<p>Juno 鲸鱼事件已经持续一个多月，社区依旧没有得到最优解。Juno 核心团队以及参与者 JoeAbbey 等人的观点是：17号提案通过后在软件升级基础上对鲸鱼资产进行分配。</p>
+<p><strong>“4月24日，20号提案开始投票，</strong></p>
+<p><a href="https://www.mintscan.io/juno/proposals/20">https://www.mintscan.io/juno/proposals/20</a>。本次提案由needlecast节点、Abbey和其他节点对Juno进行3个测试网之后发布。提案内容为：对 16 号社区提案的执行，具体包括调整 CCN 的 JUNO 余额、将其可用的 JUNO 发送 Juno Network 社区控制的智能合约。”</p>
+<p>C1 从代码的角度切入，选择在升级期间处理巨鲸事件，似乎在走向分叉的道路。我们有必要回顾一下比特币、以太坊的历次分叉升级，以及 POW 机制和 POS 机制在链上治理的区别，DAO 的历史及优缺点。最后，链上治理将走向何处，以及可能的解决方案，也在下部分讨论范围内。</p>
+<p>相信即便刚了解加密世界一周的人，也会对分叉有所耳闻。分叉是区块链系统进化的方式之一，但它会削弱共识。分叉后需要时间来恢复元气，当然也可能再也恢复不了。</p>
+<p>早期比特币的大量分叉，大多是因为技术方案不同产生社区分歧，以“比特币可扩展性问题”为动机，在 POW 共识机制下，社区通过算力达成共识，分叉衍生出了许多区块链。第一个比特币分叉发生在 2011 年10 月，创造了莱特币。2017 年，比特币也经历了一次硬分叉，最终形成了两个独立的区块链：原始比特币和比特币现金 BCH。这里有一份分叉币汇总：https://forkdrop.io/ 。</p>
+<p>DAO 用户主张以更加分散自主、技术驱动的解决方案来设计以虚拟为中心的组织，DAO 代表了组织设计的创新，强调计算机化规则和合同，成员拥有的社区和基于共识的管理掌舵，不受集中结构的影响力。</p>
+<p>随着区块链最初的普及之后，DAO 概念在 2016 年以太坊 “The DAO” 的引入而受到更多关注。2016 年，以太坊平台上的知名 ICO 项目 “The DAO” 遭遇黑客攻击，时价超过 6000 万美元的 ETH 被盗。以太坊社区因此决定以硬分叉的方式回滚交易，挽回投资者的被盗损失：</p>
+<p><a href="https://ethereum.org/zh/history/#dao-fork">https://ethereum.org/zh/history/#dao-fork</a> 。</p>
+<p>在以太坊硬分叉事件中，一部分社区成员认为，回滚交易不符合区块链世界的基本原则，投资者应该自担风险。他们坚守在以太坊原链上，而这条原链，则在此后被称作“以太经典 ETC”。现在V神带领的就是分叉后的以太坊 ETH。</p>
+<p>随着 POS 机制的诞生，大量公链从 POW 转向 POS。POS 机制强调社区自治，DAO 概念再度成为潮流。</p>
+<p>POS 机制支持链上原生代币委托质押。早期项目经常通过空投给早期参与者，以分散的资产和高质押率保证网络协议安全性。这种使用区块链原生代币来验证区块链的方式，解耦了挖矿与网络安全性之间的联系。</p>
+<p>DAO 链上治理（通过社区发布提案）使得区块链硬分叉（修改代码）的可能性大大降低，因为每个提案的通过与否都需要社区成员投票（不只是通过验证节点少数投票即通过），链上治理还通过奖励的使用，为参与投票过程的节点提供经济激励。</p>
+<p><strong>听起来很 NICE 很民主，但本次 Juno 巨鲸制裁事件，把 POS 机制缺陷和 DAO 链上治理的问题最大程度暴露了出来。</strong></p>
+<p><strong>1、治理权重分配不均</strong></p>
+<p>基于 POS 机制的协议，经常通过创世空投撒播代币，激励早期用户质押来保护网络安全，但这使得早期参与者轻易获得大量资本。随着更多投资人进入，代币需求大于供应，因此代币价格因此升高。由于用户参与 DAO 治理，是通过一系列提案进行的，成员通过区块链对其进行投票，拥有更多的治理代币通常会转化为更大的投票权，治理权力逐渐集中到一小部分富翁/机构/项目方朋友的手中，他们实际在控制整个系统。</p>
+<p><strong>2、治理程序乏味</strong></p>
+<p>民主安排中的乏味，无论是虚拟的还是真实的，都会阻止参与者在考虑成本效益计算后将精力分配给事业功能，选民投票率低。</p>
+<p><strong>3、法律风险</strong></p>
+<p>链上 DAO 治理类似 web2 的普通合伙结构，而不是公司制，这使得参与者承担了无限责任，治理中存在着可怕的法律负担，底层的问责结构需要符合法律框架，然而很多开发团队是匿名的，随时有 rug 风险。</p>
+<p><strong>4、选民操纵</strong></p>
+<p>一旦出现一方或多方合谋，行贿或私自收购代币，控制了超过网络 50% 的代币，积累了足够的代币集中度，就有机会发布提案或者通过投票发动政变。也会出现 Juno 网络巨鲸这种情况，先将资金分散放在许多小额账户中，隐藏自己的代币集中度，巨鲸会逐渐掌控整个网络，或一朝抛售代币导致币价暴跌，引发恐慌抛售导致币价下跌，整个 POS 系统崩溃。</p>
+<p><strong>5、多数人的暴政</strong></p>
+<p>Juno 网络自称是一个开创性的民主制度，但这种类似的民主程序参与门槛很低（只要你拥有协议的质押代币和一点 gas fee，你就有权为提案投票），这使得进程混乱。这与 web2 世界的政治选举和公司治理，更大限度拓展了弱小人物的话语权，社区投票机制使得决策更加个人化，但人心容易被操纵。比如 Juno 巨鲸两次三番的虚假承诺，竟为未来埋下这样的戏剧。民主作为一种纠正机制需要保持适度。</p>
+<p><strong>以下是几条 DAO 治理优化方案：</strong></p>
+<p><strong>1、提高投票活跃度和参与率</strong></p>
+<p>设置奖励递减时间表，投票奖励随着投票时间逐步递减，直到在结束时变为 0。这种设置帮助治理主动性强的质押者获得更多奖励。</p>
+<p><strong>2、提高投票的慎重程度和专业度</strong></p>
+<p>进一步发挥节点验证者的作用，促进委托投票复兴，发展委托市场，使活跃节点和独立委托人都可以靠代理投票获得奖励。质押者将投票权委托给节点或独立委托人，被委托节点/人获得投票激励，并将一定比例的奖励返还给质押者。</p>
+<p>委托节点/个人必须通过市场审核标准才能进行委托代理工作。审核评估可包括多个维度：专业能力（看得懂提案，会设计提案）、治理活跃度、声誉背景（运营者是否合规合法）、是否可信中立、是否为中心化交易所、是否为 0 佣金节点（跑路风险）、委托人关系（委托人和节点/个人之间有效沟通程度）。</p>
+<p><strong>3、代码作为法律</strong></p>
+<p>对智能合约进行升级，自动化决定对一个地址代币的增加/削减，激励/剥夺。使用计算机智能决策，实现自动化，当然需要社区定期审查调整。密切关注 Juno 17 号提案实行及对巨鲸的制裁。</p>
+<p><strong>4、同股不同权</strong></p>
+<p><strong>核心团队：</strong> 协议的灵魂，股权理应大些，但要避免“独裁”；</p>
+<p><strong>专业投资机构：</strong> 资金的来源，POS 网络安全性的保障，但要避免“权力垄断”；</p>
+<p><strong>节点验证人：</strong> 有个体，有中心化交易所，需要持有较多质押代币并且精通网络架构；</p>
+<p><strong>持币大户：</strong> 利益深度相关，通常对协议了解深入且治理积极，甚至自发搭建节点成为验证者为产品贡献价值；</p>
+<p><strong>小额投资者：</strong> 质押目的可能仅为获取空投和质押奖励，治理相对冷漠，搭便车式投票，用脚投票很多；</p>
+<p>不同群体的利益、目标、投资期限的长短和能力差异很大。对于 DAO 社区多样性的组成部分，治理权重应该做出一些调整。比如：考虑根据社区贡献评分分配治理权重；时间权重（即代币锁定时间，但对新玩家不够友好）；质押权重（质押数量比重）等。</p>
+<p>加密世界在沿着 POS 机制和 DAO 潮流快速发展，尽管存在如此多的 bug，但值得进行实验、努力和想象。Juno 对鲸鱼的制裁事件是一场伟大的实验，我们继续密切关注事件发展，尽快结束这部奈飞网剧。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/37224/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">迪卡侬将在Tezos发布首个“Kipsta Barrio”NFT系列</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/37217/">
+                <span class="next-text nav-default">富达将允许用养老金账户投资比特币</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

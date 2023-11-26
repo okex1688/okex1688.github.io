@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Vitalik：协议设计中的“封装复杂性” vs. “系统复杂性” - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="有一个强大的智能工具可以让我们对复杂性进行更细致的思考，那就是区分我们所谓的封装复杂性 和系统复杂性 。" />
+<meta name="keywords" content="Vitalik Buterin, ETH" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/34832/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Vitalik：协议设计中的“封装复杂性” vs. “系统复杂性”" />
+<meta property="og:description" content="有一个强大的智能工具可以让我们对复杂性进行更细致的思考，那就是区分我们所谓的封装复杂性 和系统复杂性 。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/34832/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-02T00:00:00+00:00" />
+
+<meta itemprop="name" content="Vitalik：协议设计中的“封装复杂性” vs. “系统复杂性”">
+<meta itemprop="description" content="有一个强大的智能工具可以让我们对复杂性进行更细致的思考，那就是区分我们所谓的封装复杂性 和系统复杂性 。"><meta itemprop="datePublished" content="2022-03-02T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-02T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3243">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vitalik：协议设计中的“封装复杂性” vs. “系统复杂性”"/>
+<meta name="twitter:description" content="有一个强大的智能工具可以让我们对复杂性进行更细致的思考，那就是区分我们所谓的封装复杂性 和系统复杂性 。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Vitalik：协议设计中的“封装复杂性” vs. “系统复杂性”</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-02">
+      2022-03-02
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3243 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>以太坊协议设计的主要目标之一是最小化复杂性：<strong>使协议尽可能简单，同时仍然使区块链能够做好一个有效的区块链网络需要做到的事情</strong> 。以太坊协议在这方面还远远不够完美，特别是因为它的很多部分都是在 2014-16 年设计的，当时我们对它的理解要少得多，但我们仍然在尽可能地积极努力降低复杂性。</p>
+<p>然而，这个目标的挑战之一是复杂性很难定义，且有时，你必须在两个引入不同种类复杂性和具有不同代价的选择之间进行权衡。我们如何比较？</p>
+<p>有一个强大的智能工具可以让我们对复杂性进行更细致的思考，那就是区分我们所谓的<strong>封装复杂性</strong>  (encapsulated complexity) 和<strong>系统复杂性</strong>  (systemic complexity)。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0302/7_9ejv2a7ino.png" alt="Vitalik：协议设计中的“封装复杂性” vs. “系统复杂性”"></p>
+<p>当一个系统的子系统内部复杂，但向外部呈现一个简单的“接口” (interface) 时，就是出现了「封装复杂性」。当系统的不同部分甚至不能被清晰地分开，并且相互之间有复杂的交互时，「系统复杂性」就出现了。</p>
+<p>以下是几个例子。</p>
+<h3 id="heading"></h3>
+<p><strong>BLS 签名 vs. Schnorr 签名</strong></p>
+<p>BLS 签名和 Schnorr 签名是两种常用的可由椭圆曲线构成的加密签名方案。</p>
+<p>BLS 签名在数学上看起来非常简单：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0302/7_0ubhmneha6.png" alt="Vitalik：协议设计中的“封装复杂性” vs. “系统复杂性”"></p>
+<p><strong><em>H</em></strong>  是一个哈希函数，<strong><em>m</em></strong>  是消息，<strong><em>k</em></strong>  和 <strong><em>K</em></strong>  是私钥和公钥。到目前为止，很简单。然而，真正的复杂性隐藏在 <strong><em>e</em></strong>  函数的定义中：椭圆曲线配对_(elliptic curve pairings)_，这是所有密码学中最难以理解的数学部分之一。</p>
+<p>现在，我们来看看 Schnorr 签名。Schnorr 签名只依赖于基本的椭圆曲线。但是签名和验证逻辑有点复杂：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0302/7_bghaw31egc.png" alt="Vitalik：协议设计中的“封装复杂性” vs. “系统复杂性”"></p>
+<p>所以…哪种类型的签名“更简单”？这取决于你在乎什么！BLS 签名具有_巨大的技术复杂性_，但复杂性都隐藏在 <strong><em>e</em></strong>  函数的定义中。如果你把 <strong><em>e</em></strong>  函数看作一个黑盒，BLS 签名实际上是非常简单的。另一方面，Schnorr 签名的_总体复杂性较低_，但有更多的部分，能以一种微妙的方式与外部世界互动。</p>
+<p>例如：</p>
+<ul>
+<li>
+<p>进行 BLS 多签 (两个密钥 k1 和 k2 的组合签名) 很简单：只需 σ1+σ2。但是 Schnorr 多签名需要两轮交互，并且需要处理一些棘手的 Key Cancellation 攻击。</p>
+</li>
+<li>
+<p>Schnorr 签名需要生成随机数，BLS 签名不需要。</p>
+</li>
+</ul>
+<p><strong>椭圆曲线配对</strong> 通常是一个强大的“复杂性海绵”，因为它们包含大量<strong>封装复杂性</strong> ，但使解决方案具有更少的<strong>系统复杂性</strong> 。这也适用于多项式承诺领域：将 KZG 承诺 (需要配对) 的简单性与更复杂的内积证明 (inner product arguments，不需要配对) 的内部逻辑进行比较。</p>
+<h3 id="heading-1"></h3>
+<p><strong>密码学 vs. 加密经济学</strong></p>
+<p>在许多区块链设计中出现的一个重要设计选择是密码学 (cryptography) 与加密经济学 (cryptoeconomics) 的比较。这 (比如在 Rollups 中) 常常是在<strong>有效性证明</strong>  (即 ZK-SNARKs) 和<strong>欺诈证明</strong> 之间做出选择。</p>
+<p>ZK-SNARKs 是复杂的技术。虽然 ZK-SNARKs 工作原理背后的基本思路可以在一篇文章中解释清楚，但实际上实现一个 ZK-SNARK 来验证一些计算涉及到比计算本身多很多倍的复杂性 (因此，这就是为什么用于 EVM 的 ZK-SNARKs 证明仍在开发中，而用于 EVM 的欺诈证明已经在测试阶段)。有效地实现一个 <strong>ZK-SNARK 证明</strong> 涉及到了对特殊目的进行优化的电路设计、使用不熟悉的编程语言以及许多其他挑战。另一方面，<strong>欺诈证明</strong> 本身就很简单：如果有人提出挑战，你只需直接在链上运行计算。为了提高效率，有时会添加一个二进制搜索方案，但即使这样也不会增加太多的复杂性。</p>
+<p>虽然 ZK-SNARKs 很复杂，但它们的复杂性是**<em>封装复杂性</em>** 。另一方面，欺诈证明的相对较低的复杂性，是**<em>系统复杂性</em>** 。以下是欺诈证明引入的一些系统复杂性的例子：</p>
+<ul>
+<li>
+<p>它们需要谨慎的激励工程来避免验证者的困境。</p>
+</li>
+<li>
+<p>如果在达成共识的情况下完成，它们需要为欺诈证明提供额外的交易类型，同时还要考虑到如果许多参与者同时竞相提交欺诈证明会发生什么。</p>
+</li>
+<li>
+<p>它们依赖于一个同步网络。</p>
+</li>
+<li>
+<p>它们允许审查攻击 (censorship attacks) 也被用来进行盗窃。</p>
+</li>
+<li>
+<p>基于欺诈证明的 Rollups 要求流动性提供者支持即时提款。</p>
+</li>
+</ul>
+<p>由于这些原因，即使从复杂性的角度来看，<strong>基于 ZK-SNARKs 的纯加密解决方案也可能是长期安全的</strong> ：ZK-SNARKs 有着更复杂的部分，这是_一些人_在选择 ZK-SNARKs 时必须考虑到的；但 ZK-SNARKs 有着更少的悬空警告，这是_每个人_都必须考虑到的。</p>
+<h3 id="heading-2"></h3>
+<p><strong>各种例子</strong></p>
+<ul>
+<li>
+<p><strong>PoW (中本聪共识)</strong> ：较低的封装复杂性，因为该机制非常简单和容易理解，但有着更高的系统复杂性 (如自私挖矿攻击)。</p>
+</li>
+<li>
+<p><strong>哈希函数</strong> ：较高的封装复杂性，但有着非常容易理解的属性，因此系统复杂性很低。</p>
+</li>
+<li>
+<p><strong>随机洗牌算法</strong> ：洗牌算法既可以是内部复杂 (比如 Whisk)，但却能够确保强大的随机性，且易于理解；也可以是内部简单，但却能够产生较弱且难以分析的随机性属性 (比如系统复杂性)。</p>
+</li>
+<li>
+<p><strong>矿工提取价值 (</strong> <strong>MEV</strong> <strong>)</strong> ：一个强大到足以支持复杂事务 <em>(complex transactions)</em> 的协议在内部可能相当简单，但那些复杂的事务可能会对协议的激励机制产生复杂的系统影响，因为它们会以非常不正常的方式提议区块。</p>
+</li>
+<li>
+<p><strong>Verkle 树</strong> ：Verkle 树确实有一些封装复杂性，实际上比普通的 Merkle 哈希树要复杂得多。然而，从系统上讲，Verkle 树提供了与键值 (key-value) 映射完全相同的相对干净和简单的界面。主要的系统复杂性“泄漏” (leak) 是攻击者操纵 Verkle 树使一个特定值有一个非常长的分支 (branch) 的可能性；但 Verkle 树和 Merkle 树的风险是相同的。</p>
+</li>
+</ul>
+<h3 id="heading-3"></h3>
+<p><strong>我们如何权衡呢？</strong></p>
+<p>通常，封装复杂性较低的选择也是系统复杂性较低的选择，因此有一个选择显然更简单。但在其他时候，你必须在一种复杂性和另一种复杂性之间做出艰难的选择。在这一点上应该清楚的是，<strong>如果是封装复杂性，那么其危险性就会更低</strong> 。一个系统复杂性带来的风险不是一个简单的规范长度的函数；规范中一个 10 行代码的小片段与其他部分相互作用会比 100 行代码的函数更复杂，否则就会被视为一个黑盒。</p>
+<p>然而，这种偏好封装复杂性的方法存在局限性。任何一段代码中都可能出现软件 bugs，当代码越来越大时，出现错误的概率接近 1。有时，当你需要以意想不到的新方式与子系统交互时，<strong>最初的封装复杂性可能会变成系统复杂性</strong> 。</p>
+<p>后者的一个例子是以太坊当前的两级状态树 (two-level state tree)，其特征是帐户对象树，其中每个帐户对象依次有自己的存储树。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0302/7_hlww1jtep4.png" alt="Vitalik：协议设计中的“封装复杂性” vs. “系统复杂性”"></p>
+<p>这个树结构是复杂的，但在一开始，这种复杂性似乎被很好地封装：协议的其余部分作为可读写的键/值存储与树交互，所以我们不必担心树是如何构造的。</p>
+<p>然而，后来，这种复杂性被证明具有系统性影响：帐户拥有任意大的存储树的能力意味着没有办法可靠地期望某个特定的状态部分 (例如。“所有以 0x1234 开头的帐户”) 具有可预测的大小。这使得将状态分割成多个部分变得更加困难，使同步协议的设计和分布存储进程的尝试变得更加复杂。<strong>为什么封装复杂性会变成系统性的？因为 interface 改变了</strong> 。解决方法是什么？目前转向 Verkle 树的提议还包括转向一个均衡的单层树设计。</p>
+<p>最终，在任何给定的情况下，哪种类型的复杂性更受欢迎是一个没有简单答案的问题。<strong>我们所能做的最好的事情是适度地支持封装复杂性，但不要太多，并在每个具体的情况下演练我们的判断</strong> 。有时候，牺牲一点系统复杂性来极大地降低封装复杂性确实是最好的做法。其他时候，你甚至会误判什么是封装的，什么不是。每种情况都是不同的。</p>
+<p>撰文：Vitalik Buterin，以太坊联合创始人</p>
+<p>编辑：南风</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/34825/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Terra链上DeFi锁仓量突破230亿美元，创历史新高</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/34815/">
+                <span class="next-text nav-default">Web 3综合指南：互联网的未来</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#heading"></a></li>
+        <li><a href="#heading-1"></a></li>
+        <li><a href="#heading-2"></a></li>
+        <li><a href="#heading-3"></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

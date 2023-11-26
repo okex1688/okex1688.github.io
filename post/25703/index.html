@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          如何利用虚拟通道来创建状态通道网络 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="在本文中，我们介绍了一种叫作虚拟通道（virtual channel）的新型状态通道结构。" />
+<meta name="keywords" content="ETH" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/25703/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="如何利用虚拟通道来创建状态通道网络" />
+<meta property="og:description" content="在本文中，我们介绍了一种叫作虚拟通道（virtual channel）的新型状态通道结构。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/25703/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-12T00:00:00+00:00" />
+
+<meta itemprop="name" content="如何利用虚拟通道来创建状态通道网络">
+<meta itemprop="description" content="在本文中，我们介绍了一种叫作虚拟通道（virtual channel）的新型状态通道结构。"><meta itemprop="datePublished" content="2021-07-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5888">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何利用虚拟通道来创建状态通道网络"/>
+<meta name="twitter:description" content="在本文中，我们介绍了一种叫作虚拟通道（virtual channel）的新型状态通道结构。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">如何利用虚拟通道来创建状态通道网络</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-07-12">
+      2021-07-12
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5888 字 -
+        预计阅读 12 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>在本文中，我们介绍了一种叫作<strong>虚拟通道（virtual channel）</strong> 的新型状态通道结构。虚拟通道不仅使得付费文件流（点击此处，查看 demo！）等新型应用场景成为可能，还可以简化去中心化的 Graph 查询支付、Filecoin 内容检索、带有经济激励机制的状态提供者网络等有趣的应用场景。</p>
+<h2 id="动机">动机</h2>
+<p>让我们来设计一个免信任的付费文件流支付系统。这个系统中有 seeder（上传文件者）和 leecher（下载文件者）。leecher 从多个 seeder 那里付费下载一份文件的不同部分。使用以太坊主网交易来支付费用是不可能的，因为以太坊主网的吞吐量低于每秒 50 笔交易，而且（截至 5月 28 日发稿时）最低转账成本也在 2 美元以上。Optimistic Rollup 和 ZK Rollup 可以提高吞吐量并降低交易成本。StarkEx 的 ZK Rollup 可以将吞吐量提高至每秒 3000 笔交易，同时将每笔交易的成本降至 0.03 美元。假设 leecher 愿意支付 1 美元下载1GB 大小的文件，且整个文件以 256 KB 为单位切分成了多个部分，leecher 需要支付大约 5000 笔费用。当网速为 20MB/s 时，用户每秒支付 80 次费用，且每笔费用为 0.0002 美元。Rollup 的吞吐量达不到许多 leacher 的要求，而且交易成本还是太高了。</p>
+<p>为了达到交易吞吐量和成本要求，基础状态通道是个不错的选择。<strong>状态通道创建完成后，leecher 就可以免费进行多笔小额付款，且吞吐量只受 leecher 和 seeder 之间通信信道的带宽以及二者所使用硬件的影响。</strong> 基础状态通道带来的挑战是，leecher 需要提交交易到主网上，与每位拥有他所需文件部分的 seeder 都建立状态通道。由于 leecher 与多位 seeder 都需要短暂交互，创建多条状态通道的成本是极其昂贵的。</p>
+<p>虚拟通道可以完美解决我们的设计问题。虚拟通道尤其适用于轴辐式拓扑结构。多位参与者先与一个免信任的中间方建立连接，然后任意两位（或多位）参与者再通过质押的方式创建私密通道。中间方并不知道私密通道内运行的是什么应用。另外，任何参与者都可以发起链上挑战找回自己的资金，即使通道内的其他参与者和中间方处于离线状态或作恶。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0712/k4a5vt42firdbbk" alt="1"></p>
+<p>通过虚拟通道连接各方</p>
+<p>总的来说，只要 Alice和Bob之间有经过中间方的路径，无论网络拓扑结构是什么样的，虚拟通道都可以让 Alice 开设与 Bob之间的私密通道。</p>
+<h2 id="背景知识">背景知识</h2>
+<p>不同的区块链生态系统都将状态通道视为一种可以让少数参与者：</p>
+<ul>
+<li>
+<p>建立链上联系（通道）并存入资金；</p>
+</li>
+<li>
+<p>私下交换信息，有条件地在参与者之间转移资金；</p>
+</li>
+<li>
+<p>关闭链上通道，完成各方之间资金结算的方法。</p>
+</li>
+</ul>
+<p>我们之前已经在 statechannels.org 网站上发文介绍了如何构建状态通道（中文译本），以及如何通过一个叫作账本通道（ledger channel）的架构让一条状态通道为另一条状态通道提供资金。这些架构要求通道参与者必须在链上建立直接联系。换言之，如果 Alice和 Bob 之前从未交互过，现在却想开通状态通道，他们必须签署（链下）协议，并将资金存入合约内。</p>
+<p>但虚拟状态通道可以实现以下应用场景：</p>
+<ul>
+<li>
+<p>Alice与<strong>免信任</strong> 的中间方创建状态通道。假设这个中间方叫作 Irene。</p>
+</li>
+<li>
+<p>Bob 同上。</p>
+</li>
+<li>
+<p>在 Irene 以及创建好的通道的帮助下，Alice 和 Bob 可以创建一条新的私密通道并存入资金。创建这个私密通道<strong>不需要通过链上</strong> 交互。我们将 Alice 和 Bob之间的通道叫作虚拟通道。</p>
+</li>
+</ul>
+<p>就付费文件流这个应用场景而言，Alice 先要通过主网交易与中间方 Irene 创建一条通道。接着，她可以通过虚拟方式与任意数量的对等节点相连，只要后者与 Irene 之间也存在链上通道。一旦连接成功，Alice 就可以持续支付数据下载费。</p>
+<p>我们的协议 Nitro 可以实现以下应用场景：</p>
+<ul>
+<li>
+<p>帮助 Alice 和 Bob 创建虚拟通道的中间方 Irene 实际上不在这个虚拟通道内。Irene 只是帮忙创建通道，并在通道关闭时结算资金而已。因此，Alice 和 Bob 之间可以实现完全私密的交流，并将 Irene 排除在这个应用的关键路径之外。更重要的是，Alice 和 Bob 可以在私密通道内运行多个不同的应用，无需 Irene 针对这些应用实现任何新的逻辑。因此，虚拟通道是<strong>通用可编程的多跳状态通道</strong> （就像以太坊赋予区块链可编程性那样），因为每条状态通道都可以根据自己的一套 “规则” 来创建。Alice 可以向 Bob 付费购买某个文件内容。Bob 也可以向 Alice 付费进行 Graph 查询。</p>
+</li>
+<li>
+<p>所有 Nitro 通道都是可组合的。因此，获得资金的通道可以通过递归的方式为其它通道提供资金，无论前者是通过何种方式获得资金的。一旦某条通道（直接通过链上合约、账本通道或虚拟筹资的方式）获得资金，它就可以运行任何应用或为其它通道提供资金。</p>
+</li>
+</ul>
+<h2 id="nitro-的替代方案">Nitro 的替代方案</h2>
+<p>其它协议（如 Raiden）可以让两位参与者无需在链上存入额外资金，即可通过中间方创建通道。一个成熟的模式是，使用经过哈希的时间锁通过中间方将 Alice 的付款路由给 Bob。这个模式有一个很明显的缺点：所有付款必须通过中间方路由。</p>
+<p>一些比较新颖的架构（如 Scalar）可以让 Alice 和 Bob 通过中间方创建通道后实现点对点付款。然而，这些架构依然需要中间方理解 Alice 和 Bob 所运行的应用，因为通道余额最终要通过中间方取回。有了 Nitro 虚拟通道，中间方就可以被隔离在 Alice 和 Bob 之间的通道外。</p>
+<h2 id="通道内部的资金转移">通道内部的资金转移</h2>
+<p>本文将深入介绍 Nitro 通道是如何获得资金的，以及免信任的安全虚拟通道是如何实现的！</p>
+<p>Alice 和 Bob之间的 Nitro 通道的资金来自：</p>
+<ol>
+<li>
+<p>Alice 和 Bob 联合签署链下协议，使用特定的初始结果创建通道。</p>
+</li>
+<li>
+<p>Alice 和 Bob 按照初始结果指定的顺序存入资金，增加链上裁决者（adjudicator）合约中记录的通道 <code>holdings</code>。</p>
+</li>
+</ol>
+<p>这里的 “结果” 是一个指示裁决者在通道最终敲定时如何分配资金的结构（查看我们的最新文章！）在 Nitro 中，“结果” 列出了 {目标、数量} 对的优先级：</p>
+<p><code>{A: 7, B: 3}</code> 命令通道 <code>C</code> 的裁决者先将 7 枚代币支付给 <code>A</code>（Alice），再将 3 枚代币支付给 <code>B</code>（Bob），并将 <code>C</code> 的结果归零。</p>
+<p>这么说有一点不准确：我们其实是按照字典中键的顺序在为目标分配优先级。因此，<code>{B: 3, A: 7}</code> 会先付款给 Bob，然后才轮到 Alice。你可以将它看作是 Python 3.7+ 式的有序字典。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0712/mqf6z34kshukcig" alt="2">上图显示了 Alice 和 Bob 是如何根据 {A: 7, B: 3} 这一结果从通道 C 中取走代币的。根据链上裁决者的记录，通道中共有 10 枚代币。Alice 或 Bob 将通道结果记录到链上。这个结果记录下来后，Alice 和 Bob 就可以取走代币。于是，Alice 的外部账户中增加了 7 枚代币，Bob 的外部账户增加了 3 枚代币。</p>
+<p>虽然上述结果暗示目标是用户账户（EOA），<strong>但是在 Nitro 中，通道本身也可以是目标。</strong> 这样一来，通道 L 也可以充当 “私密账本”，因为 Nitro 可以让一次性一次性将资金存入账本通道，然后为多条子通道提供资金。Nitro 避免了回到 Layer1 的需求，以及由此产生的延迟和成本！例如：</p>
+<p>假设 <code>C2</code> 是一条 Nitro 通道，<code>{A: 4, B: 1, C2: 5}</code> 命令裁决者向 Alice 支付 4 枚代币，再向 Bob 支付 1 枚代币，然后将 <code>C2</code> 的代币持有量增加 5 。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0712/m72e7sfuwic9qkw" alt="3"></p>
+<p>C1 是账本通道，C2 是从账本通道获取资金的通道</p>
+<p>以上是一个简短的介绍。如果你想要深入了解Nitro，请查看我们的相关博客文章！</p>
+<h2 id="如何利用保证来实现免信任架构">如何利用保证来实现免信任架构</h2>
+<p>接下来，我们将介绍当两位参与者<strong>没有链上关系</strong> 时，如何通过一个安全的架构来创建三方通道。这个架构不仅能让账本通道为其它通道提供资金，还能实现虚拟通道。两位参与者分别是 Alice（A）和 Bob（B），中间方是 Irene（I）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0712/pq8lryw2n4z9agl" alt="4"></p>
+<p>我们首次尝试使用一个通道来连接 A、B 和 I。请注意，这不是免信任型架构。</p>
+<p><strong>初始设置：三条独立通道。</strong></p>
+<p>首先要有一对账本通道 <code>L</code>（位于 Alice 和 Irene 之间）和 <code>L'</code>（位于 Bob和 Irene之间）。通常情况下，<code>L</code> 和 <code>L'</code> 是早就创建好的。这是因为 Irene 存在的目的就是在人们之间建立连接 —— Alice 可以使用 L 来同时连接 Bob、Cheryl、David 和 Eve。如果 <code>L</code> 和 <code>L'</code> 不存在，<code>L</code> 可以使用结果 <code>{A: 4, I: 6}</code> 创建，<code>L'</code> 可以使用结果 <code>{B: 6, I: 4}</code> 创建。<code>L</code> 和 <code>L'</code> 各自在链上存储10枚代币。</p>
+<p>另外还有一条独立通道 <code>J</code> 是使用结果 <code>{A: 4, B: 6, I: 10}</code> 创建的。请注意，在向通道存入资金之前，参与者必须先就这一结果达成共识。一旦 <code>J</code> 有了资金之后，这条通道就可以用来为 Alice 和 Bob 之间创建的任意一条私密应用通道提供资金。</p>
+<p><strong>步骤 1 和 2：账本通道转变为向 <code>J</code> 提供资金。</strong></p>
+<p>Alice 和 Irene 将 <code>L</code> 的结果转变为 <code>{J: 10}</code>。Bob 和 Irene 将 <code>L'</code> 的结果转换成 <code>{J: 10}</code>。</p>
+<h3 id="这个设计够好了吗">这个设计够好了吗？</h3>
+<p>Alice 必须考虑以下几点：</p>
+<ol>
+<li>
+<p>Bob 和 Irene 是不是可信的？</p>
+</li>
+<li>
+<p>Alice 无法控制 <code>L'</code> 上发生的事。</p>
+</li>
+</ol>
+<p>我们来思考一下步骤 2 之后如何取走 <code>J</code> 的资金。</p>
+<ol>
+<li>
+<p><code>L</code> 和 <code>L'</code> 的结果被记录到链上。</p>
+</li>
+<li>
+<p><code>L</code> 和 <code>L'</code> 的资金都被转移到 <code>J</code>。代币经由转账操作从一条通道转移到另一条通道。<code>J</code> 现在有了 20 枚代币，可谓资金充足。</p>
+</li>
+<li>
+<p>Alice 可以从 <code>J</code> 中取走 4 枚代币，Bob 可以从 <code>J</code> 中取走 6 枚代币。Irene 可以从 <code>J</code> 中取走 10 枚代币。</p>
+</li>
+</ol>
+<p>漂亮！现在每个人都取走了自己应得的代币。但是，我们来设想一个场景：Alice 和 Bob 串谋起来欺骗  Irene。假设步骤 1 发生后，Bob 拒绝参与步骤 2。然后就会发生以下情况：</p>
+<ol>
+<li>
+<p><code>L</code> 的结果被记录在链上。现在，<code>J</code> 有了10 个代币，记录在链上的结果是 <code>{A: 4, B: 6, I: 10}</code>。</p>
+</li>
+<li>
+<p>Alice 和 Bob 分别取走 4 枚和 6 枚代币。</p>
+</li>
+</ol>
+<p>请注意，Bob 从 <code>J</code> 那里获得了 6 枚代币，尽管他自己根本没有向 <code>J</code> 转过代币。结果变成了：Alice 获得了 4 枚代币，Bob 获得了 6 枚代币，Irene 什么也没有。Irene 被坑惨了！</p>
+<p>你可能会想，如果调换一下结果 <code>{A: 4, B: 6, I: 10}</code> 中目标的顺序，就可以创建出一个安全的架构。然而，无论怎么调换顺序，总会有人蒙受损失！</p>
+<h3 id="保证是如何发挥作用的">保证是如何发挥作用的</h3>
+<p>在上述场景中，我们使用了转账操作在通道之间转移资金。通过_转账_操作，资金可以从一个通道转移到目标通道。在本小节中，我们将引入_索取（claim）<em>操作来将资金从目标通道转移至<strong>特定的目标地址</strong> 1。为了实现_索取_操作，我们需要_保证</em>。</p>
+<p>我们先来介绍一个新的数据结构。<strong>保证</strong> 是指定以下的结果：</p>
+<ol>
+<li>
+<p>目标，即，一条通道；</p>
+</li>
+<li>
+<p>数量；</p>
+</li>
+<li>
+<p>优先级，即，目标的优先级列表。优先级的作用是指示裁决者如何改变目标通道的结果项的优先级。</p>
+</li>
+</ol>
+<p><img src="https://img.bibiqing.com/news/2021/0712/r14ij2oiokq0si5" alt="5"></p>
+<p>我们第二次尝试使用一个通道来连接 A、B和 I。这次已经是免信任架构了</p>
+<p>我们来看一下 <code>J</code> 是如何获得资金的：</p>
+<p><strong>初始设置：</strong> 创建三个独立的通道。</p>
+<ul>
+<li>
+<p>通道 <code>J</code> 是使用结果 <code>{A: 4, B: 6, I: 10}</code> 创建的。</p>
+</li>
+<li>
+<p><code>L</code> 是使用结果 <code>{A: 4, I: 6}</code> 创建的。</p>
+</li>
+<li>
+<p><code>L'</code> 是使用结果 <code>{B: 6, I:4}</code> 创建的。</p>
+</li>
+</ul>
+<p><strong>步骤 1 和 2：</strong> 账本通道转变为向 <code>J</code> 提供资金（没有先后顺序之分）：</p>
+<ol>
+<li>
+<p><code>L</code> 的结果更新为 <code>{J: {amount: 10, priorities: [A, I]}</code>。请注意，我们使用了一种新的符号来表明 <code>L</code> 的结果只有一项，即，包含目标 <code>J</code>、数量和地址优先级列表的保证。</p>
+</li>
+<li>
+<p><code>L'</code> 的结果是 <code>{J: {amount: 10, priorities: [B, I]}</code>。</p>
+</li>
+</ol>
+<p><code>L</code> 和 <code>L'</code> 的结果各自包含一个_保证_。由于转账操作不支持这些保证，我们代之以索取操作。索取操作接受保证以及保证的目标通道作为输入。</p>
+<p>我们来看一下索取操作是如何运作的。假设</p>
+<ul>
+<li>
+<p><code>J</code> 的结果 <code>{A: 4, B: 6, I: 10}</code> 被记录到了链上。</p>
+</li>
+<li>
+<p><code>L</code> 的结果 <code>{J: {amount: 10, priorities: [A, I]}}</code> 被记录到了链上。</p>
+</li>
+</ul>
+<p>如果有人请求执行 <code>L</code> 的结果中的保证，则会触发三个效果：</p>
+<ol>
+<li>
+<p>将 4 枚代币发送给 <code>A</code>，6枚代币发送给 <code>I</code>。</p>
+</li>
+<li>
+<p>因为（1），<code>A</code> 和 <code>I</code> 的余额在 <code>J</code> 的结果中被调整为 <code>{B: 6, I: 4}</code>。</p>
+</li>
+<li>
+<p><code>L</code> 的结果被调整为 <code>{}</code>—— 保证被删除。</p>
+</li>
+</ol>
+<p>在这个操作中，优先级的目的是告诉裁决者_跳过_ 带有 <code>B</code> 的结果项，这样 Irene 就可以拿回她在创建 <code>L</code> 时出的那部分资金。因此，裁决者会先看到保证中优先级最高的目标 <code>A</code>，并将 4 枚代币转给 <code>A</code>，<code>J</code> 的结果会相应更新。然后，裁决者才会看到目标 <code>I</code>。在 <code>J</code> 的结果中，Irene 应该获得 10 枚代币，但这时（L 的结果中）只剩下 6 枚代币。因此，这 6 枚代币被发送给了 Irene，<code>J</code> 的结果再次更新。请注意，优先级一定要是 <code>[A, I]</code> 而非 <code>[I, A]</code>。如果优先级是 <code>[I, A]</code>，Irene 就会通过索取操作获得 10 枚代币，Alice 就失去了原本属于她的 4 枚代币！</p>
+<p>有了索取操作，Alice 和 Bob 再也不能串谋起来骗取 Irene 的资金了。</p>
+<h2 id="最理想的情况">?最理想的情况</h2>
+<p>你可能已经注意到了，为了让 Alice 他们取回资金，总共需要 3 个链上操作：将联合通道和转账结果记录到链上，并调用_索取_ 操作。请注意，这是最糟糕的情况。假设 Bob 将 4 枚代币转给 Alice 后，Alice 和 Bob 想要关闭 <code>J</code>。如果 Bob 和 Irene 配合的话，则：</p>
+<ol>
+<li>
+<p>Alice、Bob 和 Irene 同意以结果 <code>{A: 8, B: 2, I: 10}</code> 敲定 <code>J</code>。</p>
+</li>
+<li>
+<p>Alice 和 Irene 可以更新 <code>L</code>，安全地删除为 <code>J</code> 提供资金的保证。<code>L</code> 的结果变成了 <code>{A: 8, I: 5}</code>。</p>
+</li>
+<li>
+<p>现在，Alice 可以使用 <code>L</code> 里的代币为其它通道提供资金了。Alice 也可以选择取走资金。</p>
+</li>
+</ol>
+<p>总而言之，在协作式案例中，Alice 可以使用 <code>L</code> 内的资金为多条不同的应用通道提供资金，也可以从这些取走资金，无需进行任何链上交易。</p>
+<h2 id="虚拟通道">虚拟通道</h2>
+<p>在上一节中，我们已经介绍了如何在两个参与方不存在链上关系的情况下创建三方通道。细心的读者应该注意到了，更新 <code>J</code> 必须经过中间方签字。在本文的开头，我们打算在 <code>A</code> 和 <code>B</code> 之间创建一条私密通道。幸运的是，Nitro 的可组合性让我们可以创建一条由 <code>J</code> 提供资金的私密应用通道 <code>X</code>。具体架构如下图所示。你已经掌握理解这个架构所需的一切概念了。不过，如果你有任何问题，欢迎向我们提问！</p>
+<p><img src="https://img.bibiqing.com/news/2021/0712/9b1hybtc3cusfae" alt="6"></p>
+<p>X 是一条虚拟通道</p>
+<h2 id="未来计划">未来计划</h2>
+<p>本文介绍的虚拟通道架构是 Nitro 协议论文中介绍的架构的进化版。最值得一提的是，这个架构不需要创建专门的保证者通道。</p>
+<p>Nitro 虚拟通道即将引入另一个更新，免去对联合通道的需求。有了这个更新，账本通道 <code>L</code> 和 <code>L'</code> 就可以为应用通道 <code>X</code> 提供资金。</p>
+<p>本文由 Mike Kerzhner 和 Andrew Stewart 基于 Tom Close 所著论文《Nitro 协议》撰写，感谢  Robert Drost、Joseph Chow、George Knee 和 Colin Kennedy 的反馈。</p>
+<h3 id="注">注</h3>
+<ol>
+<li>
+<p>我们还可以将_索取_操作理解成：</p>
+</li>
+<li>
+<p>将资金从 L 转入 J，改变 J 的结果。</p>
+</li>
+<li>
+<p>将资金从 J 转入目标地址。</p>
+</li>
+</ol>
+<p>如果账本通道的结果是 <code>{J: {amount: 10, priorities: [A, I]}</code> 且 <code>J</code> 的结果是 <code>{A: 4, B: 6, I: 10}</code>，<em>索取</em> 可以描述成：</p>
+<ol>
+<li>
+<p>将 10枚代币从 <code>L</code> 转入 <code>J</code>。</p>
+</li>
+<li>
+<p><code>J</code>的结果变成 <code>{A: 4, I: 6, B: 6, I: 4}</code></p>
+</li>
+<li>
+<p>然后在 <code>J</code> 上调用面向 <code>A</code> 和 <code>I</code> 的转账。</p>
+</li>
+</ol>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/25691/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">权力的游戏：Curve上Yearn、Convex及Stake DAO之间的斗争</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/25701/">
+                <span class="next-text nav-default">如何以刑事手段规制虚拟货币？这场研讨会上的专家意见精彩纷呈</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#动机">动机</a></li>
+    <li><a href="#背景知识">背景知识</a></li>
+    <li><a href="#nitro-的替代方案">Nitro 的替代方案</a></li>
+    <li><a href="#通道内部的资金转移">通道内部的资金转移</a></li>
+    <li><a href="#如何利用保证来实现免信任架构">如何利用保证来实现免信任架构</a>
+      <ul>
+        <li><a href="#这个设计够好了吗">这个设计够好了吗？</a></li>
+        <li><a href="#保证是如何发挥作用的">保证是如何发挥作用的</a></li>
+      </ul>
+    </li>
+    <li><a href="#最理想的情况">?最理想的情况</a></li>
+    <li><a href="#虚拟通道">虚拟通道</a></li>
+    <li><a href="#未来计划">未来计划</a>
+      <ul>
+        <li><a href="#注">注</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

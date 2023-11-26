@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          读懂MEV2.0：用户如何成为MEV受益者？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="自 2017 年以来，最大可提取价值或「MEV」经历了几项重大创新。" />
+<meta name="keywords" content="MEV" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/39620/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="读懂MEV2.0：用户如何成为MEV受益者？" />
+<meta property="og:description" content="自 2017 年以来，最大可提取价值或「MEV」经历了几项重大创新。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/39620/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-30T00:00:00+00:00" />
+
+<meta itemprop="name" content="读懂MEV2.0：用户如何成为MEV受益者？">
+<meta itemprop="description" content="自 2017 年以来，最大可提取价值或「MEV」经历了几项重大创新。"><meta itemprop="datePublished" content="2022-06-30T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-30T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8252">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="读懂MEV2.0：用户如何成为MEV受益者？"/>
+<meta name="twitter:description" content="自 2017 年以来，最大可提取价值或「MEV」经历了几项重大创新。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">读懂MEV2.0：用户如何成为MEV受益者？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-06-30">
+      2022-06-30
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8252 字 -
+        预计阅读 17 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原文标题：《MEV2.0：MPSV 打破 MEV 市场寡头垄断，使用户被动收益》</p>
+<p>原文作者：Ali Sheikh</p>
+<p>原文编译：Skypiea</p>
+<p><strong>自 2017 年以来，最大可提取价值或「MEV」经历了几项重大创新。</strong> 这些进步是围绕着两个参与者，矿工和 MEV 搜索者。MEV 领域最大的飞跃之一是 Flashbots 的创建，旨在使这两个参与者的 MEV 民主化。然而，<strong>在 MEV 存在的今天，仍然忽略了一个关键参与者：用户。</strong> 尽管今天以太坊的工作证明（「PoW」）共识机制已广泛接受这一点，但权益证明（「PoS」）为重新定义 MEV 以潜在地包括用户打开了大门。当今的大多数 MEV 解决方案都以矿工、MEV 搜索者甚至构建者为焦点。我们相信用户也可以而且应该包含在这个组合中。</p>
+<p>本文介绍了 MPSV（MEV 利润共享验证器）的概念，这是一个新颖的概念，可以将用户作为 MEV 的受益者，最终将完成 MEV 的全面民主化。通过完全民主化，我的意思是用户可能最终能够获得一部分 MEV 利润，因为他们「选择」了在哪里质押（Staking）。然而，在我们进入 MPSV 之前，我们首先需要了解：（1）当今的高级 MEV 参与者，（2）MEV 的经济市场结构，（3）一般的权益证明（PoS）系统和验证者的角色，以及最后（4）一些博弈论。</p>
+<h2 id="mev-参与者">MEV 参与者</h2>
+<p>最大可提取价值（MEV）仍然是加密市场中参与者可以提取利润的领域之一，无论是牛市还是熊市。MEV 是指通过对区块内的交易进行重新排序、插入和审查来从用户那里提取价值。</p>
+<p>MEV 在熊市和牛市中都可以盈利，因为交易策略的设计空间广阔且相对未开发。鉴于当前的市场动态，激励参与者继续设计新的和创新的长尾策略以提取价值。根据 Flashbots 的说法，在过去 30 天里，仅在以太坊上就已经提取了价值 2000 万美元的 MEV。即使 Terra 生态系统崩溃并且整个加密市场陷入低迷，我们看到 2022 年全年每日提取 MEV 的最高（如果不是最高）毛利润之一发生在 2022 年 5 月 12 日：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0630/24_q0c8km99b1.png" alt="读懂MEV2.0：用户如何成为MEV受益者？"></p>
+<p>资料来源：explore.flashbots.net</p>
+<p>* 毛利润 = 在不移除矿工付款的情况下，成功 MEV 交易的每日提取价值</p>
+<p>今天，MEV 中有两类赢家：矿工和搜索者。在这个世界上，搜索者是 MEV 奖励的主要接受者：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0630/24_essj5i5v2h.png" alt="读懂MEV2.0：用户如何成为MEV受益者？"></p>
+<p>资料来源：explore.flashbots.net</p>
+<h2 id="经济市场结构与-mev">经济市场结构与 MEV</h2>
+<p>在分析市场动态之前，明确定义其结构非常重要。我们先来看看 MEV 市场的整体结构，其次是 MEV 搜索者和矿工的子市场。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0630/24_2q7mgoz2rq.png" alt="读懂MEV2.0：用户如何成为MEV受益者？"></p>
+<h3 id="mev-市场">MEV 市场</h3>
+<p>MEV 市场的独特之处在于有两个参与者，矿工和 MEV 搜索者，他们一起工作以提取价值。整体评估时，整个 MEV 市场更像是寡头垄断结构。</p>
+<p>寡头垄断是由少数大卖家或生产者主导的市场或行业，在这种情况下，区块空间是生产的商品，并通过 MEV 货币化。让我们看看寡头垄断如何转化为当今的 MEV 市场：</p>
+<p><strong>1. 新进入门槛高：</strong></p>
+<ul>
+<li>
+<p>矿工：设备、技术专长和资本要求的高昂前期成本使个人进入市场极为困难</p>
+</li>
+<li>
+<p>MEV 搜索者：虽然这可能不是资本密集型的，但进入的高门槛来自运行 MEV 策略所需的技术技能、专业化和对 DeFi、ETH 和其他区块链的深刻理解。</p>
+</li>
+</ul>
+<p><strong>2. 不完全竞争 / 定价能力：</strong></p>
+<p>通常，MEV 搜索者和矿工将共同努力，以最大限度地提高总可提取价值，即使这需要用户付出代价。此外，矿工具有优势，因为他们可以选择接受提供最高奖励的任何 MEV 搜索者 — 从而使这些矿工成为价格制定者。</p>
+<p><strong>3. 企业的相互依赖：</strong></p>
+<p>由于它们的规模很大且竞争最小，矿工如何构建 MEV 会影响其他矿工的行动。</p>
+<p>此外，MEV 搜索者和矿工相互依赖，因为搜索者是寻找 MEV 机会并将这些机会提交给矿工以决定是否重新排序、插入和 / 或审查区块内交易的人。</p>
+<p><strong>4. 非价格竞争：</strong></p>
+<p>一般来说，矿工不是在 MEV 搜索者和矿工之间竞争利润分配，而是在其他因素上竞争：专业设备、托管、服务水平以及品牌。</p>
+<p><strong>5. 共谋的可能性：</strong></p>
+<p>鉴于矿工的中心化，他们实际上也可以在这个空间中共同合作。矿工之间可能会同意，他们将只接受与搜索者分享 MEV 利润的 95%。然而，Flashbots 在当前的 MEV 市场中解决了这个问题。</p>
+<p>同样，如果 MEV 搜索者联合起来，他们可能会要求矿工和 MEV 搜索者之间更高的利润分配。</p>
+<h3 id="mev-搜索者市场">MEV 搜索者市场</h3>
+<p>现在我们已经定义了整个 MEV 市场，我们还可以看看它的子市场。现在让我们来看看 MEV 搜索者市场。</p>
+<p>MEV 搜索者就像区块链的「管道工」。他们深入研究区块内的交易以找到 MEV。它是一群工匠和专业匿名者，他们在如何提取价值方面拥有宝贵的技术知识。这种动态具有垄断竞争的特征。</p>
+<p>垄断竞争（不要与垄断混淆）是一种不完全竞争，即有许多生产者相互竞争，但销售的服务彼此之间存在差异，而不是完美的替代品。</p>
+<p>让我们看看垄断竞争特征如何与 MEV 搜索者市场保持一致：</p>
+<p><strong>1. 略有差别的服务：</strong></p>
+<p>MEV 搜索者都试图在链上找到可提取的价值，尽管 MEV 的方法因搜索者不同而不同。例如，搜索者可以专注于套利、清算、三明治策略或专门的长尾策略。</p>
+<p><strong>2. 许多搜索者：</strong></p>
+<p>不言自明</p>
+<p><strong>3. 最大化利润：</strong></p>
+<p>MEV 搜索者寻求利润最大化，因此从区块中提取尽可能多的 MEV。与纯游戏垄断类似，每个搜索者都将尝试找到尽可能多的 MEV，而不会受到用户的惩罚（通常）。</p>
+<p><strong>4. 不完善的信息：</strong></p>
+<p>MEV 搜索者比用户具有信息优势，用户经常在不知不觉中放弃价值给搜索者。</p>
+<p><strong>5. 结果：</strong></p>
+<p>搜索者知道他们的行为不会影响其他搜索者的行为。</p>
+<h3 id="mev-矿机市场">MEV 矿机市场</h3>
+<p>MEV 市场类似于寡头垄断的核心原因之一是矿工市场是寡头垄断的。鉴于 MEV 搜索者与矿工合作 —— 这两个市场结合在一起更像是寡头垄断与垄断竞争。在本节中，我们可以计算 Herfindahl-Hirschman 指数（HHI）来了解矿工市场的中心化程度，而不是重新讨论寡头垄断的特征。</p>
+<p>HHI 指数是衡量公司规模与其所在行业相关的指标，也是它们之间竞争程度的指标。计算如下：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0630/swa9d7h31my6dp8" alt="读懂MEV2.0：用户如何成为MEV受益者？"></p>
+<p>在这个等式中，MSi 是公司 i 的市场份额，N 是公司总数。我们添加数字以了解行业的集中度。我们对 MSi 进行平方是因为对所有权重进行平方会为拥有更大市场份额的参与者提供更大的权重。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0630/24_y24tg3uchv.png" alt="读懂MEV2.0：用户如何成为MEV受益者？"></p>
+<p>我们可以使用 MiningPoolStats 来了解每个矿工的哈希率，这最终是其市场份额的基准（大约 81 名矿工列出）。我们使用以下步骤：</p>
+<ol>
+<li>
+<p>将每个矿工算力转换为 TH/s</p>
+</li>
+<li>
+<p>总算力 TH/s</p>
+</li>
+<li>
+<p>将每个矿工的算力除以总算力</p>
+</li>
+<li>
+<p>将 #3 中的每个值平方</p>
+</li>
+<li>
+<p>总结 #4 的总数</p>
+</li>
+</ol>
+<p>如果我们计算这些矿工的 HHI，我们得到的 HHI 约为 545 或 0.545，这意味着矿工市场高度中心化，属于寡头垄断市场结构。</p>
+<h3 id="最优完全竞争的-mev-市场">最优完全竞争的 MEV 市场</h3>
+<p>完全竞争是一种理想的市场结构，所有生产者和消费者都拥有充分、对称的信息，没有交易成本。</p>
+<p>完全竞争市场的特点是：</p>
+<ol>
+<li>
+<p>大量买卖双方</p>
+</li>
+<li>
+<p>产品同质化</p>
+</li>
+<li>
+<p>企业自由进出</p>
+</li>
+<li>
+<p>完善的市场知识</p>
+</li>
+<li>
+<p>卖家赚取正常利润（相对于超常利润）</p>
+</li>
+</ol>
+<p>在这个市场中，我们达到了供给量等于需求量的地步，因此具有帕累托效率（Pareto Efficiency）。帕累托效率是这样一种情况，其中任何个人或偏好标准都不能在不使至少一个个人或偏好标准变得更糟的情况下变得更好。</p>
+<p>MEV 领域最伟大的创新之一是 Flashbots 的创建，旨在使 MEV 民主化。</p>
+<p>「减轻当前最大可提取价值（从现在起 MEV）提取技术的负面外部性，并避免 MEV 可能对以太坊等状态丰富的区块链造成的存在风险。」</p>
+<p>Flashbots 的 3 个目标：</p>
+<ol>
+<li>
+<p>民主化获得 MEV 收入</p>
+</li>
+<li>
+<p>为 MEV 活动带来透明度</p>
+</li>
+<li>
+<p>重新分配 MEV 收入</p>
+</li>
+</ol>
+<p>Flashbots 通过帮助防止串通和使 MEV 民主化，帮助为 MEV 搜索者提供了公平的竞争环境。尽管 Flashbots 使搜索者的 MEV 机会民主化，但用户仍然被排除在外。有人可能会争辩说，任何人都可以参与 MEV，包括用户，但是，我们知道这是不现实的，因为大多数 DeFi 用户无法访问 MEV。</p>
+<p>因此，虽然 MEV 搜索者和矿工在工作量证明系统中从 Flashbot 的 MEV 系统中获得了更好的收益，但用户要么一无所获，要么成为可提取价值的目标。当今搜索者和矿工的 MEV 动态不足以使 MEV 完全民主化并将其推向完全竞争的市场。然而，权益证明可能会改变这一点，并最终将我们带到理论上完全竞争的市场。</p>
+<h2 id="新范式进入权益证明">新范式：进入权益证明</h2>
+<p>众所周知，以太坊正在转向权益证明（PoS）系统。在 PoS 中，不是矿工相互竞争来验证和确认交易，而是随机选择「验证者」来根据领导者调度来验证交易。</p>
+<p>权益证明 (PoS) 是一种加密货币共识机制，要求您将币投入或搁置一旁，以随机选择作为验证者。</p>
+<p>从根本上打破权益证明中的寡头垄断竞争的是，用户能够决定与哪些验证者进行资产质押，这可能会影响领导者的选择或权益权重（下文会详细介绍）。</p>
+<p>我们或许可以从 Solana 中吸取一些教训，了解用户如何潜在地参与 MEV 的收益并从「可提取价值」中受益。对权益证明中的用户而言，改变游戏规则的是他们决定在哪里质押他们的代币，这为 MEV 创新打开了大门。验证者的权益权重越大 —— 被选为领导者的机会就越高。</p>
+<p>在开始了解它如何有助于了解有关 Solana 上的验证器的一些基本信息之前。</p>
+<h2 id="solana-共识和验证者">Solana 共识和验证者</h2>
+<p>Solana 使用历史证明，它自己新颖的权益证明共识机制。Solana 的网络基础设施由验证器和 RPC 节点组成。验证人是 Solana 网络的骨干，负责处理交易和参与共识。验证者是网络的「共识节点」，这意味着他们验证交易、对区块进行投票并推动 Solana 网络的共识机制。运行验证器（或 RPC 节点）需要具有高端规格的专用裸机服务器。</p>
+<p>从 Solana 关于领导者调度生成算法的文档（注意 #3）：</p>
+<h3 id="领导者leader计划生成算法">领导者（Leader）计划生成算法</h3>
+<p>领导者计划是使用预定义的种子生成的。过程如下：</p>
+<ol>
+<li>
+<p>定期使用 PoH 刻度高度（单调递增的计数器）来播种稳定的伪随机算法。</p>
+</li>
+<li>
+<p>在那个高度，为所有具有领导者身份且在集群配置的滴答数内投票的抵押账户抽样银行。该样本称为活动集。</p>
+</li>
+<li>
+<p>按权益权重对活动集进行排序。</p>
+</li>
+<li>
+<p>使用随机种子选择按权益加权的节点以创建权益加权排序。</p>
+</li>
+<li>
+<p>此排序在集群配置的 ticks 数后生效。</p>
+</li>
+</ol>
+<p><img src="https://img.bibiqing.com/news/2022/0630/24_57qiv9adqf.png" alt="读懂MEV2.0：用户如何成为MEV受益者？"></p>
+<p>今天，验证者奖励分为 3 类：</p>
+<ol>
+<li>
+<p>基于协议的奖励：由全球协议定义的通货膨胀率发行 —— 奖励是在赚取的交易费用之上提供的。</p>
+</li>
+<li>
+<p>质押：质押者因帮助验证账本而获得奖励。用户可以从质押中受益，因为他们可以将自己的质押委托给验证节点。验证者负责重放分类账并将投票发送到每个节点的投票账户，质押者可以将他们的股份委托给该账户。当分叉出现时，集群的其余部分使用这些权益加权投票来选择一个区块。</p>
+</li>
+<li>
+<p>质押（Staking）池 —— 这些是流动性质押解决方案，有助于促进抗审查和去中心化，例如 Marinade Finance 和 Lido。</p>
+</li>
+</ol>
+<p>今天的质押收益率基于当前的通货膨胀率、质押的 SOL 总数以及个人验证者的正常运行时间和佣金。验证者的佣金是网络通胀支付给验证者的百分比费用。验证者的正常运行时间由验证者的投票决定。</p>
+<p>换句话说，Staking 的回报来自 Solana 的通胀计划。验证者向用户提供质押奖励，但验证者也可能向用户收取费用 / 佣金。如果我们能够以一种对所有人都有利的方式将奖励提高到超出标准通胀水平会怎样？</p>
+<p>用户可以使用他们喜欢的验证者进行质押，如果他们愿意，还可以切换到其他验证者，这在 Solana 上需要 2-4 天。此外，借助 Marinade 的流动 mSOL 等解决方案，用户可以立即为 SOL 实时解封 mSOL 代币。这在验证者之间创造了一种有趣的竞争动态。用户将选择为他们提供最高奖励的验证者以及收取最低费用 / 佣金的验证者。</p>
+<p>在其他条件不变的情况下，用户会选择回报率最高、费用最低的验证人。</p>
+<p>这是事情变得非常有趣的地方！验证者能够汇集和质押的 SOL 越多，Validator 能够获得的质押权重就越高。Validator 的质押权重越大，成为 Leader 的机会就越大。可以把它想象成一个彩票系统，验证者拥有的权益越多，被选为领导者的机会就越大。</p>
+<h3 id="今天在-solana-上的-mev">今天在 Solana 上的 MEV</h3>
+<p>如今，在 Solana 上提取的大部分 MEV 都交给了 MEV 搜索者。Solana 上的大部分 MEV 来自于向 Solana 区块链发送垃圾邮件的机器人，它们不停地试图寻找套利机会或抢先推出 NFT。由于 Solana 上的交易成本非常便宜，因此运行机器人是捕捉 MEV 机会的简单策略。</p>
+<h3 id="solana-上的未来-mev">Solana 上的未来 MEV</h3>
+<p>现在，打破这些垃圾邮件机器人循环的一种方法是建立一个密封的投标状态拍卖，这样有争议的资源比其他资源获得锁定的成本更高。在 Solana 上，Jito Labs 正在构建密封的无声投标拍卖，以使搜索者能够对区块空间进行投标。这样做的好处包括能够让 MEV 交易在某种公共内存池中链下运行（Solana 目前没有）。通过 Jito 发送的交易将被优先考虑，奖励与验证者分摊，类似于 Flashbots。这样做的好处包括：</p>
+<ol>
+<li>
+<p>杀死垃圾邮件机器人 —— 他们不再能够找到有意义的 MEV，因为它们不是优先交易</p>
+</li>
+<li>
+<p>更好的用户体验</p>
+</li>
+<li>
+<p>帮助疏通 Solana 网络并使其更有效地运行</p>
+</li>
+</ol>
+<p>那么，我们如何才能使 MEV 完全民主化，并将其推向完全竞争的市场呢？</p>
+<p>用户选择！</p>
+<h2 id="进入-mpsv高效-mev-市场的未来">进入 MPSV，高效 MEV 市场的未来</h2>
+<p>当 MEV 搜索者能够与验证者合作以提取 MEV 时，就会出现一些有趣的博弈论。一个最佳结果是用户最终能够被动地获得一部分 MEV 奖励，但是如何？</p>
+<p><strong>MPSV = MEV 利润分享验证器</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0630/24_bpg55cu491.png" alt="读懂MEV2.0：用户如何成为MEV受益者？"></p>
+<p>让我们首先探索两个博弈论练习。博弈 1 是微不足道的，但让我们来看看它。验证者和 MEV 搜索者应该分享奖励吗？为简单起见，让我们假设：只有一个 MEV 搜索者和一个验证者。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0630/s032yhmgvl6cjen" alt="读懂MEV2.0：用户如何成为MEV受益者？"></p>
+<ul>
+<li>
+<p>正如我所提到的，这个案例是微不足道的，因为如果任何一方都不想分享任何类型的奖励并希望保持 100% 的 MEV 被提取，那么任何一方都不会同意一起工作。上图中的最佳解决方案是在 MEV 搜索者和验证者之间分配利润。尽管 50% 有点武断，但一起工作符合每个人的最大利益。无论是 60/40、90/10 等等，都无关紧要 —— 它们必须一起工作。</p>
+</li>
+<li>
+<p>很明显，MEV 市场的 MEV 搜索者和验证者之间存在相互依赖关系。没有另一个就不能存在。</p>
+</li>
+<li>
+<p>从长远来看，我们可能会看到验证者将 MEV 搜索者带入内部或自己开始运行 MEV 策略的世界 —— 只留下奇异形式的 MEV 可供搜索者使用。</p>
+</li>
+</ul>
+<p>下一个案例更有趣一些。我们在上面已经确定，验证者和 MEV 搜索者之间会有一些利润分成。现在我们问，验证者自己是否应该决定与在其平台上质押的用户分享任何 MEV 利润？</p>
+<p>让我们假设以下内容：</p>
+<ul>
+<li>
+<p>MEV 搜索者和验证者的相互依赖关系已根据博弈 1 建立。</p>
+</li>
+<li>
+<p>现在有两个验证器：验证器 A 和验证器 B</p>
+</li>
+<li>
+<p>两者都以相同数量的质押权重开始（即相同数量的质押资产）</p>
+</li>
+<li>
+<p>用户在经济上是理性的，即用户将选择与提供最高奖励的验证者进行质押</p>
+</li>
+<li>
+<p>验证者 A 和验证者 B 各自决定他们想与各自的用户分享多少 MEV 利润</p>
+</li>
+<li>
+<p>如果一个验证者失去了它的用户，它就不能再成为一个 Leader（假设它的所有代币都已经转移到另一个验证者上）</p>
+</li>
+<li>
+<p>如果一个验证者失去了它的用户，它就不再从搜索者那里收到任何 MEV 交易，而是将 MEV 交易转到另一个验证者</p>
+</li>
+<li>
+<p>假设生成的 MEV 是统一且恒定的，即每个验证者有 100 美元的 MEV，框外的数字代表每个验证者决定保留多少利润。</p>
+</li>
+<li>
+<p>我们假设的是长期情况，而不是短期情况。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0630/24_abffvvgdyg.png" alt="读懂MEV2.0：用户如何成为MEV受益者？"></p>
+<p>现在让我们来看看每个框里的每个场景。</p>
+<p>1. A = B。</p>
+<p>验证者 A 将其 MEV 利润设置为 100 美元（用户 A 利润 = 0 美元）。</p>
+<p>验证者 B 将其 MEV 利润设置为 100 美元（用户 B 利润 = 0 美元）。</p>
+<p>用户总利润 = 0 美元。</p>
+<p>两个验证者每人拿回家 100 美元，而用户一无所获。</p>
+<p>2. A &lt; B。</p>
+<p>验证者 A 将其 MEV 利润设置为 60 美元（用户利润 = 40 美元）。</p>
+<p>验证者 B 将其利润设置为 100 美元（用户利润 = 0 美元）。</p>
+<p>用户每笔 MEV 交易赚取 40 美元（总计 80 美元）。</p>
+<p>从长远来看，验证者 B 的用户离开，验证者 B 最终获得 0 美元的利润。</p>
+<p>同时，验证者 A 获得额外的 MEV 交易并额外赚取 60 美元（60 美元 + 60 美元 = 120 美元）。逻辑如下：</p>
+<ul>
+<li>
+<p>长期运行</p>
+</li>
+<li>
+<p>再次，用户是理性的，因为验证者 A 提供了更高的质押回报 —— 用户将资金转移到验证者 A 并随着时间的推移放弃验证者 B。</p>
+</li>
+<li>
+<p>因为用户将他们所有的质押资产转移到验证者 A，验证者 B 不再有机会成为 Leader，也不再接收来自搜索者的 MEV 交易。</p>
+</li>
+<li>
+<p>* 应该为验证者 B 生成的 MEV 流入验证者 A - 提供相同水平的利润，即 60 美元 + 60 美元 = 120 美元。</p>
+</li>
+<li>
+<p>这最终将验证者 B 的 MEV 利润推至 0 美元。</p>
+</li>
+</ul>
+<p>3. A &gt; B。</p>
+<p>上述 #2 中的逻辑适用。</p>
+<p>4. A = B。</p>
+<p>验证者 A 将其 MEV 利润设置为 60 美元（用户 A 利润 = 40 美元）</p>
+<p>验证者 B 将其利润设置为 60 美元（用户 B 利润 = 40 美元）</p>
+<p>用户每笔 MEV 交易赚取 40 美元（总计 80 美元）。</p>
+<p>在这种情况下，来自 A 的用户停留在原地，来自 B 的用户也停留在原地。没有验证者被放弃。</p>
+<h3 id="mpsv-纳什均衡">MPSV 纳什均衡</h3>
+<p>纳什均衡是博弈论中的一个决策定理，它表明玩家可以通过不偏离他们的初始策略来实现预期的结果。在纳什均衡中，每个参与者的策略在考虑其他参与者的决策时都是最优的。</p>
+<p>从上图中我们可以看出，如果验证者 A 和验证者 B 都将利润设置为彼此相等，那么它们都会比将利润设置在更高的水平（即框 1 而不是框 4）更好。但问题仍然存在，方框 1 是我们可以期待的结果吗？为了解决这个问题，让我们首先找到验证者 A 和验证者 B 的响应：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0630/pgfon39bbtq9brd" alt="读懂MEV2.0：用户如何成为MEV受益者？"></p>
+<p>与上面类似，让我们从验证者 A 开始逐步执行每个响应：</p>
+<p>A. 对于验证者 A，如果验证者 B 将她的利润设置为 100 美元，那么验证者 A 有两种利润选择（框 1 与框 2）：</p>
+<ul>
+<li>
+<p>如果验证者 A 将利润设置为 100 美元，则为 100 美元</p>
+</li>
+<li>
+<p>如果验证者 A 设定利润为 60 美元，则为 120 美元</p>
+</li>
+</ul>
+<p>鉴于验证者 A 在经济上是合理的 —— 它将利润设定为 60 美元，这将产生 120 美元的总利润。</p>
+<p>B. 对于验证者 A，如果验证者 B 将她的利润设置为 60 美元，那么验证者 A 有两种利润选择（框 3 与框 4）：</p>
+<ul>
+<li>
+<p>如果验证者 A 将利润设置为 100 美元，则为 0 美元</p>
+</li>
+<li>
+<p>如果验证者 A 将利润设置为 60 美元，则为 60 美元</p>
+</li>
+</ul>
+<p>鉴于验证者 A 在经济上是合理的 —— 它将利润设定为 60 美元，这将产生 60 美元的总利润。</p>
+<p>请注意，在上述两种情况下，将利润设置为 60 美元而不是 100 美元是验证者 A 的主导策略。验证者 A 将利润设置为 100 美元从来都不是最佳响应。</p>
+<p><strong>验证者 B：</strong></p>
+<p>C. 框 1 与框 3：</p>
+<p>鉴于验证者 B 在经济上是合理的 —— 它将利润设定为 60 美元，这将产生 120 美元的总利润。</p>
+<p>D. 框 2 与框 4：</p>
+<p>鉴于验证者 B 在经济上是合理的 —— 它将利润设定为 60 美元，这将产生 60 美元的总利润。</p>
+<p>纳什均衡：对于验证者 A 和验证者 B，只有一个潜在结果是两个验证者都做出了最佳响应，那就是如果两个验证者都将利润设置为 60 美元（上图中的黄色框）。这将是唯一的纳什均衡，他们每人将获得 60 美元的总利润。</p>
+<p>因此，我们在上面已经表明，如果用户能够在验证者之间流畅地转移他们的质押资产，那么当验证者提供对用户有利的最具吸引力的利润分享分配时，就会出现纳什均衡，类似于完全竞争市场的运作方式：</p>
+<p>这就是产生 MPSV = MEV 利润分享验证者的原因。</p>
+<h3 id="mpsv-飞轮">MPSV 飞轮</h3>
+<p><img src="https://img.bibiqing.com/news/2022/0630/24_3hwiaks1uy.png" alt="读懂MEV2.0：用户如何成为MEV受益者？"></p>
+<p>权益证明（PoS）使用户能够决定他们想在哪里质押资产。在其他条件不变的情况下，拥有更多的 staking 权重可以让您作为验证者成为 PoS 模型中的 Leader。对于理性的经济参与者来说，决定在哪里下注取决于您可以在哪里以最低的费用 / 佣金赚取最高的 APY。</p>
+<p>使用 MEV 的收益，具有较低 staking 权重的 MPSV 可能能够将 MEV 利润的一部分返还给用户，以将收益率提高到标准通货膨胀率之上。此外，如果较小的 MPSV 将他们的 MEV 利润集中在一起 —— 它为用户提供了更多的质押收益空间。随着时间的推移，新用户将转向 MPSV 模型（即向用户提供 MEV 利润），因此，该验证者将能够从其他验证者那里获得额外的权益。这反过来又导致 MPSV 更频繁地被选为 Leader。</p>
+<h2 id="结论">结论</h2>
+<p>总结这一切，我们可以看到有一个权益证明 MEV 的场景，每个人实际上都过得更好，包括用户。在工作量证明系统中 —— 矿工在确认区块时独立于用户行事。在权益证明系统中，验证者和用户之间存在依赖关系。</p>
+<p>这就是我所说的「使 MEV 完全民主化」的意思。我们在上面已经表明，MPSV 的纳什均衡发生在不同验证者与用户分享最具吸引力的利润时。从长远来看，只需一个验证器就可以为用户提供更好的 MEV 利润份额，从而推动验证器市场的发展。</p>
+<p>我们相信 MPSV 可以发挥以下作用：</p>
+<ol>
+<li>
+<p>在 MEV 中创造新的转变，用户可以被动地从 MEV 中受益</p>
+</li>
+<li>
+<p>对于较小的 MPSV，如果他们能够与用户分享更多的利润，而不是前 10 名或最大的验证者，这可以作为与较大的验证者竞争的一种方式 —— 甚至可以与其他小型 MPSV 联合起来并共享 MEV 利润。</p>
+</li>
+<li>
+<p>在所有验证者都将 100% 的 MEV 利润份额转给用户的竞争激烈的情况下，用户最终会整体受益。[注意：验证者仍然可以通过交易和优先费用赚取收入]。</p>
+</li>
+<li>
+<p>在这个世界上，每个人都过得更好，包括这个模型中的 MEV 搜索者、验证者和用户。</p>
+</li>
+</ol>
+<p>打破 MEV 市场寡头垄断的是用户选择！</p>
+<p>也许，只是也许，我们将把 MEV 市场转变为完全竞争的市场结构。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/39624/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">从风险投资到创新资本 NFT基金如何成为战略定位转变的早期信号？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/39633/">
+                <span class="next-text nav-default">法国央行副行长：我们需要对加密货币进行全球监管</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#mev-参与者">MEV 参与者</a></li>
+    <li><a href="#经济市场结构与-mev">经济市场结构与 MEV</a>
+      <ul>
+        <li><a href="#mev-市场">MEV 市场</a></li>
+        <li><a href="#mev-搜索者市场">MEV 搜索者市场</a></li>
+        <li><a href="#mev-矿机市场">MEV 矿机市场</a></li>
+        <li><a href="#最优完全竞争的-mev-市场">最优完全竞争的 MEV 市场</a></li>
+      </ul>
+    </li>
+    <li><a href="#新范式进入权益证明">新范式：进入权益证明</a></li>
+    <li><a href="#solana-共识和验证者">Solana 共识和验证者</a>
+      <ul>
+        <li><a href="#领导者leader计划生成算法">领导者（Leader）计划生成算法</a></li>
+        <li><a href="#今天在-solana-上的-mev">今天在 Solana 上的 MEV</a></li>
+        <li><a href="#solana-上的未来-mev">Solana 上的未来 MEV</a></li>
+      </ul>
+    </li>
+    <li><a href="#进入-mpsv高效-mev-市场的未来">进入 MPSV，高效 MEV 市场的未来</a>
+      <ul>
+        <li><a href="#mpsv-纳什均衡">MPSV 纳什均衡</a></li>
+        <li><a href="#mpsv-飞轮">MPSV 飞轮</a></li>
+      </ul>
+    </li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

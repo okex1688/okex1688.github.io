@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Gavin Wood：XCM 第三部分 执行和错误管理 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="XCVM 是一个高级别、非 Turing 的完整虚拟机。" />
+<meta name="keywords" content="技术" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/29198/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="Gavin Wood：XCM 第三部分 执行和错误管理" />
+<meta property="og:description" content="XCVM 是一个高级别、非 Turing 的完整虚拟机。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/29198/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-30T00:00:00+00:00" />
+
+<meta itemprop="name" content="Gavin Wood：XCM 第三部分 执行和错误管理">
+<meta itemprop="description" content="XCVM 是一个高级别、非 Turing 的完整虚拟机。"><meta itemprop="datePublished" content="2021-09-30T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-30T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4817">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Gavin Wood：XCM 第三部分 执行和错误管理"/>
+<meta name="twitter:description" content="XCVM 是一个高级别、非 Turing 的完整虚拟机。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Gavin Wood：XCM 第三部分 执行和错误管理</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-30">
+      2021-09-30
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4817 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>在我前两篇文章里( 介绍了 XCM 的设计和版本结构的基础知识。在本文中，我们将深入研究它的底层设计和执行模型。因为XCM 基于 XCVM （一个非常高级的虚拟机）指令集，希望本文可以帮助你熟悉这个机器架构。</p>
+<p>XCVM 是一个高级别、非 Turing 的完整虚拟机。它是基于寄存器的（而不是基于堆栈的），并且有几个专用寄存器，其中大部分持有高度结构化的数据。与通用处理器不同， XCVM 的寄存器不能随意设置为任意值，但有严格的机制来控制它们的变化。除了某些与本地链状态交互的方法（如我们已经看到的 With draw Asset 和 Deposit Asset 指令）之外，没有额外的“内存”。没有循环的可能，也没有显式的分支指令。</p>
+<p>我们已经介绍了其中两个登记册：持有登记册，能够临时持有一项或多项资产，并可以通过从本地链中提取资产来填充，或者通过从可信的外部来源（例如另一个链）接收资产；以及来源登记册，在执行开始时，该登记册持有共识系统的位置，从该系统当前XCM执行起源，并可能只突变到一个内部位置或完全清除。</p>
+<p>在其他寄存器中，三个涉及异常/错误管理，两个涉及跟踪执行权重。我们将在本文中了解它们。</p>
+<h2 id="执行模型"><strong>执行模型</strong></h2>
+<p>如前所述，没有显式条件指令或循环原语可以多次重新执行相同的指令。这使得预先确定程序的控制流变得相当琐碎。该属性非常有用，因为我们希望确定 XCM 消息在执行点之前可以使用多少执行时间(称为整个 Substrate / Polkadot 的权重)。</p>
+<p>允许图灵完备语言的系统（如 Ethereum ）实际上不能直接从程序中计算最坏情况的执行时间，这是由于图灵的完备性。他们通过要求用户预先确定程序的执行资源来解决这个问题，然后在程序执行时对其进行计量，如果超出了所支付的金额，就中断它。有时，在事务执行之前，事情会发生变化，权重会变得不正确。令人高兴的是，像 XCVM 这样的非 Turing - Complete 的虚拟机可以避免这种度量和权重的需要。</p>
+<h2 id="权重"><strong>权重</strong></h2>
+<p>权重通常表示为一个代表性硬件执行给定操作所需的整数。正如我们在 Buy Execution 指令中看到的，在处理某些指令时， XCVM 包含了执行时间 / 权重的概念。</p>
+<p>没有权重计量，但是考虑到 XCVM 程序最终获得的可能性小于最坏情况下的重量预测，我们有一个名为剩余权重寄存器的寄存器。因为我们可以准确地预测他们将占据多少权重，所以大多数指令不接触它。然而，有时候，最坏情况下的权重预测是一个高估的情况，只有在执行时，我们才知道有多少。虽然占块执行时间的权重估计过高的 XCM 消息，跟踪原始权重被高估的数量，并从帐户中减去它，允许链优化其块执行时间的配额。</p>
+<h2 id="流量控制和例外情况"><strong>流量控制和例外情况</strong></h2>
+<p>到目前为止，我们对 XCVM 的处理中已经隐含了另外两个寄存器，但是了解它仍然很重要。首先，有一个程序登记册，它存储当前正在执行的 XCVM 程序。其次是程序计数器，它存储当前正在执行的指令索引。当程序寄存器被更改时，这将被重置为零，并在每个成功执行的指令结束时增加一个。</p>
+<p>在编写代码时，处理“异常”情况的能力是至关重要的。当在远程系统上发生了一些您没有预料到（或者实际上无法预测）的事情时，那么您就需要某种方法来管理它，即使它只是简单地将一个报告发送回源，声明同样的内容。</p>
+<p>虽然 XCVM 指令集不包含任何显式的通用分支指令，但它的执行模型中确实内置了一个通用异常处理框架。XCVM 还包括两个代码寄存器，每个寄存器都包含一个像 Programme Register 这样的 XCVM 程序。这两个寄存器称为附录寄存器和错误处理程序寄存器。如果您熟悉几种流行语言中的 try / catch / finally 异常系统，那么接下来要做的事情可能会让人想起很多事情。</p>
+<p>如前所述， XCVM 程序的执行遵循其中的每一条指令，一步一步地执行。当它按照这些指令执行到程序结束时，将发生两种情况之一：要么成功地到达程序结束，要么发生错误。在第一个成功执行的情况下，错误寄存器被清除，其重量添加到剩余重量寄存器。附录登记册也被清除，其内容被放入方案登记册。如果节目登记册空着，我们就停止。否则，节目计数器复位为零。简单地说，我们扔掉当前的程序和错误处理程序，开始执行附录程序（如果有的话）。</p>
+<p>这个功能本身并不是很有用，但是如果与发生错误时发生的情况相结合，它就很有用。在这里，任何尚未执行的指令的权重被添加到剩余权重寄存器中。清除“错误处理程序寄存器”，将其内容放入“程序登记器”并将“程序计数器”重置为零。简单地说，我们抛出当前的程序，并开始执行错误处理程序。因为我们没有清除附录寄存器，所以除非它被错误处理程序重置，否则它将在成功完成后执行。</p>
+<p>由于其组成结构，它允许错误处理程序的任意“嵌套”：如果需要，错误处理程序也可以有错误处理函数，而附录可以有自己的附录。</p>
+<p>有两个指令允许对这些寄存器进行操作：SetAppendix 和 SetErrorHandler。如您所料，其中一个设置了附录寄存器，另一个设置了错误处理程序寄存器。每个参数的预测权重都比它们的参数的权重大一些。但是，在执行时，将被替换的寄存器中 XCM 消息的权重添加到剩余权重寄存器中，允许回收任何未使用的附录或错误处理程序的权重。</p>
+<h2 id="抛出错误"><strong>抛出错误</strong></h2>
+<p>有时，实际确保发生错误并定制该错误的某些方面可能是有用的。这是在编写测试代码时使用的但它可能最终会在一个活动链中找到用途，这并非不可能。这可以通过指令 Trap 在 XCVM 中完成。抛出的错误类型共享一个名称 Trap 。指令和错误都带有一个整数参数，允许在抛出错误者和外部观察者之间传递某种形式的信息。</p>
+<p>举例如下：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0930/10_6k6glkcs35.png" alt="Krfc4oXXBkAM8AyGkSYnnd9cPItWCvYbuAlDOiwq.png" title="5652837"></p>
+<p>Trap 将导致跳过最终的 DepositAsset 并运行错误处理程序的 DepositAsset，将 1 DOT (减去执行成本) 置于 Parachain 2000 的所有权之下。我们总是倾向于在错误处理程序代码的开头使用 RefundSurplus，因为如果它正在运行，我们就知道所使用的预测权重(以及由此购买的权重)可能是过高的估计。</p>
+<h2 id="错误报告"><strong>错误报告</strong></h2>
+<p>能够引入代码来处理错误是非常有用的，但是一个经常被要求的特性是能够报告XCM 消息返回给原始发件人。我们遇到了上一篇文章中的 Query Response 指令，它允许一个共识系统向另一个报告一些信息，剩下的就是能够以某种方式插入 XCM 进入这个 Query Response ，并将其发送给希望被告知结果的人。</p>
+<p>事实证明，只有一个名为 Report Error 的指令可以执行此操作。它通过使用我们尚未遇到的寄存器工作：错误寄存器。错误寄存器是一个可选类型（可以设置或清除）。如果已设置，则它包含两条信息：一个数字索引和一个 XCM 错误类型。</p>
+<p>它的操作原理极其简单。首先，每当一条指令产生错误时，它总是被设置；错误类型被设置为该错误的类型，数值索引被设置成程序计数器寄存器的值。其次，只有在执行 Clear Error 指令时，它才会被清除。这条指令是绝对正确的指令之一 —— 它永远不允许自己导致错误。这就是所有-它得到设置时，一个错误发生，得到清除时，你发出适当的指令。</p>
+<p>现在应该清楚地了解 ReportError 指令是如何工作的：它简单地使用错误寄存器的内容组成一个 QueryResponse 指令，并将其发送到特定的目的地。当然，在执行之前发生的任何错误都会导致指令被跳过，因为执行首先跳到 Error Handler 寄存器的代码，然后跳到附录寄存器的代码。但是，这方面的解决方案很简单：将 ReportError 放在附录中将确保它被执行，而不管主代码是否导致执行错误。</p>
+<p>让我们看一个简单的例子。我们将一个资产 (1DOT) 从中继链传送到 Statemint (Parachain 1000)，在那里购买一些执行时间，然后使用 Statemint 作为储备，我们将把资产存放在 Parachain 2000 上。原始 (无错误报告) 消息如下所示：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0930/10_u235n4lf70.png" alt="6CJoIODfncQVIEljIhggYwySIMXQsvchN27a7n9T.png" title="5652838"></p>
+<p>对于基本的错误报告，我们将使用以下方法：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0930/10_z9pst5a1e2.png" alt="rwdIy6FP6tXe3hqW86f5IeEmNysyTxbiZ1ndGFyU.png" title="5652839"></p>
+<p><img src="https://img.bibiqing.com/news/2021/0930/10_wbivu57ucn.png" alt="wxb0DQph78FKbUf82k1GcD3bq161vFzUQnVlgQHY.png" title="5652840"></p>
+<p>正如您所看到的，唯一的变化是引入了两个 Set Appendix 指令，确保 Statemint 和 parachain 2000 中的错误或缺乏错误将报告给中继链。这假设中继链已经设置为能够识别和处理来自 Statemint 和 parachain 2000 的 Query Response 消息，查询 ID 为 42 ，权重限制为 1000 万。令人高兴的是，这确实是基板支持的东西，但超出了范围。</p>
+<h2 id="资产陷阱"><strong>资产陷阱</strong></h2>
+<p>当在处理资产的程序中发生错误时（大多数程序都是这样做的，因为它们经常需要用 Buy Execution 来支付执行费用），那么它可能会非常有问题。可能存在 Buy Execution 指令本身导致错误的情况，可能是因为重量限制不正确或用于支付的资产不足。或者一个资产被送到一个无法有效处理的链。在这些情况下，消息的 XCVM 执行结束时，资产仍保留在 Holding Register 中，与其他寄存器一样，这些寄存器是暂时的，我们可能会忘记。</p>
+<p>XCM 允许链完全避免这种损失。该机制分两步工作。首先，持有登记册中的任何资产在获得批准后都不会被完全遗忘。如果在 XCVM 停止时持有登记册不是空的，那么就会发出一个包含三条信息的事件：持有寄存器的值；原产地登记册的原始值；以及这两条信息的散列。然后，XCM 系统将此散列放置在存储中。该机制的这一部分称为资产陷阱 (AssetTrap)。</p>
+<h2 id="索赔制度"><strong>索赔制度</strong></h2>
+<p>该机制的第二步是能够要求持有登记册的一些以前的内容。这实际上不是通过任何专门为此目的设计的东西来实现的，而是通过一个我们尚未遇到的通用指令，称为 Claim Asset 。在 Rust 中是这样声明的：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0930/10_aht3skwd0e.png" alt="FQERKLAwEsVAgL59W6D3OfXMW8oQjW9KcQx9mmdG.png" title="5652842"></p>
+<p>这个指令的名称可能会让人想起我们遇到过的某些其他“资金”指令，如 With draw Asset 和 Receive Teleported Asset 。如果是这样，那么它有一个很好的理由：它是。像其他人一样，它试图将资产（由这里的资产参数给出）放入持有登记册。不像 With draw Asset 那样会减少帐户上的资产余额， Claim Asset 寻找这些资产的有效索赔，无论这些资产在原始登记册中的价值是多少。为了帮助系统找到有效的索赔，可以通过票证参数提供信息。如果找到有效的债权，则从链中删除该债权，并将该资产列入持有登记册。</p>
+<p>到底什么构成索赔，完全取决于链条本身。不同的链可能支持不同类型的声明，并且 Substrate 允许您轻松地组合它们。但是，正如您可能猜到的那样，一种特殊的声明已经准备好了，当然，是先前删除的 Holding Register 内容。</p>
+<p>因此，让我们来看看这在实践中是如何工作的。假设我们的用户的 paracha in 2000 向 Statemint 发送一条消息，在该消息中，它从其主权帐户中提取 0.01 DOT 来支付费用，并通知它将 100 单位自己的本机令牌的储备资产转移到其在 Stat emint 的主权帐户。可能是这样的：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0930/10_817pye4c30.png" alt="q4dRMsN8waJvPFWNQPc5dvI48i86FEv0NpLMZDtG.png" title="5652844"></p>
+<p>假设 0.01 DOT 就足够了，并且 Statemint 支持 Parachain 2000 的本地资产的链上存款（以及使用 Parachain 2000 作为它的储备），那么这应该可以正常工作。然而，也许 Statemint 还没有建立起来承认 parachain 2000 的原生资产。在这种情况下，Deposit Asset 将不知道如何处理该资产，并因此抛出一个错误。在执行了将通知 parachain 2000 这个失败的附录之后，我们将剩下 100 个 paracha in 2000 的本机资产以及可能在持有登记簿中的一些 DOT。让我们假设费用只达到 0.005 DOT ，剩下的 0.005 DOT。</p>
+<p>然后，Statemint 的 Pallet 会记录一个关于这些新可索赔资产的事件，类似于：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0930/10_jo6cfvhqd4.png" alt="4LKEG20fI3Kj9SiPEKEx8lwqh2gPZ4gshzVvwzYZ.png" title="5652845"></p>
+<p>将向 Paracha in 2000 发送一条类似如下的消息：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0930/10_boi5mq7lg0.png" alt="Pco2527DgtPf23CX8bld6OUu6G6s2CexHzjv6HJZ.png" title="5652846"></p>
+<p>Parachain 2000 将在稍后阶段（也许一旦它确定 Statemint 能够接受其原生资产的存款），就能够用一个相当简单的方法回收这 100 个单元：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0930/10_58zbuyntk4.png" alt="V5pa8kpG2QsKZnA6rKPKf5fGpsjbm6qXAEr67x4N.png" title="5652847"></p>
+<p>在这种情况下，没有通过 ticket 参数提供特殊信息来帮助查找索赔。对于 Asset Trap 索赔，这通常是很好的，尽管对于其他类型的索赔可能需要使用它。</p>
+<h2 id="结论"><strong>结论</strong></h2>
+<p>希望本篇文章可以帮助你更好地理解  XCM 的底层虚拟机以及它如何帮助您从意外情况中管理和恢复。本系列的下一篇文章将讨论 XCM 以及如何改进格式、采取更深入的研究 XCMRust 实现路径，以及我们如何使用它为链提供易于解释的能力。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/29204/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">9月金色财经最具平台影响力作者榜 20位作者荣誉登榜</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/29195/">
+                <span class="next-text nav-default">JGN与当代艺术家陈建周达成独家NFT战略合作关系</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#执行模型"><strong>执行模型</strong></a></li>
+    <li><a href="#权重"><strong>权重</strong></a></li>
+    <li><a href="#流量控制和例外情况"><strong>流量控制和例外情况</strong></a></li>
+    <li><a href="#抛出错误"><strong>抛出错误</strong></a></li>
+    <li><a href="#错误报告"><strong>错误报告</strong></a></li>
+    <li><a href="#资产陷阱"><strong>资产陷阱</strong></a></li>
+    <li><a href="#索赔制度"><strong>索赔制度</strong></a></li>
+    <li><a href="#结论"><strong>结论</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

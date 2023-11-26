@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          如何利用分布式帐本实现自主身份？ - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="身份会因情境不同而不同，有时是姓名，有时是身份证字号，也有时是某个临时编号。" />
+<meta name="keywords" content="去中心化身份" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/35595/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="如何利用分布式帐本实现自主身份？" />
+<meta property="og:description" content="身份会因情境不同而不同，有时是姓名，有时是身份证字号，也有时是某个临时编号。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/35595/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-18T00:00:00+00:00" />
+
+<meta itemprop="name" content="如何利用分布式帐本实现自主身份？">
+<meta itemprop="description" content="身份会因情境不同而不同，有时是姓名，有时是身份证字号，也有时是某个临时编号。"><meta itemprop="datePublished" content="2022-03-18T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-18T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5030">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何利用分布式帐本实现自主身份？"/>
+<meta name="twitter:description" content="身份会因情境不同而不同，有时是姓名，有时是身份证字号，也有时是某个临时编号。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">如何利用分布式帐本实现自主身份？</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-18">
+      2022-03-18
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5030 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>前言</strong></p>
+<p>每个人都有过回答“你是谁”这个问题的经验。最近一次被问到“你是谁”时，你是怎麽介绍自己的？是回答姓名与职称？或是身份证字号？还是某活动的报名序号？</p>
+<p>当我们在尝试回答“你是谁”的时候，也正在定义我们的身份。</p>
+<p>身份会因情境不同而不同，有时是姓名，有时是身份证字号，也有时是某个临时编号。</p>
+<p><strong>什么是数位身份(Digital Identity)？</strong></p>
+<p>数位身份就是<strong>以数位形式表现与储存的身份</strong> ，自全球资讯网被发明以来，数位身份便跟著开始发展直到今日，网站域名、电子信箱、社群帐号等等都是数位身份的一种。</p>
+<p>我们的日常生活离不开数位身份的使用：上社群网站发文、订演唱会门票、上PTT看废文、用 GMail 联络公事、用线上课程进修、用云端硬碟备份资料等等。</p>
+<p>几乎可以说没有数位身份，就没有现代便利的生活。</p>
+<p>自主身份出现之前，数位身份的发展大致可以分为三个阶段：</p>
+<ul>
+<li><strong>第一阶段：中心化身份(Centralized Identity)</strong></li>
+</ul>
+<p>数位身份第一次随著全球资讯网的流行而有了大量的需求。</p>
+<p>如雨后春笋般冒出来的各种网站显露了一个迫切的问题：要怎麽证明你正在浏览的网站是可信任的？</p>
+<p>一个直觉的思路是：我们可以对可信任的网站域名颁发凭证(Certificate)，那么由谁来颁发？</p>
+<p>由于颁发凭证的机构必须是具有公信力的机构，因此凭证机构(Certificate Authority, CA)被设立，负责域名的审核与凭证的颁发。</p>
+<p>自1995年发展至今，凭证机构现在仍是Https的骨干。</p>
+<p>然而，CA是中心化且阶层化的(Hierarchical)：</p>
+<p>根CA(Root CA)颁发凭证给次级CA，次级CA再颁发凭证给更次级的CA，更次级的CA可以颁发凭证给注册某域名的网站，拥有凭证的域名则可以让用户信任，使用户愿意于此域名注册身份。</p>
+<p>在这样阶层化的架构下，一个用户的身份可以一直往上追朔到根CA，也就是说，根CA是身份的根基。</p>
+<p>由此可知，这样的数位身份非常依赖可信的根凭证机构，且用户的身份完全掌控于注册身份的域名拥有者，随着使用服务的增长，一个用户可能必须同时在数十个服务注册身份，身份变得破碎而脆弱。</p>
+<ul>
+<li><strong>第二阶段：联合身份(Federated Identity)</strong></li>
+</ul>
+<p>为了解决身份的破碎，一个直觉的思路是：让身份由数个组织组成的联盟共同管理，于联盟中任一个域名注册的身份都可以在联盟中通用，其中一个例子就是由昇阳(Sun)主导的自由联盟(Liberty Alliance, 2001)。</p>
+<p>联合身份虽然稍微解决在联盟之间身份破碎的问题，但是于联盟之外的身份仍然是破碎的，且身份仍由服务提供者掌控。</p>
+<ul>
+<li><strong>第三阶段：以用户为中心的身份(User-Centric Identity)</strong></li>
+</ul>
+<p>这就是我们目前所在的阶段：让不同服务、不同联盟的身份互通以及给予用户更多对身份的掌控，是此阶段的目标。</p>
+<p>若要使某一服务的身份可以在多个服务之间通用，则各家服务需要共同制定同一套规格以跨服务验证身份。</p>
+<p>重视用户允许(User Consent)与互通性(Interoperability)的结果使用户成为了身份的中心。</p>
+<p>用户可以自行决定是否要从一个服务分享自己的身份至另一个服务，防止数位身份的破碎。</p>
+<p>例如Open ID(2005)/OAuth(2010)/FIDO (2013)这些开发者熟知的验证(Authentication)协定就是遵循此原则的产物。</p>
+<p>虽然用户对身份拥有更多掌控以及有更好的互通性，但用户对于中心化服务的依赖程度却更胜以往，导致服务商拥有“滥用”用户隐私的权力，例如以广告营收为主要获利来源的企业，可以在不经用户同意下便使用或贩售用户资讯，用户隐私有受到侵犯的风险。</p>
+<p>身份的价值与厚度来自社交行为与频繁的互动，在完全理想(例如非数位)的场景下，身份应当是一个整体，并能依据情境不同而揭露不同资讯，正如同当我被询问“我是谁”时，我可以依照情境的不同给予不同的身份证明。</p>
+<p>然而，我们当今使用的数位身份既脆弱也无法表达身份的厚度。</p>
+<p>那么要如何实现一个不受任何中心化服务掌控的身份呢？</p>
+<p>这个问题的答案一直到最近才出现 — <strong>分散式帐本就是实现自主身份的最后一块拼图。</strong></p>
+<p><strong>什么是自主身份？</strong></p>
+<p><strong>自主身份</strong> (Self-sovereign Identity)<strong>就是用户可以完全掌控且于任何服务之间互通使用的数位身份。</strong></p>
+<p>自主身份与当今的数位身份不同 — 自主身份锚定于分散式帐本，不被任何中心化服务掌控。</p>
+<p>分散式帐本使数位身份具备下列特性，且正是这些特性保证了数位身份的自主性：</p>
+<ul>
+<li><strong>存在性(Existence)</strong></li>
+</ul>
+<p>中心化服务可以随时窜改数位身份的存在；分散式帐本则使身份能以去中心化识别符(DID)的形式锚定在其上且保护其不受篡改。</p>
+<ul>
+<li><strong>掌控性(Control)</strong></li>
+</ul>
+<p>中心化服务可以完全掌控数位身份；分散式帐本使用数位签章，掌控私钥即掌控身份，且私钥由用户自行保管。</p>
+<ul>
+<li><strong>存取性(Access)</strong></li>
+</ul>
+<p>中心化服务可以轻易限制身份存取；分散式帐本是复制状态机，用户可以于任一节点随时存取身份。</p>
+<ul>
+<li><strong>透明性(Transparency)</strong></li>
+</ul>
+<p>中心化服务多为闭源专案；分散式帐本大多为开源专案，用户可以掌控软体运作的细节。</p>
+<ul>
+<li><strong>持续性(Persistence)</strong></li>
+</ul>
+<p>中心化服务有服务中断的风险；分散式帐本多由受到经济激励的节点共同维护，不易中断服务。</p>
+<p><strong>自主身份的技术架构</strong></p>
+<p>Overview of Self-sovereign Identity</p>
+<p><img src="https://img.bibiqing.com/news/2022/0318/12_l9vltl8tdk.png" alt="如何利用分布式帐本实现自主身份？"></p>
+<p><strong>数位身份由识别(Identifier)、验证机制(Authentication)、凭证(Credential)这三个要素组成。</strong></p>
+<p>自主身份除了这三个要素，还具备了第四个要素：私钥与资料管理机制(DKMS)，这是由于自主身份使用数位签章而有管理私钥的需求。</p>
+<p>自主身份并不是全新的发明 — 许多技术的思路基本上沿用了现有的规格，自主身份真正的创举在于制定一套通用规格：</p>
+<p>去中心化识别符(Decentralized Identifier, DID)，使身份能够以同一标准锚定于不同分散式帐本并且互相通用。</p>
+<p>自主身份的四个要素之间具有如上图所示的关系，这些要素形成一个堆叠(Stack)的架构：</p>
+<p>最底层的#1负责身份的锚定；</p>
+<p>第二层的#2需要和底层的分散式帐本互动及负责用户资料与私钥的储存；</p>
+<p>第三层的#3则需要使用第二层的资料以进行用户身份的验证；</p>
+<p>成功完成验证后，最顶层的#4则可以发送各种凭证以表明用户的身份。</p>
+<p>这种上层依赖下层且同层之间互通的架构类似TCP/IP的七层网路协定 — 各层具有各自的协定与规格，且各层之间的运作细节是抽象的。</p>
+<p><strong>哪些组织在推动自主身份？</strong></p>
+<p>由于自主身份需要一系列协定的紧密配合，因此自主身份的进展有赖于统一的规格与设计良好的协定，这需要由业界组成的非营利组织共同推动与维护。</p>
+<p>目前有<strong>许多非营利的组织</strong> 都在自主身份领域持续贡献，例如：</p>
+<ul>
+<li><strong>重启信任网路</strong></li>
+</ul>
+<p>(Rebooting Web of Trust, RWoT)</p>
+<ul>
+<li><strong>全球资讯网协会的凭证社群组</strong></li>
+</ul>
+<p>(W3C Credential Community Group, W3C CCG)</p>
+<ul>
+<li><strong>去中心化身份基金会</strong></li>
+</ul>
+<p>(Decentralized Identity Foundation, DIF)</p>
+<ul>
+<li><strong>网际网路身份工作坊</strong></li>
+</ul>
+<p>(Internet Identity Workshop, IIW)</p>
+<p>这些组织在近3年来都有非常丰硕的产出。</p>
+<p>其中最活跃的应该就属RWoT：自2016年开始启动以来，RWoT发表超过40篇的论文、技术规格与开源程式码；RWoT孕育的技术规格也进一步提案给W3C或者IETF以进行标准化；</p>
+<p>DID规格草稿有一大部分是奠基于RWoT的工作成果；甚至连“自主身份”这个词彙也是在RWoT被创造的。</p>
+<p><strong>实现自主身份的技术规格</strong></p>
+<p>那么自主身份架构中的各层是如何运作的？</p>
+<p><strong>1.去中心化识别符(Decentralized Identifier, DID)</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0318/12_zoob98bc5c.png" alt="如何利用分布式帐本实现自主身份？"></p>
+<p>DID是<strong>自主身份技术架构中最底层</strong> 、也是最关键的一层 — 它负责身份于分散式帐本的写入/读取，其对于识别符的格式以及解析方法都有明确的定义，下列简述几个重要的部分：</p>
+<ul>
+<li><strong>DID(Decentralized Identifier)</strong></li>
+</ul>
+<p>DID是一个由数字与英文字母组成的识别符，其是唯一的且映射至一个位于某个帐本的DID文件。</p>
+<p>DID由三个部分组成：格式(scheme)、DID方法(DID Method)以及DID方法特化字串(DID Method-specific String)。</p>
+<p>DID方法将于下一点阐述；DID方法特化字串的产生方式则需于DID方法的规格中明确定义。</p>
+<ul>
+<li><strong>DID方法(DID Methods)</strong></li>
+</ul>
+<p>为位于DID中的一组字串，功能为区分每个DID 的解析方式 — 每一种帐本都有专属该帐本的 DID方法，且其对应位于该帐本之DID文件的创建/解析规则。</p>
+<p>例如注册于以太坊的DID会是像 did:eth:12345 这样的形式，DID方法需要向W3C注册以被解析器辨识。</p>
+<ul>
+<li><strong>DID文件(DID Document)</strong></li>
+</ul>
+<p>分散式帐本可以被想像成一个键值资料库(Key-value Database) — DID是键值，它所对应的内容就是写入分散式帐本的DID文件(DID Document)。</p>
+<p>DID文件包含：代表身份的公钥、验证协定、能与此身份互动的的服务终端等等。</p>
+<ul>
+<li><strong>DID解析器(DID Resolver)</strong></li>
+</ul>
+<p>协助更上层协定便于查询DID文件，解析器能够针对不同的DID方法进行解析，再将解析结果返回上层，上层协定不需要理会关于文件解析的细节。</p>
+<p>DIF针对解析的需求开发了通用解析器(Universal Resolver)，如此该解析器只需要部署一次，日后若有新的DID方法被注册，只需针对该方法进行扩充即可。</p>
+<p><strong>2. 去中心化私钥管理系统(Decentralized Key Management System, DKMS)</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0318/12_im9aomh140.png" alt="如何利用分布式帐本实现自主身份？"></p>
+<p>DKMS是用户使用自主身份的主要介面，除了与底层的DID连接之外，还需提供凭证的储存、私钥的备份等等，任务相当多元。</p>
+<p>规格上来说，DKMS可以再细分成三个子层：</p>
+<ul>
+<li><strong>DID层(DID Layer)</strong></li>
+</ul>
+<p>负责与更底层的分散式帐本连结以执行DID查询。</p>
+<ul>
+<li><strong>云端层(Cloud Layer)</strong></li>
+</ul>
+<p>负责储存用户的个人资料供上层协定使用，例如可验证凭证。</p>
+<ul>
+<li><strong>边缘层(Edge Layer)</strong></li>
+</ul>
+<p>负责管理私钥，同时也是让用户可以使用自主身份的去中心化应用程式(DApp)。</p>
+<p><strong>3.DID验证(DID Authentication)</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0318/12_qgsqiw5uqv.png" alt="如何利用分布式帐本实现自主身份？"></p>
+<p>目前仍尚未有任何准备成为通用标准的DID验证规格的提案，只有一份RWoT的文件深入探讨了验证流程。</p>
+<p><strong>DID验证的任务只有一个</strong> ：就是让用户证明自己拥有某身份 — 用户只要证明自己拥有跟某个自主身份公钥匹配的私钥即可。</p>
+<p>进行验证后便能使不同个体之间建立可信任且更长久的通讯管道，以利更上层协定交换其他资料，例如可验证凭证。</p>
+<p>现今存在许多行之有年的验证方式，例如 OAuth / OpenID 等等。</p>
+<p>类似这些验证方法，DID验证也使用挑战-回应循环(Challenge-response Cycle)进行验证：</p>
+<p>验证者发出挑战，身份拥有者根据挑战作出回应，验证者再检验回应是否有效。</p>
+<p>至于挑战的形式则没有明确的定义，不过我们一定都有回应挑战的经验— 我们在登入某帐号前都必须输入的帐号密码就是其中一种挑战的方式。</p>
+<p><strong>4. 可验证凭证(Verifiable Credential, VC)</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0318/12_k7csi193wp.png" alt="如何利用分布式帐本实现自主身份？"></p>
+<p><strong>VC是自主身份架构中发展最早、也是最成熟的规格。</strong></p>
+<p>作为自主身份架构最顶层的协定，它只有一个目的：取代用户皮夹裡的所有证件。</p>
+<p>VC是基于密码学的数位凭证，可在不同应用程式间通用，它让身份回归到最理想的状态：身份是完整的且完全受用户掌控的，用户可以依照情境的不同而揭露不同的凭证。</p>
+<p>由于所有自主身份都能发行与保存凭证，也就没有身份破碎的问题。</p>
+<p>VC包含三个部分：</p>
+<ul>
+<li><strong>断言(Claims)</strong></li>
+</ul>
+<p>为关于主体的一段陈述，表示[主体 — 性质 — 内容]之间的关係，例如：[小明 — 学生 — 有间学校]代表小明为有间学校的学生。</p>
+<ul>
+<li><strong>凭证后设资料(Credential Metadata)</strong></li>
+</ul>
+<p>为有关凭证的其他资讯，例如类型、发行者、发行时间等等。</p>
+<ul>
+<li><strong>证明(Proof)</strong></li>
+</ul>
+<p>为发行者对凭证内容的数位签章。</p>
+<p>在使用VC揭露身份时，要如何避免不会暴露过多的隐私？</p>
+<p>可验证陈述(Verifiable Presentation)便是利用零知识证明(Zero-knowledge Proof)保护凭证的进阶规格，细节容笔者于日后令撰文分析。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/35577/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">如果有加密大熊市 真的有“金子”可以回来捡吗？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/35606/">
+                <span class="next-text nav-default">时代周刊：以太坊背后的V神担心加密货币的未来</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          一文读懂IPFS：新一代互联网底层协议 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="一种点对点超媒体协议，通过使网络可升级、弹性和更开放的方式保存与发展人类的知识。" />
+<meta name="keywords" content="IPFS" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/36076/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="一文读懂IPFS：新一代互联网底层协议" />
+<meta property="og:description" content="一种点对点超媒体协议，通过使网络可升级、弹性和更开放的方式保存与发展人类的知识。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/36076/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-30T00:00:00+00:00" />
+
+<meta itemprop="name" content="一文读懂IPFS：新一代互联网底层协议">
+<meta itemprop="description" content="一种点对点超媒体协议，通过使网络可升级、弹性和更开放的方式保存与发展人类的知识。"><meta itemprop="datePublished" content="2022-03-30T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-30T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8272">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一文读懂IPFS：新一代互联网底层协议"/>
+<meta name="twitter:description" content="一种点对点超媒体协议，通过使网络可升级、弹性和更开放的方式保存与发展人类的知识。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">一文读懂IPFS：新一代互联网底层协议</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-30">
+      2022-03-30
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8272 字 -
+        预计阅读 17 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="什么是ipfs"><strong>什么是IPFS</strong></h3>
+<p>为去中心化互联网(web3.0)提供动力。</p>
+<p>一种点对点超媒体协议，通过使网络可升级、弹性和更开放的方式保存与发展人类的知识。</p>
+<p>IPFS 是一个分布式系统，用于存储和访问文件、网站、应用程序和数据。</p>
+<h3 id="http"><strong>HTTP</strong></h3>
+<p>&ldquo;IPFS&quot;对标的是一个叫&quot;HTTP&quot;的东西，这你可能比较熟悉，当你上网打开百度搜索页面时，它所见即所得。</p>
+<p>web的应用层协议是超文本传输协议（HTTP），它是传统web的核心。HTTP由两个程序实现：一个客户程序和一个服务器程序。客户程序和服务器程序运行在不同的端系统，通过交换HTTP进行会话。HTTP定义了这些数据的结构以及客户端和服务器进行交互的方式。</p>
+<p>web页面是由对象组成的，一个对象只是一个文件，诸如一个HTML文件，一个JPEG图形，或一段小视频片这样的文件，且它们可以通过URL地址寻址。多数web页面含有一个html基本文件，以及几个引用对象。</p>
+<p>HTTP定义了web客户向web服务器请求web页面的方式，以及服务器向客户传送web页面的方式。</p>
+<p>而浏览器做的工作就是执行和解析HTTP协议与前端代码然后将内容展示出来，提交查询的时候通常是web端查询它的数据库然后将结果返回给请求方，也就是浏览器，然后浏览器展示出来。</p>
+<h3 id="http协议的弊端"><strong>HTTP协议的弊端</strong></h3>
+<p>我们现在使用互联网都是在http或https协议下运行的，http协议也就是超文本传输协议，是用于从万维网服务器传输超文本到本地浏览器的传送协议，从1990年提出至今已经32年了，他对于目前互联网的爆炸性成长居功至伟，成就了互联网的繁荣。</p>
+<p>但是HTTP协议是基于C/S架构下的互联网通信协议，基于主干网络中心化运行的机制，也存在诸多弊端。</p>
+<ol>
+<li>
+<p>互联网上的数据经常因为文件被删除或服务器关闭而永久被抹去。有人统计过目前互联网上的web页面平均保存寿命只有100天左右，我们经常看到一些网站出现&quot;404错误&rdquo;。</p>
+</li>
+<li>
+<p>主干网络运行效率低，使用成本高。使用HTTP协议每次需要从中心化的服务器下载完整的文件，速度慢、效率低。</p>
+</li>
+<li>
+<p>主干网络并发机制制约互联网访问速度。这种中心化主干网络的模式也导致在高并发情况下网络访问时候的拥堵。</p>
+</li>
+<li>
+<p>在现有的http协议下，所有的数据都保存在这些中心化服务器上，互联网巨头们不但对我们的数据有绝对的控制权和解释权，各种各样的监管、封锁、监控一定程度上也极大的限制了创新和发展。</p>
+</li>
+<li>
+<p>成本高，易被攻击，为了支撑HTTP协议，对于大流量公司，比如百度、腾讯、阿里等，投入大量资源维护服务器和安全隐患，防止DDoS等攻击。主干网络受制于战争，自然灾害，中心服务器宕机等因素，都可能造成整个互联网中断服务。</p>
+</li>
+</ol>
+<p><strong>IPFS的解决方案</strong></p>
+<ol>
+<li>
+<p>IPFS提供了文件的历史版本回溯功能，可以很容易的查看文件的历史版本, 且数据无法删除，可以得到永久保存。</p>
+</li>
+<li>
+<p>IPFS是基于内容寻址的存储模式，相同的文件都不会重复存储，它会把过剩的资源挤压下来，包括存储空间都释放出来，数据存储成本就会降低。如果改用P2P的方式下载，带宽使用成本可以节省近60%。</p>
+</li>
+<li>
+<p>IPFS是基于P2P网络，可以有多个源保存了数据，可以并发从多个节点下载数据。</p>
+</li>
+<li>
+<p>建立在去中心化的分布式网络上的IPFS很难被中心化管理和限制，互联网将更加开放。</p>
+</li>
+<li>
+<p>IPFS分布式存储可以极大的降低对中心主干网络的依赖。</p>
+</li>
+</ol>
+<p>言简意赅地说：</p>
+<p>HTTP依赖中心化服务器，容易遭受攻击，访问量暴增服务器容易宕机，下载速度慢，存储成本高；</p>
+<p>而IPFS是分布式节点，更加安全不易被DDoS攻击，不依赖主干网，降低存储成本且存储空间大，下载速度快还能查找文件历史版本记录，并且理论上能永久储存。</p>
+<p><strong>新的技术取代老的技术，无非就两点：</strong></p>
+<p><strong>第一，能提高系统效率；</strong></p>
+<p><strong>第二，能够降低系统成本。</strong></p>
+<p><strong>IPFS把这两点都做到了。</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0330/9_gtlqrs4b3e.png" alt="image"></p>
+<p>IPFS的团队在开发时，采用高度模块集成化的方式，像搭积木一样去开发整个项目。协议实验室团队2015年创立，到17年的时间里都在做IPLD、LibP2P、Multiformats这三个模块的开发，它们服务于IPFS底层。</p>
+<p>Mutiformats是一系列 hash 加密算法和自描述方式（从值上就可以知道值是如何生成）的集合，它具有 SHA1 \ SHA256 \ SHA512 \ Blake3B 等6种主流的加密方式，用以加密和描述nodeID以及指纹数据的生成。</p>
+<p><strong>LibP2P是IPFS核心中的核心，面对各式各样的传输层协议以及复杂的网络设备，它可以帮助开发者迅速建立一个可用P2P网络层，快速且节约成本，这也是为什么IPFS技术被众多区块链项目青睐的缘由</strong> 。</p>
+<p>IPLD其实是一个转换中间件，将现有的异构数据结构统一成一种格式，方便不同系统之间的数据交换和互操作。现在IPLD支持的数据结构，例如比特币、以太坊的区块数据，也支持IPFS和IPLD。这也是IPFS为什么受到区块链系统欢迎的原因之二，它的IPLD中间件可以把不同的区块结构统一成一个标准进行传递，为开发者提供了成功性比较高的标准，不用担心性能、稳定和bug。</p>
+<p><strong>IPFS好处</strong></p>
+<ul>
+<li>
+<p>融合了Kademlia、BitTorrent、Git等理念的一种<strong>超媒体分发协议</strong></p>
+</li>
+<li>
+<p>避免了中心节点失效，无审查和管控的完全去中心化的<strong>点到点传输网络</strong></p>
+</li>
+<li>
+<p><strong>驶入互联网的明天</strong> ——新的浏览器已经默认支持IPFS协议（brave，opera），传统浏览器可以通过访问地址如<code>https://ipfs.io</code>等的公共IPFS网关，或者安装<a href="https://github.com/ipfs-shipyard/ipfs-companion#ipfs-companion">IPFS 伴侣</a>扩展来访问储存在IPFS网络中的文件</p>
+</li>
+<li>
+<p><strong>下一代内容分发网络CDN</strong> ——只需要在本地节点添加文件就可以使得全球都可以通过缓存友好的内容哈希地址和类BitTorrent网络带宽分发来获得文件</p>
+</li>
+<li>
+<p>依托强大的开源社区为后盾，为构建<a href="https://awesome.ipfs.io/">完整分布式应用和服务</a>的一个<strong>开发者工具集</strong></p>
+</li>
+</ul>
+<p>IPFS把文件在系统中如何存储、索引和传输都定义好，也就是将上传好的文件转换成专门的数据格式进行存储，同时IPFS会将相同的文件进行了hash计算，确定其唯一的地址。所以无论在任何设备，任意地点，相同的文件都会指向相同的地址（不同于URL，这种地址是原生的，由加密算法保证的，你无法改变，也无需改变）。然后通过一个文件系统将网络中所有的设备连接起来，然后让存储在IPFS系统上的文件，在全世界任何一个地方快速获取，且不受防火墙的影响（无需网络代理）。所以从根本上说，IPFS能改变WEB内容的分发机制，使其完成去中心化。</p>
+<h3 id="ipfs工作原理"><strong>IPFS工作原理</strong></h3>
+<p>IPFS 是一个点对点 (p2p) 存储网络。可以通过位于世界任何地方的节点访问内容，这些节点可能会传递信息、存储信息或两者兼而有之。IPFS 知道如何使用其内容地址，而不是其位置来查找您要求的内容。</p>
+<p>理解 IPFS 的三个基本原则：</p>
+<ol>
+<li>
+<p><strong>通过内容寻址的唯一标识</strong></p>
+</li>
+<li>
+<p><strong>通过有向无环图 (DAG) 进行内容链接</strong></p>
+</li>
+<li>
+<p><strong>通过分布式哈希表 (DHT) 发现内容</strong></p>
+</li>
+</ol>
+<p>这三个原则相互依赖，而打造的IPFS 生态系统。让我们从<strong>内容寻址</strong> 和<strong>内容的唯一标识</strong> 开始</p>
+<p><strong>内容寻址和内容的唯一标识</strong></p>
+<p>IPFS 使用<strong>内容寻址</strong> 来根据内容而不是位置来识别内容。按内容查找项目是每个人一直在做的事情。</p>
+<p>比如你在图书馆找一本书，经常是按书名来找的；那是内容寻址，因为你在问它是什么。</p>
+<p>如果你使用位置寻址来查找那本书，你会通过它的位置来找：&ldquo;我想要在二楼的书，第三个书架，第四层，从左边算起四本书。&rdquo;</p>
+<p>如果有人搬了那本书，那你就倒霉了！</p>
+<p>互联网和您的计算机上都存在这个问题！现在，内容是按位置查找的，例如：</p>
+<ul>
+<li>
+<p><code>https://en.wikipedia.org/wiki/Aardvark</code></p>
+</li>
+<li>
+<p><code>/Users/Alice/Documents/term_paper.doc</code></p>
+</li>
+<li>
+<p><code>C:\Users\Joe\My Documents\project_sprint_presentation.ppt</code></p>
+</li>
+</ul>
+<p>相比之下，每条使用 IPFS 协议的内容都有一个*<a href="https://docs.ipfs.io/concepts/content-addressing/">内容标识符</a>*，即 CID。哈希对于它所来自的内容来说是唯一的，即使它与原始内容相比可能看起来很短。</p>
+<p>许多分布式系统通过哈希使用内容寻址，不仅可以识别内容，还可以将其链接在一起——从支持代码的提交到运行加密货币的区块链，一切都利用了这种策略。然而，这些系统中的底层数据结构不一定是可互操作的。</p>
+<p><strong>CID (Content Identifiers )</strong></p>
+<p><a href="https://github.com/multiformats/cid">CID 规范</a>起源于 IPFS，现在以多格式存在，并支持包括 IPFS、IPLD、libp2p 和 Filecoin 在内的广泛项目。尽管我们将在整个课程中分享一些 IPFS 示例，但本教程是关于 CID 本身的剖析，每个分布式信息系统都将其用作引用内容的核心标识符。</p>
+<p>内容标识符或<strong>CID</strong> 是一个自描述的内容寻址标识符。它并不表示内容存储_在哪里_，而是根据内容本身形成一种地址。CID 中的字符数取决于基础内容的<strong>加密哈希</strong> ，而不是内容本身的大小。由于 IPFS 中的大多数内容都使用 哈希<code>sha2-256</code>，因此您遇到的大多数 CID 将具有相同的大小（256 位，相当于 32 字节）。这使它们更易于管理，尤其是在处理多条内容时。</p>
+<p>例如，如果我们在 IPFS 网络上存储了土豚的图像，它的 CID 将如下所示： <code>QmcRD4wkPPi6dig81r5sLj9Zm1gDCL4zgpEj9CfuRrGbzF</code></p>
+<p>之前的演示过的uniswap的IPFS链接：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0330/9_tj98utnq75.png" alt="image"></p>
+<p>创建 CID 的第一步是转换输入数据，使用<strong>加密算法</strong> 将任意大小的输入（数据或文件）映射到固定大小的输出。这种转换称为<strong>哈希数字指纹</strong> 或简称<strong>哈希</strong> （默认使用sha2-256）。</p>
+<p><img src="https://proto.school/tutorial-assets/T0006L01-crypto-algo-256.png" alt="一文读懂IPFS：新一代互联网底层协议"></p>
+<p>使用的<strong>加密算法</strong> 必须生成具有以下特征的哈希值：</p>
+<ul>
+<li>
+<p><strong>确定性</strong> ：相同的输入应该总是产生相同的哈希。</p>
+</li>
+<li>
+<p><strong>不相关</strong> ：输入数据中的一个小变化应该会产生一个完全不同的哈希。</p>
+</li>
+<li>
+<p><strong>单向</strong> ：从哈希值中回推输入数据是不可行的。</p>
+</li>
+<li>
+<p><strong>唯一性</strong> ：只有一个文件可以产生一个特定的哈希。</p>
+</li>
+</ul>
+<p>请注意，如果我们更改土豚图像中的单个像素，加密算法将为图像生成完全不同的哈希。</p>
+<p>当我们使用内容地址获取数据时，我们可以保证看到该数据的预期版本。这与传统Web 上的位置寻址完全不同，在传统 Web 上，给定地址 (URL) 上的内容会随时间而变化。</p>
+<p><img src="https://w3hitchhiker.mirror.xyz/_next/image?url=https%3A%2F%2Fimages.mirror-media.xyz%2Fpublication-images%2FCYq6UJ3vuZxgVv94B-Iwn.png&amp;w=2048&amp;q=90" alt="一文读懂IPFS：新一代互联网底层协议"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0330/9_q8wvrkd0db.png" alt="image"></p>
+<p><strong>CID的结构</strong></p>
+<p><img src="https://w3hitchhiker.mirror.xyz/_next/image?url=https%3A%2F%2Fimages.mirror-media.xyz%2Fpublication-images%2FpCdUjFSkAreEkQw7yctdn.png&amp;w=2048&amp;q=90" alt="一文读懂IPFS：新一代互联网底层协议"><img src="https://img.bibiqing.com/news/2022/0330/9_smg2cr2445.png" alt="image"></p>
+<p><strong>Multiformats</strong></p>
+<p>Multiformats在IPFS体系中主要负责身份的加密和数据的自我描述。</p>
+<p>Multiformats是未来安全系统的协议集合，自描述格式可以让系统可互相协作和升级。</p>
+<p><strong>Multiformats</strong> 协议里面包含以下协议：</p>
+<p>multihash - 自描述哈希</p>
+<p>multiaddr - 自描述网络地址</p>
+<p>multibase - 自描述基编码</p>
+<p>multicodec - 自描述序列化</p>
+<p>multistream - 自描述流网络协议</p>
+<p>multigram (WIP) - 自描述分组网络协议</p>
+<h3 id="内容链接有向无环图dag"><strong>内容链接 有向无环图（DAG）</strong></h3>
+<p>Merkle DAG 继承了CID的可分配性。对 DAG 使用内容寻址会对它们的分发产生一些有趣的影响。首先，当然，任何拥有 DAG 的人都能够充当该 DAG 的提供者。第二个是当我们检索编码为 DAG 的数据时，比如文件目录，我们可以利用这一事实并行检索节点的所有子节点，可能来自许多不同的提供者！</p>
+<p>三是文件服务器不仅限于集中式数据中心，让我们的数据覆盖范围更广。最后，因为 DAG 中的每个节点都有自己的 CID，所以它所代表的 DAG 可以独立于它本身嵌入的任何 DAG 进行共享和检索。</p>
+<p><strong>可验证性</strong></p>
+<p>是否曾经备份了文件，然后在几个月后找到这两个文件或目录并想知道它们的内容是否相同？你可以为每个备份计算一个 Merkle DAG，而不需要费力地比较文件：如果根目录的 CID 匹配，就会知道哪些可以安全地删除，并释放硬盘驱动器上的一些空间！</p>
+<p><strong>可分配性</strong></p>
+<p>例如，一个大型数据的分发。在传统web网络上：</p>
+<ul>
+<li>
+<p>共享文件的开发人员负责维护服务器及其相关费用</p>
+</li>
+<li>
+<p>同一台服务器很可能用于响应世界各地的请求</p>
+</li>
+<li>
+<p>数据本身可以作为单个文件存档以单片方式分布</p>
+</li>
+<li>
+<p>很难找到相同数据的替代供应者</p>
+</li>
+<li>
+<p>数据可能是大块的，必须从单个供应者那串行下载</p>
+</li>
+<li>
+<p>其他人很难共享数据</p>
+</li>
+</ul>
+<p>Merkle DAG 帮助我们缓解所有这些问题。通过将数据转换为内容寻址的 DAG：</p>
+<ul>
+<li>
+<p>任何想要的人都可以帮助收发文件</p>
+</li>
+<li>
+<p>来自世界各地的节点都可以参与服务数据</p>
+</li>
+<li>
+<p>DAG的每一部分都有自己的CID，可以独立分发</p>
+</li>
+<li>
+<p>很容易找到相同数据的替代供应者</p>
+</li>
+<li>
+<p>构成 DAG 的节点很小，可以从许多不同的供应者处并行下载</p>
+</li>
+</ul>
+<p>所有这些都有助于重要数据的可扩展性。</p>
+<p><strong>重复数据删除</strong></p>
+<p>例如，以浏览网页为例！当一个人使用浏览器访问网页时，浏览器必须先下载与该页面相关的资源，包括图像、文本和样式。其实许多网页实际上看起来非常相似，只是使用了相同主题其他只是略有变化。这里会产生很多冗余。</p>
+<p><img src="https://w3hitchhiker.mirror.xyz/_next/image?url=https%3A%2F%2Fimages.mirror-media.xyz%2Fpublication-images%2FkWXNYTAA8NnkxhgIgmiMD.png&amp;w=2048&amp;q=90" alt="一文读懂IPFS：新一代互联网底层协议"><img src="https://img.bibiqing.com/news/2022/0330/9_u9c9czhquw.png" alt="image"></p>
+<p>当浏览器足够优化的时候，可以避免多次下载该组件。每当用户访问新网站时，浏览器只需下载其 DAG 中与不同部分相对应的节点，而之前已经下载了其他部分不需要再次下载！（想想 WordPress 主题、Bootstrap CSS 库或常见的 JavaScript 库）</p>
+<h3 id="分布式哈希表-dht"><strong>分布式哈希表 (DHT)</strong></h3>
+<p>分布式哈希表 (DHT) 是用于将键映射到值的分布式系统。在 IPFS 中，DHT 被用作内容路由系统的基本组件，并且充当目录和导航系统之间的交叉点。它将用户正在寻找的内容映射到存储匹配内容的peer节点。可以把它想象成一个巨大的表格，存储谁拥有什么数据。</p>
+<h3 id="libp2p"><strong>Libp2p</strong></h3>
+<p><strong><a href="https://libp2p.io/">libp2p</a>是一个模块化的网络堆栈，它从</strong> <a href="https://ipfs.io/">IPFS</a>演变为一个独立的项目。波卡也在用，eth2.0也在部分使用。</p>
+<p>为了解释为什么 libp2p 是去中心化网络中如此重要的一部分，我们需要退后一步，了解它的来源。libp2p 的初始实现始于 IPFS，一个点对点文件共享系统。让我们从探索 IPFS 旨在解决的网络问题开始。</p>
+<h3 id="网络"><strong>网络</strong></h3>
+<p>网络是非常复杂的系统，有自己的规则和限制，因此在设计这些系统时，我们需要考虑很多情况和用例：</p>
+<ul>
+<li>
+<p><strong>防火墙</strong> ：您的笔记本电脑中可能安装了防火墙，阻止或限制特定连接。</p>
+</li>
+<li>
+<p><strong>NAT</strong> ：您的家庭 WiFi 路由器，带有 NAT（网络地址转换），可将您笔记本电脑的本地 IP 地址转换为您家外的网络可以连接的单个 IP 地址。</p>
+</li>
+<li>
+<p><strong>高延迟网络</strong> ：这些网络的连接速度非常慢，让用户等待很长时间才能看到他们的内容。</p>
+</li>
+<li>
+<p><strong>可靠性</strong> ：世界各地分布着许多网络，而且很多用户经常遇到速度慢的网络，这些网络没有强大的系统来为用户提供良好的连接。连接频繁断开，用户的网络系统质量不佳，无法为用户提供应有的服务。</p>
+</li>
+<li>
+<p><strong>漫游</strong> ：移动寻址是另一种情况，我们需要保证用户的设备在通过世界各地的不同网络导航时保持唯一可发现性。目前，它们在需要大量协调点和连接的分布式系统中工作，但最好的解决方案是去中心化的。</p>
+</li>
+<li>
+<p><strong>审查制度</strong> ：在当前的网络状态下，如果您是政府实体，在特定网站域中屏蔽网站相对容易。这对于阻止非法活动很有用，但当一个专制政权想要剥夺其人口对资源的访问权时，就会成为一个问题。</p>
+</li>
+<li>
+<p><strong>具有不同属性</strong> 的运行时：周围有许多类型的运行时，例如物联网（物联网）设备（Raspberry Pi、Arduino 等），它们正在获得大量采用。因为它们是用有限的资源构建的，所以它们的运行时通常使用不同的协议，这些协议对它们的运行时做出了很多假设。</p>
+</li>
+<li>
+<p><strong>创新非常缓慢</strong> ：即使是拥有大量资源的最成功的公司也可能需要数十年的时间来开发和部署新协议。</p>
+</li>
+<li>
+<p><strong>数据隐私</strong> ：消费者最近越来越担心越来越多不尊重用户隐私的公司。</p>
+</li>
+</ul>
+<p><strong>P2P协议当前问题</strong></p>
+<p>点对点 (P2P) 网络从互联网的概念中被设想为一种创建弹性网络的方式，即使peer节点由于重大的自然或人为灾难而与网络断开连接，该网络仍能正常工作，从而允许人们继续通信。</p>
+<p>P2P 网络可用于各种用例，从视频通话（例如 Skype）到文件共享（例如 IPFS、Gnutella、KaZaA、eMule 和 BitTorrent）。</p>
+<p><strong>基础概念</strong></p>
+<p><strong>Peer</strong>  - 去中心化网络的参与者。peer节点是应用程序中同等特权、同等能力的参与者。在 IPFS 中，当您在笔记本电脑上加载 IPFS 桌面应用程序时，您的设备将成为去中心化网络 IPFS 中的Peer节点。</p>
+<p><strong>Peer-to-Peer (P2P)</strong>  - 一个分散的网络，工作负载在peer节点之间共享。因此，在 IPFS 中，每个Peer节点都可能托管要与其他peer节点共享的全部或部分文件。当一个节点请求文件时，任何拥有这些文件块的节点都可以参与发送请求的文件。然后，请求数据的节点方可以稍后与其他节点方共享数据。</p>
+<p>IPFS 在当前和过去的网络应用和研究中寻找灵感，尝试改进其 P2P 系统。学术界有大量的科学论文提供了如何解决其中一些问题的想法，但是虽然研究产生了初步结果，但它缺乏可以使用和调整的代码实现。</p>
+<p>现有 P2P 系统的代码实现真的很难找到，而且在它们确实存在的地方，由于以下原因，它们通常难以重用或重新调整用途：</p>
+<ul>
+<li>
+<p>文件不佳或不存在</p>
+</li>
+<li>
+<p>限制性许可或找不到许可</p>
+</li>
+<li>
+<p>十多年前最后一次更新的非常旧的代码</p>
+</li>
+<li>
+<p>没有联系点（没有维护人员可以联系）</p>
+</li>
+<li>
+<p>闭源（私有）代码</p>
+</li>
+<li>
+<p>已弃用的产品</p>
+</li>
+<li>
+<p>未提供规格</p>
+</li>
+<li>
+<p>没有暴露友好的 API</p>
+</li>
+<li>
+<p>实现与特定用例的耦合过于紧密</p>
+</li>
+<li>
+<p>无法使用未来的协议升级</p>
+</li>
+</ul>
+<p>必须有更好的方法。看到主要问题是互操作性，IPFS 团队设想了一种更好的方法来集成所有当前的解决方案并提供一个促进创新的平台。一种新的模块化系统，可以使未来的解决方案无缝集成到网络堆栈中。</p>
+<p>libp2p 是 IPFS 的网络栈，但从 IPFS 中抽离出来，成为独立一流的项目和 IPFS 的依赖项目。</p>
+<p>通过这种方式，libp2p 能够在不依赖于 IPFS 的情况下进一步发展，获得自己的生态系统和社区。IPFS 只是成为 libp2p 的众多用户之一。</p>
+<p>这样，每个项目都可以只专注于自己的目标：</p>
+<p>IPFS 更专注于内容寻址，即查找、获取和验证网络中的任何内容。<br>
+libp2p 更侧重于进程寻址，即查找、连接和验证网络中的任何数据传输进程。那么 libp2p 是如何做到的呢？</p>
+<p>答案是：<strong>模块化</strong> 。</p>
+<p><img src="https://w3hitchhiker.mirror.xyz/_next/image?url=https%3A%2F%2Fimages.mirror-media.xyz%2Fpublication-images%2FEEp7u4edrKywsZQm7e1nU.png&amp;w=1920&amp;q=90" alt="一文读懂IPFS：新一代互联网底层协议"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0330/9_8eddu6vz2o.png" alt="image"></p>
+<p>libp2p 已经确定了可以构成网络堆栈的特定部分：</p>
+<p><img src="https://w3hitchhiker.mirror.xyz/_next/image?url=https%3A%2F%2Fimages.mirror-media.xyz%2Fpublication-images%2FZNrylmdOTg1c9XfaPd5XX.png&amp;w=1920&amp;q=90" alt="一文读懂IPFS：新一代互联网底层协议"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0330/9_6ois0sdozc.png" alt="image"></p>
+<p>多语言实现，支持7种开发语言，libp2p 的 JavaScript 实现也适用于浏览器和移动浏览器！这非常重要，因为它使应用程序也可以在桌面和移动设备上运行 libp2p。</p>
+<p><img src="https://w3hitchhiker.mirror.xyz/_next/image?url=https%3A%2F%2Fimages.mirror-media.xyz%2Fpublication-images%2FtwBjwcLX3oTCK767xEXOo.png&amp;w=1920&amp;q=90" alt="一文读懂IPFS：新一代互联网底层协议"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0330/9_bqtq8nz1st.png" alt="image"></p>
+<p>应用程序包括文件存储、视频流、加密钱包、开发工具和区块链。可以区块链顶流的项目都已经有采用IPFS的libp2p模块。</p>
+<p><img src="https://w3hitchhiker.mirror.xyz/_next/image?url=https%3A%2F%2Fimages.mirror-media.xyz%2Fpublication-images%2FdBz42cQQDMkkNSJWqBoXq.png&amp;w=1920&amp;q=90" alt="一文读懂IPFS：新一代互联网底层协议"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0330/9_ikmt48hks0.png" alt="image"></p>
+<h3 id="ipld"><strong>IPLD</strong></h3>
+<p><strong>IPLD 用于理解和处理数据。</strong></p>
+<p><strong>IPLD是一个转换中间件，将现有的异构数据结构统一成一种格式，方便不同系统之间的数据交换和互操作，数据模型与解码，使用CID做为链接。</strong></p>
+<p>首先，我们定义了一个“数据模型”，它说明了数据的域和范围。这很重要，因为它是我们将要构建的一切的基础。 （广义地说，我们可以说数据模型“像 JSON”，像map、string、list等） 此后，我们定义了“编解码器”，它说明了如何从消息中解析它并作为我们想要的消息形式发出。 IPLD 有很多编解码器。您可以根据您希望与之交互的其他应用程序选择使用不同的编解码器，或者仅根据您自己的应用程序喜欢的性能与人类可读性的适合性来选择使用不同的编解码器。</p>
+<p>IPLD 实现了最上面的三层协议：<strong>对象、文件、命名</strong> 。</p>
+<ul>
+<li>
+<p><strong>对象层</strong>  - IPFS 中的数据以 Merkle Directed Acyclic Graph（Merkle DAG）的结构组织，节点称为对象，可以包含数据或指向其他对象的链接，链接是嵌入在源中的目标数据的加密哈希。这些数据结构提供了许多有用的属性，如内容寻址、数据防篡改、重复数据删除等；</p>
+</li>
+<li>
+<p><strong>文件层</strong>  - 为了在 Merkle DAG 之上建模一个类似 Git 的版本控制系统，IPFS 定义了如下的对象：</p>
+</li>
+<li>
+<p>blob 数据块：blob 是一个可变大小的数据块（无链接），代表一个数据块；</p>
+</li>
+<li>
+<p>list：用于有序地组织 blob 或其他 lists，通常代表一个文件；</p>
+</li>
+<li>
+<p>tree：代表目录并包含 blobs、lists 以及其他 trees；</p>
+</li>
+<li>
+<p>commit：类似于 Git 的提交，表示对象的版本历史记录中的快照；</p>
+</li>
+<li>
+<p><strong>命名层</strong>  - 由于对象的每次更改都会改变其哈希值，因此需要对哈希值做一个映射。IPNS（Inter Planetary 命名空间系统）为每个用户分配一个可变的命名空间，并且可以将对象发布到由用户私钥签名的路径，以验证对象的真实性。类似 URL。</p>
+</li>
+</ul>
+<p><strong>对应IPLD的展示：</strong></p>
+<p><img src="https://w3hitchhiker.mirror.xyz/_next/image?url=https%3A%2F%2Fimages.mirror-media.xyz%2Fpublication-images%2FO4tbrVG1AUhQTdiYpLqC_.png&amp;w=1920&amp;q=90" alt="一文读懂IPFS：新一代互联网底层协议"></p>
+<p><img src="/upload/image/20220330/1648621992411699.jpg" alt="image"></p>
+<p><strong>IPFS应用了以上个模块的功能，集成为一种容器化的应用程序，运行在独立节点上，以Web服务的形式，供大家使用访问</strong> 。IPFS允许网络中的参与者互相存储，索取和传输可验证的数据。但是由于IPFS是开源的，可以被免费下载和使用，并且已经被大量的团队使用。</p>
+<h3 id="filecoin"><strong>Filecoin</strong></h3>
+<p>运用 IPFS 及技术各个节点可存储它们认为重要的数据；<strong>但如果没有简单的方法，没有可以激励他人加入网络或存储数据，IPFS的推广难以展开，这时就需要并诞生了Filecoin，IPFS的激励层，证券化。</strong></p>
+<p>Filecoin为 IPFS 添加了激励性的存储。IPFS 用户可以直接可靠地存储其数据在Filecoin上，从而为网络打开了众多应用程序和落地场景的大门。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/36089/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">未竟的Web 3.0理想 DID或打开关键入口</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/36074/">
+                <span class="next-text nav-default">一文读懂强势崛起的老牌公链 Waves</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#什么是ipfs"><strong>什么是IPFS</strong></a></li>
+        <li><a href="#http"><strong>HTTP</strong></a></li>
+        <li><a href="#http协议的弊端"><strong>HTTP协议的弊端</strong></a></li>
+        <li><a href="#ipfs工作原理"><strong>IPFS工作原理</strong></a></li>
+        <li><a href="#内容链接有向无环图dag"><strong>内容链接 有向无环图（DAG）</strong></a></li>
+        <li><a href="#分布式哈希表-dht"><strong>分布式哈希表 (DHT)</strong></a></li>
+        <li><a href="#libp2p"><strong>Libp2p</strong></a></li>
+        <li><a href="#网络"><strong>网络</strong></a></li>
+        <li><a href="#ipld"><strong>IPLD</strong></a></li>
+        <li><a href="#filecoin"><strong>Filecoin</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

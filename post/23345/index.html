@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          创世文档：David Chaum 的 eCash 如何催生一个密码朋克的梦 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="如果密码朋克运动有一个祖先，那肯定是留着胡子和马尾辫的 David Chaum。" />
+<meta name="keywords" content="加密货币, 密码朋克" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/23345/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="创世文档：David Chaum 的 eCash 如何催生一个密码朋克的梦" />
+<meta property="og:description" content="如果密码朋克运动有一个祖先，那肯定是留着胡子和马尾辫的 David Chaum。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/23345/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-31T00:00:00+00:00" />
+
+<meta itemprop="name" content="创世文档：David Chaum 的 eCash 如何催生一个密码朋克的梦">
+<meta itemprop="description" content="如果密码朋克运动有一个祖先，那肯定是留着胡子和马尾辫的 David Chaum。"><meta itemprop="datePublished" content="2021-05-31T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-31T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5485">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="创世文档：David Chaum 的 eCash 如何催生一个密码朋克的梦"/>
+<meta name="twitter:description" content="如果密码朋克运动有一个祖先，那肯定是留着胡子和马尾辫的 David Chaum。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">创世文档：David Chaum 的 eCash 如何催生一个密码朋克的梦</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-05-31">
+      2021-05-31
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 5485 字 -
+        预计阅读 11 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><img src="https://img.bibiqing.com/news/2021/0531/7tik25fdy1srf4e" alt="币世界-创世文档：David Chaum 的 eCash 如何催生一个密码朋克的梦"></p>
+<blockquote>
+<p>“你可以给数据库访问付费、用电子邮件买软件和报纸、在网上玩电子游戏、接收朋友之前欠你的 5 块钱，还可以买披萨。可能性是无限的。”</p>
+</blockquote>
+<p>上文引用的这句话不是出自某个 2011 年制作的、介绍比特币的视频。实际上，它完全跟比特币无关。甚至，它不是这个世纪的作品。<strong>引文来自一位密码学家 David Chaum 在 1994 年日内瓦的第一次 CERN 大会上的演讲，他讲的是 eCash。</strong></p>
+<p>如果密码朋克运动有一个祖先，那肯定是留着胡子和马尾辫的 David Chaum。说这位密码学家领先于时代 —— 他现在已经 62 还是 63 岁了（他没有暴露过自己的真实年龄）—— 都嫌太轻描淡写了。在大多数人了解到互联网、拥有个人电脑以前，甚至在爱德华·斯诺登（Edward Snowden）、Jacob Appelbaum 和 Pavel Durov 出生以前，Chaum 已经在关心互联网隐私的未来了。</p>
+<p>“你必须让你的读者知道这有多重要”，Chaum 曾经跟《连线（Wired）》杂志这么说，“赛博空间完全没有物理限制 …… 没有 ‘墙’ 这种东西 …… 它是个完全不同、诡异奇怪的地方，而且大家都知道这是一个全景监狱似的噩梦。不是吗？其他任何人都可以知道你干过的所有事，甚至可以永久记录下来。这跟民主制的基本原理是对立的。”</p>
+<p>Chaum 的职业起于在伯克利担任计算机科学的教授。他不仅仅是一个数字隐私权的鼓吹者，他还设计了工具来实现隐私权。Chaum 出版于 1981 年的论文 “不可追踪的电子邮件、回邮地址和数字假名” 为互联网加密通信的研究奠定了基础；这些研究最终产生了隐私保护的技术，比如 Tor（洋葱网络）。</p>
+<p><strong>但日常通信的隐私性还不是 Chaum 最关心的东西。可以说，他还有更大的想法。这个伯克利的教授想设计一种保护隐私的数字货币。</strong></p>
+<p>“是把信息保存在个人手里，还是保存在组织手上，每当一个政府或一个公司要把一批事务自动化的时候，都必须做抉择”，Chaum 在 Scientific American 上写道，“下一个世纪的社会形态，可能就取决于哪种技术占据主导地位”。那是 1992 年。</p>
+<p>而在 10 年以前（1982），Chaum 已经解决了这个难题：他出版了自己的第二篇重要论文 “用于不可追踪的支付系统的盲签名”。那时候，现在比特币圈子里老手如 Pieter Wuille 博士、Erik Voorhees 和 Peter Todd 还没出生呢，这个密码学家就已经为互联网设计出了一套匿名的支付方案。</p>
+<h2 id="盲签名blind-signatures"><strong>盲签名（Blind Signatures）</strong></h2>
+<p><strong>Chaum 的数字货币系统的核心是他的发明 “盲签名”。</strong></p>
+<p>要理解盲签名，你得先了解公钥密码学，尤其是，（普通的）密码学签名是怎么回事。</p>
+<p>公钥密码学会用到密钥对，一个密钥对由一把公钥和一把私钥组成，其中公钥是由私钥（一个真正随机的数字串）根据一定的数学公式计算出来的、（看似随机的）数字串。用私钥推导公钥非常简单，但根据公钥反向计算出私钥则几乎是不可能的；这是一条单行道。</p>
+<p>公钥密码学可以用来建构双方之间的隐私通信 —— 学术论文中一般以 “Alice” 和 “Bob” 来代指着两方 —— 只要双方都向对方分享自己的公钥即可。私钥可以保持隐私而不暴露。</p>
+<p>但 Alice 和 Bob 能用公钥密码学做的可不止隐私通信。Alice 还可以 “签名” 任意数据（Bob 也是）。实际上，Alice 就是用自己的私钥和数据一起做一些数学运算。结果就是另一串看似随机的字符串，称为 “签名”。同样地，从签名中也是无法恢复出 Alice 的私钥的（无论你是否掌握了那段被签名的数据）。这还是一条单行道。</p>
+<p>有意思的是，Bob（乃至其他所有人）都能用 Alice 的公钥来检查这个签名是不是 Alice 生成的（译者注：验证需要被签名的数据）。检验完了 Bob 就知道，到底是不是 Alice 用自己的私钥（以及相应的数据片）生成了这条签名。而私钥可以签名任何数据，也就是说数据可以是 Alice 和 Bob 的任何表态和请求。举个例子，签名可以意味着 Alice 同意该段数据表示的意思（就像 Alice 给合同手写了一个签名一样）。</p>
+<p>而盲签名则使这一切更进一步。一开始，Bob 先生成一个随机数，称为 “nonce”，然后拿这个随机数和一段初始数据一起运行特定的数学运算，得出一段乱序的数据片。这个乱序的数据片使其看起来与其它的随机字符串无异。然后 Bob 拿这段乱序数据给 Alice 签名。Alice 没法断定 Bob 的初始数据是什么样的，所以她是 “盲目的”。Alice 签名运算的结果就是 “盲签名”。</p>
+<p>盲签名的特殊性在于，这条签名不仅关联着 Alice 的密钥（任何数字签名都有这样的特征）和乱序数据片。它也关联着那段初始的、没有被混淆过的数据。如果能获得那段原始数据，那么任何人仅需使用 Alice 的公钥，就能检查 Alice 是否签名了那段原始数据的一个乱序版本 —— 当然也包括 Alice 自己。</p>
+<h2 id="ecash"><strong>ECASH</strong></h2>
+<p><strong>盲签名就是 Chaum 用来创造数字货币系统的关键工具。</strong></p>
+<p>要理解这些，你要先把上文示例中的 Alice 当成一个银行：Alice Bank。这是一家普通银行，就像我们现实中的一样，客户们在银行里有专门的账户以及存款。</p>
+<p>假设 Alice 银行有四个客户：Bob、Carol、Dan 和 Erin。在假设 Bob 想从 Carol 手上买些东西。</p>
+<p>首先，Bob 要向 Alice 银行请求 “取款”（一般来说 Bob 当然要在事先取到钱，但你先不要管这些细节）。取款的时候，Bob 自己创建一些 “电子钞票”，形式是一串独一无二的数字，称作 “序列号”。此外，他还要像上面的例子那样，生成这些钞票的乱序版本，然后把这些乱序支票发给 Alice 银行。</p>
+<p>收到 Bob 的乱序钞票后，Alice 银行盲签名每一条乱序数据，然后把这些签名发回给 Bob。每签发一条乱序钞票，Alice 银行就从 Bob 的银行账户扣除 1 块钱。</p>
+<p>现在，因为 Alice 银行盲签了这些乱序钞票，她的签名已经与初始的电子钞票关联了起来。所以 Bob 现在可以使用这些初始的、没有经过混淆的钞票给 Carol 支付了。他只需把这些数据发送给 Carol 即可。</p>
+<p>Carol 收到这些电子钞票后，转发给 Alice 银行。Alice 可以检查自己是否签名过这些钞票，这也是靠盲签名完成的事：它们都跟她的私钥有关联。Alice 银行也顺带检查同样的钞票（序列号）是否已由他人使用过（自己是否遭遇了多重支付）。</p>
+<p>钞票检验完成后，Alice 银行就给 Carol 的账户添加等量的金额，并告知 Carol。经过银行的确认后，Carol 也知道了 Bob 所支付的是有效的钞票，可以放心地发货了。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0531/mzvy64etbt9dliq" alt="币世界-创世文档：David Chaum 的 eCash 如何催生一个密码朋克的梦"></p>
+<p>- eCash 背后的基本原理。来源：faculty.bus.olemiss.edu/ -</p>
+<p>最关键的是，Alice 银行只有在 Carol 要存入这些数字钞票时才会知道未经混淆的钞票数据！因此，Alice 银行根本不知道这些钞票是 Bob 的。理论上，也完全有可能是 Dan 或者 Erin 的！</p>
+<p>因此，Chaum 的解决方案提供了支付中的隐私性。在当时，这不算什么新鲜事：那时候隐私支付是常态（译者注：指的是现金交易）。但它是电子形式的，这就是新颖之处。因此，Chaum 选择了这个比喻：现金（cash）。电子化的现金，eCash。</p>
+<h2 id="digicash"><strong>DIGICASH</strong></h2>
+<p>到 1990 年，也就是 Chaum 发表第一篇论文差不多 10 年后（现在年轻一辈的密码学货币开发者比如 Matt Corallo、Vitalik Buterin 和 Olaoluwa Osuntokun 也都还没出生），David Chaum 创办了 DigiCash 公司，办在阿姆斯特丹（Amsterdam），Chaum 已在那里生活了好一段时间。这个公司实际上专门做数字货币和支付系统，业务包括一个替代收费亭的政府项目（最终被取消）和智能卡（类似于我们今天的硬件钱包）。但 DigiCash 的旗舰项目还是其数字现金系统 eCash。（这个系统叫做 “eCash”，而系统中所用的货币叫做 “CyberBucks”，相当于我们用大写的 “Bitcoin” 来指称底层的协议，而用小写的 “bitcoin” 来称呼其中的货币。）</p>
+<p><img src="https://img.bibiqing.com/news/2021/0531/7tik25fdy1srf4e" alt="币世界-创世文档：David Chaum 的 eCash 如何催生一个密码朋克的梦"></p>
+<p>- DigiCash 早期的技术团队（Chaum 不在照片中）。来源：chaum.com/ecash -</p>
+<p>那还是网景（Netscape）和雅虎（Yahoo！）领导科技行业开创新高度的时代，一些人认为微支付而非广告，将成为互联网的收入模式，DigiCash 也被认为是科技企业中冉冉升起的新星。当然，Chaum 和他的团队也对自己的技术很有信心。</p>
+<p>“随着网络支付的成熟，你将可以为各式各样的小事情小物件买单，支付会比今天多得多”，1994 年，Chaum 这样跟 New York Times 说。当然，他强调了隐私权的重要性。“你读过的每篇文章、问过的每个问题，你都要支付。”</p>
+<p>那一年，经过 4 年的开发，第一个成功的支付系统已在测试，同年晚些时候，eCash 开始允许试用：想要使用这种技术的银行，需要向 DigiCash 请求许可。</p>
+<p>银行业兴趣盎然。1995 年末，eCash 发出了第一张许可：圣路易斯的 Mark Twain 银行。而且，在 1996 年头，世界上最大的银行之一，德意志银行（Deutsche Bank），也试水了。瑞士信贷（Credit Suisse） 是第二个加入的大机构，还有多个国家的银行，也都加入了，包括：澳大利亚的 Advance Bank、挪威的 Advance Bank 和 Bank Austria。</p>
+<p>然而，比起 DigiCash 达成的交易，更有趣的可能是他们没有谈成的生意。荷兰三大银行中的两家 —— ING 和 ABN Amro —— 据说已经和 DigiCash 达成了价值几千万美元的合作。类似地，Visa 也被曝出提出了 4000 万美元的投资，而且网景也有兴趣：eCash 本可以放进那个时代最流行的互联网浏览器中。</p>
+<p>不过，最能出价不是别人，正是微软。比尔·盖茨希望把 eCash 集成到 Windows 95 操作系统中，据说愿意出价 1 亿美元。Chaum —— 按照故事的说法 —— 要求每卖出一份 Windows 95 就收 2 美元。于是事儿就黄了。</p>
+<p>虽然在当时的技术人员眼中不可谓不亮眼，DigiCash 似乎在谈生意上不太利索，因此也难以实现其全部潜能。</p>
+<p>到了 1996 年，DigiCash 的员工看过了太多失败的交易，希望有一些改变。办法就是换个 CEO：来自 Visa 的资深人士 Michael Nash。这家初创公司还获得了一笔投资，而 MIT Media Lab 的创始人 Nicholas Negroponte 还被任命为董事会主席。（最近，通过 Digital Currency Initiative 的这一层关系，MIT Media Lab 还聘用了多位 Bitcoin Core 的贡献者。）DigiCash 的总部也从阿姆斯特丹搬到了硅谷。Chaum 还是其中一员，不过变成了 CTO。</p>
+<p>事情并无太大改变。几年打拼下来，eCash 并没有被普遍接受。加入的银行一直在实验，才从未力推这门技术；到了 1998 年，Mark Twain 银行只招收了 300 名商家和 5000 位用户。在 DigiCash 与花旗银行（Citibank）的最终协定即将敲定之际 —— 这本来可以给这个项目极大的推动 —— 银行因为不相关的原因而退出了。</p>
+<p>“很难获得足够多的商家，所以也没办法获得足够多的消费者。反过来说也是对的。” Chaum 在 1999 年跟 Forbes 杂志这么说，那时候 DigiCash 已经破产了，“随着互联网变大，用户的平均素质也下降了。所以很难跟他们解释隐私的重要性。”</p>
+<h2 id="密码朋克的梦想"><strong>密码朋克的梦想</strong></h2>
+<p>DigiCash 失败了，连带着 eCash 也失败了。但是，虽然这项技术没有在商业上成功，Chaum 的工作启发了一群密码学家、黑客和活动人士，他们靠着一个邮件列表建立了联系。这个团体里面包含了 DigiCash 贡献者 Nick Szabo 和 Zooko Wilcox-O’Hearn，后来以 “密码朋克” 之名为人所知。</p>
+<p>可能比 Chaum 自己做的还要激进，密码朋克一直怀有创造一种数字现金的梦想；从 1990 年代到 2000 年代早期，他们一直在提出不同的数字现金方案。直到 2008 年，DigiCash 落幕的 10 年后，中本聪把 TA 的数字现金设想（比特币）发到了密码朋克的精神继承者的邮件列表。</p>
+<p>比特币和 eCash 在设计视角上没有多少共同点。最重要的是，eCash 有一个中心，就是 DigiCash，光凭自己是没法成为货币的。即使世界上所有人都在交易中使用且仅使用 eCash，你仍然需要银行来提供账户、余额和交易确认。这也意味着 eCash 虽然能提供隐私性，但并不是抗审查的。举个例子，即使面临银行的封锁，比特币仍能用于给维基解密捐赠，但 eCash 就做不到，银行一样能锁住维基解密的账号。</p>
+<p>但是，Chaum 对数字货币的贡献，可以追溯到 1980 年代早期，仍然能有意义的。比特币没有使用盲签名技术，但建构在比特币协议上的扩展处理层和隐私层可以使用。 Bitcointalk 论坛和 reddit 论坛子版块 r/bitcoin 版主 Theymos，一直倡议在比特币区块链上开发一种类似于 eCash 的可扩展侧链。比特币交易隐私领域的带头人之一 Adam Fiscor 也在实现一种使用盲签名的混币服务（这种思路最早是由 Bitcoin Core 贡献者 Greg Maxwell 提议的）。当前尚未落地的闪电网络，也可以使用盲签名来提高安全性。（译者注：原文写于 2018 年 4 月。）</p>
+<p>那 Chaum 自己呢？他回到了伯克利，在那里写出了等身的著作，大部分都跟数字化选举和声誉系统有关。也许，再过 20 年，全新一代的开发者、企业家和活动人士，把这些著作奉为某项足以改变世界的技术的奠基工作。</p>
+<p>本文部分基于两篇在 1990 年代出版的文章：Steven Levy 为《连线》杂志撰写的文章 《E-Money (That’s What I Want)》，还有未具名作者为 《Next! Magazine》撰写的《Hoe DigiCash alles verknalde》（译本在此：《How DigiCash Blew Everything 》。） chaum.com/ecash 网站亦提供了丰富的信息。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/23304/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">波卡周报 | Kusama Runtime 已成功升级 v9030，目前 Shell 运行稳定</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/23354/">
+                <span class="next-text nav-default">从Gas消耗量入手 回顾以太坊DeFi协议发展史</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#盲签名blind-signatures"><strong>盲签名（Blind Signatures）</strong></a></li>
+    <li><a href="#ecash"><strong>ECASH</strong></a></li>
+    <li><a href="#digicash"><strong>DIGICASH</strong></a></li>
+    <li><a href="#密码朋克的梦想"><strong>密码朋克的梦想</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

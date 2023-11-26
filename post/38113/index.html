@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          去中心化剧场幕后：DeFi 协议不可更改性研究 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="去中心化金融（DeFi）带来了自治协议，其功能由（有时）不可更改的智能合约确保。" />
+<meta name="keywords" content="DeFi" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/38113/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="去中心化剧场幕后：DeFi 协议不可更改性研究" />
+<meta property="og:description" content="去中心化金融（DeFi）带来了自治协议，其功能由（有时）不可更改的智能合约确保。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/38113/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-21T00:00:00+00:00" />
+
+<meta itemprop="name" content="去中心化剧场幕后：DeFi 协议不可更改性研究">
+<meta itemprop="description" content="去中心化金融（DeFi）带来了自治协议，其功能由（有时）不可更改的智能合约确保。"><meta itemprop="datePublished" content="2022-05-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6476">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="去中心化剧场幕后：DeFi 协议不可更改性研究"/>
+<meta name="twitter:description" content="去中心化金融（DeFi）带来了自治协议，其功能由（有时）不可更改的智能合约确保。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">去中心化剧场幕后：DeFi 协议不可更改性研究</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-05-21">
+      2022-05-21
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 6476 字 -
+        预计阅读 13 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>去中心化金融（DeFi）带来了自治协议，其功能由（有时）不可更改的智能合约确保。它使来自世界各地的个人能够使用金融服务，这些服务同时具有主权、可访问性，并且比传统金融中可用的服务更有效率和弹性。这是一个可爱的故事，新人被哄的神魂颠倒：现实要微妙得多。</p>
+<p>事实上，少数协议符合这一现实，但大多数都远未达到标准。当多头出局时，对协议弹性的兴趣通常很浅：唯一重要的是价格升值。但熊市已经卷土重来，谢天谢地，这意味着对这些话题重新产生了兴趣。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0521/7_ueymgkpng8.png" alt="去中心化剧场幕后：DeFi 协议不可更改性研究"></p>
+<p>最近 Luna 生态系统及其相关稳定币 UST 的暴雷有望为某些人敲响警钟。不幸的是，这是一场完全可以避免的灾难。用于该稳定币的模型及其缺陷已为人所知，本博客涵盖了许多先前的实例：BAC、MIC、ESD、DSD 等（在以太坊上的应用层面而不是协议层面，但具有相同的基础问题）。它们都有相同的结局：一个让它们不断接近归零的无尽死亡螺旋。</p>
+<p>面对这一事件，许多投资者已经意识到并非所有稳定币都是平等的，并寻求更多地了解市场上许多稳定币的弹性以及不同 DeFi 协议的稳健性。因此，我抓住这个特殊的时刻来讨论这个 DeFi 可持续性的重要话题；长期以来，这一直是我的热情。</p>
+<p>确实，去年我已经向你提出了对 DeFi 借贷服务所产生的风险以及如何评估它们的详尽分析。这篇文章仍然具有相关性，并且强烈推荐给任何知情的投资者阅读。</p>
+<p>以上介绍就够了。让我们切入正题，定义“不可阻挡”这个术语以及它在协议级别的具体含义。</p>
+<h2 id="所谓不可阻挡的-defi-协议是什么意思">所谓不可阻挡的 DeFi 协议是什么意思？</h2>
+<p>在最基本的层面上，当 DeFi 协议的基本功能由不可修改的智能合约提供，并且不需要外部干预即可存在时，我们可以称其为不可阻挡的。</p>
+<p>对于这个相对简单的定义，我必须添加许多注释和说明，以涵盖 DeFi 协议及其用例的多样性。</p>
+<h3 id="第三方协议依赖性">第三方协议依赖性</h3>
+<p>在 DeFi 中，很少有协议自己完成所有事情。通常，给定的协议依赖于各种第三方协议。当然，最常见和最著名的案例是预言机——资产价格的来源——尤其是借贷服务的关键组成部分。</p>
+<h3 id="对-chainlink-等预言机的依赖">对 ChainLink 等预言机的依赖</h3>
+<p>在这方面，使用最广泛的预言机是 ChainLink。尽管技术上很强大，但由于 Chris Blec 和其他一些关注服务弹性的参与者，该行业最近得到了提醒：ChainLink 的预言机容易受到操纵或审查。风险最大的攻击向量似乎是其 3/20 多重签名，它允许立即更改给定资产的价格来源。</p>
+<p>具体来说，如果 20 个人中有 3 个人签名，他们可以更改 ETH/USD 预言机，例如，内部预言机返回 1 美元的价格，并且几乎所有 DeFi 贷款都会在此过程中被清算。然而，ChainLink 团队内部或接近内部的人似乎不太可能进行这样的攻击。</p>
+<p>最重大的风险似乎是外部攻击者想要伤害整个 DeFi 空间的攻击。事实上，有了这样一个宽松的多重签名，识别这个多重签名的 3 个或更多成员、绑架他们并威胁他们改变 ChainLink 的价格来源就足够了。这就是著名的“?扳手攻击”。无论智能合约有多安全，如果它们是由多重签名管理的，它们很容易受到这种通过协议背后的人而不是直接通过代码的攻击。</p>
+<p>这里的主要问题不是这个多重签名（当需要更新和改进 ChainLink 提供的服务时所必需的）的存在，而是它的设置：</p>
+<ul>
+<li>
+<p>例如，从 ? 扳手攻击的角度来看，3/20 比 3/6 非常宽松且风险更大（执行攻击的潜在目标会更少）。如果总数 20 个签名者，门槛更合理的数字是需要 8 到 12 个签名者，即 8/20-12/20。</p>
+</li>
+<li>
+<p>没有时间锁定：所以更改是立即生效的。</p>
+</li>
+</ul>
+<h3 id="依赖于弹性低于基础协议的其他协议">依赖于弹性低于基础协议的其他协议</h3>
+<p>DeFi 中令人着迷的元素之一是可组合性：协议相互集成和使用。虽然这允许出现协同效应和创新用例，但它也带来了额外的风险。</p>
+<p>不做太多细节，稍后我们会回到这个话题，我们将以 PoolTogether 为例，它是 DeFi 中最具弹性和“准”不可阻挡的协议之一。之所以只是“准”不可阻挡，这是因为其外部依赖，更准确地说，对所使用的收益来源的依赖：Compound 或 Aave。</p>
+<p>实际上，PoolTogether 的智能合约是不可更改的，除了管理价格分配的部分（v4）。尽管如此，这些资金仍部署在由智能合约提供支持的协议中，这些协议可以被更改（例如添加新的抵押品，这是一个必要的功能，但也是一个潜在的攻击向量）。</p>
+<p>一般规则是，协议的弹性由其可组合性链中最薄弱的一环决定。这条规则不是绝对的，因为仍然可以减轻或控制整合带来的风险，例如，通过实施冗余，我们将在下面的详细评估中看到。</p>
+<h3 id="访问协议网站问题前端">访问协议：网站问题（前端）</h3>
+<p>关于这个话题，有两个关键问题：</p>
+<ol>
+<li>
+<p>协议的访问点（= 网站/前端）是否具有弹性/是否可以被审查，例如，由国家行为者审查？</p>
+</li>
+<li>
+<p>网站安全吗？恶意行为者可以攻击它吗？</p>
+</li>
+</ol>
+<h3 id="前端审查风险">前端审查风险</h3>
+<p>在这里，我必须首先提醒您一个基本点：DeFi 服务的存在归功于一组智能合约。完全有可能通过直接通过合约与任何 DeFi 服务进行交互——因此，即使他们的网站无法访问。当然，并非所有 DeFi 用户都具备直接与智能合约交互所需的技术技能，这就是前端问题仍然必不可少的原因。</p>
+<p>因此，最大化其弹性的协议需要考虑这个问题。两种主要方法是可能的并且可以组合。</p>
+<p>首先，一个协议可以有多个允许访问其服务的访问点：如果其中一个无法访问，其他访问点将保持在线，从而仅对服务用户造成轻微的不便。例如，Aave 可以通过 App.aave.com 主站点使用，也可以通过 DeFiSaver、InstaDapp 等工具使用。</p>
+<p>尽管如此，这些网站中的大多数仍然由可以同时审查的中心化服务托管：这需要更多的工作，但在技术上是可行的。为了克服这一限制，可以使用另一种选择：通过 IPFS 等去中心化解决方案托管一个或多个站点。</p>
+<p>最后，在前端弹性方面，迄今为止部署的最原始、最优雅、最有效的方法可能是 Liquity 协议之一。事实上，Liquity 没有为其应用程序直接部署和管理的官方网站。相反，该团队提供了一个套件来部署 Liquity 的前端，所有人都可以使用。由于这种方法，该项目现在有无数不同的站点来使用其服务，其中一些托管在 IPFS 上：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0521/7_48aqgka8g1.png" alt="去中心化剧场幕后：DeFi 协议不可更改性研究"></p>
+<p>使用 Liquity 的不同前端概述（&gt;20 个）</p>
+<h3 id="前端的安全风险">前端的安全风险</h3>
+<p>最后，不要忘记前端仍然是一个网站。即使它没有受到审查，它也可能容易受到不同程度的攻击：例如，去中心化交易所 SpiritSwap 和 QuickSwap 的网站最近就遭受了这种情况的困扰。</p>
+<p>攻击向量与服务的域名管理器 (GoDaddy) 相关联。其他类型的攻击也是可能的：例如，通过网站集成的第三方服务进行代码入侵，正如我们最近在 EtherScan 上看到的那样，他们使用的广告跟踪器被入侵 (CoinZilla)。</p>
+<h2 id="不可阻挡协议的限制">不可阻挡协议的限制</h2>
+<p>不可阻挡的协议不能涵盖所有用例。事实上，根据协议的复杂性，有时不可能避免对另一个本身至少部分可审查的协议的依赖。</p>
+<p>最后，必须牢记不可阻挡协议的智能合约的不可更改性所带来的对应物：这些协议的更新在技术上是不可能的。</p>
+<p>因此，当一个不可阻挡的协议需要发展时，只有一条可能的路径：部署一个新版本的协议（带有一组新的不可更改合约）并鼓励其用户迁移到它。例如，Uniswap 已经做了两次，在 2020 年 5 月迁移到 V2，一年后又在 2021 年 5 月发布 Uniswap v3。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0521/7_1nimcue53y.png" alt="去中心化剧场幕后：DeFi 协议不可更改性研究"></p>
+<p>Uniswap 提供的一键式 v1⇒v2 迁移工具</p>
+<p>根据版本之间的差异，该协议还可以提供促进迁移的工具，如 UNIv1⇒UNIv2 的情况。然而，UNIv2⇒UNIv3 是不可能的，主要是因为引入了流动性集中的功能。</p>
+<h2 id="弹性的图谱">弹性的图谱</h2>
+<p>既然我们已经以所有必要的精度建立了“不可阻挡”的定义，我建议直接进行分析。在深入研究相关协议之前，让我为您提供一个突出不同级别弹性的图谱：</p>
+<p>细节中心化或“DINO”（仅名字上的去中心化）协议，不是很有见地，所以我会让你自己挖掘。相反，让我们看看更令人兴奋的一端的协议：在 MakerDAO 的右边。</p>
+<h2 id="关于最具弹性的-dex-的分析">关于最具弹性的 DEX 的分析</h2>
+<p>在我们了解 Uniswap 和 Curve 的弹性之前，我们需要回顾一些关于去中心化交易所（DEX）的关键事项。具体来说，他们有两种类型的用户承担着截然不同的风险：</p>
+<ol>
+<li>
+<p>通过 DEX 交换代币的用户。这些用户仅在交换时承担与 DEX 智能合约相关的风险（以及如果 DEX 合约被破坏且不再是不可更改，与无限制“批准（approve）”相关的风险）</p>
+</li>
+<li>
+<p>只要维持其头寸，流动性提供者就会面临风险。</p>
+</li>
+</ol>
+<p>在 Uniswap 和 Curve 上，与这两种情况相关的合约是不可更改的。在技术上不可能设想流动性提供者的“跑路”，并非所有 DEX 都是这种情况：由于 SushiSwap 的流动性迁移功能，进行此类攻击曾经是可能的。</p>
+<p>请注意，依赖于 Uniswap 或 Curve 等自动做市商的 DEX 不需要预言机即可工作，这大大减少了它们对可能受审查的第三方服务的依赖。</p>
+<p>最后，即使合约是不可更改的，对于承担与该货币对所涉及的代币相关的所有风险的流动性提供者来说，风险也不是零。这里的一般规则类似于可组合链的规则：给定的 LP 头寸与其最危险的代币一样具有风险。</p>
+<h3 id="uniswap">Uniswap</h3>
+<p>这些合约在 Uniswap v1 和 v2 上是完全不可更改的。在 Uniswap v3 上，所有基本功能也是如此。然而，治理可以对引入管理费（= 协议）进行投票，正如在 Curve 上已经看到的那样。</p>
+<p>在这里，情况很简单。如果确实存在治理，那么好消息（对 UNI 持有者来说更少）是它可以做的非常有限。不可能没收或转移资金。除了费用之外，它还管理诸如在新链上部署 Uniswap、添加新的费用等级（稳定币为 1 bps）或使用协议的金库等事务，例如，为流动性挖矿活动提供资金或将 UNI 分发给需要它的友好人士，没有任何限制或会计。</p>
+<h3 id="curve-finance">Curve Finance</h3>
+<p>Curve Finance 是具有同样令人兴奋的方法的弹性 DEX 的另一个示例。同样，基本功能由不可更改合约提供。尽管如此，Curve 也有一个“紧急 DAO”，其成员由治理机构选举产生。这个紧急 DAO 可以“杀死”一个池（仅适用于 2 个月以下的池而不是工厂池）：除提款外的所有功能都被禁用。如果 Curve 的合约出现问题，它可以防止进一步的资金损失。紧急 DAO 还可以杀死一个 gauge——即处理 CRV（以及可能的其他代币）奖励的奖励合约。然后主 DAO 可以复活被杀死的 gauge。</p>
+<p>与 Uniswap 一样，Curve 的治理以 CRV 代币发行和管理为中心。但是，这里的模型要精炼得多。我邀请您阅读我之前关于该主题的文章以更好地理解它：</p>
+<ol>
+<li>
+<p>CRV 战争：了解竞赛以积累影响 Curve Finance 协议的能力</p>
+</li>
+<li>
+<p>高级 CRV 战争：基于 Curve 和 Convex 的协议分析</p>
+</li>
+</ol>
+<p>与 Uniswap 不同，参与 Curve 的治理需要为那些想要最大化其影响力的人锁定 CRV 代币（⇒veCRV）长达四年。因此，它可以保护治理免受不同类型的攻击。</p>
+<p>最后，治理还管理授权与 veCRV 合约进行交互的智能合约白名单 [9]：从长远来看，此类决定对 Curve 和 CRV 所有者的流动性提供者至关重要。</p>
+<h2 id="深入分析其他值得注意的协议">深入分析其他值得注意的协议</h2>
+<p>除了去中心化交易所之外，其他类型的协议也尽可能接近最具弹性的一端。尽管如此，我们现在将详细介绍的协议的用例更加复杂，据我所知，如果不依赖于其他或多或少可审查的服务，则无法提供服务。</p>
+<h3 id="liquity">Liquity</h3>
+<p>Liquity 是一个顽固的项目，旨在创建最具弹性的借贷系统和稳定币，同时为借款人维持经济高效的系统。我不会在这里详细介绍这个协议，我邀请您阅读专门的文章。</p>
+<p>因此，让我们关注与我们今天的主题相关的要点：</p>
+<ul>
+<li>
+<p>Liquity 的代码是完全不可更改的。</p>
+</li>
+<li>
+<p>流动性没有治理。</p>
+</li>
+<li>
+<p>然而，与任何借贷服务一样，Liquity 依赖于预言机（以美元计的 ETH 价格）。这里使用了 ChainLink，但也有一个备份系统。进行计算以确定 ChainLink 提供的数据是否被认为是可靠的。如果不是，只要需要，系统就会自动切换到第二个价格来源：Tellor 预言机。</p>
+</li>
+<li>
+<p>最后，正如我上面提到的，Liquity 也有一个有趣的方法来最大化前端去中心化。</p>
+</li>
+</ul>
+<p>由于这种方法，Liquity 是以太坊上最具弹性的借贷协议，让 LUSD 横扫最强大和最去中心化的稳定币的称号。</p>
+<h3 id="pooltogether">PoolTogether</h3>
+<p>PoolTogether 是一个引人入胜的协议，它探索了一个新概念：“无损失”。具体来说，PoolTogether 是一个与彩票挂钩的储蓄账户，玩家在其中不承担本金的财务风险：游戏完全依赖本金产生的收益。它根据抽签时的运气将其重新分配给不同的玩家。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0521/7_vh8d8rab9c.png" alt="去中心化剧场幕后：DeFi 协议不可更改性研究"></p>
+<p> 介绍 PoolTogether 无损失彩票挂钩储蓄账户</p>
+<p>要了解有关此协议的更多信息，我再次邀请您阅读专门文章。</p>
+<p>那么让我们来分析一下该协议的弹性。在这里，主要问题是收益的初始来源，它是外部的：它来自 Aave 或 Compound 等服务，这些服务并非不可阻挡。因此，PoolTogether 玩家对他的全部存款承担这种风险：本金和产生的收益（在它被收集和重定向之前）。</p>
+<p>尽管存在这种第三方依赖，PoolTogetger 协议还是非常有弹性的。事实上，在 PoolTogether 方面，合约是尽可能不可更改的。具体来说，它们都是不可更改的（所以一个给定的池不能改变它的收益来源），除了奖金分配部分，它只影响产生的收益。实际上，奖品分配模型可以在治理投票（主网）或多重签名操作（Avalanche/Polygon）之后发生变化，这是必要的，因为跨链治理尚不可用。</p>
+<p>这一点在 DeFi 中是引人入胜且独一无二的：PoolTogether 是一个与奖金挂钩的无损储蓄账户。这种（财务）设计原则也体现在智能合约中。玩家不能失去本金，不包括 Aave/Compound 的问题或 PoolTogether 合约中的严重错误。代码本身保证了这一点；只有回报有潜在风险。即使整个 PoolTogether 团队遭受 ? 扳手攻击或 PoolTogether 的治理变得敌对。因此，在智能合约层面维护了无损失的承诺。</p>
+<p>就风险而言，协议的 V3 和 V4 之间也存在细微差别和差异。最好的办法是仔细阅读文档。</p>
+<h3 id="trustlessfi">TrustlessFi </h3>
+<p>Trustless 是我最近很着迷的一种协议。它还没有上线，但我认为这种方法有很多优点。简单地说，TrustlessFi 就像 Liquity 和 Reflexer 在 zkSync 上生了一个孩子。</p>
+<p>因此，与 Liquity 一样，目标是创建一个最终将尽可能不可阻挡的协议，并且相关的稳定币 (HUE) 将继承此属性。其他机制与 Liquity 类似，例如 ETH 作为唯一抵押品、立即清算或前端去中心化（这次是社区验证机制）。</p>
+<p>在治理方面，我们这里有一种类似于 Reflexer/RAI 去治理计划但更具吸引力的方法：设想了 4 个阶段，在每个阶段，基金会和社区的控制权都会减少，从而使协议越来越不可变。这些阶段将在合约本身的代码中实现：如有必要，可以将过渡到新阶段最多延迟 45 天，最多可延迟 3 次，但不可能完全取消此过渡。</p>
+<p>类似于 Maker-MCD 的 Dai 储蓄率的机制允许参与系统而不必产生债务。HUE 所有者将能够将其质押以从借款人支付的利率中获得回报。</p>
+<p>最后，还有一些令人着迷的新功能，例如 Troves/CDP 将被标记为 NFT，从而允许它们的转移。另一个例子是在 Uniswap v3 (HUE/ETH) 中部署 HUE 流动性，由协议管理。在预言机层面，我们也会使用 Uniswap v3 获得不可阻挡的价格来源，但这无疑会增加操纵风险。</p>
+<p>总体而言，该方法正朝着正确的方向发展。尽管如此，该协议中仍有许多新概念，因此一旦暂时投入生产，就很难预测结果。</p>
+<h2 id="结论和最后的澄清">结论和最后的澄清</h2>
+<p>我希望这篇明确的文章可以为所有对 DeFi 协议的弹性有基本疑问的人提供参考。像往常一样，我没有按原样提供评估，而是尝试尽可能详细地说明方法和推理，以便您可以自己研究本文未提及的任何协议的弹性。</p>
+<p>为了更深入地了解，我热情地邀请您阅读我去年发表的一篇文章，该文章完美地补充了这篇文章，重点关注货币市场。它提出了一种分析方法来评估它们所暗示的不同潜在风险：</p>
+<p>去中心化金融风险评估：货币市场手册</p>
+<p>我想对这样一个批判性主题进行如此精确的分析可能会引起或多或少的积极情绪。请注意，与往常一样，我的目的只是让尽可能多的 DeFian 了解我认为对 DeFi 而言至关重要的事项。</p>
+<p>我在 DeFi 中的教育和教学行动除了最大化去中心化金融的长期弹性和相关性之外没有其他目的。我希望我所建议的弹性范围左侧的协议的开发者或推动者也能理解并认可这项任务。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/38119/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">盘点育碧创新实验室孵化的5个潜力项目</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/38124/">
+                <span class="next-text nav-default">西安：数字人民币商户超10万个</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#所谓不可阻挡的-defi-协议是什么意思">所谓不可阻挡的 DeFi 协议是什么意思？</a>
+      <ul>
+        <li><a href="#第三方协议依赖性">第三方协议依赖性</a></li>
+        <li><a href="#对-chainlink-等预言机的依赖">对 ChainLink 等预言机的依赖</a></li>
+        <li><a href="#依赖于弹性低于基础协议的其他协议">依赖于弹性低于基础协议的其他协议</a></li>
+        <li><a href="#访问协议网站问题前端">访问协议：网站问题（前端）</a></li>
+        <li><a href="#前端审查风险">前端审查风险</a></li>
+        <li><a href="#前端的安全风险">前端的安全风险</a></li>
+      </ul>
+    </li>
+    <li><a href="#不可阻挡协议的限制">不可阻挡协议的限制</a></li>
+    <li><a href="#弹性的图谱">弹性的图谱</a></li>
+    <li><a href="#关于最具弹性的-dex-的分析">关于最具弹性的 DEX 的分析</a>
+      <ul>
+        <li><a href="#uniswap">Uniswap</a></li>
+        <li><a href="#curve-finance">Curve Finance</a></li>
+      </ul>
+    </li>
+    <li><a href="#深入分析其他值得注意的协议">深入分析其他值得注意的协议</a>
+      <ul>
+        <li><a href="#liquity">Liquity</a></li>
+        <li><a href="#pooltogether">PoolTogether</a></li>
+        <li><a href="#trustlessfi">TrustlessFi </a></li>
+      </ul>
+    </li>
+    <li><a href="#结论和最后的澄清">结论和最后的澄清</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

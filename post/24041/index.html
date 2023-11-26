@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          V神最新思考：两种途径解决PoS共识机制下的MEV问题 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="PoS共识机制下的MEV问题如何解决，Vitalik有2种思路" />
+
+  <meta name="keywords" content="区块大全, 区块链, 区块链资讯, 区块链快讯, 区块链新闻, 比特币行情" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/24041/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="V神最新思考：两种途径解决PoS共识机制下的MEV问题" />
+<meta property="og:description" content="PoS共识机制下的MEV问题如何解决，Vitalik有2种思路" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/24041/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-10T00:00:00+00:00" />
+
+<meta itemprop="name" content="V神最新思考：两种途径解决PoS共识机制下的MEV问题">
+<meta itemprop="description" content="PoS共识机制下的MEV问题如何解决，Vitalik有2种思路"><meta itemprop="datePublished" content="2021-06-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4521">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="V神最新思考：两种途径解决PoS共识机制下的MEV问题"/>
+<meta name="twitter:description" content="PoS共识机制下的MEV问题如何解决，Vitalik有2种思路"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">V神最新思考：两种途径解决PoS共识机制下的MEV问题</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-06-10">
+      2021-06-10
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4521 字 -
+        预计阅读 10 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>注：原文作者是以太坊联合创始人Vitalik Buterin。</p>
+<p>特别感谢Justin Drake以及Flashbots团队给予的反馈和讨论。</p>
+<p>威胁共识网络持续去中心化的一个主要风险是围绕矿工可提取价值（MEV）的经济学，这是从选择下一个区块内容的能力中获取利润的复杂技巧。列举一个简单的MEV示例：针对自上一个区块以来发生的价格变动对所有链上去中心化交易所进行套利。虽然一般的PoS奖励是相当平等的，因为单一验证器的回报率与强大的验证池相同，但在寻找复杂的MEV提取机会方面，存在着显著的规模经济性。简单说，一个规模大10倍的池子就拥有10倍的机会来提取MEV，并且它可以花费更多的精力来进行优化，以从每个利润机会中提取更多。除了这个问题之外，MEV 还使得去中心化池复杂化，因为在去中心化池子中，仍然需要一个实体来负责打包并提出区块，并且他们可以轻松地秘密提取MEV，而无需和池子本身分割收入。</p>
+<p>最出名的解决方案就是提议者（<strong>proposer</strong> ）/区块构建者（<strong>block-builder</strong> ）分离。与区块提议者试图自己生产收益最大化的区块不同，他们依赖于一个市场，在这个市场中，我们称之为区块构建者的外部参与者生产包含完整区块内容和提议者费用的bundle包，而提议者选择最高费用的bundle包。提议者的选择被简化为选取费用最高的bundle包，这种算法非常简单，以至于在一个去中心化池子中，它甚至可以在 MPC 内完成以防止欺诈。</p>
+<p>这篇文章提出了一些关于如何实现这一点的设计。</p>
+<p>另请参阅 2018 年的想法，这些想法与此处的想法密切相关：<a href="https://ethresear.ch/t/optimised-proposal-commitment-scheme/1314">优化提议承诺方案（Optimised proposal commitment scheme）</a></p>
+<h2 id="提议者构建者分离区块提议设计的所需属性">提议者/构建者分离区块提议设计的所需属性</h2>
+<p>我们将重点关注五个主要的期望属性：</p>
+<ol>
+<li><strong>不受信任的提议者友好性</strong> ：提议者欺骗区块构建者的风险很小或没有风险，因此区块构建者没有动机选择具有一定链下声誉或与构建者有个人关系的提议者（因为这将有利于大型池子）。</li>
+<li><strong>不受信任的构建者友好性</strong> ：区块构建者欺骗提议者的风险很小或没有风险，因此提议者没有动机选择具有一定链下声誉或与提议者有个人关系的构建者（因为这会让新的构建者更难进入市场）。如果需要存款来实现这一点，则应最大限度地降低门槛。</li>
+<li><strong>弱提议者友好性</strong> ：该机制不应该要求提议者具有 (i) 高带宽或其他计算资源或 (ii) 高技术复杂性。</li>
+<li><strong>Bundle包不可窃取</strong> ：提议者应不可接受区块构建者提出的Bundle包并从中提取交易来制作自己的Bundle包，从而阻止区块构建者获利（并可能进一步损害他们）。</li>
+<li><strong>共识层的简单性和安全性</strong> ：从共识层的角度来看，该机制应该继续是安全的，并且最好与现有的区块提议机制进行相同的分析。</li>
+</ol>
+<h2 id="想法1">想法1</h2>
+<ol>
+<li>区块构建者生成bundle包并发布它们创建的bundle包的头（headers），一个bundle包头包含对包主体（bundle body）的commitment承诺（预期的区块内容）、对提议者的付款以及构建者的签名。</li>
+<li>提议者选择提供最高付款的bundle包头（仅考虑构建者有足够余额来实际支付的bundle包）。他们签署并发布包含该包头（bundle header）的提议。</li>
+<li>看到签名的提议后，提供包含包头（bundle header）的区块构建者将发布完整的bundle包。</li>
+</ol>
+<p>在这一点上，分叉选择规则有能力做出三个判断中的一个（而不是通常的两个）：</p>
+<ol>
+<li>区块提议不存在</li>
+<li>区块提议存在，但包主体（bundle body）不存在</li>
+<li>区块提议存在，并且包主体（bundle body）存在</li>
+</ol>
+<p>请注意，在第二种情况下，proposal仍然成为了链的一部分，并且至关重要的是，区块构建者向提出者的付款仍在处理（但区块构建者自己不会获得任何费用或自己获取MEV）。</p>
+<h3 id="分析">分析</h3>
+<p>五个属性中的三个很容易满足：</p>
+<ol>
+<li>提议者无条件地接受承诺的付款，因此bundle包不能欺骗提议者；</li>
+<li>三个步骤都是非常自动化和低带宽的，因此这满足弱提议者友好性；</li>
+<li>提议者无法看到他们正在签署的bundle包的内容，因此这满足bundle包的不可窃取性；</li>
+</ol>
+<p>而共识层属性，以及不受信任的提议者友好性要更加棘手。这种设计确实改变了分叉选择的工作方式，将其从2个选项增加到3个选项，这也意味着提议者不再是游戏中的最后一个参与者。从理论上讲，人们可以推断，如果分叉选择能够做出决定，那么这应该是好的，但这仍然是一个潜在未知的重大变化。</p>
+<p>提议者看不到bundle包内容，也不能通过bundle包窃取来欺骗区块构建者，但是他们可以对区块构建者使用更微妙的攻击。他们可以在一个slot时间段的末尾发布他们的提议，确保证明人（可能）按时看到proposal提议，但不能给区块构建者足够的时间发布body，因此证明人很有可能没有按时看到body。这给区块构建者带来了风险，并激励他们青睐值得信赖的提议者。此外，它还创造了一个机会，通过这个机会，恶意的大多数人可以对自己不喜欢的区块构建者进行重罚。</p>
+<p>对于这一问题，我认为有两种缓解方法：</p>
+<ol>
+<li>证明人在接受提议的最长时间和接受一个body的最长时间之间有2秒的延迟。如果你信任证明人，这基本上可以解决问题，尽管区块构建者有损失资金风险的基本问题仍然存在。此外，尚不清楚证明者以这种方式投票是否符合激励措施（尽管可通过要求他们证明提案的2 秒长VDF 解决方案来迫使他们等待）。</li>
+<li>如果一个body没有被包含在内，提议者只会得到一半的付款（而区块构建者只支付一半）。这使得提议者恶意破坏的代价很高，但它仍确保了区块构建者恶意破坏的代价仍然很高（在这两种情况下，代价都足以让你相信甚至匿名参与者也不想这么做）。例如，如果一个bundle包的提议者费用为1，区块构建者利润为1.05:</li>
+</ol>
+<p>（1）诚实的行为将导致（构建者，提议者）回报为（0.05, 1）；</p>
+<p>（2）提议者或证明人发布太晚，导致一个只有header头的区块被接受，则回报为 (-0.5, 0.5) ；</p>
+<h2 id="想法-2">想法 2</h2>
+<ol>
+<li>区块构建者制作bundle包并发布他们创建的bundle包头。一个bundle包头包含对内容的承诺、对提议者的付款以及来自构建者的签名。</li>
+<li>提议者选择并签署一份声明，该声明由他们所看到的bundle包头列表组成。</li>
+<li>看到该声明后，选定的区块构建者会发布其相应的包主体（bundle body）。</li>
+<li>提议者从他们预先提交的列表中选择一个bundle包头，并用它发布一个提议。</li>
+</ol>
+<p>有一个新的罚没条件，它可以驱逐和惩罚任何发布不属于（相同slot时间段内）列表提议的提议者。</p>
+<p>还要注意的是，提议者在步骤（2）中提交的bundle包头列表也可以是包头的加密哈希列表，其中每个哈希都加密到该bundle包的构建者的公钥，以便只有构建者知道它们是否被接受。这降低了DoS攻击风险。</p>
+<h3 id="分析-1">分析</h3>
+<p>同样，五个属性中有三个很容易满足：</p>
+<ol>
+<li>提议者不能窃取bundle包，因为他们只有在已将自己限制在有限的现有bundle包头集时才能看到任何bundle包主体。</li>
+<li>如果不包括完整的body，就不可能发生构建者对提议者的付款，因此提议者也不能在经济上欺骗构建者。</li>
+<li>共识属性和以前一样，因为系统仍然是提议者为最后一个行动者的游戏，并且共识规则决定的内容没有变化。</li>
+</ol>
+<p>在这种情况下要确保的两个较难的属性是，弱提议者友好性和不受信任的区块构建者友好性。令人担忧的是，恶意的区块构建者可以通过提出大量的提议来攻击提议者，这些提议都提供了非常高的费用，但从不公布其中任何一个提议的body。如果提议者对他们接受多少bundle包有上限，那么这种攻击可以将所有合法bundle包定价，并使提议者没有可合法包含在其区块中的bundle包。如果提议者可接受的bundle包数量没有上限，那么这可能导致向提议者发送无限数量的全bundle包体（相想每个500 kb），这是一个巨大的带宽需求。</p>
+<p>该难题的一个解决方案是以某种非硬性限制的方式对bundle包头提交进行速率限制。</p>
+<ol>
+<li>提交bundle包的费用，通过一些类似 EIP-1559 的机制进行调整以达到一定的速率（例如每个slot 8个bundle包）。</li>
+<li>作为区块建设者的存款要求，以及一条规则，即当更低价格的bundle包被包含了，而你发布的bundle包没有被包含，那么你就不能为接下来的N个slot提交bundle包。</li>
+</ol>
+<p>费用本身也可能仅在你的bundle包未包含，但较低价格的undle包包含在内的情况下收取，因为这是你可能存在恶意行为的具体情况（或提议者是恶意的或网络当时是坏的）。</p>
+<p>这是有先例的，比如ENS拍卖收取0.5%的失败者费用，以阻止人们在显然不会获胜的情况下进行出价（只是为了增加获胜者必须支付的金额）。</p>
+<p>然而，这些技术存在对提议者引入信任要求的风险，因此需要谨慎完成，并且未能将bundle包包含在内的惩罚不能太高。</p>
+<p>另一种解决方案是允许免费和无限制的bundle包主体发布，但限制网络层的主体传播。一种简单的算法是：</p>
+<ol>
+<li>为可以传播bundle包主体的最小时间添加一个轻微的延迟：最高支付bundle包的延迟为0秒，第二高支付bundle包的延迟为0.2秒，第三高支付 bundle包的延迟为0.38秒，第K高支付的bundle包，就延迟</li>
+</ol>
+<p><img src="https://img.bibiqing.com/news/2021/0610/26_k4l16t60s4.jpg" alt="V神最新思考：两种途径解决PoS共识机制下的MEV问题"></p>
+<p>秒。</p>
+<ol>
+<li>添加一个规则，如果节点已广播了一个更高收入的bundle包主体，则该节点不会再广播一个bundle包主体。</li>
+</ol>
+<p>这两种技术可以结合在一起：你可以收取少量费用来将预期的bundle包数量减少到（例如）每slot 50个，然后使用这样的网络层机制进一步降低带宽需求。</p>
+<h2 id="结论">结论</h2>
+<p>截至目前，我还无法确定上述两种方法是否是解决问题的唯一途径，可能还会有其他的方法。在这两种方法中，想法 (1) 在概念上更简单，但它给区块构建者带来了风险以及更复杂的分叉选择规则要求。</p>
+<p>而从分叉选择和共识角度来看，想法 (2)要更简单，但它在处理恶意区块构建者DoS攻击方面存在挑战，并且该问题的任何解决方案也有可能产生其他的问题（尽管可以想象这可以最小化）。到目前为止，我仍然不确定哪个方案会更好一些。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/24051/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">UNI将会成为Oracle Token？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/24055/">
+                <span class="next-text nav-default">案例应用：区块链技术在交通运输综合执法领域融合应用</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#提议者构建者分离区块提议设计的所需属性">提议者/构建者分离区块提议设计的所需属性</a></li>
+    <li><a href="#想法1">想法1</a>
+      <ul>
+        <li><a href="#分析">分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#想法-2">想法 2</a>
+      <ul>
+        <li><a href="#分析-1">分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

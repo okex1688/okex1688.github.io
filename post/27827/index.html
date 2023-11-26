@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          金色深核｜解剖两种去中心化云计算平台设计 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="只有对资源和平台做到足够成熟的优化，云计算平台才能更快的被开发者使用。" />
+<meta name="keywords" content="Phala, DFINITY" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/27827/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="金色深核｜解剖两种去中心化云计算平台设计" />
+<meta property="og:description" content="只有对资源和平台做到足够成熟的优化，云计算平台才能更快的被开发者使用。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/27827/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-26T00:00:00+00:00" />
+
+<meta itemprop="name" content="金色深核｜解剖两种去中心化云计算平台设计">
+<meta itemprop="description" content="只有对资源和平台做到足够成熟的优化，云计算平台才能更快的被开发者使用。"><meta itemprop="datePublished" content="2021-08-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4059">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="金色深核｜解剖两种去中心化云计算平台设计"/>
+<meta name="twitter:description" content="只有对资源和平台做到足够成熟的优化，云计算平台才能更快的被开发者使用。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">金色深核｜解剖两种去中心化云计算平台设计</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-08-26">
+      2021-08-26
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 4059 字 -
+        预计阅读 9 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E4%BA%A4%E6%98%93%E6%89%80/"> 交易所 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>自以太坊带来了“世界计算机”的愿景后，从业者前赴后继。</p>
+<p>世界计算机一直都是庞大的漫长的结构性命题，如何实现？思路定义已经明确，只是其结构之大，并非一朝一夕可塑之。在实现这件事的路上，需要数以万计的人和数以亿计的资源。</p>
+<p>纵观互联网世界的发展，我们看到，在云计算的发展带动下，互联网展示了多种多样的应用可能，以太坊世界计算机的构想也是如此丰富的，只是传统云计算的中心化并不符合加密货币和区块链行业的设想，如果云计算开始去中心化，或将是“世界计算机”以及区块链行业的最终目标。</p>
+<p>本文中，我们将用Phala、Dfinity阐述去中心化云计算平台的思路。为区块链行业向成熟产业的迈进，打开一个思路。</p>
+<p><strong>认识云计算</strong></p>
+<p>云计算是互联网发展至今，支撑互联网的底座，云计算平台搭建了让全球几十亿网民日常使用的互联网基础设施，带来了科技进步、社会发展。每天在云计算资源上的命令操作已经无法计算，并且互联网巨头的商业帝国几乎全部都建立在云计算资源之上。</p>
+<p>以亚马逊的云服务为例。其可提供来自全球数据中心的200多种功能服务。在全球拥有数百万活跃客户和数万个合作伙伴，几乎所有行业都在AWS上运行使用案例。</p>
+<p>而这样的云服务需要先建立足够庞大的资源池，继而让客户通过相应的服务平台、开发平台付费接入AWS使用计算资源。例如AWS云目前现已在25个地理区域内运营着80个可用区。</p>
+<p>建立资源和通信网络后，为了让使用客户使用更便利，需要提供开发工具以及向每个行业、每个应用环节单独设计开发框架。例如AWS的具体行业解决方案大概分为了16个类别，包含例如金融行业、教育、汽车。而根据应用环节，也区分为内容传输、存储、数据湖和分析、区块链等部分。</p>
+<p>只有对资源和平台做到足够成熟的优化，云计算平台才能更快的被开发者使用。</p>
+<p>对比来看，去中心化云计算虽然与传统云计算有不同的结构，但实现过程也是如此，从搭建资源、建立网络，再到一些特性的设计以及实现开发者的顺利开发。</p>
+<p>不过云计算已发展多年，而去中心化的云计算发展短暂，区块链技术本身仍存在结构天花板，所以去中心化云计算还远不能实现替代作用，但在云计算业务里，可以拿出来对比的业务是存在的，如今的区块链网络可以对标的云计算业务，有云服务中的数据库和HPC高性能计算、云存储等。</p>
+<p>我们还是以Phala、Dfinity两个网络的结构来全面认识一下去中心化云计算。</p>
+<p><strong>谁来提供资源？</strong></p>
+<p>首先，Phala、Dfinity网络的基础是计算资源，计算资源搭建成网络，并通过共识协议、激励等运作起来。</p>
+<p>理论上参与网络的计算资源可以是一台计算机、一块主板、一台服务器、一个IDC集群。当计算资源间互相连通后，要有通信的方式和协议。以维持计算资源通讯的基础规则。</p>
+<p>Phala、Dfinity接入的资源有所不同。</p>
+<p>Phala的要求是，具有TEE计算区的单台计算设备可以连接到一起，组成计算网络。</p>
+<p>TEE即可信执行环境，其提供了基于硬件隔离的安全计算区域。例如英特尔在2015年后研发的CPU中都大多包含TEE区。</p>
+<p>所以Phala网络接入的设备的基础要求，是TEE，可以使用拥有TEE的个人笔记本电脑、主板以及计算集群等接入网络提供计算资源。目前，Phala上已经运行着来自三大洲30个国家超过1200个节点。（这个数据需要更新）</p>
+<p>接入的计算设备可以作为2种角色：TEE矿工和守门人。</p>
+<p>全节点负责同步消息，运行智能合约。而守门人负责验证账本，执行共识过程。两者都可获得相应的奖励收入。</p>
+<p>当Phala的计算设备接入体系更加成熟的时候，还会发展出矿池等中间服务商，这更加有利于网络的稳定运行。</p>
+<p>相比之下，Dfinity网络的入门难度比较高。其是邀请服务商建设IDC计算集群作为计算节点接入网络。IDC建立的成本较高，运维难度较高，因此并不适合普通用户。但其并不像Phala一样要求具备某些特殊功能的计算设备。</p>
+<p>使用IDC接入Dfinity网络，除了计算外，还会包含存储等资源的提供。</p>
+<p><strong>去中心化云平台如何提供开发者需要的服务？</strong></p>
+<p>如果把云服务平台解剖，底层的资源是IaaS，那为开发者提供的接入平台、开发平台就是PaaS，而简捷的功能工具就是SaaS。</p>
+<p>对于Phala、Dfinity来说，其目标是让开发者开发DApp。</p>
+<p>当两者的主网上线后，会是一个持续运行的区块链网络，这可以看作一个信息公开的数据库或总账本。开发者需要利用区块链网络开发应用。</p>
+<p>Phala选择生长于波卡生态体系内。其开发基于Substrate，未来的应用开发也会基于波卡生态内使用的开发工具。</p>
+<p>但值得注意的是，Phala用具备TEE的设备建立的计算资源，其与其他区块链网络一样，使用智能合约执行，而智能合约是运行在TEE（Phala runtime）中，所以智能合约等具备天然的隐私属性，可以完成隐私计算任务。</p>
+<p>开发者通过波卡系的开发工具正常开发，思路如正常的区块链DApp开发一致。</p>
+<p>而Dfinity是独立的生态和设计结构，Dfinity中执行应用的被称为容器，虽与区块链的智能合约功能一致，但使用上不同，另外，其开发语言等也是自己研发的语言。</p>
+<p>据开发者描述，在Dfinity上开发，与传统应用开发有一定相似度。</p>
+<p><strong>基础设施开发后的应用多样性</strong></p>
+<p>作为去中心化云计算的代表，Phala、Dfinity的核心都是云计算网络，但其在资源到应用的定向开发上缺少像AWS那样的框架，即垂直行业的优化。</p>
+<p>例如Phala因为能向受监管的程序提供隐私保护（即程序的内部状态和用户与程序间的交互操作是非公开可见的），以及维护区块链的安全和去信任化属性。而例如Dfinity，其基础设施是完善的，性能是突出的，但如果想要实现对垂直行业的优化，需要在生态内再多加一层基础设施的设计，或者完全采用软件和代码解决垂直行业需求。</p>
+<p>所以对比Phala这一类型可以有更多的场景可塑性。相比于以太坊等网络，不仅仅是一个智能合约平台。开发者和用户可以在 Phala 上运行任意程序，包括智能合约和图灵完备程序，甚至在完成网络部署后，还可对它们进行更新和维护。</p>
+<p>Phala结合了 Web2.0 和 Web3.0 的优点，即中心化程序的性能和分布式应用程序的去信任化隐私。可以确保各方在不泄露数据的情况下使用数据（例如用于机器学习或用户身份管理），所以它还可以成为无需互信的各方间进行大规模数据交换的基础设施。</p>
+<p>Phala、Dfinity展现了去中心化的结构，但实际的应用并不能很快塑造应用的多样性。</p>
+<p>即时以太坊上的Defi、NFT、DAO等目前都可以在Phala、Dfinity上使用，但接下来会存在开发者开发以及主网进度问题。</p>
+<p><strong>去中心化云计算有哪些实现刚需？</strong></p>
+<p>Phala目前已经拍下先行网khala插槽，这是Phala应用的开始，并且未来在波卡的异构分片结构里，会有大量的波卡开发者、用户涌入单个平行链的应用里。而Dfinity则需要以公链角色开始促进生态开发者开发应用，与其他公链竞争。</p>
+<p>此外，Phala在Defi、NFT、DAO等应用之上还可以具备隐私特性，而Dfinity则需要开发者自己做出特性的开发。</p>
+<p>不过，基于两个网络的结构，我们可以把云服务中常用的应用场景在Phala、Dfinity进行一个预想。</p>
+<p>其中包含HPC高性能计算、分布式存储、大数据分析。</p>
+<p>这三个云服务中的服务，是目前互联网企业需求极为高频的服务。高性能计算，主要为高频交互类型场景准备，例如机器学习等AI需求服务。Phala的TEE集群和Dfinity的IDC集群都有能力提供服务，并且，Phala提供的机密计算以及数据可用不可见，是高性能计算场景中的刚需。</p>
+<p>在分布式存储上，Dfinity的IDC节点是可以实现的，Phala则可以将存储放在本地或其他的分布式存储网络上。</p>
+<p>在大数据分析上，Dfinity可以完成，但如果实现数据确权，需要搞定一套新的数据流动技术逻辑。这个选项里，Phala更加适合，其技术更适合将数据归属以及流通过程收到安全的可信保护。另外，在云服务中，云平台通常会建立数据湖，而通过数据的确权和可信流动，Phala可能建立一个去中心化数据湖群，改变数据归属难题和中心化垄断。</p>
+<p><strong>写在最后</strong></p>
+<p>云计算是个庞大的工程，用去中心化的结构实现云计算，又是一个难度更大的工程。区块链行业的探索，已经把传统云计算资源的富集过程用经济激励快速完成。在激励的持续作用下，网络也会持续运行。</p>
+<p>但接下来，难就难在如何用去中心化的形式实现云平台对功能的开发和优化。就像2020年至今的Defi、NFT热潮，是经过3年的积累才出现的。从技术上看，今天，Phala、Dfinity已经可以为Defi等应用提供基础设施，只是我们对他们的期待不止于此，当Defi等应用已经应用成熟后，其他类别的应用才会纷至沓来，引领下一个时代。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/27856/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">金色观察｜杭州的“三链在线”是什么？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/27847/">
+                <span class="next-text nav-default">金色微访谈第34期：低耗能公链如何开启高效引擎</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          DeFi深入探索：一文读懂Aave的前世今生 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="展望未来，或许我们将与 Aave 在元宇宙中相见。" />
+<meta name="keywords" content="AAVE" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/28388/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="DeFi深入探索：一文读懂Aave的前世今生" />
+<meta property="og:description" content="展望未来，或许我们将与 Aave 在元宇宙中相见。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/28388/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="DeFi深入探索：一文读懂Aave的前世今生">
+<meta itemprop="description" content="展望未来，或许我们将与 Aave 在元宇宙中相见。"><meta itemprop="datePublished" content="2021-09-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3551">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DeFi深入探索：一文读懂Aave的前世今生"/>
+<meta name="twitter:description" content="展望未来，或许我们将与 Aave 在元宇宙中相见。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">DeFi深入探索：一文读懂Aave的前世今生</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-09-08">
+      2021-09-08
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3551 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"> 区块链 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>Aave 是一个去中心化的借贷系统，允许用户在不需要中间人的情况下借入、借出和赚取加密资产的利息。Aave 在以太坊区块链上运行，并使用智能合约系统，使平台上的资产能够由运行其软件的分布式计算机网络管理。因此，他们的用户不必信任某个机构或个人来处理他们的资金。</p>
+<p>AAVE 允许用户创建贷款池，使他们能够借出或借入20个不同的加密货币。为了在 Aave 上借入资金，用户必须提供抵押品，同时如果借出后经历加密市场震荡，则用户必须面临清算风险。Aave 还具有其他功能，例如快速贷款以及其他形式的债务和信贷发行，但就用户采用和使用而言，这些目前处于 alpha 阶段。</p>
+<p>截止 9 月 6 日，<strong>AAVE是排行第 35 位的加密货币，市值为 53 亿美元，在所有 DeFi 中排名第 7。</strong> 仅落后于 Uniswap、Chainlink、Terra 和 Pancakeswap 等其他巨头。AAVE 的价格为 404.28 美元，2021 年 5 月 18 日创下历史新高，为 631.26 美元。</p>
+<h2 id="历史">历史</h2>
+<p><strong>Aave 是芬兰语，意思是“幽灵”，最初于 2017 年 11 月推出时被称为 ETHLend。</strong> ETHLend 是一个点对点借贷系统。在整个 2018 年大量研究 ETHLend 时，Aave 团队意识到点对点借贷效率低下，并决定放弃它。正如今天所知，Aave 在 2018 年改用了 P2C 借贷平台，并且从那时起就一直在这样做。</p>
+<p>Aave 的创始人兼首席执行官是 Stani Kulechov，他是该公司的主要公众形象。当 Stani 发现以太坊及其功能时，他正在赫尔辛基大学学习法律。他开始探索它如何影响 DeFi 系统，并提出了 ETHLend。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0908/28_h9jj8duwdt.png" alt="1Ureh957CHbA4RHzYk6Ocs9t3PFvORhng1HlgPVs.jpeg"></p>
+<h2 id="资本资金">资本/资金</h2>
+<p>2017 年，Aave 推出了 ICO（初始代币发行），为他们筹集了 1620 万美元的资金。ICO 使 Stani 能够雇佣更多的开发人员来专注于改进协议。</p>
+<p>2020 年 1 月，Aave 在 ETH 主网上上线，支持 16 种资产。2020 年 7 月，Aave 获得了三箭资本、Framework Ventures 和 Parafi Capital 的 300 万美元投资。从那时起，Aave 得到了 Blockchain Capital、DTC Capital、Standard Crypto、Blockchain.com Ventures 和 Defiance Capital 的资助。</p>
+<p><strong>2020 年是 Aave 的决定性年份，到 2020 年底，他们的 TVL 从 300,000 美元飙升至约 20 亿美元。</strong> Aave 代币 ($AAVE) 也是 2020 年表现最佳的资产，并产生了 5,000% 的收益。目前，Aave 锁定的总价值约为 180 亿美元。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0908/28_br6pasg6o7.png" alt="U3FSoCdXpCjFEeTcdyQNWOysfttGOeYMemFQqKhT.png"></p>
+<h2 id="aave有什么作用">Aave有什么作用？</h2>
+<p>Aave 是一个借贷池系统，使用户可以选择借入、借出和赚取 20 种不同数字资产的利息，而无需中间人。</p>
+<p>想要赚取利息的用户将存入他们想要借出的资金，然后将其收集到流动性池中。当借款人贷款时，他们从这些资金池中提取资金。贷方可以以任何他们认为合适的方式交易或转让这些代币。</p>
+<p>Aave 发行两种类型的代币来促进此活动，$AAVE（原生代币）和 aTokens。</p>
+<p>$AAVE 令牌有多种使用方式：</p>
+<ul>
+<li>
+<p>如果用户使用 $AAVE 作为借款的抵押品，他们将获得折扣费用，如果 $AAVE 借款人以代币计价的贷款，则不会收取任何费用。</p>
+</li>
+<li>
+<p>如果支付费用，$AAVE 的所有者可以选择在向公众发布贷款之前查看贷款。</p>
+</li>
+<li>
+<p>使用 $AAVE 作为抵押品的用户可以比使用任何其他数字资产借入的金额略多。</p>
+</li>
+<li>
+<p>代币持有者可以在平台上质押 $AAVE，以获得大约 6% 的 APY 分配。</p>
+</li>
+</ul>
+<p>aTokens 代币：</p>
+<ul>
+<li>
+<p>这些代币在存款时铸造，赎回时销毁。</p>
+</li>
+<li>
+<p>它们与存入 Aave 协议的基础资产的价值以 1:1 的比率挂钩。</p>
+</li>
+<li>
+<p>aTokens 为贷方提供“收据”，允许他们收取存款利息。</p>
+</li>
+</ul>
+<p>2020 年 12 月，Aave 将其平台升级到 Aave V2。升级带来了无需进行多笔交易即可偿还部分贷款抵押品的能力，通过将这些操作合并为一笔交易，用户可以节省网络费用（ETH 交易费用最多可减少 50%）、时间和精力。</p>
+<p>此外，Aave 平台上的借款人现在可以发行一种新代币，就像贷款人的 aTokens。代币让借款人可以从他们的冷钱包中管理借来的代币。更新还带来了稳定的借贷利率和固定利率，提供了更好的可预测性和避免市场波动带来的临时损失。数据分析网站 Support.token 提供了更详细的 V2 升级列表（下图）。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0908/28_quazymvt1j.png" alt="SXDM9z3savbWxZ0DaLAgxOCe3QQwxRuXIfcYe5nt.png"></p>
+<h2 id="代币经济学模型">代币经济学（模型）</h2>
+<p>2020 年 7 月，Aave 创始人兼首席执行官 Stani Kulechov 宣布了该协议的代币经济学“Aavenomics”。Aavenomics 升级将每 100 个 $LEND 代币转换为 1 个 $AAVE 代币，最大总供应量为 1600 万个。升级进行了治理投票，并以几乎 100% 的一致通过。通过新的投票，1600 万个代币中的 1300 万个由 LEND 持有者赎回，其余 300 万个进入了 Aave 生态系统储备，该储备被描述为“在治理认为合适的情况下分配给协议激励的引导基金”。</p>
+<p>此外，安全模块与令牌变基一起启动。安全模块充当代币的抵押机制，以在发生短缺事件时充当保险。这为 $AAVE 带来了代币农业，其中利益相关者可以获得安全激励和一定比例的协议费用。</p>
+<p>在 Avenomics 发布后的 4 个月内（2020 年 10 月），$ AAVE 的交易溢价约为 50 美元。2020 年初，LEND 的定价为 0.02 美元。即使供应减少且价格重新平衡为 2 美元，AAVE 在短短 4 个月内仍上涨了 2,400%。</p>
+<p>Aavenomics 推出的全部原因是通过代币持有者的治理使 Aave 更加去中心化。引述官方发表的公告：“Aave Tokenomics 的目标是通过其激励措施和政策，创建一个 Shelling Point，协议的增长、可持续性和安全性优先于个人利益相关者的目标”。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0908/28_uyrltdf0o6.png" alt="oUwjWdWIQo8QwYcIuMatx74Wsep5m4IDXNp9V4Qw.png"></p>
+<h2 id="安全问题审计">安全问题/审计</h2>
+<p>根据 Token Sniffer 的说法，Aave 包含一个代理合约，它带有协议利用的可能性。代理合约允许开发人员将事情更改为区块链协议，这就是 Aave V2 能够实现的方式。就像 Facebook 如何发现错误并提供更新来修复它们一样，代理合约允许开发人员在发现问题时更新“不可变”区块链协议。代理合约的问题在于，理论上，黑客可以通过使用和利用为特定协议部署的代理合约来更改或操纵有利于他们的协议（例如窃取资金）。</p>
+<p>拥有代理合约给 Aave 带来了轻微的漏洞，但它也带来了灵活性和选项，可以根据代币持有者的治理投票使协议变得更好。</p>
+<p>为了通过代理合同和其他形式的黑客潜力来降低风险，Aave 有一个漏洞赏金活动，任何人都可以尝试利用他们的协议来寻找漏洞。如果他们发现漏洞，用户将根据发现的漏洞的严重程度获得金钱奖励，金额从 100 美元到 250,000 美元不等。Aave 还不断接受各种审计平台的审计：</p>
+<p><img src="https://img.bibiqing.com/news/2021/0908/28_ovcttc5pna.png" alt="vB2uDfEOHHWeLf8iQCtzAUcrUeCky2HFB3invVUd.png"></p>
+<h2 id="路线图进展">路线图、进展</h2>
+<p>Aave 从 2020 年开始的势头一直延续到 2021 年。为了启动 2021 年，Aave 成功推出了 V1 -&gt; V2 迁移工具。在闪电贷的支持下，用户几乎可以无缝地将其流动性头寸从版本 1 转移到版本 2 。闪电贷是一种无需抵押即可借入数字资产的方式。2021 年 3 月 16 日，Aave 发布了其首个 AMM（自动做市商）市场。AMM 流动性池允许 Uniswap 和 Balancer 的流动性提供者使用他们的 LP（流动性提供者）代币作为 Aave 协议中的抵押品。</p>
+<p>2021 年，Aave 缩小了对可扩展性的关注，并探索“新前沿”。Aave 的多市场方法使其能够深入这些新领域。与其他项目建立协同效应是 DeFi 的主要资产之一。Aave 正在利用这一点，在加密货币的所有重要领域建立市场。他们最新的前沿可扩展性示例是具有多边形实现的侧链。这种实现为 Aave 带来了极快且几乎免费的交易。此外，Polygon 由 Chainlink 提供支持，它在协议价格馈送中为 Aave 带来了旗舰安全性。Polygon 与 Aave 的协同作用允许更多的附属选项适合网络，这增加了 Aave 和 Polygon 的可扩展性。</p>
+<p>在撰写本文时，集成在 Polygon 区块链上是 Aave 所做的最后一件大事。到目前为止，除了可扩展性和试图降低 ETH 价格费用之外，没有更多关于将要发生的事情的公告，这是他们 2021 年的主要重点。</p>
+<h2 id="未来">未来</h2>
+<p>Aave 是以太坊生态系统中的旗舰产品，正在为其他 P2P 借贷协议制定标准。凭借过去一年零八个月的爆发力，我们只能希望他们能带着能量继续定义 DeFi 领域的新领域。Aave 在 DeFi 中是如此重要，以至于 Grayscale 一直在寻找 Aave 的下一个信任，显示他们获得了多少信任和动力。</p>
+<p>在撰写本文时，创始人兼首席执行官 Kulechov 发布的最后一条引人入胜的推文是与元宇宙中的某人会面。可以想象到，随着 Aave 继续成长为更大更好的借贷市场，会发生什么？或许我们也将与 Aave 在元宇宙中相见。</p>
+<p><img src="https://img.bibiqing.com/news/2021/0908/28_shg1anph99.png" alt="2sXiqvWMhEHajleacNnB1uC7EJXqh56HLQokdtG2.png"></p>
+<p>原文来源 | R.F.Capital</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/28385/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">DeFi借款总量突破300亿美元，创历史新高</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/28378/">
+                <span class="next-text nav-default">Gitcoin即将开启新一轮捐赠活动 这些信息你应该了解</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#历史">历史</a></li>
+    <li><a href="#资本资金">资本/资金</a></li>
+    <li><a href="#aave有什么作用">Aave有什么作用？</a></li>
+    <li><a href="#代币经济学模型">代币经济学（模型）</a></li>
+    <li><a href="#安全问题审计">安全问题/审计</a></li>
+    <li><a href="#路线图进展">路线图、进展</a></li>
+    <li><a href="#未来">未来</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

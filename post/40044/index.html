@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          从Avalanche的角度 深度解析二线公链之间的竞争 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="Avalanche 以三链架构为特点，分别为交易链（X-Chain，DAG）、合约链（C-Chain）、平台链（P-Chain）这篇文章我们就来详细分析。" />
+<meta name="keywords" content="Avalanche" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/40044/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="从Avalanche的角度 深度解析二线公链之间的竞争" />
+<meta property="og:description" content="Avalanche 以三链架构为特点，分别为交易链（X-Chain，DAG）、合约链（C-Chain）、平台链（P-Chain）这篇文章我们就来详细分析。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/40044/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-11T00:00:00+00:00" />
+
+<meta itemprop="name" content="从Avalanche的角度 深度解析二线公链之间的竞争">
+<meta itemprop="description" content="Avalanche 以三链架构为特点，分别为交易链（X-Chain，DAG）、合约链（C-Chain）、平台链（P-Chain）这篇文章我们就来详细分析。"><meta itemprop="datePublished" content="2022-07-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-07-11T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8553">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="从Avalanche的角度 深度解析二线公链之间的竞争"/>
+<meta name="twitter:description" content="Avalanche 以三链架构为特点，分别为交易链（X-Chain，DAG）、合约链（C-Chain）、平台链（P-Chain）这篇文章我们就来详细分析。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">从Avalanche的角度 深度解析二线公链之间的竞争</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-07-11">
+      2022-07-11
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 8553 字 -
+        预计阅读 18 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>作者：Maco</p>
+<p>修订：Evelyn</p>
+<h2 id="一基本信息">一、基本信息</h2>
+<h3 id="1-avalanche-架构和技术">1. Avalanche 架构和技术</h3>
+<p>Avalanche 以三链架构为特点，分别为交易链（X-Chain，DAG）、合约链（C-Chain）、平台链（P-Chain），下图给出了比较清晰的分工。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_s6f8lmdlct.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p><strong>Avalanche 采用横向扩容，与 Cosmos 和 Polkadot 类似，在此做简单比较：</strong></p>
+<ul>
+<li>
+<p>Dot 网络验证者维护一个统一的全局状态，平行链拥有共享安全（安全性最高）；灵活度/自主性最差，未来扩展性和性能会受制于中继链；链间互操作性最好；</p>
+</li>
+<li>
+<p>Avax 网络的验证者是完全独立的，由一组验证节点组成的子网不共享状态但“部分”共享安全（安全性中等，子网可以运营多条链，同时享受多网络的费用奖励也承担惩罚风险）；灵活度/自主性中等，扩展性好；理论上子网内的互操作性好</p>
+</li>
+<li>
+<p>Cosmos 网络的验证者是完全独立的，非共享状态和安全（安全性最低，后续有改进），hub / zone 的安全程度各异；灵活度/自主性最好，zone 自由度高，扩展性不受限；链间互操作性好；</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_unk9ltbz2w.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>
+<p>新 BFT 共识：低延迟和高扩展性。采用小样本重复采样和 DAG 信息传递架构，此架构使得节点间消除了“二次消息传递复杂性”（消息传递量是节点的二次方），因此网络共识/验证效率不会因为节点数增加而变得低下，理论上比 PBFT 支持更多节点（节点数 Avax：1283，Atom：175，Dot：297）</p>
+</li>
+<li>
+<p>子网：带来横向扩展性，称为“重叠验证网络”，要求所有的子网必须做主网的验证者 —— 质押 2000 Avax，此举既加强了整个网络的安全性，又赋能了 Avax 代币，因此经济模型和理论网络安全性强于 Cosmos，低于 Dot；但子网准入门槛又相对很低</p>
+</li>
+<li>
+<p>相比类似架构的 Cosmos 和 Dot，Avax 有 C 链这个经过市场检验的范本，项目可以更无忧的定制化地创建一个主权链</p>
+</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>
+<p>子网间交互性：子网内的交互是即时的且受到共享安全保障，但子网间的交互目前只能通过桥。弱于 Cosmos 的 IBC 和 Dot 的 XCM。</p>
+</li>
+<li>
+<p>子网的采用率没有 Cosmos 和 Dot 广泛，并且单一（仅 GameFi），创新的共识机制是否能在正式市场环境中承压。</p>
+</li>
+<li>
+<p>Avax 没有经历过熊市的考验</p>
+</li>
+</ul>
+<h3 id="2-团队主要成员">2. 团队主要成员</h3>
+<p>Founder &amp; CEO：Emin Gün Sirer，康奈尔大学教授，创立了由美国国家科学基金会资助的区块链组织 IC3，早于比特币 7 年开发了第一个 POW 货币系统 karma。</p>
+<p>Co-founder &amp; COO &amp; CPO：Kevin Sekniqi，康奈尔大学计算机科学博士</p>
+<p>Co-founder &amp; CPO：Ted Yin，康奈尔大学博士，Libra 采用的 HotStuff 共识的发明者。</p>
+<p>President：John Wu，康奈尔大学/哈佛商学院，职业投资人和经理人，曾就职老虎基金</p>
+<h3 id="3-融资">3. 融资</h3>
+<p>根据 Crunchbase 信息，Ava Labs 共融资 7 次， 总融资额 290M。</p>
+<p>投资机构主要包括：a16z、Polychain、ThreeArrows、Bitmain、Galaxy Digital、Dragonfly Capital、NGC Ventures、Initialized Capital</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_jtmv39kba6.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p><strong>TL；DR：</strong></p>
+<p>团队技术能力够强，资方也不差，扩容方向也是目前比较主流的，和主流多链互有胜负，且有真实用例和定制化特色。</p>
+<h2 id="二公链性能">二、公链性能</h2>
+<h3 id="1-吞吐量-throughput">1. 吞吐量 Throughput</h3>
+<p>为和 ETH 形成差异化竞争，各公链官方给出 TPS 的数值都挺吓人，几千上万，但经过实际测算和体验下来，在总体上我们感觉还是有些差异，但远没有官方宣传的那么大。</p>
+<p>对公链性能的评估，目前看到最靠谱的方式是 Dragonfly 的研究文章《The AMM test: A no BS look at L1 performance》。以下TPS结果都是以 swap 交易（合约交互）消耗gas 来计算的（这也是我们认可的一种相对公平的理论计算方式，因为各个链交易成分不一样，仅计算普通交易的话差别会非常大）。</p>
+<p>由于部分链有 gas target 和 gas limit 的概念，因此实体柱子代表是 Target，代表的是在这个 TPS 范围内公链运作良好，用户体验也不错。超过以后会带来体验差 / gas fee 飙升（如图 2 所示）。我们可以就看到各公链 TPS 上限最高的是 SOL 的 273，EVM 兼容链中最高的 BSC 为 194，ETH 为 18，虽然最高和最低之间有 15X 的差距，但也并没有各链官方宣传的几百上千那么大的差距。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_d910c3nn13.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>（图1）</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_7une7ibtz9.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>（图2）</p>
+<p>以上的计算与 W3 在去年对 BSC 的性能进行的推算类似，不过我们采用的是实际运行环境下的 gas limit 和实际 transation 来进行推算，此逻辑会更好的模拟现实环境，但此方法仅适用于出块相对稳定且生态实际用量达到/接近链极限的 EVM 链。</p>
+<p>我们用下列公式计算出链在实际运行环境下能达到的极限 TPS limit</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_p8rkhgq1ks.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>在浏览器上分别取得各链的相应数据（gas limit、gas used/day、tx/day、block time)并取平均数得到 ETH 和 BSC 的 TPS 上限分别为 18.9 和 146.7。</p>
+<p><strong>在 gas used/tx 这组数据的处理上，可以看到我们取的是真实发生在链上的平均值，而不是单纯采用合约交互或简单转账（21k gas）的耗量数据：</strong></p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_idq51rlnst.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>根据上表，我们可以看到 ETH 本在“跑满”的状态，gas 使用率长期在 95% 以上。因此实际性能就是在 18 左右。</p>
+<p>作为“ EVM 巅峰”的 BSC 生态在去年二季度经历了大爆发，链上活动频繁，也在正式环境下考验了链的性能，虽然官方从 4 月开始不断提高 gas limit 作为临时提高性能方案，但 TPS 最多也就达到了 146 左右，不过那时候的用户体验是非常的差 —— 拥堵不堪，区块不同步事件频发。因此实际体验下来，能够良好运行的 TPS 也就是 100左右，远远达不到 194。<strong>（从后续11月的数据来看，TPS又创下了新高（219），可能是后续币安有升级设备，但同样架构下再提升空间也有限，因此币安也开始采用 BNB chain 多链方案）</strong></p>
+<p>SOL 这条链比较特殊，没有 gas limit的概念，因此，我们暂时没找到相应的计算方法。我们只能通过浏览器上的历史数据来观察它可能达到的上限。</p>
+<p>排除由于 IDO，NFT mint 等特殊事件的影响，常态下 SOL 的 TPS 高位能稳在 3000 左右，但我们通过浏览器可以看到，在 3000 TPS 里面平均有差不多 76% 都是为达成链上共识的消息（投票），这不能被算做真实用户交易，应排除。剩余TPS里，观察到与serum 交互的简单交易占据不小的比例（由于 SOL 链的特殊机制，大多数协议都会与serum 交互），因此，我们认为这同样不能算作真实用户耗量，应排除。剩余的真实用户交易在 10% 左右，因此真实 TPS 为 300 左右。不过此方法并没有测算到 SOL 的极限值，因此实际的 TPS 应该是 300 +。至于 SOL 链经常宕机导致用户体验差，那是另一回事，不在本次讨论范围。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_tspdp3qol0.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<h3 id="2-延迟-latency">2. 延迟 Latency</h3>
+<p>在评估公链性能上，大多数人只会对 TPS 吞吐量做评估，因为它代表了一定时间内可以容纳多少笔交易（有多少水可以通过管子）。但我们同样也该看一下另外一个维度 —— 延时，即这些交易能在多长时间内被执行（这些水能在多长时间内通过管子），这个指标对单个用户的使用体验甚至超过了 TPS。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_28509d3laf.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>Latency 这个维度很难量化，我们主要观察交易的确认时间，即确认时间越短，用户体验越好。</p>
+<p>我们首先排除高并发的特殊情况，因为所有链在面对高并发的瞬间都会有很高的延迟。这里，只考虑常态情况，从用户主观使用体验来观察（随机采访和感知)，SOL 在去年爆发期中有明显的交易确认延时和特别高的交易失败率（平均 15%-20%），随后，虽然官方有应急的限流解决措施，但效果一般；Polygon 和 BSC 也在爆发后有非常高的交易延迟，且一直没得到解决。</p>
+<p>据不全面的反馈和自己的使用体验来说，各个链在高峰期都有交易确认延迟的问题，并且都不好解决，相比之下 Avax 体验会更好些 —— 虽然高峰期交易费高涨，但并没出现大规模拥堵延迟（常态下）。除了机制上的优势，与网络利用率也有相当大关系。</p>
+<h3 id="3-事件">3. 事件</h3>
+<p>针对性能，各个链都发生过问题，目前也都在积极的改进中</p>
+<ul>
+<li>
+<p><strong>Solana：</strong> 之前高峰期对请求做过限流。目前最新的 v1.1 更新，TPS 回升到之前高位，使用体验提高；后续还会引入数据流控制技术，改进gas模式。</p>
+</li>
+<li>
+<p><strong>Avalanche：</strong> 大流量高速涌入可能会暴露出一些性能问题。Avalanche 曾因 DEX Pangolin 负载过高而触发跨链功能错误，在社区内曾引起一定短期恐慌。</p>
+</li>
+<li>
+<p><strong>BSC / Polygon：</strong> 去年二季度由于链上活动爆发，相继出现拥堵不堪，gas 费飙升。</p>
+</li>
+</ul>
+<p><strong>TL；DR：</strong></p>
+<ul>
+<li>
+<p>目前<strong>单链 TPS 天花板是 SOL，所有 EVM 链的性能天花板基本是 BSC，但差距远没有官方宣传的那么大</strong> ，并且高TPS链都或多或少出过问题（SOL 宕机，BSC 节点不同步）。</p>
+</li>
+<li>
+<p>各个链想要达到理论的性能上限，那所带来的代价也不小 —— gas fee 的飙升。SOL 不会受此影响，因为没有 gas limit 概念。</p>
+</li>
+<li>
+<p>各个链在面对瞬时的高并发上都无能为力，并且当下各类方案均对持续的链上高频活动支持不足，用户体验有待提高。</p>
+</li>
+</ul>
+<h2 id="三生态扶持和激励">三、生态扶持和激励</h2>
+<p>2021年各大公链为了抢占TVL，先后推出了不少激励计划，在此做了一个简单的罗列：</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_zffz5ss0a4.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>Avalanche Rush 的激励让链上的 TVL 在短短十天时间翻了近十倍，从 2.6 亿涨到了 23亿美元，并且形成了正循环，叠加 Avax 币价上涨，公链TVL一路高歌猛进，最高达到130 亿美元水平。时至今日，尽管 TVL 随着行情大跌，但从币本位角度看 Avax 链上的资产并没有流出迹象，说明公链沉淀下了一部分忠实的资产/用户。</p>
+<h3 id="其他激励">其他激励</h3>
+<ul>
+<li>
+<p>2021 年 11 月，Avalanche 基金会推出超过 2.2 亿美元的激励计划 Blizzard。激励计划将专注于 DeFi、企业应用、NFT 及文化类产品开发者。Blizzard Fund 的资金主要来源于 Avalanche 基金会、Ava Labs、Polychain 资本、三箭资本、Dragonfly 资本等。</p>
+</li>
+<li>
+<p>2021 年 12 月至 2022 年 3 月初，Avalanche 基金会与 Web3.0 开发平台 Moralis 共同进行其最大规模的黑客松，目的在于加速生态内 DApp、Web3 应用和 DeFi 项目的开发。</p>
+</li>
+<li>
+<p>2022 年 3 月，Avalanche 基金会宣布推出「Avalanche Multiverse」激励子网计划，总计提供价值约合 2.9 亿美元的 400 万枚 AVAX Token。同时，Avalanche 核心开发商之一 Ava Labs 也为子网开发提供协助和支持。</p>
+</li>
+<li>
+<p><strong>可以看出每次激励的方向还是很清晰的：流动性激励 —— 黑客松 —— 子网激励</strong></p>
+</li>
+</ul>
+<p><strong>TL;DR：</strong></p>
+<ul>
+<li>
+<p>Avalanche 前期激励和 Polygon 类似，直接针对用户的流动性挖矿激励；后期Avax 的激励放在了开发者和生态合作，从资金量和覆盖全面性都优于对手</p>
+</li>
+<li>
+<p>BSC 由于有 CEX 的导流，不需要激励用户，侧重激励项目方；Fantom 也采用类似方案</p>
+</li>
+</ul>
+<h2 id="四资金和用户">四、资金和用户</h2>
+<h3 id="1桥">1. 桥</h3>
+<p>公链爆发的资金来源一部分是 CEX 的支持，另外就是桥，所以我们通过各跨链桥的资金量可以窥视下公链爆发前夕，从图中可以明显看到Polygon（4月），Avalanche（8月），Near（8月），Fantom（10月）资金明显的流入，成就了后来各链项目的爆发。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_ygvuefzesq.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>Avalanche 于去年 2 月先后推出与以太坊的双向跨链桥（AEB）和 Avalanche Bridge （AB），其特点是费用低速度快（1-5 美金，任何跨链机制的交易费用主要在以太坊上，但是在 AB 机制中，以太坊上的交易都是普通转账交易，不需要调用合约的交易，因此交易费必然比较低）</p>
+<h3 id="2tvl">2. TVL</h3>
+<p>TVL 据高点下降 80% 以上，表现与 SOL，BSC 同等水平，次于 ETH，但好于其他链。若从币本位看，Avax 整条链的资金没有明显流出，反而处于上升趋势，明显好于竞争对手（主要来自 Aave 的稳定贡献），Near 也呈现类似趋势。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_9ncvwej2hb.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_0ta7d0qivi.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>Aave 在所有生态项目的 TVL 中占比接近一半，占比高，很大程度是因为跌幅最少，距离高点跌幅仅 30%，其余项目距离高点的跌幅在 70%-90%。</p>
+<p>但是需要注意的是 Aave V3 有 90% 份额在 Avalanche 上，当然与代币激励有一定的关系，不过也能从侧面看出 Avax 生态发展不错。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_a2dpa60ug6.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_rys2hdccmb.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>仅从数量上讲，TVL 前 10 的项目中有 7 个是原生项目，在兼容 EVM 的竞争链中属于上游水平。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_w31n9wzml4.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>从生态细分来说，也比较丰富和健康，既有跨链大协议（Aave，Curve），也有原生精品（TIME，Traderjoe， Benqi）。类别既有充当基础设施的 DEX（通用和稳定币兑换）和借贷，有 DeFi 乐高的收益聚合项目和保险，DeFi 2.0（Defrost（Abracadabra)，TIME(OHM))，有红极一时的 GameFi（Crabada）,也有从其他链战略迁移的项目（NFT 平台 Kalao 从 Wax 迁移）。</p>
+<p>从覆盖赛道来看，DeFi，GameFi 都没有错过。从翻盘 TIME 一度市值超过 OHM 也可以看出 Avalanche 造势能力和热度不低。</p>
+<h3 id="3流量">3. 流量</h3>
+<p>从近一年官网流量看，总体量 SOL 和 ETH 长期占据 60% 以上份额；Polygon 和 Avax也在 10%-20% 徘徊；其他链占比基本在个位数。</p>
+<p>从趋势上看，Avax 在 8 月，11 月，3 月的激励计划都起到了明显的正向作用。不过失去激励以后，最近两个月有所下滑；Ftm 也是类似的趋势，不过下滑更为明显；SOL 和Polygon 基本都能维持在高位，Polygon 的上升与最近黑客松也有很大关系；Near 今年整体上保持了一个上升的势头。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_pkgimpsowa.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_tgz963hytr.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>从访问的地域上看，也有明显的特征：Avax 的土耳其背景，Polygon 的印度背景，Near 的东欧背景（比较奇怪的是 Near 在越南、泰国也有很大流量？）。不过从量级和分布均匀程度来看，Avax 和 Polygon 基本同等水平，低于 SOL，Near。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_votdgk5jlq.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>再从各自区块链浏览器的访问量看一下，我们认为这个指标比看官网流量更能代表真实/留存用户，从近一年的总访问量看 ETH 和 BSC 明显占比更大，但是 BSC 呈持续下降趋势；SOL 增量最快；Polygon / Avax / Ftm 在高峰回落后都留存了一定的量；Near 最低但也呈现出上涨趋势。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_nyy7vevujq.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>从热词自然搜索看，每条链被搜索最多的都是几个常规的类别：wallet，bridge，explorer。</p>
+<p>Avax 被关心的最多的都是比较常规，偏应用型的，而像 Subnet 这种未来方向的则被大家关心的非常少。Ftm 和 Polygon 也呈现类似的状况，毕竟都是 EVM 链，一上来就有应用。值得一提的是 Polygon 的 Miden，Zero 这些偏技术方向的搜索也少的可怜。</p>
+<p>而 SOL 这边，除了常规关键词以外，Status，Rpc，NFT 被关心的较多，也侧面反应出来链的特色：NFT 火爆，status 经常有问题。</p>
+<p>Near 的 NFT 被搜索较多。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_4hnfm2k91a.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p>我们从 W3 的自创工具“推特热词搜索图表”中可以观察到，Avax 推特搜索量从去年 8 月起势，11 月到高峰，并在后续的半年内维持在相对高位，直到最近一个月才有下滑趋势。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_5tnjl2vos0.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p><strong>TL;DR：</strong></p>
+<p>从用户、资金、流量各维度来看，SOL 由于之前应用的爆发无疑还是 altL1 的 NO1，Near 是匹黑马值得观察，Polygon 和 Avax 处于同等水平，Ftm 比较差。</p>
+<h2 id="五开发者">五、开发者</h2>
+<p>相较于用户和资金流向，对公链开发者的观察或许是评估一条公链未来发展更好的指标，我们将从以下几个维度来看。</p>
+<h3 id="1公链开发活跃度">1. 公链开发活跃度</h3>
+<p>我们从 W3 的自创工具“公链开发者统计图表”中观察以下各公链情况，可以大致得出的结论是：</p>
+<blockquote>
+<p>从代码提交的绝对数量和活跃开发者数两个指标上都能看出 Near，SOL，Avax 名列前茅，说明他们在公链的更新迭代上做了更多的工作。在经历了去年开发的活跃期后，各公链本身开发的活跃度都有所回落，这一现象在 SOL 和 Avax 上尤其明显，不过 Near 却呈现出了完全不一样的走势 —— 维持了去年的活跃水平并有上升趋势，进一步说底层还有很多优化工作，团队也在积极搭建。</p>
+</blockquote>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_n92h1svc10.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_zdiq48ss8f.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<h3 id="2生态开发活跃度">2. 生态开发活跃度</h3>
+<p>相较于公链本身的开发活跃度，生态项目的开发活跃度会是观察公链生态发展的更有效的指标。</p>
+<p>从体量来看，SOL 和 BSC 长期霸占前两位，接下来是 Near / Polygon / Avax，而 Ftm 垫底。</p>
+<p>开发活跃度完整的反应了公链爆发的情况：</p>
+<ul>
+<li>
+<p>BSC 和 Polygon 从去年一季度起势，高点在 5 月前后，随后就呈现下降趋势（Polygon 尤其明显），BSC 后续的项目不少，但开发者流失明显；</p>
+</li>
+<li>
+<p>SOL 走势强劲，去年一年代码提交数上涨了 9 倍，开发者数量也上涨了近 4 倍并在今年 2 月达到了高点，今年开始指标有较大幅度回落，但依旧维持高水平（尤其是开发者数）；</p>
+</li>
+<li>
+<p>Near 两项指标表现都最优秀，一直处于上涨状态，且开发者增长量超过 4 倍，为所有公链中增幅最大，回落幅度也最小；</p>
+</li>
+<li>
+<p>Avax 相对较平稳，数据上涨 2-3 倍，在去年 9 月达到高点后开始回落，增幅不及SOL 和 Near，跌幅也相对更大。</p>
+</li>
+</ul>
+<p>整体来看，SOL，Near，Avax 表现都非常优秀，尤其在开发者留存上，分别据高点留存 68%，80%，60%，基本达到 ETH 的水平（72%），相较之下，其他公链留存率都低于 40%。不过 Avax 和 Near 由于体量稍小，是否能维持还需持续观察。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_lokq5eoehf.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_4rqdka72as.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<h3 id="3新进开发者流量">3. 新进开发者流量</h3>
+<p>最后，我们再从过去一年各公链开发者文档的访问量来观察下新进开发者流量（仅选取SOL，Avax，Near，其他链干扰因素较大，不具参考意义）。</p>
+<p>我们可以得到类似的结论：</p>
+<ul>
+<li>
+<p>SOL 体量最大，走势与 Avax 类似，经历了去年三，四季度的高峰后有所下滑，但依然保持一定的访问量；</p>
+</li>
+<li>
+<p>Near 体量最小，但走势与他们不同，虽然近期略有下滑，但总体维持上涨的趋势。</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_8zpgehfsmi.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p><strong>TL;DR：</strong></p>
+<p>从开发者各维度指标看：SOL 综合最强，Avax 次之，Near 增长最猛，Polygon 和 BSC体量大但处于下滑走势，Ftm 综合最差。</p>
+<h2 id="六子网和合作">六、子网和合作</h2>
+<h3 id="1子网">1. 子网</h3>
+<p>子网分私有链和公有链，都可根据客户需求定制化。目前正式运行的两个子网，均是游戏类。不过，Avalanche 目前没有子网间的通信方案，主网和 subnet 之间的资产转移目前由第三方桥处理。</p>
+<ul>
+<li>
+<p><strong>DFK chain</strong></p>
+<p>4.1 从 Harmony 上吸引过来的王牌链游 DeFi Kingdom 建立子网 DFK chain（avax提供1500万激励）</p>
+<p>DFK Subnet 应用的是定制 EVM，在 EVM 中结合了有向无环图 (DAG) 模型，允许区块链以较低的成本进行高效扩容。</p>
+<p>目前网络仅 8 个验证节点，40,169 个地址。最近网络使用率低于 1%，粗糙预估理论 TPS 能达到 600</p>
+</li>
+<li>
+<p><strong>SwimmerNetwork</strong></p>
+<p>5.14 之前在C链上的游戏 Crabada 建立子网</p>
+<p>目前网络仅 8 个验证节点，24,892 个地址。最近网络使用率低于 4%，粗糙预估理论 TPS 能达到 150</p>
+</li>
+</ul>
+<p><strong>未来可能的子网</strong></p>
+<ul>
+<li>
+<p>shrapnel：3A 射击类游戏</p>
+</li>
+<li>
+<p>Arrow Markets ：去中心化期权协议</p>
+</li>
+<li>
+<p>Dexalot：高性能 DeFi 子网，下图为与 C 链的对比，按照宣传参数，各方面优于C-chain</p>
+</li>
+</ul>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_c2ezbyrt2g.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<h3 id="2企业用例">2. 企业用例</h3>
+<p>企业级机构的采用或将成为 Avalanche 下一个叙事重点。目前合作初步感觉没有太大效应（需要观察）：</p>
+<ul>
+<li>
+<p><strong>NFT：</strong> 与收藏品公司 Topps 合作，发行了一期 2021 MLB NFT collection</p>
+</li>
+<li>
+<p><strong>支付：</strong> 数字支付平台 Wirex 宣布整合 Avalanche。该支付平台拥有 450 万传统领域用户</p>
+</li>
+<li>
+<p><strong>诉讼产品 ILO：</strong> 与律所 Roche Cyrulnik Freedman LLP 和咨询公司 Republic Advisory Services合作</p>
+</li>
+<li>
+<p><strong>STO：</strong> 与美国 STO 机构 Securitize 合作，后者可使用 Avalanche 链进行私人证券的发行和管理</p>
+</li>
+<li>
+<p><strong>CAYG 救灾平台：</strong> 德勤将 Avalanche 用于其救灾平台，通过区块链技术提高效率并降低成本</p>
+</li>
+</ul>
+<h3 id="3其他">3. 其他</h3>
+<p><strong>3.1 钱包 core</strong></p>
+<p>Ava Labs 发布非托管多功能钱包（浏览器拓展程序）：Core，特色功能：</p>
+<p>(1). Avalanche bridge，支持原生 BTC 跨链。目前已有 690 多 BTC 跨链，后续会支持ERC20 （https://snowtrace.io/token/0x152b9d0FdC40C096757F570A51E494bd4b943E50）</p>
+<p>(2). 支持 NFT，subnet 展示（目前DFK chain，Swimmer）</p>
+<p>(3). 出入金（MoonPay 提供支持）</p>
+<p>(4). 基本 swap 功能</p>
+<p><img src="https://img.bibiqing.com/news/2022/0711/9_flaneeeapr.png" alt="从Avalanche的角度，深度解析二线公链之间的竞争"></p>
+<p><strong>3.2 巴塞罗那Avalanche Summit</strong></p>
+<p>从 3 月的这次黑客松窥视下未来 Avax 方向：</p>
+<ul>
+<li>
+<p>官方 Avalanche foundation 给出的 5 个奖项和获奖项目为：</p>
+</li>
+<li>
+<p>EVM优化方案（OracleEVM）</p>
+</li>
+<li>
+<p>与ledger兼容的子网（SubnetX，与 ledger 兼容的子网创建和管理工具）</p>
+</li>
+<li>
+<p>为子网创建管理工具（subnet.center，面向验证者、委托者、构建者、用户的分析和通知平台）</p>
+</li>
+<li>
+<p>定制化 VM 子网方案（AEVEREST++，基于 C++，理论 TPS 上限可以达到13500）</p>
+</li>
+<li>
+<p>子网上创建 Dapp（zk-id，零知识身份协议）</p>
+</li>
+</ul>
+<p>除了官方奖项外，还邀请了一些机构/项目并设置了奖项：</p>
+<ul>
+<li>
+<p>Axelar（跨链通信方案）</p>
+</li>
+<li>
+<p>Covalent（API 方案）</p>
+</li>
+<li>
+<p>Ankr（节点服务）</p>
+</li>
+<li>
+<p>Aventures DAO；Chainlink</p>
+</li>
+<li>
+<p>Dexalot（DeFi 子网）</p>
+</li>
+<li>
+<p>Hacken（防黑客攻击）</p>
+</li>
+<li>
+<p>LayerZero</p>
+</li>
+<li>
+<p>WOWswap</p>
+</li>
+<li>
+<p>Coinbase wallet</p>
+</li>
+</ul>
+<p>从奖项设置来看，基本可以看出 Avax 目前重点在子网搭建的探索上，从底层执行环境优化-创建项目，在开发的使用体验各个环节下功夫。</p>
+<h2 id="七总结">七、总结</h2>
+<p><strong>综上，</strong></p>
+<ul>
+<li>
+<p>Avalanche 公链本身的技术能力 / 架构符合未来多链趋势，资本支持也属于中上游水平</p>
+</li>
+<li>
+<p>从生态项目的丰富性、热度、留存率来看，整体水平较高，生态综合评分与BSC，SOL，Near 处于同等水平，高于其他竞品。</p>
+</li>
+<li>
+<p><strong>综合公链和生态来看，SOL &gt; Avalanche &gt; Near &gt; BSC &gt; Polygon &gt; Ftm</strong> （由于Cosmos 和 Polkadot 还在相对初期搭建阶段，生态刚现雏形，所以此次“生态对比环节”没有列为比较对象，但是本身公链的方向和团队的能力是我们非常认可的，后续也会重点观察）</p>
+</li>
+<li>
+<p><strong>Avalanche 生态上有定制化子网 / VM 和企业搭建的新叙事能力，又拥有下沉社区的造势能力</strong> （抢夺项目，高水平仿盘），其生态未来可能会走出与 ETH 和altL1 / L2 不一样的路线，值得持续观察。</p>
+</li>
+</ul>
+<p><strong>后续观察</strong></p>
+<ol>
+<li>
+<p>企业合作进展</p>
+</li>
+<li>
+<p>子网交互性和性能</p>
+</li>
+<li>
+<p>生态项目（包括仿盘）的爆发</p>
+</li>
+<li>
+<p>社区热度、资金、开发者是否持续</p>
+</li>
+<li>
+<p>黑客松等开发者活动的举办和项目落地情况</p>
+</li>
+</ol>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/40056/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">zkSync：如何找到不可替代的发展方向？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/40027/">
+                <span class="next-text nav-default">代币经济学：加密项目经济模型设计指导手册</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一基本信息">一、基本信息</a>
+      <ul>
+        <li><a href="#1-avalanche-架构和技术">1. Avalanche 架构和技术</a></li>
+        <li><a href="#2-团队主要成员">2. 团队主要成员</a></li>
+        <li><a href="#3-融资">3. 融资</a></li>
+      </ul>
+    </li>
+    <li><a href="#二公链性能">二、公链性能</a>
+      <ul>
+        <li><a href="#1-吞吐量-throughput">1. 吞吐量 Throughput</a></li>
+        <li><a href="#2-延迟-latency">2. 延迟 Latency</a></li>
+        <li><a href="#3-事件">3. 事件</a></li>
+      </ul>
+    </li>
+    <li><a href="#三生态扶持和激励">三、生态扶持和激励</a>
+      <ul>
+        <li><a href="#其他激励">其他激励</a></li>
+      </ul>
+    </li>
+    <li><a href="#四资金和用户">四、资金和用户</a>
+      <ul>
+        <li><a href="#1桥">1. 桥</a></li>
+        <li><a href="#2tvl">2. TVL</a></li>
+        <li><a href="#3流量">3. 流量</a></li>
+      </ul>
+    </li>
+    <li><a href="#五开发者">五、开发者</a>
+      <ul>
+        <li><a href="#1公链开发活跃度">1. 公链开发活跃度</a></li>
+        <li><a href="#2生态开发活跃度">2. 生态开发活跃度</a></li>
+        <li><a href="#3新进开发者流量">3. 新进开发者流量</a></li>
+      </ul>
+    </li>
+    <li><a href="#六子网和合作">六、子网和合作</a>
+      <ul>
+        <li><a href="#1子网">1. 子网</a></li>
+        <li><a href="#2企业用例">2. 企业用例</a></li>
+        <li><a href="#3其他">3. 其他</a></li>
+      </ul>
+    </li>
+    <li><a href="#七总结">七、总结</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

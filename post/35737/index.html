@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          探讨以太坊Layer2 Optimism的多客户端架构 - 区块大全
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="佚名" /><meta name="description" content="让我们来谈谈导致Layer2项目在“升级密钥”方面的风险，以太坊本身是如何避免这些陷阱的，以及我们能够如何效仿。" />
+<meta name="keywords" content="Optimism, Layer 2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.120.4" />
+
+
+<link rel="canonical" href="/post/35737/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="探讨以太坊Layer2 Optimism的多客户端架构" />
+<meta property="og:description" content="让我们来谈谈导致Layer2项目在“升级密钥”方面的风险，以太坊本身是如何避免这些陷阱的，以及我们能够如何效仿。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/35737/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-22T00:00:00+00:00" />
+
+<meta itemprop="name" content="探讨以太坊Layer2 Optimism的多客户端架构">
+<meta itemprop="description" content="让我们来谈谈导致Layer2项目在“升级密钥”方面的风险，以太坊本身是如何避免这些陷阱的，以及我们能够如何效仿。"><meta itemprop="datePublished" content="2022-03-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3273">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="探讨以太坊Layer2 Optimism的多客户端架构"/>
+<meta name="twitter:description" content="让我们来谈谈导致Layer2项目在“升级密钥”方面的风险，以太坊本身是如何避免这些陷阱的，以及我们能够如何效仿。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">区块大全</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      区块大全
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">主页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">归档</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">探讨以太坊Layer2 Optimism的多客户端架构</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      佚名
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2022-03-22">
+      2022-03-22
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3273 字 -
+        预计阅读 7 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="/categories/%E5%85%B6%E5%AE%83%E6%96%87%E7%AB%A0/"> 其它文章 </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">币安网</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/binance?ref=githubio">注册链接</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/binance?ref=githubio">币安是全球领先的区块链生态系统，推出了一系列产品，其中包括最大的加密货币交易平台。我们的使命是在未来成为全球性加密货币基础架构供应商。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">欧易OKX</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/okx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/okx?ref=githubio">欧易是全球著名的数字资产交易平台之一，主要面向全球用户提供比特币、莱特币、以太币等数字资产的币币和衍生品交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">HTX火币</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/htx?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/htx?ref=githubio">火币全球专业站，是火币集团旗下服务于全球专业交易用户的创新数字资产国际站，致力于发现优质的创新数字资产投资机会。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>原标题：探讨以太坊Layer2 Optimism的多客户端架构，透过务实的去中心化路径解决Layer2中心化问题</p>
+<p>在讨论第二层扩展协议（Layer2 protocols）的时候，有个残酷的事实往往没有实现：<strong>每个主要的Layer2项目都需要一个的可信方负责执行协议升级。</strong></p>
+<p>目前，这几乎是所有Layer2的主要中心化问题，包括我们。</p>
+<p>如果升级密钥（Upgrade Keys）出现问题，那么Layer2协议中所有存入的资产都将面临风险。</p>
+<p>拥有以太坊跨链资产的替代性底层公链（Layer1）也容易受到类似的破坏性攻击，依靠Layer1的安全保障来避免这种情况是Layer2愿景的一个关键点。</p>
+<p>但我们还没有完全达到目的，在某种意义上，每个人都还在卖梦想。</p>
+<p>让我们来谈谈导致Layer2项目在“升级密钥”方面的风险，以太坊本身是如何避免这些陷阱的，以及我们能够如何效仿。</p>
+<p><strong>Layer2的中心化情形</strong></p>
+<p>你的<strong>安全性强度</strong> 仅取决于最薄弱的那一环。</p>
+<p>如果你的密码是“pass word pass word pass word”，再好的加密技术也救不了你。</p>
+<p>那么，Layer2领域当中最薄弱的那一环是什么？</p>
+<p>你猜对了，是“升级密钥”。</p>
+<p>每一个主要的Layer2在他们的Layer1合约上都有某种形式的即时升级能力，这是好的，因为它允许项目的改进和漏洞修复，但它最终也意味着一个受信任的第三方对Layer2馀额有单方面的发言权。</p>
+<p>但这就衍生了一个问题：如果到头来，升级的重要性可以简单地凌驾于安全性之上，那么拥有容错证明（fault proof）或有效性证明（validity proof）的意义何在？</p>
+<p>探讨以太坊Layer2 Optimism的多客户端架构，透过务实的去中心化路径解决Layer2中心化问题无论建造得多麽坚固，基础薄弱的城堡仍然可能倒塌。</p>
+<p>我们并不是说要无视Layer2团队为推动去中心化可扩展性技术的发展所做的努力，我们已经取得了巨大的进步，只要看看我们最近所推出有史以来第一个用于下一代容错证明的漏洞赏金就知道了。</p>
+<p>相反地，这是一个提醒，<strong>当今没有一个主要Layer2产品有完备的容错/有效性证明。</strong></p>
+<p>这种过渡阶段是需要的，生产这些複杂的协议是不容易的，但我们也需要讨论放弃密钥和实现真正去中心化的Layer2愿景的务实路径。</p>
+<p><strong>为什么Layer2不是去中心化的？</strong></p>
+<ul>
+<li><strong>一个必要之恶</strong></li>
+</ul>
+<p>开始探讨解决方案之前，让我们先确定问题：所有Layer2都有升级密钥的原因是，编写复杂、无漏洞的代码是非常困难的，每写一行新的代码就多一次出现漏洞的机会。</p>
+<p>在密码学领域，一个关键的漏洞就可以让一个专案瘫痪，我们必须非常小心。</p>
+<p><strong>这意味着简洁、简单的代码需求，减少代码</strong> 是Optimism理念的核心，也是我们升级EVM（以太坊虚拟机）的主要动力。（即使如此，漏洞还是会被遗漏）。</p>
+<p>事实是，去中心化Layer2中的任何关键漏洞都是灾难性的：根据设计，智能合约将基于Layer1的所有“安全性”来执行，如果没有升级密钥作为最终办法，一般来说将没有追索权，其设计了一种难以置信的高标准。</p>
+<ul>
+<li><strong>研究以太坊</strong></li>
+</ul>
+<p>以太坊本身就是研究去中心化安全性的一个很好的案例，我们可以用它来判断编写一个没有漏洞的Layer2的难度。</p>
+<p>纵观历史，以太坊有很多漏洞，这些漏洞被写入、找到和修复，有时还会不小心引起硬分叉。</p>
+<p>尽管有多个关键漏洞，但以太坊在其整个生命周期中一直保持高度可用性。</p>
+<p>在上海DoS攻击期间，当时仅运行两年的以太坊是最接近真正停止运作的一次。</p>
+<p>鉴于区块链中断在当今仍很常见，这是一个令人印象深刻的壮举。</p>
+<p>在这一点上，我们可以非常有信心，以太坊Layer1不会瘫痪或被破坏。</p>
+<p>我们需要对Layer2达到同样的信心水准，以便能够放弃升级密钥。</p>
+<p>那么以太坊的秘密是什么？当我们努力确保Layer2的安全时，我们能跟随它的脚步吗？</p>
+<p><strong>去中心化的务实路径</strong></p>
+<p>以太坊在最小化安全性和最大化正常运行时间方面的成功并不只是运气好，这归功于<strong>以太坊策略性地创建了一个多客户端生态系统</strong> ，并拥有多种不同的互操作性实现方式。</p>
+<p>达成这种安全性的方法建立在漏洞与实作之间是不相关的情况下，换句话说：如果一个实作出现一种特定的漏洞，另一个实作可能不会遭受完全相同的漏洞。</p>
+<p>这样一来，即使出现执行失败，你也可以剔除有漏洞的客户端，而选择正常运行的客户端，这种冗馀（Redundancy）是以太坊高度可用性保证的关键。</p>
+<p><img src="https://img.bibiqing.com/news/2022/0322/11_adz1vhyaf8.png" alt="探讨以太坊Layer2 Optimism的多客户端架构"></p>
+<p>我们可以跟随以太坊的脚步，在Layer2使用非常类似的方法。</p>
+<p>我们可以为Layer2创建一个多客户端的生态系统，就像我们在Layer1中一样，而不是单一实作客户端、一个容错证明或一个零知识证明（Zero-knowledge proof）。</p>
+<p>这确保了关键的漏洞不会导致整个网路瘫痪。</p>
+<p><strong>采用多客户端架构的去中心化Optimism</strong></p>
+<p>设计Optimism是为了坚持以太坊的理念，不仅从社会影响层面，还包含技术层面。</p>
+<p>从编写Optimism：</p>
+<p>Bedrock版本的第一天开始，就为以太坊2.0合并API的使用来构建它，这使得我们能够轻松地与多个客户端整合。</p>
+<p>事实上，我们的目标是将一个标准的以太坊客户端转变为Optimism客户端所需的代码降至低于1000行，透过EVM等效性（EVM equivalence，与以太坊虚拟机规范完全符合）。</p>
+<p>我们还将容错证明和Rollup客户端的实作模组化为独立的软体片段，综合这些方法，让我们能够混合和匹配证明和客户端，最大化地增加冗馀！</p>
+<p><img src="https://img.bibiqing.com/news/2022/0322/11_qn4des0t0b.png" alt="探讨以太坊Layer2 Optimism的多客户端架构"></p>
+<p><strong>ZK Rollups：额外的安全层</strong></p>
+<p>我们经常被问及一个问题：“你们会采用零知识证明技术吗？”</p>
+<p>答案是可能的，但不是你想像的那样。</p>
+<p>前面的路还很长，但如果ZK技术变得足够强大，能够支援EVM等效性，那么就有可能在多客户端生态系统当中将其作为另一个客户端添加，这并不意味著放弃我们目前的架构或核心功能，但它确实意味著另一个安全层。</p>
+<p>因此，虽然ZK技术令人振奋，但我们不需要等待获得一个低成本、高安全性、EVM等效的Layer2。</p>
+<p>现在已经以Optimism的形式运作，一旦ZK技术成熟，它可以直接融入我们的架构当中。</p>
+<p><strong>推出</strong></p>
+<p>目前，我们正在深入Bedrock的开发核心，这将使我们的EVM等效性Rollup的详细规格产生，以及第一个Rollup客户端和MIPS容错证明“Cannon”。</p>
+<p>届时，多客户端旅程就开始了。</p>
+<p>我们的目标是<strong>与外部团队合作，并激励他们创建其他客户端</strong> ，这不会是一个快速的过程，但Redrock已经被建立起来，代码最小化是最重要的部分。</p>
+<p>要把这些整合到一个多客户端证明系统中，需要遵循Hydra框架。届时，我们将获得移除升级密钥的必要信心。</p>
+<p><strong>链金研究员总结</strong></p>
+<p>1.形成一个Optimists委员会。</p>
+<p>2.发布Bedrock，实现多客户端架构。</p>
+<p>3.激励/支援替代性Optimism客户端。</p>
+<p>4.发送多客户端证明合约。</p>
+<p>5.完全放弃升级密钥这种方式。</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left">推荐平台</th>
+            <th style="text-align:left">链接</th>
+            <th style="text-align:left">平台介绍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Gate芝麻开门</span></td>
+            <td style="text-align:left"><span style="white-space:nowrap"><a
+                        href="https://www.okbtc.cn/gateio?ref=githubio">平台介绍</a></span></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/gateio?ref=githubio">Gate.io芝麻开门创立于2013年，是全球真实交易量TOP10的加密货币交易平台，向全球数千万用户提供安全可靠、真实透明的数字资产交易服务。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bitget</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bitget?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bitget?ref=githubio">Bitget的背后是一群区块链技术的早期接受者，也是区块链未来发展的信仰者，一直致力于提供安全、一站式的交易解决方案，帮助用户更聪明地交易。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">Bybit</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/bybit?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/bybit?ref=githubio">Bybit通过数字资产与传统金融的结合，引领数字资产的生态发展。提供一流的流动性，致力于打造业内最安全、公平、高效及人性化的交易服务平台。</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:left"><span style="white-space:nowrap">派网</span></td>
+            <td style="text-align:left"><a href="https://www.okbtc.cn/pionex?ref=githubio">注册链接</a></td>
+            <td style="text-align:left"><a
+                    href="https://www.okbtc.cn/pionex?ref=githubio">派网提供多样化的量化交易机器人，用户可依照自身交易需求和策略选择最适合的机器人。 同时派网也提供合约交易与合约网格机器人，给予更方便的合约交易体验。</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/35746/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">算法生成类NFT真的没有意义吗？</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/35750/">
+                <span class="next-text nav-default">晚间必读5篇 | 热度飙升的EIP-4844究竟是什么 ？V神亲自详细解答</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+
+    </div>
+
+    
+    
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+
+<a href="https://www.okbtc.cn/binance?ref=githubio" class="iconfont">
+  <img src="/image/logo/binance.png" width="36px" height="36px" alt="binance">
+</a>
+
+<a href="https://www.okbtc.cn/okx?ref=githubio" class="iconfont">
+  <img src="/image/logo/okx.png" width="36px" height="36px" alt="okx">
+</a>
+
+<a href="https://www.okbtc.cn/htx?ref=githubio" class="iconfont">
+  <img src="/image/logo/htx.png" width="36px" height="36px" alt="htx">
+</a>
+
+<a href="https://www.okbtc.cn/gateio?ref=githubio" class="iconfont">
+  <img src="/image/logo/gateio.png" width="36px" height="36px" alt="gateio">
+</a>
+
+<a href="https://www.okbtc.cn/bitget?ref=githubio" class="iconfont">
+  <img src="/image/logo/bitget.png" width="36px" height="36px" alt="bitget">
+</a>
+
+<a href="https://www.okbtc.cn/bybit?ref=githubio" class="iconfont">
+  <img src="/image/logo/bybit.png" width="36px" height="36px" alt="bybit">
+</a>
+
+<a href="https://www.okbtc.cn/pionex?ref=githubio" class="iconfont">
+  <img src="/image/logo/pionex.png" width="36px" height="36px" alt="pionex">
+</a>
+
+
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        coin
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.308d1186d284e0b3f5e6187c85ea0a927fdc75459dbd958fc0fb1f4400ed52ee.js" integrity="sha256-MI0RhtKE4LP15hh8heoKkn/cdUWdvZWPwPsfRADtUu4=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var remark_config = {
+    host: 'https:\/\/remark42.example.com',
+    site_id: 'remark',
+    components: [
+	    'embed',
+    ],
+  }
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>
